@@ -8,6 +8,9 @@ Reference, SyncList, SyncObject, EmptyElement, and FieldEnum.
 
 import uuid
 from dataclasses import dataclass, field
+from typing import Generic, TypeVar
+
+T = TypeVar("T")
 
 
 def _generate_uuid() -> str:
@@ -32,10 +35,15 @@ class Member:
 
 
 @dataclass
-class Reference(Member):
-    """A reference to another member or worker.
+class Reference(Member, Generic[T]):
+    """A typed reference to another member or worker.
 
     References point to other elements in the data model by their ID.
+    The type parameter ``T`` is a phantom type used only for static
+    type checking — it does not affect runtime behavior.
+
+    ``Reference[Slot]`` means a reference that targets a Slot.
+    Unparameterized ``Reference`` is equivalent to ``Reference[Any]``.
     """
 
     targetId: str | None = None

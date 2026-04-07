@@ -20,11 +20,16 @@ import time
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
 from pyresonitelink.components.data.dynamic import (
     DynamicValueVariable,
     DynamicVariableSpace,
 )
-from pyresonitelink.protoflux.core import ValueInput, ValueObjectInput
+from pyresonitelink.protoflux.core import (
+    RefObjectInput,
+    ValueInput,
+    ValueObjectInput,
+)
 from pyresonitelink.protoflux.flow import If, Update
 from pyresonitelink.protoflux.operators import ValueAdd, ValueLessThan, ValueSub
 from pyresonitelink.protoflux.variables.dynamic import WriteDynamicValueVariable
@@ -32,6 +37,7 @@ from pyresonitelink.protoflux.variables.dynamic import WriteDynamicValueVariable
 # Concrete parameterized types
 FloatInput = ValueInput[primitives.Float]
 StringInput = ValueObjectInput[primitives.String]
+SlotRef = RefObjectInput[workers.Slot]
 FloatAdd = ValueAdd[primitives.Float]
 FloatSub = ValueSub[primitives.Float]
 FloatLessThan = ValueLessThan[primitives.Float]
@@ -103,20 +109,10 @@ async def main(port: int) -> None:
     # Helpers for WriteDynamicValueVariable: slot ref and path string
     # ===================================================================
 
-    # RefObjectInput<Slot> pointing at our slot.
-    # RefObjectInput is generic over Slot which isn't in the Python
-    # type map, so we use add_component with the concrete type string.
-    slot_ref_resp = await resolink.add_component(
-        containerSlotId=slot_id,
-        componentType=(
-            "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution"
-            ".Nodes.RefObjectInput<[FrooxEngine]FrooxEngine.Slot>"
-        ),
-        references={"Target": slot_id},
-    )
-    slot_ref_id = slot_ref_resp.entityId
-    assert slot_ref_id is not None
-    print(f"slot_ref (RefObjectInput<Slot>)     -> {slot_ref_id}")
+    # RefObjectInput<Slot> pointing at our slot
+    slot_ref = SlotRef(target=slot_id)
+    await slot_ref.add_to_slot(resolink, slot_id)
+    print(f"slot_ref (RefObjectInput<Slot>)     -> {slot_ref.id}")
 
     # ValueObjectInput<string> = "z"  (the dynamic variable path)
     path = StringInput(value="z")
@@ -129,14 +125,14 @@ async def main(port: int) -> None:
 
     # write_true: z = x + 3
     write_true = FloatWrite(
-        target=slot_ref_id, path=path.id, value=add.id,
+        target=slot_ref.id, path=path.id, value=add.id,
     )
     await write_true.add_to_slot(resolink, slot_id)
     print(f"write_true (WriteDynVar<float>)     -> {write_true.id}")
 
     # write_false: z = x - 3
     write_false = FloatWrite(
-        target=slot_ref_id, path=path.id, value=sub.id,
+        target=slot_ref.id, path=path.id, value=sub.id,
     )
     await write_false.add_to_slot(resolink, slot_id)
     print(f"write_false (WriteDynVar<float>)    -> {write_false.id}")

@@ -16,21 +16,31 @@ import numpy as np
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
 
 
 class TypeInfo:
-    """Holds the mapping tuple for a single value type.
+    """Holds the mapping tuple for a single type.
+
+    For value types (stored in fields), ``field_class`` is the
+    corresponding ``Field`` dataclass.  For reference-only types
+    (world elements referenced by ID, like ``Slot`` or ``User``),
+    ``field_class`` is ``None``.
 
     Attributes:
         python_type: The Python type used for the value.
         resonite_name: The Resonite C# type name string.
-        field_class: The corresponding Field dataclass.
+        field_class: The corresponding Field dataclass, or None for
+            reference-only types.
     """
 
     __slots__ = ("python_type", "resonite_name", "field_class")
 
     def __init__(
-        self, python_type: type, resonite_name: str, field_class: type
+        self,
+        python_type: type,
+        resonite_name: str,
+        field_class: type | None = None,
     ) -> None:
         self.python_type = python_type
         self.resonite_name = resonite_name
@@ -106,6 +116,16 @@ _TYPE_INFOS: list[TypeInfo] = [
     TypeInfo(primitives.Double3x3, "double3x3", fields.FieldDouble3x3),
     TypeInfo(primitives.Float4x4, "float4x4", fields.FieldFloat4x4),
     TypeInfo(primitives.Double4x4, "double4x4", fields.FieldDouble4x4),
+    # Reference-only types — world elements referenced by ID, not stored
+    # in fields.  field_class is None for these.
+    TypeInfo(
+        workers.Slot,
+        "[FrooxEngine]FrooxEngine.Slot",
+    ),
+    TypeInfo(
+        workers.Component,
+        "[FrooxEngine]FrooxEngine.Component",
+    ),
 ]
 
 # Lookup by Python type → TypeInfo (first match wins for duplicates)
