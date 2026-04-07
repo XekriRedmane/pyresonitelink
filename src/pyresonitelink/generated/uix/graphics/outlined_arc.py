@@ -22,14 +22,38 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.OutlinedArc"
 
-    def __init__(self, material: str | IAssetProvider[Material] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, arc: np.float32 | None = None, offset: np.float32 | None = None, outer_radius_ratio: np.float32 | None = None, inner_radius_ratio: np.float32 | None = None, rounded_corner_radius: np.float32 | None = None, fill_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, outline_thickness: np.float32 | None = None, material: str | IAssetProvider[Material] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            arc: Initial value for Arc.
+            offset: Initial value for Offset.
+            outer_radius_ratio: Initial value for OuterRadiusRatio.
+            inner_radius_ratio: Initial value for InnerRadiusRatio.
+            rounded_corner_radius: Initial value for RoundedCornerRadius.
+            fill_color: Initial value for FillColor.
+            outline_color: Initial value for OutlineColor.
+            outline_thickness: Initial value for OutlineThickness.
             material: Initial value for Material.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if arc is not None:
+            self.arc = arc
+        if offset is not None:
+            self.offset = offset
+        if outer_radius_ratio is not None:
+            self.outer_radius_ratio = outer_radius_ratio
+        if inner_radius_ratio is not None:
+            self.inner_radius_ratio = inner_radius_ratio
+        if rounded_corner_radius is not None:
+            self.rounded_corner_radius = rounded_corner_radius
+        if fill_color is not None:
+            self.fill_color = fill_color
+        if outline_color is not None:
+            self.outline_color = outline_color
+        if outline_thickness is not None:
+            self.outline_thickness = outline_thickness
         if material is not None:
             self.material = material
 

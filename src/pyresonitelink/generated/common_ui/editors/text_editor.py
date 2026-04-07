@@ -20,11 +20,16 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextEditor"
 
-    def __init__(self, text: str | IText | None = None, editing_started: str | Action[TextEditor] | None = None, editing_changed: str | Action[TextEditor] | None = None, editing_finished: str | Action[TextEditor] | None = None, submit_pressed: str | Action[TextEditor] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, text: str | IText | None = None, undo: bool | None = None, undo_description: str | None = None, auto_caret_color_field: bool | None = None, caret_color_field: primitives.ColorX | None = None, selection_color_field: primitives.ColorX | None = None, editing_started: str | Action[TextEditor] | None = None, editing_changed: str | Action[TextEditor] | None = None, editing_finished: str | Action[TextEditor] | None = None, submit_pressed: str | Action[TextEditor] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             text: Initial value for Text.
+            undo: Initial value for Undo.
+            undo_description: Initial value for UndoDescription.
+            auto_caret_color_field: Initial value for AutoCaretColorField.
+            caret_color_field: Initial value for CaretColorField.
+            selection_color_field: Initial value for SelectionColorField.
             editing_started: Initial value for EditingStarted.
             editing_changed: Initial value for EditingChanged.
             editing_finished: Initial value for EditingFinished.
@@ -34,6 +39,16 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
         super().__init__(component)
         if text is not None:
             self.text = text
+        if undo is not None:
+            self.undo = undo
+        if undo_description is not None:
+            self.undo_description = undo_description
+        if auto_caret_color_field is not None:
+            self.auto_caret_color_field = auto_caret_color_field
+        if caret_color_field is not None:
+            self.caret_color_field = caret_color_field
+        if selection_color_field is not None:
+            self.selection_color_field = selection_color_field
         if editing_started is not None:
             self.editing_started = editing_started
         if editing_changed is not None:

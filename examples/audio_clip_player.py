@@ -16,7 +16,7 @@ import asyncio
 import sys
 
 from pyresonitelink import client
-from pyresonitelink.generated.audio.audio_clip_player import AudioClipPlayer
+from pyresonitelink.components.audio import AudioClipPlayer
 
 
 async def main(port: int) -> None:

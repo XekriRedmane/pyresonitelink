@@ -8,4 +8,3 @@ class HostAccessScope:
         """The element's unique ID."""
         return None
 
-

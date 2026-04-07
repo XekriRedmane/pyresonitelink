@@ -14,16 +14,19 @@ class FreeformTargettingController(GeneratedComponent):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FreeformTargettingController"
 
-    def __init__(self, focus_target: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, focus_target: str | Slot | None = None, focus_center_point: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             focus_target: Initial value for FocusTarget.
+            focus_center_point: Initial value for FocusCenterPoint.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if focus_target is not None:
             self.focus_target = focus_target
+        if focus_center_point is not None:
+            self.focus_center_point = focus_center_point
 
     @property
     def focus_target(self) -> str | None:

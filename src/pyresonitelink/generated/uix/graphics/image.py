@@ -20,12 +20,19 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Image"
 
-    def __init__(self, sprite: str | IAssetProvider[Sprite] | None = None, material: str | IAssetProvider[Material] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, sprite: str | IAssetProvider[Sprite] | None = None, material: str | IAssetProvider[Material] | None = None, preserve_aspect: bool | None = None, flip_horizontally: bool | None = None, flip_vertically: bool | None = None, interaction_target: bool | None = None, fill_rect: primitives.Rect | None = None, legacy_zwrite: bool | None = None, tint: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             sprite: Initial value for Sprite.
             material: Initial value for Material.
+            preserve_aspect: Initial value for PreserveAspect.
+            flip_horizontally: Initial value for FlipHorizontally.
+            flip_vertically: Initial value for FlipVertically.
+            interaction_target: Initial value for InteractionTarget.
+            fill_rect: Initial value for FillRect.
+            legacy_zwrite: Initial value for __legacyZWrite.
+            tint: Initial value for Tint.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -33,6 +40,20 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             self.sprite = sprite
         if material is not None:
             self.material = material
+        if preserve_aspect is not None:
+            self.preserve_aspect = preserve_aspect
+        if flip_horizontally is not None:
+            self.flip_horizontally = flip_horizontally
+        if flip_vertically is not None:
+            self.flip_vertically = flip_vertically
+        if interaction_target is not None:
+            self.interaction_target = interaction_target
+        if fill_rect is not None:
+            self.fill_rect = fill_rect
+        if legacy_zwrite is not None:
+            self.legacy_zwrite = legacy_zwrite
+        if tint is not None:
+            self.tint = tint
 
     @property
     def sprite(self) -> str | None:

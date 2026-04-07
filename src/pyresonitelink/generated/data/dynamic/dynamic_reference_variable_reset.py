@@ -1,0 +1,144 @@
+"""Generated component: DynamicReferenceVariableReset."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GenericComponent, T
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class DynamicReferenceVariableReset(GenericComponent[T], IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.DynamicReferenceVariableReset<>.
+
+    Category: Data/Dynamic
+
+    Parameterize with a value type::
+
+        DynamicReferenceVariableReset[np.float32]
+        DynamicReferenceVariableReset[primitives.Float3]
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicReferenceVariableReset<>"
+    _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.DynamicReferenceVariableReset<>"
+
+    def __init__(self, variable_name: str | None = None, reset_on_load: bool | None = None, reset_on_duplicate: bool | None = None, reset_on_paste: bool | None = None, reset_target: str | T | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            variable_name: Initial value for VariableName.
+            reset_on_load: Initial value for ResetOnLoad.
+            reset_on_duplicate: Initial value for ResetOnDuplicate.
+            reset_on_paste: Initial value for ResetOnPaste.
+            reset_target: Initial value for ResetTarget.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if variable_name is not None:
+            self.variable_name = variable_name
+        if reset_on_load is not None:
+            self.reset_on_load = reset_on_load
+        if reset_on_duplicate is not None:
+            self.reset_on_duplicate = reset_on_duplicate
+        if reset_on_paste is not None:
+            self.reset_on_paste = reset_on_paste
+        if reset_target is not None:
+            self.reset_target = reset_target
+
+    @property
+    def variable_name(self) -> str | None:
+        """The VariableName field value."""
+        member = self.get_member("VariableName")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @variable_name.setter
+    def variable_name(self, value: str) -> None:
+        """Set the VariableName field value."""
+        member = self.get_member("VariableName")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "VariableName", fields.FieldString(value=value)
+            )
+
+    @property
+    def reset_on_load(self) -> bool | None:
+        """The ResetOnLoad field value."""
+        member = self.get_member("ResetOnLoad")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @reset_on_load.setter
+    def reset_on_load(self, value: bool) -> None:
+        """Set the ResetOnLoad field value."""
+        member = self.get_member("ResetOnLoad")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ResetOnLoad", fields.FieldBool(value=value)
+            )
+
+    @property
+    def reset_on_duplicate(self) -> bool | None:
+        """The ResetOnDuplicate field value."""
+        member = self.get_member("ResetOnDuplicate")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @reset_on_duplicate.setter
+    def reset_on_duplicate(self, value: bool) -> None:
+        """Set the ResetOnDuplicate field value."""
+        member = self.get_member("ResetOnDuplicate")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ResetOnDuplicate", fields.FieldBool(value=value)
+            )
+
+    @property
+    def reset_on_paste(self) -> bool | None:
+        """The ResetOnPaste field value."""
+        member = self.get_member("ResetOnPaste")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @reset_on_paste.setter
+    def reset_on_paste(self, value: bool) -> None:
+        """Set the ResetOnPaste field value."""
+        member = self.get_member("ResetOnPaste")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ResetOnPaste", fields.FieldBool(value=value)
+            )
+
+    @property
+    def reset_target(self) -> str | None:
+        """Target ID of the ResetTarget reference (targets T)."""
+        member = self.get_member("ResetTarget")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @reset_target.setter
+    def reset_target(self, target: str | T | None) -> None:
+        """Set the ResetTarget reference by target ID or T instance."""
+        target_id: str | None = target.id if hasattr(target, 'id') and not isinstance(target, str) else target  # type: ignore[union-attr,assignment]
+        member = self.get_member("ResetTarget")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ResetTarget",
+                members.Reference(targetId=target_id, targetType='T'),
+            )
+

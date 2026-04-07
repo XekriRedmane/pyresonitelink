@@ -8,4 +8,3 @@ class WrapMode:
         """The element's unique ID."""
         return None
 
-

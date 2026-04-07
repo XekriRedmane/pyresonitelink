@@ -17,14 +17,17 @@ class TouchEventRelay(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TouchEventRelay"
 
-    def __init__(self, touched: str | TouchEvent | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, accept_out_of_sight_touch: bool | None = None, touched: str | TouchEvent | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            accept_out_of_sight_touch: Initial value for AcceptOutOfSightTouch.
             touched: Initial value for Touched.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if accept_out_of_sight_touch is not None:
+            self.accept_out_of_sight_touch = accept_out_of_sight_touch
         if touched is not None:
             self.touched = touched
 

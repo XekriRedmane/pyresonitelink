@@ -8,4 +8,3 @@ class JoinRequestHandle:
         """The element's unique ID."""
         return None
 
-

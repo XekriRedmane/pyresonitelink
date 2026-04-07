@@ -34,12 +34,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenu"
 
-    def __init__(self, owner: str | User | None = None, pointer: str | Slot | None = None, current_summoner: str | IWorldElement | None = None, canvas: str | Canvas | None = None, arc_layout: str | ArcLayout | None = None, canvas_active: str | IField[bool] | None = None, collider_enabled: str | IField[bool] | None = None, icon_image: str | Image | None = None, separation: str | IField[np.float32] | None = None, offset_min: str | IField[primitives.Float2] | None = None, offset_max: str | IField[primitives.Float2] | None = None, inner_circle: str | OutlinedArc | None = None, inner_circle_button: str | Button | None = None, inner_circle_anchor_min: str | IField[primitives.Float2] | None = None, inner_circle_anchor_max: str | IField[primitives.Float2] | None = None, items_root: str | Slot | None = None, arc_material: str | UI_CircleSegment | None = None, font_material: str | UI_TextUnlitMaterial | None = None, sprite_material: str | UI_UnlitMaterial | None = None, arc_overlay: str | IField[bool] | None = None, font_overlay: str | IField[bool] | None = None, sprite_overlay: str | IField[bool] | None = None, arc_ztest: str | IField[ZTest] | None = None, font_ztest: str | IField[ZTest] | None = None, sprite_ztest: str | IField[ZTest] | None = None, zwrite_arc: str | IField[ZWrite] | None = None, zwrite_text: str | IField[ZWrite] | None = None, arc_render_queue: str | IField[np.int32] | None = None, font_render_queue: str | IField[np.int32] | None = None, sprite_render_queue: str | IField[np.int32] | None = None, canvas_offset: str | IField[np.int32] | None = None, fill_fade: str | IField[primitives.ColorX] | None = None, outline_fade: str | IField[primitives.ColorX] | None = None, text_fade: str | IField[primitives.ColorX] | None = None, icon_fade: str | IField[primitives.ColorX] | None = None, selected_item: str | ContextMenuItem | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, owner: str | User | None = None, pointer: str | Slot | None = None, separation: np.float32 | None = None, label_size: primitives.Float2 | None = None, radius_ratio: np.float32 | None = None, current_summoner: str | IWorldElement | None = None, canvas: str | Canvas | None = None, arc_layout: str | ArcLayout | None = None, canvas_active: str | IField[bool] | None = None, collider_enabled: str | IField[bool] | None = None, icon_image: str | Image | None = None, separation: str | IField[np.float32] | None = None, offset_min: str | IField[primitives.Float2] | None = None, offset_max: str | IField[primitives.Float2] | None = None, inner_circle: str | OutlinedArc | None = None, inner_circle_button: str | Button | None = None, inner_circle_anchor_min: str | IField[primitives.Float2] | None = None, inner_circle_anchor_max: str | IField[primitives.Float2] | None = None, items_root: str | Slot | None = None, arc_material: str | UI_CircleSegment | None = None, font_material: str | UI_TextUnlitMaterial | None = None, sprite_material: str | UI_UnlitMaterial | None = None, arc_overlay: str | IField[bool] | None = None, font_overlay: str | IField[bool] | None = None, sprite_overlay: str | IField[bool] | None = None, arc_ztest: str | IField[ZTest] | None = None, font_ztest: str | IField[ZTest] | None = None, sprite_ztest: str | IField[ZTest] | None = None, zwrite_arc: str | IField[ZWrite] | None = None, zwrite_text: str | IField[ZWrite] | None = None, arc_render_queue: str | IField[np.int32] | None = None, font_render_queue: str | IField[np.int32] | None = None, sprite_render_queue: str | IField[np.int32] | None = None, canvas_offset: str | IField[np.int32] | None = None, fill_fade: str | IField[primitives.ColorX] | None = None, outline_fade: str | IField[primitives.ColorX] | None = None, text_fade: str | IField[primitives.ColorX] | None = None, icon_fade: str | IField[primitives.ColorX] | None = None, lerp: np.float32 | None = None, flick_mode_active: bool | None = None, flick_enabled: bool | None = None, hidden: bool | None = None, selected_item: str | ContextMenuItem | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             owner: Initial value for Owner.
             pointer: Initial value for Pointer.
+            separation: Initial value for Separation.
+            label_size: Initial value for LabelSize.
+            radius_ratio: Initial value for RadiusRatio.
             current_summoner: Initial value for _currentSummoner.
             canvas: Initial value for _canvas.
             arc_layout: Initial value for _arcLayout.
@@ -73,6 +76,10 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             outline_fade: Initial value for _outlineFade.
             text_fade: Initial value for _textFade.
             icon_fade: Initial value for _iconFade.
+            lerp: Initial value for _lerp.
+            flick_mode_active: Initial value for _flickModeActive.
+            flick_enabled: Initial value for _flickEnabled.
+            hidden: Initial value for _hidden.
             selected_item: Initial value for _selectedItem.
             component: Existing Component to wrap.
         """
@@ -81,6 +88,12 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.owner = owner
         if pointer is not None:
             self.pointer = pointer
+        if separation is not None:
+            self.separation = separation
+        if label_size is not None:
+            self.label_size = label_size
+        if radius_ratio is not None:
+            self.radius_ratio = radius_ratio
         if current_summoner is not None:
             self.current_summoner = current_summoner
         if canvas is not None:
@@ -147,6 +160,14 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.text_fade = text_fade
         if icon_fade is not None:
             self.icon_fade = icon_fade
+        if lerp is not None:
+            self.lerp = lerp
+        if flick_mode_active is not None:
+            self.flick_mode_active = flick_mode_active
+        if flick_enabled is not None:
+            self.flick_enabled = flick_enabled
+        if hidden is not None:
+            self.hidden = hidden
         if selected_item is not None:
             self.selected_item = selected_item
 

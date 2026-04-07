@@ -13,4 +13,3 @@ class Func(Generic[TResult]):
         """The element's unique ID."""
         return None
 
-

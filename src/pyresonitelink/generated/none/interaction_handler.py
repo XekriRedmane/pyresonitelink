@@ -34,29 +34,44 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionHandler"
 
-    def __init__(self, locomotion_controller: str | LocomotionController | None = None, stream_driver: str | InteractionHandlerStreamDriver | None = None, undo_item: str | ContextMenuItem | None = None, redo_item: str | ContextMenuItem | None = None, context_menu: str | ContextMenu | None = None, tool_root: str | Slot | None = None, laser_slot: str | Slot | None = None, laser_position: str | IField[primitives.Float3] | None = None, laser_rotation: str | IField[primitives.FloatQ] | None = None, interaction_laser: str | InteractionLaser | None = None, holder_pos: str | IField[primitives.Float3] | None = None, holder_rot: str | IField[primitives.FloatQ] | None = None, userspace_toggle_indicator: str | RingMesh | None = None, tool_holder: str | Slot | None = None, grabber_sphere_active: str | IField[bool] | None = None, grab_ignore_root: str | Slot | None = None, grabber: str | Grabber | None = None, active_tool_link: str | LinkTarget[ITool] | None = None, active_tool_grip_pose_reference: str | GripPoseReference | None = None, grab_material: str | FresnelMaterial | None = None, item_shelf_slot: str | Slot | None = None, item_shelf: str | ItemShelf | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, locomotion_controller: str | LocomotionController | None = None, grab_smoothing: np.float32 | None = None, stream_driver: str | InteractionHandlerStreamDriver | None = None, undo_item: str | ContextMenuItem | None = None, redo_item: str | ContextMenuItem | None = None, context_menu: str | ContextMenu | None = None, equipping_enabled: bool | None = None, menu_enabled: bool | None = None, user_scaling_enabled: bool | None = None, visual_enabled: bool | None = None, pointing_grab: bool | None = None, pointing_touch: bool | None = None, tool_root: str | Slot | None = None, laser_slot: str | Slot | None = None, laser_position: str | IField[primitives.Float3] | None = None, laser_rotation: str | IField[primitives.FloatQ] | None = None, interaction_laser: str | InteractionLaser | None = None, laser_enabled: bool | None = None, grab_toggle: bool | None = None, holder_pos: str | IField[primitives.Float3] | None = None, holder_rot: str | IField[primitives.FloatQ] | None = None, holder_axis_offset: np.float32 | None = None, holder_rotation_offset: primitives.FloatQ | None = None, holder_rotation_reference: primitives.FloatQ | None = None, original_twist_offset: np.float32 | None = None, userspace_toggle_indicator: str | RingMesh | None = None, tool_holder: str | Slot | None = None, show_interaction_hints: bool | None = None, grabber_sphere_active: str | IField[bool] | None = None, grab_ignore_root: str | Slot | None = None, grabber: str | Grabber | None = None, active_tool_link: str | LinkTarget[ITool] | None = None, active_tool_grip_pose_reference: str | GripPoseReference | None = None, tool_locked: bool | None = None, grab_material: str | FresnelMaterial | None = None, item_shelf_slot: str | Slot | None = None, item_shelf: str | ItemShelf | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             locomotion_controller: Initial value for LocomotionController.
+            grab_smoothing: Initial value for GrabSmoothing.
             stream_driver: Initial value for _streamDriver.
             undo_item: Initial value for _undoItem.
             redo_item: Initial value for _redoItem.
             context_menu: Initial value for ContextMenu.
+            equipping_enabled: Initial value for EquippingEnabled.
+            menu_enabled: Initial value for MenuEnabled.
+            user_scaling_enabled: Initial value for UserScalingEnabled.
+            visual_enabled: Initial value for VisualEnabled.
+            pointing_grab: Initial value for PointingGrab.
+            pointing_touch: Initial value for PointingTouch.
             tool_root: Initial value for _toolRoot.
             laser_slot: Initial value for _laserSlot.
             laser_position: Initial value for _laserPosition.
             laser_rotation: Initial value for _laserRotation.
             interaction_laser: Initial value for _interactionLaser.
+            laser_enabled: Initial value for _laserEnabled.
+            grab_toggle: Initial value for _grabToggle.
             holder_pos: Initial value for _holderPos.
             holder_rot: Initial value for _holderRot.
+            holder_axis_offset: Initial value for _holderAxisOffset.
+            holder_rotation_offset: Initial value for _holderRotationOffset.
+            holder_rotation_reference: Initial value for _holderRotationReference.
+            original_twist_offset: Initial value for _originalTwistOffset.
             userspace_toggle_indicator: Initial value for _userspaceToggleIndicator.
             tool_holder: Initial value for ToolHolder.
+            show_interaction_hints: Initial value for ShowInteractionHints.
             grabber_sphere_active: Initial value for _grabberSphereActive.
             grab_ignore_root: Initial value for _grabIgnoreRoot.
             grabber: Initial value for _grabber.
             active_tool_link: Initial value for ActiveToolLink.
             active_tool_grip_pose_reference: Initial value for _activeToolGripPoseReference.
+            tool_locked: Initial value for _toolLocked.
             grab_material: Initial value for _grabMaterial.
             item_shelf_slot: Initial value for _itemShelfSlot.
             item_shelf: Initial value for _itemShelf.
@@ -65,6 +80,8 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         super().__init__(component)
         if locomotion_controller is not None:
             self.locomotion_controller = locomotion_controller
+        if grab_smoothing is not None:
+            self.grab_smoothing = grab_smoothing
         if stream_driver is not None:
             self.stream_driver = stream_driver
         if undo_item is not None:
@@ -73,6 +90,18 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             self.redo_item = redo_item
         if context_menu is not None:
             self.context_menu = context_menu
+        if equipping_enabled is not None:
+            self.equipping_enabled = equipping_enabled
+        if menu_enabled is not None:
+            self.menu_enabled = menu_enabled
+        if user_scaling_enabled is not None:
+            self.user_scaling_enabled = user_scaling_enabled
+        if visual_enabled is not None:
+            self.visual_enabled = visual_enabled
+        if pointing_grab is not None:
+            self.pointing_grab = pointing_grab
+        if pointing_touch is not None:
+            self.pointing_touch = pointing_touch
         if tool_root is not None:
             self.tool_root = tool_root
         if laser_slot is not None:
@@ -83,14 +112,28 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             self.laser_rotation = laser_rotation
         if interaction_laser is not None:
             self.interaction_laser = interaction_laser
+        if laser_enabled is not None:
+            self.laser_enabled = laser_enabled
+        if grab_toggle is not None:
+            self.grab_toggle = grab_toggle
         if holder_pos is not None:
             self.holder_pos = holder_pos
         if holder_rot is not None:
             self.holder_rot = holder_rot
+        if holder_axis_offset is not None:
+            self.holder_axis_offset = holder_axis_offset
+        if holder_rotation_offset is not None:
+            self.holder_rotation_offset = holder_rotation_offset
+        if holder_rotation_reference is not None:
+            self.holder_rotation_reference = holder_rotation_reference
+        if original_twist_offset is not None:
+            self.original_twist_offset = original_twist_offset
         if userspace_toggle_indicator is not None:
             self.userspace_toggle_indicator = userspace_toggle_indicator
         if tool_holder is not None:
             self.tool_holder = tool_holder
+        if show_interaction_hints is not None:
+            self.show_interaction_hints = show_interaction_hints
         if grabber_sphere_active is not None:
             self.grabber_sphere_active = grabber_sphere_active
         if grab_ignore_root is not None:
@@ -101,6 +144,8 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             self.active_tool_link = active_tool_link
         if active_tool_grip_pose_reference is not None:
             self.active_tool_grip_pose_reference = active_tool_grip_pose_reference
+        if tool_locked is not None:
+            self.tool_locked = tool_locked
         if grab_material is not None:
             self.grab_material = grab_material
         if item_shelf_slot is not None:

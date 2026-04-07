@@ -21,28 +21,55 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchor"
 
-    def __init__(self, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, restore_reference: str | Slot | None = None, original_space: str | Slot | None = None, user_anchored: str | AvatarAnchorUserEvent | None = None, user_stay: str | AvatarAnchorUserEvent | None = None, user_released: str | AvatarAnchorUserEvent | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, highlight: bool | None = None, min_scale: np.float32 | None = None, max_scale: np.float32 | None = None, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up_on_enter: bool | None = None, preserve_up_on_exit: bool | None = None, unparent_everything_on_destroy: bool | None = None, restore_reference: str | Slot | None = None, original_space: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: np.float32 | None = None, user_anchored: str | AvatarAnchorUserEvent | None = None, user_stay: str | AvatarAnchorUserEvent | None = None, user_released: str | AvatarAnchorUserEvent | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            highlight: Initial value for Highlight.
+            min_scale: Initial value for MinScale.
+            max_scale: Initial value for MaxScale.
             position_reference: Initial value for PositionReference.
             rotation_reference: Initial value for RotationReference.
+            preserve_up_on_enter: Initial value for PreserveUpOnEnter.
+            preserve_up_on_exit: Initial value for PreserveUpOnExit.
+            unparent_everything_on_destroy: Initial value for UnparentEverythingOnDestroy.
             restore_reference: Initial value for RestoreReference.
             original_space: Initial value for _originalSpace.
+            original_position: Initial value for _originalPosition.
+            original_rotation: Initial value for _originalRotation.
+            original_scale: Initial value for _originalScale.
             user_anchored: Initial value for UserAnchored.
             user_stay: Initial value for UserStay.
             user_released: Initial value for UserReleased.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if highlight is not None:
+            self.highlight = highlight
+        if min_scale is not None:
+            self.min_scale = min_scale
+        if max_scale is not None:
+            self.max_scale = max_scale
         if position_reference is not None:
             self.position_reference = position_reference
         if rotation_reference is not None:
             self.rotation_reference = rotation_reference
+        if preserve_up_on_enter is not None:
+            self.preserve_up_on_enter = preserve_up_on_enter
+        if preserve_up_on_exit is not None:
+            self.preserve_up_on_exit = preserve_up_on_exit
+        if unparent_everything_on_destroy is not None:
+            self.unparent_everything_on_destroy = unparent_everything_on_destroy
         if restore_reference is not None:
             self.restore_reference = restore_reference
         if original_space is not None:
             self.original_space = original_space
+        if original_position is not None:
+            self.original_position = original_position
+        if original_rotation is not None:
+            self.original_rotation = original_rotation
+        if original_scale is not None:
+            self.original_scale = original_scale
         if user_anchored is not None:
             self.user_anchored = user_anchored
         if user_stay is not None:

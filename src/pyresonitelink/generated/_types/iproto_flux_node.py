@@ -15,4 +15,3 @@ class IProtoFluxNode(Generic[N]):
         """The element's unique ID."""
         return None
 
-

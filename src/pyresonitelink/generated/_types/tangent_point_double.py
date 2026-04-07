@@ -8,4 +8,3 @@ class TangentPointDouble:
         """The element's unique ID."""
         return None
 
-

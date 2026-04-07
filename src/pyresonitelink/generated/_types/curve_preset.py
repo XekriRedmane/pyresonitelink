@@ -8,4 +8,3 @@ class CurvePreset:
         """The element's unique ID."""
         return None
 
-

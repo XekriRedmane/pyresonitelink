@@ -13,4 +13,3 @@ class Nullable(Generic[T]):
         """The element's unique ID."""
         return None
 
-

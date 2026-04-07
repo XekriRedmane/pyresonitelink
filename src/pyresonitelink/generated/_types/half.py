@@ -8,4 +8,3 @@ class half:
         """The element's unique ID."""
         return None
 
-

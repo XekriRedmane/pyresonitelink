@@ -8,4 +8,3 @@ class TangentPointFloat2:
         """The element's unique ID."""
         return None
 
-

@@ -5,6 +5,7 @@ import numpy as np
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ihighlightable import IHighlightable
 from pyresonitelink.generated._types.isweepable_collider import ISweepableCollider
@@ -18,6 +19,29 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxCollider"
+
+    def __init__(self, offset: primitives.Float3 | None = None, mass: np.float32 | None = None, character_collider: bool | None = None, ignore_raycasts: bool | None = None, size: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            offset: Initial value for Offset.
+            mass: Initial value for Mass.
+            character_collider: Initial value for CharacterCollider.
+            ignore_raycasts: Initial value for IgnoreRaycasts.
+            size: Initial value for Size.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if offset is not None:
+            self.offset = offset
+        if mass is not None:
+            self.mass = mass
+        if character_collider is not None:
+            self.character_collider = character_collider
+        if ignore_raycasts is not None:
+            self.ignore_raycasts = ignore_raycasts
+        if size is not None:
+            self.size = size
 
     @property
     def offset(self) -> primitives.Float3 | None:

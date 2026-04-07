@@ -4,6 +4,7 @@ import numpy as np
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture2_dprovider import ITexture2DProvider
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
@@ -18,6 +19,56 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticTexture2D"
+
+    def __init__(self, url: str | None = None, anisotropic_level: np.int32 | None = None, uncompressed: bool | None = None, direct_load: bool | None = None, force_exact_variant: bool | None = None, mip_map_bias: np.float32 | None = None, is_normal_map: bool | None = None, power_of_two_align_threshold: np.float32 | None = None, crunch_compressed: bool | None = None, min_size: np.int32 | None = None, max_size: np.int32 | None = None, mip_maps: bool | None = None, keep_original_mip_maps: bool | None = None, readable: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            url: Initial value for URL.
+            anisotropic_level: Initial value for AnisotropicLevel.
+            uncompressed: Initial value for Uncompressed.
+            direct_load: Initial value for DirectLoad.
+            force_exact_variant: Initial value for ForceExactVariant.
+            mip_map_bias: Initial value for MipMapBias.
+            is_normal_map: Initial value for IsNormalMap.
+            power_of_two_align_threshold: Initial value for PowerOfTwoAlignThreshold.
+            crunch_compressed: Initial value for CrunchCompressed.
+            min_size: Initial value for MinSize.
+            max_size: Initial value for MaxSize.
+            mip_maps: Initial value for MipMaps.
+            keep_original_mip_maps: Initial value for KeepOriginalMipMaps.
+            readable: Initial value for Readable.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if url is not None:
+            self.url = url
+        if anisotropic_level is not None:
+            self.anisotropic_level = anisotropic_level
+        if uncompressed is not None:
+            self.uncompressed = uncompressed
+        if direct_load is not None:
+            self.direct_load = direct_load
+        if force_exact_variant is not None:
+            self.force_exact_variant = force_exact_variant
+        if mip_map_bias is not None:
+            self.mip_map_bias = mip_map_bias
+        if is_normal_map is not None:
+            self.is_normal_map = is_normal_map
+        if power_of_two_align_threshold is not None:
+            self.power_of_two_align_threshold = power_of_two_align_threshold
+        if crunch_compressed is not None:
+            self.crunch_compressed = crunch_compressed
+        if min_size is not None:
+            self.min_size = min_size
+        if max_size is not None:
+            self.max_size = max_size
+        if mip_maps is not None:
+            self.mip_maps = mip_maps
+        if keep_original_mip_maps is not None:
+            self.keep_original_mip_maps = keep_original_mip_maps
+        if readable is not None:
+            self.readable = readable
 
     @property
     def url(self) -> str | None:

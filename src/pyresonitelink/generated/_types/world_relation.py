@@ -8,4 +8,3 @@ class WorldRelation:
         """The element's unique ID."""
         return None
 
-

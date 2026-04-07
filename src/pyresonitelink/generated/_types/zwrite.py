@@ -8,4 +8,3 @@ class ZWrite:
         """The element's unique ID."""
         return None
 
-

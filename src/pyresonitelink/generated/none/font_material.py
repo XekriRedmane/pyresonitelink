@@ -18,14 +18,29 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FontMaterial"
 
-    def __init__(self, converted_material: str | TextUnlitMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, outline_thickness: np.float32 | None = None, outline_color: primitives.ColorX | None = None, face_softness: np.float32 | None = None, face_dilate: np.float32 | None = None, render_queue: np.int32 | None = None, converted_material: str | TextUnlitMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            outline_thickness: Initial value for OutlineThickness.
+            outline_color: Initial value for OutlineColor.
+            face_softness: Initial value for FaceSoftness.
+            face_dilate: Initial value for FaceDilate.
+            render_queue: Initial value for RenderQueue.
             converted_material: Initial value for _convertedMaterial.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if outline_thickness is not None:
+            self.outline_thickness = outline_thickness
+        if outline_color is not None:
+            self.outline_color = outline_color
+        if face_softness is not None:
+            self.face_softness = face_softness
+        if face_dilate is not None:
+            self.face_dilate = face_dilate
+        if render_queue is not None:
+            self.render_queue = render_queue
         if converted_material is not None:
             self.converted_material = converted_material
 

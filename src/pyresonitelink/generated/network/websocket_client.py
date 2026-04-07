@@ -4,6 +4,7 @@ import numpy as np
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -16,6 +17,26 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WebsocketClient"
+
+    def __init__(self, url: str | None = None, access_reason: str | None = None, connect_retry_interval: np.float32 | None = None, is_connected: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            url: Initial value for URL.
+            access_reason: Initial value for AccessReason.
+            connect_retry_interval: Initial value for ConnectRetryInterval.
+            is_connected: Initial value for IsConnected.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if url is not None:
+            self.url = url
+        if access_reason is not None:
+            self.access_reason = access_reason
+        if connect_retry_interval is not None:
+            self.connect_retry_interval = connect_retry_interval
+        if is_connected is not None:
+            self.is_connected = is_connected
 
     @property
     def url(self) -> str | None:

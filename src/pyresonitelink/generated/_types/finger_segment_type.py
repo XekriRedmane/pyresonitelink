@@ -8,4 +8,3 @@ class FingerSegmentType:
         """The element's unique ID."""
         return None
 
-

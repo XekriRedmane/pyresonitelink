@@ -21,13 +21,40 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterController"
 
-    def __init__(self, simulating_user: str | User | None = None, character_root: str | Slot | None = None, head_reference: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, simulating_user: str | User | None = None, character_root: str | Slot | None = None, head_reference: str | Slot | None = None, simulate_rotation: bool | None = None, linear_damping: np.float32 | None = None, angular_damping: np.float32 | None = None, margin: np.float32 | None = None, step_up_height: np.float32 | None = None, step_up_check_distance: np.float32 | None = None, kill_vertical_velocity_after_step_up: bool | None = None, edge_detection_depth: np.float32 | None = None, speed: np.float32 | None = None, sliding_speed: np.float32 | None = None, air_speed: np.float32 | None = None, traction_force: np.float32 | None = None, sliding_force: np.float32 | None = None, air_force: np.float32 | None = None, maximum_glue_force: np.float32 | None = None, maximum_traction_slope: np.float32 | None = None, maximum_support_slope: np.float32 | None = None, jump_speed: np.float32 | None = None, sliding_jump_speed: np.float32 | None = None, gravity: primitives.Float3 | None = None, debug_visual_duration: np.float32 | None = None, height: np.float32 | None = None, radius: np.float32 | None = None, mass: np.float32 | None = None, collide_with_other_characters: bool | None = None, ignore_raycasts: bool | None = None, root_at_bottom: bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             simulating_user: Initial value for SimulatingUser.
             character_root: Initial value for CharacterRoot.
             head_reference: Initial value for HeadReference.
+            simulate_rotation: Initial value for SimulateRotation.
+            linear_damping: Initial value for LinearDamping.
+            angular_damping: Initial value for AngularDamping.
+            margin: Initial value for Margin.
+            step_up_height: Initial value for StepUpHeight.
+            step_up_check_distance: Initial value for StepUpCheckDistance.
+            kill_vertical_velocity_after_step_up: Initial value for KillVerticalVelocityAfterStepUp.
+            edge_detection_depth: Initial value for EdgeDetectionDepth.
+            speed: Initial value for Speed.
+            sliding_speed: Initial value for SlidingSpeed.
+            air_speed: Initial value for AirSpeed.
+            traction_force: Initial value for TractionForce.
+            sliding_force: Initial value for SlidingForce.
+            air_force: Initial value for AirForce.
+            maximum_glue_force: Initial value for MaximumGlueForce.
+            maximum_traction_slope: Initial value for MaximumTractionSlope.
+            maximum_support_slope: Initial value for MaximumSupportSlope.
+            jump_speed: Initial value for JumpSpeed.
+            sliding_jump_speed: Initial value for SlidingJumpSpeed.
+            gravity: Initial value for Gravity.
+            debug_visual_duration: Initial value for DebugVisualDuration.
+            height: Initial value for __height.
+            radius: Initial value for __radius.
+            mass: Initial value for __mass.
+            collide_with_other_characters: Initial value for __collideWithOtherCharacters.
+            ignore_raycasts: Initial value for __ignoreRaycasts.
+            root_at_bottom: Initial value for __rootAtBottom.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -37,6 +64,60 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             self.character_root = character_root
         if head_reference is not None:
             self.head_reference = head_reference
+        if simulate_rotation is not None:
+            self.simulate_rotation = simulate_rotation
+        if linear_damping is not None:
+            self.linear_damping = linear_damping
+        if angular_damping is not None:
+            self.angular_damping = angular_damping
+        if margin is not None:
+            self.margin = margin
+        if step_up_height is not None:
+            self.step_up_height = step_up_height
+        if step_up_check_distance is not None:
+            self.step_up_check_distance = step_up_check_distance
+        if kill_vertical_velocity_after_step_up is not None:
+            self.kill_vertical_velocity_after_step_up = kill_vertical_velocity_after_step_up
+        if edge_detection_depth is not None:
+            self.edge_detection_depth = edge_detection_depth
+        if speed is not None:
+            self.speed = speed
+        if sliding_speed is not None:
+            self.sliding_speed = sliding_speed
+        if air_speed is not None:
+            self.air_speed = air_speed
+        if traction_force is not None:
+            self.traction_force = traction_force
+        if sliding_force is not None:
+            self.sliding_force = sliding_force
+        if air_force is not None:
+            self.air_force = air_force
+        if maximum_glue_force is not None:
+            self.maximum_glue_force = maximum_glue_force
+        if maximum_traction_slope is not None:
+            self.maximum_traction_slope = maximum_traction_slope
+        if maximum_support_slope is not None:
+            self.maximum_support_slope = maximum_support_slope
+        if jump_speed is not None:
+            self.jump_speed = jump_speed
+        if sliding_jump_speed is not None:
+            self.sliding_jump_speed = sliding_jump_speed
+        if gravity is not None:
+            self.gravity = gravity
+        if debug_visual_duration is not None:
+            self.debug_visual_duration = debug_visual_duration
+        if height is not None:
+            self.height = height
+        if radius is not None:
+            self.radius = radius
+        if mass is not None:
+            self.mass = mass
+        if collide_with_other_characters is not None:
+            self.collide_with_other_characters = collide_with_other_characters
+        if ignore_raycasts is not None:
+            self.ignore_raycasts = ignore_raycasts
+        if root_at_bottom is not None:
+            self.root_at_bottom = root_at_bottom
 
     @property
     def simulating_user(self) -> str | None:

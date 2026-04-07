@@ -20,10 +20,13 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionController"
 
-    def __init__(self, current_ground_collider: str | ICollider | None = None, last_ground_collider: str | ICollider | None = None, dummy_character_controller: str | CharacterController | None = None, on_initialized: str | Action[LocomotionController] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, scaling_enabled: bool | None = None, active_module_index: np.int32 | None = None, find_user_preferred_module: bool | None = None, current_ground_collider: str | ICollider | None = None, last_ground_collider: str | ICollider | None = None, dummy_character_controller: str | CharacterController | None = None, on_initialized: str | Action[LocomotionController] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            scaling_enabled: Initial value for ScalingEnabled.
+            active_module_index: Initial value for ActiveModuleIndex.
+            find_user_preferred_module: Initial value for FindUserPreferredModule.
             current_ground_collider: Initial value for _currentGroundCollider.
             last_ground_collider: Initial value for _lastGroundCollider.
             dummy_character_controller: Initial value for _dummyCharacterController.
@@ -31,6 +34,12 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if scaling_enabled is not None:
+            self.scaling_enabled = scaling_enabled
+        if active_module_index is not None:
+            self.active_module_index = active_module_index
+        if find_user_preferred_module is not None:
+            self.find_user_preferred_module = find_user_preferred_module
         if current_ground_collider is not None:
             self.current_ground_collider = current_ground_collider
         if last_ground_collider is not None:

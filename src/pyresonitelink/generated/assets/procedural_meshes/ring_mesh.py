@@ -5,6 +5,7 @@ import numpy as np
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -18,6 +19,41 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RingMesh"
+
+    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rotation: primitives.FloatQ | None = None, segments: np.int32 | None = None, arc: np.float32 | None = None, inner_radius: np.float32 | None = None, outer_radius: np.float32 | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            override_bounding_box: Initial value for OverrideBoundingBox.
+            overriden_bounding_box: Initial value for OverridenBoundingBox.
+            rotation: Initial value for Rotation.
+            segments: Initial value for Segments.
+            arc: Initial value for Arc.
+            inner_radius: Initial value for InnerRadius.
+            outer_radius: Initial value for OuterRadius.
+            uv_scale: Initial value for UVScale.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if override_bounding_box is not None:
+            self.override_bounding_box = override_bounding_box
+        if overriden_bounding_box is not None:
+            self.overriden_bounding_box = overriden_bounding_box
+        if rotation is not None:
+            self.rotation = rotation
+        if segments is not None:
+            self.segments = segments
+        if arc is not None:
+            self.arc = arc
+        if inner_radius is not None:
+            self.inner_radius = inner_radius
+        if outer_radius is not None:
+            self.outer_radius = outer_radius
+        if uv_scale is not None:
+            self.uv_scale = uv_scale
 
     @property
     def high_priority_integration(self) -> bool | None:

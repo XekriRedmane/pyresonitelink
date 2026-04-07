@@ -8,4 +8,3 @@ class ValueSpatialVariableMode:
         """The element's unique ID."""
         return None
 
-

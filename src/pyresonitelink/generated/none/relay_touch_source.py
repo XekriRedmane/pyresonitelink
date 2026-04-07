@@ -22,11 +22,13 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RelayTouchSource"
 
-    def __init__(self, auto_update_user: str | User | None = None, tip_position_getter: str | Func[RelayTouchSource, primitives.Float3] | None = None, tip_direction_getter: str | Func[RelayTouchSource, primitives.Float3] | None = None, touch_type_getter: str | Func[RelayTouchSource, TouchType] | None = None, touchable_getter: str | TouchableGetter | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_update_user: str | User | None = None, out_of_sight_angle: np.float32 | None = None, max_touch_penetration_distance: np.float32 | None = None, tip_position_getter: str | Func[RelayTouchSource, primitives.Float3] | None = None, tip_direction_getter: str | Func[RelayTouchSource, primitives.Float3] | None = None, touch_type_getter: str | Func[RelayTouchSource, TouchType] | None = None, touchable_getter: str | TouchableGetter | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             auto_update_user: Initial value for AutoUpdateUser.
+            out_of_sight_angle: Initial value for OutOfSightAngle.
+            max_touch_penetration_distance: Initial value for MaxTouchPenetrationDistance.
             tip_position_getter: Initial value for TipPositionGetter.
             tip_direction_getter: Initial value for TipDirectionGetter.
             touch_type_getter: Initial value for TouchTypeGetter.
@@ -36,6 +38,10 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
         super().__init__(component)
         if auto_update_user is not None:
             self.auto_update_user = auto_update_user
+        if out_of_sight_angle is not None:
+            self.out_of_sight_angle = out_of_sight_angle
+        if max_touch_penetration_distance is not None:
+            self.max_touch_penetration_distance = max_touch_penetration_distance
         if tip_position_getter is not None:
             self.tip_position_getter = tip_position_getter
         if tip_direction_getter is not None:

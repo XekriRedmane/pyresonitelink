@@ -26,28 +26,37 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenuItem"
 
-    def __init__(self, icon: str | Image | None = None, sprite: str | IAssetProvider[Sprite] | None = None, label: str | IField[str] | None = None, menu: str | ContextMenu | None = None, arc: str | IField[np.float32] | None = None, outer_radius: str | IField[np.float32] | None = None, button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, highlight: bool | None = None, icon: str | Image | None = None, sprite: str | IAssetProvider[Sprite] | None = None, label: str | IField[str] | None = None, color: primitives.ColorX | None = None, menu: str | ContextMenu | None = None, highlighted: bool | None = None, arc: str | IField[np.float32] | None = None, outer_radius: str | IField[np.float32] | None = None, button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            highlight: Initial value for Highlight.
             icon: Initial value for Icon.
             sprite: Initial value for Sprite.
             label: Initial value for Label.
+            color: Initial value for Color.
             menu: Initial value for _menu.
+            highlighted: Initial value for _highlighted.
             arc: Initial value for _arc.
             outer_radius: Initial value for _outerRadius.
             button: Initial value for _button.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if highlight is not None:
+            self.highlight = highlight
         if icon is not None:
             self.icon = icon
         if sprite is not None:
             self.sprite = sprite
         if label is not None:
             self.label = label
+        if color is not None:
+            self.color = color
         if menu is not None:
             self.menu = menu
+        if highlighted is not None:
+            self.highlighted = highlighted
         if arc is not None:
             self.arc = arc
         if outer_radius is not None:

@@ -22,14 +22,30 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_RimMetallic"
 
-    def __init__(self, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, rim_color: primitives.ColorX | None = None, rim_power: np.float32 | None = None, gamma_curve: np.float32 | None = None, transparent: bool | None = None, force_zwrite: bool | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, metallic: np.float32 | None = None, smoothness: np.float32 | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            texture_scale: Initial value for TextureScale.
+            texture_offset: Initial value for TextureOffset.
+            albedo_color: Initial value for AlbedoColor.
             albedo_texture: Initial value for AlbedoTexture.
+            emissive_color: Initial value for EmissiveColor.
             emissive_map: Initial value for EmissiveMap.
             normal_map: Initial value for NormalMap.
+            normal_scale: Initial value for NormalScale.
             occlusion_map: Initial value for OcclusionMap.
+            rim_color: Initial value for RimColor.
+            rim_power: Initial value for RimPower.
+            gamma_curve: Initial value for GammaCurve.
+            transparent: Initial value for Transparent.
+            force_zwrite: Initial value for ForceZWrite.
+            offset_factor: Initial value for OffsetFactor.
+            offset_units: Initial value for OffsetUnits.
+            render_queue: Initial value for RenderQueue.
+            metallic: Initial value for Metallic.
+            smoothness: Initial value for Smoothness.
             metallic_map: Initial value for MetallicMap.
             regular: Initial value for _regular.
             transparent: Initial value for _transparent.
@@ -37,14 +53,46 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if texture_scale is not None:
+            self.texture_scale = texture_scale
+        if texture_offset is not None:
+            self.texture_offset = texture_offset
+        if albedo_color is not None:
+            self.albedo_color = albedo_color
         if albedo_texture is not None:
             self.albedo_texture = albedo_texture
+        if emissive_color is not None:
+            self.emissive_color = emissive_color
         if emissive_map is not None:
             self.emissive_map = emissive_map
         if normal_map is not None:
             self.normal_map = normal_map
+        if normal_scale is not None:
+            self.normal_scale = normal_scale
         if occlusion_map is not None:
             self.occlusion_map = occlusion_map
+        if rim_color is not None:
+            self.rim_color = rim_color
+        if rim_power is not None:
+            self.rim_power = rim_power
+        if gamma_curve is not None:
+            self.gamma_curve = gamma_curve
+        if transparent is not None:
+            self.transparent = transparent
+        if force_zwrite is not None:
+            self.force_zwrite = force_zwrite
+        if offset_factor is not None:
+            self.offset_factor = offset_factor
+        if offset_units is not None:
+            self.offset_units = offset_units
+        if render_queue is not None:
+            self.render_queue = render_queue
+        if metallic is not None:
+            self.metallic = metallic
+        if smoothness is not None:
+            self.smoothness = smoothness
         if metallic_map is not None:
             self.metallic_map = metallic_map
         if regular is not None:

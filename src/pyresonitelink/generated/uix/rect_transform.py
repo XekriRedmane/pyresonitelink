@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,6 +16,29 @@ class RectTransform(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.RectTransform"
+
+    def __init__(self, anchor_min: primitives.Float2 | None = None, anchor_max: primitives.Float2 | None = None, offset_min: primitives.Float2 | None = None, offset_max: primitives.Float2 | None = None, pivot: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            anchor_min: Initial value for AnchorMin.
+            anchor_max: Initial value for AnchorMax.
+            offset_min: Initial value for OffsetMin.
+            offset_max: Initial value for OffsetMax.
+            pivot: Initial value for Pivot.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if anchor_min is not None:
+            self.anchor_min = anchor_min
+        if anchor_max is not None:
+            self.anchor_max = anchor_max
+        if offset_min is not None:
+            self.offset_min = offset_min
+        if offset_max is not None:
+            self.offset_max = offset_max
+        if pivot is not None:
+            self.pivot = pivot
 
     @property
     def anchor_min(self) -> primitives.Float2 | None:

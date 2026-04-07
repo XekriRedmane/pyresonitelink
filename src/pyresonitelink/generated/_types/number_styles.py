@@ -8,4 +8,3 @@ class NumberStyles:
         """The element's unique ID."""
         return None
 
-

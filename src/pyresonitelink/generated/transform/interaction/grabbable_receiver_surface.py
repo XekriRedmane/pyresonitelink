@@ -20,16 +20,31 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabbableReceiverSurface"
 
-    def __init__(self, override_parent: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, parent_placed: bool | None = None, override_parent: str | Slot | None = None, tween_time: np.float32 | None = None, max_distance: np.float32 | None = None, offset: np.float32 | None = None, check_offset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            parent_placed: Initial value for ParentPlaced.
             override_parent: Initial value for OverrideParent.
+            tween_time: Initial value for TweenTime.
+            max_distance: Initial value for MaxDistance.
+            offset: Initial value for Offset.
+            check_offset: Initial value for CheckOffset.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if parent_placed is not None:
+            self.parent_placed = parent_placed
         if override_parent is not None:
             self.override_parent = override_parent
+        if tween_time is not None:
+            self.tween_time = tween_time
+        if max_distance is not None:
+            self.max_distance = max_distance
+        if offset is not None:
+            self.offset = offset
+        if check_offset is not None:
+            self.check_offset = check_offset
 
     @property
     def parent_placed(self) -> bool | None:

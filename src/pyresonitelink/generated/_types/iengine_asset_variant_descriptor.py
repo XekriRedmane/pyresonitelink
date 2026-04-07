@@ -13,4 +13,3 @@ class IEngineAssetVariantDescriptor(Generic[D]):
         """The element's unique ID."""
         return None
 
-

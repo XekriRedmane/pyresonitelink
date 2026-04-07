@@ -20,16 +20,37 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Consumable"
 
-    def __init__(self, override_reference_point: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, must_be_holding: bool | None = None, can_feed_to_others: bool | None = None, override_reference_point: str | Slot | None = None, radius: np.float32 | None = None, start_hysteresis: np.float32 | None = None, current_stage_index: np.int32 | None = None, destroy_on_consumed: bool | None = None, waiting_for_reset: bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            must_be_holding: Initial value for MustBeHolding.
+            can_feed_to_others: Initial value for CanFeedToOthers.
             override_reference_point: Initial value for OverrideReferencePoint.
+            radius: Initial value for Radius.
+            start_hysteresis: Initial value for StartHysteresis.
+            current_stage_index: Initial value for CurrentStageIndex.
+            destroy_on_consumed: Initial value for DestroyOnConsumed.
+            waiting_for_reset: Initial value for _waitingForReset.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if must_be_holding is not None:
+            self.must_be_holding = must_be_holding
+        if can_feed_to_others is not None:
+            self.can_feed_to_others = can_feed_to_others
         if override_reference_point is not None:
             self.override_reference_point = override_reference_point
+        if radius is not None:
+            self.radius = radius
+        if start_hysteresis is not None:
+            self.start_hysteresis = start_hysteresis
+        if current_stage_index is not None:
+            self.current_stage_index = current_stage_index
+        if destroy_on_consumed is not None:
+            self.destroy_on_consumed = destroy_on_consumed
+        if waiting_for_reset is not None:
+            self.waiting_for_reset = waiting_for_reset
 
     @property
     def must_be_holding(self) -> bool | None:

@@ -402,6 +402,83 @@ async def _generate_component(
         print(f"Wrote {output_path}")
 
 
+def _rebuild_init_exports(directory: Path) -> None:
+    """Rebuild ``__init__.py`` re-exports for a package directory.
+
+    Scans *directory* for ``.py`` modules and subdirectories,
+    extracts the first ``class`` declaration from each module, and
+    writes an ``__init__.py`` that re-exports every class.  Handles
+    Python keyword module/directory names (``if``, ``for``, ``while``,
+    ``async``) via ``importlib``.
+
+    Args:
+        directory: A package directory containing generated modules.
+    """
+    import keyword
+
+    pkg_name = ".".join(directory.relative_to(
+        _GENERATED_DIR.parent.parent  # src/pyresonitelink
+    ).parts)
+
+    modules: list[tuple[str, str, bool]] = []  # (mod_path, cls, needs_importlib)
+
+    for py_file in sorted(directory.glob("*.py")):
+        if py_file.name == "__init__.py":
+            continue
+        mod_name = py_file.stem
+        with open(py_file, encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("class "):
+                    cls_name = line.split("(")[0].replace("class ", "").strip()
+                    modules.append((
+                        mod_name, cls_name, keyword.iskeyword(mod_name),
+                    ))
+                    break
+
+    for sub_dir in sorted(directory.iterdir()):
+        if not sub_dir.is_dir() or sub_dir.name.startswith("_"):
+            continue
+        sub_name = sub_dir.name
+        sub_is_kw = keyword.iskeyword(sub_name)
+        _rebuild_init_exports(sub_dir)
+        for py_file in sorted(sub_dir.glob("*.py")):
+            if py_file.name == "__init__.py":
+                continue
+            mod_name = py_file.stem
+            with open(py_file, encoding="utf-8") as f:
+                for line in f:
+                    if line.startswith("class "):
+                        cls_name = (
+                            line.split("(")[0].replace("class ", "").strip()
+                        )
+                        modules.append((
+                            f"{sub_name}.{mod_name}",
+                            cls_name,
+                            sub_is_kw or keyword.iskeyword(mod_name),
+                        ))
+                        break
+
+    if not modules:
+        return
+
+    needs_importlib = any(il for _, _, il in modules)
+    lines = [f'"""Generated {directory.name} components."""', ""]
+    if needs_importlib:
+        lines.append("import importlib")
+        lines.append("")
+    for mod_path, cls_name, is_il in modules:
+        if is_il:
+            full_mod = f"{pkg_name}.{mod_path}"
+            lines.append(
+                f'{cls_name} = importlib.import_module("{full_mod}").{cls_name}'
+            )
+        else:
+            lines.append(f"from .{mod_path} import {cls_name}")
+    lines.append("")
+
+    (directory / "__init__.py").write_text("\n".join(lines), encoding="utf-8")
+
+
 async def generate(
     port: int,
     host: str,
@@ -427,6 +504,20 @@ async def generate(
         resolink, component_type, generated,
         all_type_defs, dry_run,
     )
+
+    if not dry_run:
+        # Rebuild __init__.py re-exports for all category directories
+        # under the generated tree so that short imports like
+        # ``from pyresonitelink.protoflux.core import ValueInput``
+        # stay up to date.
+        nodes_dir = _GENERATED_DIR / "protoflux" / "runtimes" / "execution" / "nodes"
+        if nodes_dir.is_dir():
+            for cat_dir in sorted(nodes_dir.iterdir()):
+                if cat_dir.is_dir() and not cat_dir.name.startswith("_"):
+                    _rebuild_init_exports(cat_dir)
+        data_dir = _GENERATED_DIR / "data"
+        if data_dir.is_dir():
+            _rebuild_init_exports(data_dir)
 
     await resolink.close()
 

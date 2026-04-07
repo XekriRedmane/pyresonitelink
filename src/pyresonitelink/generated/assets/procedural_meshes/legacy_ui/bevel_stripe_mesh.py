@@ -5,6 +5,7 @@ import numpy as np
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -18,6 +19,41 @@ class BevelStripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BevelStripeMesh"
+
+    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, width: np.float32 | None = None, height: np.float32 | None = None, thickness: np.float32 | None = None, slant_left: np.float32 | None = None, slant_right: np.float32 | None = None, relief: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            override_bounding_box: Initial value for OverrideBoundingBox.
+            overriden_bounding_box: Initial value for OverridenBoundingBox.
+            width: Initial value for Width.
+            height: Initial value for Height.
+            thickness: Initial value for Thickness.
+            slant_left: Initial value for SlantLeft.
+            slant_right: Initial value for SlantRight.
+            relief: Initial value for Relief.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if override_bounding_box is not None:
+            self.override_bounding_box = override_bounding_box
+        if overriden_bounding_box is not None:
+            self.overriden_bounding_box = overriden_bounding_box
+        if width is not None:
+            self.width = width
+        if height is not None:
+            self.height = height
+        if thickness is not None:
+            self.thickness = thickness
+        if slant_left is not None:
+            self.slant_left = slant_left
+        if slant_right is not None:
+            self.slant_right = slant_right
+        if relief is not None:
+            self.relief = relief
 
     @property
     def high_priority_integration(self) -> bool | None:

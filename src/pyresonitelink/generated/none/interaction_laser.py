@@ -27,15 +27,26 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionLaser"
 
-    def __init__(self, stick_point_space: str | Slot | None = None, handler: str | InteractionHandler | None = None, last_hit: str | Slot | None = None, last_interaction_target: str | IInteractionTarget | None = None, last_interaction_modifier: str | ILaserInteractionModifier | None = None, touch_source: str | RelayTouchSource | None = None, laser_mesh: str | BentTubeMesh | None = None, laser_material: str | OverlayUnlitMaterial | None = None, laser_texture: str | StaticTexture2D | None = None, behind_laser_tint: str | IField[primitives.ColorX] | None = None, laser_render_queue: str | IField[np.int32] | None = None, laser_front_texture_offset: str | IField[primitives.Float2] | None = None, laser_behind_texture_offset: str | IField[primitives.Float2] | None = None, direct_point: str | IField[primitives.Float3] | None = None, actual_point: str | IField[primitives.Float3] | None = None, start_color: str | IField[primitives.ColorX] | None = None, end_color: str | IField[primitives.ColorX] | None = None, point_slot: str | Slot | None = None, point_slot_pos: str | IField[primitives.Float3] | None = None, laser_visible: str | IField[bool] | None = None, cursor_visible: str | IField[bool] | None = None, cursor_root: str | Slot | None = None, cursor_image_root: str | Slot | None = None, cursor_texture: str | StaticTexture2D | None = None, cursor_material: str | OverlayUnlitMaterial | None = None, cursor_front_tint: str | IField[primitives.ColorX] | None = None, cursor_behind_tint: str | IField[primitives.ColorX] | None = None, cursor_render_queue: str | IField[np.int32] | None = None, cursor_orientation: str | IField[primitives.FloatQ] | None = None, direct_cursor_active: str | IField[bool] | None = None, direct_cursor_root: str | Slot | None = None, direct_cursor_image_root: str | Slot | None = None, direct_cursor_offset: str | IField[primitives.Float3] | None = None, direct_cursor_orientation: str | IField[primitives.FloatQ] | None = None, direct_line_target: str | IField[primitives.Float3] | None = None, direct_line_mesh: str | SegmentMesh | None = None, segment_color_front: str | IField[primitives.ColorX] | None = None, segment_color_behind: str | IField[primitives.ColorX] | None = None, segment_render_queue: str | IField[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, smooth_speed: np.float32 | None = None, smooth_modulate_start_angle: np.float32 | None = None, smooth_modulate_end_angle: np.float32 | None = None, smooth_modulate_exp: np.float32 | None = None, smooth_modulate_multiplier: np.float32 | None = None, stick_threshold: np.float32 | None = None, show_in_desktop: bool | None = None, max_touch_penetration_distance: np.float32 | None = None, stick_point_space: str | Slot | None = None, stick_point_position: primitives.Float3 | None = None, handler: str | InteractionHandler | None = None, last_hit: str | Slot | None = None, last_interaction_target: str | IInteractionTarget | None = None, last_interaction_modifier: str | ILaserInteractionModifier | None = None, hit_color: primitives.ColorX | None = None, laser_texture_speed: np.float32 | None = None, touch_source: str | RelayTouchSource | None = None, laser_mesh: str | BentTubeMesh | None = None, laser_material: str | OverlayUnlitMaterial | None = None, laser_texture: str | StaticTexture2D | None = None, behind_laser_tint: str | IField[primitives.ColorX] | None = None, laser_render_queue: str | IField[np.int32] | None = None, laser_front_texture_offset: str | IField[primitives.Float2] | None = None, laser_behind_texture_offset: str | IField[primitives.Float2] | None = None, direct_point: str | IField[primitives.Float3] | None = None, actual_point: str | IField[primitives.Float3] | None = None, start_color: str | IField[primitives.ColorX] | None = None, end_color: str | IField[primitives.ColorX] | None = None, point_slot: str | Slot | None = None, point_slot_pos: str | IField[primitives.Float3] | None = None, laser_visible: str | IField[bool] | None = None, cursor_visible: str | IField[bool] | None = None, cursor_root: str | Slot | None = None, cursor_image_root: str | Slot | None = None, cursor_texture: str | StaticTexture2D | None = None, cursor_material: str | OverlayUnlitMaterial | None = None, cursor_front_tint: str | IField[primitives.ColorX] | None = None, cursor_behind_tint: str | IField[primitives.ColorX] | None = None, cursor_render_queue: str | IField[np.int32] | None = None, cursor_orientation: str | IField[primitives.FloatQ] | None = None, cursor_tint: primitives.ColorX | None = None, direct_cursor_visuals_visible: bool | None = None, direct_cursor_active: str | IField[bool] | None = None, direct_cursor_root: str | Slot | None = None, direct_cursor_image_root: str | Slot | None = None, direct_cursor_offset: str | IField[primitives.Float3] | None = None, direct_cursor_orientation: str | IField[primitives.FloatQ] | None = None, direct_line_target: str | IField[primitives.Float3] | None = None, direct_line_mesh: str | SegmentMesh | None = None, segment_color_front: str | IField[primitives.ColorX] | None = None, segment_color_behind: str | IField[primitives.ColorX] | None = None, segment_render_queue: str | IField[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            smooth_speed: Initial value for SmoothSpeed.
+            smooth_modulate_start_angle: Initial value for SmoothModulateStartAngle.
+            smooth_modulate_end_angle: Initial value for SmoothModulateEndAngle.
+            smooth_modulate_exp: Initial value for SmoothModulateExp.
+            smooth_modulate_multiplier: Initial value for SmoothModulateMultiplier.
+            stick_threshold: Initial value for StickThreshold.
+            show_in_desktop: Initial value for ShowInDesktop.
+            max_touch_penetration_distance: Initial value for MaxTouchPenetrationDistance.
             stick_point_space: Initial value for StickPointSpace.
+            stick_point_position: Initial value for StickPointPosition.
             handler: Initial value for _handler.
             last_hit: Initial value for _lastHit.
             last_interaction_target: Initial value for _lastInteractionTarget.
             last_interaction_modifier: Initial value for _lastInteractionModifier.
+            hit_color: Initial value for _hitColor.
+            laser_texture_speed: Initial value for _laserTextureSpeed.
             touch_source: Initial value for _touchSource.
             laser_mesh: Initial value for _laserMesh.
             laser_material: Initial value for _laserMaterial.
@@ -60,6 +71,8 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             cursor_behind_tint: Initial value for _cursorBehindTint.
             cursor_render_queue: Initial value for _cursorRenderQueue.
             cursor_orientation: Initial value for _cursorOrientation.
+            cursor_tint: Initial value for _cursorTint.
+            direct_cursor_visuals_visible: Initial value for _directCursorVisualsVisible.
             direct_cursor_active: Initial value for _directCursorActive.
             direct_cursor_root: Initial value for _directCursorRoot.
             direct_cursor_image_root: Initial value for _directCursorImageRoot.
@@ -73,8 +86,26 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if smooth_speed is not None:
+            self.smooth_speed = smooth_speed
+        if smooth_modulate_start_angle is not None:
+            self.smooth_modulate_start_angle = smooth_modulate_start_angle
+        if smooth_modulate_end_angle is not None:
+            self.smooth_modulate_end_angle = smooth_modulate_end_angle
+        if smooth_modulate_exp is not None:
+            self.smooth_modulate_exp = smooth_modulate_exp
+        if smooth_modulate_multiplier is not None:
+            self.smooth_modulate_multiplier = smooth_modulate_multiplier
+        if stick_threshold is not None:
+            self.stick_threshold = stick_threshold
+        if show_in_desktop is not None:
+            self.show_in_desktop = show_in_desktop
+        if max_touch_penetration_distance is not None:
+            self.max_touch_penetration_distance = max_touch_penetration_distance
         if stick_point_space is not None:
             self.stick_point_space = stick_point_space
+        if stick_point_position is not None:
+            self.stick_point_position = stick_point_position
         if handler is not None:
             self.handler = handler
         if last_hit is not None:
@@ -83,6 +114,10 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.last_interaction_target = last_interaction_target
         if last_interaction_modifier is not None:
             self.last_interaction_modifier = last_interaction_modifier
+        if hit_color is not None:
+            self.hit_color = hit_color
+        if laser_texture_speed is not None:
+            self.laser_texture_speed = laser_texture_speed
         if touch_source is not None:
             self.touch_source = touch_source
         if laser_mesh is not None:
@@ -131,6 +166,10 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.cursor_render_queue = cursor_render_queue
         if cursor_orientation is not None:
             self.cursor_orientation = cursor_orientation
+        if cursor_tint is not None:
+            self.cursor_tint = cursor_tint
+        if direct_cursor_visuals_visible is not None:
+            self.direct_cursor_visuals_visible = direct_cursor_visuals_visible
         if direct_cursor_active is not None:
             self.direct_cursor_active = direct_cursor_active
         if direct_cursor_root is not None:

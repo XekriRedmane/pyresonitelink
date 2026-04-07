@@ -2,9 +2,11 @@
 
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
+from pyresonitelink.generated._types.ivalue_source import IValueSource
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ValueField(GenericComponent[T]):
+class ValueField(GenericComponent[T], IValueSource[T], IWorldEventReceiver):
     """Wrapper for [FrooxEngine]FrooxEngine.ValueField<>.
 
     Category: Data
@@ -19,10 +21,10 @@ class ValueField(GenericComponent[T]):
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ValueField<>"
 
     def __init__(self, value: T | None = None, *, component: workers.Component | None = None) -> None:
-        """Initialize, optionally setting Value.
+        """Initialize with optional member values.
 
         Args:
-            value: Initial value for the Value field.
+            value: Initial value for Value.
             component: Existing Component to wrap.
         """
         super().__init__(component)

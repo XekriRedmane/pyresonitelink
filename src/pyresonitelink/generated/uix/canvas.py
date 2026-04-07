@@ -31,17 +31,52 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Canvas"
 
-    def __init__(self, root_rect: str | RectTransform | None = None, collider: str | BoxCollider | None = None, collider_size: str | IField[primitives.Float3] | None = None, collider_offset: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, size: primitives.Float2 | None = None, edit_mode_only: bool | None = None, accept_remote_touch: bool | None = None, accept_physical_touch: bool | None = None, accept_existing_touch: bool | None = None, high_priority_integration: bool | None = None, ignore_touches_from_behind: bool | None = None, block_all_interactions: bool | None = None, laser_pass_through: bool | None = None, pixel_scale: np.float32 | None = None, unit_scale: np.float32 | None = None, root_rect: str | RectTransform | None = None, collider: str | BoxCollider | None = None, collider_size: str | IField[primitives.Float3] | None = None, collider_offset: str | IField[primitives.Float3] | None = None, starting_offset: np.int32 | None = None, starting_mask_depth: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            size: Initial value for Size.
+            edit_mode_only: Initial value for EditModeOnly.
+            accept_remote_touch: Initial value for AcceptRemoteTouch.
+            accept_physical_touch: Initial value for AcceptPhysicalTouch.
+            accept_existing_touch: Initial value for AcceptExistingTouch.
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            ignore_touches_from_behind: Initial value for IgnoreTouchesFromBehind.
+            block_all_interactions: Initial value for BlockAllInteractions.
+            laser_pass_through: Initial value for LaserPassThrough.
+            pixel_scale: Initial value for PixelScale.
+            unit_scale: Initial value for UnitScale.
             root_rect: Initial value for _rootRect.
             collider: Initial value for Collider.
             collider_size: Initial value for _colliderSize.
             collider_offset: Initial value for _colliderOffset.
+            starting_offset: Initial value for StartingOffset.
+            starting_mask_depth: Initial value for StartingMaskDepth.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if size is not None:
+            self.size = size
+        if edit_mode_only is not None:
+            self.edit_mode_only = edit_mode_only
+        if accept_remote_touch is not None:
+            self.accept_remote_touch = accept_remote_touch
+        if accept_physical_touch is not None:
+            self.accept_physical_touch = accept_physical_touch
+        if accept_existing_touch is not None:
+            self.accept_existing_touch = accept_existing_touch
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if ignore_touches_from_behind is not None:
+            self.ignore_touches_from_behind = ignore_touches_from_behind
+        if block_all_interactions is not None:
+            self.block_all_interactions = block_all_interactions
+        if laser_pass_through is not None:
+            self.laser_pass_through = laser_pass_through
+        if pixel_scale is not None:
+            self.pixel_scale = pixel_scale
+        if unit_scale is not None:
+            self.unit_scale = unit_scale
         if root_rect is not None:
             self.root_rect = root_rect
         if collider is not None:
@@ -50,6 +85,10 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             self.collider_size = collider_size
         if collider_offset is not None:
             self.collider_offset = collider_offset
+        if starting_offset is not None:
+            self.starting_offset = starting_offset
+        if starting_mask_depth is not None:
+            self.starting_mask_depth = starting_mask_depth
 
     @property
     def size(self) -> primitives.Float2 | None:

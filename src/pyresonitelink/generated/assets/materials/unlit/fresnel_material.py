@@ -22,28 +22,85 @@ class FresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FresnelMaterial"
 
-    def __init__(self, shader: str | IAssetProvider[Shader] | None = None, far_texture: str | IAssetProvider[ITexture2D] | None = None, near_texture: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, exponent: np.float32 | None = None, gamma_curve: np.float32 | None = None, far_color: primitives.ColorX | None = None, near_color: primitives.ColorX | None = None, far_texture: str | IAssetProvider[ITexture2D] | None = None, near_texture: str | IAssetProvider[ITexture2D] | None = None, far_texture_scale: primitives.Float2 | None = None, far_texture_offset: primitives.Float2 | None = None, near_texture_scale: primitives.Float2 | None = None, near_texture_offset: primitives.Float2 | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, use_vertex_colors: bool | None = None, alpha_cutoff: np.float32 | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, mask_scale: primitives.Float2 | None = None, mask_offset: primitives.Float2 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, polar_uvmapping: bool | None = None, polar_power: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
             shader: Initial value for _shader.
+            exponent: Initial value for Exponent.
+            gamma_curve: Initial value for GammaCurve.
+            far_color: Initial value for FarColor.
+            near_color: Initial value for NearColor.
             far_texture: Initial value for FarTexture.
             near_texture: Initial value for NearTexture.
+            far_texture_scale: Initial value for FarTextureScale.
+            far_texture_offset: Initial value for FarTextureOffset.
+            near_texture_scale: Initial value for NearTextureScale.
+            near_texture_offset: Initial value for NearTextureOffset.
             normal_map: Initial value for NormalMap.
+            normal_scale: Initial value for NormalScale.
+            use_vertex_colors: Initial value for UseVertexColors.
+            alpha_cutoff: Initial value for AlphaCutoff.
             mask_texture: Initial value for MaskTexture.
+            mask_scale: Initial value for MaskScale.
+            mask_offset: Initial value for MaskOffset.
+            offset_factor: Initial value for OffsetFactor.
+            offset_units: Initial value for OffsetUnits.
+            render_queue: Initial value for RenderQueue.
+            polar_uvmapping: Initial value for PolarUVmapping.
+            polar_power: Initial value for PolarPower.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
         if shader is not None:
             self.shader = shader
+        if exponent is not None:
+            self.exponent = exponent
+        if gamma_curve is not None:
+            self.gamma_curve = gamma_curve
+        if far_color is not None:
+            self.far_color = far_color
+        if near_color is not None:
+            self.near_color = near_color
         if far_texture is not None:
             self.far_texture = far_texture
         if near_texture is not None:
             self.near_texture = near_texture
+        if far_texture_scale is not None:
+            self.far_texture_scale = far_texture_scale
+        if far_texture_offset is not None:
+            self.far_texture_offset = far_texture_offset
+        if near_texture_scale is not None:
+            self.near_texture_scale = near_texture_scale
+        if near_texture_offset is not None:
+            self.near_texture_offset = near_texture_offset
         if normal_map is not None:
             self.normal_map = normal_map
+        if normal_scale is not None:
+            self.normal_scale = normal_scale
+        if use_vertex_colors is not None:
+            self.use_vertex_colors = use_vertex_colors
+        if alpha_cutoff is not None:
+            self.alpha_cutoff = alpha_cutoff
         if mask_texture is not None:
             self.mask_texture = mask_texture
+        if mask_scale is not None:
+            self.mask_scale = mask_scale
+        if mask_offset is not None:
+            self.mask_offset = mask_offset
+        if offset_factor is not None:
+            self.offset_factor = offset_factor
+        if offset_units is not None:
+            self.offset_units = offset_units
+        if render_queue is not None:
+            self.render_queue = render_queue
+        if polar_uvmapping is not None:
+            self.polar_uvmapping = polar_uvmapping
+        if polar_power is not None:
+            self.polar_power = polar_power
 
     @property
     def high_priority_integration(self) -> bool | None:

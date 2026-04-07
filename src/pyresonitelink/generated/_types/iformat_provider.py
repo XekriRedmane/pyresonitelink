@@ -8,4 +8,3 @@ class IFormatProvider:
         """The element's unique ID."""
         return None
 
-

@@ -23,17 +23,56 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbe"
 
-    def __init__(self, baked_cubemap: str | IAssetProvider[Cubemap] | None = None, debug_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, importance: np.int32 | None = None, intensity: np.float32 | None = None, blend_distance: np.float32 | None = None, box_size: primitives.Float3 | None = None, box_projection: bool | None = None, baked_cubemap: str | IAssetProvider[Cubemap] | None = None, resolution: np.int32 | None = None, hdr: bool | None = None, shadow_distance: np.float32 | None = None, background_color: primitives.ColorX | None = None, near_clip: np.float32 | None = None, far_clip: np.float32 | None = None, skybox_only: bool | None = None, show_debug_visuals: bool | None = None, debug_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            importance: Initial value for Importance.
+            intensity: Initial value for Intensity.
+            blend_distance: Initial value for BlendDistance.
+            box_size: Initial value for BoxSize.
+            box_projection: Initial value for BoxProjection.
             baked_cubemap: Initial value for BakedCubemap.
+            resolution: Initial value for Resolution.
+            hdr: Initial value for HDR.
+            shadow_distance: Initial value for ShadowDistance.
+            background_color: Initial value for BackgroundColor.
+            near_clip: Initial value for NearClip.
+            far_clip: Initial value for FarClip.
+            skybox_only: Initial value for SkyboxOnly.
+            show_debug_visuals: Initial value for ShowDebugVisuals.
             debug_visual: Initial value for _debugVisual.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if importance is not None:
+            self.importance = importance
+        if intensity is not None:
+            self.intensity = intensity
+        if blend_distance is not None:
+            self.blend_distance = blend_distance
+        if box_size is not None:
+            self.box_size = box_size
+        if box_projection is not None:
+            self.box_projection = box_projection
         if baked_cubemap is not None:
             self.baked_cubemap = baked_cubemap
+        if resolution is not None:
+            self.resolution = resolution
+        if hdr is not None:
+            self.hdr = hdr
+        if shadow_distance is not None:
+            self.shadow_distance = shadow_distance
+        if background_color is not None:
+            self.background_color = background_color
+        if near_clip is not None:
+            self.near_clip = near_clip
+        if far_clip is not None:
+            self.far_clip = far_clip
+        if skybox_only is not None:
+            self.skybox_only = skybox_only
+        if show_debug_visuals is not None:
+            self.show_debug_visuals = show_debug_visuals
         if debug_visual is not None:
             self.debug_visual = debug_visual
 

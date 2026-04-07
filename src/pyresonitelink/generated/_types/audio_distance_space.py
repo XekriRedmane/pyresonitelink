@@ -8,4 +8,3 @@ class AudioDistanceSpace:
         """The element's unique ID."""
         return None
 
-

@@ -8,4 +8,3 @@ class ComponentHandling:
         """The element's unique ID."""
         return None
 
-

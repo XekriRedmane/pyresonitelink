@@ -8,4 +8,3 @@ class TouchEvent:
         """The element's unique ID."""
         return None
 
-

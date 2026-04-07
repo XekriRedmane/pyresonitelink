@@ -13,4 +13,3 @@ class INodeOutput(Generic[T]):
         """The element's unique ID."""
         return None
 
-

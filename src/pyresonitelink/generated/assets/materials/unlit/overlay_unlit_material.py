@@ -22,22 +22,64 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OverlayUnlitMaterial"
 
-    def __init__(self, shader: str | IAssetProvider[Shader] | None = None, behind_texture: str | IAssetProvider[ITexture2D] | None = None, front_texture: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, behind_tint_color: primitives.ColorX | None = None, front_tint_color: primitives.ColorX | None = None, behind_texture: str | IAssetProvider[ITexture2D] | None = None, behind_texture_scale: primitives.Float2 | None = None, behind_texture_offset: primitives.Float2 | None = None, front_texture: str | IAssetProvider[ITexture2D] | None = None, front_texture_scale: primitives.Float2 | None = None, front_texture_offset: primitives.Float2 | None = None, alpha_cutoff: np.float32 | None = None, use_vertex_colors: bool | None = None, polar_uvmapping: bool | None = None, polar_power: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
             shader: Initial value for _shader.
+            behind_tint_color: Initial value for BehindTintColor.
+            front_tint_color: Initial value for FrontTintColor.
             behind_texture: Initial value for BehindTexture.
+            behind_texture_scale: Initial value for BehindTextureScale.
+            behind_texture_offset: Initial value for BehindTextureOffset.
             front_texture: Initial value for FrontTexture.
+            front_texture_scale: Initial value for FrontTextureScale.
+            front_texture_offset: Initial value for FrontTextureOffset.
+            alpha_cutoff: Initial value for AlphaCutoff.
+            use_vertex_colors: Initial value for UseVertexColors.
+            polar_uvmapping: Initial value for PolarUVmapping.
+            polar_power: Initial value for PolarPower.
+            offset_factor: Initial value for OffsetFactor.
+            offset_units: Initial value for OffsetUnits.
+            render_queue: Initial value for RenderQueue.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
         if shader is not None:
             self.shader = shader
+        if behind_tint_color is not None:
+            self.behind_tint_color = behind_tint_color
+        if front_tint_color is not None:
+            self.front_tint_color = front_tint_color
         if behind_texture is not None:
             self.behind_texture = behind_texture
+        if behind_texture_scale is not None:
+            self.behind_texture_scale = behind_texture_scale
+        if behind_texture_offset is not None:
+            self.behind_texture_offset = behind_texture_offset
         if front_texture is not None:
             self.front_texture = front_texture
+        if front_texture_scale is not None:
+            self.front_texture_scale = front_texture_scale
+        if front_texture_offset is not None:
+            self.front_texture_offset = front_texture_offset
+        if alpha_cutoff is not None:
+            self.alpha_cutoff = alpha_cutoff
+        if use_vertex_colors is not None:
+            self.use_vertex_colors = use_vertex_colors
+        if polar_uvmapping is not None:
+            self.polar_uvmapping = polar_uvmapping
+        if polar_power is not None:
+            self.polar_power = polar_power
+        if offset_factor is not None:
+            self.offset_factor = offset_factor
+        if offset_units is not None:
+            self.offset_units = offset_units
+        if render_queue is not None:
+            self.render_queue = render_queue
 
     @property
     def high_priority_integration(self) -> bool | None:

@@ -25,10 +25,11 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScreenController"
 
-    def __init__(self, pointer_controller: str | PointerInteractionController | None = None, active_targetting: str | IViewTargettingController | None = None, head: str | HeadSimulator | None = None, left_hand: str | HandSimulator | None = None, right_hand: str | HandSimulator | None = None, previous_targetting: str | IViewTargettingController | None = None, first_person: str | FirstPersonTargettingController | None = None, third_person: str | ThirdPersonTargettingController | None = None, ui_camera: str | UI_TargettingController | None = None, freeform_camera: str | FreeformTargettingController | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, transition_speed: np.float32 | None = None, pointer_controller: str | PointerInteractionController | None = None, active_targetting: str | IViewTargettingController | None = None, head: str | HeadSimulator | None = None, left_hand: str | HandSimulator | None = None, right_hand: str | HandSimulator | None = None, previous_targetting: str | IViewTargettingController | None = None, first_person: str | FirstPersonTargettingController | None = None, third_person: str | ThirdPersonTargettingController | None = None, ui_camera: str | UI_TargettingController | None = None, freeform_camera: str | FreeformTargettingController | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            transition_speed: Initial value for TransitionSpeed.
             pointer_controller: Initial value for PointerController.
             active_targetting: Initial value for ActiveTargetting.
             head: Initial value for Head.
@@ -42,6 +43,8 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if transition_speed is not None:
+            self.transition_speed = transition_speed
         if pointer_controller is not None:
             self.pointer_controller = pointer_controller
         if active_targetting is not None:

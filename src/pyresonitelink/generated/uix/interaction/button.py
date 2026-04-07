@@ -21,11 +21,25 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Button"
 
-    def __init__(self, legacy_color_drive: str | IField[primitives.ColorX] | None = None, pressed: str | ButtonEventHandler | None = None, pressing: str | ButtonEventHandler | None = None, released: str | ButtonEventHandler | None = None, hover_enter: str | ButtonEventHandler | None = None, hover_stay: str | ButtonEventHandler | None = None, hover_leave: str | ButtonEventHandler | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, base_color: primitives.ColorX | None = None, legacy_normal_color: primitives.ColorX | None = None, legacy_highlight_color: primitives.ColorX | None = None, legacy_press_color: primitives.ColorX | None = None, legacy_disabled_color: primitives.ColorX | None = None, legacy_color_drive: str | IField[primitives.ColorX] | None = None, is_pressed: bool | None = None, is_hovering: bool | None = None, clear_focus_on_press: bool | None = None, pass_through_horizontal_movement: bool | None = None, pass_through_vertical_movement: bool | None = None, require_lock_in_to_press: bool | None = None, require_initial_press: bool | None = None, press_point: primitives.Float2 | None = None, send_slot_events: bool | None = None, pressed: str | ButtonEventHandler | None = None, pressing: str | ButtonEventHandler | None = None, released: str | ButtonEventHandler | None = None, hover_enter: str | ButtonEventHandler | None = None, hover_stay: str | ButtonEventHandler | None = None, hover_leave: str | ButtonEventHandler | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            base_color: Initial value for BaseColor.
+            legacy_normal_color: Initial value for __legacy_NormalColor.
+            legacy_highlight_color: Initial value for __legacy_HighlightColor.
+            legacy_press_color: Initial value for __legacy_PressColor.
+            legacy_disabled_color: Initial value for __legacy_DisabledColor.
             legacy_color_drive: Initial value for __legacy_ColorDrive.
+            is_pressed: Initial value for IsPressed.
+            is_hovering: Initial value for IsHovering.
+            clear_focus_on_press: Initial value for ClearFocusOnPress.
+            pass_through_horizontal_movement: Initial value for PassThroughHorizontalMovement.
+            pass_through_vertical_movement: Initial value for PassThroughVerticalMovement.
+            require_lock_in_to_press: Initial value for RequireLockInToPress.
+            require_initial_press: Initial value for RequireInitialPress.
+            press_point: Initial value for PressPoint.
+            send_slot_events: Initial value for SendSlotEvents.
             pressed: Initial value for Pressed.
             pressing: Initial value for Pressing.
             released: Initial value for Released.
@@ -35,8 +49,36 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if base_color is not None:
+            self.base_color = base_color
+        if legacy_normal_color is not None:
+            self.legacy_normal_color = legacy_normal_color
+        if legacy_highlight_color is not None:
+            self.legacy_highlight_color = legacy_highlight_color
+        if legacy_press_color is not None:
+            self.legacy_press_color = legacy_press_color
+        if legacy_disabled_color is not None:
+            self.legacy_disabled_color = legacy_disabled_color
         if legacy_color_drive is not None:
             self.legacy_color_drive = legacy_color_drive
+        if is_pressed is not None:
+            self.is_pressed = is_pressed
+        if is_hovering is not None:
+            self.is_hovering = is_hovering
+        if clear_focus_on_press is not None:
+            self.clear_focus_on_press = clear_focus_on_press
+        if pass_through_horizontal_movement is not None:
+            self.pass_through_horizontal_movement = pass_through_horizontal_movement
+        if pass_through_vertical_movement is not None:
+            self.pass_through_vertical_movement = pass_through_vertical_movement
+        if require_lock_in_to_press is not None:
+            self.require_lock_in_to_press = require_lock_in_to_press
+        if require_initial_press is not None:
+            self.require_initial_press = require_initial_press
+        if press_point is not None:
+            self.press_point = press_point
+        if send_slot_events is not None:
+            self.send_slot_events = send_slot_events
         if pressed is not None:
             self.pressed = pressed
         if pressing is not None:

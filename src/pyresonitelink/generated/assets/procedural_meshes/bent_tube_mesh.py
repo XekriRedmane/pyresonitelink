@@ -5,6 +5,7 @@ import numpy as np
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -18,6 +19,47 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BentTubeMesh"
+
+    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: np.float32 | None = None, sides: np.int32 | None = None, segments: np.int32 | None = None, start_point: primitives.Float3 | None = None, direct_target_point: primitives.Float3 | None = None, actual_target_point: primitives.Float3 | None = None, start_point_color: primitives.ColorX | None = None, end_point_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            override_bounding_box: Initial value for OverrideBoundingBox.
+            overriden_bounding_box: Initial value for OverridenBoundingBox.
+            radius: Initial value for Radius.
+            sides: Initial value for Sides.
+            segments: Initial value for Segments.
+            start_point: Initial value for StartPoint.
+            direct_target_point: Initial value for DirectTargetPoint.
+            actual_target_point: Initial value for ActualTargetPoint.
+            start_point_color: Initial value for StartPointColor.
+            end_point_color: Initial value for EndPointColor.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if override_bounding_box is not None:
+            self.override_bounding_box = override_bounding_box
+        if overriden_bounding_box is not None:
+            self.overriden_bounding_box = overriden_bounding_box
+        if radius is not None:
+            self.radius = radius
+        if sides is not None:
+            self.sides = sides
+        if segments is not None:
+            self.segments = segments
+        if start_point is not None:
+            self.start_point = start_point
+        if direct_target_point is not None:
+            self.direct_target_point = direct_target_point
+        if actual_target_point is not None:
+            self.actual_target_point = actual_target_point
+        if start_point_color is not None:
+            self.start_point_color = start_point_color
+        if end_point_color is not None:
+            self.end_point_color = end_point_color
 
     @property
     def high_priority_integration(self) -> bool | None:

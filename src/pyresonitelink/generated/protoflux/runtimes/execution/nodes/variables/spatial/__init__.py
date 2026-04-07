@@ -1,0 +1,8 @@
+"""Generated spatial components."""
+
+from .sample_boolean_spatial_variable import SampleBooleanSpatialVariable
+from .sample_min_max_spatial_variable import SampleMinMaxSpatialVariable
+from .sample_numeric_spatial_variable import SampleNumericSpatialVariable
+from .sample_object_spatial_variable import SampleObjectSpatialVariable
+from .sample_spatial_variable_partial_derivative import SampleSpatialVariablePartialDerivative
+from .sample_value_spatial_variable import SampleValueSpatialVariable

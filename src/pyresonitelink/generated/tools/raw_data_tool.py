@@ -25,26 +25,62 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RawDataTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, override_active_tool: str | InteractionHandler | None = None, local_tip_reference: str | Slot | None = None, primary_strength_stream: str | ValueStream[np.float32] | None = None, secondary_axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[bool] | None = None, secondary_stream: str | ValueStream[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, local_tip_offset: primitives.Float3 | None = None, local_tip_reference: str | Slot | None = None, use_laser: bool | None = None, block_primary_when_touching: bool | None = None, use_secondary: bool | None = None, allow_use_when_holding: bool | None = None, equipped: bool | None = None, primary_strength_stream: str | ValueStream[np.float32] | None = None, secondary_axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[bool] | None = None, secondary_stream: str | ValueStream[bool] | None = None, raw_strength: np.float32 | None = None, raw_axis: primitives.Float2 | None = None, raw_primary: bool | None = None, raw_secondary: bool | None = None, primary_action_description: str | None = None, secondary_action_description: str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             tip_reference: Initial value for TipReference.
+            block_grip_equip: Initial value for BlockGripEquip.
+            block_remote_equip: Initial value for BlockRemoteEquip.
+            equip_name: Initial value for EquipName.
             override_active_tool: Initial value for _overrideActiveTool.
+            grip_poses_generated: Initial value for _gripPosesGenerated.
+            local_tip_offset: Initial value for LocalTipOffset.
             local_tip_reference: Initial value for LocalTipReference.
+            use_laser: Initial value for UseLaser.
+            block_primary_when_touching: Initial value for BlockPrimaryWhenTouching.
+            use_secondary: Initial value for UseSecondary.
+            allow_use_when_holding: Initial value for AllowUseWhenHolding.
+            equipped: Initial value for Equipped.
             primary_strength_stream: Initial value for _primaryStrengthStream.
             secondary_axis_stream: Initial value for _secondaryAxisStream.
             primary_stream: Initial value for _primaryStream.
             secondary_stream: Initial value for _secondaryStream.
+            raw_strength: Initial value for _rawStrength.
+            raw_axis: Initial value for _rawAxis.
+            raw_primary: Initial value for _rawPrimary.
+            raw_secondary: Initial value for _rawSecondary.
+            primary_action_description: Initial value for PrimaryActionDescription.
+            secondary_action_description: Initial value for SecondaryActionDescription.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if tip_reference is not None:
             self.tip_reference = tip_reference
+        if block_grip_equip is not None:
+            self.block_grip_equip = block_grip_equip
+        if block_remote_equip is not None:
+            self.block_remote_equip = block_remote_equip
+        if equip_name is not None:
+            self.equip_name = equip_name
         if override_active_tool is not None:
             self.override_active_tool = override_active_tool
+        if grip_poses_generated is not None:
+            self.grip_poses_generated = grip_poses_generated
+        if local_tip_offset is not None:
+            self.local_tip_offset = local_tip_offset
         if local_tip_reference is not None:
             self.local_tip_reference = local_tip_reference
+        if use_laser is not None:
+            self.use_laser = use_laser
+        if block_primary_when_touching is not None:
+            self.block_primary_when_touching = block_primary_when_touching
+        if use_secondary is not None:
+            self.use_secondary = use_secondary
+        if allow_use_when_holding is not None:
+            self.allow_use_when_holding = allow_use_when_holding
+        if equipped is not None:
+            self.equipped = equipped
         if primary_strength_stream is not None:
             self.primary_strength_stream = primary_strength_stream
         if secondary_axis_stream is not None:
@@ -53,6 +89,18 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             self.primary_stream = primary_stream
         if secondary_stream is not None:
             self.secondary_stream = secondary_stream
+        if raw_strength is not None:
+            self.raw_strength = raw_strength
+        if raw_axis is not None:
+            self.raw_axis = raw_axis
+        if raw_primary is not None:
+            self.raw_primary = raw_primary
+        if raw_secondary is not None:
+            self.raw_secondary = raw_secondary
+        if primary_action_description is not None:
+            self.primary_action_description = primary_action_description
+        if secondary_action_description is not None:
+            self.secondary_action_description = secondary_action_description
 
     @property
     def equip_link(self) -> members.EmptyElement | None:

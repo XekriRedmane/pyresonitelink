@@ -27,25 +27,91 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhysicalLocomotion"
 
-    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, current_controller: str | LocomotionController | None = None, initialization_collider_root: str | Slot | None = None, character_controller: str | CharacterController | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, min_initialization_delay: np.float32 | None = None, max_initialization_delay: np.float32 | None = None, initialization_collider_root: str | Slot | None = None, use_speed_from_user_settings: bool | None = None, description: str | None = None, grip_on_hold: bool | None = None, grip_radius: np.float32 | None = None, grip_velocity_multiplier: np.float32 | None = None, hand_grip_rotation_smooth_speed: np.float32 | None = None, fall_respawn_position: np.float32 | None = None, make_gravity_character_local: bool | None = None, auto_align_vertical_with_gravity_speed: np.float32 | None = None, manual_align_vertical_with_gravity_speed: np.float32 | None = None, air_deceleration_speed: np.float32 | None = None, grip_scale_delay: np.float32 | None = None, allow_crouch: bool | None = None, maximum_normalized_speed: np.float32 | None = None, default_icon: str | None = None, default_color: primitives.ColorX | None = None, character_controller: str | CharacterController | None = None, legacy_name: str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             icon: Initial value for Icon.
+            color: Initial value for Color.
             current_controller: Initial value for _currentController.
+            last_default_icon: Initial value for _lastDefaultIcon.
+            last_default_color: Initial value for _lastDefaultColor.
+            min_initialization_delay: Initial value for MinInitializationDelay.
+            max_initialization_delay: Initial value for MaxInitializationDelay.
             initialization_collider_root: Initial value for InitializationColliderRoot.
+            use_speed_from_user_settings: Initial value for UseSpeedFromUserSettings.
+            description: Initial value for Description.
+            grip_on_hold: Initial value for GripOnHold.
+            grip_radius: Initial value for GripRadius.
+            grip_velocity_multiplier: Initial value for GripVelocityMultiplier.
+            hand_grip_rotation_smooth_speed: Initial value for HandGripRotationSmoothSpeed.
+            fall_respawn_position: Initial value for FallRespawnPosition.
+            make_gravity_character_local: Initial value for MakeGravityCharacterLocal.
+            auto_align_vertical_with_gravity_speed: Initial value for AutoAlignVerticalWithGravitySpeed.
+            manual_align_vertical_with_gravity_speed: Initial value for ManualAlignVerticalWithGravitySpeed.
+            air_deceleration_speed: Initial value for AirDecelerationSpeed.
+            grip_scale_delay: Initial value for GripScaleDelay.
+            allow_crouch: Initial value for AllowCrouch.
+            maximum_normalized_speed: Initial value for MaximumNormalizedSpeed.
+            default_icon: Initial value for _defaultIcon.
+            default_color: Initial value for _defaultColor.
             character_controller: Initial value for _characterController.
+            legacy_name: Initial value for __legacyName.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if icon is not None:
             self.icon = icon
+        if color is not None:
+            self.color = color
         if current_controller is not None:
             self.current_controller = current_controller
+        if last_default_icon is not None:
+            self.last_default_icon = last_default_icon
+        if last_default_color is not None:
+            self.last_default_color = last_default_color
+        if min_initialization_delay is not None:
+            self.min_initialization_delay = min_initialization_delay
+        if max_initialization_delay is not None:
+            self.max_initialization_delay = max_initialization_delay
         if initialization_collider_root is not None:
             self.initialization_collider_root = initialization_collider_root
+        if use_speed_from_user_settings is not None:
+            self.use_speed_from_user_settings = use_speed_from_user_settings
+        if description is not None:
+            self.description = description
+        if grip_on_hold is not None:
+            self.grip_on_hold = grip_on_hold
+        if grip_radius is not None:
+            self.grip_radius = grip_radius
+        if grip_velocity_multiplier is not None:
+            self.grip_velocity_multiplier = grip_velocity_multiplier
+        if hand_grip_rotation_smooth_speed is not None:
+            self.hand_grip_rotation_smooth_speed = hand_grip_rotation_smooth_speed
+        if fall_respawn_position is not None:
+            self.fall_respawn_position = fall_respawn_position
+        if make_gravity_character_local is not None:
+            self.make_gravity_character_local = make_gravity_character_local
+        if auto_align_vertical_with_gravity_speed is not None:
+            self.auto_align_vertical_with_gravity_speed = auto_align_vertical_with_gravity_speed
+        if manual_align_vertical_with_gravity_speed is not None:
+            self.manual_align_vertical_with_gravity_speed = manual_align_vertical_with_gravity_speed
+        if air_deceleration_speed is not None:
+            self.air_deceleration_speed = air_deceleration_speed
+        if grip_scale_delay is not None:
+            self.grip_scale_delay = grip_scale_delay
+        if allow_crouch is not None:
+            self.allow_crouch = allow_crouch
+        if maximum_normalized_speed is not None:
+            self.maximum_normalized_speed = maximum_normalized_speed
+        if default_icon is not None:
+            self.default_icon = default_icon
+        if default_color is not None:
+            self.default_color = default_color
         if character_controller is not None:
             self.character_controller = character_controller
+        if legacy_name is not None:
+            self.legacy_name = legacy_name
 
     @property
     def icon(self) -> str | None:

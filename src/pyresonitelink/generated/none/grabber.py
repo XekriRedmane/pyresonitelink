@@ -20,20 +20,29 @@ class Grabber(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Grabber"
 
-    def __init__(self, auto_update_user: str | User | None = None, scale_reference: str | Grabber | None = None, holder_slot: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_update_user: str | User | None = None, release_check_radius: np.float32 | None = None, scale_reference: str | Grabber | None = None, base_scale: primitives.Float3 | None = None, base_distance: np.float32 | None = None, holder_slot: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             auto_update_user: Initial value for AutoUpdateUser.
+            release_check_radius: Initial value for ReleaseCheckRadius.
             scale_reference: Initial value for _scaleReference.
+            base_scale: Initial value for _baseScale.
+            base_distance: Initial value for _baseDistance.
             holder_slot: Initial value for _holderSlot.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if auto_update_user is not None:
             self.auto_update_user = auto_update_user
+        if release_check_radius is not None:
+            self.release_check_radius = release_check_radius
         if scale_reference is not None:
             self.scale_reference = scale_reference
+        if base_scale is not None:
+            self.base_scale = base_scale
+        if base_distance is not None:
+            self.base_distance = base_distance
         if holder_slot is not None:
             self.holder_slot = holder_slot
 

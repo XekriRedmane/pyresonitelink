@@ -8,4 +8,3 @@ class BodyNode:
         """The element's unique ID."""
         return None
 
-

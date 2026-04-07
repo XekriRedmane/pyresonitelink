@@ -696,10 +696,14 @@ def generate_component_source(
     # workers is needed when __init__ is generated (for the
     # ``component: workers.Component`` parameter).  It is always needed
     # for generic components and for non-generic components that have
-    # init-able members (references with known target types).
+    # any init-able members (references, generic params, or scalar fields).
     needs_workers = is_generic or any(
-        (is_gp or (mc == "Reference" and rn in ref_stub_imports))
-        for rn, _, _, mc, _, is_gp, _ in member_infos
+        (
+            is_gp
+            or (mc == "Reference" and rn in ref_stub_imports)
+            or (mc.startswith("Field") and not is_arr and pt)
+        )
+        for rn, _, pt, mc, _, is_gp, is_arr in member_infos
     )
     if needs_workers:
         lines.append("from pyresonitelink.data import workers")
@@ -828,8 +832,9 @@ def generate_component_source(
     lines.append("")
 
     # Generate __init__ with optional initial values for non-base members.
-    # Collects: generic-param fields (typed T) and references (typed
-    # str | TargetType | None).
+    # Collects: generic-param fields (typed T), references (typed
+    # str | TargetType | None), and scalar fields (typed by their
+    # Python value type).
     init_params: list[tuple[str, str, str]] = []
     # (python_name, type_annotation, resonite_name)
     for (res_name, py_name, py_type, member_class, import_mod,
@@ -841,6 +846,13 @@ def generate_component_source(
             init_params.append(
                 (py_name, f"str | {annotation}", res_name)
             )
+        elif (
+            member_class.startswith("Field")
+            and not is_arr
+            and py_type
+        ):
+            # Scalar field member (string, bool, int, float, etc.)
+            init_params.append((py_name, py_type, res_name))
 
     if init_params:
         # Build signature

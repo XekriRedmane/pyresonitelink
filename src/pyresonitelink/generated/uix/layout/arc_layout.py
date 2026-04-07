@@ -4,6 +4,7 @@ import numpy as np
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ilayout_element import ILayoutElement
 from pyresonitelink.generated._types.iui_compute_component import IUIComputeComponent
@@ -17,6 +18,29 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ArcLayout"
+
+    def __init__(self, arc: np.float32 | None = None, offset: np.float32 | None = None, separation: np.float32 | None = None, center_at_separation: bool | None = None, proportional_size: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            arc: Initial value for Arc.
+            offset: Initial value for Offset.
+            separation: Initial value for Separation.
+            center_at_separation: Initial value for CenterAtSeparation.
+            proportional_size: Initial value for ProportionalSize.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if arc is not None:
+            self.arc = arc
+        if offset is not None:
+            self.offset = offset
+        if separation is not None:
+            self.separation = separation
+        if center_at_separation is not None:
+            self.center_at_separation = center_at_separation
+        if proportional_size is not None:
+            self.proportional_size = proportional_size
 
     @property
     def arc(self) -> np.float32 | None:

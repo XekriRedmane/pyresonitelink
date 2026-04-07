@@ -8,4 +8,3 @@ class BooleanSpatialVariableMode:
         """The element's unique ID."""
         return None
 
-

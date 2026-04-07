@@ -23,19 +23,55 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextUnlitMaterial"
 
-    def __init__(self, shader: str | IAssetProvider[Shader] | None = None, font_atlas: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, font_atlas: str | IAssetProvider[ITexture2D] | None = None, tint_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, background_color: primitives.ColorX | None = None, auto_background_color: bool | None = None, pixel_range: np.float32 | None = None, face_dilate: np.float32 | None = None, outline_thickness: np.float32 | None = None, face_softness: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
             shader: Initial value for _shader.
             font_atlas: Initial value for FontAtlas.
+            tint_color: Initial value for TintColor.
+            outline_color: Initial value for OutlineColor.
+            background_color: Initial value for BackgroundColor.
+            auto_background_color: Initial value for AutoBackgroundColor.
+            pixel_range: Initial value for PixelRange.
+            face_dilate: Initial value for FaceDilate.
+            outline_thickness: Initial value for OutlineThickness.
+            face_softness: Initial value for FaceSoftness.
+            offset_factor: Initial value for OffsetFactor.
+            offset_units: Initial value for OffsetUnits.
+            render_queue: Initial value for RenderQueue.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
         if shader is not None:
             self.shader = shader
         if font_atlas is not None:
             self.font_atlas = font_atlas
+        if tint_color is not None:
+            self.tint_color = tint_color
+        if outline_color is not None:
+            self.outline_color = outline_color
+        if background_color is not None:
+            self.background_color = background_color
+        if auto_background_color is not None:
+            self.auto_background_color = auto_background_color
+        if pixel_range is not None:
+            self.pixel_range = pixel_range
+        if face_dilate is not None:
+            self.face_dilate = face_dilate
+        if outline_thickness is not None:
+            self.outline_thickness = outline_thickness
+        if face_softness is not None:
+            self.face_softness = face_softness
+        if offset_factor is not None:
+            self.offset_factor = offset_factor
+        if offset_units is not None:
+            self.offset_units = offset_units
+        if render_queue is not None:
+            self.render_queue = render_queue
 
     @property
     def high_priority_integration(self) -> bool | None:

@@ -15,4 +15,3 @@ class IAssetProvider(Generic[A]):
         """The element's unique ID."""
         return None
 
-

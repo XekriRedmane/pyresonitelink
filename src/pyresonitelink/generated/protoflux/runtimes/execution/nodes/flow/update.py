@@ -18,19 +18,6 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class Update(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.Update.
 
-    Fires an impulse every frame via ``on_update``.  Use this as the
-    primary impulse source for flow graphs that should run
-    continuously.
-
-    Note: ``OnePerFrame`` is NOT an impulse source — it only forwards
-    the first incoming impulse per frame (a debouncer).
-    ``FireOnTrue`` only fires on a false-to-true transition.
-
-    Example::
-
-        update = Update(on_update=if_node.id)
-        await update.add_to_slot(resolink, slot_id)
-
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """
 

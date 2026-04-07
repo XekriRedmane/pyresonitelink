@@ -21,15 +21,33 @@ class SegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SegmentMesh"
 
-    def __init__(self, slot_a: str | Slot | None = None, slot_b: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: np.float32 | None = None, point_a: primitives.Float3 | None = None, point_b: primitives.Float3 | None = None, slot_a: str | Slot | None = None, slot_b: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            override_bounding_box: Initial value for OverrideBoundingBox.
+            overriden_bounding_box: Initial value for OverridenBoundingBox.
+            radius: Initial value for Radius.
+            point_a: Initial value for PointA.
+            point_b: Initial value for PointB.
             slot_a: Initial value for SlotA.
             slot_b: Initial value for SlotB.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if override_bounding_box is not None:
+            self.override_bounding_box = override_bounding_box
+        if overriden_bounding_box is not None:
+            self.overriden_bounding_box = overriden_bounding_box
+        if radius is not None:
+            self.radius = radius
+        if point_a is not None:
+            self.point_a = point_a
+        if point_b is not None:
+            self.point_b = point_b
         if slot_a is not None:
             self.slot_a = slot_a
         if slot_b is not None:

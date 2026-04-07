@@ -25,11 +25,18 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ItemShelf"
 
-    def __init__(self, ignore_grabber: str | Grabber | None = None, visual: str | Slot | None = None, content: str | Slot | None = None, material: str | PBS_RimMetallic | None = None, visual_offset: str | IField[primitives.Float3] | None = None, shelf_mesh: str | BevelStripeMesh | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, ignore_grabber: str | Grabber | None = None, min_length: np.float32 | None = None, width: np.float32 | None = None, thickness: np.float32 | None = None, max_item_size: np.float32 | None = None, max_plane_distance: np.float32 | None = None, max_height_distance: np.float32 | None = None, target_length: np.float32 | None = None, visual: str | Slot | None = None, content: str | Slot | None = None, material: str | PBS_RimMetallic | None = None, visual_offset: str | IField[primitives.Float3] | None = None, shelf_mesh: str | BevelStripeMesh | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             ignore_grabber: Initial value for IgnoreGrabber.
+            min_length: Initial value for MinLength.
+            width: Initial value for Width.
+            thickness: Initial value for Thickness.
+            max_item_size: Initial value for MaxItemSize.
+            max_plane_distance: Initial value for MaxPlaneDistance.
+            max_height_distance: Initial value for MaxHeightDistance.
+            target_length: Initial value for _targetLength.
             visual: Initial value for _visual.
             content: Initial value for _content.
             material: Initial value for _material.
@@ -41,6 +48,20 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
         super().__init__(component)
         if ignore_grabber is not None:
             self.ignore_grabber = ignore_grabber
+        if min_length is not None:
+            self.min_length = min_length
+        if width is not None:
+            self.width = width
+        if thickness is not None:
+            self.thickness = thickness
+        if max_item_size is not None:
+            self.max_item_size = max_item_size
+        if max_plane_distance is not None:
+            self.max_plane_distance = max_plane_distance
+        if max_height_distance is not None:
+            self.max_height_distance = max_height_distance
+        if target_length is not None:
+            self.target_length = target_length
         if visual is not None:
             self.visual = visual
         if content is not None:

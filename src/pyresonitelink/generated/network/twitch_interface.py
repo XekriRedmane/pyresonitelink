@@ -4,6 +4,7 @@ import numpy as np
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -16,6 +17,29 @@ class TwitchInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TwitchInterface"
+
+    def __init__(self, channel: str | None = None, connected: bool | None = None, stream_live: bool | None = None, viewer_count: np.int32 | None = None, follow_timeout_seconds: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            channel: Initial value for Channel.
+            connected: Initial value for Connected.
+            stream_live: Initial value for StreamLive.
+            viewer_count: Initial value for ViewerCount.
+            follow_timeout_seconds: Initial value for FollowTimeoutSeconds.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if channel is not None:
+            self.channel = channel
+        if connected is not None:
+            self.connected = connected
+        if stream_live is not None:
+            self.stream_live = stream_live
+        if viewer_count is not None:
+            self.viewer_count = viewer_count
+        if follow_timeout_seconds is not None:
+            self.follow_timeout_seconds = follow_timeout_seconds
 
     @property
     def target_user(self) -> members.SyncObject | None:

@@ -8,4 +8,3 @@ class INode:
         """The element's unique ID."""
         return None
 
-

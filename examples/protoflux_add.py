@@ -25,16 +25,9 @@ import time
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
-from pyresonitelink.generated.data.value_field import ValueField
-from pyresonitelink.generated.protoflux.runtimes.execution.nodes.core.value_display import (
-    ValueDisplay,
-)
-from pyresonitelink.generated.protoflux.runtimes.execution.nodes.core.value_input import (
-    ValueInput,
-)
-from pyresonitelink.generated.protoflux.runtimes.execution.nodes.operators.value_add import (
-    ValueAdd,
-)
+from pyresonitelink.components.data import ValueField
+from pyresonitelink.protoflux.core import ValueDisplay, ValueInput
+from pyresonitelink.protoflux.operators import ValueAdd
 
 FloatInput = ValueInput[primitives.Float]
 FloatAdd = ValueAdd[primitives.Float]

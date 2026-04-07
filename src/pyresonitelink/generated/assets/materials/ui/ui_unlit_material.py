@@ -24,22 +24,76 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UI_UnlitMaterial"
 
-    def __init__(self, shader: str | IAssetProvider[Shader] | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: bool | None = None, rect: primitives.Rect | None = None, rect_clip: bool | None = None, stencil_id: np.uint8 | None = None, stencil_write_mask: np.uint8 | None = None, stencil_read_mask: np.uint8 | None = None, render_queue: np.int32 | None = None, shader: str | IAssetProvider[Shader] | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, tint: primitives.ColorX | None = None, overlay: bool | None = None, overlay_tint: primitives.ColorX | None = None, alpha_cutoff: np.float32 | None = None, alpha_clip: bool | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, mask_scale: primitives.Float2 | None = None, mask_offset: primitives.Float2 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            rect: Initial value for Rect.
+            rect_clip: Initial value for RectClip.
+            stencil_id: Initial value for StencilID.
+            stencil_write_mask: Initial value for StencilWriteMask.
+            stencil_read_mask: Initial value for StencilReadMask.
+            render_queue: Initial value for RenderQueue.
             shader: Initial value for _shader.
             texture: Initial value for Texture.
+            texture_scale: Initial value for TextureScale.
+            texture_offset: Initial value for TextureOffset.
+            tint: Initial value for Tint.
+            overlay: Initial value for Overlay.
+            overlay_tint: Initial value for OverlayTint.
+            alpha_cutoff: Initial value for AlphaCutoff.
+            alpha_clip: Initial value for AlphaClip.
             mask_texture: Initial value for MaskTexture.
+            mask_scale: Initial value for MaskScale.
+            mask_offset: Initial value for MaskOffset.
+            offset_factor: Initial value for OffsetFactor.
+            offset_units: Initial value for OffsetUnits.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if rect is not None:
+            self.rect = rect
+        if rect_clip is not None:
+            self.rect_clip = rect_clip
+        if stencil_id is not None:
+            self.stencil_id = stencil_id
+        if stencil_write_mask is not None:
+            self.stencil_write_mask = stencil_write_mask
+        if stencil_read_mask is not None:
+            self.stencil_read_mask = stencil_read_mask
+        if render_queue is not None:
+            self.render_queue = render_queue
         if shader is not None:
             self.shader = shader
         if texture is not None:
             self.texture = texture
+        if texture_scale is not None:
+            self.texture_scale = texture_scale
+        if texture_offset is not None:
+            self.texture_offset = texture_offset
+        if tint is not None:
+            self.tint = tint
+        if overlay is not None:
+            self.overlay = overlay
+        if overlay_tint is not None:
+            self.overlay_tint = overlay_tint
+        if alpha_cutoff is not None:
+            self.alpha_cutoff = alpha_cutoff
+        if alpha_clip is not None:
+            self.alpha_clip = alpha_clip
         if mask_texture is not None:
             self.mask_texture = mask_texture
+        if mask_scale is not None:
+            self.mask_scale = mask_scale
+        if mask_offset is not None:
+            self.mask_offset = mask_offset
+        if offset_factor is not None:
+            self.offset_factor = offset_factor
+        if offset_units is not None:
+            self.offset_units = offset_units
 
     @property
     def high_priority_integration(self) -> bool | None:

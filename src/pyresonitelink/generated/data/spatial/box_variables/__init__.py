@@ -1,0 +1,7 @@
+"""Generated box_variables components."""
+
+from .box_constant_reference_spatial_variable import BoxConstantReferenceSpatialVariable
+from .box_constant_value_spatial_variable import BoxConstantValueSpatialVariable
+from .box_gradient_value_spatial_variable import BoxGradientValueSpatialVariable
+from .box_texture3_d_spatial_variable import BoxTexture3D_SpatialVariable
+from .box_vertex_value_spatial_variable import BoxVertexValueSpatialVariable

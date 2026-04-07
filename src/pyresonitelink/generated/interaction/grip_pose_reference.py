@@ -18,17 +18,26 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GripPoseReference"
 
-    def __init__(self, tip_reference: str | Slot | None = None, active_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, root_pos: primitives.Float3 | None = None, tip_reference: str | Slot | None = None, show_visual: bool | None = None, disable_slider: bool | None = None, active_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            root_pos: Initial value for _rootPos.
             tip_reference: Initial value for TipReference.
+            show_visual: Initial value for ShowVisual.
+            disable_slider: Initial value for DisableSlider.
             active_visual: Initial value for _activeVisual.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if root_pos is not None:
+            self.root_pos = root_pos
         if tip_reference is not None:
             self.tip_reference = tip_reference
+        if show_visual is not None:
+            self.show_visual = show_visual
+        if disable_slider is not None:
+            self.disable_slider = disable_slider
         if active_visual is not None:
             self.active_visual = active_visual
 

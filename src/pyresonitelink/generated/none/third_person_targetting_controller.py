@@ -3,6 +3,7 @@
 import numpy as np
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 
 
@@ -11,6 +12,20 @@ class ThirdPersonTargettingController(GeneratedComponent):
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ThirdPersonTargettingController"
+
+    def __init__(self, min_vertical_angle: np.float32 | None = None, max_vertical_angle: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            min_vertical_angle: Initial value for MinVerticalAngle.
+            max_vertical_angle: Initial value for MaxVerticalAngle.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if min_vertical_angle is not None:
+            self.min_vertical_angle = min_vertical_angle
+        if max_vertical_angle is not None:
+            self.max_vertical_angle = max_vertical_angle
 
     @property
     def min_vertical_angle(self) -> np.float32 | None:

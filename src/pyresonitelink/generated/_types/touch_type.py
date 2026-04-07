@@ -8,4 +8,3 @@ class TouchType:
         """The element's unique ID."""
         return None
 
-

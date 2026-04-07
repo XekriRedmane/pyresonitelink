@@ -13,7 +13,7 @@ import sys
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
-from pyresonitelink.generated.data.value_field import ValueField
+from pyresonitelink.components.data import ValueField
 
 
 async def main(port: int) -> None:

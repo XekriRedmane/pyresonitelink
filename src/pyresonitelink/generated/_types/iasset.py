@@ -8,4 +8,3 @@ class IAsset:
         """The element's unique ID."""
         return None
 
-

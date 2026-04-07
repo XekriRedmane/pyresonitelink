@@ -8,4 +8,3 @@ class TangentPointColorX:
         """The element's unique ID."""
         return None
 
-

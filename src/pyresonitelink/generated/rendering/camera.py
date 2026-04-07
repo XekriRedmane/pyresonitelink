@@ -22,16 +22,58 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Camera"
 
-    def __init__(self, render_texture: str | IAssetProvider[RenderTexture] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, double_buffered: bool | None = None, forward_only: bool | None = None, orthographic_size: np.float32 | None = None, field_of_view: np.float32 | None = None, near_clipping: np.float32 | None = None, far_clipping: np.float32 | None = None, use_transform_scale: bool | None = None, clear_color: primitives.ColorX | None = None, viewport: primitives.Rect | None = None, depth: np.float32 | None = None, render_texture: str | IAssetProvider[RenderTexture] | None = None, postprocessing: bool | None = None, screen_space_reflections: bool | None = None, motion_blur: bool | None = None, render_shadows: bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            double_buffered: Initial value for DoubleBuffered.
+            forward_only: Initial value for ForwardOnly.
+            orthographic_size: Initial value for OrthographicSize.
+            field_of_view: Initial value for FieldOfView.
+            near_clipping: Initial value for NearClipping.
+            far_clipping: Initial value for FarClipping.
+            use_transform_scale: Initial value for UseTransformScale.
+            clear_color: Initial value for ClearColor.
+            viewport: Initial value for Viewport.
+            depth: Initial value for Depth.
             render_texture: Initial value for RenderTexture.
+            postprocessing: Initial value for Postprocessing.
+            screen_space_reflections: Initial value for ScreenSpaceReflections.
+            motion_blur: Initial value for MotionBlur.
+            render_shadows: Initial value for RenderShadows.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if double_buffered is not None:
+            self.double_buffered = double_buffered
+        if forward_only is not None:
+            self.forward_only = forward_only
+        if orthographic_size is not None:
+            self.orthographic_size = orthographic_size
+        if field_of_view is not None:
+            self.field_of_view = field_of_view
+        if near_clipping is not None:
+            self.near_clipping = near_clipping
+        if far_clipping is not None:
+            self.far_clipping = far_clipping
+        if use_transform_scale is not None:
+            self.use_transform_scale = use_transform_scale
+        if clear_color is not None:
+            self.clear_color = clear_color
+        if viewport is not None:
+            self.viewport = viewport
+        if depth is not None:
+            self.depth = depth
         if render_texture is not None:
             self.render_texture = render_texture
+        if postprocessing is not None:
+            self.postprocessing = postprocessing
+        if screen_space_reflections is not None:
+            self.screen_space_reflections = screen_space_reflections
+        if motion_blur is not None:
+            self.motion_blur = motion_blur
+        if render_shadows is not None:
+            self.render_shadows = render_shadows
 
     @property
     def double_buffered(self) -> bool | None:

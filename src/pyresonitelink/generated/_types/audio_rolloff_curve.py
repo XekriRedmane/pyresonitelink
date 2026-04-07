@@ -8,4 +8,3 @@ class AudioRolloffCurve:
         """The element's unique ID."""
         return None
 
-

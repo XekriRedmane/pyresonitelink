@@ -95,15 +95,22 @@ python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipP
 python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>" --dry-run
 ```
 
-All 3238 ProtoFlux nodes are pre-generated under `generated/protoflux/`.
+All 3238 ProtoFlux nodes are pre-generated under `generated/protoflux/`. The generator automatically rebuilds `__init__.py` re-exports so new components are immediately importable via the short paths.
 
 ### Using Generated Components
 
+Import shortcuts are provided so you don't need the deeply nested paths:
+
+- `pyresonitelink.components` aliases `pyresonitelink.generated`
+- `pyresonitelink.protoflux` aliases `pyresonitelink.generated.protoflux.runtimes.execution.nodes`
+
+Each category package re-exports its classes, so you can import directly from the category:
+
 ```python
 from pyresonitelink.data import primitives
-from pyresonitelink.generated.data.value_field import ValueField
-from pyresonitelink.generated.protoflux.runtimes.execution.nodes.core.value_input import ValueInput
-from pyresonitelink.generated.protoflux.runtimes.execution.nodes.operators.value_add import ValueAdd
+from pyresonitelink.components.data import ValueField
+from pyresonitelink.protoflux.core import ValueInput
+from pyresonitelink.protoflux.operators import ValueAdd
 
 FloatField = ValueField[primitives.Float]
 FloatInput = ValueInput[primitives.Float]

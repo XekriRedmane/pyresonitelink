@@ -8,4 +8,3 @@ class IWorldElement:
         """The element's unique ID."""
         return None
 
-
