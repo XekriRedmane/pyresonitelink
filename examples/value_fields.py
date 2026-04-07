@@ -32,7 +32,7 @@ async def main(port: int) -> None:
 
     FloatField = ValueField[primitives.Float]
     IntField = ValueField[primitives.Int]
-    StringField = ValueField[str]
+    StringField = ValueField[primitives.String]
     Vec3Field = ValueField[primitives.Float3]
 
     print(f"FloatField type: {FloatField.COMPONENT_TYPE}")

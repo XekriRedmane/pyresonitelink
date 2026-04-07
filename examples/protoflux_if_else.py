@@ -31,7 +31,7 @@ from pyresonitelink.protoflux.variables.dynamic import WriteDynamicValueVariable
 
 # Concrete parameterized types
 FloatInput = ValueInput[primitives.Float]
-StringInput = ValueObjectInput[str]
+StringInput = ValueObjectInput[primitives.String]
 FloatAdd = ValueAdd[primitives.Float]
 FloatSub = ValueSub[primitives.Float]
 FloatLessThan = ValueLessThan[primitives.Float]

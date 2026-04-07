@@ -6,7 +6,7 @@ pyresonitelink is a Python library for interacting with the Resonite VR platform
 
 **Python 3.13+ required.**
 
-Because Python's native numeric types are infinite-precision integers and 64-bit floats, and Resonite has stricter types, this library uses numpy scalar types under the hood to match Resonite's C# type system precisely. Scalar aliases are provided in the `primitives` module: `primitives.Bool`, `primitives.Int`, `primitives.Long`, `primitives.Float`, etc. Composite types like `primitives.Float2`, `primitives.Float3`, `primitives.FloatQ`, `primitives.Color`, and `primitives.ColorX` are dataclasses with numpy-typed fields that coerce from plain Python `int`/`float` in their constructors.
+Because Python's native numeric types are infinite-precision integers and 64-bit floats, and Resonite has stricter types, this library uses numpy scalar types under the hood to match Resonite's C# type system precisely. Scalar aliases are provided in the `primitives` module: `primitives.Bool`, `primitives.Int`, `primitives.Long`, `primitives.Float`, `primitives.String`, etc. Composite types like `primitives.Float2`, `primitives.Float3`, `primitives.FloatQ`, `primitives.Color`, and `primitives.ColorX` are dataclasses with numpy-typed fields that coerce from plain Python `int`/`float` in their constructors.
 
 ## Installation
 

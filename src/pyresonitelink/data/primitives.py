@@ -30,6 +30,7 @@ Long: type[np.int64] = np.int64
 ULong: type[np.uint64] = np.uint64
 Float: type[np.float32] = np.float32
 Double: type[np.float64] = np.float64
+String: type[str] = str
 
 
 # =============================================================================
