@@ -6,6 +6,7 @@ discriminator used in the ResoniteLink protocol.
 """
 
 from dataclasses import asdict, fields, is_dataclass
+from decimal import Decimal
 import types
 from typing import Any, cast, get_args, get_origin
 
@@ -18,6 +19,7 @@ from . import members as member_types
 from . import messages as message_types
 from . import primitives as primitive_types
 from . import responses as response_types
+from . import reflection as reflection_types
 from . import workers as worker_types
 
 # =============================================================================
@@ -25,50 +27,50 @@ from . import workers as worker_types
 # =============================================================================
 
 type PrimitiveType = (
-    primitive_types.color
-    | primitive_types.colorX
-    | primitive_types.color32
-    | primitive_types.float2
-    | primitive_types.double2
-    | primitive_types.byte2
-    | primitive_types.ushort2
-    | primitive_types.uint2
-    | primitive_types.ulong2
-    | primitive_types.sbyte2
-    | primitive_types.short2
-    | primitive_types.int2
-    | primitive_types.long2
-    | primitive_types.bool2
-    | primitive_types.float3
-    | primitive_types.double3
-    | primitive_types.byte3
-    | primitive_types.ushort3
-    | primitive_types.uint3
-    | primitive_types.ulong3
-    | primitive_types.sbyte3
-    | primitive_types.short3
-    | primitive_types.int3
-    | primitive_types.long3
-    | primitive_types.bool3
-    | primitive_types.float4
-    | primitive_types.double4
-    | primitive_types.byte4
-    | primitive_types.ushort4
-    | primitive_types.uint4
-    | primitive_types.ulong4
-    | primitive_types.sbyte4
-    | primitive_types.short4
-    | primitive_types.int4
-    | primitive_types.long4
-    | primitive_types.bool4
-    | primitive_types.floatQ
-    | primitive_types.doubleQ
-    | primitive_types.float2x2
-    | primitive_types.double2x2
-    | primitive_types.float3x3
-    | primitive_types.double3x3
-    | primitive_types.float4x4
-    | primitive_types.double4x4
+    primitive_types.Color
+    | primitive_types.ColorX
+    | primitive_types.Color32
+    | primitive_types.Float2
+    | primitive_types.Double2
+    | primitive_types.Byte2
+    | primitive_types.UShort2
+    | primitive_types.UInt2
+    | primitive_types.ULong2
+    | primitive_types.SByte2
+    | primitive_types.Short2
+    | primitive_types.Int2
+    | primitive_types.Long2
+    | primitive_types.Bool2
+    | primitive_types.Float3
+    | primitive_types.Double3
+    | primitive_types.Byte3
+    | primitive_types.UShort3
+    | primitive_types.UInt3
+    | primitive_types.ULong3
+    | primitive_types.SByte3
+    | primitive_types.Short3
+    | primitive_types.Int3
+    | primitive_types.Long3
+    | primitive_types.Bool3
+    | primitive_types.Float4
+    | primitive_types.Double4
+    | primitive_types.Byte4
+    | primitive_types.UShort4
+    | primitive_types.UInt4
+    | primitive_types.ULong4
+    | primitive_types.SByte4
+    | primitive_types.Short4
+    | primitive_types.Int4
+    | primitive_types.Long4
+    | primitive_types.Bool4
+    | primitive_types.FloatQ
+    | primitive_types.DoubleQ
+    | primitive_types.Float2x2
+    | primitive_types.Double2x2
+    | primitive_types.Float3x3
+    | primitive_types.Double3x3
+    | primitive_types.Float4x4
+    | primitive_types.Double4x4
 )
 
 type MemberType = (
@@ -279,6 +281,9 @@ type MessageType = (
     | message_types.ImportTexture2DFile
     | message_types.ImportTexture2DRawData
     | message_types.ImportTexture2DRawDataHDR
+    | message_types.GetComponentTypeList
+    | message_types.GetComponentDefinition
+    | message_types.GetTypeDefinition
 )
 
 type ResponseType = (
@@ -286,6 +291,9 @@ type ResponseType = (
     | response_types.SlotData
     | response_types.ComponentData
     | response_types.AssetData
+    | response_types.ComponentTypeList
+    | response_types.ComponentDefinitionData
+    | response_types.NewEntityId
 )
 
 type DataType = (
@@ -327,12 +335,18 @@ def _init_type_registry() -> None:
     _register_type("importTexture2DFile", message_types.ImportTexture2DFile)
     _register_type("importTexture2DRawData", message_types.ImportTexture2DRawData)
     _register_type("importTexture2DRawDataHDR", message_types.ImportTexture2DRawDataHDR)
+    _register_type("getComponentTypeList", message_types.GetComponentTypeList)
+    _register_type("getComponentDefinition", message_types.GetComponentDefinition)
+    _register_type("getTypeDefinition", message_types.GetTypeDefinition)
 
     # Responses
     _register_type("response", response_types.Response)
+    _register_type("newEntityId", response_types.NewEntityId)
     _register_type("slotData", response_types.SlotData)
     _register_type("componentData", response_types.ComponentData)
     _register_type("assetData", response_types.AssetData)
+    _register_type("componentTypeList", response_types.ComponentTypeList)
+    _register_type("componentDefinitionData", response_types.ComponentDefinitionData)
 
     # Workers
     _register_type("slot", worker_types.Slot)
@@ -345,6 +359,9 @@ def _init_type_registry() -> None:
     _register_type("emptyElement", member_types.EmptyElement)
     _register_type("empty", member_types.EmptyElement)
     _register_type("enum", member_types.FieldEnum)
+    _register_type("enum?", member_types.FieldEnum)
+    _register_type("playback", member_types.SyncPlayback)
+    _register_type("dictionary<enum>", member_types.SyncDictionary)
 
     # Primitive Fields - standalone types
     _register_type("byte", field_types.FieldByte)
@@ -541,6 +558,10 @@ def _init_type_registry() -> None:
     _register_type("double4x4[]", field_types.ArrayDouble4x4)
     _register_type("double4x4?", field_types.FieldNullableDouble4x4)
 
+    # Geometry Fields
+    _register_type("Rect", field_types.FieldRect)
+    _register_type("BoundingBox", field_types.FieldBoundingBox)
+
 
 # Initialize the registry
 _init_type_registry()
@@ -553,56 +574,105 @@ _init_type_registry()
 # Set of primitive dataclass types that should be encoded as plain dicts
 # (without $type) when nested inside a "value" field
 _PRIMITIVE_TYPES: set[type] = {
-    primitive_types.color,
-    primitive_types.colorX,
-    primitive_types.color32,
-    primitive_types.float2,
-    primitive_types.double2,
-    primitive_types.byte2,
-    primitive_types.ushort2,
-    primitive_types.uint2,
-    primitive_types.ulong2,
-    primitive_types.sbyte2,
-    primitive_types.short2,
-    primitive_types.int2,
-    primitive_types.long2,
-    primitive_types.bool2,
-    primitive_types.float3,
-    primitive_types.double3,
-    primitive_types.byte3,
-    primitive_types.ushort3,
-    primitive_types.uint3,
-    primitive_types.ulong3,
-    primitive_types.sbyte3,
-    primitive_types.short3,
-    primitive_types.int3,
-    primitive_types.long3,
-    primitive_types.bool3,
-    primitive_types.float4,
-    primitive_types.double4,
-    primitive_types.byte4,
-    primitive_types.ushort4,
-    primitive_types.uint4,
-    primitive_types.ulong4,
-    primitive_types.sbyte4,
-    primitive_types.short4,
-    primitive_types.int4,
-    primitive_types.long4,
-    primitive_types.bool4,
-    primitive_types.floatQ,
-    primitive_types.doubleQ,
-    primitive_types.float2x2,
-    primitive_types.double2x2,
-    primitive_types.float3x3,
-    primitive_types.double3x3,
-    primitive_types.float4x4,
-    primitive_types.double4x4,
+    primitive_types.Color,
+    primitive_types.ColorX,
+    primitive_types.Color32,
+    primitive_types.Float2,
+    primitive_types.Double2,
+    primitive_types.Byte2,
+    primitive_types.UShort2,
+    primitive_types.UInt2,
+    primitive_types.ULong2,
+    primitive_types.SByte2,
+    primitive_types.Short2,
+    primitive_types.Int2,
+    primitive_types.Long2,
+    primitive_types.Bool2,
+    primitive_types.Float3,
+    primitive_types.Double3,
+    primitive_types.Byte3,
+    primitive_types.UShort3,
+    primitive_types.UInt3,
+    primitive_types.ULong3,
+    primitive_types.SByte3,
+    primitive_types.Short3,
+    primitive_types.Int3,
+    primitive_types.Long3,
+    primitive_types.Bool3,
+    primitive_types.Float4,
+    primitive_types.Double4,
+    primitive_types.Byte4,
+    primitive_types.UShort4,
+    primitive_types.UInt4,
+    primitive_types.ULong4,
+    primitive_types.SByte4,
+    primitive_types.Short4,
+    primitive_types.Int4,
+    primitive_types.Long4,
+    primitive_types.Bool4,
+    primitive_types.FloatQ,
+    primitive_types.DoubleQ,
+    primitive_types.Float2x2,
+    primitive_types.Double2x2,
+    primitive_types.Float3x3,
+    primitive_types.Double3x3,
+    primitive_types.Float4x4,
+    primitive_types.Double4x4,
+    primitive_types.Rect,
+    primitive_types.BoundingBox,
 }
 
 
 def _is_primitive_type(cls: type) -> bool:
-    """Check if a class is a primitive type (vector, quaternion, matrix, color)."""
+    """Check if a class is a primitive type (vector, quaternion, matrix, Color)."""
     return cls in _PRIMITIVE_TYPES
+
+
+def _json_safe(value: Any) -> Any:
+    """Convert a value to a JSON-safe Python type.
+
+    Numpy scalars become plain int/float so json.dumps can serialize them.
+    """
+    if isinstance(value, np.integer):
+        return int(value)
+    if isinstance(value, np.floating):
+        return float(value)
+    if isinstance(value, np.bool_):
+        return bool(value)
+    return value
+
+
+def _encode_primitive(value: Any) -> dict[str, Any]:
+    """Encode a primitive value to a JSON-compatible dict.
+
+    Handles special nested wire formats for Rect and BoundingBox.
+    Other primitives use flat ``asdict()`` with numpy scalar conversion.
+    """
+    if isinstance(value, primitive_types.Rect):
+        return {
+            "position": {
+                "x": _json_safe(value.x),
+                "y": _json_safe(value.y),
+            },
+            "size": {
+                "x": _json_safe(value.width),
+                "y": _json_safe(value.height),
+            },
+        }
+    if isinstance(value, primitive_types.BoundingBox):
+        return {
+            "min": {
+                "x": _json_safe(value.min_x),
+                "y": _json_safe(value.min_y),
+                "z": _json_safe(value.min_z),
+            },
+            "max": {
+                "x": _json_safe(value.max_x),
+                "y": _json_safe(value.max_y),
+                "z": _json_safe(value.max_z),
+            },
+        }
+    return {k: _json_safe(v) for k, v in asdict(value).items() if v is not None}
 
 
 # =============================================================================
@@ -644,6 +714,9 @@ def _encode_value(value: EncodableType) -> Any:
 
     if isinstance(value, np.floating):
         return float(value)
+
+    if isinstance(value, Decimal):
+        return str(value)
 
     if isinstance(value, list):
         return [_encode_value(item) for item in value]
@@ -697,8 +770,7 @@ def _encode_dataclass(obj: DataType) -> dict[str, EncodableType]:
         # For primitive types nested in "value" field, just use the dict
         # without $type
         if is_dataclass(value) and _is_primitive_type(type(value)):
-            # Primitive types are encoded as plain dicts
-            encoded = {k: v for k, v in asdict(value).items() if v is not None}
+            encoded = _encode_primitive(value)
 
         result[f.name] = encoded
 
@@ -720,7 +792,7 @@ def encode(obj: DataType) -> dict[str, Any]:
         ...         id="MySDK_0",
         ...         parent=Reference(targetId="Root"),
         ...         name=FieldString(value="Hello from MySDK!"),
-        ...         position=FieldFloat3(value=float3(x=0, y=1.5, z=10))
+        ...         position=FieldFloat3(value=Float3(x=0, y=1.5, z=10))
         ...     )
         ... )
         >>> json_dict = encode(msg)
@@ -768,7 +840,9 @@ def _get_field_types(cls: type) -> dict[str, Any]:
 
 
 def _decode_primitive(data: dict[str, Any], cls: type) -> Any:
-    """Decode a primitive type (vector, matrix, color, quaternion).
+    """Decode a primitive type (vector, matrix, Color, quaternion).
+
+    Handles special nested wire formats for Rect and BoundingBox.
 
     Args:
         data: Dictionary with primitive fields.
@@ -777,6 +851,20 @@ def _decode_primitive(data: dict[str, Any], cls: type) -> Any:
     Returns:
         An instance of the primitive type.
     """
+    if cls is primitive_types.Rect:
+        pos = data.get("position", {})
+        size = data.get("size", {})
+        return primitive_types.Rect(
+            x=pos.get("x", 0), y=pos.get("y", 0),
+            width=size.get("x", 0), height=size.get("y", 0),
+        )
+    if cls is primitive_types.BoundingBox:
+        mn = data.get("min", {})
+        mx = data.get("max", {})
+        return primitive_types.BoundingBox(
+            min_x=mn.get("x", 0), min_y=mn.get("y", 0), min_z=mn.get("z", 0),
+            max_x=mx.get("x", 0), max_y=mx.get("y", 0), max_z=mx.get("z", 0),
+        )
     kwargs = {}
     for field in fields(cls):
         if field.name in data:
@@ -810,6 +898,7 @@ def _decode_value(data: JsonValue, expected_type: type | None = None) -> Any:
     type_name = data.get("$type")
 
     if type_name and type_name in _TYPE_REGISTRY:
+        assert isinstance(type_name, str), f"Invalid type for $type: {type(type_name)}"
         cls = _TYPE_REGISTRY[type_name]
         return _decode_dataclass(data, cls)
 

@@ -1,0 +1,67 @@
+"""Generated component: FreeformTargettingController."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.slot import Slot
+
+
+class FreeformTargettingController(GeneratedComponent):
+    """Wrapper for [FrooxEngine]FrooxEngine.FreeformTargettingController.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FreeformTargettingController"
+
+    def __init__(self, focus_target: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            focus_target: Initial value for FocusTarget.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if focus_target is not None:
+            self.focus_target = focus_target
+
+    @property
+    def focus_target(self) -> str | None:
+        """Target ID of the FocusTarget reference (targets Slot)."""
+        member = self.get_member("FocusTarget")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @focus_target.setter
+    def focus_target(self, target: str | Slot | None) -> None:
+        """Set the FocusTarget reference by target ID or Slot instance."""
+        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        member = self.get_member("FocusTarget")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "FocusTarget",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
+            )
+
+    @property
+    def focus_center_point(self) -> primitives.Float3 | None:
+        """The FocusCenterPoint field value."""
+        member = self.get_member("FocusCenterPoint")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @focus_center_point.setter
+    def focus_center_point(self, value: primitives.Float3) -> None:
+        """Set the FocusCenterPoint field value."""
+        member = self.get_member("FocusCenterPoint")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "FocusCenterPoint", fields.FieldFloat3(value=value)
+            )
+

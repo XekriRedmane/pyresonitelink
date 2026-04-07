@@ -1,1 +1,0 @@
-"""Generated Constants components."""

@@ -1,0 +1,173 @@
+"""Generated component: FontMaterial."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.text_unlit_material import TextUnlitMaterial
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.FontMaterial.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FontMaterial"
+
+    def __init__(self, converted_material: str | TextUnlitMaterial | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            converted_material: Initial value for _convertedMaterial.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if converted_material is not None:
+            self.converted_material = converted_material
+
+    @property
+    def outline_thickness(self) -> np.float32 | None:
+        """The OutlineThickness field value."""
+        member = self.get_member("OutlineThickness")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @outline_thickness.setter
+    def outline_thickness(self, value: np.float32) -> None:
+        """Set the OutlineThickness field value."""
+        member = self.get_member("OutlineThickness")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "OutlineThickness", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def outline_color(self) -> primitives.ColorX | None:
+        """The OutlineColor field value."""
+        member = self.get_member("OutlineColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @outline_color.setter
+    def outline_color(self, value: primitives.ColorX) -> None:
+        """Set the OutlineColor field value."""
+        member = self.get_member("OutlineColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "OutlineColor", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def face_softness(self) -> np.float32 | None:
+        """The FaceSoftness field value."""
+        member = self.get_member("FaceSoftness")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @face_softness.setter
+    def face_softness(self, value: np.float32) -> None:
+        """Set the FaceSoftness field value."""
+        member = self.get_member("FaceSoftness")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "FaceSoftness", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def face_dilate(self) -> np.float32 | None:
+        """The FaceDilate field value."""
+        member = self.get_member("FaceDilate")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @face_dilate.setter
+    def face_dilate(self, value: np.float32) -> None:
+        """Set the FaceDilate field value."""
+        member = self.get_member("FaceDilate")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "FaceDilate", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def culling(self) -> members.FieldEnum | None:
+        """The Culling member."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @culling.setter
+    def culling(self, value: members.FieldEnum) -> None:
+        """Set the Culling member."""
+        self.set_member("Culling", value)
+
+    @property
+    def ztest(self) -> members.FieldEnum | None:
+        """The ZTest member."""
+        member = self.get_member("ZTest")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @ztest.setter
+    def ztest(self, value: members.FieldEnum) -> None:
+        """Set the ZTest member."""
+        self.set_member("ZTest", value)
+
+    @property
+    def render_queue(self) -> np.int32 | None:
+        """The RenderQueue field value."""
+        member = self.get_member("RenderQueue")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @render_queue.setter
+    def render_queue(self, value: np.int32) -> None:
+        """Set the RenderQueue field value."""
+        member = self.get_member("RenderQueue")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "RenderQueue", fields.FieldInt(value=value)
+            )
+
+    @property
+    def converted_material(self) -> str | None:
+        """Target ID of the _convertedMaterial reference (targets TextUnlitMaterial)."""
+        member = self.get_member("_convertedMaterial")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @converted_material.setter
+    def converted_material(self, target: str | TextUnlitMaterial | None) -> None:
+        """Set the _convertedMaterial reference by target ID or TextUnlitMaterial instance."""
+        target_id: str | None = target.id if isinstance(target, TextUnlitMaterial) else target  # type: ignore[assignment]
+        member = self.get_member("_convertedMaterial")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_convertedMaterial",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.TextUnlitMaterial'),
+            )
+

@@ -1,1 +1,0 @@
-"""Generated Interactions components."""

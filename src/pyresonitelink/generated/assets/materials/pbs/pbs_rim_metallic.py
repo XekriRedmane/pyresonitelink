@@ -1,0 +1,528 @@
+"""Generated component: PBS_RimMetallic."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.iasset_provider import IAssetProvider
+from pyresonitelink.generated._types.itexture2_d import ITexture2D
+from pyresonitelink.generated._types.shader import Shader
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.PBS_RimMetallic.
+
+    Category: Assets/Materials/PBS
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_RimMetallic"
+
+    def __init__(self, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            albedo_texture: Initial value for AlbedoTexture.
+            emissive_map: Initial value for EmissiveMap.
+            normal_map: Initial value for NormalMap.
+            occlusion_map: Initial value for OcclusionMap.
+            metallic_map: Initial value for MetallicMap.
+            regular: Initial value for _regular.
+            transparent: Initial value for _transparent.
+            zwrite: Initial value for _zwrite.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if albedo_texture is not None:
+            self.albedo_texture = albedo_texture
+        if emissive_map is not None:
+            self.emissive_map = emissive_map
+        if normal_map is not None:
+            self.normal_map = normal_map
+        if occlusion_map is not None:
+            self.occlusion_map = occlusion_map
+        if metallic_map is not None:
+            self.metallic_map = metallic_map
+        if regular is not None:
+            self.regular = regular
+        if transparent is not None:
+            self.transparent = transparent
+        if zwrite is not None:
+            self.zwrite = zwrite
+
+    @property
+    def high_priority_integration(self) -> bool | None:
+        """The HighPriorityIntegration field value."""
+        member = self.get_member("HighPriorityIntegration")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @high_priority_integration.setter
+    def high_priority_integration(self, value: bool) -> None:
+        """Set the HighPriorityIntegration field value."""
+        member = self.get_member("HighPriorityIntegration")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HighPriorityIntegration", fields.FieldBool(value=value)
+            )
+
+    @property
+    def texture_scale(self) -> primitives.Float2 | None:
+        """The TextureScale field value."""
+        member = self.get_member("TextureScale")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @texture_scale.setter
+    def texture_scale(self, value: primitives.Float2) -> None:
+        """Set the TextureScale field value."""
+        member = self.get_member("TextureScale")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "TextureScale", fields.FieldFloat2(value=value)
+            )
+
+    @property
+    def texture_offset(self) -> primitives.Float2 | None:
+        """The TextureOffset field value."""
+        member = self.get_member("TextureOffset")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @texture_offset.setter
+    def texture_offset(self, value: primitives.Float2) -> None:
+        """Set the TextureOffset field value."""
+        member = self.get_member("TextureOffset")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "TextureOffset", fields.FieldFloat2(value=value)
+            )
+
+    @property
+    def albedo_color(self) -> primitives.ColorX | None:
+        """The AlbedoColor field value."""
+        member = self.get_member("AlbedoColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @albedo_color.setter
+    def albedo_color(self, value: primitives.ColorX) -> None:
+        """Set the AlbedoColor field value."""
+        member = self.get_member("AlbedoColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AlbedoColor", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def albedo_texture(self) -> str | None:
+        """Target ID of the AlbedoTexture reference (targets IAssetProvider[ITexture2D])."""
+        member = self.get_member("AlbedoTexture")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @albedo_texture.setter
+    def albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
+        """Set the AlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("AlbedoTexture")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "AlbedoTexture",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.ITexture2D>'),
+            )
+
+    @property
+    def emissive_color(self) -> primitives.ColorX | None:
+        """The EmissiveColor field value."""
+        member = self.get_member("EmissiveColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @emissive_color.setter
+    def emissive_color(self, value: primitives.ColorX) -> None:
+        """Set the EmissiveColor field value."""
+        member = self.get_member("EmissiveColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "EmissiveColor", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def emissive_map(self) -> str | None:
+        """Target ID of the EmissiveMap reference (targets IAssetProvider[ITexture2D])."""
+        member = self.get_member("EmissiveMap")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @emissive_map.setter
+    def emissive_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
+        """Set the EmissiveMap reference by target ID or IAssetProvider[ITexture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("EmissiveMap")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "EmissiveMap",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.ITexture2D>'),
+            )
+
+    @property
+    def normal_map(self) -> str | None:
+        """Target ID of the NormalMap reference (targets IAssetProvider[ITexture2D])."""
+        member = self.get_member("NormalMap")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @normal_map.setter
+    def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
+        """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("NormalMap")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "NormalMap",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.ITexture2D>'),
+            )
+
+    @property
+    def normal_scale(self) -> np.float32 | None:
+        """The NormalScale field value."""
+        member = self.get_member("NormalScale")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @normal_scale.setter
+    def normal_scale(self, value: np.float32) -> None:
+        """Set the NormalScale field value."""
+        member = self.get_member("NormalScale")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NormalScale", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def occlusion_map(self) -> str | None:
+        """Target ID of the OcclusionMap reference (targets IAssetProvider[ITexture2D])."""
+        member = self.get_member("OcclusionMap")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @occlusion_map.setter
+    def occlusion_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
+        """Set the OcclusionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("OcclusionMap")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "OcclusionMap",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.ITexture2D>'),
+            )
+
+    @property
+    def rim_color(self) -> primitives.ColorX | None:
+        """The RimColor field value."""
+        member = self.get_member("RimColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @rim_color.setter
+    def rim_color(self, value: primitives.ColorX) -> None:
+        """Set the RimColor field value."""
+        member = self.get_member("RimColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "RimColor", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def rim_power(self) -> np.float32 | None:
+        """The RimPower field value."""
+        member = self.get_member("RimPower")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @rim_power.setter
+    def rim_power(self, value: np.float32) -> None:
+        """Set the RimPower field value."""
+        member = self.get_member("RimPower")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "RimPower", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def gamma_curve(self) -> np.float32 | None:
+        """The GammaCurve field value."""
+        member = self.get_member("GammaCurve")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @gamma_curve.setter
+    def gamma_curve(self, value: np.float32) -> None:
+        """Set the GammaCurve field value."""
+        member = self.get_member("GammaCurve")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "GammaCurve", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def transparent(self) -> bool | None:
+        """The Transparent field value."""
+        member = self.get_member("Transparent")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @transparent.setter
+    def transparent(self, value: bool) -> None:
+        """Set the Transparent field value."""
+        member = self.get_member("Transparent")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Transparent", fields.FieldBool(value=value)
+            )
+
+    @property
+    def force_zwrite(self) -> bool | None:
+        """The ForceZWrite field value."""
+        member = self.get_member("ForceZWrite")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @force_zwrite.setter
+    def force_zwrite(self, value: bool) -> None:
+        """Set the ForceZWrite field value."""
+        member = self.get_member("ForceZWrite")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ForceZWrite", fields.FieldBool(value=value)
+            )
+
+    @property
+    def offset_factor(self) -> np.float32 | None:
+        """The OffsetFactor field value."""
+        member = self.get_member("OffsetFactor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @offset_factor.setter
+    def offset_factor(self, value: np.float32) -> None:
+        """Set the OffsetFactor field value."""
+        member = self.get_member("OffsetFactor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "OffsetFactor", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def offset_units(self) -> np.float32 | None:
+        """The OffsetUnits field value."""
+        member = self.get_member("OffsetUnits")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @offset_units.setter
+    def offset_units(self, value: np.float32) -> None:
+        """Set the OffsetUnits field value."""
+        member = self.get_member("OffsetUnits")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "OffsetUnits", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def render_queue(self) -> np.int32 | None:
+        """The RenderQueue field value."""
+        member = self.get_member("RenderQueue")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @render_queue.setter
+    def render_queue(self, value: np.int32) -> None:
+        """Set the RenderQueue field value."""
+        member = self.get_member("RenderQueue")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "RenderQueue", fields.FieldInt(value=value)
+            )
+
+    @property
+    def metallic(self) -> np.float32 | None:
+        """The Metallic field value."""
+        member = self.get_member("Metallic")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @metallic.setter
+    def metallic(self, value: np.float32) -> None:
+        """Set the Metallic field value."""
+        member = self.get_member("Metallic")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Metallic", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def smoothness(self) -> np.float32 | None:
+        """The Smoothness field value."""
+        member = self.get_member("Smoothness")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @smoothness.setter
+    def smoothness(self, value: np.float32) -> None:
+        """Set the Smoothness field value."""
+        member = self.get_member("Smoothness")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Smoothness", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def metallic_map(self) -> str | None:
+        """Target ID of the MetallicMap reference (targets IAssetProvider[ITexture2D])."""
+        member = self.get_member("MetallicMap")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @metallic_map.setter
+    def metallic_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
+        """Set the MetallicMap reference by target ID or IAssetProvider[ITexture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("MetallicMap")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "MetallicMap",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.ITexture2D>'),
+            )
+
+    @property
+    def regular(self) -> str | None:
+        """Target ID of the _regular reference (targets IAssetProvider[Shader])."""
+        member = self.get_member("_regular")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @regular.setter
+    def regular(self, target: str | IAssetProvider[Shader] | None) -> None:
+        """Set the _regular reference by target ID or IAssetProvider[Shader] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("_regular")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_regular",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.Shader>'),
+            )
+
+    @property
+    def transparent(self) -> str | None:
+        """Target ID of the _transparent reference (targets IAssetProvider[Shader])."""
+        member = self.get_member("_transparent")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @transparent.setter
+    def transparent(self, target: str | IAssetProvider[Shader] | None) -> None:
+        """Set the _transparent reference by target ID or IAssetProvider[Shader] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("_transparent")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_transparent",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.Shader>'),
+            )
+
+    @property
+    def zwrite(self) -> str | None:
+        """Target ID of the _zwrite reference (targets IAssetProvider[Shader])."""
+        member = self.get_member("_zwrite")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @zwrite.setter
+    def zwrite(self, target: str | IAssetProvider[Shader] | None) -> None:
+        """Set the _zwrite reference by target ID or IAssetProvider[Shader] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("_zwrite")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_zwrite",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.Shader>'),
+            )
+

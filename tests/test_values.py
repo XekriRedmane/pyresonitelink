@@ -104,20 +104,11 @@ class TestValues:
     @pytest.mark.asyncio(loop_scope="session")
     async def test_add_component(self, resolink: client.Client) -> None:
         slot_id = str(uuid.uuid4())
-        response = await resolink.add_slot(
-            messages.AddSlot(
-                data=workers.Slot(
-                    id=slot_id,
-                    parent=workers.Reference(
-                        targetId=workers.Slot.ROOT_SLOT_ID,
-                        targetType="FrooxEngine.Slot",
-                    ),
-                    name=workers.FieldString(value="Test Slot"),
-                )
-            ),
+        response = await resolink.add_slot_to_root(
+            id=slot_id,
+            name="Test Slot",
         )
-        assert isinstance(response, responses.Response)
-        assert response.success is True
+        assert isinstance(response, responses.NewEntityId)
 
         # Ensure we can add a test component.
         component_id = str(uuid.uuid4())

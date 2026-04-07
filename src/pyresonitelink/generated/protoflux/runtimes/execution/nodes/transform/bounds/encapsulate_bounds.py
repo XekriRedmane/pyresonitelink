@@ -1,0 +1,78 @@
+"""Generated component: EncapsulateBounds."""
+
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
+from pyresonitelink.generated._types.iexecution_node import IExecutionNode
+from pyresonitelink.generated._types.inode import INode
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.iobject_root import IObjectRoot
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class EncapsulateBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
+    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.EncapsulateBounds.
+
+    Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Bounds
+    """
+
+    COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.EncapsulateBounds"
+
+    def __init__(self, bounds: str | INodeValueOutput[primitives.BoundingBox] | None = None, other_bounds: str | INodeValueOutput[primitives.BoundingBox] | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            bounds: Initial value for Bounds.
+            other_bounds: Initial value for OtherBounds.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if bounds is not None:
+            self.bounds = bounds
+        if other_bounds is not None:
+            self.other_bounds = other_bounds
+
+    @property
+    def bounds(self) -> str | None:
+        """Target ID of the Bounds reference (targets INodeValueOutput[primitives.BoundingBox])."""
+        member = self.get_member("Bounds")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @bounds.setter
+    def bounds(self, target: str | INodeValueOutput[primitives.BoundingBox] | None) -> None:
+        """Set the Bounds reference by target ID or INodeValueOutput[primitives.BoundingBox] instance."""
+        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        member = self.get_member("Bounds")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Bounds",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<BoundingBox>'),
+            )
+
+    @property
+    def other_bounds(self) -> str | None:
+        """Target ID of the OtherBounds reference (targets INodeValueOutput[primitives.BoundingBox])."""
+        member = self.get_member("OtherBounds")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @other_bounds.setter
+    def other_bounds(self, target: str | INodeValueOutput[primitives.BoundingBox] | None) -> None:
+        """Set the OtherBounds reference by target ID or INodeValueOutput[primitives.BoundingBox] instance."""
+        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        member = self.get_member("OtherBounds")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "OtherBounds",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<BoundingBox>'),
+            )
+

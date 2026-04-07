@@ -1,1 +1,0 @@
-"""Generated Focusing components."""

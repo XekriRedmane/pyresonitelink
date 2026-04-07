@@ -1,0 +1,451 @@
+"""Generated component: Text."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.iasset_provider import IAssetProvider
+from pyresonitelink.generated._types.font_set import FontSet
+from pyresonitelink.generated._types.font_material import FontMaterial
+from pyresonitelink.generated._types.ilayout_element import ILayoutElement
+from pyresonitelink.generated._types.itext import IText
+from pyresonitelink.generated._types.iui_compute_component import IUIComputeComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.UIX.Text.
+
+    Category: UIX/Graphics
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Text"
+
+    def __init__(self, font: str | IAssetProvider[FontSet] | None = None, legacy_font_material: str | FontMaterial | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            font: Initial value for Font.
+            legacy_font_material: Initial value for _legacyFontMaterial.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if font is not None:
+            self.font = font
+        if legacy_font_material is not None:
+            self.legacy_font_material = legacy_font_material
+
+    @property
+    def font(self) -> str | None:
+        """Target ID of the Font reference (targets IAssetProvider[FontSet])."""
+        member = self.get_member("Font")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @font.setter
+    def font(self, target: str | IAssetProvider[FontSet] | None) -> None:
+        """Set the Font reference by target ID or IAssetProvider[FontSet] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("Font")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Font",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.FontSet>'),
+            )
+
+    @property
+    def content(self) -> str | None:
+        """The Content field value."""
+        member = self.get_member("Content")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @content.setter
+    def content(self, value: str) -> None:
+        """Set the Content field value."""
+        member = self.get_member("Content")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Content", fields.FieldString(value=value)
+            )
+
+    @property
+    def parse_rich_text(self) -> bool | None:
+        """The ParseRichText field value."""
+        member = self.get_member("ParseRichText")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @parse_rich_text.setter
+    def parse_rich_text(self, value: bool) -> None:
+        """Set the ParseRichText field value."""
+        member = self.get_member("ParseRichText")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ParseRichText", fields.FieldBool(value=value)
+            )
+
+    @property
+    def null_content(self) -> str | None:
+        """The NullContent field value."""
+        member = self.get_member("NullContent")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @null_content.setter
+    def null_content(self, value: str) -> None:
+        """Set the NullContent field value."""
+        member = self.get_member("NullContent")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NullContent", fields.FieldString(value=value)
+            )
+
+    @property
+    def size(self) -> np.float32 | None:
+        """The Size field value."""
+        member = self.get_member("Size")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @size.setter
+    def size(self, value: np.float32) -> None:
+        """Set the Size field value."""
+        member = self.get_member("Size")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Size", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def horizontal_align(self) -> members.FieldEnum | None:
+        """The HorizontalAlign member."""
+        member = self.get_member("HorizontalAlign")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @horizontal_align.setter
+    def horizontal_align(self, value: members.FieldEnum) -> None:
+        """Set the HorizontalAlign member."""
+        self.set_member("HorizontalAlign", value)
+
+    @property
+    def vertical_align(self) -> members.FieldEnum | None:
+        """The VerticalAlign member."""
+        member = self.get_member("VerticalAlign")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @vertical_align.setter
+    def vertical_align(self, value: members.FieldEnum) -> None:
+        """Set the VerticalAlign member."""
+        self.set_member("VerticalAlign", value)
+
+    @property
+    def alignment_mode(self) -> members.FieldEnum | None:
+        """The AlignmentMode member."""
+        member = self.get_member("AlignmentMode")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @alignment_mode.setter
+    def alignment_mode(self, value: members.FieldEnum) -> None:
+        """Set the AlignmentMode member."""
+        self.set_member("AlignmentMode", value)
+
+    @property
+    def color(self) -> primitives.ColorX | None:
+        """The Color field value."""
+        member = self.get_member("Color")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @color.setter
+    def color(self, value: primitives.ColorX) -> None:
+        """Set the Color field value."""
+        member = self.get_member("Color")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Color", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def materials(self) -> members.SyncList | None:
+        """The Materials member."""
+        member = self.get_member("Materials")
+        if isinstance(member, members.SyncList):
+            return member
+        return None
+
+    @materials.setter
+    def materials(self, value: members.SyncList) -> None:
+        """Set the Materials member."""
+        self.set_member("Materials", value)
+
+    @property
+    def line_height(self) -> np.float32 | None:
+        """The LineHeight field value."""
+        member = self.get_member("LineHeight")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @line_height.setter
+    def line_height(self, value: np.float32) -> None:
+        """Set the LineHeight field value."""
+        member = self.get_member("LineHeight")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "LineHeight", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def mask_pattern(self) -> str | None:
+        """The MaskPattern field value."""
+        member = self.get_member("MaskPattern")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @mask_pattern.setter
+    def mask_pattern(self, value: str) -> None:
+        """Set the MaskPattern field value."""
+        member = self.get_member("MaskPattern")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "MaskPattern", fields.FieldString(value=value)
+            )
+
+    @property
+    def horizontal_auto_size(self) -> bool | None:
+        """The HorizontalAutoSize field value."""
+        member = self.get_member("HorizontalAutoSize")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @horizontal_auto_size.setter
+    def horizontal_auto_size(self, value: bool) -> None:
+        """Set the HorizontalAutoSize field value."""
+        member = self.get_member("HorizontalAutoSize")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HorizontalAutoSize", fields.FieldBool(value=value)
+            )
+
+    @property
+    def vertical_auto_size(self) -> bool | None:
+        """The VerticalAutoSize field value."""
+        member = self.get_member("VerticalAutoSize")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @vertical_auto_size.setter
+    def vertical_auto_size(self, value: bool) -> None:
+        """Set the VerticalAutoSize field value."""
+        member = self.get_member("VerticalAutoSize")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "VerticalAutoSize", fields.FieldBool(value=value)
+            )
+
+    @property
+    def auto_size_min(self) -> np.float32 | None:
+        """The AutoSizeMin field value."""
+        member = self.get_member("AutoSizeMin")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @auto_size_min.setter
+    def auto_size_min(self, value: np.float32) -> None:
+        """Set the AutoSizeMin field value."""
+        member = self.get_member("AutoSizeMin")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AutoSizeMin", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def auto_size_max(self) -> np.float32 | None:
+        """The AutoSizeMax field value."""
+        member = self.get_member("AutoSizeMax")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @auto_size_max.setter
+    def auto_size_max(self, value: np.float32) -> None:
+        """Set the AutoSizeMax field value."""
+        member = self.get_member("AutoSizeMax")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AutoSizeMax", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def caret_position(self) -> np.int32 | None:
+        """The CaretPosition field value."""
+        member = self.get_member("CaretPosition")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @caret_position.setter
+    def caret_position(self, value: np.int32) -> None:
+        """Set the CaretPosition field value."""
+        member = self.get_member("CaretPosition")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "CaretPosition", fields.FieldInt(value=value)
+            )
+
+    @property
+    def selection_start(self) -> np.int32 | None:
+        """The SelectionStart field value."""
+        member = self.get_member("SelectionStart")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @selection_start.setter
+    def selection_start(self, value: np.int32) -> None:
+        """Set the SelectionStart field value."""
+        member = self.get_member("SelectionStart")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "SelectionStart", fields.FieldInt(value=value)
+            )
+
+    @property
+    def caret_color(self) -> primitives.ColorX | None:
+        """The CaretColor field value."""
+        member = self.get_member("CaretColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @caret_color.setter
+    def caret_color(self, value: primitives.ColorX) -> None:
+        """Set the CaretColor field value."""
+        member = self.get_member("CaretColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "CaretColor", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def selection_color(self) -> primitives.ColorX | None:
+        """The SelectionColor field value."""
+        member = self.get_member("SelectionColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @selection_color.setter
+    def selection_color(self, value: primitives.ColorX) -> None:
+        """Set the SelectionColor field value."""
+        member = self.get_member("SelectionColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "SelectionColor", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def interaction_target(self) -> bool | None:
+        """The InteractionTarget field value."""
+        member = self.get_member("InteractionTarget")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @interaction_target.setter
+    def interaction_target(self, value: bool) -> None:
+        """Set the InteractionTarget field value."""
+        member = self.get_member("InteractionTarget")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "InteractionTarget", fields.FieldBool(value=value)
+            )
+
+    @property
+    def legacy_font_material(self) -> str | None:
+        """Target ID of the _legacyFontMaterial reference (targets FontMaterial)."""
+        member = self.get_member("_legacyFontMaterial")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @legacy_font_material.setter
+    def legacy_font_material(self, target: str | FontMaterial | None) -> None:
+        """Set the _legacyFontMaterial reference by target ID or FontMaterial instance."""
+        target_id: str | None = target.id if isinstance(target, FontMaterial) else target  # type: ignore[assignment]
+        member = self.get_member("_legacyFontMaterial")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_legacyFontMaterial",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.FontMaterial'),
+            )
+
+    @property
+    def legacy_align(self) -> members.FieldEnum | None:
+        """The _legacyAlign member."""
+        member = self.get_member("_legacyAlign")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @legacy_align.setter
+    def legacy_align(self, value: members.FieldEnum) -> None:
+        """Set the _legacyAlign member."""
+        self.set_member("_legacyAlign", value)
+

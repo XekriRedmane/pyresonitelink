@@ -1,0 +1,380 @@
+"""Generated component: ReflectionProbe."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.iasset_provider import IAssetProvider
+from pyresonitelink.generated._types.cubemap import Cubemap
+from pyresonitelink.generated._types.slot import Slot
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.ReflectionProbe.
+
+    Category: Rendering
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbe"
+
+    def __init__(self, baked_cubemap: str | IAssetProvider[Cubemap] | None = None, debug_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            baked_cubemap: Initial value for BakedCubemap.
+            debug_visual: Initial value for _debugVisual.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if baked_cubemap is not None:
+            self.baked_cubemap = baked_cubemap
+        if debug_visual is not None:
+            self.debug_visual = debug_visual
+
+    @property
+    def probe_type(self) -> members.FieldEnum | None:
+        """The ProbeType member."""
+        member = self.get_member("ProbeType")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @probe_type.setter
+    def probe_type(self, value: members.FieldEnum) -> None:
+        """Set the ProbeType member."""
+        self.set_member("ProbeType", value)
+
+    @property
+    def importance(self) -> np.int32 | None:
+        """The Importance field value."""
+        member = self.get_member("Importance")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @importance.setter
+    def importance(self, value: np.int32) -> None:
+        """Set the Importance field value."""
+        member = self.get_member("Importance")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Importance", fields.FieldInt(value=value)
+            )
+
+    @property
+    def intensity(self) -> np.float32 | None:
+        """The Intensity field value."""
+        member = self.get_member("Intensity")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @intensity.setter
+    def intensity(self, value: np.float32) -> None:
+        """Set the Intensity field value."""
+        member = self.get_member("Intensity")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Intensity", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def blend_distance(self) -> np.float32 | None:
+        """The BlendDistance field value."""
+        member = self.get_member("BlendDistance")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @blend_distance.setter
+    def blend_distance(self, value: np.float32) -> None:
+        """Set the BlendDistance field value."""
+        member = self.get_member("BlendDistance")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BlendDistance", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def box_size(self) -> primitives.Float3 | None:
+        """The BoxSize field value."""
+        member = self.get_member("BoxSize")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @box_size.setter
+    def box_size(self, value: primitives.Float3) -> None:
+        """Set the BoxSize field value."""
+        member = self.get_member("BoxSize")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BoxSize", fields.FieldFloat3(value=value)
+            )
+
+    @property
+    def box_projection(self) -> bool | None:
+        """The BoxProjection field value."""
+        member = self.get_member("BoxProjection")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @box_projection.setter
+    def box_projection(self, value: bool) -> None:
+        """Set the BoxProjection field value."""
+        member = self.get_member("BoxProjection")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BoxProjection", fields.FieldBool(value=value)
+            )
+
+    @property
+    def baked_cubemap(self) -> str | None:
+        """Target ID of the BakedCubemap reference (targets IAssetProvider[Cubemap])."""
+        member = self.get_member("BakedCubemap")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @baked_cubemap.setter
+    def baked_cubemap(self, target: str | IAssetProvider[Cubemap] | None) -> None:
+        """Set the BakedCubemap reference by target ID or IAssetProvider[Cubemap] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("BakedCubemap")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "BakedCubemap",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.Cubemap>'),
+            )
+
+    @property
+    def changes_sources(self) -> members.SyncList | None:
+        """The ChangesSources member."""
+        member = self.get_member("ChangesSources")
+        if isinstance(member, members.SyncList):
+            return member
+        return None
+
+    @changes_sources.setter
+    def changes_sources(self, value: members.SyncList) -> None:
+        """Set the ChangesSources member."""
+        self.set_member("ChangesSources", value)
+
+    @property
+    def time_slicing(self) -> members.FieldEnum | None:
+        """The TimeSlicing member."""
+        member = self.get_member("TimeSlicing")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @time_slicing.setter
+    def time_slicing(self, value: members.FieldEnum) -> None:
+        """Set the TimeSlicing member."""
+        self.set_member("TimeSlicing", value)
+
+    @property
+    def resolution(self) -> np.int32 | None:
+        """The Resolution field value."""
+        member = self.get_member("Resolution")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @resolution.setter
+    def resolution(self, value: np.int32) -> None:
+        """Set the Resolution field value."""
+        member = self.get_member("Resolution")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Resolution", fields.FieldInt(value=value)
+            )
+
+    @property
+    def hdr(self) -> bool | None:
+        """The HDR field value."""
+        member = self.get_member("HDR")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @hdr.setter
+    def hdr(self, value: bool) -> None:
+        """Set the HDR field value."""
+        member = self.get_member("HDR")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HDR", fields.FieldBool(value=value)
+            )
+
+    @property
+    def shadow_distance(self) -> np.float32 | None:
+        """The ShadowDistance field value."""
+        member = self.get_member("ShadowDistance")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @shadow_distance.setter
+    def shadow_distance(self, value: np.float32) -> None:
+        """Set the ShadowDistance field value."""
+        member = self.get_member("ShadowDistance")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ShadowDistance", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def clear_flags(self) -> members.FieldEnum | None:
+        """The ClearFlags member."""
+        member = self.get_member("ClearFlags")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @clear_flags.setter
+    def clear_flags(self, value: members.FieldEnum) -> None:
+        """Set the ClearFlags member."""
+        self.set_member("ClearFlags", value)
+
+    @property
+    def background_color(self) -> primitives.ColorX | None:
+        """The BackgroundColor field value."""
+        member = self.get_member("BackgroundColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @background_color.setter
+    def background_color(self, value: primitives.ColorX) -> None:
+        """Set the BackgroundColor field value."""
+        member = self.get_member("BackgroundColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BackgroundColor", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def near_clip(self) -> np.float32 | None:
+        """The NearClip field value."""
+        member = self.get_member("NearClip")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @near_clip.setter
+    def near_clip(self, value: np.float32) -> None:
+        """Set the NearClip field value."""
+        member = self.get_member("NearClip")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NearClip", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def far_clip(self) -> np.float32 | None:
+        """The FarClip field value."""
+        member = self.get_member("FarClip")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @far_clip.setter
+    def far_clip(self, value: np.float32) -> None:
+        """Set the FarClip field value."""
+        member = self.get_member("FarClip")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "FarClip", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def skybox_only(self) -> bool | None:
+        """The SkyboxOnly field value."""
+        member = self.get_member("SkyboxOnly")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @skybox_only.setter
+    def skybox_only(self, value: bool) -> None:
+        """Set the SkyboxOnly field value."""
+        member = self.get_member("SkyboxOnly")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "SkyboxOnly", fields.FieldBool(value=value)
+            )
+
+    @property
+    def show_debug_visuals(self) -> bool | None:
+        """The ShowDebugVisuals field value."""
+        member = self.get_member("ShowDebugVisuals")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @show_debug_visuals.setter
+    def show_debug_visuals(self, value: bool) -> None:
+        """Set the ShowDebugVisuals field value."""
+        member = self.get_member("ShowDebugVisuals")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ShowDebugVisuals", fields.FieldBool(value=value)
+            )
+
+    @property
+    def debug_visual(self) -> str | None:
+        """Target ID of the _debugVisual reference (targets Slot)."""
+        member = self.get_member("_debugVisual")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @debug_visual.setter
+    def debug_visual(self, target: str | Slot | None) -> None:
+        """Set the _debugVisual reference by target ID or Slot instance."""
+        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        member = self.get_member("_debugVisual")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_debugVisual",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
+            )
+

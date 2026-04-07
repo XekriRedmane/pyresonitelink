@@ -1,1 +1,0 @@
-"""Generated Haptics components."""

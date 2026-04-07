@@ -30,8 +30,8 @@ from pyresonitelink.data import (
     decode_message,
     decode_response,
     encode,
-    float3,
-    floatQ,
+    Float3,
+    FloatQ,
 )
 from pyresonitelink.data import codec
 
@@ -63,7 +63,7 @@ class TestEncodeMessages:
                 id="MySDK_0",
                 parent=Reference(targetId="Root"),
                 name=FieldString(value="Hello from MySDK!"),
-                position=FieldFloat3(value=float3(x=0, y=1.5, z=10)),
+                position=FieldFloat3(value=Float3(x=0, y=1.5, z=10)),
             )
         )
         result = encode(msg)
@@ -83,7 +83,7 @@ class TestEncodeMessages:
         msg = UpdateSlot(
             data=Slot(
                 id="MySDK_0",
-                scale=FieldFloat3(value=float3(x=2.5, y=2.5, z=2.5)),
+                scale=FieldFloat3(value=Float3(x=2.5, y=2.5, z=2.5)),
             )
         )
         result = encode(msg)
@@ -173,8 +173,8 @@ class TestEncodeSparseValues:
 class TestEncodePrimitives:
     """Tests for encoding primitive types."""
 
-    def test_encode_float3(self) -> None:
-        field = FieldFloat3(value=float3(x=1.0, y=2.0, z=3.0))
+    def test_encode_Float3(self) -> None:
+        field = FieldFloat3(value=Float3(x=1.0, y=2.0, z=3.0))
         result = encode(field)
 
         assert result["$type"] == "float3"
@@ -183,7 +183,7 @@ class TestEncodePrimitives:
         assert result["value"]["z"] == 3.0
 
     def test_encode_floatq(self) -> None:
-        field = FieldFloatQ(value=floatQ(x=0.0, y=0.0, z=0.0, w=1.0))
+        field = FieldFloatQ(value=FloatQ(x=0.0, y=0.0, z=0.0, w=1.0))
         result = encode(field)
 
         assert result["$type"] == "floatQ"
@@ -389,7 +389,7 @@ class TestRoundTrip:
                 id="MySDK_0",
                 parent=Reference(targetId="Root"),
                 name=FieldString(value="Test Slot"),
-                position=FieldFloat3(value=float3(x=1.0, y=2.0, z=3.0)),
+                position=FieldFloat3(value=Float3(x=1.0, y=2.0, z=3.0)),
             )
         )
         encoded = encode(original)

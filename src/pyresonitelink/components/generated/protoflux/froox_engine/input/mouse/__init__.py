@@ -1,1 +1,0 @@
-"""Generated Mouse components."""

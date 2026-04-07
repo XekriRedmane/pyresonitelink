@@ -8,55 +8,58 @@ are not included in these dataclasses.
 """
 
 from dataclasses import dataclass, field
+from decimal import Decimal
 
 import numpy as np
 
 from .members import Member
 from .primitives import (
-    bool2,
-    bool3,
-    bool4,
-    byte2,
-    byte3,
-    byte4,
-    color,
-    color32,
-    colorX,
-    double2,
-    double2x2,
-    double3,
-    double3x3,
-    double4,
-    double4x4,
-    doubleQ,
-    float2,
-    float2x2,
-    float3,
-    float3x3,
-    float4,
-    float4x4,
-    floatQ,
-    int2,
-    int3,
-    int4,
-    long2,
-    long3,
-    long4,
-    sbyte2,
-    sbyte3,
-    sbyte4,
-    short2,
-    short3,
-    short4,
-    uint2,
-    uint3,
-    uint4,
-    ulong2,
-    ulong3,
-    ulong4,
-    ushort2,
-    ushort3,
-    ushort4,
+    BoundingBox,
+    Bool2,
+    Bool3,
+    Bool4,
+    Byte2,
+    Byte3,
+    Byte4,
+    Color,
+    Color32,
+    ColorX,
+    Double2,
+    Double2x2,
+    Double3,
+    Double3x3,
+    Double4,
+    Double4x4,
+    DoubleQ,
+    Float2,
+    Float2x2,
+    Float3,
+    Float3x3,
+    Float4,
+    Float4x4,
+    FloatQ,
+    Int2,
+    Int3,
+    Int4,
+    Long2,
+    Long3,
+    Long4,
+    Rect,
+    SByte2,
+    SByte3,
+    SByte4,
+    Short2,
+    Short3,
+    Short4,
+    UInt2,
+    UInt3,
+    UInt4,
+    ULong2,
+    ULong3,
+    ULong4,
+    UShort2,
+    UShort3,
+    UShort4,
 )
 
 
@@ -279,21 +282,31 @@ class FieldNullableDouble(Member):
 class FieldDecimal(Member):
     """Field containing a decimal value."""
 
-    value: float = 0.0
+    value: Decimal = Decimal(0)
+
+    def __post_init__(self) -> None:
+        """Coerce value to Decimal."""
+        if not isinstance(self.value, Decimal):
+            self.value = Decimal(str(self.value))
 
 
 @dataclass
 class ArrayDecimal(Member):
     """Array of decimal values."""
 
-    values: list[float] = field(default_factory=list[float])
+    values: list[Decimal] = field(default_factory=list[Decimal])
 
 
 @dataclass
 class FieldNullableDecimal(Member):
     """Field containing an optional decimal value."""
 
-    value: float | None = None
+    value: Decimal | None = None
+
+    def __post_init__(self) -> None:
+        """Coerce value to Decimal if not None."""
+        if self.value is not None and not isinstance(self.value, Decimal):
+            self.value = Decimal(str(self.value))
 
 
 @dataclass
@@ -415,65 +428,65 @@ class FieldNullableDateTime(Member):
 
 @dataclass
 class FieldColor(Member):
-    """Field containing a color value."""
+    """Field containing a Color value."""
 
-    value: color | None = None
+    value: Color | None = None
 
 
 @dataclass
 class ArrayColor(Member):
-    """Array of color values."""
+    """Array of Color values."""
 
-    values: list[color] = field(default_factory=list[color])
+    values: list[Color] = field(default_factory=list[Color])
 
 
 @dataclass
 class FieldNullableColor(Member):
-    """Field containing an optional color value."""
+    """Field containing an optional Color value."""
 
-    value: color | None = None
+    value: Color | None = None
 
 
 @dataclass
 class FieldColorX(Member):
-    """Field containing a colorX value."""
+    """Field containing a ColorX value."""
 
-    value: colorX | None = None
+    value: ColorX | None = None
 
 
 @dataclass
 class ArrayColorX(Member):
-    """Array of colorX values."""
+    """Array of ColorX values."""
 
-    values: list[colorX] = field(default_factory=list[colorX])
+    values: list[ColorX] = field(default_factory=list[ColorX])
 
 
 @dataclass
 class FieldNullableColorX(Member):
-    """Field containing an optional colorX value."""
+    """Field containing an optional ColorX value."""
 
-    value: colorX | None = None
+    value: ColorX | None = None
 
 
 @dataclass
 class FieldColor32(Member):
-    """Field containing a color32 value."""
+    """Field containing a Color32 value."""
 
-    value: color32 | None = None
+    value: Color32 | None = None
 
 
 @dataclass
 class ArrayColor32(Member):
-    """Array of color32 values."""
+    """Array of Color32 values."""
 
-    values: list[color32] = field(default_factory=list[color32])
+    values: list[Color32] = field(default_factory=list[Color32])
 
 
 @dataclass
 class FieldNullableColor32(Member):
-    """Field containing an optional color32 value."""
+    """Field containing an optional Color32 value."""
 
-    value: color32 | None = None
+    value: Color32 | None = None
 
 
 # =============================================================================
@@ -483,233 +496,233 @@ class FieldNullableColor32(Member):
 
 @dataclass
 class FieldFloat2(Member):
-    """Field containing a float2 value."""
+    """Field containing a Float2 value."""
 
-    value: float2 | None = None
+    value: Float2 | None = None
 
 
 @dataclass
 class ArrayFloat2(Member):
-    """Array of float2 values."""
+    """Array of Float2 values."""
 
-    values: list[float2] = field(default_factory=list[float2])
+    values: list[Float2] = field(default_factory=list[Float2])
 
 
 @dataclass
 class FieldNullableFloat2(Member):
-    """Field containing an optional float2 value."""
+    """Field containing an optional Float2 value."""
 
-    value: float2 | None = None
+    value: Float2 | None = None
 
 
 @dataclass
 class FieldDouble2(Member):
-    """Field containing a double2 value."""
+    """Field containing a Double2 value."""
 
-    value: double2 | None = None
+    value: Double2 | None = None
 
 
 @dataclass
 class ArrayDouble2(Member):
-    """Array of double2 values."""
+    """Array of Double2 values."""
 
-    values: list[double2] = field(default_factory=list[double2])
+    values: list[Double2] = field(default_factory=list[Double2])
 
 
 @dataclass
 class FieldNullableDouble2(Member):
-    """Field containing an optional double2 value."""
+    """Field containing an optional Double2 value."""
 
-    value: double2 | None = None
+    value: Double2 | None = None
 
 
 @dataclass
 class FieldByte2(Member):
-    """Field containing a byte2 value."""
+    """Field containing a Byte2 value."""
 
-    value: byte2 | None = None
+    value: Byte2 | None = None
 
 
 @dataclass
 class ArrayByte2(Member):
-    """Array of byte2 values."""
+    """Array of Byte2 values."""
 
-    values: list[byte2] = field(default_factory=list[byte2])
+    values: list[Byte2] = field(default_factory=list[Byte2])
 
 
 @dataclass
 class FieldNullableByte2(Member):
-    """Field containing an optional byte2 value."""
+    """Field containing an optional Byte2 value."""
 
-    value: byte2 | None = None
+    value: Byte2 | None = None
 
 
 @dataclass
 class FieldUshort2(Member):
-    """Field containing a ushort2 value."""
+    """Field containing a UShort2 value."""
 
-    value: ushort2 | None = None
+    value: UShort2 | None = None
 
 
 @dataclass
 class ArrayUshort2(Member):
-    """Array of ushort2 values."""
+    """Array of UShort2 values."""
 
-    values: list[ushort2] = field(default_factory=list[ushort2])
+    values: list[UShort2] = field(default_factory=list[UShort2])
 
 
 @dataclass
 class FieldNullableUshort2(Member):
-    """Field containing an optional ushort2 value."""
+    """Field containing an optional UShort2 value."""
 
-    value: ushort2 | None = None
+    value: UShort2 | None = None
 
 
 @dataclass
 class FieldUint2(Member):
-    """Field containing a uint2 value."""
+    """Field containing a UInt2 value."""
 
-    value: uint2 | None = None
+    value: UInt2 | None = None
 
 
 @dataclass
 class ArrayUint2(Member):
-    """Array of uint2 values."""
+    """Array of UInt2 values."""
 
-    values: list[uint2] = field(default_factory=list[uint2])
+    values: list[UInt2] = field(default_factory=list[UInt2])
 
 
 @dataclass
 class FieldNullableUint2(Member):
-    """Field containing an optional uint2 value."""
+    """Field containing an optional UInt2 value."""
 
-    value: uint2 | None = None
+    value: UInt2 | None = None
 
 
 @dataclass
 class FieldUlong2(Member):
-    """Field containing a ulong2 value."""
+    """Field containing a ULong2 value."""
 
-    value: ulong2 | None = None
+    value: ULong2 | None = None
 
 
 @dataclass
 class ArrayUlong2(Member):
-    """Array of ulong2 values."""
+    """Array of ULong2 values."""
 
-    values: list[ulong2] = field(default_factory=list[ulong2])
+    values: list[ULong2] = field(default_factory=list[ULong2])
 
 
 @dataclass
 class FieldNullableUlong2(Member):
-    """Field containing an optional ulong2 value."""
+    """Field containing an optional ULong2 value."""
 
-    value: ulong2 | None = None
+    value: ULong2 | None = None
 
 
 @dataclass
 class FieldSbyte2(Member):
-    """Field containing a sbyte2 value."""
+    """Field containing a SByte2 value."""
 
-    value: sbyte2 | None = None
+    value: SByte2 | None = None
 
 
 @dataclass
 class ArraySbyte2(Member):
-    """Array of sbyte2 values."""
+    """Array of SByte2 values."""
 
-    values: list[sbyte2] = field(default_factory=list[sbyte2])
+    values: list[SByte2] = field(default_factory=list[SByte2])
 
 
 @dataclass
 class FieldNullableSbyte2(Member):
-    """Field containing an optional sbyte2 value."""
+    """Field containing an optional SByte2 value."""
 
-    value: sbyte2 | None = None
+    value: SByte2 | None = None
 
 
 @dataclass
 class FieldShort2(Member):
-    """Field containing a short2 value."""
+    """Field containing a Short2 value."""
 
-    value: short2 | None = None
+    value: Short2 | None = None
 
 
 @dataclass
 class ArrayShort2(Member):
-    """Array of short2 values."""
+    """Array of Short2 values."""
 
-    values: list[short2] = field(default_factory=list[short2])
+    values: list[Short2] = field(default_factory=list[Short2])
 
 
 @dataclass
 class FieldNullableShort2(Member):
-    """Field containing an optional short2 value."""
+    """Field containing an optional Short2 value."""
 
-    value: short2 | None = None
+    value: Short2 | None = None
 
 
 @dataclass
 class FieldInt2(Member):
-    """Field containing an int2 value."""
+    """Field containing an Int2 value."""
 
-    value: int2 | None = None
+    value: Int2 | None = None
 
 
 @dataclass
 class ArrayInt2(Member):
-    """Array of int2 values."""
+    """Array of Int2 values."""
 
-    values: list[int2] = field(default_factory=list[int2])
+    values: list[Int2] = field(default_factory=list[Int2])
 
 
 @dataclass
 class FieldNullableInt2(Member):
-    """Field containing an optional int2 value."""
+    """Field containing an optional Int2 value."""
 
-    value: int2 | None = None
+    value: Int2 | None = None
 
 
 @dataclass
 class FieldLong2(Member):
-    """Field containing a long2 value."""
+    """Field containing a Long2 value."""
 
-    value: long2 | None = None
+    value: Long2 | None = None
 
 
 @dataclass
 class ArrayLong2(Member):
-    """Array of long2 values."""
+    """Array of Long2 values."""
 
-    values: list[long2] = field(default_factory=list[long2])
+    values: list[Long2] = field(default_factory=list[Long2])
 
 
 @dataclass
 class FieldNullableLong2(Member):
-    """Field containing an optional long2 value."""
+    """Field containing an optional Long2 value."""
 
-    value: long2 | None = None
+    value: Long2 | None = None
 
 
 @dataclass
 class FieldBool2(Member):
-    """Field containing a bool2 value."""
+    """Field containing a Bool2 value."""
 
-    value: bool2 | None = None
+    value: Bool2 | None = None
 
 
 @dataclass
 class ArrayBool2(Member):
-    """Array of bool2 values."""
+    """Array of Bool2 values."""
 
-    values: list[bool2] = field(default_factory=list[bool2])
+    values: list[Bool2] = field(default_factory=list[Bool2])
 
 
 @dataclass
 class FieldNullableBool2(Member):
-    """Field containing an optional bool2 value."""
+    """Field containing an optional Bool2 value."""
 
-    value: bool2 | None = None
+    value: Bool2 | None = None
 
 
 # =============================================================================
@@ -719,233 +732,233 @@ class FieldNullableBool2(Member):
 
 @dataclass
 class FieldFloat3(Member):
-    """Field containing a float3 value."""
+    """Field containing a Float3 value."""
 
-    value: float3 | None = None
+    value: Float3 | None = None
 
 
 @dataclass
 class ArrayFloat3(Member):
-    """Array of float3 values."""
+    """Array of Float3 values."""
 
-    values: list[float3] = field(default_factory=list[float3])
+    values: list[Float3] = field(default_factory=list[Float3])
 
 
 @dataclass
 class FieldNullableFloat3(Member):
-    """Field containing an optional float3 value."""
+    """Field containing an optional Float3 value."""
 
-    value: float3 | None = None
+    value: Float3 | None = None
 
 
 @dataclass
 class FieldDouble3(Member):
-    """Field containing a double3 value."""
+    """Field containing a Double3 value."""
 
-    value: double3 | None = None
+    value: Double3 | None = None
 
 
 @dataclass
 class ArrayDouble3(Member):
-    """Array of double3 values."""
+    """Array of Double3 values."""
 
-    values: list[double3] = field(default_factory=list[double3])
+    values: list[Double3] = field(default_factory=list[Double3])
 
 
 @dataclass
 class FieldNullableDouble3(Member):
-    """Field containing an optional double3 value."""
+    """Field containing an optional Double3 value."""
 
-    value: double3 | None = None
+    value: Double3 | None = None
 
 
 @dataclass
 class FieldByte3(Member):
-    """Field containing a byte3 value."""
+    """Field containing a Byte3 value."""
 
-    value: byte3 | None = None
+    value: Byte3 | None = None
 
 
 @dataclass
 class ArrayByte3(Member):
-    """Array of byte3 values."""
+    """Array of Byte3 values."""
 
-    values: list[byte3] = field(default_factory=list[byte3])
+    values: list[Byte3] = field(default_factory=list[Byte3])
 
 
 @dataclass
 class FieldNullableByte3(Member):
-    """Field containing an optional byte3 value."""
+    """Field containing an optional Byte3 value."""
 
-    value: byte3 | None = None
+    value: Byte3 | None = None
 
 
 @dataclass
 class FieldUshort3(Member):
-    """Field containing a ushort3 value."""
+    """Field containing a UShort3 value."""
 
-    value: ushort3 | None = None
+    value: UShort3 | None = None
 
 
 @dataclass
 class ArrayUshort3(Member):
-    """Array of ushort3 values."""
+    """Array of UShort3 values."""
 
-    values: list[ushort3] = field(default_factory=list[ushort3])
+    values: list[UShort3] = field(default_factory=list[UShort3])
 
 
 @dataclass
 class FieldNullableUshort3(Member):
-    """Field containing an optional ushort3 value."""
+    """Field containing an optional UShort3 value."""
 
-    value: ushort3 | None = None
+    value: UShort3 | None = None
 
 
 @dataclass
 class FieldUint3(Member):
-    """Field containing a uint3 value."""
+    """Field containing a UInt3 value."""
 
-    value: uint3 | None = None
+    value: UInt3 | None = None
 
 
 @dataclass
 class ArrayUint3(Member):
-    """Array of uint3 values."""
+    """Array of UInt3 values."""
 
-    values: list[uint3] = field(default_factory=list[uint3])
+    values: list[UInt3] = field(default_factory=list[UInt3])
 
 
 @dataclass
 class FieldNullableUint3(Member):
-    """Field containing an optional uint3 value."""
+    """Field containing an optional UInt3 value."""
 
-    value: uint3 | None = None
+    value: UInt3 | None = None
 
 
 @dataclass
 class FieldUlong3(Member):
-    """Field containing a ulong3 value."""
+    """Field containing a ULong3 value."""
 
-    value: ulong3 | None = None
+    value: ULong3 | None = None
 
 
 @dataclass
 class ArrayUlong3(Member):
-    """Array of ulong3 values."""
+    """Array of ULong3 values."""
 
-    values: list[ulong3] = field(default_factory=list[ulong3])
+    values: list[ULong3] = field(default_factory=list[ULong3])
 
 
 @dataclass
 class FieldNullableUlong3(Member):
-    """Field containing an optional ulong3 value."""
+    """Field containing an optional ULong3 value."""
 
-    value: ulong3 | None = None
+    value: ULong3 | None = None
 
 
 @dataclass
 class FieldSbyte3(Member):
-    """Field containing a sbyte3 value."""
+    """Field containing a SByte3 value."""
 
-    value: sbyte3 | None = None
+    value: SByte3 | None = None
 
 
 @dataclass
 class ArraySbyte3(Member):
-    """Array of sbyte3 values."""
+    """Array of SByte3 values."""
 
-    values: list[sbyte3] = field(default_factory=list[sbyte3])
+    values: list[SByte3] = field(default_factory=list[SByte3])
 
 
 @dataclass
 class FieldNullableSbyte3(Member):
-    """Field containing an optional sbyte3 value."""
+    """Field containing an optional SByte3 value."""
 
-    value: sbyte3 | None = None
+    value: SByte3 | None = None
 
 
 @dataclass
 class FieldShort3(Member):
-    """Field containing a short3 value."""
+    """Field containing a Short3 value."""
 
-    value: short3 | None = None
+    value: Short3 | None = None
 
 
 @dataclass
 class ArrayShort3(Member):
-    """Array of short3 values."""
+    """Array of Short3 values."""
 
-    values: list[short3] = field(default_factory=list[short3])
+    values: list[Short3] = field(default_factory=list[Short3])
 
 
 @dataclass
 class FieldNullableShort3(Member):
-    """Field containing an optional short3 value."""
+    """Field containing an optional Short3 value."""
 
-    value: short3 | None = None
+    value: Short3 | None = None
 
 
 @dataclass
 class FieldInt3(Member):
-    """Field containing an int3 value."""
+    """Field containing an Int3 value."""
 
-    value: int3 | None = None
+    value: Int3 | None = None
 
 
 @dataclass
 class ArrayInt3(Member):
-    """Array of int3 values."""
+    """Array of Int3 values."""
 
-    values: list[int3] = field(default_factory=list[int3])
+    values: list[Int3] = field(default_factory=list[Int3])
 
 
 @dataclass
 class FieldNullableInt3(Member):
-    """Field containing an optional int3 value."""
+    """Field containing an optional Int3 value."""
 
-    value: int3 | None = None
+    value: Int3 | None = None
 
 
 @dataclass
 class FieldLong3(Member):
-    """Field containing a long3 value."""
+    """Field containing a Long3 value."""
 
-    value: long3 | None = None
+    value: Long3 | None = None
 
 
 @dataclass
 class ArrayLong3(Member):
-    """Array of long3 values."""
+    """Array of Long3 values."""
 
-    values: list[long3] = field(default_factory=list[long3])
+    values: list[Long3] = field(default_factory=list[Long3])
 
 
 @dataclass
 class FieldNullableLong3(Member):
-    """Field containing an optional long3 value."""
+    """Field containing an optional Long3 value."""
 
-    value: long3 | None = None
+    value: Long3 | None = None
 
 
 @dataclass
 class FieldBool3(Member):
-    """Field containing a bool3 value."""
+    """Field containing a Bool3 value."""
 
-    value: bool3 | None = None
+    value: Bool3 | None = None
 
 
 @dataclass
 class ArrayBool3(Member):
-    """Array of bool3 values."""
+    """Array of Bool3 values."""
 
-    values: list[bool3] = field(default_factory=list[bool3])
+    values: list[Bool3] = field(default_factory=list[Bool3])
 
 
 @dataclass
 class FieldNullableBool3(Member):
-    """Field containing an optional bool3 value."""
+    """Field containing an optional Bool3 value."""
 
-    value: bool3 | None = None
+    value: Bool3 | None = None
 
 
 # =============================================================================
@@ -955,233 +968,233 @@ class FieldNullableBool3(Member):
 
 @dataclass
 class FieldFloat4(Member):
-    """Field containing a float4 value."""
+    """Field containing a Float4 value."""
 
-    value: float4 | None = None
+    value: Float4 | None = None
 
 
 @dataclass
 class ArrayFloat4(Member):
-    """Array of float4 values."""
+    """Array of Float4 values."""
 
-    values: list[float4] = field(default_factory=list[float4])
+    values: list[Float4] = field(default_factory=list[Float4])
 
 
 @dataclass
 class FieldNullableFloat4(Member):
-    """Field containing an optional float4 value."""
+    """Field containing an optional Float4 value."""
 
-    value: float4 | None = None
+    value: Float4 | None = None
 
 
 @dataclass
 class FieldDouble4(Member):
-    """Field containing a double4 value."""
+    """Field containing a Double4 value."""
 
-    value: double4 | None = None
+    value: Double4 | None = None
 
 
 @dataclass
 class ArrayDouble4(Member):
-    """Array of double4 values."""
+    """Array of Double4 values."""
 
-    values: list[double4] = field(default_factory=list[double4])
+    values: list[Double4] = field(default_factory=list[Double4])
 
 
 @dataclass
 class FieldNullableDouble4(Member):
-    """Field containing an optional double4 value."""
+    """Field containing an optional Double4 value."""
 
-    value: double4 | None = None
+    value: Double4 | None = None
 
 
 @dataclass
 class FieldByte4(Member):
-    """Field containing a byte4 value."""
+    """Field containing a Byte4 value."""
 
-    value: byte4 | None = None
+    value: Byte4 | None = None
 
 
 @dataclass
 class ArrayByte4(Member):
-    """Array of byte4 values."""
+    """Array of Byte4 values."""
 
-    values: list[byte4] = field(default_factory=list[byte4])
+    values: list[Byte4] = field(default_factory=list[Byte4])
 
 
 @dataclass
 class FieldNullableByte4(Member):
-    """Field containing an optional byte4 value."""
+    """Field containing an optional Byte4 value."""
 
-    value: byte4 | None = None
+    value: Byte4 | None = None
 
 
 @dataclass
 class FieldUshort4(Member):
-    """Field containing a ushort4 value."""
+    """Field containing a UShort4 value."""
 
-    value: ushort4 | None = None
+    value: UShort4 | None = None
 
 
 @dataclass
 class ArrayUshort4(Member):
-    """Array of ushort4 values."""
+    """Array of UShort4 values."""
 
-    values: list[ushort4] = field(default_factory=list[ushort4])
+    values: list[UShort4] = field(default_factory=list[UShort4])
 
 
 @dataclass
 class FieldNullableUshort4(Member):
-    """Field containing an optional ushort4 value."""
+    """Field containing an optional UShort4 value."""
 
-    value: ushort4 | None = None
+    value: UShort4 | None = None
 
 
 @dataclass
 class FieldUint4(Member):
-    """Field containing a uint4 value."""
+    """Field containing a UInt4 value."""
 
-    value: uint4 | None = None
+    value: UInt4 | None = None
 
 
 @dataclass
 class ArrayUint4(Member):
-    """Array of uint4 values."""
+    """Array of UInt4 values."""
 
-    values: list[uint4] = field(default_factory=list[uint4])
+    values: list[UInt4] = field(default_factory=list[UInt4])
 
 
 @dataclass
 class FieldNullableUint4(Member):
-    """Field containing an optional uint4 value."""
+    """Field containing an optional UInt4 value."""
 
-    value: uint4 | None = None
+    value: UInt4 | None = None
 
 
 @dataclass
 class FieldUlong4(Member):
-    """Field containing a ulong4 value."""
+    """Field containing a ULong4 value."""
 
-    value: ulong4 | None = None
+    value: ULong4 | None = None
 
 
 @dataclass
 class ArrayUlong4(Member):
-    """Array of ulong4 values."""
+    """Array of ULong4 values."""
 
-    values: list[ulong4] = field(default_factory=list[ulong4])
+    values: list[ULong4] = field(default_factory=list[ULong4])
 
 
 @dataclass
 class FieldNullableUlong4(Member):
-    """Field containing an optional ulong4 value."""
+    """Field containing an optional ULong4 value."""
 
-    value: ulong4 | None = None
+    value: ULong4 | None = None
 
 
 @dataclass
 class FieldSbyte4(Member):
-    """Field containing a sbyte4 value."""
+    """Field containing a SByte4 value."""
 
-    value: sbyte4 | None = None
+    value: SByte4 | None = None
 
 
 @dataclass
 class ArraySbyte4(Member):
-    """Array of sbyte4 values."""
+    """Array of SByte4 values."""
 
-    values: list[sbyte4] = field(default_factory=list[sbyte4])
+    values: list[SByte4] = field(default_factory=list[SByte4])
 
 
 @dataclass
 class FieldNullableSbyte4(Member):
-    """Field containing an optional sbyte4 value."""
+    """Field containing an optional SByte4 value."""
 
-    value: sbyte4 | None = None
+    value: SByte4 | None = None
 
 
 @dataclass
 class FieldShort4(Member):
-    """Field containing a short4 value."""
+    """Field containing a Short4 value."""
 
-    value: short4 | None = None
+    value: Short4 | None = None
 
 
 @dataclass
 class ArrayShort4(Member):
-    """Array of short4 values."""
+    """Array of Short4 values."""
 
-    values: list[short4] = field(default_factory=list[short4])
+    values: list[Short4] = field(default_factory=list[Short4])
 
 
 @dataclass
 class FieldNullableShort4(Member):
-    """Field containing an optional short4 value."""
+    """Field containing an optional Short4 value."""
 
-    value: short4 | None = None
+    value: Short4 | None = None
 
 
 @dataclass
 class FieldInt4(Member):
-    """Field containing an int4 value."""
+    """Field containing an Int4 value."""
 
-    value: int4 | None = None
+    value: Int4 | None = None
 
 
 @dataclass
 class ArrayInt4(Member):
-    """Array of int4 values."""
+    """Array of Int4 values."""
 
-    values: list[int4] = field(default_factory=list[int4])
+    values: list[Int4] = field(default_factory=list[Int4])
 
 
 @dataclass
 class FieldNullableInt4(Member):
-    """Field containing an optional int4 value."""
+    """Field containing an optional Int4 value."""
 
-    value: int4 | None = None
+    value: Int4 | None = None
 
 
 @dataclass
 class FieldLong4(Member):
-    """Field containing a long4 value."""
+    """Field containing a Long4 value."""
 
-    value: long4 | None = None
+    value: Long4 | None = None
 
 
 @dataclass
 class ArrayLong4(Member):
-    """Array of long4 values."""
+    """Array of Long4 values."""
 
-    values: list[long4] = field(default_factory=list[long4])
+    values: list[Long4] = field(default_factory=list[Long4])
 
 
 @dataclass
 class FieldNullableLong4(Member):
-    """Field containing an optional long4 value."""
+    """Field containing an optional Long4 value."""
 
-    value: long4 | None = None
+    value: Long4 | None = None
 
 
 @dataclass
 class FieldBool4(Member):
-    """Field containing a bool4 value."""
+    """Field containing a Bool4 value."""
 
-    value: bool4 | None = None
+    value: Bool4 | None = None
 
 
 @dataclass
 class ArrayBool4(Member):
-    """Array of bool4 values."""
+    """Array of Bool4 values."""
 
-    values: list[bool4] = field(default_factory=list[bool4])
+    values: list[Bool4] = field(default_factory=list[Bool4])
 
 
 @dataclass
 class FieldNullableBool4(Member):
-    """Field containing an optional bool4 value."""
+    """Field containing an optional Bool4 value."""
 
-    value: bool4 | None = None
+    value: Bool4 | None = None
 
 
 # =============================================================================
@@ -1191,44 +1204,44 @@ class FieldNullableBool4(Member):
 
 @dataclass
 class FieldFloatQ(Member):
-    """Field containing a floatQ (quaternion) value."""
+    """Field containing a FloatQ (quaternion) value."""
 
-    value: floatQ | None = None
+    value: FloatQ | None = None
 
 
 @dataclass
 class ArrayFloatQ(Member):
-    """Array of floatQ values."""
+    """Array of FloatQ values."""
 
-    values: list[floatQ] = field(default_factory=list[floatQ])
+    values: list[FloatQ] = field(default_factory=list[FloatQ])
 
 
 @dataclass
 class FieldNullableFloatQ(Member):
-    """Field containing an optional floatQ value."""
+    """Field containing an optional FloatQ value."""
 
-    value: floatQ | None = None
+    value: FloatQ | None = None
 
 
 @dataclass
 class FieldDoubleQ(Member):
-    """Field containing a doubleQ (quaternion) value."""
+    """Field containing a DoubleQ (quaternion) value."""
 
-    value: doubleQ | None = None
+    value: DoubleQ | None = None
 
 
 @dataclass
 class ArrayDoubleQ(Member):
-    """Array of doubleQ values."""
+    """Array of DoubleQ values."""
 
-    values: list[doubleQ] = field(default_factory=list[doubleQ])
+    values: list[DoubleQ] = field(default_factory=list[DoubleQ])
 
 
 @dataclass
 class FieldNullableDoubleQ(Member):
-    """Field containing an optional doubleQ value."""
+    """Field containing an optional DoubleQ value."""
 
-    value: doubleQ | None = None
+    value: DoubleQ | None = None
 
 
 # =============================================================================
@@ -1238,125 +1251,144 @@ class FieldNullableDoubleQ(Member):
 
 @dataclass
 class FieldFloat2x2(Member):
-    """Field containing a float2x2 matrix value."""
+    """Field containing a Float2x2 matrix value."""
 
-    value: float2x2 | None = None
+    value: Float2x2 | None = None
 
 
 @dataclass
 class ArrayFloat2x2(Member):
-    """Array of float2x2 values."""
+    """Array of Float2x2 values."""
 
-    values: list[float2x2] = field(default_factory=list[float2x2])
+    values: list[Float2x2] = field(default_factory=list[Float2x2])
 
 
 @dataclass
 class FieldNullableFloat2x2(Member):
-    """Field containing an optional float2x2 value."""
+    """Field containing an optional Float2x2 value."""
 
-    value: float2x2 | None = None
+    value: Float2x2 | None = None
 
 
 @dataclass
 class FieldDouble2x2(Member):
-    """Field containing a double2x2 matrix value."""
+    """Field containing a Double2x2 matrix value."""
 
-    value: double2x2 | None = None
+    value: Double2x2 | None = None
 
 
 @dataclass
 class ArrayDouble2x2(Member):
-    """Array of double2x2 values."""
+    """Array of Double2x2 values."""
 
-    values: list[double2x2] = field(default_factory=list[double2x2])
+    values: list[Double2x2] = field(default_factory=list[Double2x2])
 
 
 @dataclass
 class FieldNullableDouble2x2(Member):
-    """Field containing an optional double2x2 value."""
+    """Field containing an optional Double2x2 value."""
 
-    value: double2x2 | None = None
+    value: Double2x2 | None = None
 
 
 @dataclass
 class FieldFloat3x3(Member):
-    """Field containing a float3x3 matrix value."""
+    """Field containing a Float3x3 matrix value."""
 
-    value: float3x3 | None = None
+    value: Float3x3 | None = None
 
 
 @dataclass
 class ArrayFloat3x3(Member):
-    """Array of float3x3 values."""
+    """Array of Float3x3 values."""
 
-    values: list[float3x3] = field(default_factory=list[float3x3])
+    values: list[Float3x3] = field(default_factory=list[Float3x3])
 
 
 @dataclass
 class FieldNullableFloat3x3(Member):
-    """Field containing an optional float3x3 value."""
+    """Field containing an optional Float3x3 value."""
 
-    value: float3x3 | None = None
+    value: Float3x3 | None = None
 
 
 @dataclass
 class FieldDouble3x3(Member):
-    """Field containing a double3x3 matrix value."""
+    """Field containing a Double3x3 matrix value."""
 
-    value: double3x3 | None = None
+    value: Double3x3 | None = None
 
 
 @dataclass
 class ArrayDouble3x3(Member):
-    """Array of double3x3 values."""
+    """Array of Double3x3 values."""
 
-    values: list[double3x3] = field(default_factory=list[double3x3])
+    values: list[Double3x3] = field(default_factory=list[Double3x3])
 
 
 @dataclass
 class FieldNullableDouble3x3(Member):
-    """Field containing an optional double3x3 value."""
+    """Field containing an optional Double3x3 value."""
 
-    value: double3x3 | None = None
+    value: Double3x3 | None = None
 
 
 @dataclass
 class FieldFloat4x4(Member):
-    """Field containing a float4x4 matrix value."""
+    """Field containing a Float4x4 matrix value."""
 
-    value: float4x4 | None = None
+    value: Float4x4 | None = None
 
 
 @dataclass
 class ArrayFloat4x4(Member):
-    """Array of float4x4 values."""
+    """Array of Float4x4 values."""
 
-    values: list[float4x4] = field(default_factory=list[float4x4])
+    values: list[Float4x4] = field(default_factory=list[Float4x4])
 
 
 @dataclass
 class FieldNullableFloat4x4(Member):
-    """Field containing an optional float4x4 value."""
+    """Field containing an optional Float4x4 value."""
 
-    value: float4x4 | None = None
+    value: Float4x4 | None = None
 
 
 @dataclass
 class FieldDouble4x4(Member):
-    """Field containing a double4x4 matrix value."""
+    """Field containing a Double4x4 matrix value."""
 
-    value: double4x4 | None = None
+    value: Double4x4 | None = None
 
 
 @dataclass
 class ArrayDouble4x4(Member):
-    """Array of double4x4 values."""
+    """Array of Double4x4 values."""
 
-    values: list[double4x4] = field(default_factory=list[double4x4])
+    values: list[Double4x4] = field(default_factory=list[Double4x4])
 
 
 @dataclass
 class FieldNullableDouble4x4(Member):
-    """Field containing an optional double4x4 value."""
+    """Field containing an optional Double4x4 value."""
 
-    value: double4x4 | None = None
+    value: Double4x4 | None = None
+
+
+# =============================================================================
+# Geometry Fields
+# =============================================================================
+
+
+@dataclass
+class FieldRect(Member):
+    """Field containing a Rect value."""
+
+    value: Rect | None = None
+
+
+@dataclass
+class FieldBoundingBox(Member):
+    """Field containing a BoundingBox value."""
+
+    value: BoundingBox | None = None

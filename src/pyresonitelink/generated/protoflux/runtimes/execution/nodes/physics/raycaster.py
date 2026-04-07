@@ -1,0 +1,256 @@
+"""Generated component: Raycaster."""
+
+import numpy as np
+
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
+from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
+from pyresonitelink.generated._types.slot import Slot
+from pyresonitelink.generated._types.iexecution_node import IExecutionNode
+from pyresonitelink.generated._types.inode import INode
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.iobject_root import IObjectRoot
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
+    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.Raycaster.
+
+    Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
+    """
+
+    COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.Raycaster"
+
+    def __init__(self, origin: str | INodeValueOutput[primitives.Float3] | None = None, direction: str | INodeValueOutput[primitives.Float3] | None = None, max_distance: str | INodeValueOutput[np.float32] | None = None, hit_triggers: str | INodeValueOutput[bool] | None = None, users_only: str | INodeValueOutput[bool] | None = None, root: str | INodeObjectOutput[Slot] | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            origin: Initial value for Origin.
+            direction: Initial value for Direction.
+            max_distance: Initial value for MaxDistance.
+            hit_triggers: Initial value for HitTriggers.
+            users_only: Initial value for UsersOnly.
+            root: Initial value for Root.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if origin is not None:
+            self.origin = origin
+        if direction is not None:
+            self.direction = direction
+        if max_distance is not None:
+            self.max_distance = max_distance
+        if hit_triggers is not None:
+            self.hit_triggers = hit_triggers
+        if users_only is not None:
+            self.users_only = users_only
+        if root is not None:
+            self.root = root
+
+    @property
+    def origin(self) -> str | None:
+        """Target ID of the Origin reference (targets INodeValueOutput[primitives.Float3])."""
+        member = self.get_member("Origin")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @origin.setter
+    def origin(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
+        """Set the Origin reference by target ID or INodeValueOutput[primitives.Float3] instance."""
+        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        member = self.get_member("Origin")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Origin",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<float3>'),
+            )
+
+    @property
+    def direction(self) -> str | None:
+        """Target ID of the Direction reference (targets INodeValueOutput[primitives.Float3])."""
+        member = self.get_member("Direction")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @direction.setter
+    def direction(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
+        """Set the Direction reference by target ID or INodeValueOutput[primitives.Float3] instance."""
+        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        member = self.get_member("Direction")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Direction",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<float3>'),
+            )
+
+    @property
+    def max_distance(self) -> str | None:
+        """Target ID of the MaxDistance reference (targets INodeValueOutput[np.float32])."""
+        member = self.get_member("MaxDistance")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @max_distance.setter
+    def max_distance(self, target: str | INodeValueOutput[np.float32] | None) -> None:
+        """Set the MaxDistance reference by target ID or INodeValueOutput[np.float32] instance."""
+        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        member = self.get_member("MaxDistance")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "MaxDistance",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<float>'),
+            )
+
+    @property
+    def hit_triggers(self) -> str | None:
+        """Target ID of the HitTriggers reference (targets INodeValueOutput[bool])."""
+        member = self.get_member("HitTriggers")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @hit_triggers.setter
+    def hit_triggers(self, target: str | INodeValueOutput[bool] | None) -> None:
+        """Set the HitTriggers reference by target ID or INodeValueOutput[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        member = self.get_member("HitTriggers")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "HitTriggers",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<bool>'),
+            )
+
+    @property
+    def users_only(self) -> str | None:
+        """Target ID of the UsersOnly reference (targets INodeValueOutput[bool])."""
+        member = self.get_member("UsersOnly")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @users_only.setter
+    def users_only(self, target: str | INodeValueOutput[bool] | None) -> None:
+        """Set the UsersOnly reference by target ID or INodeValueOutput[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        member = self.get_member("UsersOnly")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "UsersOnly",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<bool>'),
+            )
+
+    @property
+    def root(self) -> str | None:
+        """Target ID of the Root reference (targets INodeObjectOutput[Slot])."""
+        member = self.get_member("Root")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @root.setter
+    def root(self, target: str | INodeObjectOutput[Slot] | None) -> None:
+        """Set the Root reference by target ID or INodeObjectOutput[Slot] instance."""
+        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        member = self.get_member("Root")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Root",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeObjectOutput<[FrooxEngine]FrooxEngine.Slot>'),
+            )
+
+    @property
+    def has_hit(self) -> members.EmptyElement | None:
+        """The HasHit member."""
+        member = self.get_member("HasHit")
+        if isinstance(member, members.EmptyElement):
+            return member
+        return None
+
+    @has_hit.setter
+    def has_hit(self, value: members.EmptyElement) -> None:
+        """Set the HasHit member."""
+        self.set_member("HasHit", value)
+
+    @property
+    def hit_collider(self) -> members.EmptyElement | None:
+        """The HitCollider member."""
+        member = self.get_member("HitCollider")
+        if isinstance(member, members.EmptyElement):
+            return member
+        return None
+
+    @hit_collider.setter
+    def hit_collider(self, value: members.EmptyElement) -> None:
+        """Set the HitCollider member."""
+        self.set_member("HitCollider", value)
+
+    @property
+    def hit_distance(self) -> members.EmptyElement | None:
+        """The HitDistance member."""
+        member = self.get_member("HitDistance")
+        if isinstance(member, members.EmptyElement):
+            return member
+        return None
+
+    @hit_distance.setter
+    def hit_distance(self, value: members.EmptyElement) -> None:
+        """Set the HitDistance member."""
+        self.set_member("HitDistance", value)
+
+    @property
+    def hit_point(self) -> members.EmptyElement | None:
+        """The HitPoint member."""
+        member = self.get_member("HitPoint")
+        if isinstance(member, members.EmptyElement):
+            return member
+        return None
+
+    @hit_point.setter
+    def hit_point(self, value: members.EmptyElement) -> None:
+        """Set the HitPoint member."""
+        self.set_member("HitPoint", value)
+
+    @property
+    def hit_normal(self) -> members.EmptyElement | None:
+        """The HitNormal member."""
+        member = self.get_member("HitNormal")
+        if isinstance(member, members.EmptyElement):
+            return member
+        return None
+
+    @hit_normal.setter
+    def hit_normal(self, value: members.EmptyElement) -> None:
+        """Set the HitNormal member."""
+        self.set_member("HitNormal", value)
+
+    @property
+    def hit_triangle_index(self) -> members.EmptyElement | None:
+        """The HitTriangleIndex member."""
+        member = self.get_member("HitTriangleIndex")
+        if isinstance(member, members.EmptyElement):
+            return member
+        return None
+
+    @hit_triangle_index.setter
+    def hit_triangle_index(self, value: members.EmptyElement) -> None:
+        """Set the HitTriangleIndex member."""
+        self.set_member("HitTriangleIndex", value)
+

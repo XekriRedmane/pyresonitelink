@@ -1,18 +1,20 @@
 """Example showing connecting and getting root slot data."""
+
+import asyncio
 import sys
 
 from pyresonitelink import client
-from pyresonitelink.data import messages
 
 
-def main(port: int):
+async def main(port: int) -> None:
+    """Connect and fetch the root slot."""
     resolink = client.Client()
-    resolink.sync_connect(port)
+    await resolink.connect(port)
     print("Connected, getting root slot...")
-    slot = resolink.get_slot(messages.GetSlot(slotId="Root"))
+    slot = await resolink.get_slot(slotId="Root")
     print(slot)
-    resolink.sync_close()
+    await resolink.close()
 
 
 if __name__ == "__main__":
-    main(int(sys.argv[1]))
+    asyncio.run(main(int(sys.argv[1])))
