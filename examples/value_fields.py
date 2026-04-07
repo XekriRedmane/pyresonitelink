@@ -13,6 +13,7 @@ import sys
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
 from pyresonitelink.components.data import ValueField
 
 
@@ -24,9 +25,9 @@ async def main(port: int) -> None:
 
     # Create a slot to hold our components
     slot_resp = await resolink.add_slot_to_root(name="ValueField Examples")
-    slot_id = slot_resp.entityId
-    assert slot_id is not None
-    print(f"Created slot: {slot_id}\n")
+    assert slot_resp.entityId is not None
+    slot = workers.Slot(id=slot_resp.entityId)
+    print(f"Created slot: {slot.id}\n")
 
     # --- Parameterize ValueField with different types ---
 
@@ -43,7 +44,7 @@ async def main(port: int) -> None:
     # --- Create and add a float ValueField ---
     print("\n--- Float ValueField ---")
     vf = FloatField()
-    await vf.add_to_slot(resolink, slot_id)
+    await vf.add_to_slot(resolink, slot)
     print(f"Added component: {vf.id}")
     print(f"Initial value: {vf.value}")
 
@@ -58,7 +59,7 @@ async def main(port: int) -> None:
     # --- Create a Float3 ValueField ---
     print("\n--- Float3 ValueField ---")
     vf3 = Vec3Field()
-    await vf3.add_to_slot(resolink, slot_id)
+    await vf3.add_to_slot(resolink, slot)
     print(f"Added component: {vf3.id}")
     print(f"Initial value: {vf3.value}")
 
@@ -78,7 +79,7 @@ async def main(port: int) -> None:
     print(f"Value:          {vf_auto.value}")
 
     # --- Clean up ---
-    await resolink.remove_slot(slotId=slot_id)
+    await resolink.remove_slot(slot=slot)
     print("\nCleaned up.")
     await resolink.close()
 

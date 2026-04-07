@@ -11,7 +11,7 @@ async def main(port: int) -> None:
     resolink = client.Client()
     await resolink.connect(port)
     print("Connected, getting root slot...")
-    slot = await resolink.get_slot(slotId="Root")
+    slot = await resolink.get_slot(slot="Root")
     print(slot)
     await resolink.close()
 

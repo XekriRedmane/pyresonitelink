@@ -47,4 +47,4 @@ async def test_slot_id(
     )
     assert isinstance(response, responses.NewEntityId)
     yield slot_id
-    await resolink.remove_slot(slotId=slot_id, debug=True)
+    await resolink.remove_slot(slot=slot_id, debug=True)

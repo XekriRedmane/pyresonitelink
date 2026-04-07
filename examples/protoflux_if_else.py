@@ -52,29 +52,28 @@ async def main(port: int) -> None:
     print("Connected.\n")
 
     # Delete any leftover slot from a previous run
-    root = await resolink.get_slot(slotId="Root", depth=1)
+    root = await resolink.get_slot(slot="Root", depth=1)
     assert root.data is not None
     for child in root.data.children:
         if child.name and child.name.value == "If-Else Example":
-            assert child.id is not None
             print(f"Deleting old slot {child.id}...")
-            await resolink.remove_slot(slotId=child.id)
+            await resolink.remove_slot(slot=child)
 
     slot_resp = await resolink.add_slot_to_root(name="If-Else Example")
-    slot_id = slot_resp.entityId
-    assert slot_id is not None
-    print(f"Created slot: {slot_id}\n")
+    assert slot_resp.entityId is not None
+    slot = workers.Slot(id=slot_resp.entityId)
+    print(f"Created slot: {slot.id}\n")
 
     # ===================================================================
     # Data layer: DynamicVariableSpace + DynamicValueVariable<float> "z"
     # ===================================================================
 
     space = DynamicVariableSpace()
-    await space.add_to_slot(resolink, slot_id)
+    await space.add_to_slot(resolink, slot)
     print(f"DynamicVariableSpace               -> {space.id}")
 
     z_var = FloatDynVar(variable_name="z")
-    await z_var.add_to_slot(resolink, slot_id)
+    await z_var.add_to_slot(resolink, slot)
     print(f"DynamicValueVariable 'z'           -> {z_var.id}")
 
     # ===================================================================
@@ -83,27 +82,27 @@ async def main(port: int) -> None:
 
     # x: input value (we'll change this between tests)
     x = FloatInput(primitives.Float(2.0))
-    await x.add_to_slot(resolink, slot_id)
+    await x.add_to_slot(resolink, slot)
     print(f"x (ValueInput<float>)              -> {x.id}")
 
     # Constant 3
     three = FloatInput(primitives.Float(3.0))
-    await three.add_to_slot(resolink, slot_id)
+    await three.add_to_slot(resolink, slot)
     print(f"3 (ValueInput<float>)              -> {three.id}")
 
     # x < 3
     less_than = FloatLessThan(a=x, b=three)
-    await less_than.add_to_slot(resolink, slot_id)
+    await less_than.add_to_slot(resolink, slot)
     print(f"x < 3 (ValueLessThan<float>)       -> {less_than.id}")
 
     # x + 3
     add = FloatAdd(a=x, b=three)
-    await add.add_to_slot(resolink, slot_id)
+    await add.add_to_slot(resolink, slot)
     print(f"x + 3 (ValueAdd<float>)            -> {add.id}")
 
     # x - 3
     sub = FloatSub(a=x, b=three)
-    await sub.add_to_slot(resolink, slot_id)
+    await sub.add_to_slot(resolink, slot)
     print(f"x - 3 (ValueSub<float>)            -> {sub.id}")
 
     # ===================================================================
@@ -111,13 +110,13 @@ async def main(port: int) -> None:
     # ===================================================================
 
     # RefObjectInput<Slot> pointing at our slot
-    slot_ref = SlotRef(target=slot_id)
-    await slot_ref.add_to_slot(resolink, slot_id)
+    slot_ref = SlotRef(target=slot)
+    await slot_ref.add_to_slot(resolink, slot)
     print(f"slot_ref (RefObjectInput<Slot>)     -> {slot_ref.id}")
 
     # ValueObjectInput<string> = "z"  (the dynamic variable path)
     path = StringInput(value="z")
-    await path.add_to_slot(resolink, slot_id)
+    await path.add_to_slot(resolink, slot)
     print(f"path 'z' (ValueObjectInput<string>) -> {path.id}")
 
     # ===================================================================
@@ -128,14 +127,14 @@ async def main(port: int) -> None:
     write_true = FloatWrite(
         target=slot_ref.id, path=path.id, value=add.id,
     )
-    await write_true.add_to_slot(resolink, slot_id)
+    await write_true.add_to_slot(resolink, slot)
     print(f"write_true (WriteDynVar<float>)     -> {write_true.id}")
 
     # write_false: z = x - 3
     write_false = FloatWrite(
         target=slot_ref.id, path=path.id, value=sub.id,
     )
-    await write_false.add_to_slot(resolink, slot_id)
+    await write_false.add_to_slot(resolink, slot)
     print(f"write_false (WriteDynVar<float>)    -> {write_false.id}")
 
     # If node: branches impulse based on x < 3
@@ -144,12 +143,12 @@ async def main(port: int) -> None:
         on_true=write_true.id,
         on_false=write_false.id,
     )
-    await if_node.add_to_slot(resolink, slot_id)
+    await if_node.add_to_slot(resolink, slot)
     print(f"if (If)                            -> {if_node.id}")
 
     # Update: fires every frame -> If
     update = Update(on_update=if_node.id)
-    await update.add_to_slot(resolink, slot_id)
+    await update.add_to_slot(resolink, slot)
     print(f"trigger (Update)                   -> {update.id}")
 
     # ===================================================================
@@ -183,7 +182,7 @@ async def main(port: int) -> None:
     print(f"Test 3: x=3, z={z3} (expected 0.0)")
 
     # Clean up
-    await resolink.remove_slot(slotId=slot_id)
+    await resolink.remove_slot(slot=slot)
     print("\nCleaned up.")
     await resolink.close()
 

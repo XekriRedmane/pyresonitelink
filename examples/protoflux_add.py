@@ -25,6 +25,7 @@ import time
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
 from pyresonitelink.components.data import ValueField
 from pyresonitelink.protoflux.core import ValueDisplay, ValueInput
 from pyresonitelink.protoflux.operators import ValueAdd
@@ -43,9 +44,9 @@ async def main(port: int) -> None:
 
     # Create a slot for the graph
     slot_resp = await resolink.add_slot_to_root(name="ProtoFlux Add Example")
-    slot_id = slot_resp.entityId
-    assert slot_id is not None
-    print(f"Created slot: {slot_id}\n")
+    assert slot_resp.entityId is not None
+    slot = workers.Slot(id=slot_resp.entityId)
+    print(f"Created slot: {slot.id}\n")
 
     # --- Build the computation graph ---
 
@@ -53,30 +54,30 @@ async def main(port: int) -> None:
     input_10 = FloatInput(primitives.Float(10.0))
     input_20 = FloatInput(primitives.Float(20.0))
     input_5 = FloatInput(primitives.Float(5.0))
-    await input_10.add_to_slot(resolink, slot_id)
-    await input_20.add_to_slot(resolink, slot_id)
-    await input_5.add_to_slot(resolink, slot_id)
+    await input_10.add_to_slot(resolink, slot)
+    await input_20.add_to_slot(resolink, slot)
+    await input_5.add_to_slot(resolink, slot)
     print(f"Input 10 -> {input_10.id}")
     print(f"Input 20 -> {input_20.id}")
     print(f"Input  5 -> {input_5.id}")
 
     # First add: 10 + 20
     add1 = FloatAdd(a=input_10.id, b=input_20.id)
-    await add1.add_to_slot(resolink, slot_id)
+    await add1.add_to_slot(resolink, slot)
     print(f"\nAdd1 (10 + 20) -> {add1.id}")
 
     # Second add: chain Add1's output with input 5
     # ValueAdd implements INodeValueOutput<float>, so its ID can be
     # used as an input reference for another ValueAdd node.
     add2 = FloatAdd(a=add1.id, b=input_5.id)
-    await add2.add_to_slot(resolink, slot_id)
+    await add2.add_to_slot(resolink, slot)
     print(f"Add2 ((10+20) + 5) -> {add2.id}")
 
     # --- Read the computed result ---
 
     # Create a ValueField<float> to receive the output
     result_field = FloatField()
-    await result_field.add_to_slot(resolink, slot_id)
+    await result_field.add_to_slot(resolink, slot)
 
     # Wire a ValueDisplay: reads from Add2, writes to the result field.
     # The ValueDisplay._value reference needs the **member ID** of the
@@ -85,7 +86,7 @@ async def main(port: int) -> None:
     assert value_member is not None
 
     display = FloatDisplay(input_=add2.id, value=value_member.id)
-    await display.add_to_slot(resolink, slot_id)
+    await display.add_to_slot(resolink, slot)
     print(f"\nValueDisplay {display.id}:")
     print(f"  Input  -> {add2.id} (Add2 output)")
     print(f"  _value -> {value_member.id} (result field member)")
@@ -99,7 +100,7 @@ async def main(port: int) -> None:
     print(f"Expected: (10 + 20) + 5 = 35")
 
     # Clean up
-    await resolink.remove_slot(slotId=slot_id)
+    await resolink.remove_slot(slot=slot)
     print("\nCleaned up.")
     await resolink.close()
 

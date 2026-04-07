@@ -16,6 +16,7 @@ import asyncio
 import sys
 
 from pyresonitelink import client
+from pyresonitelink.data import workers
 from pyresonitelink.components.audio import AudioClipPlayer
 
 
@@ -29,13 +30,13 @@ async def main(port: int) -> None:
     slot_resp = await resolink.add_slot_to_root(
         name="AudioClipPlayer Example",
     )
-    slot_id = slot_resp.entityId
-    assert slot_id is not None
-    print(f"Created slot: {slot_id}\n")
+    assert slot_resp.entityId is not None
+    slot = workers.Slot(id=slot_resp.entityId)
+    print(f"Created slot: {slot.id}\n")
 
     # --- Create an AudioClipPlayer ---
     player = AudioClipPlayer()
-    await player.add_to_slot(resolink, slot_id)
+    await player.add_to_slot(resolink, slot)
     print(f"Component type: {player.COMPONENT_TYPE}")
     print(f"Added component: {player.id}")
 
@@ -70,7 +71,7 @@ async def main(port: int) -> None:
     print(f"\nSet clip to: {player.clip}")
 
     # --- Clean up ---
-    await resolink.remove_slot(slotId=slot_id)
+    await resolink.remove_slot(slot=slot)
     print("\nCleaned up.")
     await resolink.close()
 

@@ -125,10 +125,10 @@ class Client:
 
         # Hacky fix for first request fails.
         try:
-            await self.get_slot(slotId="Root", depth=0)
+            await self.get_slot(slot="Root", depth=0)
         except websockets.exceptions.ConnectionClosedError:
             self._websocket = await websockets.connect(uri, max_size=max_size)
-            await self.get_slot(slotId="Root", depth=0)
+            await self.get_slot(slot="Root", depth=0)
 
     def sync_connect(
         self,
@@ -229,7 +229,7 @@ class Client:
 
     async def get_slot(
         self,
-        slotId: str,
+        slot: str | workers.Slot,
         depth: int = 0,
         includeComponentData: bool = False,
         debug: bool = False,
@@ -237,14 +237,18 @@ class Client:
         """Fetch slot data.
 
         Args:
-            slotId: ID of the slot. Use ``"Root"`` for the root slot.
+            slot: The slot to fetch — either a slot ID string, or a
+                ``Slot`` instance (whose ``id`` is used).  Use
+                ``"Root"`` for the root slot.
             depth: Hierarchy depth (0=self, 1=children, -1=all).
             includeComponentData: Whether to include full component data.
             debug: Print request/response JSON.
         """
+        slot_id = slot.id if isinstance(slot, workers.Slot) else slot
+        assert slot_id is not None, "Slot has no ID"
         return await self.send_message(
             messages.GetSlot(
-                slotId=slotId, depth=depth,
+                slotId=slot_id, depth=depth,
                 includeComponentData=includeComponentData,
             ),
             responses.SlotData, debug,
@@ -429,17 +433,20 @@ class Client:
 
     async def remove_slot(
         self,
-        slotId: str,
+        slot: str | workers.Slot,
         debug: bool = False,
     ) -> responses.Response:
         """Remove a slot.
 
         Args:
-            slotId: ID of the slot to remove.
+            slot: The slot to remove — either a slot ID string, or a
+                ``Slot`` instance (whose ``id`` is used).
             debug: Print request/response JSON.
         """
+        slot_id = slot.id if isinstance(slot, workers.Slot) else slot
+        assert slot_id is not None, "Slot has no ID"
         return await self.send_message(
-            messages.RemoveSlot(slotId=slotId),
+            messages.RemoveSlot(slotId=slot_id),
             responses.Response, debug,
         )
 
@@ -465,7 +472,7 @@ class Client:
 
     async def add_component(
         self,
-        containerSlotId: str,
+        containerSlotId: str | workers.Slot,
         *,
         data: workers.Component | None = None,
         componentType: str | None = None,
@@ -507,6 +514,9 @@ class Client:
         Returns:
             Response with ``entityId`` of the new component.
         """
+        if isinstance(containerSlotId, workers.Slot):
+            assert containerSlotId.id is not None, "Slot has no ID"
+            containerSlotId = containerSlotId.id
         if data is None:
             if componentType is None:
                 raise ValueError(
