@@ -107,7 +107,10 @@ class GeneratedComponent:
         self._component.members[name] = value
 
     async def add_to_slot(
-        self, resolink: client.Client, slot_id: str, debug: bool = False,
+        self,
+        resolink: client.Client,
+        slot: str | workers.Slot,
+        debug: bool = False,
     ) -> responses.NewEntityId:
         """Add this component to a slot on the server.
 
@@ -117,12 +120,15 @@ class GeneratedComponent:
 
         Args:
             resolink: Connected ResoniteLink client.
-            slot_id: ID of the slot to add this component to.
+            slot: The slot to add this component to — either a slot ID
+                string or a ``Slot`` instance (whose ``id`` is used).
             debug: Print request/response JSON.
 
         Returns:
             The NewEntityId response.
         """
+        slot_id = slot.id if isinstance(slot, workers.Slot) else slot
+        assert slot_id is not None, "Slot has no ID"
         resp = await resolink.add_component(
             containerSlotId=slot_id, data=self._component, debug=debug,
         )
