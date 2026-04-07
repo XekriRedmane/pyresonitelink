@@ -26,7 +26,9 @@ from __future__ import annotations
 
 from typing import Any, ClassVar, Generic, TypeVar, TYPE_CHECKING
 
+from pyresonitelink.data import codec
 from pyresonitelink.data import members
+from pyresonitelink.data import messages
 from pyresonitelink.data import responses
 from pyresonitelink.data import workers
 from pyresonitelink.generated import _type_map
@@ -178,6 +180,39 @@ class GeneratedComponent:
         )
         assert get_resp.data is not None
         self._component = get_resp.data
+
+    async def call_method(
+        self,
+        resolink: client.Client,
+        method_name: str,
+        arguments: dict[str, object] | None = None,
+        debug: bool = False,
+    ) -> dict[str, codec.JsonValue]:
+        """Call a sync method on this component.
+
+        The component must already exist on the server (``self.id``
+        must be set).  Only methods listed in the component's
+        definition (from ``GetComponentDefinition``) can be called.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            method_name: Name of the method to call (PascalCase, as
+                defined by Resonite).
+            arguments: Named arguments mapping parameter name to value.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        assert self.id is not None, "Component has no ID; add_to_slot first"
+        return await resolink.request_json(
+            messages.CallSyncMethod(
+                targetID=self.id,
+                methodName=method_name,
+                arguments=arguments or {},
+            ),
+            debug=debug,
+        )
 
     def __repr__(self) -> str:
         """Return a string representation."""

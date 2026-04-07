@@ -64,3 +64,43 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.AudioClip>'),
             )
 
+    async def play(self, resolink, debug: bool = False) -> dict:
+        """Call the Play sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Play", {}, debug,
+        )
+
+    async def stop(self, resolink, debug: bool = False) -> dict:
+        """Call the Stop sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Stop", {}, debug,
+        )
+
+    async def pause(self, resolink, debug: bool = False) -> dict:
+        """Call the Pause sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Pause", {}, debug,
+        )
+
+    async def resume(self, resolink, debug: bool = False) -> dict:
+        """Call the Resume sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Resume", {}, debug,
+        )
+

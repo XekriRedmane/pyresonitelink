@@ -640,6 +640,10 @@ def generate_component_source(
             mod = _ref_stub_module_name(ref_base)
             ref_stub_classes.append((cls, mod))
 
+    # Check for sync methods
+    sync_methods = definition.get("methods", [])
+    has_sync_methods = bool(sync_methods)
+
     # Build source lines
     lines: list[str] = []
     lines.append(f'"""Generated component: {class_name}."""')
@@ -1039,6 +1043,89 @@ def generate_component_source(
     if not member_infos:
         lines.append("    pass")
         lines.append("")
+
+    # Generate sync method wrappers from the definition's methods list.
+    sync_methods = definition.get("methods", [])
+    if sync_methods:
+        # Group overloads by name (same name, different params)
+        method_names_seen: set[str] = set()
+        for method_def in sync_methods:
+            if not isinstance(method_def, dict):
+                continue
+            method_name = method_def.get("name", "")
+            if not method_name:
+                continue
+            py_method = _safe_python_name(method_name)
+            params = method_def.get("parameters", {})
+            return_type_ref = method_def.get("returnType", {})
+            return_type = (
+                return_type_ref.get("type", "void")
+                if isinstance(return_type_ref, dict) else "void"
+            )
+            is_async_method = method_def.get("isAsync", False)
+
+            # Build parameter list for the Python signature
+            # Each param is name -> TypeReference dict
+            py_params: list[str] = []
+            call_args: list[str] = []
+            for pname, ptype_ref in params.items():
+                if isinstance(ptype_ref, dict):
+                    ptype_str = ptype_ref.get("type", "")
+                else:
+                    ptype_str = str(ptype_ref)
+                # Map Resonite type to Python annotation
+                py_prim = _primitive_python_name(ptype_str)
+                if py_prim:
+                    py_ann = py_prim
+                else:
+                    # Reference types — accept str (ID)
+                    py_ann = "str"
+                safe_pname = _safe_python_name(pname)
+                py_params.append(f"{safe_pname}: {py_ann}")
+                call_args.append(f'"{pname}": {safe_pname}')
+
+            # Handle overloads: append param count to avoid name clash
+            if py_method in method_names_seen:
+                py_method = f"{py_method}_{len(params)}"
+            method_names_seen.add(py_method)
+
+            # Build the method
+            param_str = ", ".join(["self", "resolink"]
+                                  + py_params
+                                  + ["debug: bool = False"])
+            args_dict = "{" + ", ".join(call_args) + "}"
+
+            lines.append(f"    async def {py_method}({param_str}) -> dict:")
+            lines.append(
+                f'        """Call the {method_name} sync method.'
+            )
+            if params:
+                lines.append("")
+                lines.append("        Args:")
+                lines.append(
+                    "            resolink: Connected ResoniteLink client."
+                )
+                for pname in params:
+                    lines.append(f"            {_safe_python_name(pname)}: "
+                                 f"The {pname} parameter.")
+                lines.append(
+                    "            debug: Print request/response JSON."
+                )
+            lines.append("")
+            lines.append("        Returns:")
+            lines.append(
+                "            The raw JSON response dict."
+            )
+            lines.append('        """')
+            lines.append(
+                f"        return await self.call_method("
+            )
+            lines.append(
+                f'            resolink, "{method_name}", '
+                f"{args_dict}, debug,"
+            )
+            lines.append(f"        )")
+            lines.append("")
 
     return "\n".join(lines) + "\n"
 
