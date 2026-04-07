@@ -284,6 +284,7 @@ type MessageType = (
     | message_types.GetComponentTypeList
     | message_types.GetComponentDefinition
     | message_types.GetTypeDefinition
+    | message_types.GetSyncObjectDefinition
 )
 
 type ResponseType = (
@@ -338,6 +339,9 @@ def _init_type_registry() -> None:
     _register_type("getComponentTypeList", message_types.GetComponentTypeList)
     _register_type("getComponentDefinition", message_types.GetComponentDefinition)
     _register_type("getTypeDefinition", message_types.GetTypeDefinition)
+    _register_type(
+        "getSyncObjectDefinition", message_types.GetSyncObjectDefinition,
+    )
 
     # Responses
     _register_type("response", response_types.Response)

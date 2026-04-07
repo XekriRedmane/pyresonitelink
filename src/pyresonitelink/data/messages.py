@@ -173,6 +173,25 @@ class GetTypeDefinition(Message):
 
 
 @dataclass
+class GetSyncObjectDefinition(Message):
+    """Request to fetch a sync object's definition.
+
+    Returns member structure for sync objects (types that inherit from
+    ``SyncObject``, like ``UserRef``).  Similar to
+    ``GetComponentDefinition`` but for non-component sync object types.
+
+    The response ``$type`` is ``syncObjectDefinitionData``.
+
+    Args:
+        syncObjectType: Full name of the sync object type.
+        flattened: Whether to include inherited members from base classes.
+    """
+
+    syncObjectType: str | None = None
+    flattened: bool = True
+
+
+@dataclass
 class BinaryPayloadMessage(Message):
     """A message with a binary payload."""
 

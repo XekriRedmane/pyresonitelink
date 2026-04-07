@@ -73,11 +73,11 @@ Python objects <- decode_response() <- JSON <---+
 
 - **`client.py`**: WebSocket client with async/sync APIs. Entry point for all operations.
 - **`data/codec.py`**: JSON serialization using `$type` discriminators for polymorphic types. Custom encode/decode for `Rect` and `BoundingBox` (nested wire format).
-- **`data/primitives.py`**: PascalCase primitive types (Float3, FloatQ, Color, Rect, BoundingBox, etc.) with float/int coercion in `__post_init__`. Scalar aliases: `primitives.Float` = `np.float32`, etc.
+- **`data/primitives.py`**: PascalCase primitive types (Float3, FloatQ, Color, Rect, BoundingBox, etc.) with float/int coercion in `__post_init__`. Scalar aliases: `primitives.Float` = `np.float32`, `primitives.String` = `str`, `primitives.Char` = `str`, etc.
 - **`data/fields.py`**: Typed field wrappers (FieldFloat, FieldString, ArrayFloat3, FieldRect, etc.) for component member values. Includes nullable variants (FieldNullableInt, etc.) and array variants (ArrayFloat3, etc.).
 - **`data/members.py`**: Member types (Reference, SyncList, SyncObject, SyncPlayback, SyncDictionary, FieldEnum, EmptyElement).
 - **`data/workers.py`**: Core data model - Worker (base) -> Slot (scene node) -> Component.
-- **`data/messages.py`**: Request types (GetSlot, AddComponent, UpdateComponent, GetComponentTypeList, GetComponentDefinition, GetTypeDefinition, etc.).
+- **`data/messages.py`**: Request types (GetSlot, AddComponent, UpdateComponent, GetComponentTypeList, GetComponentDefinition, GetTypeDefinition, GetSyncObjectDefinition, etc.).
 - **`data/responses.py`**: Response types (SlotData, ComponentData, ComponentTypeList, ComponentDefinitionData, etc.).
 - **`data/reflection.py`**: Reflection data types for ComponentDefinition responses.
 - **`generated/`**: Auto-generated component wrapper classes and type hierarchy from live server.
@@ -85,8 +85,17 @@ Python objects <- decode_response() <- JSON <---+
 - **`generated/_generator.py`**: Code generator for component classes and type hierarchy classes.
 - **`generated/_type_map.py`**: Bidirectional mapping between Python types, Resonite wire names, and field classes.
 - **`generated/_types/`**: Generated type hierarchy classes (interfaces, abstract types, asset types) used by reference properties.
-- **`cli/gencode.py`**: CLI for generating component wrapper classes and their type dependencies.
+- **`cli/gencode.py`**: CLI for generating component wrapper classes and their type dependencies. Automatically rebuilds `__init__.py` re-exports after generation.
 - **`cli/get_components.py`**: CLI for browsing component types and definitions.
+
+### Import Aliases
+
+Short import paths are provided via alias packages:
+
+- **`pyresonitelink.components`** aliases `pyresonitelink.generated` — for data components: `from pyresonitelink.components.data import ValueField`
+- **`pyresonitelink.protoflux`** aliases `pyresonitelink.generated.protoflux.runtimes.execution.nodes` — for ProtoFlux nodes: `from pyresonitelink.protoflux.core import ValueInput`
+
+Each category package has an `__init__.py` that re-exports all its classes. Python keyword conflicts (`if`, `for`, `while`, `async`) are handled via `importlib`. The `gencode` CLI rebuilds these `__init__.py` files after each generation run.
 
 ### Type System
 
@@ -389,6 +398,18 @@ type_resp = await resolink.request_json(
 `GetComponentDefinition` returns member definitions with `$type` values like `"field"`, `"reference"`, `"array"`, `"list"`, `"playback"`, `"dictionary"`.
 
 `GetTypeDefinition` returns type metadata for ANY type, including interfaces. This is what the generator uses for the `_types/` hierarchy.
+
+`GetSyncObjectDefinition` returns member definitions for sync object types — types that inherit from `SyncObject` (nested data containers within workers/components). Uses parameter `syncObjectType`. Response `$type` is `syncObjectDefinitionData`. Note: `Slot` and `Component` are NOT sync objects — they are Workers. `UserRef` is an example of a type that works.
+
+```python
+resp = await resolink.request_json(
+    messages.GetSyncObjectDefinition(
+        syncObjectType="[FrooxEngine]FrooxEngine.UserRef",
+        flattened=True,
+    )
+)
+# resp["definition"]["members"] is a dict of member name -> member info
+```
 
 ### ProtoFlux
 
