@@ -1,171 +1,208 @@
 # Python bindings for [ResoniteLink](https://github.com/Yellow-Dog-Man/ResoniteLink/tree/master)
 
-The minimum Python version for this library is 3.13.
+*This is a work in progress!*
 
-Note that because Python's native numeric types are infinite-precision integers and 64-bit floats, and Resonite has stricter types than that, this library uses `numpy` for numeric types, such as `np.uint8, np.uint16, np.float32`, and so on. It does not, however, use numpy arrays, so for example `byte2` is still a struct of two `np.uint8` values (see `src/pyresonitelink/data/primitives.py` class `byte2`). See the example code for more details, especially the `test_update_component` test in `tests/test_values.py`.
+pyresonitelink is a Python library for interacting with the Resonite VR platform via WebSocket. It provides async/sync interfaces for manipulating the scene graph (slots, components, assets) and building ProtoFlux visual programs programmatically.
 
-## Release
+**Python 3.13+ required.** Uses numpy for numeric types (np.float32, np.uint8, etc.) to match Resonite's C# type system precisely.
 
-I have released a pip package. Check the Releases section on the right. Install with `pip install <wheel-file>`.
+## Installation
 
-## Remember to start ResoniteLink in your world!
+```bash
+pip install <wheel-file>
+```
 
-You can do this in your dashboard, under Settings (Enable ResoniteLink). It will show you the port it chose. Use that for connections.
+Check the Releases section for the latest wheel. The repo uses [uv](https://docs.astral.sh/uv/) for development:
 
-## Sample code
+```bash
+uv sync
+```
 
-Take a look at `examples/get_root_slot.py` for a very quick and dirty method to get root slot data. You can run it as `python examples/get_root_slot.py <port>`
+## Getting Started
 
-You can also look at `tests/test_values.py` to see more complex usage.
+Enable ResoniteLink in your Resonite dashboard under Settings. It will show the port number to use for connections.
 
-## Command-line tools
+### Quick Example
 
-### `pyresonitelink.cli.dumptree`: Slot hierarchy dumper
+```python
+import asyncio
+from pyresonitelink import client
 
-Run `python -m pyresonitelink.cli.dumptree [--depth=<0|1|-1>] [--include_components] <port> <output-file>`.
+async def main():
+    resolink = client.Client()
+    await resolink.connect(PORT)
 
-This will download the slot hierarchy at the given depth (0 = only requested slot, 1 = slot and immediate children, -1 = all children recursively, default -1), and includes full component data if `--include_components` is present. The slot hierarchy is then saved to the given file as formatted JSON.
+    # Get the root slot
+    slot = await resolink.get_slot(slotId="Root", depth=1)
+    print(slot)
 
-### `pyresonitelink.cli.tree`: Tree browser
+    # Create a slot with raw Python values (auto-coerced)
+    resp = await resolink.add_slot_to_root(
+        name="Hello from Python",
+        position=(0, 1.5, 0),
+    )
+    print(f"Created slot: {resp.entityId}")
 
-Run `python -m pyresonitelink.cli.tree <port>`. It will download the slot hierarchy and then you can browse it.
+    await resolink.close()
+
+asyncio.run(main())
+```
+
+See `examples/get_root_slot.py` for the simplest working example.
+
+## Client API
+
+The client provides keyword-argument methods for all operations. Field parameters accept raw Python values that are automatically coerced:
+
+```python
+# Strings, bools, ints coerce to FieldString, FieldBool, FieldLong
+await resolink.add_slot_to_root(name="My Slot", isActive=True, orderOffset=5)
+
+# Tuples, lists, ndarrays coerce to FieldFloat3, FieldFloatQ, etc.
+await resolink.add_slot(parent=ref, position=(1, 2, 3), rotation=[0, 0, 0, 1])
+
+# Components can be added with type string + references
+await resolink.add_component(
+    containerSlotId=slot_id,
+    componentType="[ProtoFluxBindings]...ValueDisplay<float>",
+    references={"Input": node_id, "_value": field_id},
+)
+
+# Wire references on existing components in one call
+await resolink.update_references(
+    componentId=comp_id,
+    references={"Input": node_id},
+)
+```
+
+## Generated Components
+
+Components are generated from a live ResoniteLink server. The generator produces typed Python wrapper classes with properties, `__init__` parameters, and interface inheritance for type-safe wiring.
+
+### Generating Components
+
+```bash
+# Generate a single component and its type dependencies
+python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>"
+python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipPlayer"
+
+# Preview without writing
+python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>" --dry-run
+```
+
+All 3238 ProtoFlux nodes are pre-generated under `generated/protoflux/`.
+
+### Using Generated Components
+
+```python
+import numpy as np
+from pyresonitelink.generated.data.value_field import ValueField
+from pyresonitelink.generated.protoflux.runtimes.execution.nodes.core.value_input import ValueInput
+from pyresonitelink.generated.protoflux.runtimes.execution.nodes.operators.value_add import ValueAdd
+
+FloatField = ValueField[np.float32]
+FloatInput = ValueInput[np.float32]
+FloatAdd = ValueAdd[np.float32]
+
+# Create and add to server
+vf = FloatField(42.5)
+await vf.add_to_slot(resolink, slot_id)
+
+# Update and refresh
+vf.value = np.float32(99.0)
+await vf.update(resolink)
+await vf.refresh(resolink)
+```
+
+### Type-Safe Wiring
+
+Generated components inherit from the Resonite interfaces they implement. This means the type checker verifies that wiring is correct:
+
+```python
+input_a = FloatInput(10.0)
+input_b = FloatInput(20.0)
+await input_a.add_to_slot(resolink, slot_id)
+await input_b.add_to_slot(resolink, slot_id)
+
+# Valid: ValueInput implements INodeValueOutput[T]
+add = FloatAdd(a=input_a, b=input_b)  # type-checks!
+
+# Invalid: AudioClipPlayer does not implement INodeValueOutput
+add = FloatAdd(a=player)  # mypy error!
+```
+
+## ProtoFlux Examples
+
+### Dataflow: Addition Graph
+
+Builds `(10 + 20) + 5 = 35` using value nodes and reads the result via `ValueDisplay`:
+
+```bash
+python examples/protoflux_add.py <port>
+```
+
+### Imperative Flow: If-Else
+
+Implements `if (x < 3) z = x + 3; else z = x - 3;` using `Update`, `If`, and `WriteDynamicValueVariable` nodes with `DynamicValueVariable` storage:
+
+```bash
+python examples/protoflux_if_else.py <port>
+```
+
+## Command-Line Tools
+
+### `pyresonitelink.cli.dumptree`: Slot Hierarchy Dumper
+
+```bash
+python -m pyresonitelink.cli.dumptree [--depth=<0|1|-1>] [--include_components] <port> <output-file>
+```
+
+Downloads the slot hierarchy and saves it as formatted JSON. Depth: 0 = self only, 1 = immediate children, -1 = all (default).
+
+### `pyresonitelink.cli.tree`: Interactive Tree Browser
+
+```bash
+python -m pyresonitelink.cli.tree <port>
+```
 
 ![Screenshot of the tree browser](docs/tree_example.png "Example of the tree browser")
 
-### `pyresonitelink.cli.gencomponent`: Component class generator
-
-Generates Python dataclass components from Resonite JSON Schema files. The generated classes include serialization (`to_json()`) and deserialization (`from_json()`) with optional jsonschema validation.
-
-**Basic usage:**
+### `pyresonitelink.cli.get_components`: Component Type Browser
 
 ```bash
-# Generate all components from a schema directory
-python -m pyresonitelink.cli.gencomponent /path/to/schemas
+# List component types in a category
+MSYS_NO_PATHCONV=1 python -m pyresonitelink.cli.get_components <port> --category "/Data"
 
-# Generate with custom output directory
-python -m pyresonitelink.cli.gencomponent /path/to/schemas --output-dir ./my_components
-
-# Preview generated code without writing files
-python -m pyresonitelink.cli.gencomponent /path/to/schemas --dry-run
-
-# Verbose output
-python -m pyresonitelink.cli.gencomponent /path/to/schemas --verbose
+# Get a component's definition
+python -m pyresonitelink.cli.get_components <port> --component "[FrooxEngine]FrooxEngine.WorldLink"
 ```
 
-**Generating a non-generic component:**
+### `pyresonitelink.cli.gencode`: Component Code Generator
 
 ```bash
-# Generate a single non-generic component like UnlitMaterial
-python -m pyresonitelink.cli.gencomponent /path/to/schemas --component FrooxEngine.UnlitMaterial --dry-run
+# Generate a component wrapper class from a live server
+python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipPlayer"
+
+# Generic components use <>
+python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>"
 ```
 
-This produces a single Python class:
+## Running Tests
 
-```python
-@dataclass
-class UnlitMaterial(GeneratedComponent):
-    """UnlitMaterial component."""
-
-    COMPONENT_TYPE: ClassVar[str] = "[FrooxEngine]FrooxEngine.UnlitMaterial"
-    SCHEMA_FILE: ClassVar[str] = "FrooxEngine.UnlitMaterial.schema.json"
-
-    _MEMBER_NAME_MAP: ClassVar[dict[str, str]] = {
-        "persistent": "persistent",
-        "update_order": "UpdateOrder",
-        "enabled": "Enabled",
-        # ... more fields
-    }
-
-    persistent: FieldBool | None = None
-    update_order: FieldInt | None = None
-    enabled: FieldBool | None = None
-    # ... more fields
-```
-
-**Generating a generic component:**
+Tests require a running Resonite session with ResoniteLink enabled:
 
 ```bash
-# Generate a generic component like ValueField<T>
-python -m pyresonitelink.cli.gencomponent /path/to/schemas --component FrooxEngine.ValueField_1 --dry-run
+pytest --port=<resonite-link-port> tests/
+pytest --port=<port> tests/test_values.py::test_update_component -s
 ```
 
-Generic components (those with `oneOf` in their schema) produce:
-1. A base class with common fields
-2. Variant classes for each type parameter
-3. A type alias union of all variants
+Type checking:
 
-```python
-@dataclass
-class ValueFieldBase(GeneratedComponent):
-    """Base class for ValueField<T> variants."""
-
-    SCHEMA_FILE: ClassVar[str] = "FrooxEngine.ValueField_1.schema.json"
-
-    _MEMBER_NAME_MAP: ClassVar[dict[str, str]] = {
-        "persistent": "persistent",
-        "update_order": "UpdateOrder",
-        "enabled": "Enabled",
-    }
-
-    persistent: FieldBool | None = None
-    update_order: FieldInt | None = None
-    enabled: FieldBool | None = None
-
-
-@dataclass
-class ValueFieldBool(ValueFieldBase):
-    """ValueField<bool> component."""
-
-    COMPONENT_TYPE: ClassVar[str] = "[FrooxEngine]FrooxEngine.ValueField`1[[System.Boolean, System.Private.CoreLib]]"
-
-    _MEMBER_NAME_MAP: ClassVar[dict[str, str]] = {
-        "value": "Value",
-    }
-
-    value: FieldBool | None = None
-
-
-@dataclass
-class ValueFieldFloat(ValueFieldBase):
-    """ValueField<float> component."""
-
-    COMPONENT_TYPE: ClassVar[str] = "[FrooxEngine]FrooxEngine.ValueField`1[[System.Single, System.Private.CoreLib]]"
-
-    _MEMBER_NAME_MAP: ClassVar[dict[str, str]] = {
-        "value": "Value",
-    }
-
-    value: FieldFloat | None = None
-
-# ... more variants ...
-
-# Type alias for any ValueField variant
-ValueField = ValueFieldBool | ValueFieldFloat | ValueFieldInt | ...
+```bash
+mypy src/
 ```
 
-**Using generated components:**
+## Known Issues
 
-```python
-from pyresonitelink.components.generated.unlit_material import UnlitMaterial
-from pyresonitelink.data.fields import FieldBool
-
-# Create a component
-material = UnlitMaterial(
-    id="some-id",
-    enabled=FieldBool(value=True),
-)
-
-# Serialize to JSON
-json_data = material.to_json()
-
-# Deserialize from JSON (with optional schema validation)
-material2 = UnlitMaterial.from_json(json_data, validate=False)
-```
-
-## Ideas
-
-* Add specific component models
-
-## Bugs
-
-The first connection to ResoniteLink fails after sending the first message, during the await for the response, with a `websockets.exceptions.ConnectionClosedError: no close frame received or sent` error. Subsequent connections seem to work normally. In the Resonite logs, we see `WebSocket closed in ResoniteLink. WasClean: False, Code: 1006`. Code 1006 is abnormal closure (connection lost unexpectedly).
+- First WebSocket connection fails with `ConnectionClosedError`. Workaround is implemented in the client (automatic retry).
+- On Git Bash (MSYS2), paths starting with `/` get mangled to Windows paths. Use `MSYS_NO_PATHCONV=1` when passing category paths.
