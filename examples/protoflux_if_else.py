@@ -56,6 +56,7 @@ async def main(port: int) -> None:
     assert root.data is not None
     for child in root.data.children:
         if child.name and child.name.value == "If-Else Example":
+            assert child.id is not None
             print(f"Deleting old slot {child.id}...")
             await resolink.remove_slot(slotId=child.id)
 
@@ -155,7 +156,7 @@ async def main(port: int) -> None:
     # Test the graph
     # ===================================================================
 
-    async def read_z() -> float:
+    async def read_z() -> object:
         """Read the current value of dynamic variable z."""
         await z_var.refresh(resolink)
         return z_var.value

@@ -11,6 +11,7 @@ composite types (``primitives.Float3``, ``primitives.FloatQ``, etc.).
 # pylint: disable=invalid-name
 
 from dataclasses import dataclass
+from typing import TypeAlias
 
 import numpy as np
 
@@ -19,19 +20,19 @@ import numpy as np
 # Scalar Type Aliases
 # =============================================================================
 
-Bool: type[np.bool_] = np.bool_
-Byte: type[np.uint8] = np.uint8
-SByte: type[np.int8] = np.int8
-Short: type[np.int16] = np.int16
-UShort: type[np.uint16] = np.uint16
-Int: type[np.int32] = np.int32
-UInt: type[np.uint32] = np.uint32
-Long: type[np.int64] = np.int64
-ULong: type[np.uint64] = np.uint64
-Float: type[np.float32] = np.float32
-Double: type[np.float64] = np.float64
-String: type[str] = str
-Char: type[str] = str
+Bool: TypeAlias = np.bool_
+Byte: TypeAlias = np.uint8
+SByte: TypeAlias = np.int8
+Short: TypeAlias = np.int16
+UShort: TypeAlias = np.uint16
+Int: TypeAlias = np.int32
+UInt: TypeAlias = np.uint32
+Long: TypeAlias = np.int64
+ULong: TypeAlias = np.uint64
+Float: TypeAlias = np.float32
+Double: TypeAlias = np.float64
+String: TypeAlias = str
+Char: TypeAlias = str
 
 
 # =============================================================================

@@ -163,7 +163,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
         member = self.get_member("DefaultValue")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "DefaultValue", self._type_info.field_class(value=value)
             )

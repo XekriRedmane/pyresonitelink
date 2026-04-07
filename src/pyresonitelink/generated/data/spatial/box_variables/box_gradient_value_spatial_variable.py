@@ -158,7 +158,7 @@ class BoxGradientValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], 
         member = self.get_member("StartValue")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "StartValue", self._type_info.field_class(value=value)
             )
@@ -177,7 +177,7 @@ class BoxGradientValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], 
         member = self.get_member("EndValue")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "EndValue", self._type_info.field_class(value=value)
             )

@@ -45,7 +45,7 @@ class ValueField(GenericComponent[T], IValueSource[T], IWorldEventReceiver):
         member = self.get_member("Value")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "Value", self._type_info.field_class(value=value)
             )

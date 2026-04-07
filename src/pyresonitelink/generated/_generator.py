@@ -899,7 +899,10 @@ def generate_component_source(
             lines.append(f'        member = self.get_member("{res_name}")')
             lines.append(f"        if member is not None:")
             lines.append(f"            member.value = value  # type: ignore[attr-defined]")
-            lines.append(f"        elif self._type_info is not None:")
+            lines.append(
+                f"        elif self._type_info is not None"
+                f" and self._type_info.field_class is not None:"
+            )
             lines.append(f"            self.set_member(")
             lines.append(
                 f'                "{res_name}", self._type_info.field_class(value=value)'

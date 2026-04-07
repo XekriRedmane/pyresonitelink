@@ -50,9 +50,9 @@ async def main(port: int) -> None:
     # --- Build the computation graph ---
 
     # Three constant inputs
-    input_10 = FloatInput(10.0)
-    input_20 = FloatInput(20.0)
-    input_5 = FloatInput(5.0)
+    input_10 = FloatInput(primitives.Float(10.0))
+    input_20 = FloatInput(primitives.Float(20.0))
+    input_5 = FloatInput(primitives.Float(5.0))
     await input_10.add_to_slot(resolink, slot_id)
     await input_20.add_to_slot(resolink, slot_id)
     await input_5.add_to_slot(resolink, slot_id)
@@ -84,7 +84,7 @@ async def main(port: int) -> None:
     value_member = result_field.get_member("Value")
     assert value_member is not None
 
-    display = FloatDisplay(input=add2.id, value=value_member.id)
+    display = FloatDisplay(input_=add2.id, value=value_member.id)
     await display.add_to_slot(resolink, slot_id)
     print(f"\nValueDisplay {display.id}:")
     print(f"  Input  -> {add2.id} (Add2 output)")

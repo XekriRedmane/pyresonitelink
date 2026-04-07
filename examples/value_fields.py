@@ -69,6 +69,7 @@ async def main(port: int) -> None:
 
     # --- Auto-detect type from server data ---
     print("\n--- Auto-detect type parameter ---")
+    assert vf.id is not None
     get_resp = await resolink.get_component(componentId=vf.id)
     assert get_resp.data is not None
     vf_auto = ValueField(get_resp.data)

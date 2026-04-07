@@ -173,7 +173,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
         member = self.get_member("Value0")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "Value0", self._type_info.field_class(value=value)
             )
@@ -192,7 +192,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
         member = self.get_member("Value1")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "Value1", self._type_info.field_class(value=value)
             )
@@ -211,7 +211,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
         member = self.get_member("Value2")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "Value2", self._type_info.field_class(value=value)
             )
@@ -230,7 +230,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
         member = self.get_member("Value3")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "Value3", self._type_info.field_class(value=value)
             )
@@ -249,7 +249,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
         member = self.get_member("Value4")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "Value4", self._type_info.field_class(value=value)
             )
@@ -268,7 +268,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
         member = self.get_member("Value5")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "Value5", self._type_info.field_class(value=value)
             )
@@ -287,7 +287,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
         member = self.get_member("Value6")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "Value6", self._type_info.field_class(value=value)
             )
@@ -306,7 +306,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
         member = self.get_member("Value7")
         if member is not None:
             member.value = value  # type: ignore[attr-defined]
-        elif self._type_info is not None:
+        elif self._type_info is not None and self._type_info.field_class is not None:
             self.set_member(
                 "Value7", self._type_info.field_class(value=value)
             )
