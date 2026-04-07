@@ -191,6 +191,52 @@ class GetSyncObjectDefinition(Message):
     flattened: bool = True
 
 
+# =============================================================================
+# Method Call Messages
+# =============================================================================
+
+
+@dataclass
+class CallSyncMethod(Message):
+    """Call a method on a component or sync member instance.
+
+    Invokes the named method on the target identified by ``targetID``.
+    Arguments are passed as a dict mapping parameter names to values.
+
+    The response ``$type`` is ``methodResult`` with a ``result`` field.
+
+    Args:
+        targetID: ID of the component or sync member to call the method on.
+        methodName: Name of the method to call.
+        arguments: Named arguments to the method, mapping parameter
+            name to value.
+    """
+
+    targetID: str | None = None
+    methodName: str | None = None
+    arguments: dict[str, object] | None = None
+
+
+@dataclass
+class CallStaticSyncMethod(Message):
+    """Call a static method on a type.
+
+    Invokes a static method by type name, without needing an instance.
+
+    The response ``$type`` is ``methodResult`` with a ``result`` field.
+
+    Args:
+        targetType: Fully qualified type name.
+        methodName: Name of the static method to call.
+        arguments: Named arguments to the method, mapping parameter
+            name to value.
+    """
+
+    targetType: str | None = None
+    methodName: str | None = None
+    arguments: dict[str, object] | None = None
+
+
 @dataclass
 class BinaryPayloadMessage(Message):
     """A message with a binary payload."""

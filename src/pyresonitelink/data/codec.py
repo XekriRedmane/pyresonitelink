@@ -285,6 +285,8 @@ type MessageType = (
     | message_types.GetComponentDefinition
     | message_types.GetTypeDefinition
     | message_types.GetSyncObjectDefinition
+    | message_types.CallSyncMethod
+    | message_types.CallStaticSyncMethod
 )
 
 type ResponseType = (
@@ -342,6 +344,8 @@ def _init_type_registry() -> None:
     _register_type(
         "getSyncObjectDefinition", message_types.GetSyncObjectDefinition,
     )
+    _register_type("callSyncMethod", message_types.CallSyncMethod)
+    _register_type("callStaticSyncMethod", message_types.CallStaticSyncMethod)
 
     # Responses
     _register_type("response", response_types.Response)
