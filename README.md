@@ -4,7 +4,9 @@
 
 pyresonitelink is a Python library for interacting with the Resonite VR platform via WebSocket. It provides async/sync interfaces for manipulating the scene graph (slots, components, assets) and building ProtoFlux visual programs programmatically.
 
-**Python 3.13+ required.** Uses numpy for numeric types (np.float32, np.uint8, etc.) to match Resonite's C# type system precisely.
+**Python 3.13+ required.**
+
+Because Python's native numeric types are infinite-precision integers and 64-bit floats, and Resonite has stricter types, this library uses numpy scalar types under the hood to match Resonite's C# type system precisely. Scalar aliases are provided in the `primitives` module: `primitives.Bool`, `primitives.Int`, `primitives.Long`, `primitives.Float`, etc. Composite types like `primitives.Float2`, `primitives.Float3`, `primitives.FloatQ`, `primitives.Color`, and `primitives.ColorX` are dataclasses with numpy-typed fields that coerce from plain Python `int`/`float` in their constructors.
 
 ## Installation
 
@@ -26,11 +28,12 @@ Enable ResoniteLink in your Resonite dashboard under Settings. It will show the 
 
 ```python
 import asyncio
+import sys
 from pyresonitelink import client
 
-async def main():
+async def main(port: int):
     resolink = client.Client()
-    await resolink.connect(PORT)
+    await resolink.connect(port)
 
     # Get the root slot
     slot = await resolink.get_slot(slotId="Root", depth=1)
@@ -45,7 +48,7 @@ async def main():
 
     await resolink.close()
 
-asyncio.run(main())
+asyncio.run(main(int(sys.argv[1])))
 ```
 
 See `examples/get_root_slot.py` for the simplest working example.
@@ -61,23 +64,25 @@ await resolink.add_slot_to_root(name="My Slot", isActive=True, orderOffset=5)
 # Tuples, lists, ndarrays coerce to FieldFloat3, FieldFloatQ, etc.
 await resolink.add_slot(parent=ref, position=(1, 2, 3), rotation=[0, 0, 0, 1])
 
-# Components can be added with type string + references
-await resolink.add_component(
-    containerSlotId=slot_id,
-    componentType="[ProtoFluxBindings]...ValueDisplay<float>",
-    references={"Input": node_id, "_value": field_id},
-)
+# Add components using generated wrapper classes
+value_field = ValueField[primitives.Float](42.5)
+await value_field.add_to_slot(resolink, slot_id)  # creates on server, assigns ID
 
-# Wire references on existing components in one call
-await resolink.update_references(
-    componentId=comp_id,
-    references={"Input": node_id},
-)
+# Wire ProtoFlux nodes by passing component instances
+add_node = FloatAdd(a=input_a, b=input_b)  # type-checked references
+await add_node.add_to_slot(resolink, slot_id)
+
+# Update a component's values and push to server
+value_field.value = primitives.Float(99.0)
+await value_field.update(resolink)
+
+# Pull latest state from server
+await value_field.refresh(resolink)
 ```
 
 ## Generated Components
 
-Components are generated from a live ResoniteLink server. The generator produces typed Python wrapper classes with properties, `__init__` parameters, and interface inheritance for type-safe wiring.
+Components were generated from a live ResoniteLink server; they do not need to be regenerated since they are part of the release. The generator produces typed Python wrapper classes with properties, `__init__` parameters, and interface inheritance for type-safe wiring.
 
 ### Generating Components
 
@@ -95,23 +100,23 @@ All 3238 ProtoFlux nodes are pre-generated under `generated/protoflux/`.
 ### Using Generated Components
 
 ```python
-import numpy as np
+from pyresonitelink.data import primitives
 from pyresonitelink.generated.data.value_field import ValueField
 from pyresonitelink.generated.protoflux.runtimes.execution.nodes.core.value_input import ValueInput
 from pyresonitelink.generated.protoflux.runtimes.execution.nodes.operators.value_add import ValueAdd
 
-FloatField = ValueField[np.float32]
-FloatInput = ValueInput[np.float32]
-FloatAdd = ValueAdd[np.float32]
+FloatField = ValueField[primitives.Float]
+FloatInput = ValueInput[primitives.Float]
+FloatAdd = ValueAdd[primitives.Float]
 
 # Create and add to server
-vf = FloatField(42.5)
-await vf.add_to_slot(resolink, slot_id)
+value_field = FloatField(42.5)
+await value_field.add_to_slot(resolink, slot_id)
 
 # Update and refresh
-vf.value = np.float32(99.0)
-await vf.update(resolink)
-await vf.refresh(resolink)
+value_field.value = primitives.Float(99.0)
+await value_field.update(resolink)
+await value_field.refresh(resolink)
 ```
 
 ### Type-Safe Wiring
@@ -171,7 +176,7 @@ python -m pyresonitelink.cli.tree <port>
 
 ```bash
 # List component types in a category
-MSYS_NO_PATHCONV=1 python -m pyresonitelink.cli.get_components <port> --category "/Data"
+python -m pyresonitelink.cli.get_components <port> --category "/Data"
 
 # Get a component's definition
 python -m pyresonitelink.cli.get_components <port> --component "[FrooxEngine]FrooxEngine.WorldLink"
