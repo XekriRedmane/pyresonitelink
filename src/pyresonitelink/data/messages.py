@@ -28,6 +28,8 @@ class Message:
 class GetSlot(Message):
     """Request to fetch slot data.
 
+    The response is a SlotData.
+
     Args:
         slotId: Unique ID of the slot to fetch. Use "Root" for the root slot.
         depth: How deep to fetch the hierarchy.
@@ -79,6 +81,8 @@ class RemoveSlot(Message):
 class GetComponent(Message):
     """Request to fetch component data.
 
+    The response is a ComponentData.
+
     Args:
         componentId: The ID of the component to fetch.
     """
@@ -119,6 +123,53 @@ class RemoveComponent(Message):
     """
 
     componentId: str | None = None
+
+
+@dataclass
+class GetComponentTypeList(Message):
+    """Request to fetch a list of component types.
+
+    The response is a ComponentTypeList.
+
+    Args:
+        categoryPath: Optional category path to filter component types.
+            If None, returns all component types.
+    """
+
+    categoryPath: str | None = None
+
+
+@dataclass
+class GetComponentDefinition(Message):
+    """Request to fetch a component's type definition.
+
+    The response is a ComponentDefinitionData.
+
+    Args:
+        componentType: The fully qualified component type name. Must be a
+            generic type definition for generic components.
+        flattened: Whether to include inherited members from base classes.
+            When True, all members are included. When False, only members
+            declared directly on the type are returned.
+    """
+
+    componentType: str | None = None
+    flattened: bool = True
+
+
+@dataclass
+class GetTypeDefinition(Message):
+    """Request to fetch a type's definition.
+
+    Unlike GetComponentDefinition, this works on any type -- interfaces,
+    enums, value types, etc.
+
+    Args:
+        type: Full name of the type to fetch. Can be a generic type
+            definition or a constructed generic type.
+    """
+
+    type: str | None = None
 
 
 @dataclass

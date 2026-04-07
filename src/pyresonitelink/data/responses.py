@@ -7,6 +7,7 @@ This module contains response classes received from Resonite after sending messa
 
 from dataclasses import dataclass
 
+from . import reflection
 from .workers import Component, Slot
 
 
@@ -20,6 +21,16 @@ class Response:
     sourceMessageId: str | None = None
     success: bool = False
     errorInfo: str | None = None
+
+
+@dataclass
+class NewEntityId(Response):
+    """Response containing the ID of a newly created entity.
+
+    Returned by AddSlot and AddComponent.
+    """
+
+    entityId: str | None = None
 
 
 @dataclass
@@ -58,3 +69,34 @@ class AssetData(Response):
     """
 
     assetURL: str | None = None
+
+
+@dataclass
+class ComponentTypeList(Response):
+    """Response containing a list of component types in a category.
+
+    Returned when requesting available component types.
+
+    Args:
+        componentTypes: List of component type names in the requested category.
+        subcategories: List of subcategory names in the requested category.
+        totalComponentCount: Number of components in the requested category
+            and all subcategories.
+    """
+
+    componentTypes: list[str] | None = None
+    subcategories: list[str] | None = None
+    totalComponentCount: int = 0
+
+
+@dataclass
+class ComponentDefinitionData(Response):
+    """Response containing a component's type definition.
+
+    Returned when requesting a component definition.
+
+    Args:
+        definition: The full definition of the requested component type.
+    """
+
+    definition: reflection.ComponentDefinition | None = None

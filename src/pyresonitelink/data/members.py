@@ -67,3 +67,25 @@ class FieldEnum(Member):
 
     value: str | None = None
     enumType: str | None = None
+
+
+@dataclass
+class SyncPlayback(Member):
+    """A playback state member with transport controls."""
+
+    play: bool = False
+    loop: bool = False
+    position: float = 0.0
+    speed: float = 1.0
+
+
+@dataclass
+class SyncDictionary(Member):
+    """A synchronized dictionary member.
+
+    Keys are typically enum values (as strings). Values are decoded
+    members stored in the elements dict.
+    """
+
+    enumType: str | None = None
+    elements: dict[str, Member] = field(default_factory=dict[str, Member])
