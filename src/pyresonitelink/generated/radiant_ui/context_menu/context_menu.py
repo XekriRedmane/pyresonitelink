@@ -5,6 +5,7 @@ import numpy as np
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -1072,4 +1073,20 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
                 "_selectedItem",
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ContextMenuItem'),
             )
+
+    async def close_menu(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
+        """Call the CloseMenu sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            button: The button parameter.
+            event_data: The eventData parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "CloseMenu", {"button": button, "eventData": event_data}, debug,
+        )
 

@@ -5,6 +5,7 @@ import numpy as np
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -308,4 +309,14 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
     def shading(self, value: members.FieldEnum) -> None:
         """Set the Shading member."""
         self.set_member("Shading", value)
+
+    async def bake_mesh(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the BakeMesh sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "BakeMesh", {}, debug,
+        )
 

@@ -5,6 +5,7 @@ import numpy as np
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iitem_metadata_source import IItemMetadataSource
@@ -368,4 +369,14 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
     def stereo_layout(self, value: members.FieldEnum) -> None:
         """Set the StereoLayout member."""
         self.set_member("StereoLayout", value)
+
+    async def set_from_current_world(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SetFromCurrentWorld sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetFromCurrentWorld", {}, debug,
+        )
 

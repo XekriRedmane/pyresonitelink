@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iitem_metadata_source import IItemMetadataSource
@@ -265,4 +266,14 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
     def legacy_present_users(self, value: members.SyncList) -> None:
         """Set the __legacyPresentUsers member."""
         self.set_member("__legacyPresentUsers", value)
+
+    async def set_from_current_world(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SetFromCurrentWorld sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetFromCurrentWorld", {}, debug,
+        )
 

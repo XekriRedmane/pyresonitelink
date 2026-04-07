@@ -1,6 +1,7 @@
 """Generated component: DataPreset."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import protocols
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
@@ -40,4 +41,24 @@ class DataPreset(GeneratedComponent, ICustomInspector, IButtonPressReceiver, IWo
     def entries(self, value: members.SyncList) -> None:
         """Set the Entries member."""
         self.set_member("Entries", value)
+
+    async def set_active(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SetActive sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetActive", {}, debug,
+        )
+
+    async def set_values(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SetValues sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetValues", {}, debug,
+        )
 

@@ -144,6 +144,24 @@ add = FloatAdd(a=input_a, b=input_b)  # type-checks!
 add = FloatAdd(a=player)  # mypy error!
 ```
 
+### Calling Sync Methods
+
+Components that expose sync methods (listed in their definition) get
+generated async method wrappers:
+
+```python
+from pyresonitelink.components.audio import AudioClipPlayer
+
+player = AudioClipPlayer()
+await player.add_to_slot(resolink, slot)
+
+await player.play(resolink)    # calls CallSyncMethod under the hood
+await player.pause(resolink)
+await player.stop(resolink)
+```
+
+See `examples/call_sync_method.py` for the complete example.
+
 ## ProtoFlux Examples
 
 ### Dataflow: Addition Graph

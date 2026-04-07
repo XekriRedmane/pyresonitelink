@@ -4,6 +4,7 @@ import numpy as np
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture2_dprovider import ITexture2DProvider
@@ -413,4 +414,698 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             self.set_member(
                 "Readable", fields.FieldBool(value=value)
             )
+
+    async def bleed_color_to_alpha(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the BleedColorToAlpha sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "BleedColorToAlpha", {}, debug,
+        )
+
+    async def flip_horizontal(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the FlipHorizontal sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "FlipHorizontal", {}, debug,
+        )
+
+    async def flip_vertical(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the FlipVertical sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "FlipVertical", {}, debug,
+        )
+
+    async def rotate90_cw(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the Rotate90CW sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Rotate90CW", {}, debug,
+        )
+
+    async def rotate90_ccw(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the Rotate90CCW sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Rotate90CCW", {}, debug,
+        )
+
+    async def rotate180(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the Rotate180 sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Rotate180", {}, debug,
+        )
+
+    async def make_square(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the MakeSquare sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "MakeSquare", {}, debug,
+        )
+
+    async def tile_loop(self, resolink: protocols.ResoniteLinkClient, transition: primitives.Float2, debug: bool = False) -> dict:
+        """Call the TileLoop sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            transition: The transition parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "TileLoop", {"transition": transition}, debug,
+        )
+
+    async def tile_mirror(self, resolink: protocols.ResoniteLinkClient, transition: primitives.Float2, debug: bool = False) -> dict:
+        """Call the TileMirror sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            transition: The transition parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "TileMirror", {"transition": transition}, debug,
+        )
+
+    async def rescale(self, resolink: protocols.ResoniteLinkClient, size: np.int32, filtering: str, debug: bool = False) -> dict:
+        """Call the Rescale sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            size: The size parameter.
+            filtering: The filtering parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Rescale", {"size": size, "filtering": filtering}, debug,
+        )
+
+    async def rescale_2(self, resolink: protocols.ResoniteLinkClient, size: primitives.Int2, filtering: str, debug: bool = False) -> dict:
+        """Call the Rescale sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            size: The size parameter.
+            filtering: The filtering parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Rescale", {"size": size, "filtering": filtering}, debug,
+        )
+
+    async def crop(self, resolink: protocols.ResoniteLinkClient, position: primitives.Int2, size: primitives.Int2, debug: bool = False) -> dict:
+        """Call the Crop sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            position: The position parameter.
+            size: The size parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Crop", {"position": position, "size": size}, debug,
+        )
+
+    async def trim(self, resolink: protocols.ResoniteLinkClient, color: primitives.Color, debug: bool = False) -> dict:
+        """Call the Trim sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            color: The color parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Trim", {"color": color}, debug,
+        )
+
+    async def trim_1(self, resolink: protocols.ResoniteLinkClient, color: primitives.Color32, debug: bool = False) -> dict:
+        """Call the Trim sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            color: The color parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Trim", {"color": color}, debug,
+        )
+
+    async def trim_transparent(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the TrimTransparent sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "TrimTransparent", {}, debug,
+        )
+
+    async def trim_by_corner_color(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the TrimByCornerColor sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "TrimByCornerColor", {}, debug,
+        )
+
+    async def luminance_threshold(self, resolink: protocols.ResoniteLinkClient, threshold: np.float32, debug: bool = False) -> dict:
+        """Call the LuminanceThreshold sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            threshold: The threshold parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "LuminanceThreshold", {"threshold": threshold}, debug,
+        )
+
+    async def luminance_threshold_3(self, resolink: protocols.ResoniteLinkClient, threshold: np.float32, above: primitives.Color, below: primitives.Color, debug: bool = False) -> dict:
+        """Call the LuminanceThreshold sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            threshold: The threshold parameter.
+            above: The above parameter.
+            below: The below parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "LuminanceThreshold", {"threshold": threshold, "above": above, "below": below}, debug,
+        )
+
+    async def localized_luminance_threshold(self, resolink: protocols.ResoniteLinkClient, threshold: np.float32, range_: np.int32, debug: bool = False) -> dict:
+        """Call the LocalizedLuminanceThreshold sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            threshold: The threshold parameter.
+            range_: The range parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "LocalizedLuminanceThreshold", {"threshold": threshold, "range": range_}, debug,
+        )
+
+    async def localized_luminance_threshold_4(self, resolink: protocols.ResoniteLinkClient, threshold: np.float32, range_: np.int32, above: primitives.Color, below: primitives.Color, debug: bool = False) -> dict:
+        """Call the LocalizedLuminanceThreshold sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            threshold: The threshold parameter.
+            range_: The range parameter.
+            above: The above parameter.
+            below: The below parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "LocalizedLuminanceThreshold", {"threshold": threshold, "range": range_, "above": above, "below": below}, debug,
+        )
+
+    async def kmeans_cluster(self, resolink: protocols.ResoniteLinkClient, k: np.int32, position_weight: np.float32, batch_size: np.int32, passes_over_data: np.float32, debug: bool = False) -> dict:
+        """Call the KMeansCluster sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            k: The k parameter.
+            position_weight: The positionWeight parameter.
+            batch_size: The batchSize parameter.
+            passes_over_data: The passesOverData parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "KMeansCluster", {"k": k, "positionWeight": position_weight, "batchSize": batch_size, "passesOverData": passes_over_data}, debug,
+        )
+
+    async def invert_rgb(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the InvertRGB sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "InvertRGB", {}, debug,
+        )
+
+    async def invert_r(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the InvertR sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "InvertR", {}, debug,
+        )
+
+    async def invert_g(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the InvertG sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "InvertG", {}, debug,
+        )
+
+    async def invert_b(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the InvertB sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "InvertB", {}, debug,
+        )
+
+    async def invert_a(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the InvertA sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "InvertA", {}, debug,
+        )
+
+    async def color_to_alpha(self, resolink: protocols.ResoniteLinkClient, fill_color: primitives.ColorX, debug: bool = False) -> dict:
+        """Call the ColorToAlpha sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            fill_color: The fillColor parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "ColorToAlpha", {"fillColor": fill_color}, debug,
+        )
+
+    async def alpha_from_intensity(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the AlphaFromIntensity sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "AlphaFromIntensity", {}, debug,
+        )
+
+    async def alpha_to_mask(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the AlphaToMask sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "AlphaToMask", {}, debug,
+        )
+
+    async def remove_alpha(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the RemoveAlpha sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "RemoveAlpha", {}, debug,
+        )
+
+    async def grayscale_average(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the GrayscaleAverage sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "GrayscaleAverage", {}, debug,
+        )
+
+    async def grayscale_luminance(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the GrayscaleLuminance sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "GrayscaleLuminance", {}, debug,
+        )
+
+    async def swap_rg(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SwapRG sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SwapRG", {}, debug,
+        )
+
+    async def swap_rb(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SwapRB sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SwapRB", {}, debug,
+        )
+
+    async def swap_ra(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SwapRA sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SwapRA", {}, debug,
+        )
+
+    async def swap_gb(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SwapGB sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SwapGB", {}, debug,
+        )
+
+    async def swap_ga(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SwapGA sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SwapGA", {}, debug,
+        )
+
+    async def swap_ba(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SwapBA sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SwapBA", {}, debug,
+        )
+
+    async def isolate_r(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the IsolateR sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "IsolateR", {}, debug,
+        )
+
+    async def isolate_g(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the IsolateG sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "IsolateG", {}, debug,
+        )
+
+    async def isolate_b(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the IsolateB sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "IsolateB", {}, debug,
+        )
+
+    async def isolate_a(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the IsolateA sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "IsolateA", {}, debug,
+        )
+
+    async def add_background(self, resolink: protocols.ResoniteLinkClient, color: primitives.ColorX, debug: bool = False) -> dict:
+        """Call the AddBackground sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            color: The color parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "AddBackground", {"color": color}, debug,
+        )
+
+    async def adjust_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: np.float32, debug: bool = False) -> dict:
+        """Call the AdjustGamma sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            gamma: The gamma parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "AdjustGamma", {"gamma": gamma}, debug,
+        )
+
+    async def adjust_alpha_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: np.float32, debug: bool = False) -> dict:
+        """Call the AdjustAlphaGamma sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            gamma: The gamma parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "AdjustAlphaGamma", {"gamma": gamma}, debug,
+        )
+
+    async def shift_hue(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+        """Call the ShiftHue sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            offset: The offset parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "ShiftHue", {"offset": offset}, debug,
+        )
+
+    async def set_hue(self, resolink: protocols.ResoniteLinkClient, hue: np.float32, debug: bool = False) -> dict:
+        """Call the SetHue sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            hue: The hue parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetHue", {"hue": hue}, debug,
+        )
+
+    async def set_saturation(self, resolink: protocols.ResoniteLinkClient, saturation: np.float32, debug: bool = False) -> dict:
+        """Call the SetSaturation sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            saturation: The saturation parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetSaturation", {"saturation": saturation}, debug,
+        )
+
+    async def offset_saturation(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+        """Call the OffsetSaturation sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            offset: The offset parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "OffsetSaturation", {"offset": offset}, debug,
+        )
+
+    async def mul_saturation(self, resolink: protocols.ResoniteLinkClient, ratio: np.float32, debug: bool = False) -> dict:
+        """Call the MulSaturation sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            ratio: The ratio parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "MulSaturation", {"ratio": ratio}, debug,
+        )
+
+    async def set_value(self, resolink: protocols.ResoniteLinkClient, value: np.float32, debug: bool = False) -> dict:
+        """Call the SetValue sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            value: The value parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetValue", {"value": value}, debug,
+        )
+
+    async def mul_value(self, resolink: protocols.ResoniteLinkClient, ratio: np.float32, debug: bool = False) -> dict:
+        """Call the MulValue sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            ratio: The ratio parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "MulValue", {"ratio": ratio}, debug,
+        )
+
+    async def offset_value(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+        """Call the OffsetValue sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            offset: The offset parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "OffsetValue", {"offset": offset}, debug,
+        )
+
+    async def offset_alpha(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+        """Call the OffsetAlpha sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            offset: The offset parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "OffsetAlpha", {"offset": offset}, debug,
+        )
+
+    async def normalize(self, resolink: protocols.ResoniteLinkClient, rgb_independently: bool, normalize_alpha: bool, normalize_min_value: bool, debug: bool = False) -> dict:
+        """Call the Normalize sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            rgb_independently: The rgbIndependently parameter.
+            normalize_alpha: The normalizeAlpha parameter.
+            normalize_min_value: The normalizeMinValue parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Normalize", {"rgbIndependently": rgb_independently, "normalizeAlpha": normalize_alpha, "normalizeMinValue": normalize_min_value}, debug,
+        )
 

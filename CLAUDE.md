@@ -75,13 +75,14 @@ Python objects <- decode_response() <- JSON <---+
 - **`data/codec.py`**: JSON serialization using `$type` discriminators for polymorphic types. Custom encode/decode for `Rect` and `BoundingBox` (nested wire format).
 - **`data/primitives.py`**: PascalCase primitive types (Float3, FloatQ, Color, Rect, BoundingBox, etc.) with float/int coercion in `__post_init__`. Scalar aliases: `primitives.Float` = `np.float32`, `primitives.String` = `str`, `primitives.Char` = `str`, etc.
 - **`data/fields.py`**: Typed field wrappers (FieldFloat, FieldString, ArrayFloat3, FieldRect, etc.) for component member values. Includes nullable variants (FieldNullableInt, etc.) and array variants (ArrayFloat3, etc.).
-- **`data/members.py`**: Member types (Reference, SyncList, SyncObject, SyncPlayback, SyncDictionary, FieldEnum, EmptyElement).
+- **`data/members.py`**: Member types (Reference[T], SyncList, SyncObject, SyncPlayback, SyncDictionary, FieldEnum, EmptyElement). Reference is generic with a phantom type parameter for type-safe references.
 - **`data/workers.py`**: Core data model - Worker (base) -> Slot (scene node) -> Component.
-- **`data/messages.py`**: Request types (GetSlot, AddComponent, UpdateComponent, GetComponentTypeList, GetComponentDefinition, GetTypeDefinition, GetSyncObjectDefinition, etc.).
+- **`data/messages.py`**: Request types (GetSlot, AddComponent, UpdateComponent, GetComponentTypeList, GetComponentDefinition, GetTypeDefinition, GetSyncObjectDefinition, CallSyncMethod, CallStaticSyncMethod, etc.).
 - **`data/responses.py`**: Response types (SlotData, ComponentData, ComponentTypeList, ComponentDefinitionData, etc.).
 - **`data/reflection.py`**: Reflection data types for ComponentDefinition responses.
+- **`data/protocols.py`**: `ResoniteLinkClient` Protocol class that breaks the circular import between `client.py` and `generated/`. Generated components depend on this protocol, not on the concrete Client class.
 - **`generated/`**: Auto-generated component wrapper classes and type hierarchy from live server.
-- **`generated/_base.py`**: Base classes `GeneratedComponent` and `GenericComponent[T]`.
+- **`generated/_base.py`**: Base classes `GeneratedComponent` and `GenericComponent[T]`. Uses `protocols.ResoniteLinkClient` for the client parameter type.
 - **`generated/_generator.py`**: Code generator for component classes and type hierarchy classes.
 - **`generated/_type_map.py`**: Bidirectional mapping between Python types, Resonite wire names, and field classes.
 - **`generated/_types/`**: Generated type hierarchy classes (interfaces, abstract types, asset types) used by reference properties.
@@ -157,7 +158,8 @@ python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipP
    - **Generic type parameters** (`T`): exposed as `T` from `Generic[T]`, resolved at runtime via `_type_info`
 5. Non-generic components inherit from `GeneratedComponent` + implemented interfaces
 6. Generic components (with `<>`) inherit from `GenericComponent[T]` + interfaces (with `[T]`) and are parameterizable: `ValueField[primitives.Float]`
-7. Category path maps to directory structure under `generated/`
+7. **Sync methods** listed in the definition's `methods` array become async method wrappers that call `CallSyncMethod` via the base class `call_method()`. Parameters are typed from the definition. Overloaded methods get a `_N` suffix.
+8. Category path maps to directory structure under `generated/`
 
 #### How Reference Types Are Generated
 
@@ -413,6 +415,27 @@ resp = await resolink.request_json(
 )
 # resp["definition"]["members"] is a dict of member name -> member info
 ```
+
+### Calling Sync Methods
+
+Components can expose callable methods (listed in `GetComponentDefinition`'s `methods` array). These are called via `CallSyncMethod` (field names: `targetID`, `methodName`, `arguments` dict). Generated components get async wrapper methods automatically:
+
+```python
+player = AudioClipPlayer()
+await player.add_to_slot(resolink, slot)
+await player.play(resolink)   # generated wrapper for CallSyncMethod
+await player.stop(resolink)
+```
+
+Methods with parameters accept typed Python arguments:
+
+```python
+await audio_output.exlude_user(resolink, user="some-user-id")
+```
+
+**Important**: Only methods in the definition's `methods` array are callable. ProtoFlux node methods like `CallInput.Trigger` are C# methods but NOT sync methods — they throw `NullReferenceException` because the ProtoFlux execution context isn't available through ResoniteLink.
+
+`CallStaticSyncMethod` calls static methods on a type (field: `targetType` instead of `targetID`).
 
 ### ProtoFlux
 

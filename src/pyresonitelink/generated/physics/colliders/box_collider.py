@@ -5,6 +5,7 @@ import numpy as np
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ihighlightable import IHighlightable
@@ -150,4 +151,44 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
             self.set_member(
                 "Size", fields.FieldFloat3(value=value)
             )
+
+    async def set_from_local_bounds(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SetFromLocalBounds sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetFromLocalBounds", {}, debug,
+        )
+
+    async def set_from_global_bounds(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SetFromGlobalBounds sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetFromGlobalBounds", {}, debug,
+        )
+
+    async def set_from_local_bounds_precise(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SetFromLocalBoundsPrecise sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetFromLocalBoundsPrecise", {}, debug,
+        )
+
+    async def set_from_global_bounds_precise(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SetFromGlobalBoundsPrecise sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetFromGlobalBoundsPrecise", {}, debug,
+        )
 
