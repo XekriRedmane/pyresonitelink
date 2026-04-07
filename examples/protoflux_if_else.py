@@ -18,11 +18,10 @@ import asyncio
 import sys
 import time
 
-import numpy as np
-
 from pyresonitelink import client
 from pyresonitelink.data import fields
 from pyresonitelink.data import messages
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 
 PFX = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes"
@@ -123,12 +122,12 @@ async def main(port: int) -> None:
 
     # x: input value (we'll change this between tests)
     x_id = await add_node(resolink, slot_id, f"{PFX}.ValueInput<float>")
-    await set_field(resolink, x_id, "Value", fields.FieldFloat(value=np.float32(2.0)))
+    await set_field(resolink, x_id, "Value", fields.FieldFloat(value=primitives.Float(2.0)))
     print(f"x (ValueInput<float>)              -> {x_id}")
 
     # Constant 3
     three_id = await add_node(resolink, slot_id, f"{PFX}.ValueInput<float>")
-    await set_field(resolink, three_id, "Value", fields.FieldFloat(value=np.float32(3.0)))
+    await set_field(resolink, three_id, "Value", fields.FieldFloat(value=primitives.Float(3.0)))
     print(f"3 (ValueInput<float>)              -> {three_id}")
 
     # x < 3
@@ -225,13 +224,13 @@ async def main(port: int) -> None:
     print(f"\nTest 1: x=2, z={z1} (expected 5.0)")
 
     # Test 2: x=5 (>= 3), expect z = 5 - 3 = 2
-    await set_field(resolink, x_id, "Value", fields.FieldFloat(value=np.float32(5.0)))
+    await set_field(resolink, x_id, "Value", fields.FieldFloat(value=primitives.Float(5.0)))
     time.sleep(0.5)
     z2 = await read_z()
     print(f"Test 2: x=5, z={z2} (expected 2.0)")
 
     # Test 3: x=3 (== 3, not < 3), expect z = 3 - 3 = 0
-    await set_field(resolink, x_id, "Value", fields.FieldFloat(value=np.float32(3.0)))
+    await set_field(resolink, x_id, "Value", fields.FieldFloat(value=primitives.Float(3.0)))
     time.sleep(0.5)
     z3 = await read_z()
     print(f"Test 3: x=3, z={z3} (expected 0.0)")

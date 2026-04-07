@@ -11,8 +11,6 @@ Before running, generate the ValueField class:
 import asyncio
 import sys
 
-import numpy as np
-
 from pyresonitelink import client
 from pyresonitelink.data import primitives
 from pyresonitelink.generated.data.value_field import ValueField
@@ -32,8 +30,8 @@ async def main(port: int) -> None:
 
     # --- Parameterize ValueField with different types ---
 
-    FloatField = ValueField[np.float32]
-    IntField = ValueField[np.int32]
+    FloatField = ValueField[primitives.Float]
+    IntField = ValueField[primitives.Int]
     StringField = ValueField[str]
     Vec3Field = ValueField[primitives.Float3]
 
@@ -50,7 +48,7 @@ async def main(port: int) -> None:
     print(f"Initial value: {vf.value}")
 
     # Update the value
-    vf.value = np.float32(42.5)
+    vf.value = primitives.Float(42.5)
     await vf.update(resolink)
 
     # Verify by refreshing from server

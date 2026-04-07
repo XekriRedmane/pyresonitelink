@@ -23,9 +23,8 @@ import asyncio
 import sys
 import time
 
-import numpy as np
-
 from pyresonitelink import client
+from pyresonitelink.data import primitives
 from pyresonitelink.generated.data.value_field import ValueField
 from pyresonitelink.generated.protoflux.runtimes.execution.nodes.core.value_display import (
     ValueDisplay,
@@ -37,10 +36,10 @@ from pyresonitelink.generated.protoflux.runtimes.execution.nodes.operators.value
     ValueAdd,
 )
 
-FloatInput = ValueInput[np.float32]
-FloatAdd = ValueAdd[np.float32]
-FloatDisplay = ValueDisplay[np.float32]
-FloatField = ValueField[np.float32]
+FloatInput = ValueInput[primitives.Float]
+FloatAdd = ValueAdd[primitives.Float]
+FloatDisplay = ValueDisplay[primitives.Float]
+FloatField = ValueField[primitives.Float]
 
 
 async def main(port: int) -> None:
