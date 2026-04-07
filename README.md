@@ -65,8 +65,9 @@ await resolink.add_slot_to_root(name="My Slot", isActive=True, orderOffset=5)
 await resolink.add_slot(parent=ref, position=(1, 2, 3), rotation=[0, 0, 0, 1])
 
 # Add components using generated wrapper classes
+# add_to_slot accepts a slot ID string or a Slot instance
 value_field = ValueField[primitives.Float](42.5)
-await value_field.add_to_slot(resolink, slot_id)  # creates on server, assigns ID
+await value_field.add_to_slot(resolink, slot_id)
 
 # Wire ProtoFlux nodes by passing component instances
 add_node = FloatAdd(a=input_a, b=input_b)  # type-checked references

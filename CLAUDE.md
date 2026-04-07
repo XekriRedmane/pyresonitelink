@@ -156,7 +156,7 @@ python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipP
    - **SyncList, SyncObject, SyncDictionary**: exposed as-is
    - **Generic type parameters** (`T`): exposed as `T` from `Generic[T]`, resolved at runtime via `_type_info`
 5. Non-generic components inherit from `GeneratedComponent` + implemented interfaces
-6. Generic components (with `<>`) inherit from `GenericComponent[T]` + interfaces (with `[T]`) and are parameterizable: `ValueField[np.float32]`
+6. Generic components (with `<>`) inherit from `GenericComponent[T]` + interfaces (with `[T]`) and are parameterizable: `ValueField[primitives.Float]`
 7. Category path maps to directory structure under `generated/`
 
 #### How Reference Types Are Generated
@@ -270,23 +270,23 @@ The coercion is handled by two generic functions in `client.py`:
 Generated components have convenience methods for server interaction:
 
 ```python
-FloatField = ValueField[np.float32]
+FloatField = ValueField[primitives.Float]
 
 # Create with initial value and add to server in one step
-vf = FloatField(42.5)
-await vf.add_to_slot(resolink, slot_id)
-# vf.id is now set, members have server-assigned IDs
+value_field = FloatField(42.5)
+await value_field.add_to_slot(resolink, slot_id)
+# value_field.id is now set, members have server-assigned IDs
 
 # Modify and push to server
-vf.value = np.float32(99.0)
-await vf.update(resolink)
+value_field.value = primitives.Float(99.0)
+await value_field.update(resolink)
 
 # Pull latest state from server
-await vf.refresh(resolink)
-print(vf.value)  # 99.0
+await value_field.refresh(resolink)
+print(value_field.value)  # 99.0
 ```
 
-The server accepts member data on `AddComponent`, so values set before `add_to_slot` are sent with the creation request — no separate update needed.
+`add_to_slot` accepts either a slot ID string or a `Slot` instance (whose `.id` is used). The server accepts member data on `AddComponent`, so values set before `add_to_slot` are sent with the creation request — no separate update needed.
 
 #### Generated `__init__` Parameters
 
@@ -297,14 +297,17 @@ The generator produces `__init__` methods with optional parameters for init-able
 
 ```python
 # Single-value generic components
-vi = ValueInput[np.float32](10.0)
-vf = ValueField[primitives.Float3](primitives.Float3(1, 2, 3))
+vi = ValueInput[primitives.Float](10.0)
+value_field = ValueField[primitives.Float3](primitives.Float3(1, 2, 3))
 
 # Multi-reference components — pass IDs or component instances directly
-add = ValueAdd[np.float32](a=input_a, b=input_b)
+add = ValueAdd[primitives.Float](a=input_a, b=input_b)
+
+# Reference-type generics — e.g. RefObjectInput[Slot]
+slot_ref = RefObjectInput[workers.Slot](target=slot_id)
 
 # Wrapping server data (keyword-only)
-vf = ValueField(component=get_resp.data)
+value_field = ValueField(component=get_resp.data)
 ```
 
 Components without init-able members (e.g. `AudioClipPlayer` whose members are `SyncPlayback` and `Reference`) use the base `__init__(component=...)`.
@@ -314,8 +317,8 @@ Components without init-able members (e.g. `AudioClipPlayer` whose members are `
 Generated components inherit from the Resonite interfaces they implement (via `_types/` stubs). This enables the type checker to verify wiring correctness:
 
 ```python
-FloatAdd = ValueAdd[np.float32]
-FloatInput = ValueInput[np.float32]
+FloatAdd = ValueAdd[primitives.Float]
+FloatInput = ValueInput[primitives.Float]
 
 # Valid: ValueAdd and ValueInput implement INodeValueOutput[T]
 add = FloatAdd(a=input_a, b=input_b)  # type-checks
@@ -342,17 +345,17 @@ await resolink.connect(PORT)
 slot_resp = await resolink.add_slot_to_root(name="__test__")
 slot_id = slot_resp.entityId
 
-# 2. Add a generated component
-vf = ValueField[np.float32](42.5)
-await vf.add_to_slot(resolink, slot_id)
+# 2. Add a generated component (accepts slot ID or Slot instance)
+value_field = ValueField[primitives.Float](42.5)
+await value_field.add_to_slot(resolink, slot_id)
 
 # 3. Read back
-await vf.refresh(resolink)
-print(vf.value)  # 42.5
+await value_field.refresh(resolink)
+print(value_field.value)  # 42.5
 
 # 4. Update
-vf.value = np.float32(99.0)
-await vf.update(resolink)
+value_field.value = primitives.Float(99.0)
+await value_field.update(resolink)
 
 # 5. Clean up
 await resolink.remove_slot(slotId=slot_id)
@@ -360,7 +363,7 @@ await resolink.remove_slot(slotId=slot_id)
 
 Key points:
 - Component type names MUST be assembly-qualified: `"[FrooxEngine]FrooxEngine.WorldLink"`
-- Generic components can't be instantiated with bare `<>` — use concrete types: `ValueField[np.float32]`
+- Generic components can't be instantiated with bare `<>` — use concrete types: `ValueField[primitives.Float]`
 - `add_to_slot` automatically refreshes from the server to get member IDs
 - ALWAYS delete test slots when done
 
