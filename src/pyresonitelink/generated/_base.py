@@ -24,17 +24,15 @@ runtime::
 
 from __future__ import annotations
 
-from typing import Any, ClassVar, Generic, TypeVar, TYPE_CHECKING
+from typing import Any, ClassVar, Generic, TypeVar
 
 from pyresonitelink.data import codec
 from pyresonitelink.data import members
 from pyresonitelink.data import messages
+from pyresonitelink.data import protocols
 from pyresonitelink.data import responses
 from pyresonitelink.data import workers
 from pyresonitelink.generated import _type_map
-
-if TYPE_CHECKING:
-    from pyresonitelink import client
 
 T = TypeVar("T")
 
@@ -110,7 +108,7 @@ class GeneratedComponent:
 
     async def add_to_slot(
         self,
-        resolink: client.Client,
+        resolink: protocols.ResoniteLinkClient,
         slot: str | workers.Slot,
         debug: bool = False,
     ) -> responses.NewEntityId:
@@ -144,7 +142,7 @@ class GeneratedComponent:
         return resp
 
     async def update(
-        self, resolink: client.Client, debug: bool = False,
+        self, resolink: protocols.ResoniteLinkClient, debug: bool = False,
     ) -> responses.Response:
         """Send the current state to the server.
 
@@ -163,7 +161,7 @@ class GeneratedComponent:
         )
 
     async def refresh(
-        self, resolink: client.Client, debug: bool = False,
+        self, resolink: protocols.ResoniteLinkClient, debug: bool = False,
     ) -> None:
         """Refresh this component's data from the server.
 
@@ -183,7 +181,7 @@ class GeneratedComponent:
 
     async def call_method(
         self,
-        resolink: client.Client,
+        resolink: protocols.ResoniteLinkClient,
         method_name: str,
         arguments: dict[str, object] | None = None,
         debug: bool = False,

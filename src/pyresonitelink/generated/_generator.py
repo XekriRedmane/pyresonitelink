@@ -696,6 +696,8 @@ def generate_component_source(
         lines.append("from pyresonitelink.data import members")
     if needs_primitives:
         lines.append("from pyresonitelink.data import primitives")
+    if has_sync_methods:
+        lines.append("from pyresonitelink.data import protocols")
 
     # workers is needed when __init__ is generated (for the
     # ``component: workers.Component`` parameter).  It is always needed
@@ -1090,9 +1092,11 @@ def generate_component_source(
             method_names_seen.add(py_method)
 
             # Build the method
-            param_str = ", ".join(["self", "resolink"]
-                                  + py_params
-                                  + ["debug: bool = False"])
+            param_str = ", ".join(
+                ["self", "resolink: protocols.ResoniteLinkClient"]
+                + py_params
+                + ["debug: bool = False"],
+            )
             args_dict = "{" + ", ".join(call_args) + "}"
 
             lines.append(f"    async def {py_method}({param_str}) -> dict:")

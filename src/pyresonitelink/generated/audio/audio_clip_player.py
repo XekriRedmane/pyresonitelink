@@ -1,6 +1,7 @@
 """Generated component: AudioClipPlayer."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -64,7 +65,7 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.AudioClip>'),
             )
 
-    async def play(self, resolink, debug: bool = False) -> dict:
+    async def play(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
         """Call the Play sync method.
 
         Returns:
@@ -74,7 +75,7 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
             resolink, "Play", {}, debug,
         )
 
-    async def stop(self, resolink, debug: bool = False) -> dict:
+    async def stop(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
         """Call the Stop sync method.
 
         Returns:
@@ -84,7 +85,7 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
             resolink, "Stop", {}, debug,
         )
 
-    async def pause(self, resolink, debug: bool = False) -> dict:
+    async def pause(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
         """Call the Pause sync method.
 
         Returns:
@@ -94,7 +95,7 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
             resolink, "Pause", {}, debug,
         )
 
-    async def resume(self, resolink, debug: bool = False) -> dict:
+    async def resume(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
         """Call the Resume sync method.
 
         Returns:
