@@ -12,9 +12,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioOutput.
+    """Audio Output is a component that is used to output sound from any kind of IAudioSource. This includes but is not limited to: Audio streams, audio clip players, and voices.
 
     Category: Audio
+
+    Audio Output is used to Output audio from a large variety of audio
+    sources. From Audio Clips, Audio Streams, Opus Streams, etc. Be careful
+    with how many Audio Outputs you have in a world at once or the Audio
+    Buffer can be overfilled and you wont hear anymore Audio Sources until
+    it's cleared. You can negate this by disabling the hierarchy of the
+    Component or the Component itself when it's not in use.
+
+    **Min and Max scale**: If ``AudioDistanceSpace`` is set to Local, then first the scale's XYZ values are averaged. then that number is clamped between ``MinScale`` and ``MaxScale``. Finally ``MinDistance`` and ``MaxDistance`` are multipled by the number, and set to the results. Basically scaling min and max distances up/down.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioOutput"
@@ -74,7 +83,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def volume(self) -> primitives.Float | None:
-        """The Volume field value."""
+        """The volume to play the clip at, from 0 to 1."""
         member = self.get_member("Volume")
         if member is None:
             return None
@@ -93,7 +102,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IWorldAudioDataSource)."""
+        """The source of audio. Can be an AudioClipPlayer, LerpingMultiClipPlayer, or MultiAudioClipPlayer."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -114,7 +123,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def spatial_blend(self) -> primitives.Float | None:
-        """The SpatialBlend field value."""
+        """Blends the the audio between 3D & 2D."""
         member = self.get_member("SpatialBlend")
         if member is None:
             return None
@@ -133,7 +142,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def spatialize(self) -> primitives.Bool | None:
-        """The Spatialize field value."""
+        """Enables or disables rather it's 3D or 2D."""
         member = self.get_member("Spatialize")
         if member is None:
             return None
@@ -190,7 +199,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def doppler_level(self) -> primitives.Float | None:
-        """The DopplerLevel field value."""
+        """Simulates audio distortion when you or the object is moving."""
         member = self.get_member("DopplerLevel")
         if member is None:
             return None
@@ -260,7 +269,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_distance(self) -> primitives.Float | None:
-        """The MinDistance field value."""
+        """Minimum distance you need to be from the source to hear the audio."""
         member = self.get_member("MinDistance")
         if member is None:
             return None
@@ -279,7 +288,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """Maximum distance from the source until you no longer hear the audio."""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -298,7 +307,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """see Unity audio source priority"""
         member = self.get_member("Priority")
         if member is None:
             return None
@@ -343,7 +352,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_scale(self) -> primitives.Float | None:
-        """The MinScale field value."""
+        """See Min and Max Scale"""
         member = self.get_member("MinScale")
         if member is None:
             return None
@@ -362,7 +371,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_scale(self) -> primitives.Float | None:
-        """The MaxScale field value."""
+        """See Min and Max Scale"""
         member = self.get_member("MaxScale")
         if member is None:
             return None
@@ -425,7 +434,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("excludedUsers", value)
 
     async def exlude_user(self, resolink: protocols.ResoniteLinkClient, user: str, debug: bool = False) -> dict:
-        """Call the ExludeUser sync method.
+        """Excludes the User provided to it, so that user cannot hear this audio output.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -440,7 +449,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def exlude_local_user(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ExludeLocalUser sync method.
+        """Excludes the local user running this sync method, so they cannot hear this audio output.
 
         Returns:
             The raw JSON response dict.
@@ -450,7 +459,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def remove_local_excluded_user(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RemoveLocalExcludedUser sync method.
+        """if currently excluded, makes it to where the local user running this sync method is no longer excluded from hearing this audio output.
 
         Returns:
             The raw JSON response dict.
@@ -460,7 +469,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def remove_exluded_user(self, resolink: protocols.ResoniteLinkClient, user: str, debug: bool = False) -> dict:
-        """Call the RemoveExludedUser sync method.
+        """If provided user is currently excluded, makes it so that the provided user is no longer excluded from hearing this audio output.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -475,7 +484,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def clear_exluded_users(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ClearExludedUsers sync method.
+        """Clears all excluded users from the list
 
         Returns:
             The raw JSON response dict.
@@ -485,7 +494,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def is_user_exluded(self, resolink: protocols.ResoniteLinkClient, user: str, debug: bool = False) -> dict:
-        """Call the IsUserExluded sync method.
+        """When provided a user, this function returns whether or not that user is excluded from hearing this audio clip.
 
         Args:
             resolink: Connected ResoniteLink client.

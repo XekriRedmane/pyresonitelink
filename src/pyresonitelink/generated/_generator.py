@@ -4,8 +4,32 @@ Takes the JSON definition returned by GetComponentDefinition and produces
 a Python source file with a typed wrapper class.
 """
 
+import json
 import re
+from pathlib import Path
 from typing import Any
+
+_DOCS_DIR = Path(__file__).resolve().parent / "docs"
+
+
+def _load_wiki_docs(class_name: str) -> dict[str, Any] | None:
+    """Load wiki documentation for a component if available.
+
+    Args:
+        class_name: The Python class name (PascalCase).
+
+    Returns:
+        Parsed docs dict or None if no docs file exists.
+    """
+    filename = _to_snake_case(class_name) + ".json"
+    path = _DOCS_DIR / filename
+    if not path.exists():
+        return None
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return None
 
 # Wire-format primitive type names that should NOT generate stub classes.
 # These are Resonite's built-in value types that already have Python
@@ -831,12 +855,38 @@ def generate_component_source(
     lines.append("")
     lines.append("")
 
+    # Load wiki documentation if available
+    wiki_docs = _load_wiki_docs(class_name)
+
     # Class
     lines.append(f"class {class_name}({bases_str}):")
-    lines.append(f'    """Wrapper for {component_type}.')
+    if wiki_docs and wiki_docs.get("description"):
+        lines.append(f'    """{wiki_docs["description"]}')
+    else:
+        lines.append(f'    """Wrapper for {component_type}.')
     if category:
         lines.append("")
         lines.append(f"    Category: {category}")
+    if wiki_docs and wiki_docs.get("usage"):
+        lines.append("")
+        # Wrap usage text at ~72 chars with 4-space indent
+        usage = wiki_docs["usage"]
+        words = usage.split()
+        usage_lines: list[str] = []
+        current = "    "
+        for word in words:
+            if len(current) + len(word) + 1 > 76:
+                usage_lines.append(current)
+                current = "    " + word
+            else:
+                current += (" " if len(current) > 4 else "") + word
+        if current.strip():
+            usage_lines.append(current)
+        lines.extend(usage_lines)
+    if wiki_docs and wiki_docs.get("notes"):
+        for note in wiki_docs["notes"]:
+            lines.append("")
+            lines.append(f"    **{note['title']}**: {note['text']}")
     if is_generic:
         lines.append("")
         lines.append(f"    Parameterize with a value type::")
@@ -966,7 +1016,14 @@ def generate_component_source(
             # Scalar field: property exposes the value directly
             lines.append(f"    @property")
             lines.append(f"    def {py_name}(self) -> {py_type} | None:")
-            lines.append(f'        """The {res_name} field value."""')
+            field_doc = (
+                wiki_docs.get("fields", {}).get(res_name, "")
+                if wiki_docs else ""
+            )
+            if field_doc:
+                lines.append(f'        """{field_doc}"""')
+            else:
+                lines.append(f'        """The {res_name} field value."""')
             lines.append(f'        member = self.get_member("{res_name}")')
             lines.append(f"        if member is None:")
             lines.append(f"            return None")
@@ -993,10 +1050,17 @@ def generate_component_source(
 
             lines.append(f"    @property")
             lines.append(f"    def {py_name}(self) -> str | None:")
-            lines.append(
-                f'        """Target ID of the {res_name} reference '
-                f'(targets {annotation})."""'
+            field_doc = (
+                wiki_docs.get("fields", {}).get(res_name, "")
+                if wiki_docs else ""
             )
+            if field_doc:
+                lines.append(f'        """{field_doc}"""')
+            else:
+                lines.append(
+                    f'        """Target ID of the {res_name} reference '
+                    f'(targets {annotation})."""'
+                )
             lines.append(f'        member = self.get_member("{res_name}")')
             lines.append(
                 f"        if isinstance(member, members.Reference):"
@@ -1123,10 +1187,17 @@ def generate_component_source(
             )
             args_dict = "{" + ", ".join(call_args) + "}"
 
-            lines.append(f"    async def {py_method}({param_str}) -> dict:")
-            lines.append(
-                f'        """Call the {method_name} sync method.'
+            method_doc = (
+                wiki_docs.get("methods", {}).get(method_name, "")
+                if wiki_docs else ""
             )
+            lines.append(f"    async def {py_method}({param_str}) -> dict:")
+            if method_doc:
+                lines.append(f'        """{method_doc}')
+            else:
+                lines.append(
+                    f'        """Call the {method_name} sync method.'
+                )
             if params:
                 lines.append("")
                 lines.append("        Args:")
