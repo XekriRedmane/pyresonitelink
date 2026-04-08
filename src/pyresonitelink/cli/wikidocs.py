@@ -294,16 +294,24 @@ def fetch_wiki_docs(
     if component_name in _no_wiki_page:
         return None
 
+    # Build list of URLs to try, in priority order.
+    # For ProtoFlux nodes, also try with Value/Object prefix stripped
+    # since the wiki often uses shorter names (ValueAdd -> Add,
+    # ObjectConstant -> Constant).
+    names = [component_name]
+    for prefix in ("Value", "Object"):
+        if component_name.startswith(prefix) and len(component_name) > len(prefix):
+            names.append(component_name[len(prefix):])
+
+    urls: list[str] = []
     if prefer_protoflux:
-        urls = [
-            _WIKI_PROTOFLUX_URL.format(name=component_name),
-            _WIKI_COMPONENT_URL.format(name=component_name),
-        ]
+        for n in names:
+            urls.append(_WIKI_PROTOFLUX_URL.format(name=n))
+        urls.append(_WIKI_COMPONENT_URL.format(name=component_name))
     else:
-        urls = [
-            _WIKI_COMPONENT_URL.format(name=component_name),
-            _WIKI_PROTOFLUX_URL.format(name=component_name),
-        ]
+        urls.append(_WIKI_COMPONENT_URL.format(name=component_name))
+        for n in names:
+            urls.append(_WIKI_PROTOFLUX_URL.format(name=n))
 
     wikitext = None
     for url in urls:
