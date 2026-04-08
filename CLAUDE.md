@@ -144,9 +144,8 @@ python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipP
 
 #### How Component Generation Works
 
-1. **GetComponentDefinition** provides member structure (names, types, references)
-2. **AddComponent + GetComponent** on a temp slot provides concrete `$type` values for each member (preferred over definition for type resolution)
-3. **GetTypeDefinition** traces the base type chain to collect implemented interfaces
+1. **GetComponentDefinition** provides member structure (names, types, references). The definition's `TypeReference` dicts contain full generic arguments (e.g. `INodeValueOutput<>` with `genericArguments: [{type: "float"}]`), so no temp slot instantiation is needed.
+2. **GetTypeDefinition** traces the base type chain to collect implemented interfaces (cached to avoid redundant requests).
 4. The generator resolves each member to a Python type:
    - **Fields** (bool, int, float, string, float3, etc.): getter/setter exposes the value directly
    - **Nullable fields** (int?, bool?, etc.): same pattern, uses FieldNullableXxx classes
@@ -585,15 +584,22 @@ Wire-format strings (`$type` values, `_register_type` first args) are protocol s
 
 ### Component Definition vs Component Data
 
-When generating code, ALWAYS prefer actual component data for member type resolution over the definition. The definition uses abstract `$type` values like `"field"` with nested `valueType`, while data uses concrete `$type` values like `"float3"`, `"int?"`, `"reference"` that map directly to field classes.
+The generator uses **definition-only resolution** — no temp slot instantiation needed. The definition's `TypeReference` dicts contain full generic arguments (e.g. `targetType: {type: "INodeValueOutput<>", genericArguments: [{type: "float"}]}`), which `_reconstruct_type_string` combines into `"INodeValueOutput<float>"`.
 
-The definition is useful for:
-- Identifying generic type parameters (`valueType.isGenericParameter == true`)
-- Handling `Nullable<>` wrappers (unwrap to inner type + `?` suffix)
-- Detecting array members (`$type = "array"` with `valueType`)
-- Fallback when a component can't be instantiated (generic types with `<>`)
+The definition uses abstract `$type` values like `"field"` with nested `valueType`, while data uses concrete `$type` values like `"float3"`. The `_resolve_member_from_definition` function maps through `valueType` to produce the same result as data-based resolution.
 
-**ProtoFlux gotcha**: Generic ProtoFlux node definitions report input members as `$type: "field"` with generic valueType, but actual instantiated components have them as `$type: "reference"` targeting `INodeValueOutput<T>`. The `_is_generic_parameter` function MUST only return True for `"field"` members, not `"reference"` members whose target type contains a generic parameter.
+Key definition patterns:
+- `$type: "field"` with `valueType.type` → look up in `_PRIMITIVE_FIELD_MAP`
+- `$type: "reference"` with `targetType` → reconstruct full type string from `TypeReference`
+- `$type: "array"` with `valueType` → append `[]` and look up array variant
+- `Nullable<>` wrapper in `valueType` → unwrap inner type + `?` suffix
+- `valueType.isGenericParameter == true` → generic parameter member
+
+**ProtoFlux gotcha**: Generic ProtoFlux node definitions report input members as `$type: "field"` with generic valueType, but the actual `$type` should be `"reference"`. The `_is_generic_parameter` function MUST only return True for `"field"` members, not `"reference"` members whose target type contains a generic parameter.
+
+### Generation Performance
+
+The generator caches `GetTypeDefinition` responses and interface collection results. Most components share the same base type chain, so repeated lookups are instant. Internal ProtoFlux proxy types (3066 CoreNodes with hex suffixes) are skipped via `_SKIP_CATEGORIES`. Full generation of all ~4800 components takes ~3 minutes.
 
 ### Resonite Type String Gotchas
 

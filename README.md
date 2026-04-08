@@ -96,7 +96,7 @@ python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipP
 python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>" --dry-run
 ```
 
-All 3238 ProtoFlux nodes are pre-generated under `generated/protoflux/`. The generator automatically rebuilds `__init__.py` re-exports so new components are immediately importable via the short paths.
+All 4807 components are pre-generated across every Resonite category (ProtoFlux nodes, Assets, Audio, Data, Rendering, Transform, UIX, etc.). The generator automatically rebuilds `__init__.py` re-exports so new components are immediately importable via the short paths. Internal ProtoFlux proxy types (3066 CoreNodes) are skipped automatically.
 
 ### Using Generated Components
 
