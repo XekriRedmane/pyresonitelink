@@ -1,0 +1,14 @@
+{
+  "description": "Usually users find the slot containing this component by using the ProtoFlux node User Root Slot.",
+  "category": "Users",
+  "fields": {
+    "RenderSettings": "The user's render settings. Usually part of an avatar.",
+    "ScreenController": "The screen controller that the user is using to control the game.",
+    "OverrideRoot": "The slot currently overriding the user's root position locally for rendering.",
+    "OverrideView": "The slot currently overriding the user's view position locally for rendering.",
+    "OverrideEars": "The slot currently overriding the user's ears position locally for rendering audio."
+  },
+  "methods": {},
+  "usage": "Usually users find the slot containing this component by using the ProtoFlux node User Root Slot.",
+  "notes": []
+}

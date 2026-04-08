@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserRoot.
+    """Usually users find the slot containing this component by using the ProtoFlux node User Root Slot.
 
     Category: Users
+
+    Usually users find the slot containing this component by using the
+    ProtoFlux node User Root Slot.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserRoot"
@@ -44,7 +47,7 @@ class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def render_settings(self) -> str | None:
-        """Target ID of the RenderSettings reference (targets IRenderSettingsSource)."""
+        """The user's render settings. Usually part of an avatar."""
         member = self.get_member("RenderSettings")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +68,7 @@ class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_controller(self) -> str | None:
-        """Target ID of the ScreenController reference (targets ScreenController)."""
+        """The screen controller that the user is using to control the game."""
         member = self.get_member("ScreenController")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +89,7 @@ class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def override_root(self) -> str | None:
-        """Target ID of the OverrideRoot reference (targets Slot)."""
+        """The slot currently overriding the user's root position locally for rendering."""
         member = self.get_member("OverrideRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +110,7 @@ class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def override_view(self) -> str | None:
-        """Target ID of the OverrideView reference (targets Slot)."""
+        """The slot currently overriding the user's view position locally for rendering."""
         member = self.get_member("OverrideView")
         if isinstance(member, members.Reference):
             return member.targetId

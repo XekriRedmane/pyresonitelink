@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TwitchInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TwitchInterface.
+    """Twitch interface is a component that is used to allow resonite to communicate to and recieve twitch API events from twitch for a given Channel through a User.
 
     Category: Network
     """
@@ -42,7 +42,7 @@ class TwitchInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_user(self) -> members.SyncObject | None:
-        """The TargetUser member."""
+        """The user to handle sending and receiving network packets to and from twitch. User will need to have agreed to communicate with Twitch for this component to work."""
         member = self.get_member("TargetUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -50,12 +50,12 @@ class TwitchInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @target_user.setter
     def target_user(self, value: members.SyncObject) -> None:
-        """Set the TargetUser member."""
+        """Set TargetUser. The user to handle sending and receiving network packets to and from twitch. User will need to have agreed to communicate with Twitch for this component to work."""
         self.set_member("TargetUser", value)
 
     @property
     def channel(self) -> primitives.String | None:
-        """The Channel field value."""
+        """The twitch channel to get communications from."""
         member = self.get_member("Channel")
         if member is None:
             return None
@@ -74,7 +74,7 @@ class TwitchInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def connected(self) -> primitives.Bool | None:
-        """The Connected field value."""
+        """Whether the connection to ``Channel`` is a success and is communicating."""
         member = self.get_member("Connected")
         if member is None:
             return None
@@ -93,7 +93,7 @@ class TwitchInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def stream_live(self) -> primitives.Bool | None:
-        """The StreamLive field value."""
+        """Whether ``Channel`` is currently streaming."""
         member = self.get_member("StreamLive")
         if member is None:
             return None
@@ -112,7 +112,7 @@ class TwitchInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def viewer_count(self) -> primitives.Int | None:
-        """The ViewerCount field value."""
+        """How many viewers are viewing ``Channel``'s stream."""
         member = self.get_member("ViewerCount")
         if member is None:
             return None
@@ -131,7 +131,7 @@ class TwitchInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def follow_timeout_seconds(self) -> primitives.Float | None:
-        """The FollowTimeoutSeconds field value."""
+        """How many seconds to wait before allowing another follow event through."""
         member = self.get_member("FollowTimeoutSeconds")
         if member is None:
             return None

@@ -7,7 +7,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PointerInteractionController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PointerInteractionController.
+    """The PointerInteractionController component is used by the game internally to handle tip touch source behavior on a user.
+
+    Not to be used by the user, is used in internal game behavior.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PointerInteractionController"

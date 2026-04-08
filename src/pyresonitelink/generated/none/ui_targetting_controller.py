@@ -7,7 +7,7 @@ from pyresonitelink.generated._types.iui_interface import IUIInterface
 
 
 class UI_TargettingController(GeneratedComponent):
-    """Wrapper for [FrooxEngine]FrooxEngine.UI_TargettingController.
+    """The UI_TargettingController component is used to control the desktop view which can target onto UIs like inspectors if in builder or videos.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UI_TargettingController"
@@ -25,7 +25,7 @@ class UI_TargettingController(GeneratedComponent):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IUIInterface)."""
+        """The current UIX target element to look at."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

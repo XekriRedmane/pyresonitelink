@@ -1,0 +1,25 @@
+{
+  "description": "This component is used in many places, including: * Primitive Member Editor for directly editing TextFields (and Ref Hacking) * UIX and TextFields * Parsing floats and parsing ints",
+  "category": "With Nested Enums",
+  "fields": {
+    "Text": "The output of where the text is going to be placed at.",
+    "Undo": "If true, the setting of the text is undoable.",
+    "UndoDescription": "This gets shown on the undo button on the Context menu.",
+    "FinishHandling": "Lets the Text editor know what to do when the user leaves a text input.",
+    "AutoCaretColorField": "Automatically sets the color of the caret (based on text color).",
+    "CaretColorField": "Sets the caret color.",
+    "SelectionColorField": "Sets the selection color for this caret.",
+    "EditingStarted": "Gives the TextEditor an action when the editing has started.",
+    "EditingChanged": "Gives the TextEditor an action when the editing has changed.",
+    "EditingFinished": "Gives the TextEditor an action when the editing has finished.",
+    "SubmitPressed": "Gives the TextEditor an action when the editing has been submitted."
+  },
+  "methods": {},
+  "usage": "This component is used in many places, including:\n* Primitive Member Editor for directly editing TextFields (and Ref Hacking)\n* UIX and TextFields\n* Parsing floats and parsing ints",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "Text Editor\nText Editor\nText Editor"
+    }
+  ]
+}

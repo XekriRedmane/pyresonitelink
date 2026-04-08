@@ -1,0 +1,33 @@
+{
+  "description": "Put the component onto a slot, and position the slot.",
+  "category": "Rendering",
+  "fields": {
+    "DoubleBuffered": "Determines if DoubleBuffering is applied or not.",
+    "ForwardOnly": "Determine whether the render technique is only forward. This can badly effect performance.",
+    "Projection": "Determines whether it's perspective or orthographic",
+    "OrthographicSize": "The size of the render-output in orthographic view. (Only active when ``Projection`` is set to ``Orthographic``",
+    "FieldOfView": "The vertical field of view of the camera. (Only active when ``Projection`` is set to ``Perspective``",
+    "NearClipping": "The point in meters where the camera ignores near objects.",
+    "FarClipping": "The point in meters where the camera ignores far objects.",
+    "UseTransformScale": "Determines if the scale of the camera should be taken into account.",
+    "Clear": "See Camera Clear Mode for what this does.",
+    "ClearColor": "If ``CameraClearMode`` is set to ``Color``.",
+    "Viewport": "2D rectangular where the camera is allowed to render",
+    "Depth": "Whether this camera should be rendered before or after other cameras render.",
+    "RenderTexture": "The RenderTextureProvider input in order to get a ITexture2D",
+    "Postprocessing": "Determines if post processing is allowed.",
+    "ScreenSpaceReflections": "Determines if ScreenSpaceReflections are rendered.",
+    "MotionBlur": "Determines if MotionBlur is rendered or not.",
+    "RenderShadows": "Determines if shadows are rendered or not.",
+    "SelectiveRender": "A list of SyncReferences to slots the camera is allowed to render.",
+    "ExcludeRender": "A list of SyncReferences to slots the camera is NOT allowed to render."
+  },
+  "methods": {},
+  "usage": "Put the component onto a slot, and position the slot. The produced image can either be accessed through a RenderTextureProvider component or by creating a Texture2D asset using the Render To Texture Asset Protoflux node.",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* CameraPortal, which is often used as a mirror.\n\nCamera\nCamera"
+    }
+  ]
+}

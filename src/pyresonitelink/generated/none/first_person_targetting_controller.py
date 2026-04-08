@@ -7,7 +7,9 @@ from pyresonitelink.generated._base import GeneratedComponent
 
 
 class FirstPersonTargettingController(GeneratedComponent):
-    """Wrapper for [FrooxEngine]FrooxEngine.FirstPersonTargettingController.
+    """The FirstPersonTargettingController component is used to control the head movement of a desktop user when they look around.
+
+    Not used directly by the user. Appears on a user root slot.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FirstPersonTargettingController"
@@ -28,7 +30,7 @@ class FirstPersonTargettingController(GeneratedComponent):
 
     @property
     def min_vertical_angle(self) -> primitives.Float | None:
-        """The MinVerticalAngle field value."""
+        """The furthest down angle from 0 being forward the user can look in desktop."""
         member = self.get_member("MinVerticalAngle")
         if member is None:
             return None
@@ -47,7 +49,7 @@ class FirstPersonTargettingController(GeneratedComponent):
 
     @property
     def max_vertical_angle(self) -> primitives.Float | None:
-        """The MaxVerticalAngle field value."""
+        """The furthest up angle from 0 being forward the user can look in desktop."""
         member = self.get_member("MaxVerticalAngle")
         if member is None:
             return None

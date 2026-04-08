@@ -15,9 +15,34 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TouchController(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Controllers.TouchController.
+    """* User: User: Equipee of the controller. should not be null. * Node: Chirality: The side of the controller. should not be null.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Controllers
+
+    **Input**: * User: User: Equipee of the controller. should not be null.
+* Node: Chirality: The side of the controller. should not be null.
+
+    **Output**: * IsActive: Bool: is controller active?
+* Type: Type: The internal class for handling device I/O. Defaults to null.
+* BatteryLevel: Float: How its battery is charged? Default to -1 if it cannot be retrieved.
+* IsBatteryCharging: Bool
+* Model: Model
+* Start: Bool
+* ButtonYB: Bool: are they pressed?
+* ButtonXA: Bool: are they pressed?
+* ButtonYB_Touch: are they touched?
+* ButtonXA_Touch: are they touched?
+* ThumbRestTouch: are there touched input key where touchable by thumb other than buttons and joysticks? (Requires verification: does this include joystick touch?)
+* Grip: Float: press strength of grip. Between 0 (not gripped) and 1 (completely gripped).
+* GripClick: Bool: is grip pressed?
+* Joystick: Float2: reports rotation amount by each axis.
+* JoystickTouch: Bool: is joystick touched?
+* JoystickClick: Bool: is joystick clicked down?
+* Trigger: Float: press strength of trigger. Same as Grip.
+* TriggerTouch: Bool: is trigger touched?
+* TriggerClick: Bool: is trigger clicked?
+
+Components
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Controllers.TouchController"

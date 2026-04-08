@@ -10,9 +10,38 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WebsocketClient.
+    """This component must be used in conjunction with the Websocket Protoflux Nodes - it only exists to store state, and does not function on its own.
 
     Category: Network
+
+    This component must be used in conjunction with the Websocket Protoflux
+    Nodes - it only exists to store state, and does not function on its own.
+    ``User`` should be a user that expects to be hosting the Websocket
+    connection Assignments should generally be made in the following order,
+    depending on which one is the most applicable: * '''The user wearing the
+    avatar containing this Protoflux''' * '''A specifically defined user who
+    is expected to be present for this connection to function''' * The user
+    who spawned the object containing this Protoflux * The user who is
+    currently interacting with the object * The host of the session You
+    should not select a user who is not expecting the object to connect to
+    an external service. It is possible they will deny the connection
+    (especially if ``AccessReason`` isn't sufficiently convincing), which
+    will cause the connection to fail. ``AccessReason`` should provide a
+    clear and concise reason for wanting to connect to the external service
+    - It should include an obvious title or description of the object that
+    is attempting to establish the connection, so that the user is aware of
+    what item in the world is prompting the connection. The object should
+    have some way of indicating that it did not successfully connect to the
+    target service, and that it will not function as intended, if at all.
+    The websocket times out and disconnects if the remote server does not
+    send any traffic (including heartbeat messages) at least every 60
+    seconds, for long running connections be sure to configure the keepalive
+    interval on the server side.
+
+    **Related Issues**: == Related Components ==
+
+Websocket Client
+Websocket Client
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WebsocketClient"
@@ -39,7 +68,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The Websocket server to target - either secure (``wss://``) or insecure (``ws://``)"""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -58,7 +87,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def handling_user(self) -> members.SyncObject | None:
-        """The HandlingUser member."""
+        """The user who will be responsible for establishing the connection, and transmitting data."""
         member = self.get_member("HandlingUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -66,12 +95,12 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @handling_user.setter
     def handling_user(self, value: members.SyncObject) -> None:
-        """Set the HandlingUser member."""
+        """Set HandlingUser. The user who will be responsible for establishing the connection, and transmitting data."""
         self.set_member("HandlingUser", value)
 
     @property
     def access_reason(self) -> primitives.String | None:
-        """The AccessReason field value."""
+        """A descriptive string explaining why this connection request should be granted"""
         member = self.get_member("AccessReason")
         if member is None:
             return None
@@ -90,7 +119,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def connect_retry_interval(self) -> primitives.Float | None:
-        """The ConnectRetryInterval field value."""
+        """How often to retry the connection, if it fails for reasons other than being rejected by the user."""
         member = self.get_member("ConnectRetryInterval")
         if member is None:
             return None
@@ -109,7 +138,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_connected(self) -> primitives.Bool | None:
-        """The IsConnected field value."""
+        """A read-only value indicating if this client has successfully connected to the target specified in ``URL``"""
         member = self.get_member("IsConnected")
         if member is None:
             return None

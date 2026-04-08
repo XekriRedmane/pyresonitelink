@@ -6,7 +6,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HeadSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HeadSimulator.
+    """The HeadSimulator used to control the movement of the user's head.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HeadSimulator"

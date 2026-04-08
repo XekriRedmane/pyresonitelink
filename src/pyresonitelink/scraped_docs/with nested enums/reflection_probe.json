@@ -1,0 +1,31 @@
+{
+  "description": "The ReflectionProbe component is used to make points in space that makes reflective surfaces within a box around the point show a different reflection map than the skybox. This is useful for controlling the lighting and look of a scene.",
+  "category": "With Nested Enums",
+  "fields": {
+    "ProbeType": "What mode this reflection probe uses.",
+    "Importance": "How much priority this probe takes over another probe when two probes overlap",
+    "Intensity": "how strong or bright the reflection is",
+    "BlendDistance": "how far the probe will slowly take over the reflection map of objects as an object goes towards the center of influence",
+    "BoxSize": "the area that this reflection probe will affect the reflection maps of objects",
+    "BoxProjection": "project the reflection map in a box shape from the reflection probe rather than a sphere.",
+    "BakedCubemap": "The cube map to replace the refection maps of reflective objects with in the influence area of this reflection probe",
+    "ChangesSources": "A list of elements that will prompt this reflection probe to render a new map whenever they change.",
+    "TimeSlicing": "How updates to this reflection probe should happen in updates if this probe is a realtime probe.",
+    "Resolution": "the forced resolution of the reflection map from this reflection probe shown in the reflections of shiny objects.",
+    "HDR": "Whether the color encoding should be in HDR.",
+    "ShadowDistance": "how far to render shadows from the reflection probe",
+    "ClearFlags": "Whether to use the skybox or color when backing transparent pixels",
+    "BackgroundColor": "The color to clear with when ``ClearFlags`` is set to \"Color\"",
+    "NearClip": "The closest distance to render from the reflection probe center when using \"Realtime\" on ``ProbeType``",
+    "FarClip": "The furthest distance to render from the reflection probe center when using \"Realtime\" on ``ProbeType``",
+    "SkyboxOnly": "Whether to render only the skybox or not.",
+    "ShowDebugVisuals": "Shows the box influence area and the center point of this reflection probe",
+    "_debugVisual": "The current debug visual that this reflection probe is showing, if applicable."
+  },
+  "methods": {
+    "OnBake": "Called when the bake button is touched.",
+    "Bake": "Creates a static cubemap and inserts it into ``BakedCubemap`` instead of having ``ProbeType`` be set to realtime."
+  },
+  "usage": "Attach to a slot to start using this component as a point source for reflection map data.",
+  "notes": []
+}

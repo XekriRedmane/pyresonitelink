@@ -1,0 +1,20 @@
+{
+  "description": "The LocomotionController component is used on user root slots to allow user inputs to control Locomotion modules and switch between them. It also handles disabling them when they should be restrained.",
+  "category": "Uncategorized",
+  "fields": {
+    "ScalingEnabled": "Whether the user is allowed to scale or not.",
+    "SupressSources": "Sources of Locomotion suppression. This will usually be a AvatarAnchor.",
+    "InputSupressSources": "A list of Components that act as input control supressors.",
+    "LocomotionModules": "A list of locomotions the user can switch between and use.",
+    "ActiveModuleIndex": "The current locomotion module being used.",
+    "FindUserPreferredModule": "Whether to automatically use the user's preferred locomotion in Settings.",
+    "_currentGroundCollider": "the current object that the user is standing on (supporting ground or slope)",
+    "_lastGroundCollider": "The previous collider the user was standing on before they started nocliping or otherwise.",
+    "OnInitialized": "A sync delegate to call and pass this locomotion controller as a reference to when this component Initializes.",
+    "_parentHierarchy": "A list of slots that are parents of this component.",
+    "_dummyCharacterController": "The character controller to use when there is no locomotion. Is found on User root."
+  },
+  "methods": {},
+  "usage": "Used internally by user systems made in a user slot on spawn.",
+  "notes": []
+}

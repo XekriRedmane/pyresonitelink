@@ -1,0 +1,49 @@
+{
+  "description": "This component is usually used internally by Resonite to simulate user movement physics like walking and climbing.",
+  "category": "Physics",
+  "fields": {
+    "SimulatingUser": "The user who is currently simulating and networking this Character Controller.",
+    "CharacterRoot": "The slot to simulate, can be any inputted slot.",
+    "HeadReference": "Dictates where to simulate the collider and based on the slot's forward direction, will decide what a \"forward\" movement is based on your joystick/input. SimulateRotation Bool Allow the object simulated by this object to rotate, essentially making it a rigid body. See warning.",
+    "MassScaling": "How to scale the mass based on this component's slot scale.",
+    "ForceScaling": "How to scale the force based on this component's slot scale.",
+    "SpeedScaling": "How to scale the speed based on this component's slot scale.",
+    "JumpScaling": "How to scale the jump force based on this component's slot scale.",
+    "GravityScaling": "How to scale the gravity effect based on this component's slot scale.",
+    "LinearDamping": "how fast the character controller slows down when no other forces are being applied to it",
+    "AngularDamping": "how fast thus character slows down its rotation when no other forces are being applied to it.",
+    "Margin": "Unused.",
+    "StepUpHeight": "How big of a ledge the character controller can step up",
+    "StepUpCheckDistance": "determines the distance the shape is swept in the movement direction to determine if it's free of other obstacles",
+    "KillVerticalVelocityAfterStepUp": "will convert any vertical velocity into directional one in the current planar direction of the movement and push the player back down, preventing the player from getting too much air when running off a ramp or stairs.",
+    "EdgeDetectionDepth": "the smallest size an edge can be that the character can stand on while against a wall",
+    "Speed": "How fast this character controller can move.",
+    "SlidingSpeed": "how fast the character controller moves when sliding down a slope",
+    "AirSpeed": "how fast the character moves in the air",
+    "TractionForce": "How much force is needed to overcome standing friction.",
+    "SlidingForce": "How much force is needed to stay moving",
+    "AirForce": "the force needed to move in the air",
+    "MaximumGlueForce": "Reduces the velocity of breaking contact from a surface vertically be under this speed. This is useful for simulating sticky surfaces, where the user cannot jump as high.",
+    "MaximumTractionSlope": "Maximum Traction angle (degrees) before user slides down a slope, even if they are actively trying to walk up it.",
+    "MaximumSupportSlope": "Maximum Support angle (degrees) before user slides down a slope, when not working against the slope.",
+    "JumpSpeed": "The speed of the velocity applied when jumping on a slope with an angle less than or equal to ``MaximumTractionSlope``.",
+    "SlidingJumpSpeed": "The speed of the velocity applied when jumping on a slope with an angle greater than ``MaximuSupportSlope``.",
+    "Gravity": "Force of Gravity for this character controller",
+    "GravitySpace": "The coordinate space in which ``Gravity`` is applied in. applying gravity to world space using this field, can allow a user to stay upright despite a floor they're parented under is being rotated. which generates interesting effects.",
+    "DebugVisualDuration": "Allows for the component to visualize the force vectors acting on the character simulator if set above 0.",
+    "__height": "Height of the driven CapsuleCollider (Component) Currently does nothing.",
+    "__radius": "Radius of the driven CapsuleCollider (Component) Currently does nothing.",
+    "__mass": "Mass of the of the driven CapsuleCollider (Component) Currently does nothing.",
+    "__collideWithOtherCharacters": "Currently does nothing.",
+    "__ignoreRaycasts": "Currently does nothing.",
+    "__rootAtBottom": "Currently does nothing."
+  },
+  "methods": {},
+  "usage": "This component is usually used internally by Resonite to simulate user movement physics like walking and climbing. \n\nBut the component can also be manipulated to create \"Fake Players\" commonly known by Resonite users as \"NPC's\". Before doing this, know that the physics simulation is always inconsistent when viewed by different players in the same session. It also causes high amounts of networking and FPS lag. Use too many and you may start rising in Queued Packets.\n\nThe character controller can also be used as a ball and simulates rolling, falling, collisions and momentum transfer, but for individual things that fly or bounce, using a Trajectory Position ProtoFlux node is vastly superior.\n\nThis component is also used in certain types of vehicles and making them controllable by the user. This is done by having a vehicle you want to make controllable, then making an anchor for the user to sit in, then setting up this component to make that user become the simulating user, thus making their controls change in such a way where they are controlling a vehicle they are sitting on.\n\nThe CharacterRoot slot input when null will do its transforms on the slot the CharacterController component is on, however when given a slot the component will instead make those transforms happen on the slot inputted. Combined with defining the HeadReference, you can control external slots without moving where the CharacterController component is and have them work with physical obstacles. For a quick example of this behavior, you can modify your current active locomotion's CharacterController on the CharacterRoot field to point towards another slot while defining the HeadReference to instead move the inputted slot while you stand still.\n\nThis component can use sphere, box and other colliders that have volume in addition to the capsule collider.\n\nNote, due to the unique behavior of the HeadReference input defining where the CharacterController's collider is in the simulation, visualizing the collider via the inspector will not be correct.",
+  "notes": [
+    {
+      "title": "Description",
+      "text": "The Character Controller component is primarily designed to be part of the Locomotion system and is what used for user movement and simulating physics relating to this.\n\nIt has many settings and values that can alter the way on how a user can control either their self or another slot (For example: Vehicles). These Settings allow you to control the mass, speed, force, etc. This flexibility also allows for uses far beyond it's original intended design.\n\n\n\nKeep in mind that the character controller under the user root slot is currently useless (as in, not used besides it needing to be there) at this time. And removing it just recreates it back on the user root slot.\n\nFor this component, when using some features, you may need to either write/drive the field ``SimulatingUser``. This will activate the character controller on the slot and make it start simulating. Doing this also lets you use some nodes such as Is Character Controller and Is Character On Ground, and without a simulating user, the values from some nodes would not be updated."
+    }
+  ]
+}

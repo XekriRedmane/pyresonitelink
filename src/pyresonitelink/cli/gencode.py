@@ -461,11 +461,22 @@ async def _generate_component(
                     type_def_cache,
                 )
 
-    # Scrape wiki documentation if not already saved
+    # Scrape wiki documentation if not already saved.
+    # Skip wiki fetch for mixed-type operators (e.g. Add_Float_Float2)
+    # — these almost never have their own wiki page and checking is
+    # slow (~1s per HTTP 404).
     if not dry_run:
         from pyresonitelink.generated._generator import _load_wiki_docs
-        if _load_wiki_docs(cls_name) is None:
-            wiki_docs = fetch_wiki_docs(cls_name)
+        is_mixed_type = (
+            "_" in cls_name
+            and not cls_name.startswith("UI_")
+            and not cls_name.startswith("PBS_")
+        )
+        if not is_mixed_type and _load_wiki_docs(cls_name) is None:
+            is_protoflux = category.startswith("ProtoFlux")
+            wiki_docs = fetch_wiki_docs(
+                cls_name, prefer_protoflux=is_protoflux,
+            )
             if wiki_docs is not None:
                 save_docs(cls_name, wiki_docs)
 

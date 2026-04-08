@@ -19,9 +19,13 @@ from pathlib import Path
 from urllib import request
 
 
-_WIKI_RAW_URL = (
+_WIKI_COMPONENT_URL = (
     "https://wiki.resonite.com/index.php"
     "?title=Component:{name}&action=raw"
+)
+_WIKI_PROTOFLUX_URL = (
+    "https://wiki.resonite.com/index.php"
+    "?title=ProtoFlux:{name}&action=raw"
 )
 
 _DOCS_DIR = (
@@ -260,26 +264,61 @@ def parse_wikitext(wikitext: str) -> dict:
     return doc
 
 
-def fetch_wiki_docs(component_name: str) -> dict | None:
+# Cache of component names known to have no wiki page.
+_no_wiki_page: set[str] = set()
+
+_WIKI_TIMEOUT = 5  # seconds
+
+
+def fetch_wiki_docs(
+    component_name: str,
+    prefer_protoflux: bool = False,
+) -> dict | None:
     """Fetch and parse documentation for a component from the wiki.
+
+    Tries ``ProtoFlux:<name>`` first for ProtoFlux nodes, otherwise
+    ``Component:<name>`` first.  Falls back to the other prefix if the
+    preferred one returns 404.
+
+    Results are cached: components known to have no wiki page are
+    not fetched again within the same process.
 
     Args:
         component_name: Component name as it appears in the wiki URL
-            (e.g. "AudioOutput", "AudioClipPlayer").
+            (e.g. "AudioOutput", "FireOnTrue").
+        prefer_protoflux: If True, try ``ProtoFlux:`` prefix first.
 
     Returns:
         Parsed documentation dict, or None if the page doesn't exist.
     """
-    url = _WIKI_RAW_URL.format(name=component_name)
-    try:
-        with request.urlopen(url) as resp:
-            if resp.status != 200:
-                return None
-            wikitext = resp.read().decode("utf-8")
-    except Exception:
+    if component_name in _no_wiki_page:
         return None
 
-    if not wikitext or "There is currently no text in this page" in wikitext:
+    if prefer_protoflux:
+        urls = [
+            _WIKI_PROTOFLUX_URL.format(name=component_name),
+            _WIKI_COMPONENT_URL.format(name=component_name),
+        ]
+    else:
+        urls = [
+            _WIKI_COMPONENT_URL.format(name=component_name),
+            _WIKI_PROTOFLUX_URL.format(name=component_name),
+        ]
+
+    wikitext = None
+    for url in urls:
+        try:
+            with request.urlopen(url, timeout=_WIKI_TIMEOUT) as resp:
+                if resp.status == 200:
+                    text = resp.read().decode("utf-8")
+                    if text and "There is currently no text in this page" not in text:
+                        wikitext = text
+                        break
+        except Exception:
+            continue
+
+    if wikitext is None:
+        _no_wiki_page.add(component_name)
         return None
 
     return parse_wikitext(wikitext)

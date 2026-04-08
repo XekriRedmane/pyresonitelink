@@ -1,0 +1,11 @@
+{
+  "description": "The FirstPersonTargettingController component is used to control the head movement of a desktop user when they look around.",
+  "category": "Uncategorized",
+  "fields": {
+    "MinVerticalAngle": "The furthest down angle from 0 being forward the user can look in desktop.",
+    "MaxVerticalAngle": "The furthest up angle from 0 being forward the user can look in desktop."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. Appears on a user root slot.",
+  "notes": []
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The PointerInteractionController component is used by the game internally to handle tip touch source behavior on a user.",
+  "category": "Uncategorized",
+  "fields": {},
+  "methods": {
+    "GetTipPosition": "RelayTouchSource]] component.",
+    "GetTipDirection": "RelayTouchSource]] component.",
+    "GetTouchType": "RelayTouchSource]] component.",
+    "GetTouchable": "Can be called to get the touchable target object of this component."
+  },
+  "usage": "Not to be used by the user, is used in internal game behavior.",
+  "notes": []
+}

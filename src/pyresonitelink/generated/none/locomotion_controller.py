@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocomotionController.
+    """The LocomotionController component is used on user root slots to allow user inputs to control Locomotion modules and switch between them. It also handles disabling them when they should be restrained.
+
+    Used internally by user systems made in a user slot on spawn.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionController"
@@ -45,7 +47,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scaling_enabled(self) -> primitives.Bool | None:
-        """The ScalingEnabled field value."""
+        """Whether the user is allowed to scale or not."""
         member = self.get_member("ScalingEnabled")
         if member is None:
             return None
@@ -64,7 +66,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def supress_sources(self) -> members.SyncList | None:
-        """The SupressSources member."""
+        """Sources of Locomotion suppression. This will usually be a AvatarAnchor."""
         member = self.get_member("SupressSources")
         if isinstance(member, members.SyncList):
             return member
@@ -72,12 +74,12 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @supress_sources.setter
     def supress_sources(self, value: members.SyncList) -> None:
-        """Set the SupressSources member."""
+        """Set SupressSources. Sources of Locomotion suppression. This will usually be a AvatarAnchor."""
         self.set_member("SupressSources", value)
 
     @property
     def input_supress_sources(self) -> members.SyncList | None:
-        """The InputSupressSources member."""
+        """A list of Components that act as input control supressors."""
         member = self.get_member("InputSupressSources")
         if isinstance(member, members.SyncList):
             return member
@@ -85,12 +87,12 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @input_supress_sources.setter
     def input_supress_sources(self, value: members.SyncList) -> None:
-        """Set the InputSupressSources member."""
+        """Set InputSupressSources. A list of Components that act as input control supressors."""
         self.set_member("InputSupressSources", value)
 
     @property
     def locomotion_modules(self) -> members.SyncList | None:
-        """The LocomotionModules member."""
+        """A list of locomotions the user can switch between and use."""
         member = self.get_member("LocomotionModules")
         if isinstance(member, members.SyncList):
             return member
@@ -98,12 +100,12 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @locomotion_modules.setter
     def locomotion_modules(self, value: members.SyncList) -> None:
-        """Set the LocomotionModules member."""
+        """Set LocomotionModules. A list of locomotions the user can switch between and use."""
         self.set_member("LocomotionModules", value)
 
     @property
     def active_module_index(self) -> primitives.Int | None:
-        """The ActiveModuleIndex field value."""
+        """The current locomotion module being used."""
         member = self.get_member("ActiveModuleIndex")
         if member is None:
             return None
@@ -122,7 +124,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def find_user_preferred_module(self) -> primitives.Bool | None:
-        """The FindUserPreferredModule field value."""
+        """Whether to automatically use the user's preferred locomotion in Settings."""
         member = self.get_member("FindUserPreferredModule")
         if member is None:
             return None
@@ -141,7 +143,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_ground_collider(self) -> str | None:
-        """Target ID of the _currentGroundCollider reference (targets ICollider)."""
+        """the current object that the user is standing on (supporting ground or slope)"""
         member = self.get_member("_currentGroundCollider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -162,7 +164,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def last_ground_collider(self) -> str | None:
-        """Target ID of the _lastGroundCollider reference (targets ICollider)."""
+        """The previous collider the user was standing on before they started nocliping or otherwise."""
         member = self.get_member("_lastGroundCollider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -183,7 +185,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def parent_hierarchy(self) -> members.SyncList | None:
-        """The _parentHierarchy member."""
+        """A list of slots that are parents of this component."""
         member = self.get_member("_parentHierarchy")
         if isinstance(member, members.SyncList):
             return member
@@ -191,12 +193,12 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @parent_hierarchy.setter
     def parent_hierarchy(self, value: members.SyncList) -> None:
-        """Set the _parentHierarchy member."""
+        """Set _parentHierarchy. A list of slots that are parents of this component."""
         self.set_member("_parentHierarchy", value)
 
     @property
     def dummy_character_controller(self) -> str | None:
-        """Target ID of the _dummyCharacterController reference (targets CharacterController)."""
+        """The character controller to use when there is no locomotion. Is found on User root."""
         member = self.get_member("_dummyCharacterController")
         if isinstance(member, members.Reference):
             return member.targetId

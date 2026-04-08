@@ -1,0 +1,14 @@
+{
+  "description": "The DebugVector component shows a vector using a thin line.",
+  "category": "Debug",
+  "fields": {
+    "PositionOffset": "the position offset for the entire Debug visual.",
+    "RotationOffset": "The rotation Offset for the entire Debug visual.",
+    "Vector": "the vector to debug.",
+    "Color": "The color of the debug vector line.",
+    "UseGlobalSpace": "Whether the vector is in global space or not."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

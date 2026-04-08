@@ -1,0 +1,21 @@
+{
+  "description": "Used for lasers and interactions.",
+  "category": "Users",
+  "fields": {
+    "Side": "The side to get the data.",
+    "PrimaryBlockedStream": "The value interaction data currently being blocked. (Primary)",
+    "SecondaryBlockedStream": "The value interaction data currently being blocked. (Secondary)",
+    "LaserActiveStream": "The streamed data for this interaction.",
+    "ShowLaserToOthersStream": "Shows the laser data for the other stream.",
+    "LaserTargetStream": "Shows the value for the target of this interaction.",
+    "GrabDistanceStream": "Shows the data of the distance of this interaction."
+  },
+  "methods": {},
+  "usage": "Used for lasers and interactions.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "Interaction Handler Stream Driver\nInteraction Handler Stream Driver"
+    }
+  ]
+}

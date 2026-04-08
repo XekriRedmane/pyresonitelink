@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.camera_projection import CameraProjection
+from pyresonitelink.generated._enums.camera_clear_mode import CameraClearMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,24 +15,36 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Camera.
+    """Put the component onto a slot, and position the slot.
 
     Category: Rendering
+
+    Put the component onto a slot, and position the slot. The produced image
+    can either be accessed through a RenderTextureProvider component or by
+    creating a Texture2D asset using the Render To Texture Asset Protoflux
+    node.
+
+    **See also**: * CameraPortal, which is often used as a mirror.
+
+Camera
+Camera
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Camera"
 
-    def __init__(self, double_buffered: primitives.Bool | None = None, forward_only: primitives.Bool | None = None, orthographic_size: primitives.Float | None = None, field_of_view: primitives.Float | None = None, near_clipping: primitives.Float | None = None, far_clipping: primitives.Float | None = None, use_transform_scale: primitives.Bool | None = None, clear_color: primitives.ColorX | None = None, viewport: primitives.Rect | None = None, depth: primitives.Float | None = None, render_texture: str | IAssetProvider[RenderTexture] | None = None, postprocessing: primitives.Bool | None = None, screen_space_reflections: primitives.Bool | None = None, motion_blur: primitives.Bool | None = None, render_shadows: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, double_buffered: primitives.Bool | None = None, forward_only: primitives.Bool | None = None, projection: CameraProjection | str | None = None, orthographic_size: primitives.Float | None = None, field_of_view: primitives.Float | None = None, near_clipping: primitives.Float | None = None, far_clipping: primitives.Float | None = None, use_transform_scale: primitives.Bool | None = None, clear: CameraClearMode | str | None = None, clear_color: primitives.ColorX | None = None, viewport: primitives.Rect | None = None, depth: primitives.Float | None = None, render_texture: str | IAssetProvider[RenderTexture] | None = None, postprocessing: primitives.Bool | None = None, screen_space_reflections: primitives.Bool | None = None, motion_blur: primitives.Bool | None = None, render_shadows: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             double_buffered: Initial value for DoubleBuffered.
             forward_only: Initial value for ForwardOnly.
+            projection: Initial value for Projection.
             orthographic_size: Initial value for OrthographicSize.
             field_of_view: Initial value for FieldOfView.
             near_clipping: Initial value for NearClipping.
             far_clipping: Initial value for FarClipping.
             use_transform_scale: Initial value for UseTransformScale.
+            clear: Initial value for Clear.
             clear_color: Initial value for ClearColor.
             viewport: Initial value for Viewport.
             depth: Initial value for Depth.
@@ -46,6 +60,8 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             self.double_buffered = double_buffered
         if forward_only is not None:
             self.forward_only = forward_only
+        if projection is not None:
+            self.projection = projection
         if orthographic_size is not None:
             self.orthographic_size = orthographic_size
         if field_of_view is not None:
@@ -56,6 +72,8 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             self.far_clipping = far_clipping
         if use_transform_scale is not None:
             self.use_transform_scale = use_transform_scale
+        if clear is not None:
+            self.clear = clear
         if clear_color is not None:
             self.clear_color = clear_color
         if viewport is not None:
@@ -75,7 +93,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def double_buffered(self) -> primitives.Bool | None:
-        """The DoubleBuffered field value."""
+        """Determines if DoubleBuffering is applied or not."""
         member = self.get_member("DoubleBuffered")
         if member is None:
             return None
@@ -94,7 +112,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def forward_only(self) -> primitives.Bool | None:
-        """The ForwardOnly field value."""
+        """Determine whether the render technique is only forward. This can badly effect performance."""
         member = self.get_member("ForwardOnly")
         if member is None:
             return None
@@ -112,21 +130,28 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def projection(self) -> members.FieldEnum | None:
-        """The Projection member."""
+    def projection(self) -> CameraProjection | None:
+        """Determines whether it's perspective or orthographic"""
         member = self.get_member("Projection")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CameraProjection(member.value)
         return None
 
     @projection.setter
-    def projection(self, value: members.FieldEnum) -> None:
-        """Set the Projection member."""
-        self.set_member("Projection", value)
+    def projection(self, value: CameraProjection | str) -> None:
+        """Set Projection. Determines whether it's perspective or orthographic"""
+        member = self.get_member("Projection")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Projection",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def orthographic_size(self) -> primitives.Float | None:
-        """The OrthographicSize field value."""
+        """The size of the render-output in orthographic view. (Only active when ``Projection`` is set to ``Orthographic``"""
         member = self.get_member("OrthographicSize")
         if member is None:
             return None
@@ -145,7 +170,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def field_of_view(self) -> primitives.Float | None:
-        """The FieldOfView field value."""
+        """The vertical field of view of the camera. (Only active when ``Projection`` is set to ``Perspective``"""
         member = self.get_member("FieldOfView")
         if member is None:
             return None
@@ -164,7 +189,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def near_clipping(self) -> primitives.Float | None:
-        """The NearClipping field value."""
+        """The point in meters where the camera ignores near objects."""
         member = self.get_member("NearClipping")
         if member is None:
             return None
@@ -183,7 +208,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def far_clipping(self) -> primitives.Float | None:
-        """The FarClipping field value."""
+        """The point in meters where the camera ignores far objects."""
         member = self.get_member("FarClipping")
         if member is None:
             return None
@@ -202,7 +227,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def use_transform_scale(self) -> primitives.Bool | None:
-        """The UseTransformScale field value."""
+        """Determines if the scale of the camera should be taken into account."""
         member = self.get_member("UseTransformScale")
         if member is None:
             return None
@@ -220,21 +245,28 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def clear(self) -> members.FieldEnum | None:
-        """The Clear member."""
+    def clear(self) -> CameraClearMode | None:
+        """See Camera Clear Mode for what this does."""
         member = self.get_member("Clear")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CameraClearMode(member.value)
         return None
 
     @clear.setter
-    def clear(self, value: members.FieldEnum) -> None:
-        """Set the Clear member."""
-        self.set_member("Clear", value)
+    def clear(self, value: CameraClearMode | str) -> None:
+        """Set Clear. See Camera Clear Mode for what this does."""
+        member = self.get_member("Clear")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Clear",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def clear_color(self) -> primitives.ColorX | None:
-        """The ClearColor field value."""
+        """If ``CameraClearMode`` is set to ``Color``."""
         member = self.get_member("ClearColor")
         if member is None:
             return None
@@ -253,7 +285,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def viewport(self) -> primitives.Rect | None:
-        """The Viewport field value."""
+        """2D rectangular where the camera is allowed to render"""
         member = self.get_member("Viewport")
         if member is None:
             return None
@@ -272,7 +304,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def depth(self) -> primitives.Float | None:
-        """The Depth field value."""
+        """Whether this camera should be rendered before or after other cameras render."""
         member = self.get_member("Depth")
         if member is None:
             return None
@@ -291,7 +323,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def render_texture(self) -> str | None:
-        """Target ID of the RenderTexture reference (targets IAssetProvider[RenderTexture])."""
+        """The RenderTextureProvider input in order to get a ITexture2D"""
         member = self.get_member("RenderTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -312,7 +344,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def postprocessing(self) -> primitives.Bool | None:
-        """The Postprocessing field value."""
+        """Determines if post processing is allowed."""
         member = self.get_member("Postprocessing")
         if member is None:
             return None
@@ -331,7 +363,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def screen_space_reflections(self) -> primitives.Bool | None:
-        """The ScreenSpaceReflections field value."""
+        """Determines if ScreenSpaceReflections are rendered."""
         member = self.get_member("ScreenSpaceReflections")
         if member is None:
             return None
@@ -350,7 +382,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def motion_blur(self) -> primitives.Bool | None:
-        """The MotionBlur field value."""
+        """Determines if MotionBlur is rendered or not."""
         member = self.get_member("MotionBlur")
         if member is None:
             return None
@@ -369,7 +401,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def render_shadows(self) -> primitives.Bool | None:
-        """The RenderShadows field value."""
+        """Determines if shadows are rendered or not."""
         member = self.get_member("RenderShadows")
         if member is None:
             return None
@@ -388,7 +420,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @property
     def selective_render(self) -> members.SyncList | None:
-        """The SelectiveRender member."""
+        """A list of SyncReferences to slots the camera is allowed to render."""
         member = self.get_member("SelectiveRender")
         if isinstance(member, members.SyncList):
             return member
@@ -396,12 +428,12 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @selective_render.setter
     def selective_render(self, value: members.SyncList) -> None:
-        """Set the SelectiveRender member."""
+        """Set SelectiveRender. A list of SyncReferences to slots the camera is allowed to render."""
         self.set_member("SelectiveRender", value)
 
     @property
     def exclude_render(self) -> members.SyncList | None:
-        """The ExcludeRender member."""
+        """A list of SyncReferences to slots the camera is NOT allowed to render."""
         member = self.get_member("ExcludeRender")
         if isinstance(member, members.SyncList):
             return member
@@ -409,6 +441,6 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     @exclude_render.setter
     def exclude_render(self, value: members.SyncList) -> None:
-        """Set the ExcludeRender member."""
+        """Set ExcludeRender. A list of SyncReferences to slots the camera is NOT allowed to render."""
         self.set_member("ExcludeRender", value)
 

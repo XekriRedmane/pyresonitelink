@@ -1,0 +1,10 @@
+{
+  "description": "The HandSimulator component is used to control the logic for the transforms of a hand when overridden or interacting with something.",
+  "category": "Uncategorized",
+  "fields": {
+    "Side": "The hand side to simulate for."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": []
+}

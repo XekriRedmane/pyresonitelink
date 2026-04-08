@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.finish_action import FinishAction
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itext import IText
@@ -11,20 +12,29 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextEditor.
+    """This component is used in many places, including: * Primitive Member Editor for directly editing TextFields (and Ref Hacking) * UIX and TextFields * Parsing floats and parsing ints
 
     Category: Common UI/Editors
+
+    This component is used in many places, including: * Primitive Member
+    Editor for directly editing TextFields (and Ref Hacking) * UIX and
+    TextFields * Parsing floats and parsing ints
+
+    **Related Components**: Text Editor
+Text Editor
+Text Editor
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextEditor"
 
-    def __init__(self, text: str | IText | None = None, undo: primitives.Bool | None = None, undo_description: primitives.String | None = None, auto_caret_color_field: primitives.Bool | None = None, caret_color_field: primitives.ColorX | None = None, selection_color_field: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, text: str | IText | None = None, undo: primitives.Bool | None = None, undo_description: primitives.String | None = None, finish_handling: FinishAction | str | None = None, auto_caret_color_field: primitives.Bool | None = None, caret_color_field: primitives.ColorX | None = None, selection_color_field: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             text: Initial value for Text.
             undo: Initial value for Undo.
             undo_description: Initial value for UndoDescription.
+            finish_handling: Initial value for FinishHandling.
             auto_caret_color_field: Initial value for AutoCaretColorField.
             caret_color_field: Initial value for CaretColorField.
             selection_color_field: Initial value for SelectionColorField.
@@ -37,6 +47,8 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
             self.undo = undo
         if undo_description is not None:
             self.undo_description = undo_description
+        if finish_handling is not None:
+            self.finish_handling = finish_handling
         if auto_caret_color_field is not None:
             self.auto_caret_color_field = auto_caret_color_field
         if caret_color_field is not None:
@@ -46,7 +58,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IText)."""
+        """The output of where the text is going to be placed at."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +79,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
 
     @property
     def undo(self) -> primitives.Bool | None:
-        """The Undo field value."""
+        """If true, the setting of the text is undoable."""
         member = self.get_member("Undo")
         if member is None:
             return None
@@ -86,7 +98,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
 
     @property
     def undo_description(self) -> primitives.String | None:
-        """The UndoDescription field value."""
+        """This gets shown on the undo button on the Context menu."""
         member = self.get_member("UndoDescription")
         if member is None:
             return None
@@ -104,21 +116,28 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
             )
 
     @property
-    def finish_handling(self) -> members.FieldEnum | None:
-        """The FinishHandling member."""
+    def finish_handling(self) -> FinishAction | None:
+        """Lets the Text editor know what to do when the user leaves a text input."""
         member = self.get_member("FinishHandling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return FinishAction(member.value)
         return None
 
     @finish_handling.setter
-    def finish_handling(self, value: members.FieldEnum) -> None:
-        """Set the FinishHandling member."""
-        self.set_member("FinishHandling", value)
+    def finish_handling(self, value: FinishAction | str) -> None:
+        """Set FinishHandling. Lets the Text editor know what to do when the user leaves a text input."""
+        member = self.get_member("FinishHandling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "FinishHandling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def auto_caret_color_field(self) -> primitives.Bool | None:
-        """The AutoCaretColorField field value."""
+        """Automatically sets the color of the caret (based on text color)."""
         member = self.get_member("AutoCaretColorField")
         if member is None:
             return None
@@ -137,7 +156,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
 
     @property
     def caret_color_field(self) -> primitives.ColorX | None:
-        """The CaretColorField field value."""
+        """Sets the caret color."""
         member = self.get_member("CaretColorField")
         if member is None:
             return None
@@ -156,7 +175,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
 
     @property
     def selection_color_field(self) -> primitives.ColorX | None:
-        """The SelectionColorField field value."""
+        """Sets the selection color for this caret."""
         member = self.get_member("SelectionColorField")
         if member is None:
             return None

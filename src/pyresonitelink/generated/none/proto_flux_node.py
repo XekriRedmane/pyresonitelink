@@ -8,7 +8,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtoFluxNode(GeneratedComponent, IProtoFluxNode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxNode.
+    """#REDIRECT ProtoFluxNode
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxNode"

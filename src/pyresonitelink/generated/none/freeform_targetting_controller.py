@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.slot import Slot
 
 
 class FreeformTargettingController(GeneratedComponent):
-    """Wrapper for [FrooxEngine]FrooxEngine.FreeformTargettingController.
+    """The FreeformTargettingController component is used to handle the 3rd person targeting onto UIX in desktop mode.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FreeformTargettingController"
@@ -30,7 +32,7 @@ class FreeformTargettingController(GeneratedComponent):
 
     @property
     def focus_target(self) -> str | None:
-        """Target ID of the FocusTarget reference (targets Slot)."""
+        """The object to focus on."""
         member = self.get_member("FocusTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -51,7 +53,7 @@ class FreeformTargettingController(GeneratedComponent):
 
     @property
     def focus_center_point(self) -> primitives.Float3 | None:
-        """The FocusCenterPoint field value."""
+        """The center focus position. Acts as an offset."""
         member = self.get_member("FocusCenterPoint")
         if member is None:
             return None

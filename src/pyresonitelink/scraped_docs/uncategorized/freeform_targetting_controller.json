@@ -1,0 +1,11 @@
+{
+  "description": "The FreeformTargettingController component is used to handle the 3rd person targeting onto UIX in desktop mode.",
+  "category": "Uncategorized",
+  "fields": {
+    "FocusTarget": "The object to focus on.",
+    "FocusCenterPoint": "The center focus position. Acts as an offset."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": []
+}

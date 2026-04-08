@@ -1,0 +1,15 @@
+{
+  "description": "Twitch interface is a component that is used to allow resonite to communicate to and recieve twitch API events from twitch for a given Channel through a User.",
+  "category": "Network",
+  "fields": {
+    "TargetUser": "The user to handle sending and receiving network packets to and from twitch. User will need to have agreed to communicate with Twitch for this component to work.",
+    "Channel": "The twitch channel to get communications from.",
+    "Connected": "Whether the connection to ``Channel`` is a success and is communicating.",
+    "StreamLive": "Whether ``Channel`` is currently streaming.",
+    "ViewerCount": "How many viewers are viewing ``Channel``'s stream.",
+    "FollowTimeoutSeconds": "How many seconds to wait before allowing another follow event through."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

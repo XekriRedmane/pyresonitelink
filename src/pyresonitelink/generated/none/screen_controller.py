@@ -19,7 +19,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScreenController.
+    """The ScreenController component is used mainly in desktop and is found on user roots. It is used to control the screen controls like third person in the game.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScreenController"
@@ -67,7 +67,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def transition_speed(self) -> primitives.Float | None:
-        """The TransitionSpeed field value."""
+        """How fast to transition the camera between different modes."""
         member = self.get_member("TransitionSpeed")
         if member is None:
             return None
@@ -86,7 +86,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def pointer_controller(self) -> str | None:
-        """Target ID of the PointerController reference (targets PointerInteractionController)."""
+        """The pointer component handling inspector interactions."""
         member = self.get_member("PointerController")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +107,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def active_targetting(self) -> str | None:
-        """Target ID of the ActiveTargetting reference (targets IViewTargettingController)."""
+        """The view controller targeting mechanism for stuff like UIX targeting."""
         member = self.get_member("ActiveTargetting")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -128,7 +128,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def head(self) -> str | None:
-        """Target ID of the Head reference (targets HeadSimulator)."""
+        """The component handling head control."""
         member = self.get_member("Head")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -149,7 +149,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def left_hand(self) -> str | None:
-        """Target ID of the LeftHand reference (targets HandSimulator)."""
+        """The component handing the left hand control."""
         member = self.get_member("LeftHand")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -170,7 +170,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def right_hand(self) -> str | None:
-        """Target ID of the RightHand reference (targets HandSimulator)."""
+        """The component handling the right hand control."""
         member = self.get_member("RightHand")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -191,7 +191,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def previous_targetting(self) -> str | None:
-        """Target ID of the _previousTargetting reference (targets IViewTargettingController)."""
+        """The previously used targeting controller."""
         member = self.get_member("_previousTargetting")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -212,7 +212,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def first_person(self) -> str | None:
-        """Target ID of the _firstPerson reference (targets FirstPersonTargettingController)."""
+        """The component to handle first person object targeting."""
         member = self.get_member("_firstPerson")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -233,7 +233,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def third_person(self) -> str | None:
-        """Target ID of the _thirdPerson reference (targets ThirdPersonTargettingController)."""
+        """The component to handle third person object targeting."""
         member = self.get_member("_thirdPerson")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -254,7 +254,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def ui_camera(self) -> str | None:
-        """Target ID of the _uiCamera reference (targets UI_TargettingController)."""
+        """The targetting controller used for UIX targeting."""
         member = self.get_member("_uiCamera")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -275,7 +275,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     @property
     def freeform_camera(self) -> str | None:
-        """Target ID of the _freeformCamera reference (targets FreeformTargettingController)."""
+        """The targetting controller used for third person targetting like freeform camera mode in desktop."""
         member = self.get_member("_freeformCamera")
         if isinstance(member, members.Reference):
             return member.targetId

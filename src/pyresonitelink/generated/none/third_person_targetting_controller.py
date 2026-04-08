@@ -7,7 +7,7 @@ from pyresonitelink.generated._base import GeneratedComponent
 
 
 class ThirdPersonTargettingController(GeneratedComponent):
-    """Wrapper for [FrooxEngine]FrooxEngine.ThirdPersonTargettingController.
+    """Is used to control the F5 camera in desktop.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ThirdPersonTargettingController"
@@ -28,7 +28,7 @@ class ThirdPersonTargettingController(GeneratedComponent):
 
     @property
     def min_vertical_angle(self) -> primitives.Float | None:
-        """The MinVerticalAngle field value."""
+        """The minimum pitch angle in desktop third person."""
         member = self.get_member("MinVerticalAngle")
         if member is None:
             return None
@@ -47,7 +47,7 @@ class ThirdPersonTargettingController(GeneratedComponent):
 
     @property
     def max_vertical_angle(self) -> primitives.Float | None:
-        """The MaxVerticalAngle field value."""
+        """The maximum pitch angle in desktop third person."""
         member = self.get_member("MaxVerticalAngle")
         if member is None:
             return None

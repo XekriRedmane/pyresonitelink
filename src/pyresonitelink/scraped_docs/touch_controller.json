@@ -1,0 +1,17 @@
+{
+  "description": "* User: User: Equipee of the controller. should not be null. * Node: Chirality: The side of the controller. should not be null.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Input",
+      "text": "* User: User: Equipee of the controller. should not be null.\n* Node: Chirality: The side of the controller. should not be null."
+    },
+    {
+      "title": "Output",
+      "text": "* IsActive: Bool: is controller active?\n* Type: Type: The internal class for handling device I/O. Defaults to null.\n* BatteryLevel: Float: How its battery is charged? Default to -1 if it cannot be retrieved.\n* IsBatteryCharging: Bool\n* Model: Model\n* Start: Bool\n* ButtonYB: Bool: are they pressed?\n* ButtonXA: Bool: are they pressed?\n* ButtonYB_Touch: are they touched?\n* ButtonXA_Touch: are they touched?\n* ThumbRestTouch: are there touched input key where touchable by thumb other than buttons and joysticks? (Requires verification: does this include joystick touch?)\n* Grip: Float: press strength of grip. Between 0 (not gripped) and 1 (completely gripped).\n* GripClick: Bool: is grip pressed?\n* Joystick: Float2: reports rotation amount by each axis.\n* JoystickTouch: Bool: is joystick touched?\n* JoystickClick: Bool: is joystick clicked down?\n* Trigger: Float: press strength of trigger. Same as Grip.\n* TriggerTouch: Bool: is trigger touched?\n* TriggerClick: Bool: is trigger clicked?\n\nComponents"
+    }
+  ]
+}

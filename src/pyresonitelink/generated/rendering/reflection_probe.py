@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.reflection_probe_type import ReflectionProbeType
+from pyresonitelink.generated._enums.reflection_probe_time_slicing_mode import ReflectionProbeTimeSlicingMode
+from pyresonitelink.generated._enums.reflection_probe_clear import ReflectionProbeClear
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,26 +18,32 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReflectionProbe.
+    """The ReflectionProbe component is used to make points in space that makes reflective surfaces within a box around the point show a different reflection map than the skybox. This is useful for controlling the lighting and look of a scene.
 
     Category: Rendering
+
+    Attach to a slot to start using this component as a point source for
+    reflection map data.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbe"
 
-    def __init__(self, importance: primitives.Int | None = None, intensity: primitives.Float | None = None, blend_distance: primitives.Float | None = None, box_size: primitives.Float3 | None = None, box_projection: primitives.Bool | None = None, baked_cubemap: str | IAssetProvider[Cubemap] | None = None, resolution: primitives.Int | None = None, hdr: primitives.Bool | None = None, shadow_distance: primitives.Float | None = None, background_color: primitives.ColorX | None = None, near_clip: primitives.Float | None = None, far_clip: primitives.Float | None = None, skybox_only: primitives.Bool | None = None, show_debug_visuals: primitives.Bool | None = None, debug_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, probe_type: ReflectionProbeType | str | None = None, importance: primitives.Int | None = None, intensity: primitives.Float | None = None, blend_distance: primitives.Float | None = None, box_size: primitives.Float3 | None = None, box_projection: primitives.Bool | None = None, baked_cubemap: str | IAssetProvider[Cubemap] | None = None, time_slicing: ReflectionProbeTimeSlicingMode | str | None = None, resolution: primitives.Int | None = None, hdr: primitives.Bool | None = None, shadow_distance: primitives.Float | None = None, clear_flags: ReflectionProbeClear | str | None = None, background_color: primitives.ColorX | None = None, near_clip: primitives.Float | None = None, far_clip: primitives.Float | None = None, skybox_only: primitives.Bool | None = None, show_debug_visuals: primitives.Bool | None = None, debug_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            probe_type: Initial value for ProbeType.
             importance: Initial value for Importance.
             intensity: Initial value for Intensity.
             blend_distance: Initial value for BlendDistance.
             box_size: Initial value for BoxSize.
             box_projection: Initial value for BoxProjection.
             baked_cubemap: Initial value for BakedCubemap.
+            time_slicing: Initial value for TimeSlicing.
             resolution: Initial value for Resolution.
             hdr: Initial value for HDR.
             shadow_distance: Initial value for ShadowDistance.
+            clear_flags: Initial value for ClearFlags.
             background_color: Initial value for BackgroundColor.
             near_clip: Initial value for NearClip.
             far_clip: Initial value for FarClip.
@@ -44,6 +53,8 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if probe_type is not None:
+            self.probe_type = probe_type
         if importance is not None:
             self.importance = importance
         if intensity is not None:
@@ -56,12 +67,16 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             self.box_projection = box_projection
         if baked_cubemap is not None:
             self.baked_cubemap = baked_cubemap
+        if time_slicing is not None:
+            self.time_slicing = time_slicing
         if resolution is not None:
             self.resolution = resolution
         if hdr is not None:
             self.hdr = hdr
         if shadow_distance is not None:
             self.shadow_distance = shadow_distance
+        if clear_flags is not None:
+            self.clear_flags = clear_flags
         if background_color is not None:
             self.background_color = background_color
         if near_clip is not None:
@@ -76,21 +91,28 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             self.debug_visual = debug_visual
 
     @property
-    def probe_type(self) -> members.FieldEnum | None:
-        """The ProbeType member."""
+    def probe_type(self) -> ReflectionProbeType | None:
+        """What mode this reflection probe uses."""
         member = self.get_member("ProbeType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ReflectionProbeType(member.value)
         return None
 
     @probe_type.setter
-    def probe_type(self, value: members.FieldEnum) -> None:
-        """Set the ProbeType member."""
-        self.set_member("ProbeType", value)
+    def probe_type(self, value: ReflectionProbeType | str) -> None:
+        """Set ProbeType. What mode this reflection probe uses."""
+        member = self.get_member("ProbeType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ProbeType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def importance(self) -> primitives.Int | None:
-        """The Importance field value."""
+        """How much priority this probe takes over another probe when two probes overlap"""
         member = self.get_member("Importance")
         if member is None:
             return None
@@ -109,7 +131,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def intensity(self) -> primitives.Float | None:
-        """The Intensity field value."""
+        """how strong or bright the reflection is"""
         member = self.get_member("Intensity")
         if member is None:
             return None
@@ -128,7 +150,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def blend_distance(self) -> primitives.Float | None:
-        """The BlendDistance field value."""
+        """how far the probe will slowly take over the reflection map of objects as an object goes towards the center of influence"""
         member = self.get_member("BlendDistance")
         if member is None:
             return None
@@ -147,7 +169,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def box_size(self) -> primitives.Float3 | None:
-        """The BoxSize field value."""
+        """the area that this reflection probe will affect the reflection maps of objects"""
         member = self.get_member("BoxSize")
         if member is None:
             return None
@@ -166,7 +188,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def box_projection(self) -> primitives.Bool | None:
-        """The BoxProjection field value."""
+        """project the reflection map in a box shape from the reflection probe rather than a sphere."""
         member = self.get_member("BoxProjection")
         if member is None:
             return None
@@ -185,7 +207,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def baked_cubemap(self) -> str | None:
-        """Target ID of the BakedCubemap reference (targets IAssetProvider[Cubemap])."""
+        """The cube map to replace the refection maps of reflective objects with in the influence area of this reflection probe"""
         member = self.get_member("BakedCubemap")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -206,7 +228,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def changes_sources(self) -> members.SyncList | None:
-        """The ChangesSources member."""
+        """A list of elements that will prompt this reflection probe to render a new map whenever they change."""
         member = self.get_member("ChangesSources")
         if isinstance(member, members.SyncList):
             return member
@@ -214,25 +236,32 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @changes_sources.setter
     def changes_sources(self, value: members.SyncList) -> None:
-        """Set the ChangesSources member."""
+        """Set ChangesSources. A list of elements that will prompt this reflection probe to render a new map whenever they change."""
         self.set_member("ChangesSources", value)
 
     @property
-    def time_slicing(self) -> members.FieldEnum | None:
-        """The TimeSlicing member."""
+    def time_slicing(self) -> ReflectionProbeTimeSlicingMode | None:
+        """How updates to this reflection probe should happen in updates if this probe is a realtime probe."""
         member = self.get_member("TimeSlicing")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ReflectionProbeTimeSlicingMode(member.value)
         return None
 
     @time_slicing.setter
-    def time_slicing(self, value: members.FieldEnum) -> None:
-        """Set the TimeSlicing member."""
-        self.set_member("TimeSlicing", value)
+    def time_slicing(self, value: ReflectionProbeTimeSlicingMode | str) -> None:
+        """Set TimeSlicing. How updates to this reflection probe should happen in updates if this probe is a realtime probe."""
+        member = self.get_member("TimeSlicing")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "TimeSlicing",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def resolution(self) -> primitives.Int | None:
-        """The Resolution field value."""
+        """the forced resolution of the reflection map from this reflection probe shown in the reflections of shiny objects."""
         member = self.get_member("Resolution")
         if member is None:
             return None
@@ -251,7 +280,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def hdr(self) -> primitives.Bool | None:
-        """The HDR field value."""
+        """Whether the color encoding should be in HDR."""
         member = self.get_member("HDR")
         if member is None:
             return None
@@ -270,7 +299,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def shadow_distance(self) -> primitives.Float | None:
-        """The ShadowDistance field value."""
+        """how far to render shadows from the reflection probe"""
         member = self.get_member("ShadowDistance")
         if member is None:
             return None
@@ -288,21 +317,28 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def clear_flags(self) -> members.FieldEnum | None:
-        """The ClearFlags member."""
+    def clear_flags(self) -> ReflectionProbeClear | None:
+        """Whether to use the skybox or color when backing transparent pixels"""
         member = self.get_member("ClearFlags")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ReflectionProbeClear(member.value)
         return None
 
     @clear_flags.setter
-    def clear_flags(self, value: members.FieldEnum) -> None:
-        """Set the ClearFlags member."""
-        self.set_member("ClearFlags", value)
+    def clear_flags(self, value: ReflectionProbeClear | str) -> None:
+        """Set ClearFlags. Whether to use the skybox or color when backing transparent pixels"""
+        member = self.get_member("ClearFlags")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ClearFlags",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def background_color(self) -> primitives.ColorX | None:
-        """The BackgroundColor field value."""
+        """The color to clear with when ``ClearFlags`` is set to "Color""""
         member = self.get_member("BackgroundColor")
         if member is None:
             return None
@@ -321,7 +357,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def near_clip(self) -> primitives.Float | None:
-        """The NearClip field value."""
+        """The closest distance to render from the reflection probe center when using "Realtime" on ``ProbeType``"""
         member = self.get_member("NearClip")
         if member is None:
             return None
@@ -340,7 +376,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def far_clip(self) -> primitives.Float | None:
-        """The FarClip field value."""
+        """The furthest distance to render from the reflection probe center when using "Realtime" on ``ProbeType``"""
         member = self.get_member("FarClip")
         if member is None:
             return None
@@ -359,7 +395,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def skybox_only(self) -> primitives.Bool | None:
-        """The SkyboxOnly field value."""
+        """Whether to render only the skybox or not."""
         member = self.get_member("SkyboxOnly")
         if member is None:
             return None
@@ -378,7 +414,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def show_debug_visuals(self) -> primitives.Bool | None:
-        """The ShowDebugVisuals field value."""
+        """Shows the box influence area and the center point of this reflection probe"""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
             return None
@@ -397,7 +433,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def debug_visual(self) -> str | None:
-        """Target ID of the _debugVisual reference (targets Slot)."""
+        """The current debug visual that this reflection probe is showing, if applicable."""
         member = self.get_member("_debugVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -417,7 +453,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     async def bake(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Bake sync method.
+        """Creates a static cubemap and inserts it into ``BakedCubemap`` instead of having ``ProbeType`` be set to realtime.
 
         Returns:
             The raw JSON response dict.

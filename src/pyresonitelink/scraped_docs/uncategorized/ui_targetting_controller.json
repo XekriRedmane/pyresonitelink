@@ -1,0 +1,10 @@
+{
+  "description": "The UI_TargettingController component is used to control the desktop view which can target onto UIs like inspectors if in builder or videos.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The current UIX target element to look at."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

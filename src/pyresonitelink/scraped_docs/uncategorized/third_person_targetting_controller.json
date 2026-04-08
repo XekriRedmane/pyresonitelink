@@ -1,0 +1,11 @@
+{
+  "description": "Is used to control the F5 camera in desktop.",
+  "category": "Uncategorized",
+  "fields": {
+    "MinVerticalAngle": "The minimum pitch angle in desktop third person.",
+    "MaxVerticalAngle": "The maximum pitch angle in desktop third person."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

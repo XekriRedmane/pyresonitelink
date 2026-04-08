@@ -1,0 +1,16 @@
+{
+  "description": "Grabber is a Component that is used in a User's hiearchy to allow the user to grab objects. This component is generated internally usually. Interacting with this component dynamically is done through Grabbable ProtoFlux Nodes.",
+  "category": "Uncategorized",
+  "fields": {
+    "AutoUpdateUser": "The user handling updates for this Grabber.",
+    "ReleaseCheckRadius": "How far to check before releasing a grabbable from the ``_baseDistance``. Usually used for dynamic bones.",
+    "CorrespondingBodyNode": "The node this hand is associated with.",
+    "_scaleReference": "The grabber used as a scale reference, like the opposite hand.",
+    "_baseScale": "The default scale for the grabber.",
+    "_baseDistance": "The default distance for the grabber.",
+    "_holderSlot": "The slot used to store objects being grabbed by the user."
+  },
+  "methods": {},
+  "usage": "This component can be triggered to grab things by the user. However, this requires a TrackedHand to be attached under the user, or be part of an avatar spawned onto them. The tracked hand then auto generates this component. However, the component only will grab things when that tracked hand component detects that the user associated with it is trying to grab using the hand side it is assigned to. This does allow for multiple grabbers on the same hand however.",
+  "notes": []
+}
