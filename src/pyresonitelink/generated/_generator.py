@@ -604,6 +604,22 @@ def generate_component_source(
     imports_needed: set[str] = set()
     # For reference members: maps resonite_name -> targetType string
     ref_target_types: dict[str, str] = {}
+    # For enum members: maps resonite_name -> full Resonite enum type string
+    enum_types: dict[str, str] = {}
+    for name, mem_def in def_members.items():
+        if name in _BASE_MEMBERS:
+            continue
+        if mem_def.get("$type") == "field":
+            vt = mem_def.get("valueType", {})
+            if isinstance(vt, dict):
+                vt_name = vt.get("type", "")
+                if (
+                    vt_name
+                    and vt_name not in _PRIMITIVE_WIRE_NAMES
+                    and not vt.get("isGenericParameter", False)
+                    and vt_name != "Nullable<>"
+                ):
+                    enum_types[name] = vt_name
 
     for member_name in all_member_names:
         if member_name in _BASE_MEMBERS:
@@ -735,6 +751,18 @@ def generate_component_source(
         lines.append("from pyresonitelink.data import primitives")
     if has_sync_methods:
         lines.append("from pyresonitelink.data import protocols")
+
+    # Import enum types used by this component
+    enum_imports: dict[str, str] = {}  # python_class -> module_name
+    for _ename, etype in enum_types.items():
+        ecls = _simple_class_name(etype)
+        emod = get_enum_module_name(etype)
+        if ecls not in enum_imports:
+            enum_imports[ecls] = emod
+            lines.append(
+                f"from pyresonitelink.generated._enums.{emod}"
+                f" import {ecls}"
+            )
 
     # workers is needed when __init__ is generated (for the
     # ``component: workers.Component`` parameter).  It is always needed
@@ -922,6 +950,10 @@ def generate_component_source(
         ):
             # Scalar field member (string, bool, int, float, etc.)
             init_params.append((py_name, py_type, res_name))
+        elif member_class == "FieldEnum" and res_name in enum_types:
+            # Enum member
+            enum_cls = _simple_class_name(enum_types[res_name])
+            init_params.append((py_name, f"{enum_cls} | str", res_name))
 
     # Deduplicate init params by Python name (different Resonite
     # members can map to the same snake_case name, e.g. a field
@@ -1109,8 +1141,55 @@ def generate_component_source(
             )
             lines.append(f"            )")
             lines.append("")
+        elif res_name in enum_types and member_class == "FieldEnum":
+            # Enum member with a known enum type
+            enum_cls = _simple_class_name(enum_types[res_name])
+            field_doc = (
+                wiki_docs.get("fields", {}).get(res_name, "")
+                if wiki_docs else ""
+            )
+            lines.append(f"    @property")
+            lines.append(f"    def {py_name}(self) -> {enum_cls} | None:")
+            if field_doc:
+                lines.append(f'        """{field_doc}"""')
+            else:
+                lines.append(f'        """The {res_name} enum value."""')
+            lines.append(f'        member = self.get_member("{res_name}")')
+            lines.append(
+                f"        if isinstance(member, members.FieldEnum)"
+                f" and member.value is not None:"
+            )
+            lines.append(f"            return {enum_cls}(member.value)")
+            lines.append(f"        return None")
+            lines.append("")
+            lines.append(f"    @{py_name}.setter")
+            lines.append(
+                f"    def {py_name}"
+                f"(self, value: {enum_cls} | str) -> None:"
+            )
+            if field_doc:
+                lines.append(f'        """Set {res_name}. {field_doc}"""')
+            else:
+                lines.append(
+                    f'        """Set the {res_name} enum value."""'
+                )
+            lines.append(f'        member = self.get_member("{res_name}")')
+            lines.append(
+                f"        if isinstance(member, members.FieldEnum):"
+            )
+            lines.append(f"            member.value = str(value)")
+            lines.append(f"        else:")
+            lines.append(f"            self.set_member(")
+            lines.append(
+                f'                "{res_name}",'
+            )
+            lines.append(
+                f"                members.FieldEnum(value=str(value)),"
+            )
+            lines.append(f"            )")
+            lines.append("")
         else:
-            # Other non-field member (list, syncObject, playback, enum, etc.)
+            # Other non-field member (list, syncObject, playback, etc.)
             field_doc = (
                 wiki_docs.get("fields", {}).get(res_name, "")
                 if wiki_docs else ""
@@ -1702,6 +1781,63 @@ def generate_type_source(
         lines.append("")
 
     return "\n".join(lines) + "\n"
+
+
+def generate_enum_source(enum_definition: dict[str, Any]) -> str:
+    """Generate a Python StrEnum class from an enum definition.
+
+    Args:
+        enum_definition: The "definition" dict from GetEnumDefinition.
+
+    Returns:
+        Python source code for the enum class.
+    """
+    type_info = enum_definition.get("type", {})
+    full_name = type_info.get("fullTypeName", "")
+    class_name = _simple_class_name(full_name)
+    values = enum_definition.get("values", {})
+    is_flags = enum_definition.get("isFlags", False)
+
+    lines: list[str] = []
+    lines.append(f'"""Generated enum: {class_name}."""')
+    lines.append("")
+    if is_flags:
+        lines.append("from enum import Flag")
+        lines.append("")
+        lines.append("")
+        lines.append(f"class {class_name}(Flag):")
+    else:
+        lines.append("from enum import StrEnum")
+        lines.append("")
+        lines.append("")
+        lines.append(f"class {class_name}(StrEnum):")
+    lines.append(f'    """Enum: {full_name}."""')
+    lines.append("")
+
+    if not values:
+        lines.append("    pass")
+    else:
+        for name, int_val in values.items():
+            safe_name = _safe_python_name(name)
+            if is_flags:
+                lines.append(f"    {safe_name} = {int_val}")
+            else:
+                lines.append(f'    {safe_name} = "{name}"')
+    lines.append("")
+
+    return "\n".join(lines) + "\n"
+
+
+def get_enum_module_name(resonite_type: str) -> str:
+    """Get the module filename for an enum type.
+
+    Args:
+        resonite_type: Full Resonite enum type string.
+
+    Returns:
+        Snake_case module name (without .py).
+    """
+    return _to_snake_case(_simple_class_name(resonite_type))
 
 
 def get_reference_target_types(

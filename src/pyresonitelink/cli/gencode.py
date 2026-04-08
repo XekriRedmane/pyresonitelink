@@ -21,10 +21,13 @@ from pyresonitelink import client
 from pyresonitelink.data import messages
 from pyresonitelink.generated._generator import (
     generate_component_source,
+    generate_enum_source,
     generate_type_source,
+    get_enum_module_name,
     get_reference_target_types,
     _collect_referenced_types,
     _is_primitive_wire_name,
+    _PRIMITIVE_WIRE_NAMES,
     _ref_stub_module_name,
     _simple_class_name,
     _to_module_path,
@@ -404,6 +407,42 @@ async def _generate_component(
                         all_type_defs, dry_run,
                         type_def_cache,
                     )
+
+    # Generate enum types used by this component
+    def_members = definition.get("members", {})
+    for mem_name, mem_def in def_members.items():
+        if mem_name in ("persistent", "UpdateOrder", "Enabled"):
+            continue
+        if mem_def.get("$type") == "field":
+            vt = mem_def.get("valueType", {})
+            if isinstance(vt, dict):
+                vt_name = vt.get("type", "")
+                if (
+                    vt_name
+                    and vt_name not in _PRIMITIVE_WIRE_NAMES
+                    and not vt.get("isGenericParameter", False)
+                    and vt_name != "Nullable<>"
+                ):
+                    enum_cls = _simple_class_name(vt_name)
+                    enum_mod = get_enum_module_name(vt_name)
+                    enum_path = _GENERATED_DIR / "_enums" / f"{enum_mod}.py"
+                    if not enum_path.exists() and not dry_run:
+                        enum_resp = await resolink.request_json(
+                            messages.GetEnumDefinition(type=vt_name)
+                        )
+                        if enum_resp.get("success"):
+                            enum_def = cast(
+                                dict[str, Any],
+                                enum_resp.get("definition", {}),
+                            )
+                            enum_src = generate_enum_source(enum_def)
+                            enum_path.parent.mkdir(
+                                parents=True, exist_ok=True,
+                            )
+                            enum_path.write_text(
+                                enum_src, encoding="utf-8",
+                            )
+                            print(f"Wrote {enum_path}")
 
     # Collect interfaces implemented by this component
     component_interfaces = await _collect_component_interfaces(

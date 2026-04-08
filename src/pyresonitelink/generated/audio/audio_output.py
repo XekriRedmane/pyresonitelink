@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.audio_rolloff_curve import AudioRolloffCurve
+from pyresonitelink.generated._enums.audio_type_group import AudioTypeGroup
+from pyresonitelink.generated._enums.audio_distance_space import AudioDistanceSpace
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_audio_data_source import IWorldAudioDataSource
@@ -28,7 +31,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioOutput"
 
-    def __init__(self, volume: primitives.Float | None = None, source: str | IWorldAudioDataSource | None = None, spatial_blend: primitives.Float | None = None, spatialize: primitives.Bool | None = None, spatialization_start_distance: primitives.Float | None = None, spatialization_transition_range: primitives.Float | None = None, doppler_level: primitives.Float | None = None, pitch: primitives.Float | None = None, global_: primitives.Bool | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, priority: primitives.Int | None = None, min_scale: primitives.Float | None = None, max_scale: primitives.Float | None = None, ignore_audio_effects: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, volume: primitives.Float | None = None, source: str | IWorldAudioDataSource | None = None, spatial_blend: primitives.Float | None = None, spatialize: primitives.Bool | None = None, spatialization_start_distance: primitives.Float | None = None, spatialization_transition_range: primitives.Float | None = None, doppler_level: primitives.Float | None = None, pitch: primitives.Float | None = None, global_: primitives.Bool | None = None, rolloff_mode: AudioRolloffCurve | str | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, priority: primitives.Int | None = None, audio_type_group: AudioTypeGroup | str | None = None, distance_space: AudioDistanceSpace | str | None = None, min_scale: primitives.Float | None = None, max_scale: primitives.Float | None = None, ignore_audio_effects: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,9 +44,12 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             doppler_level: Initial value for DopplerLevel.
             pitch: Initial value for Pitch.
             global_: Initial value for Global.
+            rolloff_mode: Initial value for RolloffMode.
             min_distance: Initial value for MinDistance.
             max_distance: Initial value for MaxDistance.
             priority: Initial value for Priority.
+            audio_type_group: Initial value for AudioTypeGroup.
+            distance_space: Initial value for DistanceSpace.
             min_scale: Initial value for MinScale.
             max_scale: Initial value for MaxScale.
             ignore_audio_effects: Initial value for IgnoreAudioEffects.
@@ -68,12 +74,18 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.pitch = pitch
         if global_ is not None:
             self.global_ = global_
+        if rolloff_mode is not None:
+            self.rolloff_mode = rolloff_mode
         if min_distance is not None:
             self.min_distance = min_distance
         if max_distance is not None:
             self.max_distance = max_distance
         if priority is not None:
             self.priority = priority
+        if audio_type_group is not None:
+            self.audio_type_group = audio_type_group
+        if distance_space is not None:
+            self.distance_space = distance_space
         if min_scale is not None:
             self.min_scale = min_scale
         if max_scale is not None:
@@ -255,17 +267,24 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def rolloff_mode(self) -> members.FieldEnum | None:
-        """The RolloffMode member."""
+    def rolloff_mode(self) -> AudioRolloffCurve | None:
+        """Switches between logarithmic and Linear audio falloff."""
         member = self.get_member("RolloffMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AudioRolloffCurve(member.value)
         return None
 
     @rolloff_mode.setter
-    def rolloff_mode(self, value: members.FieldEnum) -> None:
-        """Set the RolloffMode member."""
-        self.set_member("RolloffMode", value)
+    def rolloff_mode(self, value: AudioRolloffCurve | str) -> None:
+        """Set RolloffMode. Switches between logarithmic and Linear audio falloff."""
+        member = self.get_member("RolloffMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "RolloffMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def min_distance(self) -> primitives.Float | None:
@@ -325,30 +344,44 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def audio_type_group(self) -> members.FieldEnum | None:
-        """The AudioTypeGroup member."""
+    def audio_type_group(self) -> AudioTypeGroup | None:
+        """Changes what track of Audio the source should be. SoundEffects, Multimedia, Voice, User Interface."""
         member = self.get_member("AudioTypeGroup")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AudioTypeGroup(member.value)
         return None
 
     @audio_type_group.setter
-    def audio_type_group(self, value: members.FieldEnum) -> None:
-        """Set the AudioTypeGroup member."""
-        self.set_member("AudioTypeGroup", value)
+    def audio_type_group(self, value: AudioTypeGroup | str) -> None:
+        """Set AudioTypeGroup. Changes what track of Audio the source should be. SoundEffects, Multimedia, Voice, User Interface."""
+        member = self.get_member("AudioTypeGroup")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AudioTypeGroup",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def distance_space(self) -> members.FieldEnum | None:
-        """The DistanceSpace member."""
+    def distance_space(self) -> AudioDistanceSpace | None:
+        """Chooses rather the audio should use it's local scale or it's global scale."""
         member = self.get_member("DistanceSpace")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AudioDistanceSpace(member.value)
         return None
 
     @distance_space.setter
-    def distance_space(self, value: members.FieldEnum) -> None:
-        """Set the DistanceSpace member."""
-        self.set_member("DistanceSpace", value)
+    def distance_space(self, value: AudioDistanceSpace | str) -> None:
+        """Set DistanceSpace. Chooses rather the audio should use it's local scale or it's global scale."""
+        member = self.get_member("DistanceSpace")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DistanceSpace",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def min_scale(self) -> primitives.Float | None:
@@ -422,7 +455,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def excluded_users(self) -> members.SyncList | None:
-        """The excludedUsers member."""
+        """User references placed in here will be excluded from hearing the audio."""
         member = self.get_member("excludedUsers")
         if isinstance(member, members.SyncList):
             return member
@@ -430,7 +463,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @excluded_users.setter
     def excluded_users(self, value: members.SyncList) -> None:
-        """Set the excludedUsers member."""
+        """Set excludedUsers. User references placed in here will be excluded from hearing the audio."""
         self.set_member("excludedUsers", value)
 
     async def exlude_user(self, resolink: protocols.ResoniteLinkClient, user: str, debug: bool = False) -> dict:
