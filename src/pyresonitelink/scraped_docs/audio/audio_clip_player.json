@@ -1,0 +1,16 @@
+{
+  "description": "Add an audio clip to the Clip field by holding a default audio clip player and clicking.",
+  "category": "Audio",
+  "fields": {
+    "playback": "The playback object that includes data about playtime, duration, position, and playspeed of the audio.",
+    "Clip": "The AudioClip to play. This can be a StaticAudioClip."
+  },
+  "methods": {
+    "Play": "When called, starts playback for this component.",
+    "Stop": "When called, stops playback for this component.",
+    "Pause": "When called, pauses playback for this component.",
+    "Resume": "When called, resumes playback for this component."
+  },
+  "usage": "Add an audio clip to the Clip field by holding a default audio clip player and clicking. then put the Audio Clip Player into an Audio Output and hit play to hear the audio.",
+  "notes": []
+}

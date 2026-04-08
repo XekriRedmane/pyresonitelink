@@ -13,9 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSource, IPlayable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioClipPlayer.
+    """Add an audio clip to the Clip field by holding a default audio clip player and clicking.
 
     Category: Audio
+
+    Add an audio clip to the Clip field by holding a default audio clip
+    player and clicking. then put the Audio Clip Player into an Audio Output
+    and hit play to hear the audio.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioClipPlayer"
@@ -33,7 +37,7 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
 
     @property
     def playback(self) -> members.SyncPlayback | None:
-        """The playback member."""
+        """The playback object that includes data about playtime, duration, position, and playspeed of the audio."""
         member = self.get_member("playback")
         if isinstance(member, members.SyncPlayback):
             return member
@@ -41,12 +45,12 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
 
     @playback.setter
     def playback(self, value: members.SyncPlayback) -> None:
-        """Set the playback member."""
+        """Set playback. The playback object that includes data about playtime, duration, position, and playspeed of the audio."""
         self.set_member("playback", value)
 
     @property
     def clip(self) -> str | None:
-        """Target ID of the Clip reference (targets IAssetProvider[AudioClip])."""
+        """The AudioClip to play. This can be a StaticAudioClip."""
         member = self.get_member("Clip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +70,7 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
             )
 
     async def play(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Play sync method.
+        """When called, starts playback for this component.
 
         Returns:
             The raw JSON response dict.
@@ -76,7 +80,7 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
         )
 
     async def stop(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Stop sync method.
+        """When called, stops playback for this component.
 
         Returns:
             The raw JSON response dict.
@@ -86,7 +90,7 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
         )
 
     async def pause(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Pause sync method.
+        """When called, pauses playback for this component.
 
         Returns:
             The raw JSON response dict.
@@ -96,7 +100,7 @@ class AudioClipPlayer(GeneratedComponent, IItemMetadataSource, IWorldAudioDataSo
         )
 
     async def resume(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Resume sync method.
+        """When called, resumes playback for this component.
 
         Returns:
             The raw JSON response dict.

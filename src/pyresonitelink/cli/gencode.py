@@ -19,6 +19,7 @@ from typing import Any, cast
 
 from pyresonitelink import client
 from pyresonitelink.data import messages
+from pyresonitelink.cli.wikidocs import fetch_wiki_docs, save_docs
 from pyresonitelink.generated._generator import (
     generate_component_source,
     generate_enum_source,
@@ -459,6 +460,14 @@ async def _generate_component(
                     all_type_defs, dry_run,
                     type_def_cache,
                 )
+
+    # Scrape wiki documentation if not already saved
+    if not dry_run:
+        from pyresonitelink.generated._generator import _load_wiki_docs
+        if _load_wiki_docs(cls_name) is None:
+            wiki_docs = fetch_wiki_docs(cls_name)
+            if wiki_docs is not None:
+                save_docs(cls_name, wiki_docs)
 
     # Generate this component
     source = generate_component_source(
