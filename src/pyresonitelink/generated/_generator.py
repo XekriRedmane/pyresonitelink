@@ -1110,12 +1110,19 @@ def generate_component_source(
             lines.append(f"            )")
             lines.append("")
         else:
-            # Other non-field member (list, syncObject, playback, etc.)
+            # Other non-field member (list, syncObject, playback, enum, etc.)
+            field_doc = (
+                wiki_docs.get("fields", {}).get(res_name, "")
+                if wiki_docs else ""
+            )
             lines.append(f"    @property")
             lines.append(
                 f"    def {py_name}(self) -> {import_mod}.{member_class} | None:"
             )
-            lines.append(f'        """The {res_name} member."""')
+            if field_doc:
+                lines.append(f'        """{field_doc}"""')
+            else:
+                lines.append(f'        """The {res_name} member."""')
             lines.append(f'        member = self.get_member("{res_name}")')
             lines.append(f"        if isinstance(member, {import_mod}.{member_class}):")
             lines.append(f"            return member")
@@ -1126,7 +1133,10 @@ def generate_component_source(
                 f"    def {py_name}"
                 f"(self, value: {import_mod}.{member_class}) -> None:"
             )
-            lines.append(f'        """Set the {res_name} member."""')
+            if field_doc:
+                lines.append(f'        """Set {res_name}. {field_doc}"""')
+            else:
+                lines.append(f'        """Set the {res_name} member."""')
             lines.append(f'        self.set_member("{res_name}", value)')
             lines.append("")
 
