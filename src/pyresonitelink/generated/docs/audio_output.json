@@ -1,0 +1,35 @@
+{
+  "description": "Audio Output is a component that is used to output sound from any kind of IAudioSource. This includes but is not limited to: Audio streams, audio clip players, and voices.",
+  "fields": {
+    "Volume": "The volume to play the clip at, from 0 to 1.",
+    "Source": "The source of audio. Can be an AudioClipPlayer, LerpingMultiClipPlayer, or MultiAudioClipPlayer.",
+    "SpatialBlend": "Blends the the audio between 3D & 2D.",
+    "Spatialize": "Enables or disables rather it's 3D or 2D.",
+    "DopplerLevel": "Simulates audio distortion when you or the object is moving.",
+    "RolloffMode": "Switches between logarithmic and Linear audio falloff.",
+    "MinDistance": "Minimum distance you need to be from the source to hear the audio.",
+    "MaxDistance": "Maximum distance from the source until you no longer hear the audio.",
+    "Priority": "see Unity audio source priority",
+    "AudioTypeGroup": "Changes what track of Audio the source should be. SoundEffects, Multimedia, Voice, User Interface.",
+    "DistanceSpace": "Chooses rather the audio should use it's local scale or it's global scale.",
+    "MinScale": "See Min and Max Scale",
+    "MaxScale": "See Min and Max Scale",
+    "IgnoreReverbZones": "If the Audio Source should ignore Reverb Zones.",
+    "excludedUsers": "User references placed in here will be excluded from hearing the audio."
+  },
+  "methods": {
+    "ExludeUser": "Excludes the User provided to it, so that user cannot hear this audio output.",
+    "ExludeLocalUser": "Excludes the local user running this sync method, so they cannot hear this audio output.",
+    "RemoveLocalExcludedUser": "if currently excluded, makes it to where the local user running this sync method is no longer excluded from hearing this audio output.",
+    "RemoveExludedUser": "If provided user is currently excluded, makes it so that the provided user is no longer excluded from hearing this audio output.",
+    "ClearExludedUsers": "Clears all excluded users from the list",
+    "IsUserExluded": "When provided a user, this function returns whether or not that user is excluded from hearing this audio clip."
+  },
+  "usage": "Audio Output is used to Output audio from a large variety of audio sources. From Audio Clips, Audio Streams, Opus Streams, etc. Be careful with how many Audio Outputs you have in a world at once or the Audio Buffer can be overfilled and you wont hear anymore Audio Sources until it's cleared. You can negate this by disabling the hierarchy of the Component or the Component itself when it's not in use.",
+  "notes": [
+    {
+      "title": "Min and Max scale",
+      "text": "If ``AudioDistanceSpace`` is set to Local, then first the scale's XYZ values are averaged. then that number is clamped between ``MinScale`` and ``MaxScale``. Finally ``MinDistance`` and ``MaxDistance`` are multipled by the number, and set to the results. Basically scaling min and max distances up/down."
+    }
+  ]
+}
