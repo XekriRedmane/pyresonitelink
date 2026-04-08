@@ -677,3 +677,39 @@ class Client:
             messages.ImportTexture2DFile(filePath=filePath),
             responses.AssetData, debug,
         )
+
+    async def import_audio_clip_file(
+        self,
+        filePath: str,
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import an audio clip from a file.
+
+        Supported formats: WAV, OGG, FLAC.
+
+        Args:
+            filePath: Path to the audio file on the local file system.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.ImportAudioClipFile(filePath=filePath),
+            responses.AssetData, debug,
+        )
+
+    # =========================================================================
+    # Session operations
+    # =========================================================================
+
+    async def request_session_data(
+        self,
+        debug: bool = False,
+    ) -> responses.Response:
+        """Request session data for the current ResoniteLink session.
+
+        Args:
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.RequestSessionData(),
+            responses.Response, debug,
+        )

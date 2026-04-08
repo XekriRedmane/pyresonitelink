@@ -281,10 +281,22 @@ type MessageType = (
     | message_types.ImportTexture2DFile
     | message_types.ImportTexture2DRawData
     | message_types.ImportTexture2DRawDataHDR
+    | message_types.ImportCubemapFiles
+    | message_types.ImportCubemapFileWithRegions
+    | message_types.ImportCubemapRawData
+    | message_types.ImportCubemapRawDataHDR
+    | message_types.ImportMeshJSON
+    | message_types.ImportMeshRawData
+    | message_types.ImportAudioClipFile
+    | message_types.ImportAudioClipRawData
     | message_types.GetComponentTypeList
     | message_types.GetComponentDefinition
     | message_types.GetTypeDefinition
+    | message_types.GetGenericTypeDefinition
+    | message_types.GetEnumDefinition
     | message_types.GetSyncObjectDefinition
+    | message_types.RequestSessionData
+    | message_types.DataModelOperationBatch
     | message_types.CallSyncMethod
     | message_types.CallStaticSyncMethod
 )
@@ -338,11 +350,36 @@ def _init_type_registry() -> None:
     _register_type("importTexture2DFile", message_types.ImportTexture2DFile)
     _register_type("importTexture2DRawData", message_types.ImportTexture2DRawData)
     _register_type("importTexture2DRawDataHDR", message_types.ImportTexture2DRawDataHDR)
+    _register_type("importCubemapFiles", message_types.ImportCubemapFiles)
+    _register_type(
+        "importCubemapFileWithRegions",
+        message_types.ImportCubemapFileWithRegions,
+    )
+    _register_type("importCubemapRawData", message_types.ImportCubemapRawData)
+    _register_type(
+        "importCubemapRawDataHDR", message_types.ImportCubemapRawDataHDR,
+    )
+    _register_type("importMeshJSON", message_types.ImportMeshJSON)
+    _register_type("importMeshRawData", message_types.ImportMeshRawData)
+    _register_type("importAudioClipFile", message_types.ImportAudioClipFile)
+    _register_type(
+        "importAudioClipRawData", message_types.ImportAudioClipRawData,
+    )
     _register_type("getComponentTypeList", message_types.GetComponentTypeList)
     _register_type("getComponentDefinition", message_types.GetComponentDefinition)
     _register_type("getTypeDefinition", message_types.GetTypeDefinition)
     _register_type(
+        "getGenericTypeDefinition",
+        message_types.GetGenericTypeDefinition,
+    )
+    _register_type("getEnumDefinition", message_types.GetEnumDefinition)
+    _register_type(
         "getSyncObjectDefinition", message_types.GetSyncObjectDefinition,
+    )
+    _register_type("requestSessionData", message_types.RequestSessionData)
+    _register_type(
+        "dataModelOperationBatch",
+        message_types.DataModelOperationBatch,
     )
     _register_type("callSyncMethod", message_types.CallSyncMethod)
     _register_type("callStaticSyncMethod", message_types.CallStaticSyncMethod)

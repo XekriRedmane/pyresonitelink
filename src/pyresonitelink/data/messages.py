@@ -191,6 +191,31 @@ class GetSyncObjectDefinition(Message):
     flattened: bool = True
 
 
+@dataclass
+class GetGenericTypeDefinition(Message):
+    """Get the generic type definition for a generic instance type.
+
+    Given a constructed generic like ``MyComponent<int>``, returns
+    the generic definition ``MyComponent<T>``.
+
+    Args:
+        genericInstanceType: The constructed generic type string.
+    """
+
+    genericInstanceType: str | None = None
+
+
+@dataclass
+class GetEnumDefinition(Message):
+    """Get the definition of an enum type.
+
+    Args:
+        type: Full name of the enum type.
+    """
+
+    type: str | None = None
+
+
 # =============================================================================
 # Method Call Messages
 # =============================================================================
@@ -237,6 +262,39 @@ class CallStaticSyncMethod(Message):
     arguments: dict[str, object] | None = None
 
 
+# =============================================================================
+# Session Messages
+# =============================================================================
+
+
+@dataclass
+class RequestSessionData(Message):
+    """Request session data of the current ResoniteLink session.
+
+    The response is a SessionData.
+    """
+
+
+# =============================================================================
+# Batch Messages
+# =============================================================================
+
+
+@dataclass
+class DataModelOperationBatch(Message):
+    """Batch of data model operations processed atomically.
+
+    All operations are guaranteed to be processed in sequence without
+    any engine updates in between.  Only messages that derive from
+    data model operations (slot/component CRUD) can be included.
+
+    Args:
+        operations: List of data model operation messages.
+    """
+
+    operations: list[Message] | None = None
+
+
 @dataclass
 class BinaryPayloadMessage(Message):
     """A message with a binary payload."""
@@ -245,7 +303,7 @@ class BinaryPayloadMessage(Message):
 
 
 # =============================================================================
-# Asset Import Messages
+# Asset Import Messages — Texture 2D
 # =============================================================================
 
 
@@ -326,3 +384,174 @@ class ImportTexture2DRawDataHDR(ImportTexture2DRawDataBase):
 
     def access_raw_data(self) -> bytearray:
         return super()._access_raw_data(bytes_per_element=4*4)
+
+
+# =============================================================================
+# Asset Import Messages — Cubemap
+# =============================================================================
+
+
+@dataclass
+class ImportCubemapFiles(Message):
+    """Import a cubemap from six face image files on the local file system.
+
+    All files should ideally be the same format and size.
+
+    Args:
+        filePathPositiveX: Path to the +X face image.
+        filePathPositiveY: Path to the +Y face image.
+        filePathPositiveZ: Path to the +Z face image.
+        filePathNegativeX: Path to the -X face image.
+        filePathNegativeY: Path to the -Y face image.
+        filePathNegativeZ: Path to the -Z face image.
+    """
+
+    filePathPositiveX: str | None = None
+    filePathPositiveY: str | None = None
+    filePathPositiveZ: str | None = None
+    filePathNegativeX: str | None = None
+    filePathNegativeY: str | None = None
+    filePathNegativeZ: str | None = None
+
+
+@dataclass
+class ImportCubemapFileWithRegions(Message):
+    """Import a cubemap from a single image file with face regions.
+
+    Regions are in normalized coordinates (0..1).
+
+    Args:
+        filePath: Path to the image file.
+        positiveXregion: Normalized region for the +X face.
+        positiveYregion: Normalized region for the +Y face.
+        positiveZregion: Normalized region for the +Z face.
+        negativeXregion: Normalized region for the -X face.
+        negativeYregion: Normalized region for the -Y face.
+        negativeZregion: Normalized region for the -Z face.
+    """
+
+    filePath: str | None = None
+    positiveXregion: dict[str, float] | None = None
+    positiveYregion: dict[str, float] | None = None
+    positiveZregion: dict[str, float] | None = None
+    negativeXregion: dict[str, float] | None = None
+    negativeYregion: dict[str, float] | None = None
+    negativeZregion: dict[str, float] | None = None
+
+
+@dataclass
+class ImportCubemapRawData(BinaryPayloadMessage):
+    """Import a cubemap from raw 8-bit color data (color32, RGBA).
+
+    Args:
+        size: Size of each square face in pixels.
+        mipMaps: Whether mipmap data is included.
+        colorProfile: Color profile of the color data.
+    """
+
+    size: int = 0
+    mipMaps: bool = False
+    colorProfile: str | None = None
+
+
+@dataclass
+class ImportCubemapRawDataHDR(BinaryPayloadMessage):
+    """Import a cubemap from raw floating-point color data (HDR).
+
+    Args:
+        size: Size of each square face in pixels.
+        mipMaps: Whether mipmap data is included.
+    """
+
+    size: int = 0
+    mipMaps: bool = False
+
+
+# =============================================================================
+# Asset Import Messages — Mesh
+# =============================================================================
+
+
+@dataclass
+class ImportMeshJSON(Message):
+    """Import a mesh from a JSON definition.
+
+    Verbose but convenient for small meshes. Use ImportMeshRawData for
+    better efficiency with larger meshes.
+
+    Args:
+        vertices: List of vertex dicts.
+        submeshes: List of submesh dicts.
+        bones: List of bone dicts (for skinned meshes).
+        blendshapes: List of blendshape dicts.
+    """
+
+    vertices: list[dict[str, object]] | None = None
+    submeshes: list[dict[str, object]] | None = None
+    bones: list[dict[str, object]] | None = None
+    blendshapes: list[dict[str, object]] | None = None
+
+
+@dataclass
+class ImportMeshRawData(BinaryPayloadMessage):
+    """Import a mesh from raw binary data.
+
+    More efficient than ImportMeshJSON. Configure the structure metadata
+    first, then set the binary payload.
+
+    Args:
+        vertexCount: Number of vertices.
+        hasNormals: Whether vertices have normals.
+        hasTangents: Whether vertices have tangents.
+        hasColors: Whether vertices have colors.
+        boneWeightCount: Bone weights per vertex (0 if unskinned).
+        uvChannelDimensions: List of UV channel dimensions (2-4 each).
+        submeshes: List of submesh metadata dicts.
+        blendshapes: List of blendshape metadata dicts.
+        bones: List of bone dicts.
+    """
+
+    vertexCount: int = 0
+    hasNormals: bool = False
+    hasTangents: bool = False
+    hasColors: bool = False
+    boneWeightCount: int = 0
+    uvChannelDimensions: list[int] | None = None
+    submeshes: list[dict[str, object]] | None = None
+    blendshapes: list[dict[str, object]] | None = None
+    bones: list[dict[str, object]] | None = None
+
+
+# =============================================================================
+# Asset Import Messages — Audio
+# =============================================================================
+
+
+@dataclass
+class ImportAudioClipFile(Message):
+    """Import an audio clip from a file on the local file system.
+
+    Supported formats: WAV, OGG, FLAC.
+
+    Args:
+        filePath: Path of the audio clip file to import.
+    """
+
+    filePath: str | None = None
+
+
+@dataclass
+class ImportAudioClipRawData(BinaryPayloadMessage):
+    """Import an audio clip from raw float32 PCM data.
+
+    The binary payload should contain interleaved float32 samples.
+
+    Args:
+        sampleCount: Number of samples (same regardless of channel count).
+        sampleRate: Sample rate in Hz.
+        channelCount: Number of channels (1=mono, 2=stereo, 6=5.1).
+    """
+
+    sampleCount: int = 0
+    sampleRate: int = 0
+    channelCount: int = 0
