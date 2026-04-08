@@ -162,7 +162,14 @@ await player.stop(resolink)
 
 See `examples/call_sync_method.py` for the complete example.
 
-## ProtoFlux Examples
+## ProtoFlux
+
+ProtoFlux is Resonite's node-based visual programming language. See the
+[ProtoFlux README](src/pyresonitelink/protoflux/README.md) for detailed
+documentation on value chains, impulse chains, execution contexts, and
+the three variable types (Local, Store, Data Model Store).
+
+### Examples
 
 ### Dataflow: Addition Graph
 

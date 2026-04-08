@@ -472,6 +472,24 @@ All under `[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes`:
 - **`DynamicVariableSpace`** (Data/Dynamic): Must be on a slot (or ancestor) for dynamic variables to work.
 - **`DynamicValueVariable<T>`** (Data/Dynamic): Stores a named value. Has `VariableName` (string) and `Value` (T) fields. Readable directly via `get_component`.
 
+#### ProtoFlux Variable Types
+
+There are three variable scoping levels (see `src/pyresonitelink/protoflux/README.md` for full details):
+
+- **Local** (`LocalValue<T>`): Scoped to the current impulse context. Reset to default when the context ends. Cannot be read outside a context. Use for temporary computation.
+- **Store** (`StoredValue<T>`): Global per-user variable, not networked. Each user has their own value. Persists across contexts. Similar to a global variable.
+- **Data Model Store** (`DataModelValueFieldStore<T>`): Global, network-synchronized. Written values propagate to all users. Persists across sessions. Only the final value per impulse chain is synced.
+
+#### Execution Context and Node Groups
+
+Impulse chains run within an execution context that carries local variables and action node outputs. Context is preserved within a connected **node group** (all nodes connected by wires or references). Context is **lost** when execution crosses to a disconnected node group (e.g. via dynamic impulses to unconnected nodes).
+
+A non-async impulse chain runs in a single engine update. Only the net difference is synced — intermediate changes are invisible. Async chains (`StartAsyncTask`, `Delay`) can suspend and resume across frames, preserving locals.
+
+#### Skipped Components
+
+The generator skips 3066 internal ProtoFlux proxy types under `ProtoFlux/FrooxEngine/ProtoFlux/CoreNodes` — these are auto-generated plumbing (`AsyncMethodProxy_00A3`, `SyncValueFunctionProxy_00FF`, etc.) not meant for direct use.
+
 #### Reading a Computed Result
 
 ProtoFlux nodes don't expose their output values directly. To read a result:
