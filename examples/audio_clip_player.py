@@ -26,6 +26,14 @@ async def main(port: int) -> None:
     await resolink.connect(port)
     print("Connected.\n")
 
+    # Delete any leftover slot from a previous run
+    root = await resolink.get_slot(slot="Root", depth=1)
+    assert root.data is not None
+    for child in root.data.children:
+        if child.name and child.name.value == "AudioClipPlayer Example":
+            print(f"Deleting old slot {child.id}...")
+            await resolink.remove_slot(slot=child)
+
     # Create a slot
     slot_resp = await resolink.add_slot_to_root(
         name="AudioClipPlayer Example",
@@ -70,11 +78,7 @@ async def main(port: int) -> None:
 
     # --- Stop ---
     await player.stop(resolink)
-    print("\nStopped.")
-
-    # --- Clean up ---
-    await resolink.remove_slot(slot=slot)
-    print("Cleaned up.")
+    print("\nStopped. Slot left in place for inspection.")
     await resolink.close()
 
 
