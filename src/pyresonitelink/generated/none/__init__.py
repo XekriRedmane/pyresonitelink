@@ -1,5 +1,6 @@
 """Generated none components."""
 
+from .audio_dsp_effect import AudioDSP_Effect
 from .first_person_targetting_controller import FirstPersonTargettingController
 from .font_material import FontMaterial
 from .freeform_targetting_controller import FreeformTargettingController

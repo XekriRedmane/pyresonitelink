@@ -8,7 +8,7 @@ from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
-from pyresonitelink.generated._types.itexture2_d import ITexture2D
+from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -22,7 +22,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_RimMetallic"
 
-    def __init__(self, high_priority_integration: bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, rim_color: primitives.ColorX | None = None, rim_power: np.float32 | None = None, gamma_curve: np.float32 | None = None, transparent: bool | None = None, force_zwrite: bool | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, metallic: np.float32 | None = None, smoothness: np.float32 | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, rim_color: primitives.ColorX | None = None, rim_power: np.float32 | None = None, gamma_curve: np.float32 | None = None, transparent: bool | None = None, force_zwrite: bool | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, metallic: np.float32 | None = None, smoothness: np.float32 | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,7 +48,6 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             smoothness: Initial value for Smoothness.
             metallic_map: Initial value for MetallicMap.
             regular: Initial value for _regular.
-            transparent: Initial value for _transparent.
             zwrite: Initial value for _zwrite.
             component: Existing Component to wrap.
         """
@@ -97,8 +96,6 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.metallic_map = metallic_map
         if regular is not None:
             self.regular = regular
-        if transparent is not None:
-            self.transparent = transparent
         if zwrite is not None:
             self.zwrite = zwrite
 

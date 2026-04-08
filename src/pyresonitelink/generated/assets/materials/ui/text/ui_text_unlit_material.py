@@ -9,7 +9,7 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
-from pyresonitelink.generated._types.itexture2_d import ITexture2D
+from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.i_uix_material import IUIX_Material
 from pyresonitelink.generated._types.itext_material import ITextMaterial
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector

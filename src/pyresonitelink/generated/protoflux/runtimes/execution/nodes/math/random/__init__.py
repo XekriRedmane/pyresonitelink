@@ -25,9 +25,10 @@ from .random_rotation import RandomRotation
 from .random_slerp_float_q import RandomSlerpFloatQ
 from .random_string import RandomString
 from .simplex_noise_1_d import SimplexNoise_1D
-from .simplex_noise_2_d import SimplexNoise_2D
-from .simplex_noise_3_d import SimplexNoise_3D
+from .simplex_noise_2d import SimplexNoise_2D
+from .simplex_noise_3d import SimplexNoise_3D
 from .simplex_noise_4_d import SimplexNoise_4D
+from .simplex_noise_4d import SimplexNoise_4D
 from .point.random_point_in_circle import RandomPointInCircle
 from .point.random_point_in_cone import RandomPointInCone
 from .point.random_point_in_cube import RandomPointInCube

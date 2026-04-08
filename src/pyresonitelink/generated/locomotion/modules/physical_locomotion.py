@@ -8,7 +8,7 @@ from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
-from pyresonitelink.generated._types.itexture2_d import ITexture2D
+from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.locomotion_controller import LocomotionController
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.character_controller import CharacterController

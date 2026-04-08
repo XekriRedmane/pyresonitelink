@@ -1,0 +1,105 @@
+"""Generated component: ValueNoiseClip."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import protocols
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.iasset_provider import IAssetProvider
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.ValueNoiseClip.
+
+    Category: Assets/Procedural Audio Clips
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueNoiseClip"
+
+    def __init__(self, high_priority_integration: bool | None = None, duration: np.float32 | None = None, seed: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            duration: Initial value for Duration.
+            seed: Initial value for Seed.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if duration is not None:
+            self.duration = duration
+        if seed is not None:
+            self.seed = seed
+
+    @property
+    def high_priority_integration(self) -> bool | None:
+        """The HighPriorityIntegration field value."""
+        member = self.get_member("HighPriorityIntegration")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @high_priority_integration.setter
+    def high_priority_integration(self, value: bool) -> None:
+        """Set the HighPriorityIntegration field value."""
+        member = self.get_member("HighPriorityIntegration")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HighPriorityIntegration", fields.FieldBool(value=value)
+            )
+
+    @property
+    def duration(self) -> np.float32 | None:
+        """The Duration field value."""
+        member = self.get_member("Duration")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @duration.setter
+    def duration(self, value: np.float32) -> None:
+        """Set the Duration field value."""
+        member = self.get_member("Duration")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Duration", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def seed(self) -> np.int32 | None:
+        """The Seed field value."""
+        member = self.get_member("Seed")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @seed.setter
+    def seed(self, value: np.int32) -> None:
+        """Set the Seed field value."""
+        member = self.get_member("Seed")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Seed", fields.FieldInt(value=value)
+            )
+
+    async def bake_clip(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the BakeClip sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "BakeClip", {}, debug,
+        )
+

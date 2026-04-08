@@ -1,0 +1,504 @@
+"""Generated component: PBS_VoronoiCrystal."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.iasset_provider import IAssetProvider
+from pyresonitelink.generated._types.shader import Shader
+from pyresonitelink.generated._types.itexture_2d import ITexture2D
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.PBS_VoronoiCrystal.
+
+    Category: Assets/Materials/PBS
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_VoronoiCrystal"
+
+    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, noise_scale: primitives.Float2 | None = None, noise_animation_offset: np.float32 | None = None, cell_color_tint: primitives.ColorX | None = None, color_gradient: str | IAssetProvider[ITexture2D] | None = None, emission_color: primitives.ColorX | None = None, emission_gradient: str | IAssetProvider[ITexture2D] | None = None, smoothness_gradient: str | IAssetProvider[ITexture2D] | None = None, cell_smoothness: np.float32 | None = None, cell_metallic: np.float32 | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_strength: np.float32 | None = None, normal_texture_scale: primitives.Float2 | None = None, normal_texture_offset: primitives.Float2 | None = None, edge_thickness: np.float32 | None = None, edge_color: primitives.ColorX | None = None, edge_emission: primitives.ColorX | None = None, edge_smoothness: np.float32 | None = None, edge_metallic: np.float32 | None = None, edge_normal_strength: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            shader: Initial value for _shader.
+            noise_scale: Initial value for NoiseScale.
+            noise_animation_offset: Initial value for NoiseAnimationOffset.
+            cell_color_tint: Initial value for CellColorTint.
+            color_gradient: Initial value for ColorGradient.
+            emission_color: Initial value for EmissionColor.
+            emission_gradient: Initial value for EmissionGradient.
+            smoothness_gradient: Initial value for SmoothnessGradient.
+            cell_smoothness: Initial value for CellSmoothness.
+            cell_metallic: Initial value for CellMetallic.
+            normal_map: Initial value for NormalMap.
+            normal_strength: Initial value for NormalStrength.
+            normal_texture_scale: Initial value for NormalTextureScale.
+            normal_texture_offset: Initial value for NormalTextureOffset.
+            edge_thickness: Initial value for EdgeThickness.
+            edge_color: Initial value for EdgeColor.
+            edge_emission: Initial value for EdgeEmission.
+            edge_smoothness: Initial value for EdgeSmoothness.
+            edge_metallic: Initial value for EdgeMetallic.
+            edge_normal_strength: Initial value for EdgeNormalStrength.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if shader is not None:
+            self.shader = shader
+        if noise_scale is not None:
+            self.noise_scale = noise_scale
+        if noise_animation_offset is not None:
+            self.noise_animation_offset = noise_animation_offset
+        if cell_color_tint is not None:
+            self.cell_color_tint = cell_color_tint
+        if color_gradient is not None:
+            self.color_gradient = color_gradient
+        if emission_color is not None:
+            self.emission_color = emission_color
+        if emission_gradient is not None:
+            self.emission_gradient = emission_gradient
+        if smoothness_gradient is not None:
+            self.smoothness_gradient = smoothness_gradient
+        if cell_smoothness is not None:
+            self.cell_smoothness = cell_smoothness
+        if cell_metallic is not None:
+            self.cell_metallic = cell_metallic
+        if normal_map is not None:
+            self.normal_map = normal_map
+        if normal_strength is not None:
+            self.normal_strength = normal_strength
+        if normal_texture_scale is not None:
+            self.normal_texture_scale = normal_texture_scale
+        if normal_texture_offset is not None:
+            self.normal_texture_offset = normal_texture_offset
+        if edge_thickness is not None:
+            self.edge_thickness = edge_thickness
+        if edge_color is not None:
+            self.edge_color = edge_color
+        if edge_emission is not None:
+            self.edge_emission = edge_emission
+        if edge_smoothness is not None:
+            self.edge_smoothness = edge_smoothness
+        if edge_metallic is not None:
+            self.edge_metallic = edge_metallic
+        if edge_normal_strength is not None:
+            self.edge_normal_strength = edge_normal_strength
+
+    @property
+    def high_priority_integration(self) -> bool | None:
+        """The HighPriorityIntegration field value."""
+        member = self.get_member("HighPriorityIntegration")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @high_priority_integration.setter
+    def high_priority_integration(self, value: bool) -> None:
+        """Set the HighPriorityIntegration field value."""
+        member = self.get_member("HighPriorityIntegration")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HighPriorityIntegration", fields.FieldBool(value=value)
+            )
+
+    @property
+    def shader(self) -> str | None:
+        """Target ID of the _shader reference (targets IAssetProvider[Shader])."""
+        member = self.get_member("_shader")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @shader.setter
+    def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
+        """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("_shader")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_shader",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.Shader>'),
+            )
+
+    @property
+    def noise_scale(self) -> primitives.Float2 | None:
+        """The NoiseScale field value."""
+        member = self.get_member("NoiseScale")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @noise_scale.setter
+    def noise_scale(self, value: primitives.Float2) -> None:
+        """Set the NoiseScale field value."""
+        member = self.get_member("NoiseScale")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NoiseScale", fields.FieldFloat2(value=value)
+            )
+
+    @property
+    def noise_animation_offset(self) -> np.float32 | None:
+        """The NoiseAnimationOffset field value."""
+        member = self.get_member("NoiseAnimationOffset")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @noise_animation_offset.setter
+    def noise_animation_offset(self, value: np.float32) -> None:
+        """Set the NoiseAnimationOffset field value."""
+        member = self.get_member("NoiseAnimationOffset")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NoiseAnimationOffset", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def cell_color_tint(self) -> primitives.ColorX | None:
+        """The CellColorTint field value."""
+        member = self.get_member("CellColorTint")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @cell_color_tint.setter
+    def cell_color_tint(self, value: primitives.ColorX) -> None:
+        """Set the CellColorTint field value."""
+        member = self.get_member("CellColorTint")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "CellColorTint", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def color_gradient(self) -> str | None:
+        """Target ID of the ColorGradient reference (targets IAssetProvider[ITexture2D])."""
+        member = self.get_member("ColorGradient")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @color_gradient.setter
+    def color_gradient(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
+        """Set the ColorGradient reference by target ID or IAssetProvider[ITexture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("ColorGradient")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ColorGradient",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.ITexture2D>'),
+            )
+
+    @property
+    def emission_color(self) -> primitives.ColorX | None:
+        """The EmissionColor field value."""
+        member = self.get_member("EmissionColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @emission_color.setter
+    def emission_color(self, value: primitives.ColorX) -> None:
+        """Set the EmissionColor field value."""
+        member = self.get_member("EmissionColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "EmissionColor", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def emission_gradient(self) -> str | None:
+        """Target ID of the EmissionGradient reference (targets IAssetProvider[ITexture2D])."""
+        member = self.get_member("EmissionGradient")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @emission_gradient.setter
+    def emission_gradient(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
+        """Set the EmissionGradient reference by target ID or IAssetProvider[ITexture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("EmissionGradient")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "EmissionGradient",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.ITexture2D>'),
+            )
+
+    @property
+    def smoothness_gradient(self) -> str | None:
+        """Target ID of the SmoothnessGradient reference (targets IAssetProvider[ITexture2D])."""
+        member = self.get_member("SmoothnessGradient")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @smoothness_gradient.setter
+    def smoothness_gradient(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
+        """Set the SmoothnessGradient reference by target ID or IAssetProvider[ITexture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("SmoothnessGradient")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "SmoothnessGradient",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.ITexture2D>'),
+            )
+
+    @property
+    def cell_smoothness(self) -> np.float32 | None:
+        """The CellSmoothness field value."""
+        member = self.get_member("CellSmoothness")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @cell_smoothness.setter
+    def cell_smoothness(self, value: np.float32) -> None:
+        """Set the CellSmoothness field value."""
+        member = self.get_member("CellSmoothness")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "CellSmoothness", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def cell_metallic(self) -> np.float32 | None:
+        """The CellMetallic field value."""
+        member = self.get_member("CellMetallic")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @cell_metallic.setter
+    def cell_metallic(self, value: np.float32) -> None:
+        """Set the CellMetallic field value."""
+        member = self.get_member("CellMetallic")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "CellMetallic", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def normal_map(self) -> str | None:
+        """Target ID of the NormalMap reference (targets IAssetProvider[ITexture2D])."""
+        member = self.get_member("NormalMap")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @normal_map.setter
+    def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
+        """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("NormalMap")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "NormalMap",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.ITexture2D>'),
+            )
+
+    @property
+    def normal_strength(self) -> np.float32 | None:
+        """The NormalStrength field value."""
+        member = self.get_member("NormalStrength")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @normal_strength.setter
+    def normal_strength(self, value: np.float32) -> None:
+        """Set the NormalStrength field value."""
+        member = self.get_member("NormalStrength")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NormalStrength", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def normal_texture_scale(self) -> primitives.Float2 | None:
+        """The NormalTextureScale field value."""
+        member = self.get_member("NormalTextureScale")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @normal_texture_scale.setter
+    def normal_texture_scale(self, value: primitives.Float2) -> None:
+        """Set the NormalTextureScale field value."""
+        member = self.get_member("NormalTextureScale")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NormalTextureScale", fields.FieldFloat2(value=value)
+            )
+
+    @property
+    def normal_texture_offset(self) -> primitives.Float2 | None:
+        """The NormalTextureOffset field value."""
+        member = self.get_member("NormalTextureOffset")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @normal_texture_offset.setter
+    def normal_texture_offset(self, value: primitives.Float2) -> None:
+        """Set the NormalTextureOffset field value."""
+        member = self.get_member("NormalTextureOffset")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NormalTextureOffset", fields.FieldFloat2(value=value)
+            )
+
+    @property
+    def edge_thickness(self) -> np.float32 | None:
+        """The EdgeThickness field value."""
+        member = self.get_member("EdgeThickness")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @edge_thickness.setter
+    def edge_thickness(self, value: np.float32) -> None:
+        """Set the EdgeThickness field value."""
+        member = self.get_member("EdgeThickness")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "EdgeThickness", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def edge_color(self) -> primitives.ColorX | None:
+        """The EdgeColor field value."""
+        member = self.get_member("EdgeColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @edge_color.setter
+    def edge_color(self, value: primitives.ColorX) -> None:
+        """Set the EdgeColor field value."""
+        member = self.get_member("EdgeColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "EdgeColor", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def edge_emission(self) -> primitives.ColorX | None:
+        """The EdgeEmission field value."""
+        member = self.get_member("EdgeEmission")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @edge_emission.setter
+    def edge_emission(self, value: primitives.ColorX) -> None:
+        """Set the EdgeEmission field value."""
+        member = self.get_member("EdgeEmission")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "EdgeEmission", fields.FieldColorX(value=value)
+            )
+
+    @property
+    def edge_smoothness(self) -> np.float32 | None:
+        """The EdgeSmoothness field value."""
+        member = self.get_member("EdgeSmoothness")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @edge_smoothness.setter
+    def edge_smoothness(self, value: np.float32) -> None:
+        """Set the EdgeSmoothness field value."""
+        member = self.get_member("EdgeSmoothness")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "EdgeSmoothness", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def edge_metallic(self) -> np.float32 | None:
+        """The EdgeMetallic field value."""
+        member = self.get_member("EdgeMetallic")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @edge_metallic.setter
+    def edge_metallic(self, value: np.float32) -> None:
+        """Set the EdgeMetallic field value."""
+        member = self.get_member("EdgeMetallic")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "EdgeMetallic", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def edge_normal_strength(self) -> np.float32 | None:
+        """The EdgeNormalStrength field value."""
+        member = self.get_member("EdgeNormalStrength")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @edge_normal_strength.setter
+    def edge_normal_strength(self, value: np.float32) -> None:
+        """Set the EdgeNormalStrength field value."""
+        member = self.get_member("EdgeNormalStrength")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "EdgeNormalStrength", fields.FieldFloat(value=value)
+            )
+

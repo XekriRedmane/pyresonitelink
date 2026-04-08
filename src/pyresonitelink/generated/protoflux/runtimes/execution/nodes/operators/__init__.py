@@ -4,8 +4,6 @@ from .add_byte_color32 import Add_Byte_Color32
 from .add_color32_byte import Add_Color32_Byte
 from .add_color_float import Add_Color_Float
 from .add_colorx_float import Add_ColorX_Float
-from .add_double2_double import Add_Double2_Double
-from .add_double3_double import Add_Double3_Double
 from .add_double4_double import Add_Double4_Double
 from .add_double_double2 import Add_Double_Double2
 from .add_double_double3 import Add_Double_Double3
@@ -80,8 +78,6 @@ from .div_byte_color32 import Div_Byte_Color32
 from .div_color32_byte import Div_Color32_Byte
 from .div_color_float import Div_Color_Float
 from .div_colorx_float import Div_ColorX_Float
-from .div_double2_double import Div_Double2_Double
-from .div_double3_double import Div_Double3_Double
 from .div_double4_double import Div_Double4_Double
 from .div_double_double2 import Div_Double_Double2
 from .div_double_double3 import Div_Double_Double3
@@ -248,9 +244,6 @@ from .mul_byte_color32 import Mul_Byte_Color32
 from .mul_color32_byte import Mul_Color32_Byte
 from .mul_color_float import Mul_Color_Float
 from .mul_colorx_float import Mul_ColorX_Float
-from .mul_double2_double import Mul_Double2_Double
-from .mul_double3_double import Mul_Double3_Double
-from .mul_double3x3_double3 import Mul_Double3x3_Double3
 from .mul_double4_double import Mul_Double4_Double
 from .mul_double4x4_double3 import Mul_Double4x4_Double3
 from .mul_double4x4_double4 import Mul_Double4x4_Double4
@@ -308,8 +301,6 @@ from .sub_byte_color32 import Sub_Byte_Color32
 from .sub_color32_byte import Sub_Color32_Byte
 from .sub_color_float import Sub_Color_Float
 from .sub_colorx_float import Sub_ColorX_Float
-from .sub_double2_double import Sub_Double2_Double
-from .sub_double3_double import Sub_Double3_Double
 from .sub_double4_double import Sub_Double4_Double
 from .sub_double_double2 import Sub_Double_Double2
 from .sub_double_double3 import Sub_Double_Double3

@@ -27,7 +27,7 @@ from .mouse.middle_mouse_released import MiddleMouseReleased
 from .mouse.mouse_movement_delta import MouseMovementDelta
 from .mouse.mouse_position import MousePosition
 from .mouse.mouse_scroll_delta import MouseScrollDelta
-from .mouse.mouse_scroll_delta2_d import MouseScrollDelta2D
+from .mouse.mouse_scroll_delta_2d import MouseScrollDelta2D
 from .mouse.normalized_mouse_position import NormalizedMousePosition
 from .mouse.right_mouse_held import RightMouseHeld
 from .mouse.right_mouse_pressed import RightMousePressed

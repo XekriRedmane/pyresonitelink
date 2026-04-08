@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.ilaser_interaction_modifier import ILaserIn
 from pyresonitelink.generated._types.relay_touch_source import RelayTouchSource
 from pyresonitelink.generated._types.bent_tube_mesh import BentTubeMesh
 from pyresonitelink.generated._types.overlay_unlit_material import OverlayUnlitMaterial
-from pyresonitelink.generated._types.static_texture2_d import StaticTexture2D
+from pyresonitelink.generated._types.static_texture_2d import StaticTexture2D
 from pyresonitelink.generated._types.ifield import IField
 from pyresonitelink.generated._types.segment_mesh import SegmentMesh
 from pyresonitelink.generated._types.icomponent import IComponent

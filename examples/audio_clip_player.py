@@ -15,9 +15,9 @@ import sys
 import time
 
 from pyresonitelink import client
-from pyresonitelink.data import fields
 from pyresonitelink.data import workers
-from pyresonitelink.components.audio import AudioClipPlayer
+from pyresonitelink.generated.assets.static_audio_clip import StaticAudioClip
+from pyresonitelink.generated.audio.audio_clip_player import AudioClipPlayer
 
 
 async def main(port: int) -> None:
@@ -41,25 +41,12 @@ async def main(port: int) -> None:
     print(f"Asset URL: {asset.assetURL}")
 
     # --- Create a StaticAudioClip and set its URL to the imported asset ---
-    sac_resp = await resolink.add_component(
-        containerSlotId=slot,
-        componentType="[FrooxEngine]FrooxEngine.StaticAudioClip",
-    )
-    sac_id = sac_resp.entityId
-    assert sac_id is not None
-
-    # Set the URL member to the imported asset URL
-    sac_get = await resolink.get_component(componentId=sac_id)
-    assert sac_get.data is not None
-    url_member = sac_get.data.members["URL"]
-    sac_get.data.members["URL"] = fields.FieldUri(
-        id=url_member.id, value=asset.assetURL,
-    )
-    await resolink.update_component(data=sac_get.data)
-    print(f"StaticAudioClip: {sac_id}")
+    clip = StaticAudioClip(url=asset.assetURL)
+    await clip.add_to_slot(resolink, slot)
+    print(f"StaticAudioClip: {clip.id}")
 
     # --- Create an AudioClipPlayer and point it at the clip ---
-    player = AudioClipPlayer(clip=sac_id)
+    player = AudioClipPlayer(clip=clip.id)
     await player.add_to_slot(resolink, slot)
     assert player.id is not None
     print(f"AudioClipPlayer: {player.id}")

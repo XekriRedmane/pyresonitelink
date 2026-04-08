@@ -229,6 +229,7 @@ _ABBREVIATIONS: tuple[str, ...] = (
     "UIX",
     "HSV", "HSL", "RGB",
     "URLs", "URL", "URI",
+    "2D", "3D", "4D",
 )
 
 # Pre-compiled pattern: match any abbreviation.
@@ -663,18 +664,33 @@ def generate_component_source(
             if token not in defined_params:
                 extra_type_params.add(token)
 
+    # Collect Python type annotations used in sync method parameters
+    # so we can check if np/primitives/Decimal imports are needed.
+    method_param_types: list[str] = []
+    for method_def in sync_methods:
+        if not isinstance(method_def, dict):
+            continue
+        for _pname, ptype_ref in method_def.get("parameters", {}).items():
+            if isinstance(ptype_ref, dict):
+                py_prim = _primitive_python_name(ptype_ref.get("type", ""))
+                if py_prim:
+                    method_param_types.append(py_prim)
+
     needs_any = bool(extra_type_params)
     needs_np = (
         any(t.startswith("np.") for _, _, t, _, _, gp, _ in member_infos if not gp)
         or any("np." in a for a in ref_annotations)
+        or any("np." in t for t in method_param_types)
     )
     needs_primitives = (
         any(t.startswith("primitives.") for _, _, t, _, _, gp, _ in member_infos if not gp)
         or any("primitives." in a for a in ref_annotations)
+        or any("primitives." in t for t in method_param_types)
     )
     needs_decimal = (
         any(t == "Decimal" for _, _, t, _, _, gp, _ in member_infos if not gp)
         or any("Decimal" in a for a in ref_annotations)
+        or any("Decimal" in t for t in method_param_types)
     )
     if needs_any or needs_np or needs_decimal:
         imports: list[str] = []
@@ -859,6 +875,17 @@ def generate_component_source(
         ):
             # Scalar field member (string, bool, int, float, etc.)
             init_params.append((py_name, py_type, res_name))
+
+    # Deduplicate init params by Python name (different Resonite
+    # members can map to the same snake_case name, e.g. a field
+    # and a reference both named "PerObject" -> "per_object").
+    seen_init_names: set[str] = set()
+    deduped_params: list[tuple[str, str, str]] = []
+    for pname, ptype, rname in init_params:
+        if pname not in seen_init_names:
+            seen_init_names.add(pname)
+            deduped_params.append((pname, ptype, rname))
+    init_params = deduped_params
 
     if init_params:
         # Build signature
