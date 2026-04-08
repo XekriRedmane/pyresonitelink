@@ -600,6 +600,9 @@ async def generate(
         data_dir = _GENERATED_DIR / "data"
         if data_dir.is_dir():
             _rebuild_init_exports(data_dir)
+        enums_dir = _GENERATED_DIR / "_enums"
+        if enums_dir.is_dir():
+            _rebuild_init_exports(enums_dir)
 
     await resolink.close()
 
