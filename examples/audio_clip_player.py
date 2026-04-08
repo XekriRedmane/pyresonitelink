@@ -54,14 +54,14 @@ async def main(port: int) -> None:
     print(f"StaticAudioClip: {clip.id}")
 
     # --- Create an AudioClipPlayer and point it at the clip ---
-    player = AudioClipPlayer(clip=clip.id)
+    player = AudioClipPlayer(clip=clip)
     await player.add_to_slot(resolink, slot)
     assert player.id is not None
     print(f"AudioClipPlayer: {player.id}")
     print(f"  clip -> {player.clip}")
 
     # --- Create an AudioOutput to hear the audio ---
-    output = AudioOutput(source=player.id)
+    output = AudioOutput(source=player)
     await output.add_to_slot(resolink, slot)
     print(f"AudioOutput: {output.id}")
     print(f"  source -> {output.source}")
