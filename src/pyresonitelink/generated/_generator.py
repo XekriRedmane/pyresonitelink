@@ -9,11 +9,14 @@ import re
 from pathlib import Path
 from typing import Any
 
-_DOCS_DIR = Path(__file__).resolve().parent / "docs"
+_DOCS_DIR = Path(__file__).resolve().parent.parent / "scraped_docs"
 
 
 def _load_wiki_docs(class_name: str) -> dict[str, Any] | None:
     """Load wiki documentation for a component if available.
+
+    Searches all category subdirectories under the docs dir for a
+    matching JSON file.
 
     Args:
         class_name: The Python class name (PascalCase).
@@ -22,14 +25,16 @@ def _load_wiki_docs(class_name: str) -> dict[str, Any] | None:
         Parsed docs dict or None if no docs file exists.
     """
     filename = _to_snake_case(class_name) + ".json"
-    path = _DOCS_DIR / filename
-    if not path.exists():
+    if not _DOCS_DIR.is_dir():
         return None
-    try:
-        with open(path, encoding="utf-8") as f:
-            return json.load(f)
-    except (json.JSONDecodeError, OSError):
-        return None
+    # Search in all subdirectories (category folders)
+    for path in _DOCS_DIR.rglob(filename):
+        try:
+            with open(path, encoding="utf-8") as f:
+                return json.load(f)
+        except (json.JSONDecodeError, OSError):
+            continue
+    return None
 
 # Wire-format primitive type names that should NOT generate stub classes.
 # These are Resonite's built-in value types that already have Python

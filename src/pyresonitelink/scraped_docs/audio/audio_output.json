@@ -1,5 +1,6 @@
 {
   "description": "Audio Output is a component that is used to output sound from any kind of IAudioSource. This includes but is not limited to: Audio streams, audio clip players, and voices.",
+  "category": "Audio",
   "fields": {
     "Volume": "The volume to play the clip at, from 0 to 1.",
     "Source": "The source of audio. Can be an AudioClipPlayer, LerpingMultiClipPlayer, or MultiAudioClipPlayer.",

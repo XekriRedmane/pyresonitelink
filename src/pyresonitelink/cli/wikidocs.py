@@ -25,7 +25,7 @@ _WIKI_RAW_URL = (
 )
 
 _DOCS_DIR = (
-    Path(__file__).resolve().parent.parent / "generated" / "docs"
+    Path(__file__).resolve().parent.parent / "scraped_docs"
 )
 
 
@@ -89,6 +89,7 @@ def parse_wikitext(wikitext: str) -> dict:
     """
     doc: dict = {
         "description": "",
+        "category": "",
         "fields": {},
         "methods": {},
         "usage": "",
@@ -242,6 +243,20 @@ def parse_wikitext(wikitext: str) -> dict:
         if body:
             doc["notes"].append({"title": title, "text": body})
 
+    # Extract the most specific category from [[Category:...]] tags.
+    # e.g. [[Category:Components:Audio{{#translation:}}|Audio Output]]
+    # → "Audio"
+    categories: list[str] = []
+    for cat_match in re.finditer(
+        r"\[\[Category:Components:?([^|\]{}]*)", wikitext,
+    ):
+        cat = cat_match.group(1).strip()
+        if cat:
+            categories.append(cat)
+    if categories:
+        # Pick the most specific (longest) category
+        doc["category"] = max(categories, key=len)
+
     return doc
 
 
@@ -283,10 +298,17 @@ def save_docs(component_name: str, docs: dict, output_dir: Path | None = None) -
     """
     if output_dir is None:
         output_dir = _DOCS_DIR
+    from pyresonitelink.generated._generator import _to_snake_case
+
+    # Place in a category subfolder if available
+    category = docs.get("category", "")
+    if category:
+        cat_dir = _to_snake_case(category)
+        output_dir = output_dir / cat_dir
+
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # Use snake_case filename matching the generated module
-    from pyresonitelink.generated._generator import _to_snake_case
     filename = _to_snake_case(component_name) + ".json"
     path = output_dir / filename
     with open(path, "w", encoding="utf-8") as f:
