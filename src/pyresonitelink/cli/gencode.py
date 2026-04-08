@@ -36,6 +36,13 @@ from pyresonitelink.generated._generator import (
 # Root of the generated package
 _GENERATED_DIR = Path(__file__).resolve().parent.parent / "generated"
 
+# Category paths that should be skipped during generation.
+# These contain internal ProtoFlux proxy types (auto-generated
+# plumbing with hex suffixes and many generic parameters).
+_SKIP_CATEGORIES: frozenset[str] = frozenset({
+    "ProtoFlux/FrooxEngine/ProtoFlux/CoreNodes",
+})
+
 
 def _ensure_init_files(path: Path) -> None:
     """Create __init__.py in all directories between generated/ and path.
@@ -314,6 +321,9 @@ async def _generate_component(
 
     definition = cast(dict[str, Any], def_resp.get("definition", {}))
     category = str(definition.get("categoryPath", ""))
+
+    if category in _SKIP_CATEGORIES:
+        return
 
     # Try to instantiate for concrete member types
     comp_data: dict[str, Any] | None = None
