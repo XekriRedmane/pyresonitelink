@@ -16,8 +16,8 @@ import time
 
 from pyresonitelink import client
 from pyresonitelink.data import workers
-from pyresonitelink.generated.assets.static_audio_clip import StaticAudioClip
-from pyresonitelink.generated.audio.audio_clip_player import AudioClipPlayer
+from pyresonitelink.components.assets import StaticAudioClip
+from pyresonitelink.components.audio import AudioClipPlayer
 
 
 async def main(port: int) -> None:
