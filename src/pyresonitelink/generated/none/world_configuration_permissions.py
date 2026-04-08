@@ -1,6 +1,7 @@
 """Generated component: WorldConfigurationPermissions."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworker_permissions import IWorkerPermissions
@@ -14,7 +15,7 @@ class WorldConfigurationPermissions(GeneratedComponent, IWorkerPermissions, ICus
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldConfigurationPermissions"
 
-    def __init__(self, allow_changes: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, allow_changes: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -26,7 +27,7 @@ class WorldConfigurationPermissions(GeneratedComponent, IWorkerPermissions, ICus
             self.allow_changes = allow_changes
 
     @property
-    def allow_changes(self) -> bool | None:
+    def allow_changes(self) -> primitives.Bool | None:
         """The AllowChanges field value."""
         member = self.get_member("AllowChanges")
         if member is None:
@@ -34,7 +35,7 @@ class WorldConfigurationPermissions(GeneratedComponent, IWorkerPermissions, ICus
         return getattr(member, 'value', None)
 
     @allow_changes.setter
-    def allow_changes(self, value: bool) -> None:
+    def allow_changes(self, value: primitives.Bool) -> None:
         """Set the AllowChanges field value."""
         member = self.get_member("AllowChanges")
         if member is not None:

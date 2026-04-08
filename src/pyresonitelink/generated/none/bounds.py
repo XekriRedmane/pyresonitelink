@@ -14,7 +14,7 @@ class Bounds(GeneratedComponent, IBounded, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Bounds"
 
-    def __init__(self, available: bool | None = None, local_bounds: primitives.BoundingBox | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, available: primitives.Bool | None = None, local_bounds: primitives.BoundingBox | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +29,7 @@ class Bounds(GeneratedComponent, IBounded, IWorldEventReceiver):
             self.local_bounds = local_bounds
 
     @property
-    def available(self) -> bool | None:
+    def available(self) -> primitives.Bool | None:
         """The Available field value."""
         member = self.get_member("Available")
         if member is None:
@@ -37,7 +37,7 @@ class Bounds(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @available.setter
-    def available(self, value: bool) -> None:
+    def available(self, value: primitives.Bool) -> None:
         """Set the Available field value."""
         member = self.get_member("Available")
         if member is not None:

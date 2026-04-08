@@ -1,9 +1,8 @@
 """Generated component: BillboardRenderBufferRenderer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -22,7 +21,7 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BillboardRenderBufferRenderer"
 
-    def __init__(self, buffer: str | IAssetProvider[PointRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, min_billboard_screen_size: np.float32 | None = None, max_billboard_screen_size: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, buffer: str | IAssetProvider[PointRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, min_billboard_screen_size: primitives.Float | None = None, max_billboard_screen_size: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -111,7 +110,7 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
         self.set_member("MotionVectorMode", value)
 
     @property
-    def min_billboard_screen_size(self) -> np.float32 | None:
+    def min_billboard_screen_size(self) -> primitives.Float | None:
         """The MinBillboardScreenSize field value."""
         member = self.get_member("MinBillboardScreenSize")
         if member is None:
@@ -119,7 +118,7 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
         return getattr(member, 'value', None)
 
     @min_billboard_screen_size.setter
-    def min_billboard_screen_size(self, value: np.float32) -> None:
+    def min_billboard_screen_size(self, value: primitives.Float) -> None:
         """Set the MinBillboardScreenSize field value."""
         member = self.get_member("MinBillboardScreenSize")
         if member is not None:
@@ -130,7 +129,7 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
             )
 
     @property
-    def max_billboard_screen_size(self) -> np.float32 | None:
+    def max_billboard_screen_size(self) -> primitives.Float | None:
         """The MaxBillboardScreenSize field value."""
         member = self.get_member("MaxBillboardScreenSize")
         if member is None:
@@ -138,7 +137,7 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
         return getattr(member, 'value', None)
 
     @max_billboard_screen_size.setter
-    def max_billboard_screen_size(self, value: np.float32) -> None:
+    def max_billboard_screen_size(self, value: primitives.Float) -> None:
         """Set the MaxBillboardScreenSize field value."""
         member = self.get_member("MaxBillboardScreenSize")
         if member is not None:

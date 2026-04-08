@@ -1,7 +1,5 @@
 """Generated component: AvatarPoseRotationConstraint."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -18,7 +16,7 @@ class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseRotationConstraint"
 
-    def __init__(self, max_twist: np.float32 | None = None, max_swing: np.float32 | None = None, axis: primitives.Float3 | None = None, twist_reference_axis: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, max_twist: primitives.Float | None = None, max_swing: primitives.Float | None = None, axis: primitives.Float3 | None = None, twist_reference_axis: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +37,7 @@ class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorld
             self.twist_reference_axis = twist_reference_axis
 
     @property
-    def max_twist(self) -> np.float32 | None:
+    def max_twist(self) -> primitives.Float | None:
         """The MaxTwist field value."""
         member = self.get_member("MaxTwist")
         if member is None:
@@ -47,7 +45,7 @@ class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorld
         return getattr(member, 'value', None)
 
     @max_twist.setter
-    def max_twist(self, value: np.float32) -> None:
+    def max_twist(self, value: primitives.Float) -> None:
         """Set the MaxTwist field value."""
         member = self.get_member("MaxTwist")
         if member is not None:
@@ -58,7 +56,7 @@ class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorld
             )
 
     @property
-    def max_swing(self) -> np.float32 | None:
+    def max_swing(self) -> primitives.Float | None:
         """The MaxSwing field value."""
         member = self.get_member("MaxSwing")
         if member is None:
@@ -66,7 +64,7 @@ class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorld
         return getattr(member, 'value', None)
 
     @max_swing.setter
-    def max_swing(self, value: np.float32) -> None:
+    def max_swing(self, value: primitives.Float) -> None:
         """Set the MaxSwing field value."""
         member = self.get_member("MaxSwing")
         if member is not None:

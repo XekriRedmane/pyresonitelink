@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync import Sync
@@ -15,7 +16,7 @@ class TimeDiagnosis(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TimeDiagnosis"
 
-    def __init__(self, format_time: bool | None = None, text: str | Sync[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, format_time: primitives.Bool | None = None, text: str | Sync[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class TimeDiagnosis(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.text = text
 
     @property
-    def format_time(self) -> bool | None:
+    def format_time(self) -> primitives.Bool | None:
         """The FormatTime field value."""
         member = self.get_member("FormatTime")
         if member is None:
@@ -38,7 +39,7 @@ class TimeDiagnosis(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @format_time.setter
-    def format_time(self, value: bool) -> None:
+    def format_time(self, value: primitives.Bool) -> None:
         """Set the FormatTime field value."""
         member = self.get_member("FormatTime")
         if member is not None:
@@ -50,15 +51,15 @@ class TimeDiagnosis(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the text reference (targets Sync[str])."""
+        """Target ID of the text reference (targets Sync[primitives.String])."""
         member = self.get_member("text")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text.setter
-    def text(self, target: str | Sync[str] | None) -> None:
-        """Set the text reference by target ID or Sync[str] instance."""
+    def text(self, target: str | Sync[primitives.String] | None) -> None:
+        """Set the text reference by target ID or Sync[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
         member = self.get_member("text")
         if isinstance(member, members.Reference):

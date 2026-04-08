@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -14,7 +15,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioOutputDeviceSettings"
 
-    def __init__(self, use_system_default: bool | None = None, device_priorities_enabled: bool | None = None, separate_streaming_camera_output: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_system_default: primitives.Bool | None = None, device_priorities_enabled: primitives.Bool | None = None, separate_streaming_camera_output: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +33,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
             self.separate_streaming_camera_output = separate_streaming_camera_output
 
     @property
-    def use_system_default(self) -> bool | None:
+    def use_system_default(self) -> primitives.Bool | None:
         """The UseSystemDefault field value."""
         member = self.get_member("UseSystemDefault")
         if member is None:
@@ -40,7 +41,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_system_default.setter
-    def use_system_default(self, value: bool) -> None:
+    def use_system_default(self, value: primitives.Bool) -> None:
         """Set the UseSystemDefault field value."""
         member = self.get_member("UseSystemDefault")
         if member is not None:
@@ -64,7 +65,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
         self.set_member("DevicePriorities", value)
 
     @property
-    def device_priorities_enabled(self) -> bool | None:
+    def device_priorities_enabled(self) -> primitives.Bool | None:
         """The DevicePrioritiesEnabled field value."""
         member = self.get_member("DevicePrioritiesEnabled")
         if member is None:
@@ -72,7 +73,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @device_priorities_enabled.setter
-    def device_priorities_enabled(self, value: bool) -> None:
+    def device_priorities_enabled(self, value: primitives.Bool) -> None:
         """Set the DevicePrioritiesEnabled field value."""
         member = self.get_member("DevicePrioritiesEnabled")
         if member is not None:
@@ -83,7 +84,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def separate_streaming_camera_output(self) -> bool | None:
+    def separate_streaming_camera_output(self) -> primitives.Bool | None:
         """The SeparateStreamingCameraOutput field value."""
         member = self.get_member("SeparateStreamingCameraOutput")
         if member is None:
@@ -91,7 +92,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @separate_streaming_camera_output.setter
-    def separate_streaming_camera_output(self, value: bool) -> None:
+    def separate_streaming_camera_output(self, value: primitives.Bool) -> None:
         """Set the SeparateStreamingCameraOutput field value."""
         member = self.get_member("SeparateStreamingCameraOutput")
         if member is not None:
@@ -114,7 +115,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
         """Set the StreamingCameraPriorities member."""
         self.set_member("StreamingCameraPriorities", value)
 
-    async def get_device(self, resolink: protocols.ResoniteLinkClient, key: str, debug: bool = False) -> dict:
+    async def get_device(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
         """Call the GetDevice sync method.
 
         Args:
@@ -139,7 +140,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
             resolink, "ForceRefreshDevices", {}, debug,
         )
 
-    async def get_streaming_device(self, resolink: protocols.ResoniteLinkClient, key: str, debug: bool = False) -> dict:
+    async def get_streaming_device(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
         """Call the GetStreamingDevice sync method.
 
         Args:

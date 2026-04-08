@@ -18,7 +18,7 @@ class MultiNullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNod
 
     Parameterize with a value type::
 
-        MultiNullCoalesce[np.float32]
+        MultiNullCoalesce[primitives.Float]
         MultiNullCoalesce[primitives.Float3]
     """
 

@@ -18,7 +18,7 @@ class ValueAbs(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueAbs[np.float32]
+        ValueAbs[primitives.Float]
         ValueAbs[primitives.Float3]
     """
 

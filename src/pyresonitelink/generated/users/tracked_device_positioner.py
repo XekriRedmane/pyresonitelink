@@ -1,9 +1,8 @@
 """Generated component: TrackedDevicePositioner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -22,7 +21,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TrackedDevicePositioner"
 
-    def __init__(self, device_index: np.int32 | None = None, always_render_model: bool | None = None, reference_model: str | Slot | None = None, body_node_root: str | Slot | None = None, object_slot: str | AvatarObjectSlot | None = None, is_tracking: bool | None = None, is_active: bool | None = None, is_simulated: bool | None = None, create_avatar_object_slot: bool | None = None, pose_filter: str | UserPoseController | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, device_index: primitives.Int | None = None, always_render_model: primitives.Bool | None = None, reference_model: str | Slot | None = None, body_node_root: str | Slot | None = None, object_slot: str | AvatarObjectSlot | None = None, is_tracking: primitives.Bool | None = None, is_active: primitives.Bool | None = None, is_simulated: primitives.Bool | None = None, create_avatar_object_slot: primitives.Bool | None = None, pose_filter: str | UserPoseController | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +60,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
             self.pose_filter = pose_filter
 
     @property
-    def device_index(self) -> np.int32 | None:
+    def device_index(self) -> primitives.Int | None:
         """The DeviceIndex field value."""
         member = self.get_member("DeviceIndex")
         if member is None:
@@ -69,7 +68,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
         return getattr(member, 'value', None)
 
     @device_index.setter
-    def device_index(self, value: np.int32) -> None:
+    def device_index(self, value: primitives.Int) -> None:
         """Set the DeviceIndex field value."""
         member = self.get_member("DeviceIndex")
         if member is not None:
@@ -106,7 +105,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
         self.set_member("AutoBodyNode", value)
 
     @property
-    def always_render_model(self) -> bool | None:
+    def always_render_model(self) -> primitives.Bool | None:
         """The AlwaysRenderModel field value."""
         member = self.get_member("AlwaysRenderModel")
         if member is None:
@@ -114,7 +113,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
         return getattr(member, 'value', None)
 
     @always_render_model.setter
-    def always_render_model(self, value: bool) -> None:
+    def always_render_model(self, value: primitives.Bool) -> None:
         """Set the AlwaysRenderModel field value."""
         member = self.get_member("AlwaysRenderModel")
         if member is not None:
@@ -188,7 +187,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
             )
 
     @property
-    def is_tracking(self) -> bool | None:
+    def is_tracking(self) -> primitives.Bool | None:
         """The IsTracking field value."""
         member = self.get_member("IsTracking")
         if member is None:
@@ -196,7 +195,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
         return getattr(member, 'value', None)
 
     @is_tracking.setter
-    def is_tracking(self, value: bool) -> None:
+    def is_tracking(self, value: primitives.Bool) -> None:
         """Set the IsTracking field value."""
         member = self.get_member("IsTracking")
         if member is not None:
@@ -207,7 +206,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
             )
 
     @property
-    def is_active(self) -> bool | None:
+    def is_active(self) -> primitives.Bool | None:
         """The IsActive field value."""
         member = self.get_member("IsActive")
         if member is None:
@@ -215,7 +214,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
         return getattr(member, 'value', None)
 
     @is_active.setter
-    def is_active(self, value: bool) -> None:
+    def is_active(self, value: primitives.Bool) -> None:
         """Set the IsActive field value."""
         member = self.get_member("IsActive")
         if member is not None:
@@ -226,7 +225,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
             )
 
     @property
-    def is_simulated(self) -> bool | None:
+    def is_simulated(self) -> primitives.Bool | None:
         """The IsSimulated field value."""
         member = self.get_member("IsSimulated")
         if member is None:
@@ -234,7 +233,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
         return getattr(member, 'value', None)
 
     @is_simulated.setter
-    def is_simulated(self, value: bool) -> None:
+    def is_simulated(self, value: primitives.Bool) -> None:
         """Set the IsSimulated field value."""
         member = self.get_member("IsSimulated")
         if member is not None:
@@ -245,7 +244,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
             )
 
     @property
-    def create_avatar_object_slot(self) -> bool | None:
+    def create_avatar_object_slot(self) -> primitives.Bool | None:
         """The CreateAvatarObjectSlot field value."""
         member = self.get_member("CreateAvatarObjectSlot")
         if member is None:
@@ -253,7 +252,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
         return getattr(member, 'value', None)
 
     @create_avatar_object_slot.setter
-    def create_avatar_object_slot(self, value: bool) -> None:
+    def create_avatar_object_slot(self, value: primitives.Bool) -> None:
         """Set the CreateAvatarObjectSlot field value."""
         member = self.get_member("CreateAvatarObjectSlot")
         if member is not None:

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iitem_permissions import IItemPermissions
@@ -18,7 +19,7 @@ class SimpleAvatarProtection(GeneratedComponent, IItemPermissions, ICustomInspec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.SimpleAvatarProtection"
 
-    def __init__(self, reassign_user_on_package_import: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reassign_user_on_package_import: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,7 +44,7 @@ class SimpleAvatarProtection(GeneratedComponent, IItemPermissions, ICustomInspec
         self.set_member("User", value)
 
     @property
-    def reassign_user_on_package_import(self) -> bool | None:
+    def reassign_user_on_package_import(self) -> primitives.Bool | None:
         """The ReassignUserOnPackageImport field value."""
         member = self.get_member("ReassignUserOnPackageImport")
         if member is None:
@@ -51,7 +52,7 @@ class SimpleAvatarProtection(GeneratedComponent, IItemPermissions, ICustomInspec
         return getattr(member, 'value', None)
 
     @reassign_user_on_package_import.setter
-    def reassign_user_on_package_import(self, value: bool) -> None:
+    def reassign_user_on_package_import(self, value: primitives.Bool) -> None:
         """Set the ReassignUserOnPackageImport field value."""
         member = self.get_member("ReassignUserOnPackageImport")
         if member is not None:

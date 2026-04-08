@@ -1,9 +1,8 @@
 """Generated component: PerformanceMetrics."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PerformanceMetrics"
 
-    def __init__(self, fps: np.float32 | None = None, immediate_fps: np.float32 | None = None, render_time: np.float32 | None = None, total_engine_update_time: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, fps: primitives.Float | None = None, immediate_fps: primitives.Float | None = None, render_time: primitives.Float | None = None, total_engine_update_time: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -52,7 +51,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("User", value)
 
     @property
-    def fps(self) -> np.float32 | None:
+    def fps(self) -> primitives.Float | None:
         """The FPS field value."""
         member = self.get_member("FPS")
         if member is None:
@@ -60,7 +59,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @fps.setter
-    def fps(self, value: np.float32) -> None:
+    def fps(self, value: primitives.Float) -> None:
         """Set the FPS field value."""
         member = self.get_member("FPS")
         if member is not None:
@@ -71,7 +70,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def immediate_fps(self) -> np.float32 | None:
+    def immediate_fps(self) -> primitives.Float | None:
         """The ImmediateFPS field value."""
         member = self.get_member("ImmediateFPS")
         if member is None:
@@ -79,7 +78,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @immediate_fps.setter
-    def immediate_fps(self, value: np.float32) -> None:
+    def immediate_fps(self, value: primitives.Float) -> None:
         """Set the ImmediateFPS field value."""
         member = self.get_member("ImmediateFPS")
         if member is not None:
@@ -90,7 +89,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def render_time(self) -> np.float32 | None:
+    def render_time(self) -> primitives.Float | None:
         """The RenderTime field value."""
         member = self.get_member("RenderTime")
         if member is None:
@@ -98,7 +97,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @render_time.setter
-    def render_time(self, value: np.float32) -> None:
+    def render_time(self, value: primitives.Float) -> None:
         """Set the RenderTime field value."""
         member = self.get_member("RenderTime")
         if member is not None:
@@ -109,7 +108,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def total_engine_update_time(self) -> np.float32 | None:
+    def total_engine_update_time(self) -> primitives.Float | None:
         """The TotalEngineUpdateTime field value."""
         member = self.get_member("TotalEngineUpdateTime")
         if member is None:
@@ -117,7 +116,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @total_engine_update_time.setter
-    def total_engine_update_time(self, value: np.float32) -> None:
+    def total_engine_update_time(self, value: primitives.Float) -> None:
         """Set the TotalEngineUpdateTime field value."""
         member = self.get_member("TotalEngineUpdateTime")
         if member is not None:

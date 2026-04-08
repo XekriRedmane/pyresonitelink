@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ivalue import IValue
@@ -17,7 +18,7 @@ class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextExportable"
 
-    def __init__(self, text_source: str | IValue[str] | None = None, extension: str | None = None, description: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, text_source: str | IValue[primitives.String] | None = None, extension: primitives.String | None = None, description: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,15 +37,15 @@ class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def text_source(self) -> str | None:
-        """Target ID of the TextSource reference (targets IValue[str])."""
+        """Target ID of the TextSource reference (targets IValue[primitives.String])."""
         member = self.get_member("TextSource")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text_source.setter
-    def text_source(self, target: str | IValue[str] | None) -> None:
-        """Set the TextSource reference by target ID or IValue[str] instance."""
+    def text_source(self, target: str | IValue[primitives.String] | None) -> None:
+        """Set the TextSource reference by target ID or IValue[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
         member = self.get_member("TextSource")
         if isinstance(member, members.Reference):
@@ -56,7 +57,7 @@ class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
             )
 
     @property
-    def extension(self) -> str | None:
+    def extension(self) -> primitives.String | None:
         """The Extension field value."""
         member = self.get_member("Extension")
         if member is None:
@@ -64,7 +65,7 @@ class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @extension.setter
-    def extension(self, value: str) -> None:
+    def extension(self, value: primitives.String) -> None:
         """Set the Extension field value."""
         member = self.get_member("Extension")
         if member is not None:
@@ -75,7 +76,7 @@ class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
             )
 
     @property
-    def description(self) -> str | None:
+    def description(self) -> primitives.String | None:
         """The Description field value."""
         member = self.get_member("Description")
         if member is None:
@@ -83,7 +84,7 @@ class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @description.setter
-    def description(self, value: str) -> None:
+    def description(self, value: primitives.String) -> None:
         """Set the Description field value."""
         member = self.get_member("Description")
         if member is not None:

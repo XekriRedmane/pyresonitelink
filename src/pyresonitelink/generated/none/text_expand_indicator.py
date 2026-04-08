@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -16,7 +17,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.TextExpandIndicator"
 
-    def __init__(self, text: str | IField[str] | None = None, section_root: str | Slot | None = None, children_root: str | Slot | None = None, closed: str | None = None, opened: str | None = None, empty: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, text: str | IField[primitives.String] | None = None, section_root: str | Slot | None = None, children_root: str | Slot | None = None, closed: primitives.String | None = None, opened: primitives.String | None = None, empty: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,15 +45,15 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[str])."""
+        """Target ID of the Text reference (targets IField[primitives.String])."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text.setter
-    def text(self, target: str | IField[str] | None) -> None:
-        """Set the Text reference by target ID or IField[str] instance."""
+    def text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Text reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
@@ -106,7 +107,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def closed(self) -> str | None:
+    def closed(self) -> primitives.String | None:
         """The Closed field value."""
         member = self.get_member("Closed")
         if member is None:
@@ -114,7 +115,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @closed.setter
-    def closed(self, value: str) -> None:
+    def closed(self, value: primitives.String) -> None:
         """Set the Closed field value."""
         member = self.get_member("Closed")
         if member is not None:
@@ -125,7 +126,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def opened(self) -> str | None:
+    def opened(self) -> primitives.String | None:
         """The Opened field value."""
         member = self.get_member("Opened")
         if member is None:
@@ -133,7 +134,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @opened.setter
-    def opened(self, value: str) -> None:
+    def opened(self, value: primitives.String) -> None:
         """Set the Opened field value."""
         member = self.get_member("Opened")
         if member is not None:
@@ -144,7 +145,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def empty(self) -> str | None:
+    def empty(self) -> primitives.String | None:
         """The Empty field value."""
         member = self.get_member("Empty")
         if member is None:
@@ -152,7 +153,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @empty.setter
-    def empty(self, value: str) -> None:
+    def empty(self, value: primitives.String) -> None:
         """Set the Empty field value."""
         member = self.get_member("Empty")
         if member is not None:

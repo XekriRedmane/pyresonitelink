@@ -1,8 +1,7 @@
 """Generated component: SetPosition."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -25,7 +24,7 @@ class SetPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.SetPosition"
 
-    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[IPlayable] | None = None, position: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[IPlayable] | None = None, position: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -86,15 +85,15 @@ class SetPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def position(self) -> str | None:
-        """Target ID of the Position reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Position reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @position.setter
-    def position(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Position reference by target ID or INodeValueOutput[np.float32] instance."""
+    def position(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Position reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Position")
         if isinstance(member, members.Reference):

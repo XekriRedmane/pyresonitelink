@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -22,14 +23,14 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     Parameterize with a value type::
 
-        FeedOrderedItemInterface[np.float32]
+        FeedOrderedItemInterface[primitives.Float]
         FeedOrderedItemInterface[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FeedOrderedItemInterface<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.FeedOrderedItemInterface<>"
 
-    def __init__(self, has_data: bool | None = None, item_name: str | IField[str] | None = None, item_key: str | IField[str] | None = None, item_description: str | IField[str] | None = None, has_description: str | IField[bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[bool] | None = None, value: str | IField[T] | None = None, formatting: str | IField[str] | None = None, is_first: str | IField[bool] | None = None, is_last: str | IField[bool] | None = None, move_up_label: str | IField[str] | None = None, move_down_label: str | IField[str] | None = None, make_first_label: str | IField[str] | None = None, make_last_label: str | IField[str] | None = None, move_up: str | SyncDelegate[Action] | None = None, move_down: str | SyncDelegate[Action] | None = None, make_first: str | SyncDelegate[Action] | None = None, make_last: str | SyncDelegate[Action] | None = None, has_move_up: str | IField[bool] | None = None, has_move_down: str | IField[bool] | None = None, has_make_first: str | IField[bool] | None = None, has_make_last: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, has_data: primitives.Bool | None = None, item_name: str | IField[primitives.String] | None = None, item_key: str | IField[primitives.String] | None = None, item_description: str | IField[primitives.String] | None = None, has_description: str | IField[primitives.Bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[primitives.Bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[primitives.Bool] | None = None, value: str | IField[T] | None = None, formatting: str | IField[primitives.String] | None = None, is_first: str | IField[primitives.Bool] | None = None, is_last: str | IField[primitives.Bool] | None = None, move_up_label: str | IField[primitives.String] | None = None, move_down_label: str | IField[primitives.String] | None = None, make_first_label: str | IField[primitives.String] | None = None, make_last_label: str | IField[primitives.String] | None = None, move_up: str | SyncDelegate[Action] | None = None, move_down: str | SyncDelegate[Action] | None = None, make_first: str | SyncDelegate[Action] | None = None, make_last: str | SyncDelegate[Action] | None = None, has_move_up: str | IField[primitives.Bool] | None = None, has_move_down: str | IField[primitives.Bool] | None = None, has_make_first: str | IField[primitives.Bool] | None = None, has_make_last: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -125,7 +126,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
             self.has_make_last = has_make_last
 
     @property
-    def has_data(self) -> bool | None:
+    def has_data(self) -> primitives.Bool | None:
         """The HasData field value."""
         member = self.get_member("HasData")
         if member is None:
@@ -133,7 +134,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @has_data.setter
-    def has_data(self, value: bool) -> None:
+    def has_data(self, value: primitives.Bool) -> None:
         """Set the HasData field value."""
         member = self.get_member("HasData")
         if member is not None:
@@ -145,15 +146,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[str])."""
+        """Target ID of the ItemName reference (targets IField[primitives.String])."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_name.setter
-    def item_name(self, target: str | IField[str] | None) -> None:
-        """Set the ItemName reference by target ID or IField[str] instance."""
+    def item_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
@@ -166,15 +167,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def item_key(self) -> str | None:
-        """Target ID of the ItemKey reference (targets IField[str])."""
+        """Target ID of the ItemKey reference (targets IField[primitives.String])."""
         member = self.get_member("ItemKey")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_key.setter
-    def item_key(self, target: str | IField[str] | None) -> None:
-        """Set the ItemKey reference by target ID or IField[str] instance."""
+    def item_key(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemKey reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemKey")
         if isinstance(member, members.Reference):
@@ -187,15 +188,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def item_description(self) -> str | None:
-        """Target ID of the ItemDescription reference (targets IField[str])."""
+        """Target ID of the ItemDescription reference (targets IField[primitives.String])."""
         member = self.get_member("ItemDescription")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_description.setter
-    def item_description(self, target: str | IField[str] | None) -> None:
-        """Set the ItemDescription reference by target ID or IField[str] instance."""
+    def item_description(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemDescription reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemDescription")
         if isinstance(member, members.Reference):
@@ -208,15 +209,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_description(self) -> str | None:
-        """Target ID of the HasDescription reference (targets IField[bool])."""
+        """Target ID of the HasDescription reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasDescription")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_description.setter
-    def has_description(self, target: str | IField[bool] | None) -> None:
-        """Set the HasDescription reference by target ID or IField[bool] instance."""
+    def has_description(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasDescription reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasDescription")
         if isinstance(member, members.Reference):
@@ -271,15 +272,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_icon(self) -> str | None:
-        """Target ID of the HasIcon reference (targets IField[bool])."""
+        """Target ID of the HasIcon reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasIcon")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_icon.setter
-    def has_icon(self, target: str | IField[bool] | None) -> None:
-        """Set the HasIcon reference by target ID or IField[bool] instance."""
+    def has_icon(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasIcon reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasIcon")
         if isinstance(member, members.Reference):
@@ -389,15 +390,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def enabled_state(self) -> str | None:
-        """Target ID of the EnabledState reference (targets IField[bool])."""
+        """Target ID of the EnabledState reference (targets IField[primitives.Bool])."""
         member = self.get_member("EnabledState")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @enabled_state.setter
-    def enabled_state(self, target: str | IField[bool] | None) -> None:
-        """Set the EnabledState reference by target ID or IField[bool] instance."""
+    def enabled_state(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the EnabledState reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("EnabledState")
         if isinstance(member, members.Reference):
@@ -431,15 +432,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def formatting(self) -> str | None:
-        """Target ID of the Formatting reference (targets IField[str])."""
+        """Target ID of the Formatting reference (targets IField[primitives.String])."""
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @formatting.setter
-    def formatting(self, target: str | IField[str] | None) -> None:
-        """Set the Formatting reference by target ID or IField[str] instance."""
+    def formatting(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Formatting reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
@@ -452,15 +453,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def is_first(self) -> str | None:
-        """Target ID of the IsFirst reference (targets IField[bool])."""
+        """Target ID of the IsFirst reference (targets IField[primitives.Bool])."""
         member = self.get_member("IsFirst")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_first.setter
-    def is_first(self, target: str | IField[bool] | None) -> None:
-        """Set the IsFirst reference by target ID or IField[bool] instance."""
+    def is_first(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the IsFirst reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("IsFirst")
         if isinstance(member, members.Reference):
@@ -473,15 +474,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def is_last(self) -> str | None:
-        """Target ID of the IsLast reference (targets IField[bool])."""
+        """Target ID of the IsLast reference (targets IField[primitives.Bool])."""
         member = self.get_member("IsLast")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_last.setter
-    def is_last(self, target: str | IField[bool] | None) -> None:
-        """Set the IsLast reference by target ID or IField[bool] instance."""
+    def is_last(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the IsLast reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("IsLast")
         if isinstance(member, members.Reference):
@@ -494,15 +495,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def move_up_label(self) -> str | None:
-        """Target ID of the MoveUpLabel reference (targets IField[str])."""
+        """Target ID of the MoveUpLabel reference (targets IField[primitives.String])."""
         member = self.get_member("MoveUpLabel")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @move_up_label.setter
-    def move_up_label(self, target: str | IField[str] | None) -> None:
-        """Set the MoveUpLabel reference by target ID or IField[str] instance."""
+    def move_up_label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the MoveUpLabel reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("MoveUpLabel")
         if isinstance(member, members.Reference):
@@ -515,15 +516,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def move_down_label(self) -> str | None:
-        """Target ID of the MoveDownLabel reference (targets IField[str])."""
+        """Target ID of the MoveDownLabel reference (targets IField[primitives.String])."""
         member = self.get_member("MoveDownLabel")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @move_down_label.setter
-    def move_down_label(self, target: str | IField[str] | None) -> None:
-        """Set the MoveDownLabel reference by target ID or IField[str] instance."""
+    def move_down_label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the MoveDownLabel reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("MoveDownLabel")
         if isinstance(member, members.Reference):
@@ -536,15 +537,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def make_first_label(self) -> str | None:
-        """Target ID of the MakeFirstLabel reference (targets IField[str])."""
+        """Target ID of the MakeFirstLabel reference (targets IField[primitives.String])."""
         member = self.get_member("MakeFirstLabel")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @make_first_label.setter
-    def make_first_label(self, target: str | IField[str] | None) -> None:
-        """Set the MakeFirstLabel reference by target ID or IField[str] instance."""
+    def make_first_label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the MakeFirstLabel reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("MakeFirstLabel")
         if isinstance(member, members.Reference):
@@ -557,15 +558,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def make_last_label(self) -> str | None:
-        """Target ID of the MakeLastLabel reference (targets IField[str])."""
+        """Target ID of the MakeLastLabel reference (targets IField[primitives.String])."""
         member = self.get_member("MakeLastLabel")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @make_last_label.setter
-    def make_last_label(self, target: str | IField[str] | None) -> None:
-        """Set the MakeLastLabel reference by target ID or IField[str] instance."""
+    def make_last_label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the MakeLastLabel reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("MakeLastLabel")
         if isinstance(member, members.Reference):
@@ -662,15 +663,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_move_up(self) -> str | None:
-        """Target ID of the HasMoveUp reference (targets IField[bool])."""
+        """Target ID of the HasMoveUp reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasMoveUp")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_move_up.setter
-    def has_move_up(self, target: str | IField[bool] | None) -> None:
-        """Set the HasMoveUp reference by target ID or IField[bool] instance."""
+    def has_move_up(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasMoveUp reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasMoveUp")
         if isinstance(member, members.Reference):
@@ -683,15 +684,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_move_down(self) -> str | None:
-        """Target ID of the HasMoveDown reference (targets IField[bool])."""
+        """Target ID of the HasMoveDown reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasMoveDown")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_move_down.setter
-    def has_move_down(self, target: str | IField[bool] | None) -> None:
-        """Set the HasMoveDown reference by target ID or IField[bool] instance."""
+    def has_move_down(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasMoveDown reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasMoveDown")
         if isinstance(member, members.Reference):
@@ -704,15 +705,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_make_first(self) -> str | None:
-        """Target ID of the HasMakeFirst reference (targets IField[bool])."""
+        """Target ID of the HasMakeFirst reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasMakeFirst")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_make_first.setter
-    def has_make_first(self, target: str | IField[bool] | None) -> None:
-        """Set the HasMakeFirst reference by target ID or IField[bool] instance."""
+    def has_make_first(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasMakeFirst reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasMakeFirst")
         if isinstance(member, members.Reference):
@@ -725,15 +726,15 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_make_last(self) -> str | None:
-        """Target ID of the HasMakeLast reference (targets IField[bool])."""
+        """Target ID of the HasMakeLast reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasMakeLast")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_make_last.setter
-    def has_make_last(self, target: str | IField[bool] | None) -> None:
-        """Set the HasMakeLast reference by target ID or IField[bool] instance."""
+    def has_make_last(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasMakeLast reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasMakeLast")
         if isinstance(member, members.Reference):

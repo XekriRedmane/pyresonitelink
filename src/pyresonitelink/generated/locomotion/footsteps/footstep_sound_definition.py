@@ -1,9 +1,8 @@
 """Generated component: FootstepSoundDefinition."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +18,7 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FootstepSoundDefinition"
 
-    def __init__(self, parent_under: str | Slot | None = None, min_distance: np.float32 | None = None, max_distance: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, parent_under: str | Slot | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +57,7 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
             )
 
     @property
-    def min_distance(self) -> np.float32 | None:
+    def min_distance(self) -> primitives.Float | None:
         """The MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is None:
@@ -66,7 +65,7 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
         return getattr(member, 'value', None)
 
     @min_distance.setter
-    def min_distance(self, value: np.float32) -> None:
+    def min_distance(self, value: primitives.Float) -> None:
         """Set the MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is not None:
@@ -77,7 +76,7 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
             )
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -85,7 +84,7 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:

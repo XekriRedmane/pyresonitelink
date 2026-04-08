@@ -1,7 +1,5 @@
 """Generated component: SampleColorX."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -26,7 +24,7 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering.SampleColorX"
 
-    def __init__(self, point: str | INodeValueOutput[primitives.Float3] | None = None, direction: str | INodeValueOutput[primitives.Float3] | None = None, reference: str | INodeObjectOutput[Slot] | None = None, near_clip: str | INodeValueOutput[np.float32] | None = None, far_clip: str | INodeValueOutput[np.float32] | None = None, on_sample_start: str | INodeOperation | None = None, on_sampled: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, point: str | INodeValueOutput[primitives.Float3] | None = None, direction: str | INodeValueOutput[primitives.Float3] | None = None, reference: str | INodeObjectOutput[Slot] | None = None, near_clip: str | INodeValueOutput[primitives.Float] | None = None, far_clip: str | INodeValueOutput[primitives.Float] | None = None, on_sample_start: str | INodeOperation | None = None, on_sampled: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -120,15 +118,15 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def near_clip(self) -> str | None:
-        """Target ID of the NearClip reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the NearClip reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("NearClip")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @near_clip.setter
-    def near_clip(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the NearClip reference by target ID or INodeValueOutput[np.float32] instance."""
+    def near_clip(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the NearClip reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("NearClip")
         if isinstance(member, members.Reference):
@@ -141,15 +139,15 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def far_clip(self) -> str | None:
-        """Target ID of the FarClip reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the FarClip reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("FarClip")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @far_clip.setter
-    def far_clip(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the FarClip reference by target ID or INodeValueOutput[np.float32] instance."""
+    def far_clip(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the FarClip reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("FarClip")
         if isinstance(member, members.Reference):

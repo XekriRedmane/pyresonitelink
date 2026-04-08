@@ -1,7 +1,5 @@
 """Generated component: ColorWheelTriangleMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorWheelTriangleMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, hue: np.float32 | None = None, outer_radius: np.float32 | None = None, inner_radius: np.float32 | None = None, ring_segments: np.int32 | None = None, cursor_position: primitives.Float3 | None = None, cursor_segments: np.int32 | None = None, cursor_color: primitives.ColorX | None = None, cursor_outer_radius: np.float32 | None = None, cursor_inner_radius: np.float32 | None = None, cursor_zoffset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, hue: primitives.Float | None = None, outer_radius: primitives.Float | None = None, inner_radius: primitives.Float | None = None, ring_segments: primitives.Int | None = None, cursor_position: primitives.Float3 | None = None, cursor_segments: primitives.Int | None = None, cursor_color: primitives.ColorX | None = None, cursor_outer_radius: primitives.Float | None = None, cursor_inner_radius: primitives.Float | None = None, cursor_zoffset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,7 +65,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             self.cursor_zoffset = cursor_zoffset
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -75,7 +73,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -86,7 +84,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -94,7 +92,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -137,7 +135,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         self.set_member("Profile", value)
 
     @property
-    def hue(self) -> np.float32 | None:
+    def hue(self) -> primitives.Float | None:
         """The Hue field value."""
         member = self.get_member("Hue")
         if member is None:
@@ -145,7 +143,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @hue.setter
-    def hue(self, value: np.float32) -> None:
+    def hue(self, value: primitives.Float) -> None:
         """Set the Hue field value."""
         member = self.get_member("Hue")
         if member is not None:
@@ -156,7 +154,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def outer_radius(self) -> np.float32 | None:
+    def outer_radius(self) -> primitives.Float | None:
         """The OuterRadius field value."""
         member = self.get_member("OuterRadius")
         if member is None:
@@ -164,7 +162,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @outer_radius.setter
-    def outer_radius(self, value: np.float32) -> None:
+    def outer_radius(self, value: primitives.Float) -> None:
         """Set the OuterRadius field value."""
         member = self.get_member("OuterRadius")
         if member is not None:
@@ -175,7 +173,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def inner_radius(self) -> np.float32 | None:
+    def inner_radius(self) -> primitives.Float | None:
         """The InnerRadius field value."""
         member = self.get_member("InnerRadius")
         if member is None:
@@ -183,7 +181,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @inner_radius.setter
-    def inner_radius(self, value: np.float32) -> None:
+    def inner_radius(self, value: primitives.Float) -> None:
         """Set the InnerRadius field value."""
         member = self.get_member("InnerRadius")
         if member is not None:
@@ -194,7 +192,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def ring_segments(self) -> np.int32 | None:
+    def ring_segments(self) -> primitives.Int | None:
         """The RingSegments field value."""
         member = self.get_member("RingSegments")
         if member is None:
@@ -202,7 +200,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @ring_segments.setter
-    def ring_segments(self, value: np.int32) -> None:
+    def ring_segments(self, value: primitives.Int) -> None:
         """Set the RingSegments field value."""
         member = self.get_member("RingSegments")
         if member is not None:
@@ -232,7 +230,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def cursor_segments(self) -> np.int32 | None:
+    def cursor_segments(self) -> primitives.Int | None:
         """The CursorSegments field value."""
         member = self.get_member("CursorSegments")
         if member is None:
@@ -240,7 +238,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @cursor_segments.setter
-    def cursor_segments(self, value: np.int32) -> None:
+    def cursor_segments(self, value: primitives.Int) -> None:
         """Set the CursorSegments field value."""
         member = self.get_member("CursorSegments")
         if member is not None:
@@ -270,7 +268,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def cursor_outer_radius(self) -> np.float32 | None:
+    def cursor_outer_radius(self) -> primitives.Float | None:
         """The CursorOuterRadius field value."""
         member = self.get_member("CursorOuterRadius")
         if member is None:
@@ -278,7 +276,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @cursor_outer_radius.setter
-    def cursor_outer_radius(self, value: np.float32) -> None:
+    def cursor_outer_radius(self, value: primitives.Float) -> None:
         """Set the CursorOuterRadius field value."""
         member = self.get_member("CursorOuterRadius")
         if member is not None:
@@ -289,7 +287,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def cursor_inner_radius(self) -> np.float32 | None:
+    def cursor_inner_radius(self) -> primitives.Float | None:
         """The CursorInnerRadius field value."""
         member = self.get_member("CursorInnerRadius")
         if member is None:
@@ -297,7 +295,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @cursor_inner_radius.setter
-    def cursor_inner_radius(self, value: np.float32) -> None:
+    def cursor_inner_radius(self, value: primitives.Float) -> None:
         """Set the CursorInnerRadius field value."""
         member = self.get_member("CursorInnerRadius")
         if member is not None:
@@ -308,7 +306,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def cursor_zoffset(self) -> np.float32 | None:
+    def cursor_zoffset(self) -> primitives.Float | None:
         """The CursorZOffset field value."""
         member = self.get_member("CursorZOffset")
         if member is None:
@@ -316,7 +314,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @cursor_zoffset.setter
-    def cursor_zoffset(self, value: np.float32) -> None:
+    def cursor_zoffset(self, value: primitives.Float) -> None:
         """Set the CursorZOffset field value."""
         member = self.get_member("CursorZOffset")
         if member is not None:

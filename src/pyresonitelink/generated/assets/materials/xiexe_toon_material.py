@@ -1,7 +1,5 @@
 """Generated component: XiexeToonMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.XiexeToonMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, main_texture: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, use_vertex_colors: bool | None = None, alpha_clip: np.float32 | None = None, main_texture_scale: primitives.Float2 | None = None, main_texture_offset: primitives.Float2 | None = None, saturation: np.float32 | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_scale: np.float32 | None = None, metallic: np.float32 | None = None, glossiness: np.float32 | None = None, reflectivity: np.float32 | None = None, metallic_gloss_map: str | IAssetProvider[ITexture2D] | None = None, metallic_gloss_map_scale: primitives.Float2 | None = None, metallic_gloss_map_offset: primitives.Float2 | None = None, emission_map: str | IAssetProvider[ITexture2D] | None = None, emission_color: primitives.ColorX | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, rim_color: primitives.ColorX | None = None, rim_albedo_tint: np.float32 | None = None, rim_attenuation_effect: np.float32 | None = None, rim_intensity: np.float32 | None = None, rim_range: np.float32 | None = None, rim_threshold: np.float32 | None = None, rim_sharpness: np.float32 | None = None, specular_intensity: np.float32 | None = None, specular_area: np.float32 | None = None, matcap: str | IAssetProvider[ITexture2D] | None = None, matcap_tint: primitives.ColorX | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_color: primitives.ColorX | None = None, outline_width: np.float32 | None = None, outline_color: primitives.ColorX | None = None, outline_albedo_tint: bool | None = None, outline_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask_scale: primitives.Float2 | None = None, shadow_ramp_mask_offset: primitives.Float2 | None = None, shadow_rim: primitives.ColorX | None = None, shadow_sharpness: np.float32 | None = None, shadow_rim_range: np.float32 | None = None, shadow_rim_threshold: np.float32 | None = None, shadow_rim_sharpness: np.float32 | None = None, shadow_rim_albedo_tint: np.float32 | None = None, thickness_map: str | IAssetProvider[ITexture2D] | None = None, thickness_map_scale: primitives.Float2 | None = None, thickness_map_offset: primitives.Float2 | None = None, subsurface_color: primitives.ColorX | None = None, subsurface_distortion: np.float32 | None = None, subsurface_power: np.float32 | None = None, subsurface_scale: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, albedo_uv: np.int32 | None = None, normal_uv: np.int32 | None = None, metallic_uv: np.int32 | None = None, thickness_uv: np.int32 | None = None, occlusion_uv: np.int32 | None = None, emission_uv: np.int32 | None = None, render_queue: np.int32 | None = None, legacy_cutout: bool | None = None, regular: str | IAssetProvider[Shader] | None = None, outline: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, main_texture: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, use_vertex_colors: primitives.Bool | None = None, alpha_clip: primitives.Float | None = None, main_texture_scale: primitives.Float2 | None = None, main_texture_offset: primitives.Float2 | None = None, saturation: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_scale: primitives.Float | None = None, metallic: primitives.Float | None = None, glossiness: primitives.Float | None = None, reflectivity: primitives.Float | None = None, metallic_gloss_map: str | IAssetProvider[ITexture2D] | None = None, metallic_gloss_map_scale: primitives.Float2 | None = None, metallic_gloss_map_offset: primitives.Float2 | None = None, emission_map: str | IAssetProvider[ITexture2D] | None = None, emission_color: primitives.ColorX | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, rim_color: primitives.ColorX | None = None, rim_albedo_tint: primitives.Float | None = None, rim_attenuation_effect: primitives.Float | None = None, rim_intensity: primitives.Float | None = None, rim_range: primitives.Float | None = None, rim_threshold: primitives.Float | None = None, rim_sharpness: primitives.Float | None = None, specular_intensity: primitives.Float | None = None, specular_area: primitives.Float | None = None, matcap: str | IAssetProvider[ITexture2D] | None = None, matcap_tint: primitives.ColorX | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_color: primitives.ColorX | None = None, outline_width: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, outline_albedo_tint: primitives.Bool | None = None, outline_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask_scale: primitives.Float2 | None = None, shadow_ramp_mask_offset: primitives.Float2 | None = None, shadow_rim: primitives.ColorX | None = None, shadow_sharpness: primitives.Float | None = None, shadow_rim_range: primitives.Float | None = None, shadow_rim_threshold: primitives.Float | None = None, shadow_rim_sharpness: primitives.Float | None = None, shadow_rim_albedo_tint: primitives.Float | None = None, thickness_map: str | IAssetProvider[ITexture2D] | None = None, thickness_map_scale: primitives.Float2 | None = None, thickness_map_offset: primitives.Float2 | None = None, subsurface_color: primitives.ColorX | None = None, subsurface_distortion: primitives.Float | None = None, subsurface_power: primitives.Float | None = None, subsurface_scale: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, albedo_uv: primitives.Int | None = None, normal_uv: primitives.Int | None = None, metallic_uv: primitives.Int | None = None, thickness_uv: primitives.Int | None = None, occlusion_uv: primitives.Int | None = None, emission_uv: primitives.Int | None = None, render_queue: primitives.Int | None = None, legacy_cutout: primitives.Bool | None = None, regular: str | IAssetProvider[Shader] | None = None, outline: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -243,7 +241,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             self.outline = outline
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -251,7 +249,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -302,7 +300,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def use_vertex_colors(self) -> bool | None:
+    def use_vertex_colors(self) -> primitives.Bool | None:
         """The UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is None:
@@ -310,7 +308,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @use_vertex_colors.setter
-    def use_vertex_colors(self, value: bool) -> None:
+    def use_vertex_colors(self, value: primitives.Bool) -> None:
         """Set the UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is not None:
@@ -360,7 +358,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         self.set_member("ZWrite", value)
 
     @property
-    def alpha_clip(self) -> np.float32 | None:
+    def alpha_clip(self) -> primitives.Float | None:
         """The AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is None:
@@ -368,7 +366,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @alpha_clip.setter
-    def alpha_clip(self, value: np.float32) -> None:
+    def alpha_clip(self, value: primitives.Float) -> None:
         """Set the AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is not None:
@@ -417,7 +415,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def saturation(self) -> np.float32 | None:
+    def saturation(self) -> primitives.Float | None:
         """The Saturation field value."""
         member = self.get_member("Saturation")
         if member is None:
@@ -425,7 +423,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @saturation.setter
-    def saturation(self, value: np.float32) -> None:
+    def saturation(self, value: primitives.Float) -> None:
         """Set the Saturation field value."""
         member = self.get_member("Saturation")
         if member is not None:
@@ -495,7 +493,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -503,7 +501,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -514,7 +512,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def metallic(self) -> np.float32 | None:
+    def metallic(self) -> primitives.Float | None:
         """The Metallic field value."""
         member = self.get_member("Metallic")
         if member is None:
@@ -522,7 +520,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @metallic.setter
-    def metallic(self, value: np.float32) -> None:
+    def metallic(self, value: primitives.Float) -> None:
         """Set the Metallic field value."""
         member = self.get_member("Metallic")
         if member is not None:
@@ -533,7 +531,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def glossiness(self) -> np.float32 | None:
+    def glossiness(self) -> primitives.Float | None:
         """The Glossiness field value."""
         member = self.get_member("Glossiness")
         if member is None:
@@ -541,7 +539,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @glossiness.setter
-    def glossiness(self, value: np.float32) -> None:
+    def glossiness(self, value: primitives.Float) -> None:
         """Set the Glossiness field value."""
         member = self.get_member("Glossiness")
         if member is not None:
@@ -552,7 +550,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def reflectivity(self) -> np.float32 | None:
+    def reflectivity(self) -> primitives.Float | None:
         """The Reflectivity field value."""
         member = self.get_member("Reflectivity")
         if member is None:
@@ -560,7 +558,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @reflectivity.setter
-    def reflectivity(self, value: np.float32) -> None:
+    def reflectivity(self, value: primitives.Float) -> None:
         """Set the Reflectivity field value."""
         member = self.get_member("Reflectivity")
         if member is not None:
@@ -727,7 +725,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def rim_albedo_tint(self) -> np.float32 | None:
+    def rim_albedo_tint(self) -> primitives.Float | None:
         """The RimAlbedoTint field value."""
         member = self.get_member("RimAlbedoTint")
         if member is None:
@@ -735,7 +733,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @rim_albedo_tint.setter
-    def rim_albedo_tint(self, value: np.float32) -> None:
+    def rim_albedo_tint(self, value: primitives.Float) -> None:
         """Set the RimAlbedoTint field value."""
         member = self.get_member("RimAlbedoTint")
         if member is not None:
@@ -746,7 +744,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def rim_attenuation_effect(self) -> np.float32 | None:
+    def rim_attenuation_effect(self) -> primitives.Float | None:
         """The RimAttenuationEffect field value."""
         member = self.get_member("RimAttenuationEffect")
         if member is None:
@@ -754,7 +752,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @rim_attenuation_effect.setter
-    def rim_attenuation_effect(self, value: np.float32) -> None:
+    def rim_attenuation_effect(self, value: primitives.Float) -> None:
         """Set the RimAttenuationEffect field value."""
         member = self.get_member("RimAttenuationEffect")
         if member is not None:
@@ -765,7 +763,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def rim_intensity(self) -> np.float32 | None:
+    def rim_intensity(self) -> primitives.Float | None:
         """The RimIntensity field value."""
         member = self.get_member("RimIntensity")
         if member is None:
@@ -773,7 +771,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @rim_intensity.setter
-    def rim_intensity(self, value: np.float32) -> None:
+    def rim_intensity(self, value: primitives.Float) -> None:
         """Set the RimIntensity field value."""
         member = self.get_member("RimIntensity")
         if member is not None:
@@ -784,7 +782,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def rim_range(self) -> np.float32 | None:
+    def rim_range(self) -> primitives.Float | None:
         """The RimRange field value."""
         member = self.get_member("RimRange")
         if member is None:
@@ -792,7 +790,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @rim_range.setter
-    def rim_range(self, value: np.float32) -> None:
+    def rim_range(self, value: primitives.Float) -> None:
         """Set the RimRange field value."""
         member = self.get_member("RimRange")
         if member is not None:
@@ -803,7 +801,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def rim_threshold(self) -> np.float32 | None:
+    def rim_threshold(self) -> primitives.Float | None:
         """The RimThreshold field value."""
         member = self.get_member("RimThreshold")
         if member is None:
@@ -811,7 +809,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @rim_threshold.setter
-    def rim_threshold(self, value: np.float32) -> None:
+    def rim_threshold(self, value: primitives.Float) -> None:
         """Set the RimThreshold field value."""
         member = self.get_member("RimThreshold")
         if member is not None:
@@ -822,7 +820,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def rim_sharpness(self) -> np.float32 | None:
+    def rim_sharpness(self) -> primitives.Float | None:
         """The RimSharpness field value."""
         member = self.get_member("RimSharpness")
         if member is None:
@@ -830,7 +828,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @rim_sharpness.setter
-    def rim_sharpness(self, value: np.float32) -> None:
+    def rim_sharpness(self, value: primitives.Float) -> None:
         """Set the RimSharpness field value."""
         member = self.get_member("RimSharpness")
         if member is not None:
@@ -841,7 +839,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def specular_intensity(self) -> np.float32 | None:
+    def specular_intensity(self) -> primitives.Float | None:
         """The SpecularIntensity field value."""
         member = self.get_member("SpecularIntensity")
         if member is None:
@@ -849,7 +847,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @specular_intensity.setter
-    def specular_intensity(self, value: np.float32) -> None:
+    def specular_intensity(self, value: primitives.Float) -> None:
         """Set the SpecularIntensity field value."""
         member = self.get_member("SpecularIntensity")
         if member is not None:
@@ -860,7 +858,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def specular_area(self) -> np.float32 | None:
+    def specular_area(self) -> primitives.Float | None:
         """The SpecularArea field value."""
         member = self.get_member("SpecularArea")
         if member is None:
@@ -868,7 +866,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @specular_area.setter
-    def specular_area(self, value: np.float32) -> None:
+    def specular_area(self, value: primitives.Float) -> None:
         """Set the SpecularArea field value."""
         member = self.get_member("SpecularArea")
         if member is not None:
@@ -1010,7 +1008,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         self.set_member("Outline", value)
 
     @property
-    def outline_width(self) -> np.float32 | None:
+    def outline_width(self) -> primitives.Float | None:
         """The OutlineWidth field value."""
         member = self.get_member("OutlineWidth")
         if member is None:
@@ -1018,7 +1016,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @outline_width.setter
-    def outline_width(self, value: np.float32) -> None:
+    def outline_width(self, value: primitives.Float) -> None:
         """Set the OutlineWidth field value."""
         member = self.get_member("OutlineWidth")
         if member is not None:
@@ -1048,7 +1046,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def outline_albedo_tint(self) -> bool | None:
+    def outline_albedo_tint(self) -> primitives.Bool | None:
         """The OutlineAlbedoTint field value."""
         member = self.get_member("OutlineAlbedoTint")
         if member is None:
@@ -1056,7 +1054,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @outline_albedo_tint.setter
-    def outline_albedo_tint(self, value: bool) -> None:
+    def outline_albedo_tint(self, value: primitives.Bool) -> None:
         """Set the OutlineAlbedoTint field value."""
         member = self.get_member("OutlineAlbedoTint")
         if member is not None:
@@ -1187,7 +1185,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def shadow_sharpness(self) -> np.float32 | None:
+    def shadow_sharpness(self) -> primitives.Float | None:
         """The ShadowSharpness field value."""
         member = self.get_member("ShadowSharpness")
         if member is None:
@@ -1195,7 +1193,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @shadow_sharpness.setter
-    def shadow_sharpness(self, value: np.float32) -> None:
+    def shadow_sharpness(self, value: primitives.Float) -> None:
         """Set the ShadowSharpness field value."""
         member = self.get_member("ShadowSharpness")
         if member is not None:
@@ -1206,7 +1204,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def shadow_rim_range(self) -> np.float32 | None:
+    def shadow_rim_range(self) -> primitives.Float | None:
         """The ShadowRimRange field value."""
         member = self.get_member("ShadowRimRange")
         if member is None:
@@ -1214,7 +1212,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @shadow_rim_range.setter
-    def shadow_rim_range(self, value: np.float32) -> None:
+    def shadow_rim_range(self, value: primitives.Float) -> None:
         """Set the ShadowRimRange field value."""
         member = self.get_member("ShadowRimRange")
         if member is not None:
@@ -1225,7 +1223,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def shadow_rim_threshold(self) -> np.float32 | None:
+    def shadow_rim_threshold(self) -> primitives.Float | None:
         """The ShadowRimThreshold field value."""
         member = self.get_member("ShadowRimThreshold")
         if member is None:
@@ -1233,7 +1231,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @shadow_rim_threshold.setter
-    def shadow_rim_threshold(self, value: np.float32) -> None:
+    def shadow_rim_threshold(self, value: primitives.Float) -> None:
         """Set the ShadowRimThreshold field value."""
         member = self.get_member("ShadowRimThreshold")
         if member is not None:
@@ -1244,7 +1242,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def shadow_rim_sharpness(self) -> np.float32 | None:
+    def shadow_rim_sharpness(self) -> primitives.Float | None:
         """The ShadowRimSharpness field value."""
         member = self.get_member("ShadowRimSharpness")
         if member is None:
@@ -1252,7 +1250,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @shadow_rim_sharpness.setter
-    def shadow_rim_sharpness(self, value: np.float32) -> None:
+    def shadow_rim_sharpness(self, value: primitives.Float) -> None:
         """Set the ShadowRimSharpness field value."""
         member = self.get_member("ShadowRimSharpness")
         if member is not None:
@@ -1263,7 +1261,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def shadow_rim_albedo_tint(self) -> np.float32 | None:
+    def shadow_rim_albedo_tint(self) -> primitives.Float | None:
         """The ShadowRimAlbedoTint field value."""
         member = self.get_member("ShadowRimAlbedoTint")
         if member is None:
@@ -1271,7 +1269,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @shadow_rim_albedo_tint.setter
-    def shadow_rim_albedo_tint(self, value: np.float32) -> None:
+    def shadow_rim_albedo_tint(self, value: primitives.Float) -> None:
         """Set the ShadowRimAlbedoTint field value."""
         member = self.get_member("ShadowRimAlbedoTint")
         if member is not None:
@@ -1360,7 +1358,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def subsurface_distortion(self) -> np.float32 | None:
+    def subsurface_distortion(self) -> primitives.Float | None:
         """The SubsurfaceDistortion field value."""
         member = self.get_member("SubsurfaceDistortion")
         if member is None:
@@ -1368,7 +1366,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @subsurface_distortion.setter
-    def subsurface_distortion(self, value: np.float32) -> None:
+    def subsurface_distortion(self, value: primitives.Float) -> None:
         """Set the SubsurfaceDistortion field value."""
         member = self.get_member("SubsurfaceDistortion")
         if member is not None:
@@ -1379,7 +1377,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def subsurface_power(self) -> np.float32 | None:
+    def subsurface_power(self) -> primitives.Float | None:
         """The SubsurfacePower field value."""
         member = self.get_member("SubsurfacePower")
         if member is None:
@@ -1387,7 +1385,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @subsurface_power.setter
-    def subsurface_power(self, value: np.float32) -> None:
+    def subsurface_power(self, value: primitives.Float) -> None:
         """Set the SubsurfacePower field value."""
         member = self.get_member("SubsurfacePower")
         if member is not None:
@@ -1398,7 +1396,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def subsurface_scale(self) -> np.float32 | None:
+    def subsurface_scale(self) -> primitives.Float | None:
         """The SubsurfaceScale field value."""
         member = self.get_member("SubsurfaceScale")
         if member is None:
@@ -1406,7 +1404,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @subsurface_scale.setter
-    def subsurface_scale(self, value: np.float32) -> None:
+    def subsurface_scale(self, value: primitives.Float) -> None:
         """Set the SubsurfaceScale field value."""
         member = self.get_member("SubsurfaceScale")
         if member is not None:
@@ -1417,7 +1415,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -1425,7 +1423,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -1436,7 +1434,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -1444,7 +1442,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -1481,7 +1479,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         self.set_member("ColorMask", value)
 
     @property
-    def albedo_uv(self) -> np.int32 | None:
+    def albedo_uv(self) -> primitives.Int | None:
         """The AlbedoUV field value."""
         member = self.get_member("AlbedoUV")
         if member is None:
@@ -1489,7 +1487,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @albedo_uv.setter
-    def albedo_uv(self, value: np.int32) -> None:
+    def albedo_uv(self, value: primitives.Int) -> None:
         """Set the AlbedoUV field value."""
         member = self.get_member("AlbedoUV")
         if member is not None:
@@ -1500,7 +1498,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def normal_uv(self) -> np.int32 | None:
+    def normal_uv(self) -> primitives.Int | None:
         """The NormalUV field value."""
         member = self.get_member("NormalUV")
         if member is None:
@@ -1508,7 +1506,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @normal_uv.setter
-    def normal_uv(self, value: np.int32) -> None:
+    def normal_uv(self, value: primitives.Int) -> None:
         """Set the NormalUV field value."""
         member = self.get_member("NormalUV")
         if member is not None:
@@ -1519,7 +1517,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def metallic_uv(self) -> np.int32 | None:
+    def metallic_uv(self) -> primitives.Int | None:
         """The MetallicUV field value."""
         member = self.get_member("MetallicUV")
         if member is None:
@@ -1527,7 +1525,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @metallic_uv.setter
-    def metallic_uv(self, value: np.int32) -> None:
+    def metallic_uv(self, value: primitives.Int) -> None:
         """Set the MetallicUV field value."""
         member = self.get_member("MetallicUV")
         if member is not None:
@@ -1538,7 +1536,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def thickness_uv(self) -> np.int32 | None:
+    def thickness_uv(self) -> primitives.Int | None:
         """The ThicknessUV field value."""
         member = self.get_member("ThicknessUV")
         if member is None:
@@ -1546,7 +1544,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @thickness_uv.setter
-    def thickness_uv(self, value: np.int32) -> None:
+    def thickness_uv(self, value: primitives.Int) -> None:
         """Set the ThicknessUV field value."""
         member = self.get_member("ThicknessUV")
         if member is not None:
@@ -1557,7 +1555,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def occlusion_uv(self) -> np.int32 | None:
+    def occlusion_uv(self) -> primitives.Int | None:
         """The OcclusionUV field value."""
         member = self.get_member("OcclusionUV")
         if member is None:
@@ -1565,7 +1563,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @occlusion_uv.setter
-    def occlusion_uv(self, value: np.int32) -> None:
+    def occlusion_uv(self, value: primitives.Int) -> None:
         """Set the OcclusionUV field value."""
         member = self.get_member("OcclusionUV")
         if member is not None:
@@ -1576,7 +1574,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def emission_uv(self) -> np.int32 | None:
+    def emission_uv(self) -> primitives.Int | None:
         """The EmissionUV field value."""
         member = self.get_member("EmissionUV")
         if member is None:
@@ -1584,7 +1582,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @emission_uv.setter
-    def emission_uv(self, value: np.int32) -> None:
+    def emission_uv(self, value: primitives.Int) -> None:
         """Set the EmissionUV field value."""
         member = self.get_member("EmissionUV")
         if member is not None:
@@ -1595,7 +1593,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -1603,7 +1601,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -1614,7 +1612,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def legacy_cutout(self) -> bool | None:
+    def legacy_cutout(self) -> primitives.Bool | None:
         """The __legacyCutout field value."""
         member = self.get_member("__legacyCutout")
         if member is None:
@@ -1622,7 +1620,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
         return getattr(member, 'value', None)
 
     @legacy_cutout.setter
-    def legacy_cutout(self, value: bool) -> None:
+    def legacy_cutout(self, value: primitives.Bool) -> None:
         """Set the __legacyCutout field value."""
         member = self.get_member("__legacyCutout")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: AvatarRawEyeData."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -19,7 +18,7 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarRawEyeData"
 
-    def __init__(self, convergence_distance: np.float32 | None = None, timestamp: np.float64 | None = None, active_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, convergence_distance: primitives.Float | None = None, timestamp: primitives.Double | None = None, active_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -76,7 +75,7 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
         self.set_member("CombinedEye", value)
 
     @property
-    def convergence_distance(self) -> np.float32 | None:
+    def convergence_distance(self) -> primitives.Float | None:
         """The ConvergenceDistance field value."""
         member = self.get_member("ConvergenceDistance")
         if member is None:
@@ -84,7 +83,7 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @convergence_distance.setter
-    def convergence_distance(self, value: np.float32) -> None:
+    def convergence_distance(self, value: primitives.Float) -> None:
         """Set the ConvergenceDistance field value."""
         member = self.get_member("ConvergenceDistance")
         if member is not None:
@@ -95,7 +94,7 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
             )
 
     @property
-    def timestamp(self) -> np.float64 | None:
+    def timestamp(self) -> primitives.Double | None:
         """The Timestamp field value."""
         member = self.get_member("Timestamp")
         if member is None:
@@ -103,7 +102,7 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @timestamp.setter
-    def timestamp(self, value: np.float64) -> None:
+    def timestamp(self, value: primitives.Double) -> None:
         """Set the Timestamp field value."""
         member = self.get_member("Timestamp")
         if member is not None:

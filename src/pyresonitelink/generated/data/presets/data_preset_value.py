@@ -15,7 +15,7 @@ class DataPresetValue(GenericComponent[T], IDataPresetEntry, IWorldEventReceiver
 
     Parameterize with a value type::
 
-        DataPresetValue[np.float32]
+        DataPresetValue[primitives.Float]
         DataPresetValue[primitives.Float3]
     """
 

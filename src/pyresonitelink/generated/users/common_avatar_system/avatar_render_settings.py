@@ -1,8 +1,7 @@
 """Generated component: AvatarRenderSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.irender_settings_source import IRenderSettingsSource
@@ -18,7 +17,7 @@ class AvatarRenderSettings(GeneratedComponent, IRenderSettingsSource, IAvatarObj
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarRenderSettings"
 
-    def __init__(self, near_clip: np.float32 | None = None, far_clip: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, near_clip: primitives.Float | None = None, far_clip: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class AvatarRenderSettings(GeneratedComponent, IRenderSettingsSource, IAvatarObj
             self.far_clip = far_clip
 
     @property
-    def near_clip(self) -> np.float32 | None:
+    def near_clip(self) -> primitives.Float | None:
         """The NearClip field value."""
         member = self.get_member("NearClip")
         if member is None:
@@ -41,7 +40,7 @@ class AvatarRenderSettings(GeneratedComponent, IRenderSettingsSource, IAvatarObj
         return getattr(member, 'value', None)
 
     @near_clip.setter
-    def near_clip(self, value: np.float32) -> None:
+    def near_clip(self, value: primitives.Float) -> None:
         """Set the NearClip field value."""
         member = self.get_member("NearClip")
         if member is not None:
@@ -52,7 +51,7 @@ class AvatarRenderSettings(GeneratedComponent, IRenderSettingsSource, IAvatarObj
             )
 
     @property
-    def far_clip(self) -> np.float32 | None:
+    def far_clip(self) -> primitives.Float | None:
         """The FarClip field value."""
         member = self.get_member("FarClip")
         if member is None:
@@ -60,7 +59,7 @@ class AvatarRenderSettings(GeneratedComponent, IRenderSettingsSource, IAvatarObj
         return getattr(member, 'value', None)
 
     @far_clip.setter
-    def far_clip(self, value: np.float32) -> None:
+    def far_clip(self, value: primitives.Float) -> None:
         """Set the FarClip field value."""
         member = self.get_member("FarClip")
         if member is not None:

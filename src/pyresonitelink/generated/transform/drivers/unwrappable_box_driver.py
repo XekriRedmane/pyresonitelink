@@ -1,7 +1,5 @@
 """Generated component: UnwrappableBoxDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UnwrappableBoxDriver"
 
-    def __init__(self, unwrap: np.float32 | None = None, side_size: np.float32 | None = None, scale_content: bool | None = None, side0rotation: str | IField[primitives.FloatQ] | None = None, side1rotation: str | IField[primitives.FloatQ] | None = None, side2rotation: str | IField[primitives.FloatQ] | None = None, side3rotation: str | IField[primitives.FloatQ] | None = None, top_rotation: str | IField[primitives.FloatQ] | None = None, side0offset: str | IField[primitives.Float3] | None = None, side1offset: str | IField[primitives.Float3] | None = None, side2offset: str | IField[primitives.Float3] | None = None, side3offset: str | IField[primitives.Float3] | None = None, top_offset: str | IField[primitives.Float3] | None = None, side0content_offset: str | IField[primitives.Float3] | None = None, side1content_offset: str | IField[primitives.Float3] | None = None, side2content_offset: str | IField[primitives.Float3] | None = None, side3content_offset: str | IField[primitives.Float3] | None = None, top_content_offset: str | IField[primitives.Float3] | None = None, side0content_scale: str | IField[primitives.Float3] | None = None, side1content_scale: str | IField[primitives.Float3] | None = None, side2content_scale: str | IField[primitives.Float3] | None = None, side3content_scale: str | IField[primitives.Float3] | None = None, bottom_content_scale: str | IField[primitives.Float3] | None = None, top_content_scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, unwrap: primitives.Float | None = None, side_size: primitives.Float | None = None, scale_content: primitives.Bool | None = None, side0rotation: str | IField[primitives.FloatQ] | None = None, side1rotation: str | IField[primitives.FloatQ] | None = None, side2rotation: str | IField[primitives.FloatQ] | None = None, side3rotation: str | IField[primitives.FloatQ] | None = None, top_rotation: str | IField[primitives.FloatQ] | None = None, side0offset: str | IField[primitives.Float3] | None = None, side1offset: str | IField[primitives.Float3] | None = None, side2offset: str | IField[primitives.Float3] | None = None, side3offset: str | IField[primitives.Float3] | None = None, top_offset: str | IField[primitives.Float3] | None = None, side0content_offset: str | IField[primitives.Float3] | None = None, side1content_offset: str | IField[primitives.Float3] | None = None, side2content_offset: str | IField[primitives.Float3] | None = None, side3content_offset: str | IField[primitives.Float3] | None = None, top_content_offset: str | IField[primitives.Float3] | None = None, side0content_scale: str | IField[primitives.Float3] | None = None, side1content_scale: str | IField[primitives.Float3] | None = None, side2content_scale: str | IField[primitives.Float3] | None = None, side3content_scale: str | IField[primitives.Float3] | None = None, bottom_content_scale: str | IField[primitives.Float3] | None = None, top_content_scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -101,7 +99,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.top_content_scale = top_content_scale
 
     @property
-    def unwrap(self) -> np.float32 | None:
+    def unwrap(self) -> primitives.Float | None:
         """The Unwrap field value."""
         member = self.get_member("Unwrap")
         if member is None:
@@ -109,7 +107,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @unwrap.setter
-    def unwrap(self, value: np.float32) -> None:
+    def unwrap(self, value: primitives.Float) -> None:
         """Set the Unwrap field value."""
         member = self.get_member("Unwrap")
         if member is not None:
@@ -120,7 +118,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def side_size(self) -> np.float32 | None:
+    def side_size(self) -> primitives.Float | None:
         """The SideSize field value."""
         member = self.get_member("SideSize")
         if member is None:
@@ -128,7 +126,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @side_size.setter
-    def side_size(self, value: np.float32) -> None:
+    def side_size(self, value: primitives.Float) -> None:
         """Set the SideSize field value."""
         member = self.get_member("SideSize")
         if member is not None:
@@ -139,7 +137,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def scale_content(self) -> bool | None:
+    def scale_content(self) -> primitives.Bool | None:
         """The ScaleContent field value."""
         member = self.get_member("ScaleContent")
         if member is None:
@@ -147,7 +145,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @scale_content.setter
-    def scale_content(self, value: bool) -> None:
+    def scale_content(self, value: primitives.Bool) -> None:
         """Set the ScaleContent field value."""
         member = self.get_member("ScaleContent")
         if member is not None:

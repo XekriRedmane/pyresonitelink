@@ -1,6 +1,7 @@
 """Generated component: License."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.License"
 
-    def __init__(self, require_credit: bool | None = None, credit_string: str | None = None, can_export: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, require_credit: primitives.Bool | None = None, credit_string: primitives.String | None = None, can_export: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +34,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.can_export = can_export
 
     @property
-    def require_credit(self) -> bool | None:
+    def require_credit(self) -> primitives.Bool | None:
         """The RequireCredit field value."""
         member = self.get_member("RequireCredit")
         if member is None:
@@ -41,7 +42,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @require_credit.setter
-    def require_credit(self, value: bool) -> None:
+    def require_credit(self, value: primitives.Bool) -> None:
         """Set the RequireCredit field value."""
         member = self.get_member("RequireCredit")
         if member is not None:
@@ -52,7 +53,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def credit_string(self) -> str | None:
+    def credit_string(self) -> primitives.String | None:
         """The CreditString field value."""
         member = self.get_member("CreditString")
         if member is None:
@@ -60,7 +61,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @credit_string.setter
-    def credit_string(self, value: str) -> None:
+    def credit_string(self, value: primitives.String) -> None:
         """Set the CreditString field value."""
         member = self.get_member("CreditString")
         if member is not None:
@@ -71,7 +72,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def can_export(self) -> bool | None:
+    def can_export(self) -> primitives.Bool | None:
         """The CanExport field value."""
         member = self.get_member("CanExport")
         if member is None:
@@ -79,7 +80,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @can_export.setter
-    def can_export(self, value: bool) -> None:
+    def can_export(self, value: primitives.Bool) -> None:
         """Set the CanExport field value."""
         member = self.get_member("CanExport")
         if member is not None:

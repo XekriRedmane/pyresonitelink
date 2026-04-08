@@ -1,8 +1,7 @@
 """Generated component: ConvertibleSbyteDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -15,14 +14,14 @@ class ConvertibleSbyteDriver(GenericComponent[T], IComponent, IWorldEventReceive
 
     Parameterize with a value type::
 
-        ConvertibleSbyteDriver[np.float32]
+        ConvertibleSbyteDriver[primitives.Float]
         ConvertibleSbyteDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConvertibleSbyteDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ConvertibleSbyteDriver<>"
 
-    def __init__(self, source: str | IField[T] | None = None, target: str | IField[np.int8] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[T] | None = None, target: str | IField[primitives.SByte] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +58,15 @@ class ConvertibleSbyteDriver(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[np.int8])."""
+        """Target ID of the Target reference (targets IField[primitives.SByte])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[np.int8] | None) -> None:
-        """Set the Target reference by target ID or IField[np.int8] instance."""
+    def target(self, target: str | IField[primitives.SByte] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.SByte] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):

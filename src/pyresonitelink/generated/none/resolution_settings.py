@@ -14,7 +14,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ResolutionSettings"
 
-    def __init__(self, fullscreen: bool | None = None, window_resolution: primitives.Int2 | None = None, fullscreen_resolution: primitives.Int2 | None = None, commited_window_resolution: primitives.Int2 | None = None, commited_fullscreen_resolution: primitives.Int2 | None = None, needs_to_apply_resolution: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, fullscreen: primitives.Bool | None = None, window_resolution: primitives.Int2 | None = None, fullscreen_resolution: primitives.Int2 | None = None, commited_window_resolution: primitives.Int2 | None = None, commited_fullscreen_resolution: primitives.Int2 | None = None, needs_to_apply_resolution: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +41,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
             self.needs_to_apply_resolution = needs_to_apply_resolution
 
     @property
-    def fullscreen(self) -> bool | None:
+    def fullscreen(self) -> primitives.Bool | None:
         """The Fullscreen field value."""
         member = self.get_member("Fullscreen")
         if member is None:
@@ -49,7 +49,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @fullscreen.setter
-    def fullscreen(self, value: bool) -> None:
+    def fullscreen(self, value: primitives.Bool) -> None:
         """Set the Fullscreen field value."""
         member = self.get_member("Fullscreen")
         if member is not None:
@@ -136,7 +136,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def needs_to_apply_resolution(self) -> bool | None:
+    def needs_to_apply_resolution(self) -> primitives.Bool | None:
         """The NeedsToApplyResolution field value."""
         member = self.get_member("NeedsToApplyResolution")
         if member is None:
@@ -144,7 +144,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @needs_to_apply_resolution.setter
-    def needs_to_apply_resolution(self, value: bool) -> None:
+    def needs_to_apply_resolution(self, value: primitives.Bool) -> None:
         """Set the NeedsToApplyResolution field value."""
         member = self.get_member("NeedsToApplyResolution")
         if member is not None:

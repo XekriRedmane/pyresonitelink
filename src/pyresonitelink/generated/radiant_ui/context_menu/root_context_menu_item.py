@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.context_menu_item_source import ContextMenuItemSource
@@ -17,7 +18,7 @@ class RootContextMenuItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RootContextMenuItem"
 
-    def __init__(self, exclude_on_tools: bool | None = None, exclude_primary_hand: bool | None = None, exclude_secondary_hand: bool | None = None, item: str | ContextMenuItemSource | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, exclude_on_tools: primitives.Bool | None = None, exclude_primary_hand: primitives.Bool | None = None, exclude_secondary_hand: primitives.Bool | None = None, item: str | ContextMenuItemSource | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -51,7 +52,7 @@ class RootContextMenuItem(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("OnlyForSide", value)
 
     @property
-    def exclude_on_tools(self) -> bool | None:
+    def exclude_on_tools(self) -> primitives.Bool | None:
         """The ExcludeOnTools field value."""
         member = self.get_member("ExcludeOnTools")
         if member is None:
@@ -59,7 +60,7 @@ class RootContextMenuItem(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @exclude_on_tools.setter
-    def exclude_on_tools(self, value: bool) -> None:
+    def exclude_on_tools(self, value: primitives.Bool) -> None:
         """Set the ExcludeOnTools field value."""
         member = self.get_member("ExcludeOnTools")
         if member is not None:
@@ -70,7 +71,7 @@ class RootContextMenuItem(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def exclude_primary_hand(self) -> bool | None:
+    def exclude_primary_hand(self) -> primitives.Bool | None:
         """The ExcludePrimaryHand field value."""
         member = self.get_member("ExcludePrimaryHand")
         if member is None:
@@ -78,7 +79,7 @@ class RootContextMenuItem(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @exclude_primary_hand.setter
-    def exclude_primary_hand(self, value: bool) -> None:
+    def exclude_primary_hand(self, value: primitives.Bool) -> None:
         """Set the ExcludePrimaryHand field value."""
         member = self.get_member("ExcludePrimaryHand")
         if member is not None:
@@ -89,7 +90,7 @@ class RootContextMenuItem(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def exclude_secondary_hand(self) -> bool | None:
+    def exclude_secondary_hand(self) -> primitives.Bool | None:
         """The ExcludeSecondaryHand field value."""
         member = self.get_member("ExcludeSecondaryHand")
         if member is None:
@@ -97,7 +98,7 @@ class RootContextMenuItem(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @exclude_secondary_hand.setter
-    def exclude_secondary_hand(self, value: bool) -> None:
+    def exclude_secondary_hand(self, value: primitives.Bool) -> None:
         """Set the ExcludeSecondaryHand field value."""
         member = self.get_member("ExcludeSecondaryHand")
         if member is not None:

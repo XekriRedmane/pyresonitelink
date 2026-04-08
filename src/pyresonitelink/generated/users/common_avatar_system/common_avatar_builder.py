@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +20,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatarBuilder"
 
-    def __init__(self, load_cloud_avatars: bool | None = None, auto_inject: str | Slot | None = None, setup_name_badges: bool | None = None, setup_icon_badges: bool | None = None, setup_server_voice: bool | None = None, setup_client_voice: bool | None = None, setup_server_tools: bool | None = None, setup_client_tools: bool | None = None, setup_locomotion: bool | None = None, allow_locomotion: bool | None = None, default_host_silenced: bool | None = None, default_client_silenced: bool | None = None, locomotion_modules: str | Slot | None = None, force_default_locomotion_module: str | ILocomotionModule | None = None, find_user_preferred_module: bool | None = None, setup_item_shelves: bool | None = None, parent_clients_to_server: bool | None = None, align_tracking: bool | None = None, empty_avatar_slot_handler: str | IEmptyAvatarSlotHandler | None = None, fill_empty_slots: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, load_cloud_avatars: primitives.Bool | None = None, auto_inject: str | Slot | None = None, setup_name_badges: primitives.Bool | None = None, setup_icon_badges: primitives.Bool | None = None, setup_server_voice: primitives.Bool | None = None, setup_client_voice: primitives.Bool | None = None, setup_server_tools: primitives.Bool | None = None, setup_client_tools: primitives.Bool | None = None, setup_locomotion: primitives.Bool | None = None, allow_locomotion: primitives.Bool | None = None, default_host_silenced: primitives.Bool | None = None, default_client_silenced: primitives.Bool | None = None, locomotion_modules: str | Slot | None = None, force_default_locomotion_module: str | ILocomotionModule | None = None, find_user_preferred_module: primitives.Bool | None = None, setup_item_shelves: primitives.Bool | None = None, parent_clients_to_server: primitives.Bool | None = None, align_tracking: primitives.Bool | None = None, empty_avatar_slot_handler: str | IEmptyAvatarSlotHandler | None = None, fill_empty_slots: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -88,7 +89,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             self.fill_empty_slots = fill_empty_slots
 
     @property
-    def load_cloud_avatars(self) -> bool | None:
+    def load_cloud_avatars(self) -> primitives.Bool | None:
         """The LoadCloudAvatars field value."""
         member = self.get_member("LoadCloudAvatars")
         if member is None:
@@ -96,7 +97,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @load_cloud_avatars.setter
-    def load_cloud_avatars(self, value: bool) -> None:
+    def load_cloud_avatars(self, value: primitives.Bool) -> None:
         """Set the LoadCloudAvatars field value."""
         member = self.get_member("LoadCloudAvatars")
         if member is not None:
@@ -141,7 +142,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def setup_name_badges(self) -> bool | None:
+    def setup_name_badges(self) -> primitives.Bool | None:
         """The SetupNameBadges field value."""
         member = self.get_member("SetupNameBadges")
         if member is None:
@@ -149,7 +150,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @setup_name_badges.setter
-    def setup_name_badges(self, value: bool) -> None:
+    def setup_name_badges(self, value: primitives.Bool) -> None:
         """Set the SetupNameBadges field value."""
         member = self.get_member("SetupNameBadges")
         if member is not None:
@@ -160,7 +161,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def setup_icon_badges(self) -> bool | None:
+    def setup_icon_badges(self) -> primitives.Bool | None:
         """The SetupIconBadges field value."""
         member = self.get_member("SetupIconBadges")
         if member is None:
@@ -168,7 +169,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @setup_icon_badges.setter
-    def setup_icon_badges(self, value: bool) -> None:
+    def setup_icon_badges(self, value: primitives.Bool) -> None:
         """Set the SetupIconBadges field value."""
         member = self.get_member("SetupIconBadges")
         if member is not None:
@@ -179,7 +180,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def setup_server_voice(self) -> bool | None:
+    def setup_server_voice(self) -> primitives.Bool | None:
         """The SetupServerVoice field value."""
         member = self.get_member("SetupServerVoice")
         if member is None:
@@ -187,7 +188,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @setup_server_voice.setter
-    def setup_server_voice(self, value: bool) -> None:
+    def setup_server_voice(self, value: primitives.Bool) -> None:
         """Set the SetupServerVoice field value."""
         member = self.get_member("SetupServerVoice")
         if member is not None:
@@ -198,7 +199,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def setup_client_voice(self) -> bool | None:
+    def setup_client_voice(self) -> primitives.Bool | None:
         """The SetupClientVoice field value."""
         member = self.get_member("SetupClientVoice")
         if member is None:
@@ -206,7 +207,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @setup_client_voice.setter
-    def setup_client_voice(self, value: bool) -> None:
+    def setup_client_voice(self, value: primitives.Bool) -> None:
         """Set the SetupClientVoice field value."""
         member = self.get_member("SetupClientVoice")
         if member is not None:
@@ -217,7 +218,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def setup_server_tools(self) -> bool | None:
+    def setup_server_tools(self) -> primitives.Bool | None:
         """The SetupServerTools field value."""
         member = self.get_member("SetupServerTools")
         if member is None:
@@ -225,7 +226,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @setup_server_tools.setter
-    def setup_server_tools(self, value: bool) -> None:
+    def setup_server_tools(self, value: primitives.Bool) -> None:
         """Set the SetupServerTools field value."""
         member = self.get_member("SetupServerTools")
         if member is not None:
@@ -236,7 +237,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def setup_client_tools(self) -> bool | None:
+    def setup_client_tools(self) -> primitives.Bool | None:
         """The SetupClientTools field value."""
         member = self.get_member("SetupClientTools")
         if member is None:
@@ -244,7 +245,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @setup_client_tools.setter
-    def setup_client_tools(self, value: bool) -> None:
+    def setup_client_tools(self, value: primitives.Bool) -> None:
         """Set the SetupClientTools field value."""
         member = self.get_member("SetupClientTools")
         if member is not None:
@@ -255,7 +256,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def setup_locomotion(self) -> bool | None:
+    def setup_locomotion(self) -> primitives.Bool | None:
         """The SetupLocomotion field value."""
         member = self.get_member("SetupLocomotion")
         if member is None:
@@ -263,7 +264,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @setup_locomotion.setter
-    def setup_locomotion(self, value: bool) -> None:
+    def setup_locomotion(self, value: primitives.Bool) -> None:
         """Set the SetupLocomotion field value."""
         member = self.get_member("SetupLocomotion")
         if member is not None:
@@ -274,7 +275,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def allow_locomotion(self) -> bool | None:
+    def allow_locomotion(self) -> primitives.Bool | None:
         """The AllowLocomotion field value."""
         member = self.get_member("AllowLocomotion")
         if member is None:
@@ -282,7 +283,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @allow_locomotion.setter
-    def allow_locomotion(self, value: bool) -> None:
+    def allow_locomotion(self, value: primitives.Bool) -> None:
         """Set the AllowLocomotion field value."""
         member = self.get_member("AllowLocomotion")
         if member is not None:
@@ -293,7 +294,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def default_host_silenced(self) -> bool | None:
+    def default_host_silenced(self) -> primitives.Bool | None:
         """The DefaultHostSilenced field value."""
         member = self.get_member("DefaultHostSilenced")
         if member is None:
@@ -301,7 +302,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @default_host_silenced.setter
-    def default_host_silenced(self, value: bool) -> None:
+    def default_host_silenced(self, value: primitives.Bool) -> None:
         """Set the DefaultHostSilenced field value."""
         member = self.get_member("DefaultHostSilenced")
         if member is not None:
@@ -312,7 +313,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def default_client_silenced(self) -> bool | None:
+    def default_client_silenced(self) -> primitives.Bool | None:
         """The DefaultClientSilenced field value."""
         member = self.get_member("DefaultClientSilenced")
         if member is None:
@@ -320,7 +321,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @default_client_silenced.setter
-    def default_client_silenced(self, value: bool) -> None:
+    def default_client_silenced(self, value: primitives.Bool) -> None:
         """Set the DefaultClientSilenced field value."""
         member = self.get_member("DefaultClientSilenced")
         if member is not None:
@@ -373,7 +374,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def find_user_preferred_module(self) -> bool | None:
+    def find_user_preferred_module(self) -> primitives.Bool | None:
         """The FindUserPreferredModule field value."""
         member = self.get_member("FindUserPreferredModule")
         if member is None:
@@ -381,7 +382,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @find_user_preferred_module.setter
-    def find_user_preferred_module(self, value: bool) -> None:
+    def find_user_preferred_module(self, value: primitives.Bool) -> None:
         """Set the FindUserPreferredModule field value."""
         member = self.get_member("FindUserPreferredModule")
         if member is not None:
@@ -392,7 +393,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def setup_item_shelves(self) -> bool | None:
+    def setup_item_shelves(self) -> primitives.Bool | None:
         """The SetupItemShelves field value."""
         member = self.get_member("SetupItemShelves")
         if member is None:
@@ -400,7 +401,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @setup_item_shelves.setter
-    def setup_item_shelves(self, value: bool) -> None:
+    def setup_item_shelves(self, value: primitives.Bool) -> None:
         """Set the SetupItemShelves field value."""
         member = self.get_member("SetupItemShelves")
         if member is not None:
@@ -411,7 +412,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def parent_clients_to_server(self) -> bool | None:
+    def parent_clients_to_server(self) -> primitives.Bool | None:
         """The ParentClientsToServer field value."""
         member = self.get_member("ParentClientsToServer")
         if member is None:
@@ -419,7 +420,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @parent_clients_to_server.setter
-    def parent_clients_to_server(self, value: bool) -> None:
+    def parent_clients_to_server(self, value: primitives.Bool) -> None:
         """Set the ParentClientsToServer field value."""
         member = self.get_member("ParentClientsToServer")
         if member is not None:
@@ -430,7 +431,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def align_tracking(self) -> bool | None:
+    def align_tracking(self) -> primitives.Bool | None:
         """The AlignTracking field value."""
         member = self.get_member("AlignTracking")
         if member is None:
@@ -438,7 +439,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @align_tracking.setter
-    def align_tracking(self, value: bool) -> None:
+    def align_tracking(self, value: primitives.Bool) -> None:
         """Set the AlignTracking field value."""
         member = self.get_member("AlignTracking")
         if member is not None:
@@ -470,7 +471,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
             )
 
     @property
-    def fill_empty_slots(self) -> bool | None:
+    def fill_empty_slots(self) -> primitives.Bool | None:
         """The FillEmptySlots field value."""
         member = self.get_member("FillEmptySlots")
         if member is None:
@@ -478,7 +479,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
         return getattr(member, 'value', None)
 
     @fill_empty_slots.setter
-    def fill_empty_slots(self, value: bool) -> None:
+    def fill_empty_slots(self, value: primitives.Bool) -> None:
         """Set the FillEmptySlots field value."""
         member = self.get_member("FillEmptySlots")
         if member is not None:

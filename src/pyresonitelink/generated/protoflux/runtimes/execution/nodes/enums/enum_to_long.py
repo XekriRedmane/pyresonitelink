@@ -21,7 +21,7 @@ class EnumToLong(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], IN
 
     Parameterize with a value type::
 
-        EnumToLong[np.float32]
+        EnumToLong[primitives.Float]
         EnumToLong[primitives.Float3]
     """
 

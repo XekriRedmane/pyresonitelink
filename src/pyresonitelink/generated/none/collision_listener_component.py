@@ -1,6 +1,7 @@
 """Generated component: CollisionListenerComponent."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -13,7 +14,7 @@ class CollisionListenerComponent(GeneratedComponent, IComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CollisionListenerComponent"
 
-    def __init__(self, triggers_only: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, triggers_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class CollisionListenerComponent(GeneratedComponent, IComponent, IWorldEventRece
             self.triggers_only = triggers_only
 
     @property
-    def triggers_only(self) -> bool | None:
+    def triggers_only(self) -> primitives.Bool | None:
         """The TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is None:
@@ -33,7 +34,7 @@ class CollisionListenerComponent(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @triggers_only.setter
-    def triggers_only(self, value: bool) -> None:
+    def triggers_only(self, value: primitives.Bool) -> None:
         """Set the TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is not None:

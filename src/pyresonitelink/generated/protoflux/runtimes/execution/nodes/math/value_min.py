@@ -18,7 +18,7 @@ class ValueMin(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueMin[np.float32]
+        ValueMin[primitives.Float]
         ValueMin[primitives.Float3]
     """
 

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     Parameterize with a value type::
 
-        CloudValueVariableDriver[np.float32]
+        CloudValueVariableDriver[primitives.Float]
         CloudValueVariableDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CloudValueVariableDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.CloudValueVariableDriver<>"
 
-    def __init__(self, path: str | None = None, target: str | IField[T] | None = None, is_linked_to_cloud: bool | None = None, write_back: bool | None = None, fallback_value: T | None = None, override_owner: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, path: primitives.String | None = None, target: str | IField[T] | None = None, is_linked_to_cloud: primitives.Bool | None = None, write_back: primitives.Bool | None = None, fallback_value: T | None = None, override_owner: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -50,7 +51,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
             self.override_owner = override_owner
 
     @property
-    def path(self) -> str | None:
+    def path(self) -> primitives.String | None:
         """The Path field value."""
         member = self.get_member("Path")
         if member is None:
@@ -58,7 +59,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @path.setter
-    def path(self, value: str) -> None:
+    def path(self, value: primitives.String) -> None:
         """Set the Path field value."""
         member = self.get_member("Path")
         if member is not None:
@@ -90,7 +91,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def is_linked_to_cloud(self) -> bool | None:
+    def is_linked_to_cloud(self) -> primitives.Bool | None:
         """The IsLinkedToCloud field value."""
         member = self.get_member("IsLinkedToCloud")
         if member is None:
@@ -98,7 +99,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @is_linked_to_cloud.setter
-    def is_linked_to_cloud(self, value: bool) -> None:
+    def is_linked_to_cloud(self, value: primitives.Bool) -> None:
         """Set the IsLinkedToCloud field value."""
         member = self.get_member("IsLinkedToCloud")
         if member is not None:
@@ -109,7 +110,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def write_back(self) -> bool | None:
+    def write_back(self) -> primitives.Bool | None:
         """The WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is None:
@@ -117,7 +118,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @write_back.setter
-    def write_back(self, value: bool) -> None:
+    def write_back(self, value: primitives.Bool) -> None:
         """Set the WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is not None:
@@ -147,7 +148,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def override_owner(self) -> str | None:
+    def override_owner(self) -> primitives.String | None:
         """The OverrideOwner field value."""
         member = self.get_member("OverrideOwner")
         if member is None:
@@ -155,7 +156,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @override_owner.setter
-    def override_owner(self, value: str) -> None:
+    def override_owner(self, value: primitives.String) -> None:
         """Set the OverrideOwner field value."""
         member = self.get_member("OverrideOwner")
         if member is not None:

@@ -19,7 +19,7 @@ class IsNull(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode,
 
     Parameterize with a value type::
 
-        IsNull[np.float32]
+        IsNull[primitives.Float]
         IsNull[primitives.Float3]
     """
 

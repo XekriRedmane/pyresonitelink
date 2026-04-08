@@ -17,7 +17,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorXMemberEditor"
 
-    def __init__(self, continuous: bool | None = None, path: str | None = None, target: str | IField | None = None, labels: bool | None = None, vertical: bool | None = None, color_drive: str | IField[primitives.ColorX] | None = None, color_drive_no_alpha: str | IField[primitives.ColorX] | None = None, color_dialog: str | ColorDialogInterface | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, continuous: primitives.Bool | None = None, path: primitives.String | None = None, target: str | IField | None = None, labels: primitives.Bool | None = None, vertical: primitives.Bool | None = None, color_drive: str | IField[primitives.ColorX] | None = None, color_drive_no_alpha: str | IField[primitives.ColorX] | None = None, color_dialog: str | ColorDialogInterface | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -50,7 +50,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.color_dialog = color_dialog
 
     @property
-    def continuous(self) -> bool | None:
+    def continuous(self) -> primitives.Bool | None:
         """The Continuous field value."""
         member = self.get_member("Continuous")
         if member is None:
@@ -58,7 +58,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @continuous.setter
-    def continuous(self, value: bool) -> None:
+    def continuous(self, value: primitives.Bool) -> None:
         """Set the Continuous field value."""
         member = self.get_member("Continuous")
         if member is not None:
@@ -69,7 +69,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def path(self) -> str | None:
+    def path(self) -> primitives.String | None:
         """The _path field value."""
         member = self.get_member("_path")
         if member is None:
@@ -77,7 +77,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @path.setter
-    def path(self, value: str) -> None:
+    def path(self, value: primitives.String) -> None:
         """Set the _path field value."""
         member = self.get_member("_path")
         if member is not None:
@@ -109,7 +109,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def labels(self) -> bool | None:
+    def labels(self) -> primitives.Bool | None:
         """The Labels field value."""
         member = self.get_member("Labels")
         if member is None:
@@ -117,7 +117,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @labels.setter
-    def labels(self, value: bool) -> None:
+    def labels(self, value: primitives.Bool) -> None:
         """Set the Labels field value."""
         member = self.get_member("Labels")
         if member is not None:
@@ -128,7 +128,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def vertical(self) -> bool | None:
+    def vertical(self) -> primitives.Bool | None:
         """The Vertical field value."""
         member = self.get_member("Vertical")
         if member is None:
@@ -136,7 +136,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @vertical.setter
-    def vertical(self, value: bool) -> None:
+    def vertical(self, value: primitives.Bool) -> None:
         """Set the Vertical field value."""
         member = self.get_member("Vertical")
         if member is not None:

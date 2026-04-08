@@ -1,7 +1,5 @@
 """Generated component: InteractionHandlerStreamDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -19,7 +17,7 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionHandlerStreamDriver"
 
-    def __init__(self, primary_blocked_stream: str | ValueStream[bool] | None = None, secondary_blocked_stream: str | ValueStream[bool] | None = None, laser_active_stream: str | ValueStream[bool] | None = None, show_laser_to_others_stream: str | ValueStream[bool] | None = None, laser_target_stream: str | ValueStream[primitives.Float3] | None = None, grab_distance_stream: str | ValueStream[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, primary_blocked_stream: str | ValueStream[primitives.Bool] | None = None, secondary_blocked_stream: str | ValueStream[primitives.Bool] | None = None, laser_active_stream: str | ValueStream[primitives.Bool] | None = None, show_laser_to_others_stream: str | ValueStream[primitives.Bool] | None = None, laser_target_stream: str | ValueStream[primitives.Float3] | None = None, grab_distance_stream: str | ValueStream[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,15 +58,15 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def primary_blocked_stream(self) -> str | None:
-        """Target ID of the PrimaryBlockedStream reference (targets ValueStream[bool])."""
+        """Target ID of the PrimaryBlockedStream reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("PrimaryBlockedStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @primary_blocked_stream.setter
-    def primary_blocked_stream(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the PrimaryBlockedStream reference by target ID or ValueStream[bool] instance."""
+    def primary_blocked_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the PrimaryBlockedStream reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("PrimaryBlockedStream")
         if isinstance(member, members.Reference):
@@ -81,15 +79,15 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def secondary_blocked_stream(self) -> str | None:
-        """Target ID of the SecondaryBlockedStream reference (targets ValueStream[bool])."""
+        """Target ID of the SecondaryBlockedStream reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("SecondaryBlockedStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @secondary_blocked_stream.setter
-    def secondary_blocked_stream(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the SecondaryBlockedStream reference by target ID or ValueStream[bool] instance."""
+    def secondary_blocked_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the SecondaryBlockedStream reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("SecondaryBlockedStream")
         if isinstance(member, members.Reference):
@@ -102,15 +100,15 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def laser_active_stream(self) -> str | None:
-        """Target ID of the LaserActiveStream reference (targets ValueStream[bool])."""
+        """Target ID of the LaserActiveStream reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("LaserActiveStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @laser_active_stream.setter
-    def laser_active_stream(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the LaserActiveStream reference by target ID or ValueStream[bool] instance."""
+    def laser_active_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the LaserActiveStream reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("LaserActiveStream")
         if isinstance(member, members.Reference):
@@ -123,15 +121,15 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def show_laser_to_others_stream(self) -> str | None:
-        """Target ID of the ShowLaserToOthersStream reference (targets ValueStream[bool])."""
+        """Target ID of the ShowLaserToOthersStream reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("ShowLaserToOthersStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @show_laser_to_others_stream.setter
-    def show_laser_to_others_stream(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the ShowLaserToOthersStream reference by target ID or ValueStream[bool] instance."""
+    def show_laser_to_others_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the ShowLaserToOthersStream reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("ShowLaserToOthersStream")
         if isinstance(member, members.Reference):
@@ -165,15 +163,15 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def grab_distance_stream(self) -> str | None:
-        """Target ID of the GrabDistanceStream reference (targets ValueStream[np.float32])."""
+        """Target ID of the GrabDistanceStream reference (targets ValueStream[primitives.Float])."""
         member = self.get_member("GrabDistanceStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @grab_distance_stream.setter
-    def grab_distance_stream(self, target: str | ValueStream[np.float32] | None) -> None:
-        """Set the GrabDistanceStream reference by target ID or ValueStream[np.float32] instance."""
+    def grab_distance_stream(self, target: str | ValueStream[primitives.Float] | None) -> None:
+        """Set the GrabDistanceStream reference by target ID or ValueStream[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("GrabDistanceStream")
         if isinstance(member, members.Reference):

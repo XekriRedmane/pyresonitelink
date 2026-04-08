@@ -18,7 +18,7 @@ class ValueRelay(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], IN
 
     Parameterize with a value type::
 
-        ValueRelay[np.float32]
+        ValueRelay[primitives.Float]
         ValueRelay[primitives.Float3]
     """
 

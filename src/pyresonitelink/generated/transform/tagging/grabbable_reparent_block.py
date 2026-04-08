@@ -1,8 +1,7 @@
 """Generated component: GrabbableReparentBlock."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.igrabbable_reparent_block import IGrabbableReparentBlock
@@ -17,7 +16,7 @@ class GrabbableReparentBlock(GeneratedComponent, IGrabbableReparentBlock, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabbableReparentBlock"
 
-    def __init__(self, dont_reparent: bool | None = None, max_depth: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, dont_reparent: primitives.Bool | None = None, max_depth: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +31,7 @@ class GrabbableReparentBlock(GeneratedComponent, IGrabbableReparentBlock, IWorld
             self.max_depth = max_depth
 
     @property
-    def dont_reparent(self) -> bool | None:
+    def dont_reparent(self) -> primitives.Bool | None:
         """The DontReparent field value."""
         member = self.get_member("DontReparent")
         if member is None:
@@ -40,7 +39,7 @@ class GrabbableReparentBlock(GeneratedComponent, IGrabbableReparentBlock, IWorld
         return getattr(member, 'value', None)
 
     @dont_reparent.setter
-    def dont_reparent(self, value: bool) -> None:
+    def dont_reparent(self, value: primitives.Bool) -> None:
         """Set the DontReparent field value."""
         member = self.get_member("DontReparent")
         if member is not None:
@@ -51,7 +50,7 @@ class GrabbableReparentBlock(GeneratedComponent, IGrabbableReparentBlock, IWorld
             )
 
     @property
-    def max_depth(self) -> np.int32 | None:
+    def max_depth(self) -> primitives.Int | None:
         """The MaxDepth field value."""
         member = self.get_member("MaxDepth")
         if member is None:
@@ -59,7 +58,7 @@ class GrabbableReparentBlock(GeneratedComponent, IGrabbableReparentBlock, IWorld
         return getattr(member, 'value', None)
 
     @max_depth.setter
-    def max_depth(self, value: np.int32) -> None:
+    def max_depth(self, value: primitives.Int) -> None:
         """Set the MaxDepth field value."""
         member = self.get_member("MaxDepth")
         if member is not None:

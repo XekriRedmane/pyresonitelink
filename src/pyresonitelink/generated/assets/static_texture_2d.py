@@ -1,7 +1,5 @@
 """Generated component: StaticTexture2D."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticTexture2D"
 
-    def __init__(self, url: str | None = None, anisotropic_level: np.int32 | None = None, uncompressed: bool | None = None, direct_load: bool | None = None, force_exact_variant: bool | None = None, mip_map_bias: np.float32 | None = None, is_normal_map: bool | None = None, power_of_two_align_threshold: np.float32 | None = None, crunch_compressed: bool | None = None, min_size: np.int32 | None = None, max_size: np.int32 | None = None, mip_maps: bool | None = None, keep_original_mip_maps: bool | None = None, readable: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, anisotropic_level: primitives.Int | None = None, uncompressed: primitives.Bool | None = None, direct_load: primitives.Bool | None = None, force_exact_variant: primitives.Bool | None = None, mip_map_bias: primitives.Float | None = None, is_normal_map: primitives.Bool | None = None, power_of_two_align_threshold: primitives.Float | None = None, crunch_compressed: primitives.Bool | None = None, min_size: primitives.Int | None = None, max_size: primitives.Int | None = None, mip_maps: primitives.Bool | None = None, keep_original_mip_maps: primitives.Bool | None = None, readable: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -105,7 +103,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         self.set_member("FilterMode", value)
 
     @property
-    def anisotropic_level(self) -> np.int32 | None:
+    def anisotropic_level(self) -> primitives.Int | None:
         """The AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is None:
@@ -113,7 +111,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @anisotropic_level.setter
-    def anisotropic_level(self, value: np.int32) -> None:
+    def anisotropic_level(self, value: primitives.Int) -> None:
         """Set the AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is not None:
@@ -124,7 +122,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def uncompressed(self) -> bool | None:
+    def uncompressed(self) -> primitives.Bool | None:
         """The Uncompressed field value."""
         member = self.get_member("Uncompressed")
         if member is None:
@@ -132,7 +130,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @uncompressed.setter
-    def uncompressed(self, value: bool) -> None:
+    def uncompressed(self, value: primitives.Bool) -> None:
         """Set the Uncompressed field value."""
         member = self.get_member("Uncompressed")
         if member is not None:
@@ -143,7 +141,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def direct_load(self) -> bool | None:
+    def direct_load(self) -> primitives.Bool | None:
         """The DirectLoad field value."""
         member = self.get_member("DirectLoad")
         if member is None:
@@ -151,7 +149,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @direct_load.setter
-    def direct_load(self, value: bool) -> None:
+    def direct_load(self, value: primitives.Bool) -> None:
         """Set the DirectLoad field value."""
         member = self.get_member("DirectLoad")
         if member is not None:
@@ -162,7 +160,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def force_exact_variant(self) -> bool | None:
+    def force_exact_variant(self) -> primitives.Bool | None:
         """The ForceExactVariant field value."""
         member = self.get_member("ForceExactVariant")
         if member is None:
@@ -170,7 +168,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @force_exact_variant.setter
-    def force_exact_variant(self, value: bool) -> None:
+    def force_exact_variant(self, value: primitives.Bool) -> None:
         """Set the ForceExactVariant field value."""
         member = self.get_member("ForceExactVariant")
         if member is not None:
@@ -207,7 +205,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         self.set_member("PreferredProfile", value)
 
     @property
-    def mip_map_bias(self) -> np.float32 | None:
+    def mip_map_bias(self) -> primitives.Float | None:
         """The MipMapBias field value."""
         member = self.get_member("MipMapBias")
         if member is None:
@@ -215,7 +213,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @mip_map_bias.setter
-    def mip_map_bias(self, value: np.float32) -> None:
+    def mip_map_bias(self, value: primitives.Float) -> None:
         """Set the MipMapBias field value."""
         member = self.get_member("MipMapBias")
         if member is not None:
@@ -226,7 +224,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def is_normal_map(self) -> bool | None:
+    def is_normal_map(self) -> primitives.Bool | None:
         """The IsNormalMap field value."""
         member = self.get_member("IsNormalMap")
         if member is None:
@@ -234,7 +232,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @is_normal_map.setter
-    def is_normal_map(self, value: bool) -> None:
+    def is_normal_map(self, value: primitives.Bool) -> None:
         """Set the IsNormalMap field value."""
         member = self.get_member("IsNormalMap")
         if member is not None:
@@ -271,7 +269,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         self.set_member("WrapModeV", value)
 
     @property
-    def power_of_two_align_threshold(self) -> np.float32 | None:
+    def power_of_two_align_threshold(self) -> primitives.Float | None:
         """The PowerOfTwoAlignThreshold field value."""
         member = self.get_member("PowerOfTwoAlignThreshold")
         if member is None:
@@ -279,7 +277,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @power_of_two_align_threshold.setter
-    def power_of_two_align_threshold(self, value: np.float32) -> None:
+    def power_of_two_align_threshold(self, value: primitives.Float) -> None:
         """Set the PowerOfTwoAlignThreshold field value."""
         member = self.get_member("PowerOfTwoAlignThreshold")
         if member is not None:
@@ -290,7 +288,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def crunch_compressed(self) -> bool | None:
+    def crunch_compressed(self) -> primitives.Bool | None:
         """The CrunchCompressed field value."""
         member = self.get_member("CrunchCompressed")
         if member is None:
@@ -298,7 +296,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @crunch_compressed.setter
-    def crunch_compressed(self, value: bool) -> None:
+    def crunch_compressed(self, value: primitives.Bool) -> None:
         """Set the CrunchCompressed field value."""
         member = self.get_member("CrunchCompressed")
         if member is not None:
@@ -309,7 +307,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def min_size(self) -> np.int32 | None:
+    def min_size(self) -> primitives.Int | None:
         """The MinSize field value."""
         member = self.get_member("MinSize")
         if member is None:
@@ -317,7 +315,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @min_size.setter
-    def min_size(self, value: np.int32) -> None:
+    def min_size(self, value: primitives.Int) -> None:
         """Set the MinSize field value."""
         member = self.get_member("MinSize")
         if member is not None:
@@ -328,7 +326,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def max_size(self) -> np.int32 | None:
+    def max_size(self) -> primitives.Int | None:
         """The MaxSize field value."""
         member = self.get_member("MaxSize")
         if member is None:
@@ -336,7 +334,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @max_size.setter
-    def max_size(self, value: np.int32) -> None:
+    def max_size(self, value: primitives.Int) -> None:
         """Set the MaxSize field value."""
         member = self.get_member("MaxSize")
         if member is not None:
@@ -347,7 +345,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def mip_maps(self) -> bool | None:
+    def mip_maps(self) -> primitives.Bool | None:
         """The MipMaps field value."""
         member = self.get_member("MipMaps")
         if member is None:
@@ -355,7 +353,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @mip_maps.setter
-    def mip_maps(self, value: bool) -> None:
+    def mip_maps(self, value: primitives.Bool) -> None:
         """Set the MipMaps field value."""
         member = self.get_member("MipMaps")
         if member is not None:
@@ -366,7 +364,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def keep_original_mip_maps(self) -> bool | None:
+    def keep_original_mip_maps(self) -> primitives.Bool | None:
         """The KeepOriginalMipMaps field value."""
         member = self.get_member("KeepOriginalMipMaps")
         if member is None:
@@ -374,7 +372,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @keep_original_mip_maps.setter
-    def keep_original_mip_maps(self, value: bool) -> None:
+    def keep_original_mip_maps(self, value: primitives.Bool) -> None:
         """Set the KeepOriginalMipMaps field value."""
         member = self.get_member("KeepOriginalMipMaps")
         if member is not None:
@@ -398,7 +396,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         self.set_member("MipMapFilter", value)
 
     @property
-    def readable(self) -> bool | None:
+    def readable(self) -> primitives.Bool | None:
         """The Readable field value."""
         member = self.get_member("Readable")
         if member is None:
@@ -406,7 +404,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @readable.setter
-    def readable(self, value: bool) -> None:
+    def readable(self, value: primitives.Bool) -> None:
         """Set the Readable field value."""
         member = self.get_member("Readable")
         if member is not None:
@@ -516,7 +514,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "TileMirror", {"transition": transition}, debug,
         )
 
-    async def rescale(self, resolink: protocols.ResoniteLinkClient, size: np.int32, filtering: str, debug: bool = False) -> dict:
+    async def rescale(self, resolink: protocols.ResoniteLinkClient, size: primitives.Int, filtering: str, debug: bool = False) -> dict:
         """Call the Rescale sync method.
 
         Args:
@@ -614,7 +612,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "TrimByCornerColor", {}, debug,
         )
 
-    async def luminance_threshold(self, resolink: protocols.ResoniteLinkClient, threshold: np.float32, debug: bool = False) -> dict:
+    async def luminance_threshold(self, resolink: protocols.ResoniteLinkClient, threshold: primitives.Float, debug: bool = False) -> dict:
         """Call the LuminanceThreshold sync method.
 
         Args:
@@ -629,7 +627,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "LuminanceThreshold", {"threshold": threshold}, debug,
         )
 
-    async def luminance_threshold_3(self, resolink: protocols.ResoniteLinkClient, threshold: np.float32, above: primitives.Color, below: primitives.Color, debug: bool = False) -> dict:
+    async def luminance_threshold_3(self, resolink: protocols.ResoniteLinkClient, threshold: primitives.Float, above: primitives.Color, below: primitives.Color, debug: bool = False) -> dict:
         """Call the LuminanceThreshold sync method.
 
         Args:
@@ -646,7 +644,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "LuminanceThreshold", {"threshold": threshold, "above": above, "below": below}, debug,
         )
 
-    async def localized_luminance_threshold(self, resolink: protocols.ResoniteLinkClient, threshold: np.float32, range_: np.int32, debug: bool = False) -> dict:
+    async def localized_luminance_threshold(self, resolink: protocols.ResoniteLinkClient, threshold: primitives.Float, range_: primitives.Int, debug: bool = False) -> dict:
         """Call the LocalizedLuminanceThreshold sync method.
 
         Args:
@@ -662,7 +660,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "LocalizedLuminanceThreshold", {"threshold": threshold, "range": range_}, debug,
         )
 
-    async def localized_luminance_threshold_4(self, resolink: protocols.ResoniteLinkClient, threshold: np.float32, range_: np.int32, above: primitives.Color, below: primitives.Color, debug: bool = False) -> dict:
+    async def localized_luminance_threshold_4(self, resolink: protocols.ResoniteLinkClient, threshold: primitives.Float, range_: primitives.Int, above: primitives.Color, below: primitives.Color, debug: bool = False) -> dict:
         """Call the LocalizedLuminanceThreshold sync method.
 
         Args:
@@ -680,7 +678,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "LocalizedLuminanceThreshold", {"threshold": threshold, "range": range_, "above": above, "below": below}, debug,
         )
 
-    async def kmeans_cluster(self, resolink: protocols.ResoniteLinkClient, k: np.int32, position_weight: np.float32, batch_size: np.int32, passes_over_data: np.float32, debug: bool = False) -> dict:
+    async def kmeans_cluster(self, resolink: protocols.ResoniteLinkClient, k: primitives.Int, position_weight: primitives.Float, batch_size: primitives.Int, passes_over_data: primitives.Float, debug: bool = False) -> dict:
         """Call the KMeansCluster sync method.
 
         Args:
@@ -928,7 +926,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "AddBackground", {"color": color}, debug,
         )
 
-    async def adjust_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: np.float32, debug: bool = False) -> dict:
+    async def adjust_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: primitives.Float, debug: bool = False) -> dict:
         """Call the AdjustGamma sync method.
 
         Args:
@@ -943,7 +941,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "AdjustGamma", {"gamma": gamma}, debug,
         )
 
-    async def adjust_alpha_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: np.float32, debug: bool = False) -> dict:
+    async def adjust_alpha_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: primitives.Float, debug: bool = False) -> dict:
         """Call the AdjustAlphaGamma sync method.
 
         Args:
@@ -958,7 +956,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "AdjustAlphaGamma", {"gamma": gamma}, debug,
         )
 
-    async def shift_hue(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+    async def shift_hue(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
         """Call the ShiftHue sync method.
 
         Args:
@@ -973,7 +971,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "ShiftHue", {"offset": offset}, debug,
         )
 
-    async def set_hue(self, resolink: protocols.ResoniteLinkClient, hue: np.float32, debug: bool = False) -> dict:
+    async def set_hue(self, resolink: protocols.ResoniteLinkClient, hue: primitives.Float, debug: bool = False) -> dict:
         """Call the SetHue sync method.
 
         Args:
@@ -988,7 +986,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "SetHue", {"hue": hue}, debug,
         )
 
-    async def set_saturation(self, resolink: protocols.ResoniteLinkClient, saturation: np.float32, debug: bool = False) -> dict:
+    async def set_saturation(self, resolink: protocols.ResoniteLinkClient, saturation: primitives.Float, debug: bool = False) -> dict:
         """Call the SetSaturation sync method.
 
         Args:
@@ -1003,7 +1001,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "SetSaturation", {"saturation": saturation}, debug,
         )
 
-    async def offset_saturation(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+    async def offset_saturation(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
         """Call the OffsetSaturation sync method.
 
         Args:
@@ -1018,7 +1016,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "OffsetSaturation", {"offset": offset}, debug,
         )
 
-    async def mul_saturation(self, resolink: protocols.ResoniteLinkClient, ratio: np.float32, debug: bool = False) -> dict:
+    async def mul_saturation(self, resolink: protocols.ResoniteLinkClient, ratio: primitives.Float, debug: bool = False) -> dict:
         """Call the MulSaturation sync method.
 
         Args:
@@ -1033,7 +1031,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "MulSaturation", {"ratio": ratio}, debug,
         )
 
-    async def set_value(self, resolink: protocols.ResoniteLinkClient, value: np.float32, debug: bool = False) -> dict:
+    async def set_value(self, resolink: protocols.ResoniteLinkClient, value: primitives.Float, debug: bool = False) -> dict:
         """Call the SetValue sync method.
 
         Args:
@@ -1048,7 +1046,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "SetValue", {"value": value}, debug,
         )
 
-    async def mul_value(self, resolink: protocols.ResoniteLinkClient, ratio: np.float32, debug: bool = False) -> dict:
+    async def mul_value(self, resolink: protocols.ResoniteLinkClient, ratio: primitives.Float, debug: bool = False) -> dict:
         """Call the MulValue sync method.
 
         Args:
@@ -1063,7 +1061,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "MulValue", {"ratio": ratio}, debug,
         )
 
-    async def offset_value(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+    async def offset_value(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
         """Call the OffsetValue sync method.
 
         Args:
@@ -1078,7 +1076,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "OffsetValue", {"offset": offset}, debug,
         )
 
-    async def offset_alpha(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+    async def offset_alpha(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
         """Call the OffsetAlpha sync method.
 
         Args:
@@ -1093,7 +1091,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             resolink, "OffsetAlpha", {"offset": offset}, debug,
         )
 
-    async def normalize(self, resolink: protocols.ResoniteLinkClient, rgb_independently: bool, normalize_alpha: bool, normalize_min_value: bool, debug: bool = False) -> dict:
+    async def normalize(self, resolink: protocols.ResoniteLinkClient, rgb_independently: primitives.Bool, normalize_alpha: primitives.Bool, normalize_min_value: primitives.Bool, debug: bool = False) -> dict:
         """Call the Normalize sync method.
 
         Args:

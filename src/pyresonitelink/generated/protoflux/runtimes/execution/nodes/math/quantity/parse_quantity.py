@@ -1,6 +1,7 @@
 """Generated component: ParseQuantity."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -18,14 +19,14 @@ class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspec
 
     Parameterize with a value type::
 
-        ParseQuantity[np.float32]
+        ParseQuantity[primitives.Float]
         ParseQuantity[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Quantity.ParseQuantity<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Quantity.ParseQuantity<>"
 
-    def __init__(self, str_: str | INodeObjectOutput[str] | None = None, default_unit: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, str_: str | INodeObjectOutput[primitives.String] | None = None, default_unit: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,15 +42,15 @@ class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspec
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @str_.setter
-    def str_(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Str reference by target ID or INodeObjectOutput[str] instance."""
+    def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
@@ -62,15 +63,15 @@ class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspec
 
     @property
     def default_unit(self) -> str | None:
-        """Target ID of the DefaultUnit reference (targets INodeObjectOutput[str])."""
+        """Target ID of the DefaultUnit reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("DefaultUnit")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @default_unit.setter
-    def default_unit(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the DefaultUnit reference by target ID or INodeObjectOutput[str] instance."""
+    def default_unit(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the DefaultUnit reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("DefaultUnit")
         if isinstance(member, members.Reference):

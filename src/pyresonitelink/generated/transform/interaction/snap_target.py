@@ -1,9 +1,8 @@
 """Generated component: SnapTarget."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -20,7 +19,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SnapTarget"
 
-    def __init__(self, direct_snap_only: bool | None = None, maximum_snap_distance: np.float32 | None = None, maximum_angle_deviation: np.float32 | None = None, animation_time: np.float32 | None = None, auto_snap: bool | None = None, snap_collider_radius: str | IField[np.float32] | None = None, proxy_sphere: str | SphereCollider | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, direct_snap_only: primitives.Bool | None = None, maximum_snap_distance: primitives.Float | None = None, maximum_angle_deviation: primitives.Float | None = None, animation_time: primitives.Float | None = None, auto_snap: primitives.Bool | None = None, snap_collider_radius: str | IField[primitives.Float] | None = None, proxy_sphere: str | SphereCollider | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -76,7 +75,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
         self.set_member("SnapperKeywordWhitelist", value)
 
     @property
-    def direct_snap_only(self) -> bool | None:
+    def direct_snap_only(self) -> primitives.Bool | None:
         """The DirectSnapOnly field value."""
         member = self.get_member("DirectSnapOnly")
         if member is None:
@@ -84,7 +83,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @direct_snap_only.setter
-    def direct_snap_only(self, value: bool) -> None:
+    def direct_snap_only(self, value: primitives.Bool) -> None:
         """Set the DirectSnapOnly field value."""
         member = self.get_member("DirectSnapOnly")
         if member is not None:
@@ -95,7 +94,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
             )
 
     @property
-    def maximum_snap_distance(self) -> np.float32 | None:
+    def maximum_snap_distance(self) -> primitives.Float | None:
         """The MaximumSnapDistance field value."""
         member = self.get_member("MaximumSnapDistance")
         if member is None:
@@ -103,7 +102,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @maximum_snap_distance.setter
-    def maximum_snap_distance(self, value: np.float32) -> None:
+    def maximum_snap_distance(self, value: primitives.Float) -> None:
         """Set the MaximumSnapDistance field value."""
         member = self.get_member("MaximumSnapDistance")
         if member is not None:
@@ -114,7 +113,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
             )
 
     @property
-    def maximum_angle_deviation(self) -> np.float32 | None:
+    def maximum_angle_deviation(self) -> primitives.Float | None:
         """The MaximumAngleDeviation field value."""
         member = self.get_member("MaximumAngleDeviation")
         if member is None:
@@ -122,7 +121,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @maximum_angle_deviation.setter
-    def maximum_angle_deviation(self, value: np.float32) -> None:
+    def maximum_angle_deviation(self, value: primitives.Float) -> None:
         """Set the MaximumAngleDeviation field value."""
         member = self.get_member("MaximumAngleDeviation")
         if member is not None:
@@ -133,7 +132,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
             )
 
     @property
-    def animation_time(self) -> np.float32 | None:
+    def animation_time(self) -> primitives.Float | None:
         """The AnimationTime field value."""
         member = self.get_member("AnimationTime")
         if member is None:
@@ -141,7 +140,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @animation_time.setter
-    def animation_time(self, value: np.float32) -> None:
+    def animation_time(self, value: primitives.Float) -> None:
         """Set the AnimationTime field value."""
         member = self.get_member("AnimationTime")
         if member is not None:
@@ -152,7 +151,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
             )
 
     @property
-    def auto_snap(self) -> bool | None:
+    def auto_snap(self) -> primitives.Bool | None:
         """The AutoSnap field value."""
         member = self.get_member("AutoSnap")
         if member is None:
@@ -160,7 +159,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @auto_snap.setter
-    def auto_snap(self, value: bool) -> None:
+    def auto_snap(self, value: primitives.Bool) -> None:
         """Set the AutoSnap field value."""
         member = self.get_member("AutoSnap")
         if member is not None:
@@ -172,15 +171,15 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
 
     @property
     def snap_collider_radius(self) -> str | None:
-        """Target ID of the _snapColliderRadius reference (targets IField[np.float32])."""
+        """Target ID of the _snapColliderRadius reference (targets IField[primitives.Float])."""
         member = self.get_member("_snapColliderRadius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @snap_collider_radius.setter
-    def snap_collider_radius(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _snapColliderRadius reference by target ID or IField[np.float32] instance."""
+    def snap_collider_radius(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _snapColliderRadius reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_snapColliderRadius")
         if isinstance(member, members.Reference):

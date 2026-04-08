@@ -1,8 +1,7 @@
 """Generated component: AppVersion."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -17,7 +16,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AppVersion"
 
-    def __init__(self, version_number: str | None = None, version_name: str | None = None, full_version_string: str | None = None, build_year: np.int32 | None = None, build_month: np.int32 | None = None, build_day: np.int32 | None = None, build_time_of_day: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, version_number: primitives.String | None = None, version_name: primitives.String | None = None, full_version_string: primitives.String | None = None, build_year: primitives.Int | None = None, build_month: primitives.Int | None = None, build_day: primitives.Int | None = None, build_time_of_day: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -47,7 +46,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.build_time_of_day = build_time_of_day
 
     @property
-    def version_number(self) -> str | None:
+    def version_number(self) -> primitives.String | None:
         """The VersionNumber field value."""
         member = self.get_member("VersionNumber")
         if member is None:
@@ -55,7 +54,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @version_number.setter
-    def version_number(self, value: str) -> None:
+    def version_number(self, value: primitives.String) -> None:
         """Set the VersionNumber field value."""
         member = self.get_member("VersionNumber")
         if member is not None:
@@ -66,7 +65,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def version_name(self) -> str | None:
+    def version_name(self) -> primitives.String | None:
         """The VersionName field value."""
         member = self.get_member("VersionName")
         if member is None:
@@ -74,7 +73,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @version_name.setter
-    def version_name(self, value: str) -> None:
+    def version_name(self, value: primitives.String) -> None:
         """Set the VersionName field value."""
         member = self.get_member("VersionName")
         if member is not None:
@@ -85,7 +84,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def full_version_string(self) -> str | None:
+    def full_version_string(self) -> primitives.String | None:
         """The FullVersionString field value."""
         member = self.get_member("FullVersionString")
         if member is None:
@@ -93,7 +92,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @full_version_string.setter
-    def full_version_string(self, value: str) -> None:
+    def full_version_string(self, value: primitives.String) -> None:
         """Set the FullVersionString field value."""
         member = self.get_member("FullVersionString")
         if member is not None:
@@ -104,7 +103,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def build_year(self) -> np.int32 | None:
+    def build_year(self) -> primitives.Int | None:
         """The BuildYear field value."""
         member = self.get_member("BuildYear")
         if member is None:
@@ -112,7 +111,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @build_year.setter
-    def build_year(self, value: np.int32) -> None:
+    def build_year(self, value: primitives.Int) -> None:
         """Set the BuildYear field value."""
         member = self.get_member("BuildYear")
         if member is not None:
@@ -123,7 +122,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def build_month(self) -> np.int32 | None:
+    def build_month(self) -> primitives.Int | None:
         """The BuildMonth field value."""
         member = self.get_member("BuildMonth")
         if member is None:
@@ -131,7 +130,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @build_month.setter
-    def build_month(self, value: np.int32) -> None:
+    def build_month(self, value: primitives.Int) -> None:
         """Set the BuildMonth field value."""
         member = self.get_member("BuildMonth")
         if member is not None:
@@ -142,7 +141,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def build_day(self) -> np.int32 | None:
+    def build_day(self) -> primitives.Int | None:
         """The BuildDay field value."""
         member = self.get_member("BuildDay")
         if member is None:
@@ -150,7 +149,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @build_day.setter
-    def build_day(self, value: np.int32) -> None:
+    def build_day(self, value: primitives.Int) -> None:
         """Set the BuildDay field value."""
         member = self.get_member("BuildDay")
         if member is not None:
@@ -161,7 +160,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def build_time_of_day(self) -> np.int32 | None:
+    def build_time_of_day(self) -> primitives.Int | None:
         """The BuildTimeOfDay field value."""
         member = self.get_member("BuildTimeOfDay")
         if member is None:
@@ -169,7 +168,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @build_time_of_day.setter
-    def build_time_of_day(self, value: np.int32) -> None:
+    def build_time_of_day(self, value: primitives.Int) -> None:
         """Set the BuildTimeOfDay field value."""
         member = self.get_member("BuildTimeOfDay")
         if member is not None:

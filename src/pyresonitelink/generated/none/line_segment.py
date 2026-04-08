@@ -1,7 +1,5 @@
 """Generated component: LineSegment."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LineSegment"
 
-    def __init__(self, radius: np.float32 | None = None, sides: np.int32 | None = None, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, anchor0: str | Slot | None = None, anchor1: str | Slot | None = None, cylinder: str | CylinderMesh | None = None, collider: str | CylinderCollider | None = None, offset: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, visual_scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, radius: primitives.Float | None = None, sides: primitives.Int | None = None, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, anchor0: str | Slot | None = None, anchor1: str | Slot | None = None, cylinder: str | CylinderMesh | None = None, collider: str | CylinderCollider | None = None, offset: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, visual_scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,7 +61,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.visual_scale = visual_scale
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -71,7 +69,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -82,7 +80,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def sides(self) -> np.int32 | None:
+    def sides(self) -> primitives.Int | None:
         """The Sides field value."""
         member = self.get_member("Sides")
         if member is None:
@@ -90,7 +88,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @sides.setter
-    def sides(self, value: np.int32) -> None:
+    def sides(self, value: primitives.Int) -> None:
         """Set the Sides field value."""
         member = self.get_member("Sides")
         if member is not None:

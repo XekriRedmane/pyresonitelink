@@ -1,6 +1,7 @@
 """Generated component: DebugAvatarBuilder."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -13,7 +14,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugAvatarBuilder"
 
-    def __init__(self, setup_server_voice: bool | None = None, setup_client_voice: bool | None = None, setup_server_tools: bool | None = None, setup_client_tools: bool | None = None, parent_clients_to_server: bool | None = None, align_tracking: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, setup_server_voice: primitives.Bool | None = None, setup_client_voice: primitives.Bool | None = None, setup_server_tools: primitives.Bool | None = None, setup_client_tools: primitives.Bool | None = None, parent_clients_to_server: primitives.Bool | None = None, align_tracking: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +41,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.align_tracking = align_tracking
 
     @property
-    def setup_server_voice(self) -> bool | None:
+    def setup_server_voice(self) -> primitives.Bool | None:
         """The SetupServerVoice field value."""
         member = self.get_member("SetupServerVoice")
         if member is None:
@@ -48,7 +49,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @setup_server_voice.setter
-    def setup_server_voice(self, value: bool) -> None:
+    def setup_server_voice(self, value: primitives.Bool) -> None:
         """Set the SetupServerVoice field value."""
         member = self.get_member("SetupServerVoice")
         if member is not None:
@@ -59,7 +60,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def setup_client_voice(self) -> bool | None:
+    def setup_client_voice(self) -> primitives.Bool | None:
         """The SetupClientVoice field value."""
         member = self.get_member("SetupClientVoice")
         if member is None:
@@ -67,7 +68,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @setup_client_voice.setter
-    def setup_client_voice(self, value: bool) -> None:
+    def setup_client_voice(self, value: primitives.Bool) -> None:
         """Set the SetupClientVoice field value."""
         member = self.get_member("SetupClientVoice")
         if member is not None:
@@ -78,7 +79,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def setup_server_tools(self) -> bool | None:
+    def setup_server_tools(self) -> primitives.Bool | None:
         """The SetupServerTools field value."""
         member = self.get_member("SetupServerTools")
         if member is None:
@@ -86,7 +87,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @setup_server_tools.setter
-    def setup_server_tools(self, value: bool) -> None:
+    def setup_server_tools(self, value: primitives.Bool) -> None:
         """Set the SetupServerTools field value."""
         member = self.get_member("SetupServerTools")
         if member is not None:
@@ -97,7 +98,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def setup_client_tools(self) -> bool | None:
+    def setup_client_tools(self) -> primitives.Bool | None:
         """The SetupClientTools field value."""
         member = self.get_member("SetupClientTools")
         if member is None:
@@ -105,7 +106,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @setup_client_tools.setter
-    def setup_client_tools(self, value: bool) -> None:
+    def setup_client_tools(self, value: primitives.Bool) -> None:
         """Set the SetupClientTools field value."""
         member = self.get_member("SetupClientTools")
         if member is not None:
@@ -116,7 +117,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def parent_clients_to_server(self) -> bool | None:
+    def parent_clients_to_server(self) -> primitives.Bool | None:
         """The ParentClientsToServer field value."""
         member = self.get_member("ParentClientsToServer")
         if member is None:
@@ -124,7 +125,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @parent_clients_to_server.setter
-    def parent_clients_to_server(self, value: bool) -> None:
+    def parent_clients_to_server(self, value: primitives.Bool) -> None:
         """Set the ParentClientsToServer field value."""
         member = self.get_member("ParentClientsToServer")
         if member is not None:
@@ -135,7 +136,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def align_tracking(self) -> bool | None:
+    def align_tracking(self) -> primitives.Bool | None:
         """The AlignTracking field value."""
         member = self.get_member("AlignTracking")
         if member is None:
@@ -143,7 +144,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @align_tracking.setter
-    def align_tracking(self, value: bool) -> None:
+    def align_tracking(self, value: primitives.Bool) -> None:
         """Set the AlignTracking field value."""
         member = self.get_member("AlignTracking")
         if member is not None:

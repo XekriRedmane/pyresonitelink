@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -14,7 +15,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FinalIK.VRIK"
 
-    def __init__(self, auto_update: bool | None = None, fix_transforms_enabled: bool | None = None, component_initiated: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_update: primitives.Bool | None = None, fix_transforms_enabled: primitives.Bool | None = None, component_initiated: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +33,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.component_initiated = component_initiated
 
     @property
-    def auto_update(self) -> bool | None:
+    def auto_update(self) -> primitives.Bool | None:
         """The AutoUpdate field value."""
         member = self.get_member("AutoUpdate")
         if member is None:
@@ -40,7 +41,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_update.setter
-    def auto_update(self, value: bool) -> None:
+    def auto_update(self, value: primitives.Bool) -> None:
         """Set the AutoUpdate field value."""
         member = self.get_member("AutoUpdate")
         if member is not None:
@@ -51,7 +52,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def fix_transforms_enabled(self) -> bool | None:
+    def fix_transforms_enabled(self) -> primitives.Bool | None:
         """The FixTransformsEnabled field value."""
         member = self.get_member("FixTransformsEnabled")
         if member is None:
@@ -59,7 +60,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @fix_transforms_enabled.setter
-    def fix_transforms_enabled(self, value: bool) -> None:
+    def fix_transforms_enabled(self, value: primitives.Bool) -> None:
         """Set the FixTransformsEnabled field value."""
         member = self.get_member("FixTransformsEnabled")
         if member is not None:
@@ -83,7 +84,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("Solver", value)
 
     @property
-    def component_initiated(self) -> bool | None:
+    def component_initiated(self) -> primitives.Bool | None:
         """The componentInitiated field value."""
         member = self.get_member("componentInitiated")
         if member is None:
@@ -91,7 +92,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @component_initiated.setter
-    def component_initiated(self, value: bool) -> None:
+    def component_initiated(self, value: primitives.Bool) -> None:
         """Set the componentInitiated field value."""
         member = self.get_member("componentInitiated")
         if member is not None:

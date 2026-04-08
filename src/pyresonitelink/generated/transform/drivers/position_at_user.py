@@ -19,7 +19,7 @@ class PositionAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PositionAtUser"
 
-    def __init__(self, target_user: str | User | None = None, position_at_local_user: bool | None = None, target_position_offset: primitives.Float3 | None = None, target_rotation_offset: primitives.FloatQ | None = None, position_offset: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, run_after_final_pose_update: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_user: str | User | None = None, position_at_local_user: primitives.Bool | None = None, target_position_offset: primitives.Float3 | None = None, target_rotation_offset: primitives.FloatQ | None = None, position_offset: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, run_after_final_pose_update: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -76,7 +76,7 @@ class PositionAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def position_at_local_user(self) -> bool | None:
+    def position_at_local_user(self) -> primitives.Bool | None:
         """The PositionAtLocalUser field value."""
         member = self.get_member("PositionAtLocalUser")
         if member is None:
@@ -84,7 +84,7 @@ class PositionAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @position_at_local_user.setter
-    def position_at_local_user(self, value: bool) -> None:
+    def position_at_local_user(self, value: primitives.Bool) -> None:
         """Set the PositionAtLocalUser field value."""
         member = self.get_member("PositionAtLocalUser")
         if member is not None:
@@ -239,7 +239,7 @@ class PositionAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def run_after_final_pose_update(self) -> bool | None:
+    def run_after_final_pose_update(self) -> primitives.Bool | None:
         """The RunAfterFinalPoseUpdate field value."""
         member = self.get_member("RunAfterFinalPoseUpdate")
         if member is None:
@@ -247,7 +247,7 @@ class PositionAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @run_after_final_pose_update.setter
-    def run_after_final_pose_update(self, value: bool) -> None:
+    def run_after_final_pose_update(self, value: primitives.Bool) -> None:
         """Set the RunAfterFinalPoseUpdate field value."""
         member = self.get_member("RunAfterFinalPoseUpdate")
         if member is not None:

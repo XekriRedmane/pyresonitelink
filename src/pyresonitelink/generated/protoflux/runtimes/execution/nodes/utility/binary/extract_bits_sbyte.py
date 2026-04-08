@@ -1,8 +1,7 @@
 """Generated component: ExtractBits_sbyte."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class ExtractBits_sbyte(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Binary.ExtractBits_sbyte"
 
-    def __init__(self, integer: str | INodeValueOutput[np.int8] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, integer: str | INodeValueOutput[primitives.SByte] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,15 +33,15 @@ class ExtractBits_sbyte(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def integer(self) -> str | None:
-        """Target ID of the Integer reference (targets INodeValueOutput[np.int8])."""
+        """Target ID of the Integer reference (targets INodeValueOutput[primitives.SByte])."""
         member = self.get_member("Integer")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @integer.setter
-    def integer(self, target: str | INodeValueOutput[np.int8] | None) -> None:
-        """Set the Integer reference by target ID or INodeValueOutput[np.int8] instance."""
+    def integer(self, target: str | INodeValueOutput[primitives.SByte] | None) -> None:
+        """Set the Integer reference by target ID or INodeValueOutput[primitives.SByte] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Integer")
         if isinstance(member, members.Reference):

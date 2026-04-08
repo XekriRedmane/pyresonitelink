@@ -13,7 +13,7 @@ class AsyncDynamicImpulseReceiverWithObject+Proxy(GenericComponent[T], IComponen
 
     Parameterize with a value type::
 
-        AsyncDynamicImpulseReceiverWithObject+Proxy[np.float32]
+        AsyncDynamicImpulseReceiverWithObject+Proxy[primitives.Float]
         AsyncDynamicImpulseReceiverWithObject+Proxy[primitives.Float3]
     """
 

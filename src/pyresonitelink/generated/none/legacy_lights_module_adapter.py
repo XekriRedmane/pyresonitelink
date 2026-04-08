@@ -1,6 +1,7 @@
 """Generated component: LegacyLightsModuleAdapter."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.light import Light
@@ -15,7 +16,7 @@ class LegacyLightsModuleAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyLightsModuleAdapter"
 
-    def __init__(self, legacy_light: str | Light | None = None, reference_light: str | Light | None = None, lights_module_enabled: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, legacy_light: str | Light | None = None, reference_light: str | Light | None = None, lights_module_enabled: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -76,15 +77,15 @@ class LegacyLightsModuleAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def lights_module_enabled(self) -> str | None:
-        """Target ID of the LightsModuleEnabled reference (targets IField[bool])."""
+        """Target ID of the LightsModuleEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("LightsModuleEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @lights_module_enabled.setter
-    def lights_module_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the LightsModuleEnabled reference by target ID or IField[bool] instance."""
+    def lights_module_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the LightsModuleEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("LightsModuleEnabled")
         if isinstance(member, members.Reference):

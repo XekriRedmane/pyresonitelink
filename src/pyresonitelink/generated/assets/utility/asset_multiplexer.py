@@ -1,11 +1,11 @@
 """Generated component: AssetMultiplexer."""
 
 from typing import Any
-import numpy as np
 
 A = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.asset_ref import AssetRef
@@ -20,14 +20,14 @@ class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        AssetMultiplexer[np.float32]
+        AssetMultiplexer[primitives.Float]
         AssetMultiplexer[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AssetMultiplexer<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.AssetMultiplexer<>"
 
-    def __init__(self, target: str | AssetRef[A] | None = None, index: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | AssetRef[A] | None = None, index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,7 +63,7 @@ class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def index(self) -> np.int32 | None:
+    def index(self) -> primitives.Int | None:
         """The Index field value."""
         member = self.get_member("Index")
         if member is None:
@@ -71,7 +71,7 @@ class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @index.setter
-    def index(self, value: np.int32) -> None:
+    def index(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:

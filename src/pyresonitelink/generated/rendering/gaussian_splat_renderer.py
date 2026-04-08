@@ -1,9 +1,8 @@
 """Generated component: GaussianSplatRenderer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -22,7 +21,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GaussianSplatRenderer"
 
-    def __init__(self, gaussian_splat: str | IAssetProvider[GaussianSplat] | None = None, size_scale: np.float32 | None = None, opacity_scale: np.float32 | None = None, max_sh_order: np.int32 | None = None, spherical_harmonics_only: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, gaussian_splat: str | IAssetProvider[GaussianSplat] | None = None, size_scale: primitives.Float | None = None, opacity_scale: primitives.Float | None = None, max_sh_order: primitives.Int | None = None, spherical_harmonics_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,7 +66,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
             )
 
     @property
-    def size_scale(self) -> np.float32 | None:
+    def size_scale(self) -> primitives.Float | None:
         """The SizeScale field value."""
         member = self.get_member("SizeScale")
         if member is None:
@@ -75,7 +74,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
         return getattr(member, 'value', None)
 
     @size_scale.setter
-    def size_scale(self, value: np.float32) -> None:
+    def size_scale(self, value: primitives.Float) -> None:
         """Set the SizeScale field value."""
         member = self.get_member("SizeScale")
         if member is not None:
@@ -86,7 +85,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
             )
 
     @property
-    def opacity_scale(self) -> np.float32 | None:
+    def opacity_scale(self) -> primitives.Float | None:
         """The OpacityScale field value."""
         member = self.get_member("OpacityScale")
         if member is None:
@@ -94,7 +93,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
         return getattr(member, 'value', None)
 
     @opacity_scale.setter
-    def opacity_scale(self, value: np.float32) -> None:
+    def opacity_scale(self, value: primitives.Float) -> None:
         """Set the OpacityScale field value."""
         member = self.get_member("OpacityScale")
         if member is not None:
@@ -105,7 +104,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
             )
 
     @property
-    def max_sh_order(self) -> np.int32 | None:
+    def max_sh_order(self) -> primitives.Int | None:
         """The MaxSHOrder field value."""
         member = self.get_member("MaxSHOrder")
         if member is None:
@@ -113,7 +112,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
         return getattr(member, 'value', None)
 
     @max_sh_order.setter
-    def max_sh_order(self, value: np.int32) -> None:
+    def max_sh_order(self, value: primitives.Int) -> None:
         """Set the MaxSHOrder field value."""
         member = self.get_member("MaxSHOrder")
         if member is not None:
@@ -124,7 +123,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
             )
 
     @property
-    def spherical_harmonics_only(self) -> bool | None:
+    def spherical_harmonics_only(self) -> primitives.Bool | None:
         """The SphericalHarmonicsOnly field value."""
         member = self.get_member("SphericalHarmonicsOnly")
         if member is None:
@@ -132,7 +131,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
         return getattr(member, 'value', None)
 
     @spherical_harmonics_only.setter
-    def spherical_harmonics_only(self, value: bool) -> None:
+    def spherical_harmonics_only(self, value: primitives.Bool) -> None:
         """Set the SphericalHarmonicsOnly field value."""
         member = self.get_member("SphericalHarmonicsOnly")
         if member is not None:

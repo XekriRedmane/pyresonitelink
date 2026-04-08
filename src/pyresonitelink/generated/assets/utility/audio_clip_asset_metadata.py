@@ -1,9 +1,8 @@
 """Generated component: AudioClipAssetMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,7 +19,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioClipAssetMetadata"
 
-    def __init__(self, audio_clip: str | IAssetProvider[AudioClip] | None = None, sample_rate: np.int32 | None = None, channel_count: np.int32 | None = None, sample_count: np.int32 | None = None, duration: np.float64 | None = None, extension: str | None = None, codec_info: str | None = None, fully_decoded: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, audio_clip: str | IAssetProvider[AudioClip] | None = None, sample_rate: primitives.Int | None = None, channel_count: primitives.Int | None = None, sample_count: primitives.Int | None = None, duration: primitives.Double | None = None, extension: primitives.String | None = None, codec_info: primitives.String | None = None, fully_decoded: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -74,7 +73,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def sample_rate(self) -> np.int32 | None:
+    def sample_rate(self) -> primitives.Int | None:
         """The SampleRate field value."""
         member = self.get_member("SampleRate")
         if member is None:
@@ -82,7 +81,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @sample_rate.setter
-    def sample_rate(self, value: np.int32) -> None:
+    def sample_rate(self, value: primitives.Int) -> None:
         """Set the SampleRate field value."""
         member = self.get_member("SampleRate")
         if member is not None:
@@ -106,7 +105,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         self.set_member("Channels", value)
 
     @property
-    def channel_count(self) -> np.int32 | None:
+    def channel_count(self) -> primitives.Int | None:
         """The ChannelCount field value."""
         member = self.get_member("ChannelCount")
         if member is None:
@@ -114,7 +113,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @channel_count.setter
-    def channel_count(self, value: np.int32) -> None:
+    def channel_count(self, value: primitives.Int) -> None:
         """Set the ChannelCount field value."""
         member = self.get_member("ChannelCount")
         if member is not None:
@@ -125,7 +124,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def sample_count(self) -> np.int32 | None:
+    def sample_count(self) -> primitives.Int | None:
         """The SampleCount field value."""
         member = self.get_member("SampleCount")
         if member is None:
@@ -133,7 +132,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @sample_count.setter
-    def sample_count(self, value: np.int32) -> None:
+    def sample_count(self, value: primitives.Int) -> None:
         """Set the SampleCount field value."""
         member = self.get_member("SampleCount")
         if member is not None:
@@ -144,7 +143,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def duration(self) -> np.float64 | None:
+    def duration(self) -> primitives.Double | None:
         """The Duration field value."""
         member = self.get_member("Duration")
         if member is None:
@@ -152,7 +151,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @duration.setter
-    def duration(self, value: np.float64) -> None:
+    def duration(self, value: primitives.Double) -> None:
         """Set the Duration field value."""
         member = self.get_member("Duration")
         if member is not None:
@@ -163,7 +162,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def extension(self) -> str | None:
+    def extension(self) -> primitives.String | None:
         """The Extension field value."""
         member = self.get_member("Extension")
         if member is None:
@@ -171,7 +170,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @extension.setter
-    def extension(self, value: str) -> None:
+    def extension(self, value: primitives.String) -> None:
         """Set the Extension field value."""
         member = self.get_member("Extension")
         if member is not None:
@@ -182,7 +181,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def codec_info(self) -> str | None:
+    def codec_info(self) -> primitives.String | None:
         """The CodecInfo field value."""
         member = self.get_member("CodecInfo")
         if member is None:
@@ -190,7 +189,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @codec_info.setter
-    def codec_info(self, value: str) -> None:
+    def codec_info(self, value: primitives.String) -> None:
         """Set the CodecInfo field value."""
         member = self.get_member("CodecInfo")
         if member is not None:
@@ -201,7 +200,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def fully_decoded(self) -> bool | None:
+    def fully_decoded(self) -> primitives.Bool | None:
         """The FullyDecoded field value."""
         member = self.get_member("FullyDecoded")
         if member is None:
@@ -209,7 +208,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @fully_decoded.setter
-    def fully_decoded(self, value: bool) -> None:
+    def fully_decoded(self, value: primitives.Bool) -> None:
         """Set the FullyDecoded field value."""
         member = self.get_member("FullyDecoded")
         if member is not None:

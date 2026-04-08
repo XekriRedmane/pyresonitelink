@@ -1,9 +1,8 @@
 """Generated component: LocomotionPermissions."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworker_permissions import IWorkerPermissions
@@ -19,7 +18,7 @@ class LocomotionPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionPermissions"
 
-    def __init__(self, min_scale: np.float32 | None = None, max_scale: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_scale: primitives.Float | None = None, max_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -73,7 +72,7 @@ class LocomotionPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspe
         self.set_member("Scaling", value)
 
     @property
-    def min_scale(self) -> np.float32 | None:
+    def min_scale(self) -> primitives.Float | None:
         """The MinScale field value."""
         member = self.get_member("MinScale")
         if member is None:
@@ -81,7 +80,7 @@ class LocomotionPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspe
         return getattr(member, 'value', None)
 
     @min_scale.setter
-    def min_scale(self, value: np.float32) -> None:
+    def min_scale(self, value: primitives.Float) -> None:
         """Set the MinScale field value."""
         member = self.get_member("MinScale")
         if member is not None:
@@ -92,7 +91,7 @@ class LocomotionPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspe
             )
 
     @property
-    def max_scale(self) -> np.float32 | None:
+    def max_scale(self) -> primitives.Float | None:
         """The MaxScale field value."""
         member = self.get_member("MaxScale")
         if member is None:
@@ -100,7 +99,7 @@ class LocomotionPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspe
         return getattr(member, 'value', None)
 
     @max_scale.setter
-    def max_scale(self, value: np.float32) -> None:
+    def max_scale(self, value: primitives.Float) -> None:
         """Set the MaxScale field value."""
         member = self.get_member("MaxScale")
         if member is not None:

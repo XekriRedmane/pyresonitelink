@@ -21,7 +21,7 @@ class NextValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     Parameterize with a value type::
 
-        NextValue[np.float32]
+        NextValue[primitives.Float]
         NextValue[primitives.Float3]
     """
 

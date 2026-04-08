@@ -19,7 +19,7 @@ class ObjectLessOrEqual(GenericComponent[T], INodeValueOutput[T], IExecutionNode
 
     Parameterize with a value type::
 
-        ObjectLessOrEqual[np.float32]
+        ObjectLessOrEqual[primitives.Float]
         ObjectLessOrEqual[primitives.Float3]
     """
 

@@ -1,8 +1,7 @@
 """Generated component: SequenceRibbonSplitter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -17,7 +16,7 @@ class SequenceRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SequenceRibbonSplitter"
 
-    def __init__(self, min_sequence_count: np.int32 | None = None, max_sequence_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_sequence_count: primitives.Int | None = None, max_sequence_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +31,7 @@ class SequenceRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWorldEv
             self.max_sequence_count = max_sequence_count
 
     @property
-    def min_sequence_count(self) -> np.int32 | None:
+    def min_sequence_count(self) -> primitives.Int | None:
         """The MinSequenceCount field value."""
         member = self.get_member("MinSequenceCount")
         if member is None:
@@ -40,7 +39,7 @@ class SequenceRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWorldEv
         return getattr(member, 'value', None)
 
     @min_sequence_count.setter
-    def min_sequence_count(self, value: np.int32) -> None:
+    def min_sequence_count(self, value: primitives.Int) -> None:
         """Set the MinSequenceCount field value."""
         member = self.get_member("MinSequenceCount")
         if member is not None:
@@ -51,7 +50,7 @@ class SequenceRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWorldEv
             )
 
     @property
-    def max_sequence_count(self) -> np.int32 | None:
+    def max_sequence_count(self) -> primitives.Int | None:
         """The MaxSequenceCount field value."""
         member = self.get_member("MaxSequenceCount")
         if member is None:
@@ -59,7 +58,7 @@ class SequenceRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWorldEv
         return getattr(member, 'value', None)
 
     @max_sequence_count.setter
-    def max_sequence_count(self, value: np.int32) -> None:
+    def max_sequence_count(self, value: primitives.Int) -> None:
         """Set the MaxSequenceCount field value."""
         member = self.get_member("MaxSequenceCount")
         if member is not None:

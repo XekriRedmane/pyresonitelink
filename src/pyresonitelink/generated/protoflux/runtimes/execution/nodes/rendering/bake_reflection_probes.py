@@ -1,8 +1,7 @@
 """Generated component: BakeReflectionProbes."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -25,7 +24,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering.BakeReflectionProbes"
 
-    def __init__(self, root: str | INodeObjectOutput[Slot] | None = None, bake_inactive: str | INodeValueOutput[bool] | None = None, filter_with_tag: str | INodeObjectOutput[str] | None = None, delay_before_bake: str | INodeValueOutput[np.float32] | None = None, on_bake_batch_start: str | INodeOperation | None = None, on_before_probe_bake: str | INodeOperation | None = None, on_probe_baked: str | INodeOperation | None = None, on_bake_batch_finished: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, root: str | INodeObjectOutput[Slot] | None = None, bake_inactive: str | INodeValueOutput[primitives.Bool] | None = None, filter_with_tag: str | INodeObjectOutput[primitives.String] | None = None, delay_before_bake: str | INodeValueOutput[primitives.Float] | None = None, on_bake_batch_start: str | INodeOperation | None = None, on_before_probe_bake: str | INodeOperation | None = None, on_probe_baked: str | INodeOperation | None = None, on_bake_batch_finished: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -80,15 +79,15 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def bake_inactive(self) -> str | None:
-        """Target ID of the BakeInactive reference (targets INodeValueOutput[bool])."""
+        """Target ID of the BakeInactive reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("BakeInactive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @bake_inactive.setter
-    def bake_inactive(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the BakeInactive reference by target ID or INodeValueOutput[bool] instance."""
+    def bake_inactive(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the BakeInactive reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("BakeInactive")
         if isinstance(member, members.Reference):
@@ -101,15 +100,15 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def filter_with_tag(self) -> str | None:
-        """Target ID of the FilterWithTag reference (targets INodeObjectOutput[str])."""
+        """Target ID of the FilterWithTag reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("FilterWithTag")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @filter_with_tag.setter
-    def filter_with_tag(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the FilterWithTag reference by target ID or INodeObjectOutput[str] instance."""
+    def filter_with_tag(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the FilterWithTag reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("FilterWithTag")
         if isinstance(member, members.Reference):
@@ -122,15 +121,15 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def delay_before_bake(self) -> str | None:
-        """Target ID of the DelayBeforeBake reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the DelayBeforeBake reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("DelayBeforeBake")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @delay_before_bake.setter
-    def delay_before_bake(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the DelayBeforeBake reference by target ID or INodeValueOutput[np.float32] instance."""
+    def delay_before_bake(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the DelayBeforeBake reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("DelayBeforeBake")
         if isinstance(member, members.Reference):

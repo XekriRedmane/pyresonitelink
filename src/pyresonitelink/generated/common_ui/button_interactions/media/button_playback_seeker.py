@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iplayable import IPlayable
@@ -17,7 +18,7 @@ class ButtonPlaybackSeeker(GeneratedComponent, IButtonPressReceiver, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonPlaybackSeeker"
 
-    def __init__(self, playback: str | IPlayable | None = None, vertical: bool | None = None, continuous: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, playback: str | IPlayable | None = None, vertical: primitives.Bool | None = None, continuous: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -56,7 +57,7 @@ class ButtonPlaybackSeeker(GeneratedComponent, IButtonPressReceiver, IWorldEvent
             )
 
     @property
-    def vertical(self) -> bool | None:
+    def vertical(self) -> primitives.Bool | None:
         """The Vertical field value."""
         member = self.get_member("Vertical")
         if member is None:
@@ -64,7 +65,7 @@ class ButtonPlaybackSeeker(GeneratedComponent, IButtonPressReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @vertical.setter
-    def vertical(self, value: bool) -> None:
+    def vertical(self, value: primitives.Bool) -> None:
         """Set the Vertical field value."""
         member = self.get_member("Vertical")
         if member is not None:
@@ -75,7 +76,7 @@ class ButtonPlaybackSeeker(GeneratedComponent, IButtonPressReceiver, IWorldEvent
             )
 
     @property
-    def continuous(self) -> bool | None:
+    def continuous(self) -> primitives.Bool | None:
         """The Continuous field value."""
         member = self.get_member("Continuous")
         if member is None:
@@ -83,7 +84,7 @@ class ButtonPlaybackSeeker(GeneratedComponent, IButtonPressReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @continuous.setter
-    def continuous(self, value: bool) -> None:
+    def continuous(self, value: primitives.Bool) -> None:
         """Set the Continuous field value."""
         member = self.get_member("Continuous")
         if member is not None:

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -22,7 +23,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ComponentCloneTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, apply_to_object_root: bool | None = None, ensure_single_instance: bool | None = None, allow_pickup: bool | None = None, label: str | TextRenderer | None = None, template_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, apply_to_object_root: primitives.Bool | None = None, ensure_single_instance: primitives.Bool | None = None, allow_pickup: primitives.Bool | None = None, label: str | TextRenderer | None = None, template_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -98,7 +99,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -106,7 +107,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -117,7 +118,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -125,7 +126,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -136,7 +137,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -144,7 +145,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -176,7 +177,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -184,7 +185,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -195,7 +196,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def apply_to_object_root(self) -> bool | None:
+    def apply_to_object_root(self) -> primitives.Bool | None:
         """The ApplyToObjectRoot field value."""
         member = self.get_member("ApplyToObjectRoot")
         if member is None:
@@ -203,7 +204,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @apply_to_object_root.setter
-    def apply_to_object_root(self, value: bool) -> None:
+    def apply_to_object_root(self, value: primitives.Bool) -> None:
         """Set the ApplyToObjectRoot field value."""
         member = self.get_member("ApplyToObjectRoot")
         if member is not None:
@@ -214,7 +215,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def ensure_single_instance(self) -> bool | None:
+    def ensure_single_instance(self) -> primitives.Bool | None:
         """The EnsureSingleInstance field value."""
         member = self.get_member("EnsureSingleInstance")
         if member is None:
@@ -222,7 +223,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @ensure_single_instance.setter
-    def ensure_single_instance(self, value: bool) -> None:
+    def ensure_single_instance(self, value: primitives.Bool) -> None:
         """Set the EnsureSingleInstance field value."""
         member = self.get_member("EnsureSingleInstance")
         if member is not None:
@@ -233,7 +234,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def allow_pickup(self) -> bool | None:
+    def allow_pickup(self) -> primitives.Bool | None:
         """The AllowPickup field value."""
         member = self.get_member("AllowPickup")
         if member is None:
@@ -241,7 +242,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @allow_pickup.setter
-    def allow_pickup(self, value: bool) -> None:
+    def allow_pickup(self, value: primitives.Bool) -> None:
         """Set the AllowPickup field value."""
         member = self.get_member("AllowPickup")
         if member is not None:

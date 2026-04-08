@@ -21,7 +21,7 @@ class ColorXToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorXToHexCode"
 
-    def __init__(self, color: str | INodeValueOutput[primitives.ColorX] | None = None, short_form: str | INodeValueOutput[bool] | None = None, include_alpha: str | INodeValueOutput[bool] | None = None, prefix: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, color: str | INodeValueOutput[primitives.ColorX] | None = None, short_form: str | INodeValueOutput[primitives.Bool] | None = None, include_alpha: str | INodeValueOutput[primitives.Bool] | None = None, prefix: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -64,15 +64,15 @@ class ColorXToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INo
 
     @property
     def short_form(self) -> str | None:
-        """Target ID of the ShortForm reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ShortForm reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ShortForm")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @short_form.setter
-    def short_form(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ShortForm reference by target ID or INodeValueOutput[bool] instance."""
+    def short_form(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ShortForm reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ShortForm")
         if isinstance(member, members.Reference):
@@ -85,15 +85,15 @@ class ColorXToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INo
 
     @property
     def include_alpha(self) -> str | None:
-        """Target ID of the IncludeAlpha reference (targets INodeValueOutput[bool])."""
+        """Target ID of the IncludeAlpha reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("IncludeAlpha")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @include_alpha.setter
-    def include_alpha(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the IncludeAlpha reference by target ID or INodeValueOutput[bool] instance."""
+    def include_alpha(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the IncludeAlpha reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("IncludeAlpha")
         if isinstance(member, members.Reference):
@@ -106,15 +106,15 @@ class ColorXToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INo
 
     @property
     def prefix(self) -> str | None:
-        """Target ID of the Prefix reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Prefix reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Prefix")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @prefix.setter
-    def prefix(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Prefix reference by target ID or INodeObjectOutput[str] instance."""
+    def prefix(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Prefix reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Prefix")
         if isinstance(member, members.Reference):

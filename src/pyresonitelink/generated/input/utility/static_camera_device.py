@@ -1,9 +1,8 @@
 """Generated component: StaticCameraDevice."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -19,7 +18,7 @@ class StaticCameraDevice(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticCameraDevice"
 
-    def __init__(self, owner: str | User | None = None, field_of_view: np.float32 | None = None, aspect_ratio: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, owner: str | User | None = None, field_of_view: primitives.Float | None = None, aspect_ratio: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +57,7 @@ class StaticCameraDevice(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def field_of_view(self) -> np.float32 | None:
+    def field_of_view(self) -> primitives.Float | None:
         """The FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is None:
@@ -66,7 +65,7 @@ class StaticCameraDevice(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @field_of_view.setter
-    def field_of_view(self, value: np.float32) -> None:
+    def field_of_view(self, value: primitives.Float) -> None:
         """Set the FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is not None:
@@ -77,7 +76,7 @@ class StaticCameraDevice(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def aspect_ratio(self) -> np.float32 | None:
+    def aspect_ratio(self) -> primitives.Float | None:
         """The AspectRatio field value."""
         member = self.get_member("AspectRatio")
         if member is None:
@@ -85,7 +84,7 @@ class StaticCameraDevice(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @aspect_ratio.setter
-    def aspect_ratio(self, value: np.float32) -> None:
+    def aspect_ratio(self, value: primitives.Float) -> None:
         """Set the AspectRatio field value."""
         member = self.get_member("AspectRatio")
         if member is not None:

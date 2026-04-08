@@ -1,7 +1,5 @@
 """Generated component: ToolSimulator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ToolSimulator"
 
-    def __init__(self, tool: str | ITool | None = None, simulating_user: str | User | None = None, primary: bool | None = None, secondary: bool | None = None, strength: np.float32 | None = None, axis: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tool: str | ITool | None = None, simulating_user: str | User | None = None, primary: primitives.Bool | None = None, secondary: primitives.Bool | None = None, strength: primitives.Float | None = None, axis: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -90,7 +88,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def primary(self) -> bool | None:
+    def primary(self) -> primitives.Bool | None:
         """The Primary field value."""
         member = self.get_member("Primary")
         if member is None:
@@ -98,7 +96,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @primary.setter
-    def primary(self, value: bool) -> None:
+    def primary(self, value: primitives.Bool) -> None:
         """Set the Primary field value."""
         member = self.get_member("Primary")
         if member is not None:
@@ -109,7 +107,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def secondary(self) -> bool | None:
+    def secondary(self) -> primitives.Bool | None:
         """The Secondary field value."""
         member = self.get_member("Secondary")
         if member is None:
@@ -117,7 +115,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @secondary.setter
-    def secondary(self, value: bool) -> None:
+    def secondary(self, value: primitives.Bool) -> None:
         """Set the Secondary field value."""
         member = self.get_member("Secondary")
         if member is not None:
@@ -128,7 +126,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def strength(self) -> np.float32 | None:
+    def strength(self) -> primitives.Float | None:
         """The Strength field value."""
         member = self.get_member("Strength")
         if member is None:
@@ -136,7 +134,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @strength.setter
-    def strength(self, value: np.float32) -> None:
+    def strength(self, value: primitives.Float) -> None:
         """Set the Strength field value."""
         member = self.get_member("Strength")
         if member is not None:

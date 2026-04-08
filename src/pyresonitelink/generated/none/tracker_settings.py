@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -14,7 +15,7 @@ class TrackerSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TrackerSettings"
 
-    def __init__(self, use_trackers: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_trackers: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -26,7 +27,7 @@ class TrackerSettings(GeneratedComponent, ICustomInspector):
             self.use_trackers = use_trackers
 
     @property
-    def use_trackers(self) -> bool | None:
+    def use_trackers(self) -> primitives.Bool | None:
         """The UseTrackers field value."""
         member = self.get_member("UseTrackers")
         if member is None:
@@ -34,7 +35,7 @@ class TrackerSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_trackers.setter
-    def use_trackers(self, value: bool) -> None:
+    def use_trackers(self, value: primitives.Bool) -> None:
         """Set the UseTrackers field value."""
         member = self.get_member("UseTrackers")
         if member is not None:
@@ -57,7 +58,7 @@ class TrackerSettings(GeneratedComponent, ICustomInspector):
         """Set the Trackers member."""
         self.set_member("Trackers", value)
 
-    async def get_tracker_for_subsetting(self, resolink: protocols.ResoniteLinkClient, key: str, debug: bool = False) -> dict:
+    async def get_tracker_for_subsetting(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
         """Call the GetTrackerForSubsetting sync method.
 
         Args:

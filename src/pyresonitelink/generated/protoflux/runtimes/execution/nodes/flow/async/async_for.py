@@ -1,8 +1,7 @@
 """Generated component: AsyncFor."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -23,7 +22,7 @@ class AsyncFor(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.AsyncFor"
 
-    def __init__(self, count: str | INodeValueOutput[np.int32] | None = None, reverse: str | INodeValueOutput[bool] | None = None, loop_start: str | INodeOperation | None = None, loop_iteration: str | INodeOperation | None = None, loop_end: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, count: str | INodeValueOutput[primitives.Int] | None = None, reverse: str | INodeValueOutput[primitives.Bool] | None = None, loop_start: str | INodeOperation | None = None, loop_iteration: str | INodeOperation | None = None, loop_end: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,15 +47,15 @@ class AsyncFor(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def count(self) -> str | None:
-        """Target ID of the Count reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Count reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Count")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @count.setter
-    def count(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Count reference by target ID or INodeValueOutput[np.int32] instance."""
+    def count(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Count reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Count")
         if isinstance(member, members.Reference):
@@ -69,15 +68,15 @@ class AsyncFor(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def reverse(self) -> str | None:
-        """Target ID of the Reverse reference (targets INodeValueOutput[bool])."""
+        """Target ID of the Reverse reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("Reverse")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @reverse.setter
-    def reverse(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the Reverse reference by target ID or INodeValueOutput[bool] instance."""
+    def reverse(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the Reverse reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Reverse")
         if isinstance(member, members.Reference):

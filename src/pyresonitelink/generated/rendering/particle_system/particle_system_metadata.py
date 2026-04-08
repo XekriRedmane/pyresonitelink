@@ -1,9 +1,8 @@
 """Generated component: ParticleSystemMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.particle_system import ParticleSystem
@@ -19,7 +18,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleSystemMetadata"
 
-    def __init__(self, system: str | ParticleSystem | None = None, particle_count: np.int32 | None = None, particles_fps: np.float32 | None = None, last_simulation_time: np.float32 | None = None, last_submission_time: np.float32 | None = None, render_data_reallocation_count: np.int32 | None = None, trail_count: np.int32 | None = None, trail_capacity: np.int32 | None = None, trail_point_capacity: np.int32 | None = None, trails_data_reallocation_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, system: str | ParticleSystem | None = None, particle_count: primitives.Int | None = None, particles_fps: primitives.Float | None = None, last_simulation_time: primitives.Float | None = None, last_submission_time: primitives.Float | None = None, render_data_reallocation_count: primitives.Int | None = None, trail_count: primitives.Int | None = None, trail_capacity: primitives.Int | None = None, trail_point_capacity: primitives.Int | None = None, trails_data_reallocation_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -79,7 +78,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def particle_count(self) -> np.int32 | None:
+    def particle_count(self) -> primitives.Int | None:
         """The ParticleCount field value."""
         member = self.get_member("ParticleCount")
         if member is None:
@@ -87,7 +86,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @particle_count.setter
-    def particle_count(self, value: np.int32) -> None:
+    def particle_count(self, value: primitives.Int) -> None:
         """Set the ParticleCount field value."""
         member = self.get_member("ParticleCount")
         if member is not None:
@@ -98,7 +97,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def particles_fps(self) -> np.float32 | None:
+    def particles_fps(self) -> primitives.Float | None:
         """The ParticlesFPS field value."""
         member = self.get_member("ParticlesFPS")
         if member is None:
@@ -106,7 +105,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @particles_fps.setter
-    def particles_fps(self, value: np.float32) -> None:
+    def particles_fps(self, value: primitives.Float) -> None:
         """Set the ParticlesFPS field value."""
         member = self.get_member("ParticlesFPS")
         if member is not None:
@@ -117,7 +116,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def last_simulation_time(self) -> np.float32 | None:
+    def last_simulation_time(self) -> primitives.Float | None:
         """The LastSimulationTime field value."""
         member = self.get_member("LastSimulationTime")
         if member is None:
@@ -125,7 +124,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @last_simulation_time.setter
-    def last_simulation_time(self, value: np.float32) -> None:
+    def last_simulation_time(self, value: primitives.Float) -> None:
         """Set the LastSimulationTime field value."""
         member = self.get_member("LastSimulationTime")
         if member is not None:
@@ -136,7 +135,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def last_submission_time(self) -> np.float32 | None:
+    def last_submission_time(self) -> primitives.Float | None:
         """The LastSubmissionTime field value."""
         member = self.get_member("LastSubmissionTime")
         if member is None:
@@ -144,7 +143,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @last_submission_time.setter
-    def last_submission_time(self, value: np.float32) -> None:
+    def last_submission_time(self, value: primitives.Float) -> None:
         """Set the LastSubmissionTime field value."""
         member = self.get_member("LastSubmissionTime")
         if member is not None:
@@ -155,7 +154,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def render_data_reallocation_count(self) -> np.int32 | None:
+    def render_data_reallocation_count(self) -> primitives.Int | None:
         """The RenderDataReallocationCount field value."""
         member = self.get_member("RenderDataReallocationCount")
         if member is None:
@@ -163,7 +162,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @render_data_reallocation_count.setter
-    def render_data_reallocation_count(self, value: np.int32) -> None:
+    def render_data_reallocation_count(self, value: primitives.Int) -> None:
         """Set the RenderDataReallocationCount field value."""
         member = self.get_member("RenderDataReallocationCount")
         if member is not None:
@@ -174,7 +173,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def trail_count(self) -> np.int32 | None:
+    def trail_count(self) -> primitives.Int | None:
         """The TrailCount field value."""
         member = self.get_member("TrailCount")
         if member is None:
@@ -182,7 +181,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @trail_count.setter
-    def trail_count(self, value: np.int32) -> None:
+    def trail_count(self, value: primitives.Int) -> None:
         """Set the TrailCount field value."""
         member = self.get_member("TrailCount")
         if member is not None:
@@ -193,7 +192,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def trail_capacity(self) -> np.int32 | None:
+    def trail_capacity(self) -> primitives.Int | None:
         """The TrailCapacity field value."""
         member = self.get_member("TrailCapacity")
         if member is None:
@@ -201,7 +200,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @trail_capacity.setter
-    def trail_capacity(self, value: np.int32) -> None:
+    def trail_capacity(self, value: primitives.Int) -> None:
         """Set the TrailCapacity field value."""
         member = self.get_member("TrailCapacity")
         if member is not None:
@@ -212,7 +211,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def trail_point_capacity(self) -> np.int32 | None:
+    def trail_point_capacity(self) -> primitives.Int | None:
         """The TrailPointCapacity field value."""
         member = self.get_member("TrailPointCapacity")
         if member is None:
@@ -220,7 +219,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @trail_point_capacity.setter
-    def trail_point_capacity(self, value: np.int32) -> None:
+    def trail_point_capacity(self, value: primitives.Int) -> None:
         """Set the TrailPointCapacity field value."""
         member = self.get_member("TrailPointCapacity")
         if member is not None:
@@ -231,7 +230,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def trails_data_reallocation_count(self) -> np.int32 | None:
+    def trails_data_reallocation_count(self) -> primitives.Int | None:
         """The TrailsDataReallocationCount field value."""
         member = self.get_member("TrailsDataReallocationCount")
         if member is None:
@@ -239,7 +238,7 @@ class ParticleSystemMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @trails_data_reallocation_count.setter
-    def trails_data_reallocation_count(self, value: np.int32) -> None:
+    def trails_data_reallocation_count(self, value: primitives.Int) -> None:
         """Set the TrailsDataReallocationCount field value."""
         member = self.get_member("TrailsDataReallocationCount")
         if member is not None:

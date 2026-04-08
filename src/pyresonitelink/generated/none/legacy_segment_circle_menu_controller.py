@@ -1,7 +1,5 @@
 """Generated component: LegacySegmentCircleMenuController."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacySegmentCircleMenuController"
 
-    def __init__(self, default_font_material: str | TextUnlitMaterial | None = None, disabled_outline_color: primitives.ColorX | None = None, disabled_fill_color: primitives.ColorX | None = None, logo_circle: bool | None = None, generate_colliders: bool | None = None, highlight_radius_offset: np.float32 | None = None, logo_menu_mesh: str | LegacyCircleSegmentMesh | None = None, overrides_drive: str | SyncList[MenuSegment] | None = None, independent_drive: str | SyncList[MenuSegment] | None = None, menu_items_slot: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, default_font_material: str | TextUnlitMaterial | None = None, disabled_outline_color: primitives.ColorX | None = None, disabled_fill_color: primitives.ColorX | None = None, logo_circle: primitives.Bool | None = None, generate_colliders: primitives.Bool | None = None, highlight_radius_offset: primitives.Float | None = None, logo_menu_mesh: str | LegacyCircleSegmentMesh | None = None, overrides_drive: str | SyncList[MenuSegment] | None = None, independent_drive: str | SyncList[MenuSegment] | None = None, menu_items_slot: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -120,7 +118,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
             )
 
     @property
-    def logo_circle(self) -> bool | None:
+    def logo_circle(self) -> primitives.Bool | None:
         """The LogoCircle field value."""
         member = self.get_member("LogoCircle")
         if member is None:
@@ -128,7 +126,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @logo_circle.setter
-    def logo_circle(self, value: bool) -> None:
+    def logo_circle(self, value: primitives.Bool) -> None:
         """Set the LogoCircle field value."""
         member = self.get_member("LogoCircle")
         if member is not None:
@@ -139,7 +137,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
             )
 
     @property
-    def generate_colliders(self) -> bool | None:
+    def generate_colliders(self) -> primitives.Bool | None:
         """The GenerateColliders field value."""
         member = self.get_member("GenerateColliders")
         if member is None:
@@ -147,7 +145,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @generate_colliders.setter
-    def generate_colliders(self, value: bool) -> None:
+    def generate_colliders(self, value: primitives.Bool) -> None:
         """Set the GenerateColliders field value."""
         member = self.get_member("GenerateColliders")
         if member is not None:
@@ -158,7 +156,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
             )
 
     @property
-    def highlight_radius_offset(self) -> np.float32 | None:
+    def highlight_radius_offset(self) -> primitives.Float | None:
         """The HighlightRadiusOffset field value."""
         member = self.get_member("HighlightRadiusOffset")
         if member is None:
@@ -166,7 +164,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @highlight_radius_offset.setter
-    def highlight_radius_offset(self, value: np.float32) -> None:
+    def highlight_radius_offset(self, value: primitives.Float) -> None:
         """Set the HighlightRadiusOffset field value."""
         member = self.get_member("HighlightRadiusOffset")
         if member is not None:

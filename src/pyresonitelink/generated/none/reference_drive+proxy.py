@@ -14,7 +14,7 @@ class ReferenceDrive+Proxy(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     Parameterize with a value type::
 
-        ReferenceDrive+Proxy[np.float32]
+        ReferenceDrive+Proxy[primitives.Float]
         ReferenceDrive+Proxy[primitives.Float3]
     """
 

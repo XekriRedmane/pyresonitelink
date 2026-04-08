@@ -1,9 +1,8 @@
 """Generated component: Workspace."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -19,7 +18,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Workspace"
 
-    def __init__(self, override_owner_id: str | None = None, workspace_path: str | None = None, read_only: bool | None = None, autosave_delay: np.float32 | None = None, suspend_updates: bool | None = None, unsaved_changes: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, override_owner_id: primitives.String | None = None, workspace_path: primitives.String | None = None, read_only: primitives.Bool | None = None, autosave_delay: primitives.Float | None = None, suspend_updates: primitives.Bool | None = None, unsaved_changes: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,7 +58,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
         self.set_member("User", value)
 
     @property
-    def override_owner_id(self) -> str | None:
+    def override_owner_id(self) -> primitives.String | None:
         """The OverrideOwnerId field value."""
         member = self.get_member("OverrideOwnerId")
         if member is None:
@@ -67,7 +66,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
         return getattr(member, 'value', None)
 
     @override_owner_id.setter
-    def override_owner_id(self, value: str) -> None:
+    def override_owner_id(self, value: primitives.String) -> None:
         """Set the OverrideOwnerId field value."""
         member = self.get_member("OverrideOwnerId")
         if member is not None:
@@ -78,7 +77,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
             )
 
     @property
-    def workspace_path(self) -> str | None:
+    def workspace_path(self) -> primitives.String | None:
         """The WorkspacePath field value."""
         member = self.get_member("WorkspacePath")
         if member is None:
@@ -86,7 +85,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
         return getattr(member, 'value', None)
 
     @workspace_path.setter
-    def workspace_path(self, value: str) -> None:
+    def workspace_path(self, value: primitives.String) -> None:
         """Set the WorkspacePath field value."""
         member = self.get_member("WorkspacePath")
         if member is not None:
@@ -97,7 +96,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
             )
 
     @property
-    def read_only(self) -> bool | None:
+    def read_only(self) -> primitives.Bool | None:
         """The ReadOnly field value."""
         member = self.get_member("ReadOnly")
         if member is None:
@@ -105,7 +104,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
         return getattr(member, 'value', None)
 
     @read_only.setter
-    def read_only(self, value: bool) -> None:
+    def read_only(self, value: primitives.Bool) -> None:
         """Set the ReadOnly field value."""
         member = self.get_member("ReadOnly")
         if member is not None:
@@ -116,7 +115,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
             )
 
     @property
-    def autosave_delay(self) -> np.float32 | None:
+    def autosave_delay(self) -> primitives.Float | None:
         """The AutosaveDelay field value."""
         member = self.get_member("AutosaveDelay")
         if member is None:
@@ -124,7 +123,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
         return getattr(member, 'value', None)
 
     @autosave_delay.setter
-    def autosave_delay(self, value: np.float32) -> None:
+    def autosave_delay(self, value: primitives.Float) -> None:
         """Set the AutosaveDelay field value."""
         member = self.get_member("AutosaveDelay")
         if member is not None:
@@ -135,7 +134,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
             )
 
     @property
-    def suspend_updates(self) -> bool | None:
+    def suspend_updates(self) -> primitives.Bool | None:
         """The SuspendUpdates field value."""
         member = self.get_member("SuspendUpdates")
         if member is None:
@@ -143,7 +142,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
         return getattr(member, 'value', None)
 
     @suspend_updates.setter
-    def suspend_updates(self, value: bool) -> None:
+    def suspend_updates(self, value: primitives.Bool) -> None:
         """Set the SuspendUpdates field value."""
         member = self.get_member("SuspendUpdates")
         if member is not None:
@@ -154,7 +153,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
             )
 
     @property
-    def unsaved_changes(self) -> bool | None:
+    def unsaved_changes(self) -> primitives.Bool | None:
         """The _unsavedChanges field value."""
         member = self.get_member("_unsavedChanges")
         if member is None:
@@ -162,7 +161,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
         return getattr(member, 'value', None)
 
     @unsaved_changes.setter
-    def unsaved_changes(self, value: bool) -> None:
+    def unsaved_changes(self, value: primitives.Bool) -> None:
         """Set the _unsavedChanges field value."""
         member = self.get_member("_unsavedChanges")
         if member is not None:

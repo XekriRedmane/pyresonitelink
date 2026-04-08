@@ -20,7 +20,7 @@ class Unbox(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, 
 
     Parameterize with a value type::
 
-        Unbox[np.float32]
+        Unbox[primitives.Float]
         Unbox[primitives.Float3]
     """
 

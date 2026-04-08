@@ -1,7 +1,5 @@
 """Generated component: PhotoCaptureManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -29,7 +27,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotoCaptureManager"
 
-    def __init__(self, finger_gesture_enabled: bool | None = None, min_distance: np.float32 | None = None, max_distance: np.float32 | None = None, min_fov: np.float32 | None = None, max_fov: np.float32 | None = None, preview_resolution: primitives.Int2 | None = None, normal_resolution: primitives.Int2 | None = None, timer_resolution: primitives.Int2 | None = None, capture_stereo: bool | None = None, stereo_separation: np.float32 | None = None, timer_seconds: np.float32 | None = None, hide_all_nameplates: bool | None = None, debug_gesture: bool | None = None, timer_active: bool | None = None, original_parent: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: primitives.Float3 | None = None, root: str | Slot | None = None, preview_root: str | Slot | None = None, render_tex: str | RenderTextureProvider | None = None, quad: str | QuadMesh | None = None, frame: str | FrameMesh | None = None, camera_root: str | Slot | None = None, camera_pos: str | IField[primitives.Float3] | None = None, camera_rot: str | IField[primitives.FloatQ] | None = None, camera: str | Camera | None = None, frame_material: str | UnlitMaterial | None = None, timer_text_root: str | Slot | None = None, timer_text: str | TextRenderer | None = None, shutter_clip: str | IAssetProvider[AudioClip] | None = None, timer_start_clip: str | IAssetProvider[AudioClip] | None = None, timer_countdown_slow_player: str | AudioClipPlayer | None = None, timer_countdown_fast_player: str | AudioClipPlayer | None = None, timer_countdown_slow_output: str | AudioOutput | None = None, timer_countdown_fast_output: str | AudioOutput | None = None, timer_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, finger_gesture_enabled: primitives.Bool | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, min_fov: primitives.Float | None = None, max_fov: primitives.Float | None = None, preview_resolution: primitives.Int2 | None = None, normal_resolution: primitives.Int2 | None = None, timer_resolution: primitives.Int2 | None = None, capture_stereo: primitives.Bool | None = None, stereo_separation: primitives.Float | None = None, timer_seconds: primitives.Float | None = None, hide_all_nameplates: primitives.Bool | None = None, debug_gesture: primitives.Bool | None = None, timer_active: primitives.Bool | None = None, original_parent: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: primitives.Float3 | None = None, root: str | Slot | None = None, preview_root: str | Slot | None = None, render_tex: str | RenderTextureProvider | None = None, quad: str | QuadMesh | None = None, frame: str | FrameMesh | None = None, camera_root: str | Slot | None = None, camera_pos: str | IField[primitives.Float3] | None = None, camera_rot: str | IField[primitives.FloatQ] | None = None, camera: str | Camera | None = None, frame_material: str | UnlitMaterial | None = None, timer_text_root: str | Slot | None = None, timer_text: str | TextRenderer | None = None, shutter_clip: str | IAssetProvider[AudioClip] | None = None, timer_start_clip: str | IAssetProvider[AudioClip] | None = None, timer_countdown_slow_player: str | AudioClipPlayer | None = None, timer_countdown_fast_player: str | AudioClipPlayer | None = None, timer_countdown_slow_output: str | AudioOutput | None = None, timer_countdown_fast_output: str | AudioOutput | None = None, timer_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -149,7 +147,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.timer_root = timer_root
 
     @property
-    def finger_gesture_enabled(self) -> bool | None:
+    def finger_gesture_enabled(self) -> primitives.Bool | None:
         """The FingerGestureEnabled field value."""
         member = self.get_member("FingerGestureEnabled")
         if member is None:
@@ -157,7 +155,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @finger_gesture_enabled.setter
-    def finger_gesture_enabled(self, value: bool) -> None:
+    def finger_gesture_enabled(self, value: primitives.Bool) -> None:
         """Set the FingerGestureEnabled field value."""
         member = self.get_member("FingerGestureEnabled")
         if member is not None:
@@ -168,7 +166,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_distance(self) -> np.float32 | None:
+    def min_distance(self) -> primitives.Float | None:
         """The MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is None:
@@ -176,7 +174,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_distance.setter
-    def min_distance(self, value: np.float32) -> None:
+    def min_distance(self, value: primitives.Float) -> None:
         """Set the MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is not None:
@@ -187,7 +185,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -195,7 +193,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:
@@ -206,7 +204,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_fov(self) -> np.float32 | None:
+    def min_fov(self) -> primitives.Float | None:
         """The MinFOV field value."""
         member = self.get_member("MinFOV")
         if member is None:
@@ -214,7 +212,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_fov.setter
-    def min_fov(self, value: np.float32) -> None:
+    def min_fov(self, value: primitives.Float) -> None:
         """Set the MinFOV field value."""
         member = self.get_member("MinFOV")
         if member is not None:
@@ -225,7 +223,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_fov(self) -> np.float32 | None:
+    def max_fov(self) -> primitives.Float | None:
         """The MaxFOV field value."""
         member = self.get_member("MaxFOV")
         if member is None:
@@ -233,7 +231,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_fov.setter
-    def max_fov(self, value: np.float32) -> None:
+    def max_fov(self, value: primitives.Float) -> None:
         """Set the MaxFOV field value."""
         member = self.get_member("MaxFOV")
         if member is not None:
@@ -301,7 +299,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def capture_stereo(self) -> bool | None:
+    def capture_stereo(self) -> primitives.Bool | None:
         """The CaptureStereo field value."""
         member = self.get_member("CaptureStereo")
         if member is None:
@@ -309,7 +307,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @capture_stereo.setter
-    def capture_stereo(self, value: bool) -> None:
+    def capture_stereo(self, value: primitives.Bool) -> None:
         """Set the CaptureStereo field value."""
         member = self.get_member("CaptureStereo")
         if member is not None:
@@ -320,7 +318,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def stereo_separation(self) -> np.float32 | None:
+    def stereo_separation(self) -> primitives.Float | None:
         """The StereoSeparation field value."""
         member = self.get_member("StereoSeparation")
         if member is None:
@@ -328,7 +326,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @stereo_separation.setter
-    def stereo_separation(self, value: np.float32) -> None:
+    def stereo_separation(self, value: primitives.Float) -> None:
         """Set the StereoSeparation field value."""
         member = self.get_member("StereoSeparation")
         if member is not None:
@@ -339,7 +337,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def timer_seconds(self) -> np.float32 | None:
+    def timer_seconds(self) -> primitives.Float | None:
         """The TimerSeconds field value."""
         member = self.get_member("TimerSeconds")
         if member is None:
@@ -347,7 +345,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @timer_seconds.setter
-    def timer_seconds(self, value: np.float32) -> None:
+    def timer_seconds(self, value: primitives.Float) -> None:
         """Set the TimerSeconds field value."""
         member = self.get_member("TimerSeconds")
         if member is not None:
@@ -358,7 +356,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def hide_all_nameplates(self) -> bool | None:
+    def hide_all_nameplates(self) -> primitives.Bool | None:
         """The HideAllNameplates field value."""
         member = self.get_member("HideAllNameplates")
         if member is None:
@@ -366,7 +364,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @hide_all_nameplates.setter
-    def hide_all_nameplates(self, value: bool) -> None:
+    def hide_all_nameplates(self, value: primitives.Bool) -> None:
         """Set the HideAllNameplates field value."""
         member = self.get_member("HideAllNameplates")
         if member is not None:
@@ -390,7 +388,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("EncodeFormat", value)
 
     @property
-    def debug_gesture(self) -> bool | None:
+    def debug_gesture(self) -> primitives.Bool | None:
         """The DebugGesture field value."""
         member = self.get_member("DebugGesture")
         if member is None:
@@ -398,7 +396,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @debug_gesture.setter
-    def debug_gesture(self, value: bool) -> None:
+    def debug_gesture(self, value: primitives.Bool) -> None:
         """Set the DebugGesture field value."""
         member = self.get_member("DebugGesture")
         if member is not None:
@@ -409,7 +407,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def timer_active(self) -> bool | None:
+    def timer_active(self) -> primitives.Bool | None:
         """The _timerActive field value."""
         member = self.get_member("_timerActive")
         if member is None:
@@ -417,7 +415,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @timer_active.setter
-    def timer_active(self, value: bool) -> None:
+    def timer_active(self, value: primitives.Bool) -> None:
         """Set the _timerActive field value."""
         member = self.get_member("_timerActive")
         if member is not None:

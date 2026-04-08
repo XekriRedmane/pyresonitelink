@@ -1,7 +1,5 @@
 """Generated component: ContextMenu."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -35,7 +33,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenu"
 
-    def __init__(self, owner: str | User | None = None, pointer: str | Slot | None = None, separation: np.float32 | None = None, label_size: primitives.Float2 | None = None, radius_ratio: np.float32 | None = None, current_summoner: str | IWorldElement | None = None, canvas: str | Canvas | None = None, arc_layout: str | ArcLayout | None = None, canvas_active: str | IField[bool] | None = None, collider_enabled: str | IField[bool] | None = None, icon_image: str | Image | None = None, offset_min: str | IField[primitives.Float2] | None = None, offset_max: str | IField[primitives.Float2] | None = None, inner_circle: str | OutlinedArc | None = None, inner_circle_button: str | Button | None = None, inner_circle_anchor_min: str | IField[primitives.Float2] | None = None, inner_circle_anchor_max: str | IField[primitives.Float2] | None = None, items_root: str | Slot | None = None, arc_material: str | UI_CircleSegment | None = None, font_material: str | UI_TextUnlitMaterial | None = None, sprite_material: str | UI_UnlitMaterial | None = None, arc_overlay: str | IField[bool] | None = None, font_overlay: str | IField[bool] | None = None, sprite_overlay: str | IField[bool] | None = None, arc_ztest: str | IField[ZTest] | None = None, font_ztest: str | IField[ZTest] | None = None, sprite_ztest: str | IField[ZTest] | None = None, zwrite_arc: str | IField[ZWrite] | None = None, zwrite_text: str | IField[ZWrite] | None = None, arc_render_queue: str | IField[np.int32] | None = None, font_render_queue: str | IField[np.int32] | None = None, sprite_render_queue: str | IField[np.int32] | None = None, canvas_offset: str | IField[np.int32] | None = None, fill_fade: str | IField[primitives.ColorX] | None = None, outline_fade: str | IField[primitives.ColorX] | None = None, text_fade: str | IField[primitives.ColorX] | None = None, icon_fade: str | IField[primitives.ColorX] | None = None, lerp: np.float32 | None = None, flick_mode_active: bool | None = None, flick_enabled: bool | None = None, hidden: bool | None = None, selected_item: str | ContextMenuItem | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, owner: str | User | None = None, pointer: str | Slot | None = None, separation: primitives.Float | None = None, label_size: primitives.Float2 | None = None, radius_ratio: primitives.Float | None = None, current_summoner: str | IWorldElement | None = None, canvas: str | Canvas | None = None, arc_layout: str | ArcLayout | None = None, canvas_active: str | IField[primitives.Bool] | None = None, collider_enabled: str | IField[primitives.Bool] | None = None, icon_image: str | Image | None = None, offset_min: str | IField[primitives.Float2] | None = None, offset_max: str | IField[primitives.Float2] | None = None, inner_circle: str | OutlinedArc | None = None, inner_circle_button: str | Button | None = None, inner_circle_anchor_min: str | IField[primitives.Float2] | None = None, inner_circle_anchor_max: str | IField[primitives.Float2] | None = None, items_root: str | Slot | None = None, arc_material: str | UI_CircleSegment | None = None, font_material: str | UI_TextUnlitMaterial | None = None, sprite_material: str | UI_UnlitMaterial | None = None, arc_overlay: str | IField[primitives.Bool] | None = None, font_overlay: str | IField[primitives.Bool] | None = None, sprite_overlay: str | IField[primitives.Bool] | None = None, arc_ztest: str | IField[ZTest] | None = None, font_ztest: str | IField[ZTest] | None = None, sprite_ztest: str | IField[ZTest] | None = None, zwrite_arc: str | IField[ZWrite] | None = None, zwrite_text: str | IField[ZWrite] | None = None, arc_render_queue: str | IField[primitives.Int] | None = None, font_render_queue: str | IField[primitives.Int] | None = None, sprite_render_queue: str | IField[primitives.Int] | None = None, canvas_offset: str | IField[primitives.Int] | None = None, fill_fade: str | IField[primitives.ColorX] | None = None, outline_fade: str | IField[primitives.ColorX] | None = None, text_fade: str | IField[primitives.ColorX] | None = None, icon_fade: str | IField[primitives.ColorX] | None = None, lerp: primitives.Float | None = None, flick_mode_active: primitives.Bool | None = None, flick_enabled: primitives.Bool | None = None, hidden: primitives.Bool | None = None, selected_item: str | ContextMenuItem | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -212,7 +210,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def separation(self) -> np.float32 | None:
+    def separation(self) -> primitives.Float | None:
         """The Separation field value."""
         member = self.get_member("Separation")
         if member is None:
@@ -220,7 +218,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @separation.setter
-    def separation(self, value: np.float32) -> None:
+    def separation(self, value: primitives.Float) -> None:
         """Set the Separation field value."""
         member = self.get_member("Separation")
         if member is not None:
@@ -250,7 +248,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def radius_ratio(self) -> np.float32 | None:
+    def radius_ratio(self) -> primitives.Float | None:
         """The RadiusRatio field value."""
         member = self.get_member("RadiusRatio")
         if member is None:
@@ -258,7 +256,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius_ratio.setter
-    def radius_ratio(self, value: np.float32) -> None:
+    def radius_ratio(self, value: primitives.Float) -> None:
         """Set the RadiusRatio field value."""
         member = self.get_member("RadiusRatio")
         if member is not None:
@@ -333,15 +331,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def canvas_active(self) -> str | None:
-        """Target ID of the _canvasActive reference (targets IField[bool])."""
+        """Target ID of the _canvasActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_canvasActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @canvas_active.setter
-    def canvas_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _canvasActive reference by target ID or IField[bool] instance."""
+    def canvas_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _canvasActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_canvasActive")
         if isinstance(member, members.Reference):
@@ -354,15 +352,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def collider_enabled(self) -> str | None:
-        """Target ID of the _colliderEnabled reference (targets IField[bool])."""
+        """Target ID of the _colliderEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_colliderEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @collider_enabled.setter
-    def collider_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _colliderEnabled reference by target ID or IField[bool] instance."""
+    def collider_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _colliderEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_colliderEnabled")
         if isinstance(member, members.Reference):
@@ -396,15 +394,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def separation(self) -> str | None:
-        """Target ID of the _separation reference (targets IField[np.float32])."""
+        """Target ID of the _separation reference (targets IField[primitives.Float])."""
         member = self.get_member("_separation")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @separation.setter
-    def separation(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _separation reference by target ID or IField[np.float32] instance."""
+    def separation(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _separation reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_separation")
         if isinstance(member, members.Reference):
@@ -627,15 +625,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def arc_overlay(self) -> str | None:
-        """Target ID of the _arcOverlay reference (targets IField[bool])."""
+        """Target ID of the _arcOverlay reference (targets IField[primitives.Bool])."""
         member = self.get_member("_arcOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @arc_overlay.setter
-    def arc_overlay(self, target: str | IField[bool] | None) -> None:
-        """Set the _arcOverlay reference by target ID or IField[bool] instance."""
+    def arc_overlay(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _arcOverlay reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_arcOverlay")
         if isinstance(member, members.Reference):
@@ -648,15 +646,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def font_overlay(self) -> str | None:
-        """Target ID of the _fontOverlay reference (targets IField[bool])."""
+        """Target ID of the _fontOverlay reference (targets IField[primitives.Bool])."""
         member = self.get_member("_fontOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @font_overlay.setter
-    def font_overlay(self, target: str | IField[bool] | None) -> None:
-        """Set the _fontOverlay reference by target ID or IField[bool] instance."""
+    def font_overlay(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _fontOverlay reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_fontOverlay")
         if isinstance(member, members.Reference):
@@ -669,15 +667,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sprite_overlay(self) -> str | None:
-        """Target ID of the _spriteOverlay reference (targets IField[bool])."""
+        """Target ID of the _spriteOverlay reference (targets IField[primitives.Bool])."""
         member = self.get_member("_spriteOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @sprite_overlay.setter
-    def sprite_overlay(self, target: str | IField[bool] | None) -> None:
-        """Set the _spriteOverlay reference by target ID or IField[bool] instance."""
+    def sprite_overlay(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _spriteOverlay reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_spriteOverlay")
         if isinstance(member, members.Reference):
@@ -795,15 +793,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def arc_render_queue(self) -> str | None:
-        """Target ID of the _arcRenderQueue reference (targets IField[np.int32])."""
+        """Target ID of the _arcRenderQueue reference (targets IField[primitives.Int])."""
         member = self.get_member("_arcRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @arc_render_queue.setter
-    def arc_render_queue(self, target: str | IField[np.int32] | None) -> None:
-        """Set the _arcRenderQueue reference by target ID or IField[np.int32] instance."""
+    def arc_render_queue(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the _arcRenderQueue reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_arcRenderQueue")
         if isinstance(member, members.Reference):
@@ -816,15 +814,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def font_render_queue(self) -> str | None:
-        """Target ID of the _fontRenderQueue reference (targets IField[np.int32])."""
+        """Target ID of the _fontRenderQueue reference (targets IField[primitives.Int])."""
         member = self.get_member("_fontRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @font_render_queue.setter
-    def font_render_queue(self, target: str | IField[np.int32] | None) -> None:
-        """Set the _fontRenderQueue reference by target ID or IField[np.int32] instance."""
+    def font_render_queue(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the _fontRenderQueue reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_fontRenderQueue")
         if isinstance(member, members.Reference):
@@ -837,15 +835,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sprite_render_queue(self) -> str | None:
-        """Target ID of the _spriteRenderQueue reference (targets IField[np.int32])."""
+        """Target ID of the _spriteRenderQueue reference (targets IField[primitives.Int])."""
         member = self.get_member("_spriteRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @sprite_render_queue.setter
-    def sprite_render_queue(self, target: str | IField[np.int32] | None) -> None:
-        """Set the _spriteRenderQueue reference by target ID or IField[np.int32] instance."""
+    def sprite_render_queue(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the _spriteRenderQueue reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_spriteRenderQueue")
         if isinstance(member, members.Reference):
@@ -858,15 +856,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def canvas_offset(self) -> str | None:
-        """Target ID of the _canvasOffset reference (targets IField[np.int32])."""
+        """Target ID of the _canvasOffset reference (targets IField[primitives.Int])."""
         member = self.get_member("_canvasOffset")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @canvas_offset.setter
-    def canvas_offset(self, target: str | IField[np.int32] | None) -> None:
-        """Set the _canvasOffset reference by target ID or IField[np.int32] instance."""
+    def canvas_offset(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the _canvasOffset reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_canvasOffset")
         if isinstance(member, members.Reference):
@@ -962,7 +960,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def lerp(self) -> np.float32 | None:
+    def lerp(self) -> primitives.Float | None:
         """The _lerp field value."""
         member = self.get_member("_lerp")
         if member is None:
@@ -970,7 +968,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @lerp.setter
-    def lerp(self, value: np.float32) -> None:
+    def lerp(self, value: primitives.Float) -> None:
         """Set the _lerp field value."""
         member = self.get_member("_lerp")
         if member is not None:
@@ -994,7 +992,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("_state", value)
 
     @property
-    def flick_mode_active(self) -> bool | None:
+    def flick_mode_active(self) -> primitives.Bool | None:
         """The _flickModeActive field value."""
         member = self.get_member("_flickModeActive")
         if member is None:
@@ -1002,7 +1000,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @flick_mode_active.setter
-    def flick_mode_active(self, value: bool) -> None:
+    def flick_mode_active(self, value: primitives.Bool) -> None:
         """Set the _flickModeActive field value."""
         member = self.get_member("_flickModeActive")
         if member is not None:
@@ -1013,7 +1011,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def flick_enabled(self) -> bool | None:
+    def flick_enabled(self) -> primitives.Bool | None:
         """The _flickEnabled field value."""
         member = self.get_member("_flickEnabled")
         if member is None:
@@ -1021,7 +1019,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @flick_enabled.setter
-    def flick_enabled(self, value: bool) -> None:
+    def flick_enabled(self, value: primitives.Bool) -> None:
         """Set the _flickEnabled field value."""
         member = self.get_member("_flickEnabled")
         if member is not None:
@@ -1032,7 +1030,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def hidden(self) -> bool | None:
+    def hidden(self) -> primitives.Bool | None:
         """The _hidden field value."""
         member = self.get_member("_hidden")
         if member is None:
@@ -1040,7 +1038,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @hidden.setter
-    def hidden(self, value: bool) -> None:
+    def hidden(self, value: primitives.Bool) -> None:
         """Set the _hidden field value."""
         member = self.get_member("_hidden")
         if member is not None:

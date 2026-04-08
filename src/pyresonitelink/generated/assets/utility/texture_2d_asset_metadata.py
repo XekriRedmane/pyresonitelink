@@ -1,7 +1,5 @@
 """Generated component: Texture2DAssetMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Texture2DAssetMetadata"
 
-    def __init__(self, texture: str | IAssetProvider[Texture2D] | None = None, size: primitives.Int2 | None = None, width: np.int32 | None = None, height: np.int32 | None = None, has_mip_maps: bool | None = None, mip_map_count: np.int32 | None = None, memory_bytes: np.int64 | None = None, formatted_memory_bytes: str | None = None, actual_loaded_variant: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[Texture2D] | None = None, size: primitives.Int2 | None = None, width: primitives.Int | None = None, height: primitives.Int | None = None, has_mip_maps: primitives.Bool | None = None, mip_map_count: primitives.Int | None = None, memory_bytes: primitives.Long | None = None, formatted_memory_bytes: primitives.String | None = None, actual_loaded_variant: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -97,7 +95,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def width(self) -> np.int32 | None:
+    def width(self) -> primitives.Int | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -105,7 +103,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.int32) -> None:
+    def width(self, value: primitives.Int) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -116,7 +114,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def height(self) -> np.int32 | None:
+    def height(self) -> primitives.Int | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -124,7 +122,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.int32) -> None:
+    def height(self, value: primitives.Int) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -135,7 +133,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def has_mip_maps(self) -> bool | None:
+    def has_mip_maps(self) -> primitives.Bool | None:
         """The HasMipMaps field value."""
         member = self.get_member("HasMipMaps")
         if member is None:
@@ -143,7 +141,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @has_mip_maps.setter
-    def has_mip_maps(self, value: bool) -> None:
+    def has_mip_maps(self, value: primitives.Bool) -> None:
         """Set the HasMipMaps field value."""
         member = self.get_member("HasMipMaps")
         if member is not None:
@@ -154,7 +152,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def mip_map_count(self) -> np.int32 | None:
+    def mip_map_count(self) -> primitives.Int | None:
         """The MipMapCount field value."""
         member = self.get_member("MipMapCount")
         if member is None:
@@ -162,7 +160,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @mip_map_count.setter
-    def mip_map_count(self, value: np.int32) -> None:
+    def mip_map_count(self, value: primitives.Int) -> None:
         """Set the MipMapCount field value."""
         member = self.get_member("MipMapCount")
         if member is not None:
@@ -173,7 +171,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def memory_bytes(self) -> np.int64 | None:
+    def memory_bytes(self) -> primitives.Long | None:
         """The MemoryBytes field value."""
         member = self.get_member("MemoryBytes")
         if member is None:
@@ -181,7 +179,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @memory_bytes.setter
-    def memory_bytes(self, value: np.int64) -> None:
+    def memory_bytes(self, value: primitives.Long) -> None:
         """Set the MemoryBytes field value."""
         member = self.get_member("MemoryBytes")
         if member is not None:
@@ -192,7 +190,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def formatted_memory_bytes(self) -> str | None:
+    def formatted_memory_bytes(self) -> primitives.String | None:
         """The FormattedMemoryBytes field value."""
         member = self.get_member("FormattedMemoryBytes")
         if member is None:
@@ -200,7 +198,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @formatted_memory_bytes.setter
-    def formatted_memory_bytes(self, value: str) -> None:
+    def formatted_memory_bytes(self, value: primitives.String) -> None:
         """Set the FormattedMemoryBytes field value."""
         member = self.get_member("FormattedMemoryBytes")
         if member is not None:
@@ -224,7 +222,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         self.set_member("Format", value)
 
     @property
-    def actual_loaded_variant(self) -> str | None:
+    def actual_loaded_variant(self) -> primitives.String | None:
         """The ActualLoadedVariant field value."""
         member = self.get_member("ActualLoadedVariant")
         if member is None:
@@ -232,7 +230,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @actual_loaded_variant.setter
-    def actual_loaded_variant(self, value: str) -> None:
+    def actual_loaded_variant(self, value: primitives.String) -> None:
         """Set the ActualLoadedVariant field value."""
         member = self.get_member("ActualLoadedVariant")
         if member is not None:

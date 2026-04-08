@@ -1,6 +1,7 @@
 """Generated component: FavoritesSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class FavoritesSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FavoritesSettings"
 
-    def __init__(self, auto_load_cloud_home: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_load_cloud_home: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class FavoritesSettings(GeneratedComponent, ICustomInspector):
             self.auto_load_cloud_home = auto_load_cloud_home
 
     @property
-    def auto_load_cloud_home(self) -> bool | None:
+    def auto_load_cloud_home(self) -> primitives.Bool | None:
         """The AutoLoadCloudHome field value."""
         member = self.get_member("AutoLoadCloudHome")
         if member is None:
@@ -33,7 +34,7 @@ class FavoritesSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @auto_load_cloud_home.setter
-    def auto_load_cloud_home(self, value: bool) -> None:
+    def auto_load_cloud_home(self, value: primitives.Bool) -> None:
         """Set the AutoLoadCloudHome field value."""
         member = self.get_member("AutoLoadCloudHome")
         if member is not None:

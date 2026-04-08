@@ -1,7 +1,5 @@
 """Generated component: Sub_Int_Int2."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class Sub_Int_Int2(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.Sub_Int_Int2"
 
-    def __init__(self, a: str | INodeValueOutput[np.int32] | None = None, b: str | INodeValueOutput[primitives.Int2] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, a: str | INodeValueOutput[primitives.Int] | None = None, b: str | INodeValueOutput[primitives.Int2] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,15 +36,15 @@ class Sub_Int_Int2(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the A reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @a.setter
-    def a(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the A reference by target ID or INodeValueOutput[np.int32] instance."""
+    def a(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the A reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("A")
         if isinstance(member, members.Reference):

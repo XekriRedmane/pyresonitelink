@@ -20,7 +20,7 @@ class ValueDelta(GenericComponent[T], INodeValueOutput[T], IExecutionUpdateRecei
 
     Parameterize with a value type::
 
-        ValueDelta[np.float32]
+        ValueDelta[primitives.Float]
         ValueDelta[primitives.Float3]
     """
 

@@ -1,9 +1,8 @@
 """Generated component: ProtoFluxNodeDebugInfo."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode
@@ -19,7 +18,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxNodeDebugInfo"
 
-    def __init__(self, node: str | ProtoFluxNode | None = None, is_built: bool | None = None, index_in_group: np.int32 | None = None, allocation_index: np.int32 | None = None, group_name: str | None = None, group_is_valid: bool | None = None, group_node_count: np.int32 | None = None, node_instance_hash: np.int32 | None = None, group_registered_for_continuous_changes: bool | None = None, group_registered_for_updates: bool | None = None, node_continuously_changing: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | ProtoFluxNode | None = None, is_built: primitives.Bool | None = None, index_in_group: primitives.Int | None = None, allocation_index: primitives.Int | None = None, group_name: primitives.String | None = None, group_is_valid: primitives.Bool | None = None, group_node_count: primitives.Int | None = None, node_instance_hash: primitives.Int | None = None, group_registered_for_continuous_changes: primitives.Bool | None = None, group_registered_for_updates: primitives.Bool | None = None, node_continuously_changing: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -82,7 +81,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def is_built(self) -> bool | None:
+    def is_built(self) -> primitives.Bool | None:
         """The IsBuilt field value."""
         member = self.get_member("IsBuilt")
         if member is None:
@@ -90,7 +89,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @is_built.setter
-    def is_built(self, value: bool) -> None:
+    def is_built(self, value: primitives.Bool) -> None:
         """Set the IsBuilt field value."""
         member = self.get_member("IsBuilt")
         if member is not None:
@@ -101,7 +100,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def index_in_group(self) -> np.int32 | None:
+    def index_in_group(self) -> primitives.Int | None:
         """The IndexInGroup field value."""
         member = self.get_member("IndexInGroup")
         if member is None:
@@ -109,7 +108,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @index_in_group.setter
-    def index_in_group(self, value: np.int32) -> None:
+    def index_in_group(self, value: primitives.Int) -> None:
         """Set the IndexInGroup field value."""
         member = self.get_member("IndexInGroup")
         if member is not None:
@@ -120,7 +119,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def allocation_index(self) -> np.int32 | None:
+    def allocation_index(self) -> primitives.Int | None:
         """The AllocationIndex field value."""
         member = self.get_member("AllocationIndex")
         if member is None:
@@ -128,7 +127,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @allocation_index.setter
-    def allocation_index(self, value: np.int32) -> None:
+    def allocation_index(self, value: primitives.Int) -> None:
         """Set the AllocationIndex field value."""
         member = self.get_member("AllocationIndex")
         if member is not None:
@@ -139,7 +138,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def group_name(self) -> str | None:
+    def group_name(self) -> primitives.String | None:
         """The GroupName field value."""
         member = self.get_member("GroupName")
         if member is None:
@@ -147,7 +146,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @group_name.setter
-    def group_name(self, value: str) -> None:
+    def group_name(self, value: primitives.String) -> None:
         """Set the GroupName field value."""
         member = self.get_member("GroupName")
         if member is not None:
@@ -158,7 +157,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def group_is_valid(self) -> bool | None:
+    def group_is_valid(self) -> primitives.Bool | None:
         """The GroupIsValid field value."""
         member = self.get_member("GroupIsValid")
         if member is None:
@@ -166,7 +165,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @group_is_valid.setter
-    def group_is_valid(self, value: bool) -> None:
+    def group_is_valid(self, value: primitives.Bool) -> None:
         """Set the GroupIsValid field value."""
         member = self.get_member("GroupIsValid")
         if member is not None:
@@ -177,7 +176,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def group_node_count(self) -> np.int32 | None:
+    def group_node_count(self) -> primitives.Int | None:
         """The GroupNodeCount field value."""
         member = self.get_member("GroupNodeCount")
         if member is None:
@@ -185,7 +184,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @group_node_count.setter
-    def group_node_count(self, value: np.int32) -> None:
+    def group_node_count(self, value: primitives.Int) -> None:
         """Set the GroupNodeCount field value."""
         member = self.get_member("GroupNodeCount")
         if member is not None:
@@ -196,7 +195,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def node_instance_hash(self) -> np.int32 | None:
+    def node_instance_hash(self) -> primitives.Int | None:
         """The NodeInstanceHash field value."""
         member = self.get_member("NodeInstanceHash")
         if member is None:
@@ -204,7 +203,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @node_instance_hash.setter
-    def node_instance_hash(self, value: np.int32) -> None:
+    def node_instance_hash(self, value: primitives.Int) -> None:
         """Set the NodeInstanceHash field value."""
         member = self.get_member("NodeInstanceHash")
         if member is not None:
@@ -215,7 +214,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def group_registered_for_continuous_changes(self) -> bool | None:
+    def group_registered_for_continuous_changes(self) -> primitives.Bool | None:
         """The GroupRegisteredForContinuousChanges field value."""
         member = self.get_member("GroupRegisteredForContinuousChanges")
         if member is None:
@@ -223,7 +222,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @group_registered_for_continuous_changes.setter
-    def group_registered_for_continuous_changes(self, value: bool) -> None:
+    def group_registered_for_continuous_changes(self, value: primitives.Bool) -> None:
         """Set the GroupRegisteredForContinuousChanges field value."""
         member = self.get_member("GroupRegisteredForContinuousChanges")
         if member is not None:
@@ -234,7 +233,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def group_registered_for_updates(self) -> bool | None:
+    def group_registered_for_updates(self) -> primitives.Bool | None:
         """The GroupRegisteredForUpdates field value."""
         member = self.get_member("GroupRegisteredForUpdates")
         if member is None:
@@ -242,7 +241,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @group_registered_for_updates.setter
-    def group_registered_for_updates(self, value: bool) -> None:
+    def group_registered_for_updates(self, value: primitives.Bool) -> None:
         """Set the GroupRegisteredForUpdates field value."""
         member = self.get_member("GroupRegisteredForUpdates")
         if member is not None:
@@ -253,7 +252,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def node_continuously_changing(self) -> bool | None:
+    def node_continuously_changing(self) -> primitives.Bool | None:
         """The NodeContinuouslyChanging field value."""
         member = self.get_member("NodeContinuouslyChanging")
         if member is None:
@@ -261,7 +260,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @node_continuously_changing.setter
-    def node_continuously_changing(self, value: bool) -> None:
+    def node_continuously_changing(self, value: primitives.Bool) -> None:
         """Set the NodeContinuouslyChanging field value."""
         member = self.get_member("NodeContinuouslyChanging")
         if member is not None:

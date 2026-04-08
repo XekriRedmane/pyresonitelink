@@ -1,9 +1,8 @@
 """Generated component: ParticleTrailsModule."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -21,7 +20,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleTrailsModule"
 
-    def __init__(self, material: str | IAssetProvider[Material] | None = None, generate_lighting_data: bool | None = None, trails_ratio: np.float32 | None = None, max_trails: np.int32 | None = None, min_vertex_distance: np.float32 | None = None, trail_dies_with_particle: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, material: str | IAssetProvider[Material] | None = None, generate_lighting_data: primitives.Bool | None = None, trails_ratio: primitives.Float | None = None, max_trails: primitives.Int | None = None, min_vertex_distance: primitives.Float | None = None, trail_dies_with_particle: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -95,7 +94,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
         self.set_member("MotionVectorMode", value)
 
     @property
-    def generate_lighting_data(self) -> bool | None:
+    def generate_lighting_data(self) -> primitives.Bool | None:
         """The GenerateLightingData field value."""
         member = self.get_member("GenerateLightingData")
         if member is None:
@@ -103,7 +102,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
         return getattr(member, 'value', None)
 
     @generate_lighting_data.setter
-    def generate_lighting_data(self, value: bool) -> None:
+    def generate_lighting_data(self, value: primitives.Bool) -> None:
         """Set the GenerateLightingData field value."""
         member = self.get_member("GenerateLightingData")
         if member is not None:
@@ -114,7 +113,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
             )
 
     @property
-    def trails_ratio(self) -> np.float32 | None:
+    def trails_ratio(self) -> primitives.Float | None:
         """The TrailsRatio field value."""
         member = self.get_member("TrailsRatio")
         if member is None:
@@ -122,7 +121,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
         return getattr(member, 'value', None)
 
     @trails_ratio.setter
-    def trails_ratio(self, value: np.float32) -> None:
+    def trails_ratio(self, value: primitives.Float) -> None:
         """Set the TrailsRatio field value."""
         member = self.get_member("TrailsRatio")
         if member is not None:
@@ -146,7 +145,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
         self.set_member("Distribution", value)
 
     @property
-    def max_trails(self) -> np.int32 | None:
+    def max_trails(self) -> primitives.Int | None:
         """The MaxTrails field value."""
         member = self.get_member("MaxTrails")
         if member is None:
@@ -154,7 +153,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
         return getattr(member, 'value', None)
 
     @max_trails.setter
-    def max_trails(self, value: np.int32) -> None:
+    def max_trails(self, value: primitives.Int) -> None:
         """Set the MaxTrails field value."""
         member = self.get_member("MaxTrails")
         if member is not None:
@@ -178,7 +177,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
         self.set_member("SimulationSpace", value)
 
     @property
-    def min_vertex_distance(self) -> np.float32 | None:
+    def min_vertex_distance(self) -> primitives.Float | None:
         """The MinVertexDistance field value."""
         member = self.get_member("MinVertexDistance")
         if member is None:
@@ -186,7 +185,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
         return getattr(member, 'value', None)
 
     @min_vertex_distance.setter
-    def min_vertex_distance(self, value: np.float32) -> None:
+    def min_vertex_distance(self, value: primitives.Float) -> None:
         """Set the MinVertexDistance field value."""
         member = self.get_member("MinVertexDistance")
         if member is not None:
@@ -197,7 +196,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
             )
 
     @property
-    def trail_dies_with_particle(self) -> bool | None:
+    def trail_dies_with_particle(self) -> primitives.Bool | None:
         """The TrailDiesWithParticle field value."""
         member = self.get_member("TrailDiesWithParticle")
         if member is None:
@@ -205,7 +204,7 @@ class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleR
         return getattr(member, 'value', None)
 
     @trail_dies_with_particle.setter
-    def trail_dies_with_particle(self, value: bool) -> None:
+    def trail_dies_with_particle(self, value: primitives.Bool) -> None:
         """Set the TrailDiesWithParticle field value."""
         member = self.get_member("TrailDiesWithParticle")
         if member is not None:

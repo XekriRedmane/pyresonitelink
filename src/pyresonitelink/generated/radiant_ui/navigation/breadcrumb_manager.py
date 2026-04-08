@@ -1,8 +1,7 @@
 """Generated component: BreadcrumbManager."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -22,7 +21,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BreadcrumbManager"
 
-    def __init__(self, path: str | SyncFieldList[str] | None = None, ui_root: str | Slot | None = None, breadcrumb_template: str | BreadcrumbInterface | None = None, separator_template: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, path: str | SyncFieldList[primitives.String] | None = None, ui_root: str | Slot | None = None, breadcrumb_template: str | BreadcrumbInterface | None = None, separator_template: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,15 +43,15 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
 
     @property
     def path(self) -> str | None:
-        """Target ID of the Path reference (targets SyncFieldList[str])."""
+        """Target ID of the Path reference (targets SyncFieldList[primitives.String])."""
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @path.setter
-    def path(self, target: str | SyncFieldList[str] | None) -> None:
-        """Set the Path reference by target ID or SyncFieldList[str] instance."""
+    def path(self, target: str | SyncFieldList[primitives.String] | None) -> None:
+        """Set the Path reference by target ID or SyncFieldList[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, SyncFieldList) else target  # type: ignore[assignment]
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
@@ -126,7 +125,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
             )
 
-    async def set_depth(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, depth: np.int32, debug: bool = False) -> dict:
+    async def set_depth(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, depth: primitives.Int, debug: bool = False) -> dict:
         """Call the SetDepth sync method.
 
         Args:
@@ -143,7 +142,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
             resolink, "SetDepth", {"button": button, "eventData": event_data, "depth": depth}, debug,
         )
 
-    async def set_depth_1(self, resolink: protocols.ResoniteLinkClient, depth: np.int32, debug: bool = False) -> dict:
+    async def set_depth_1(self, resolink: protocols.ResoniteLinkClient, depth: primitives.Int, debug: bool = False) -> dict:
         """Call the SetDepth sync method.
 
         Args:

@@ -1,9 +1,8 @@
 """Generated component: RenderingQualitySettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class RenderingQualitySettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RenderingQualitySettings"
 
-    def __init__(self, per_pixel_lights: np.int32 | None = None, shadow_distance: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, per_pixel_lights: primitives.Int | None = None, shadow_distance: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +30,7 @@ class RenderingQualitySettings(GeneratedComponent, ICustomInspector):
             self.shadow_distance = shadow_distance
 
     @property
-    def per_pixel_lights(self) -> np.int32 | None:
+    def per_pixel_lights(self) -> primitives.Int | None:
         """The PerPixelLights field value."""
         member = self.get_member("PerPixelLights")
         if member is None:
@@ -39,7 +38,7 @@ class RenderingQualitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @per_pixel_lights.setter
-    def per_pixel_lights(self, value: np.int32) -> None:
+    def per_pixel_lights(self, value: primitives.Int) -> None:
         """Set the PerPixelLights field value."""
         member = self.get_member("PerPixelLights")
         if member is not None:
@@ -76,7 +75,7 @@ class RenderingQualitySettings(GeneratedComponent, ICustomInspector):
         self.set_member("ShadowResolution", value)
 
     @property
-    def shadow_distance(self) -> np.float32 | None:
+    def shadow_distance(self) -> primitives.Float | None:
         """The ShadowDistance field value."""
         member = self.get_member("ShadowDistance")
         if member is None:
@@ -84,7 +83,7 @@ class RenderingQualitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @shadow_distance.setter
-    def shadow_distance(self, value: np.float32) -> None:
+    def shadow_distance(self, value: primitives.Float) -> None:
         """Set the ShadowDistance field value."""
         member = self.get_member("ShadowDistance")
         if member is not None:

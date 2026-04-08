@@ -1,7 +1,5 @@
 """Generated component: PhysicalButton."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhysicalButton"
 
-    def __init__(self, press_axis: primitives.Float3 | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, accept_out_of_sight_touch: bool | None = None, edit_mode_only: bool | None = None, legacy_active_user_root_only: bool | None = None, press_depth: np.float32 | None = None, press_threshold: np.float32 | None = None, release_threshold: np.float32 | None = None, is_pressed: bool | None = None, is_hovering: bool | None = None, is_holding: bool | None = None, is_pressed_or_holding: bool | None = None, hold: bool | None = None, hold_depth_ratio: np.float32 | None = None, label: str | IField[str] | None = None, current_pressing_depth: np.float32 | None = None, button_offset: primitives.Float3 | None = None, button_position: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, press_axis: primitives.Float3 | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, edit_mode_only: primitives.Bool | None = None, legacy_active_user_root_only: primitives.Bool | None = None, press_depth: primitives.Float | None = None, press_threshold: primitives.Float | None = None, release_threshold: primitives.Float | None = None, is_pressed: primitives.Bool | None = None, is_hovering: primitives.Bool | None = None, is_holding: primitives.Bool | None = None, is_pressed_or_holding: primitives.Bool | None = None, hold: primitives.Bool | None = None, hold_depth_ratio: primitives.Float | None = None, label: str | IField[primitives.String] | None = None, current_pressing_depth: primitives.Float | None = None, button_offset: primitives.Float3 | None = None, button_position: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -106,7 +104,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -114,7 +112,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -125,7 +123,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -133,7 +131,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -144,7 +142,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def accept_out_of_sight_touch(self) -> bool | None:
+    def accept_out_of_sight_touch(self) -> primitives.Bool | None:
         """The AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is None:
@@ -152,7 +150,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @accept_out_of_sight_touch.setter
-    def accept_out_of_sight_touch(self, value: bool) -> None:
+    def accept_out_of_sight_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is not None:
@@ -163,7 +161,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def edit_mode_only(self) -> bool | None:
+    def edit_mode_only(self) -> primitives.Bool | None:
         """The EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is None:
@@ -171,7 +169,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @edit_mode_only.setter
-    def edit_mode_only(self, value: bool) -> None:
+    def edit_mode_only(self, value: primitives.Bool) -> None:
         """Set the EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is not None:
@@ -195,7 +193,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         self.set_member("ActiveUserFilter", value)
 
     @property
-    def legacy_active_user_root_only(self) -> bool | None:
+    def legacy_active_user_root_only(self) -> primitives.Bool | None:
         """The __legacyActiveUserRootOnly field value."""
         member = self.get_member("__legacyActiveUserRootOnly")
         if member is None:
@@ -203,7 +201,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @legacy_active_user_root_only.setter
-    def legacy_active_user_root_only(self, value: bool) -> None:
+    def legacy_active_user_root_only(self, value: primitives.Bool) -> None:
         """Set the __legacyActiveUserRootOnly field value."""
         member = self.get_member("__legacyActiveUserRootOnly")
         if member is not None:
@@ -214,7 +212,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def press_depth(self) -> np.float32 | None:
+    def press_depth(self) -> primitives.Float | None:
         """The PressDepth field value."""
         member = self.get_member("PressDepth")
         if member is None:
@@ -222,7 +220,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @press_depth.setter
-    def press_depth(self, value: np.float32) -> None:
+    def press_depth(self, value: primitives.Float) -> None:
         """Set the PressDepth field value."""
         member = self.get_member("PressDepth")
         if member is not None:
@@ -233,7 +231,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def press_threshold(self) -> np.float32 | None:
+    def press_threshold(self) -> primitives.Float | None:
         """The PressThreshold field value."""
         member = self.get_member("PressThreshold")
         if member is None:
@@ -241,7 +239,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @press_threshold.setter
-    def press_threshold(self, value: np.float32) -> None:
+    def press_threshold(self, value: primitives.Float) -> None:
         """Set the PressThreshold field value."""
         member = self.get_member("PressThreshold")
         if member is not None:
@@ -252,7 +250,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def release_threshold(self) -> np.float32 | None:
+    def release_threshold(self) -> primitives.Float | None:
         """The ReleaseThreshold field value."""
         member = self.get_member("ReleaseThreshold")
         if member is None:
@@ -260,7 +258,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @release_threshold.setter
-    def release_threshold(self, value: np.float32) -> None:
+    def release_threshold(self, value: primitives.Float) -> None:
         """Set the ReleaseThreshold field value."""
         member = self.get_member("ReleaseThreshold")
         if member is not None:
@@ -271,7 +269,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def is_pressed(self) -> bool | None:
+    def is_pressed(self) -> primitives.Bool | None:
         """The IsPressed field value."""
         member = self.get_member("IsPressed")
         if member is None:
@@ -279,7 +277,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @is_pressed.setter
-    def is_pressed(self, value: bool) -> None:
+    def is_pressed(self, value: primitives.Bool) -> None:
         """Set the IsPressed field value."""
         member = self.get_member("IsPressed")
         if member is not None:
@@ -290,7 +288,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def is_hovering(self) -> bool | None:
+    def is_hovering(self) -> primitives.Bool | None:
         """The IsHovering field value."""
         member = self.get_member("IsHovering")
         if member is None:
@@ -298,7 +296,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @is_hovering.setter
-    def is_hovering(self, value: bool) -> None:
+    def is_hovering(self, value: primitives.Bool) -> None:
         """Set the IsHovering field value."""
         member = self.get_member("IsHovering")
         if member is not None:
@@ -309,7 +307,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def is_holding(self) -> bool | None:
+    def is_holding(self) -> primitives.Bool | None:
         """The IsHolding field value."""
         member = self.get_member("IsHolding")
         if member is None:
@@ -317,7 +315,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @is_holding.setter
-    def is_holding(self, value: bool) -> None:
+    def is_holding(self, value: primitives.Bool) -> None:
         """Set the IsHolding field value."""
         member = self.get_member("IsHolding")
         if member is not None:
@@ -328,7 +326,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def is_pressed_or_holding(self) -> bool | None:
+    def is_pressed_or_holding(self) -> primitives.Bool | None:
         """The IsPressedOrHolding field value."""
         member = self.get_member("IsPressedOrHolding")
         if member is None:
@@ -336,7 +334,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @is_pressed_or_holding.setter
-    def is_pressed_or_holding(self, value: bool) -> None:
+    def is_pressed_or_holding(self, value: primitives.Bool) -> None:
         """Set the IsPressedOrHolding field value."""
         member = self.get_member("IsPressedOrHolding")
         if member is not None:
@@ -347,7 +345,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def hold(self) -> bool | None:
+    def hold(self) -> primitives.Bool | None:
         """The Hold field value."""
         member = self.get_member("Hold")
         if member is None:
@@ -355,7 +353,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @hold.setter
-    def hold(self, value: bool) -> None:
+    def hold(self, value: primitives.Bool) -> None:
         """Set the Hold field value."""
         member = self.get_member("Hold")
         if member is not None:
@@ -366,7 +364,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def hold_depth_ratio(self) -> np.float32 | None:
+    def hold_depth_ratio(self) -> primitives.Float | None:
         """The HoldDepthRatio field value."""
         member = self.get_member("HoldDepthRatio")
         if member is None:
@@ -374,7 +372,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @hold_depth_ratio.setter
-    def hold_depth_ratio(self, value: np.float32) -> None:
+    def hold_depth_ratio(self, value: primitives.Float) -> None:
         """Set the HoldDepthRatio field value."""
         member = self.get_member("HoldDepthRatio")
         if member is not None:
@@ -425,15 +423,15 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
 
     @property
     def label(self) -> str | None:
-        """Target ID of the Label reference (targets IField[str])."""
+        """Target ID of the Label reference (targets IField[primitives.String])."""
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @label.setter
-    def label(self, target: str | IField[str] | None) -> None:
-        """Set the Label reference by target ID or IField[str] instance."""
+    def label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Label reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
@@ -445,7 +443,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
             )
 
     @property
-    def current_pressing_depth(self) -> np.float32 | None:
+    def current_pressing_depth(self) -> primitives.Float | None:
         """The _currentPressingDepth field value."""
         member = self.get_member("_currentPressingDepth")
         if member is None:
@@ -453,7 +451,7 @@ class PhysicalButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @current_pressing_depth.setter
-    def current_pressing_depth(self, value: np.float32) -> None:
+    def current_pressing_depth(self, value: primitives.Float) -> None:
         """Set the _currentPressingDepth field value."""
         member = self.get_member("_currentPressingDepth")
         if member is not None:

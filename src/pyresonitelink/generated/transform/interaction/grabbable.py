@@ -1,9 +1,8 @@
 """Generated component: Grabbable."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -22,7 +21,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Grabbable"
 
-    def __init__(self, reparent_on_release: bool | None = None, preserve_user_space: bool | None = None, destroy_on_release: bool | None = None, grab_priority: np.int32 | None = None, grab_priority_when_grabbed: np.int32 | None = None, edit_mode_only: bool | None = None, allow_steal: bool | None = None, drop_on_disable: bool | None = None, scalable: bool | None = None, receivable: bool | None = None, allow_only_physical_grab: bool | None = None, grabber: str | Grabber | None = None, last_parent: str | Slot | None = None, last_parent_is_user_space: bool | None = None, legacy_active_user_root_only: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reparent_on_release: primitives.Bool | None = None, preserve_user_space: primitives.Bool | None = None, destroy_on_release: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, grab_priority_when_grabbed: primitives.Int | None = None, edit_mode_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, drop_on_disable: primitives.Bool | None = None, scalable: primitives.Bool | None = None, receivable: primitives.Bool | None = None, allow_only_physical_grab: primitives.Bool | None = None, grabber: str | Grabber | None = None, last_parent: str | Slot | None = None, last_parent_is_user_space: primitives.Bool | None = None, legacy_active_user_root_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -76,7 +75,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             self.legacy_active_user_root_only = legacy_active_user_root_only
 
     @property
-    def reparent_on_release(self) -> bool | None:
+    def reparent_on_release(self) -> primitives.Bool | None:
         """The ReparentOnRelease field value."""
         member = self.get_member("ReparentOnRelease")
         if member is None:
@@ -84,7 +83,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @reparent_on_release.setter
-    def reparent_on_release(self, value: bool) -> None:
+    def reparent_on_release(self, value: primitives.Bool) -> None:
         """Set the ReparentOnRelease field value."""
         member = self.get_member("ReparentOnRelease")
         if member is not None:
@@ -95,7 +94,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def preserve_user_space(self) -> bool | None:
+    def preserve_user_space(self) -> primitives.Bool | None:
         """The PreserveUserSpace field value."""
         member = self.get_member("PreserveUserSpace")
         if member is None:
@@ -103,7 +102,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @preserve_user_space.setter
-    def preserve_user_space(self, value: bool) -> None:
+    def preserve_user_space(self, value: primitives.Bool) -> None:
         """Set the PreserveUserSpace field value."""
         member = self.get_member("PreserveUserSpace")
         if member is not None:
@@ -114,7 +113,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def destroy_on_release(self) -> bool | None:
+    def destroy_on_release(self) -> primitives.Bool | None:
         """The DestroyOnRelease field value."""
         member = self.get_member("DestroyOnRelease")
         if member is None:
@@ -122,7 +121,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @destroy_on_release.setter
-    def destroy_on_release(self, value: bool) -> None:
+    def destroy_on_release(self, value: primitives.Bool) -> None:
         """Set the DestroyOnRelease field value."""
         member = self.get_member("DestroyOnRelease")
         if member is not None:
@@ -133,7 +132,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def grab_priority(self) -> np.int32 | None:
+    def grab_priority(self) -> primitives.Int | None:
         """The GrabPriority field value."""
         member = self.get_member("GrabPriority")
         if member is None:
@@ -141,7 +140,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @grab_priority.setter
-    def grab_priority(self, value: np.int32) -> None:
+    def grab_priority(self, value: primitives.Int) -> None:
         """Set the GrabPriority field value."""
         member = self.get_member("GrabPriority")
         if member is not None:
@@ -152,7 +151,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def grab_priority_when_grabbed(self) -> np.int32 | None:
+    def grab_priority_when_grabbed(self) -> primitives.Int | None:
         """The GrabPriorityWhenGrabbed field value."""
         member = self.get_member("GrabPriorityWhenGrabbed")
         if member is None:
@@ -160,7 +159,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @grab_priority_when_grabbed.setter
-    def grab_priority_when_grabbed(self, value: np.int32) -> None:
+    def grab_priority_when_grabbed(self, value: primitives.Int) -> None:
         """Set the GrabPriorityWhenGrabbed field value."""
         member = self.get_member("GrabPriorityWhenGrabbed")
         if member is not None:
@@ -171,7 +170,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def edit_mode_only(self) -> bool | None:
+    def edit_mode_only(self) -> primitives.Bool | None:
         """The EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is None:
@@ -179,7 +178,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @edit_mode_only.setter
-    def edit_mode_only(self, value: bool) -> None:
+    def edit_mode_only(self, value: primitives.Bool) -> None:
         """Set the EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is not None:
@@ -190,7 +189,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def allow_steal(self) -> bool | None:
+    def allow_steal(self) -> primitives.Bool | None:
         """The AllowSteal field value."""
         member = self.get_member("AllowSteal")
         if member is None:
@@ -198,7 +197,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @allow_steal.setter
-    def allow_steal(self, value: bool) -> None:
+    def allow_steal(self, value: primitives.Bool) -> None:
         """Set the AllowSteal field value."""
         member = self.get_member("AllowSteal")
         if member is not None:
@@ -209,7 +208,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def drop_on_disable(self) -> bool | None:
+    def drop_on_disable(self) -> primitives.Bool | None:
         """The DropOnDisable field value."""
         member = self.get_member("DropOnDisable")
         if member is None:
@@ -217,7 +216,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @drop_on_disable.setter
-    def drop_on_disable(self, value: bool) -> None:
+    def drop_on_disable(self, value: primitives.Bool) -> None:
         """Set the DropOnDisable field value."""
         member = self.get_member("DropOnDisable")
         if member is not None:
@@ -254,7 +253,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         self.set_member("OnlyUsers", value)
 
     @property
-    def scalable(self) -> bool | None:
+    def scalable(self) -> primitives.Bool | None:
         """The Scalable field value."""
         member = self.get_member("Scalable")
         if member is None:
@@ -262,7 +261,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @scalable.setter
-    def scalable(self, value: bool) -> None:
+    def scalable(self, value: primitives.Bool) -> None:
         """Set the Scalable field value."""
         member = self.get_member("Scalable")
         if member is not None:
@@ -273,7 +272,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def receivable(self) -> bool | None:
+    def receivable(self) -> primitives.Bool | None:
         """The Receivable field value."""
         member = self.get_member("Receivable")
         if member is None:
@@ -281,7 +280,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @receivable.setter
-    def receivable(self, value: bool) -> None:
+    def receivable(self, value: primitives.Bool) -> None:
         """Set the Receivable field value."""
         member = self.get_member("Receivable")
         if member is not None:
@@ -292,7 +291,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def allow_only_physical_grab(self) -> bool | None:
+    def allow_only_physical_grab(self) -> primitives.Bool | None:
         """The AllowOnlyPhysicalGrab field value."""
         member = self.get_member("AllowOnlyPhysicalGrab")
         if member is None:
@@ -300,7 +299,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @allow_only_physical_grab.setter
-    def allow_only_physical_grab(self, value: bool) -> None:
+    def allow_only_physical_grab(self, value: primitives.Bool) -> None:
         """Set the AllowOnlyPhysicalGrab field value."""
         member = self.get_member("AllowOnlyPhysicalGrab")
         if member is not None:
@@ -353,7 +352,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def last_parent_is_user_space(self) -> bool | None:
+    def last_parent_is_user_space(self) -> primitives.Bool | None:
         """The _lastParentIsUserSpace field value."""
         member = self.get_member("_lastParentIsUserSpace")
         if member is None:
@@ -361,7 +360,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @last_parent_is_user_space.setter
-    def last_parent_is_user_space(self, value: bool) -> None:
+    def last_parent_is_user_space(self, value: primitives.Bool) -> None:
         """Set the _lastParentIsUserSpace field value."""
         member = self.get_member("_lastParentIsUserSpace")
         if member is not None:
@@ -372,7 +371,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def legacy_active_user_root_only(self) -> bool | None:
+    def legacy_active_user_root_only(self) -> primitives.Bool | None:
         """The __legacyActiveUserRootOnly field value."""
         member = self.get_member("__legacyActiveUserRootOnly")
         if member is None:
@@ -380,7 +379,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @legacy_active_user_root_only.setter
-    def legacy_active_user_root_only(self, value: bool) -> None:
+    def legacy_active_user_root_only(self, value: primitives.Bool) -> None:
         """Set the __legacyActiveUserRootOnly field value."""
         member = self.get_member("__legacyActiveUserRootOnly")
         if member is not None:

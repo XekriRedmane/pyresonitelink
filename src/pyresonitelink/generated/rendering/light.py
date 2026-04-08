@@ -1,7 +1,5 @@
 """Generated component: Light."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Light"
 
-    def __init__(self, intensity: np.float32 | None = None, color: primitives.ColorX | None = None, shadow_strength: np.float32 | None = None, shadow_near_plane: np.float32 | None = None, shadow_map_resolution: np.int32 | None = None, shadow_bias: np.float32 | None = None, shadow_normal_bias: np.float32 | None = None, range_: np.float32 | None = None, spot_angle: np.float32 | None = None, cookie: str | IAssetProvider[ITexture] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, intensity: primitives.Float | None = None, color: primitives.ColorX | None = None, shadow_strength: primitives.Float | None = None, shadow_near_plane: primitives.Float | None = None, shadow_map_resolution: primitives.Int | None = None, shadow_bias: primitives.Float | None = None, shadow_normal_bias: primitives.Float | None = None, range_: primitives.Float | None = None, spot_angle: primitives.Float | None = None, cookie: str | IAssetProvider[ITexture] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -74,7 +72,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         self.set_member("LightType", value)
 
     @property
-    def intensity(self) -> np.float32 | None:
+    def intensity(self) -> primitives.Float | None:
         """The Intensity field value."""
         member = self.get_member("Intensity")
         if member is None:
@@ -82,7 +80,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @intensity.setter
-    def intensity(self, value: np.float32) -> None:
+    def intensity(self, value: primitives.Float) -> None:
         """Set the Intensity field value."""
         member = self.get_member("Intensity")
         if member is not None:
@@ -125,7 +123,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         self.set_member("ShadowType", value)
 
     @property
-    def shadow_strength(self) -> np.float32 | None:
+    def shadow_strength(self) -> primitives.Float | None:
         """The ShadowStrength field value."""
         member = self.get_member("ShadowStrength")
         if member is None:
@@ -133,7 +131,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @shadow_strength.setter
-    def shadow_strength(self, value: np.float32) -> None:
+    def shadow_strength(self, value: primitives.Float) -> None:
         """Set the ShadowStrength field value."""
         member = self.get_member("ShadowStrength")
         if member is not None:
@@ -144,7 +142,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
             )
 
     @property
-    def shadow_near_plane(self) -> np.float32 | None:
+    def shadow_near_plane(self) -> primitives.Float | None:
         """The ShadowNearPlane field value."""
         member = self.get_member("ShadowNearPlane")
         if member is None:
@@ -152,7 +150,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @shadow_near_plane.setter
-    def shadow_near_plane(self, value: np.float32) -> None:
+    def shadow_near_plane(self, value: primitives.Float) -> None:
         """Set the ShadowNearPlane field value."""
         member = self.get_member("ShadowNearPlane")
         if member is not None:
@@ -163,7 +161,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
             )
 
     @property
-    def shadow_map_resolution(self) -> np.int32 | None:
+    def shadow_map_resolution(self) -> primitives.Int | None:
         """The ShadowMapResolution field value."""
         member = self.get_member("ShadowMapResolution")
         if member is None:
@@ -171,7 +169,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @shadow_map_resolution.setter
-    def shadow_map_resolution(self, value: np.int32) -> None:
+    def shadow_map_resolution(self, value: primitives.Int) -> None:
         """Set the ShadowMapResolution field value."""
         member = self.get_member("ShadowMapResolution")
         if member is not None:
@@ -182,7 +180,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
             )
 
     @property
-    def shadow_bias(self) -> np.float32 | None:
+    def shadow_bias(self) -> primitives.Float | None:
         """The ShadowBias field value."""
         member = self.get_member("ShadowBias")
         if member is None:
@@ -190,7 +188,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @shadow_bias.setter
-    def shadow_bias(self, value: np.float32) -> None:
+    def shadow_bias(self, value: primitives.Float) -> None:
         """Set the ShadowBias field value."""
         member = self.get_member("ShadowBias")
         if member is not None:
@@ -201,7 +199,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
             )
 
     @property
-    def shadow_normal_bias(self) -> np.float32 | None:
+    def shadow_normal_bias(self) -> primitives.Float | None:
         """The ShadowNormalBias field value."""
         member = self.get_member("ShadowNormalBias")
         if member is None:
@@ -209,7 +207,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @shadow_normal_bias.setter
-    def shadow_normal_bias(self, value: np.float32) -> None:
+    def shadow_normal_bias(self, value: primitives.Float) -> None:
         """Set the ShadowNormalBias field value."""
         member = self.get_member("ShadowNormalBias")
         if member is not None:
@@ -220,7 +218,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
             )
 
     @property
-    def range_(self) -> np.float32 | None:
+    def range_(self) -> primitives.Float | None:
         """The Range field value."""
         member = self.get_member("Range")
         if member is None:
@@ -228,7 +226,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @range_.setter
-    def range_(self, value: np.float32) -> None:
+    def range_(self, value: primitives.Float) -> None:
         """Set the Range field value."""
         member = self.get_member("Range")
         if member is not None:
@@ -239,7 +237,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
             )
 
     @property
-    def spot_angle(self) -> np.float32 | None:
+    def spot_angle(self) -> primitives.Float | None:
         """The SpotAngle field value."""
         member = self.get_member("SpotAngle")
         if member is None:
@@ -247,7 +245,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @spot_angle.setter
-    def spot_angle(self, value: np.float32) -> None:
+    def spot_angle(self, value: primitives.Float) -> None:
         """Set the SpotAngle field value."""
         member = self.get_member("SpotAngle")
         if member is not None:

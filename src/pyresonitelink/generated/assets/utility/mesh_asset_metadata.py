@@ -1,9 +1,8 @@
 """Generated component: MeshAssetMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,7 +19,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshAssetMetadata"
 
-    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, vertex_count: np.int32 | None = None, triangle_count: np.int32 | None = None, point_count: np.int32 | None = None, submesh_count: np.int32 | None = None, bone_count: np.int32 | None = None, blendshape_count: np.int32 | None = None, has_normals: bool | None = None, has_tangents: bool | None = None, has_vertex_colors: bool | None = None, has_uv0s: bool | None = None, has_uv1s: bool | None = None, has_uv2s: bool | None = None, has_uv3s: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, vertex_count: primitives.Int | None = None, triangle_count: primitives.Int | None = None, point_count: primitives.Int | None = None, submesh_count: primitives.Int | None = None, bone_count: primitives.Int | None = None, blendshape_count: primitives.Int | None = None, has_normals: primitives.Bool | None = None, has_tangents: primitives.Bool | None = None, has_vertex_colors: primitives.Bool | None = None, has_uv0s: primitives.Bool | None = None, has_uv1s: primitives.Bool | None = None, has_uv2s: primitives.Bool | None = None, has_uv3s: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -92,7 +91,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def vertex_count(self) -> np.int32 | None:
+    def vertex_count(self) -> primitives.Int | None:
         """The VertexCount field value."""
         member = self.get_member("VertexCount")
         if member is None:
@@ -100,7 +99,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @vertex_count.setter
-    def vertex_count(self, value: np.int32) -> None:
+    def vertex_count(self, value: primitives.Int) -> None:
         """Set the VertexCount field value."""
         member = self.get_member("VertexCount")
         if member is not None:
@@ -111,7 +110,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def triangle_count(self) -> np.int32 | None:
+    def triangle_count(self) -> primitives.Int | None:
         """The TriangleCount field value."""
         member = self.get_member("TriangleCount")
         if member is None:
@@ -119,7 +118,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @triangle_count.setter
-    def triangle_count(self, value: np.int32) -> None:
+    def triangle_count(self, value: primitives.Int) -> None:
         """Set the TriangleCount field value."""
         member = self.get_member("TriangleCount")
         if member is not None:
@@ -130,7 +129,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def point_count(self) -> np.int32 | None:
+    def point_count(self) -> primitives.Int | None:
         """The PointCount field value."""
         member = self.get_member("PointCount")
         if member is None:
@@ -138,7 +137,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @point_count.setter
-    def point_count(self, value: np.int32) -> None:
+    def point_count(self, value: primitives.Int) -> None:
         """Set the PointCount field value."""
         member = self.get_member("PointCount")
         if member is not None:
@@ -149,7 +148,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def submesh_count(self) -> np.int32 | None:
+    def submesh_count(self) -> primitives.Int | None:
         """The SubmeshCount field value."""
         member = self.get_member("SubmeshCount")
         if member is None:
@@ -157,7 +156,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @submesh_count.setter
-    def submesh_count(self, value: np.int32) -> None:
+    def submesh_count(self, value: primitives.Int) -> None:
         """Set the SubmeshCount field value."""
         member = self.get_member("SubmeshCount")
         if member is not None:
@@ -168,7 +167,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def bone_count(self) -> np.int32 | None:
+    def bone_count(self) -> primitives.Int | None:
         """The BoneCount field value."""
         member = self.get_member("BoneCount")
         if member is None:
@@ -176,7 +175,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @bone_count.setter
-    def bone_count(self, value: np.int32) -> None:
+    def bone_count(self, value: primitives.Int) -> None:
         """Set the BoneCount field value."""
         member = self.get_member("BoneCount")
         if member is not None:
@@ -187,7 +186,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def blendshape_count(self) -> np.int32 | None:
+    def blendshape_count(self) -> primitives.Int | None:
         """The BlendshapeCount field value."""
         member = self.get_member("BlendshapeCount")
         if member is None:
@@ -195,7 +194,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @blendshape_count.setter
-    def blendshape_count(self, value: np.int32) -> None:
+    def blendshape_count(self, value: primitives.Int) -> None:
         """Set the BlendshapeCount field value."""
         member = self.get_member("BlendshapeCount")
         if member is not None:
@@ -206,7 +205,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def has_normals(self) -> bool | None:
+    def has_normals(self) -> primitives.Bool | None:
         """The HasNormals field value."""
         member = self.get_member("HasNormals")
         if member is None:
@@ -214,7 +213,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_normals.setter
-    def has_normals(self, value: bool) -> None:
+    def has_normals(self, value: primitives.Bool) -> None:
         """Set the HasNormals field value."""
         member = self.get_member("HasNormals")
         if member is not None:
@@ -225,7 +224,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def has_tangents(self) -> bool | None:
+    def has_tangents(self) -> primitives.Bool | None:
         """The HasTangents field value."""
         member = self.get_member("HasTangents")
         if member is None:
@@ -233,7 +232,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_tangents.setter
-    def has_tangents(self, value: bool) -> None:
+    def has_tangents(self, value: primitives.Bool) -> None:
         """Set the HasTangents field value."""
         member = self.get_member("HasTangents")
         if member is not None:
@@ -244,7 +243,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def has_vertex_colors(self) -> bool | None:
+    def has_vertex_colors(self) -> primitives.Bool | None:
         """The HasVertexColors field value."""
         member = self.get_member("HasVertexColors")
         if member is None:
@@ -252,7 +251,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_vertex_colors.setter
-    def has_vertex_colors(self, value: bool) -> None:
+    def has_vertex_colors(self, value: primitives.Bool) -> None:
         """Set the HasVertexColors field value."""
         member = self.get_member("HasVertexColors")
         if member is not None:
@@ -263,7 +262,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def has_uv0s(self) -> bool | None:
+    def has_uv0s(self) -> primitives.Bool | None:
         """The HasUV0s field value."""
         member = self.get_member("HasUV0s")
         if member is None:
@@ -271,7 +270,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_uv0s.setter
-    def has_uv0s(self, value: bool) -> None:
+    def has_uv0s(self, value: primitives.Bool) -> None:
         """Set the HasUV0s field value."""
         member = self.get_member("HasUV0s")
         if member is not None:
@@ -282,7 +281,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def has_uv1s(self) -> bool | None:
+    def has_uv1s(self) -> primitives.Bool | None:
         """The HasUV1s field value."""
         member = self.get_member("HasUV1s")
         if member is None:
@@ -290,7 +289,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_uv1s.setter
-    def has_uv1s(self, value: bool) -> None:
+    def has_uv1s(self, value: primitives.Bool) -> None:
         """Set the HasUV1s field value."""
         member = self.get_member("HasUV1s")
         if member is not None:
@@ -301,7 +300,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def has_uv2s(self) -> bool | None:
+    def has_uv2s(self) -> primitives.Bool | None:
         """The HasUV2s field value."""
         member = self.get_member("HasUV2s")
         if member is None:
@@ -309,7 +308,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_uv2s.setter
-    def has_uv2s(self, value: bool) -> None:
+    def has_uv2s(self, value: primitives.Bool) -> None:
         """Set the HasUV2s field value."""
         member = self.get_member("HasUV2s")
         if member is not None:
@@ -320,7 +319,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def has_uv3s(self) -> bool | None:
+    def has_uv3s(self) -> primitives.Bool | None:
         """The HasUV3s field value."""
         member = self.get_member("HasUV3s")
         if member is None:
@@ -328,7 +327,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_uv3s.setter
-    def has_uv3s(self, value: bool) -> None:
+    def has_uv3s(self, value: primitives.Bool) -> None:
         """Set the HasUV3s field value."""
         member = self.get_member("HasUV3s")
         if member is not None:

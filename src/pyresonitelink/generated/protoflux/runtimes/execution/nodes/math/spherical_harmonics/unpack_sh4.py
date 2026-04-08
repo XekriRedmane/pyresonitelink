@@ -19,7 +19,7 @@ class UnpackSH4(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector,
 
     Parameterize with a value type::
 
-        UnpackSH4[np.float32]
+        UnpackSH4[primitives.Float]
         UnpackSH4[primitives.Float3]
     """
 

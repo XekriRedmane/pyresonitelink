@@ -1,7 +1,5 @@
 """Generated component: AvatarBadgeManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarBadgeManager"
 
-    def __init__(self, badge_size: np.float32 | None = None, badge_separation: np.float32 | None = None, max_row_size: np.int32 | None = None, badges_root: str | Slot | None = None, badges_offset: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, badge_size: primitives.Float | None = None, badge_separation: primitives.Float | None = None, max_row_size: primitives.Int | None = None, badges_root: str | Slot | None = None, badges_offset: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +43,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
             self.badges_offset = badges_offset
 
     @property
-    def badge_size(self) -> np.float32 | None:
+    def badge_size(self) -> primitives.Float | None:
         """The BadgeSize field value."""
         member = self.get_member("BadgeSize")
         if member is None:
@@ -53,7 +51,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @badge_size.setter
-    def badge_size(self, value: np.float32) -> None:
+    def badge_size(self, value: primitives.Float) -> None:
         """Set the BadgeSize field value."""
         member = self.get_member("BadgeSize")
         if member is not None:
@@ -64,7 +62,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
             )
 
     @property
-    def badge_separation(self) -> np.float32 | None:
+    def badge_separation(self) -> primitives.Float | None:
         """The BadgeSeparation field value."""
         member = self.get_member("BadgeSeparation")
         if member is None:
@@ -72,7 +70,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @badge_separation.setter
-    def badge_separation(self, value: np.float32) -> None:
+    def badge_separation(self, value: primitives.Float) -> None:
         """Set the BadgeSeparation field value."""
         member = self.get_member("BadgeSeparation")
         if member is not None:
@@ -83,7 +81,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
             )
 
     @property
-    def max_row_size(self) -> np.int32 | None:
+    def max_row_size(self) -> primitives.Int | None:
         """The MaxRowSize field value."""
         member = self.get_member("MaxRowSize")
         if member is None:
@@ -91,7 +89,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @max_row_size.setter
-    def max_row_size(self, value: np.int32) -> None:
+    def max_row_size(self, value: primitives.Int) -> None:
         """Set the MaxRowSize field value."""
         member = self.get_member("MaxRowSize")
         if member is not None:

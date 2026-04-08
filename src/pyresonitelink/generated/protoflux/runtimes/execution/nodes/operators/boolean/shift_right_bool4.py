@@ -1,7 +1,5 @@
 """Generated component: ShiftRight_Bool4."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class ShiftRight_Bool4(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ShiftRight_Bool4"
 
-    def __init__(self, a: str | INodeValueOutput[primitives.Bool4] | None = None, shift: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, a: str | INodeValueOutput[primitives.Bool4] | None = None, shift: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +57,15 @@ class ShiftRight_Bool4(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def shift(self) -> str | None:
-        """Target ID of the Shift reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Shift reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Shift")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @shift.setter
-    def shift(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Shift reference by target ID or INodeValueOutput[np.int32] instance."""
+    def shift(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Shift reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Shift")
         if isinstance(member, members.Reference):

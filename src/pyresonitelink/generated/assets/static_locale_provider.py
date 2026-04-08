@@ -1,6 +1,7 @@
 """Generated component: StaticLocaleProvider."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
@@ -16,7 +17,7 @@ class StaticLocaleProvider(GeneratedComponent, IStaticAssetProvider, ICustomInsp
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticLocaleProvider"
 
-    def __init__(self, url: str | None = None, override_locale: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, override_locale: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -50,7 +51,7 @@ class StaticLocaleProvider(GeneratedComponent, IStaticAssetProvider, ICustomInsp
             )
 
     @property
-    def override_locale(self) -> str | None:
+    def override_locale(self) -> primitives.String | None:
         """The OverrideLocale field value."""
         member = self.get_member("OverrideLocale")
         if member is None:
@@ -58,7 +59,7 @@ class StaticLocaleProvider(GeneratedComponent, IStaticAssetProvider, ICustomInsp
         return getattr(member, 'value', None)
 
     @override_locale.setter
-    def override_locale(self, value: str) -> None:
+    def override_locale(self, value: primitives.String) -> None:
         """Set the OverrideLocale field value."""
         member = self.get_member("OverrideLocale")
         if member is not None:

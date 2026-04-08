@@ -21,7 +21,7 @@ class EnumToByte(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], IN
 
     Parameterize with a value type::
 
-        EnumToByte[np.float32]
+        EnumToByte[primitives.Float]
         EnumToByte[primitives.Float3]
     """
 

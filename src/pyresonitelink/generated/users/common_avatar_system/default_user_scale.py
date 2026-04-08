@@ -1,9 +1,8 @@
 """Generated component: DefaultUserScale."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -19,7 +18,7 @@ class DefaultUserScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.DefaultUserScale"
 
-    def __init__(self, set_on_equip: bool | None = None, default_scale: np.float32 | None = None, active_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, set_on_equip: primitives.Bool | None = None, default_scale: primitives.Float | None = None, active_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +36,7 @@ class DefaultUserScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
             self.active_user = active_user
 
     @property
-    def set_on_equip(self) -> bool | None:
+    def set_on_equip(self) -> primitives.Bool | None:
         """The SetOnEquip field value."""
         member = self.get_member("SetOnEquip")
         if member is None:
@@ -45,7 +44,7 @@ class DefaultUserScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @set_on_equip.setter
-    def set_on_equip(self, value: bool) -> None:
+    def set_on_equip(self, value: primitives.Bool) -> None:
         """Set the SetOnEquip field value."""
         member = self.get_member("SetOnEquip")
         if member is not None:
@@ -56,7 +55,7 @@ class DefaultUserScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
             )
 
     @property
-    def default_scale(self) -> np.float32 | None:
+    def default_scale(self) -> primitives.Float | None:
         """The DefaultScale field value."""
         member = self.get_member("DefaultScale")
         if member is None:
@@ -64,7 +63,7 @@ class DefaultUserScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @default_scale.setter
-    def default_scale(self, value: np.float32) -> None:
+    def default_scale(self, value: primitives.Float) -> None:
         """Set the DefaultScale field value."""
         member = self.get_member("DefaultScale")
         if member is not None:

@@ -18,7 +18,7 @@ class ValueSquare(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     Parameterize with a value type::
 
-        ValueSquare[np.float32]
+        ValueSquare[primitives.Float]
         ValueSquare[primitives.Float3]
     """
 

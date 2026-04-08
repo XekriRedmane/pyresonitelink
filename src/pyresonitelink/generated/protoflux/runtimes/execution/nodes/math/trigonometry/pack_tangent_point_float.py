@@ -1,8 +1,7 @@
 """Generated component: PackTangentPointFloat."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class PackTangentPointFloat(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.PackTangentPointFloat"
 
-    def __init__(self, value: str | INodeValueOutput[np.float32] | None = None, tangent: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | INodeValueOutput[primitives.Float] | None = None, tangent: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +36,15 @@ class PackTangentPointFloat(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Value reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @value.setter
-    def value(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Value reference by target ID or INodeValueOutput[np.float32] instance."""
+    def value(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Value reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
@@ -58,15 +57,15 @@ class PackTangentPointFloat(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     @property
     def tangent(self) -> str | None:
-        """Target ID of the Tangent reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Tangent reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Tangent")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @tangent.setter
-    def tangent(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Tangent reference by target ID or INodeValueOutput[np.float32] instance."""
+    def tangent(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Tangent reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Tangent")
         if isinstance(member, members.Reference):

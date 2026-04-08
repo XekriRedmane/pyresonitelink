@@ -1,9 +1,8 @@
 """Generated component: VolumeUnlitMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -21,7 +20,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VolumeUnlitMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, render_queue: np.int32 | None = None, volume: str | IAssetProvider[Texture3D] | None = None, step_size: np.float32 | None = None, gain: np.float32 | None = None, exp: np.float32 | None = None, accumulation_cutoff: np.float32 | None = None, hit_threshold: np.float32 | None = None, input_range: np.float32 | None = None, input_offset: np.float32 | None = None, use_alpha_channel: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, render_queue: primitives.Int | None = None, volume: str | IAssetProvider[Texture3D] | None = None, step_size: primitives.Float | None = None, gain: primitives.Float | None = None, exp: primitives.Float | None = None, accumulation_cutoff: primitives.Float | None = None, hit_threshold: primitives.Float | None = None, input_range: primitives.Float | None = None, input_offset: primitives.Float | None = None, use_alpha_channel: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,7 +65,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             self.use_alpha_channel = use_alpha_channel
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -74,7 +73,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -132,7 +131,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         self.set_member("BlendMode", value)
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -140,7 +139,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -172,7 +171,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def step_size(self) -> np.float32 | None:
+    def step_size(self) -> primitives.Float | None:
         """The StepSize field value."""
         member = self.get_member("StepSize")
         if member is None:
@@ -180,7 +179,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @step_size.setter
-    def step_size(self, value: np.float32) -> None:
+    def step_size(self, value: primitives.Float) -> None:
         """Set the StepSize field value."""
         member = self.get_member("StepSize")
         if member is not None:
@@ -191,7 +190,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def gain(self) -> np.float32 | None:
+    def gain(self) -> primitives.Float | None:
         """The Gain field value."""
         member = self.get_member("Gain")
         if member is None:
@@ -199,7 +198,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @gain.setter
-    def gain(self, value: np.float32) -> None:
+    def gain(self, value: primitives.Float) -> None:
         """Set the Gain field value."""
         member = self.get_member("Gain")
         if member is not None:
@@ -210,7 +209,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def exp(self) -> np.float32 | None:
+    def exp(self) -> primitives.Float | None:
         """The Exp field value."""
         member = self.get_member("Exp")
         if member is None:
@@ -218,7 +217,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @exp.setter
-    def exp(self, value: np.float32) -> None:
+    def exp(self, value: primitives.Float) -> None:
         """Set the Exp field value."""
         member = self.get_member("Exp")
         if member is not None:
@@ -229,7 +228,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def accumulation_cutoff(self) -> np.float32 | None:
+    def accumulation_cutoff(self) -> primitives.Float | None:
         """The AccumulationCutoff field value."""
         member = self.get_member("AccumulationCutoff")
         if member is None:
@@ -237,7 +236,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @accumulation_cutoff.setter
-    def accumulation_cutoff(self, value: np.float32) -> None:
+    def accumulation_cutoff(self, value: primitives.Float) -> None:
         """Set the AccumulationCutoff field value."""
         member = self.get_member("AccumulationCutoff")
         if member is not None:
@@ -248,7 +247,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def hit_threshold(self) -> np.float32 | None:
+    def hit_threshold(self) -> primitives.Float | None:
         """The HitThreshold field value."""
         member = self.get_member("HitThreshold")
         if member is None:
@@ -256,7 +255,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @hit_threshold.setter
-    def hit_threshold(self, value: np.float32) -> None:
+    def hit_threshold(self, value: primitives.Float) -> None:
         """Set the HitThreshold field value."""
         member = self.get_member("HitThreshold")
         if member is not None:
@@ -267,7 +266,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def input_range(self) -> np.float32 | None:
+    def input_range(self) -> primitives.Float | None:
         """The InputRange field value."""
         member = self.get_member("InputRange")
         if member is None:
@@ -275,7 +274,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @input_range.setter
-    def input_range(self, value: np.float32) -> None:
+    def input_range(self, value: primitives.Float) -> None:
         """Set the InputRange field value."""
         member = self.get_member("InputRange")
         if member is not None:
@@ -286,7 +285,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def input_offset(self) -> np.float32 | None:
+    def input_offset(self) -> primitives.Float | None:
         """The InputOffset field value."""
         member = self.get_member("InputOffset")
         if member is None:
@@ -294,7 +293,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @input_offset.setter
-    def input_offset(self, value: np.float32) -> None:
+    def input_offset(self, value: primitives.Float) -> None:
         """Set the InputOffset field value."""
         member = self.get_member("InputOffset")
         if member is not None:
@@ -305,7 +304,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def use_alpha_channel(self) -> bool | None:
+    def use_alpha_channel(self) -> primitives.Bool | None:
         """The UseAlphaChannel field value."""
         member = self.get_member("UseAlphaChannel")
         if member is None:
@@ -313,7 +312,7 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @use_alpha_channel.setter
-    def use_alpha_channel(self, value: bool) -> None:
+    def use_alpha_channel(self, value: primitives.Bool) -> None:
         """Set the UseAlphaChannel field value."""
         member = self.get_member("UseAlphaChannel")
         if member is not None:

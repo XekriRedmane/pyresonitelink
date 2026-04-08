@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_type import SyncType
@@ -18,7 +19,7 @@ class DynamicTypeField(GeneratedComponent, IDynamicVariable, IComponent, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicTypeField"
 
-    def __init__(self, variable_name: str | None = None, target_field: str | SyncType | None = None, override_on_link: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, target_field: str | SyncType | None = None, override_on_link: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +37,7 @@ class DynamicTypeField(GeneratedComponent, IDynamicVariable, IComponent, IWorldE
             self.override_on_link = override_on_link
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -44,7 +45,7 @@ class DynamicTypeField(GeneratedComponent, IDynamicVariable, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:
@@ -76,7 +77,7 @@ class DynamicTypeField(GeneratedComponent, IDynamicVariable, IComponent, IWorldE
             )
 
     @property
-    def override_on_link(self) -> bool | None:
+    def override_on_link(self) -> primitives.Bool | None:
         """The OverrideOnLink field value."""
         member = self.get_member("OverrideOnLink")
         if member is None:
@@ -84,7 +85,7 @@ class DynamicTypeField(GeneratedComponent, IDynamicVariable, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @override_on_link.setter
-    def override_on_link(self, value: bool) -> None:
+    def override_on_link(self, value: primitives.Bool) -> None:
         """Set the OverrideOnLink field value."""
         member = self.get_member("OverrideOnLink")
         if member is not None:

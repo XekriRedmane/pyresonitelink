@@ -1,6 +1,7 @@
 """Generated component: FocusWorld."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -23,7 +24,7 @@ class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.FocusWorld"
 
-    def __init__(self, url: str | INodeObjectOutput[str] | None = None, world_link: str | INodeObjectOutput[IWorldLink] | None = None, close_current: str | INodeValueOutput[bool] | None = None, on_not_found: str | INodeOperation | None = None, on_focused: str | INodeOperation | None = None, on_fail: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | INodeObjectOutput[str] | None = None, world_link: str | INodeObjectOutput[IWorldLink] | None = None, close_current: str | INodeValueOutput[primitives.Bool] | None = None, on_not_found: str | INodeOperation | None = None, on_focused: str | INodeOperation | None = None, on_fail: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -93,15 +94,15 @@ class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def close_current(self) -> str | None:
-        """Target ID of the CloseCurrent reference (targets INodeValueOutput[bool])."""
+        """Target ID of the CloseCurrent reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("CloseCurrent")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @close_current.setter
-    def close_current(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the CloseCurrent reference by target ID or INodeValueOutput[bool] instance."""
+    def close_current(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the CloseCurrent reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("CloseCurrent")
         if isinstance(member, members.Reference):

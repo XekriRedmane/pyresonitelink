@@ -1,8 +1,7 @@
 """Generated component: UserTrackingSpaceSync."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -17,7 +16,7 @@ class UserTrackingSpaceSync(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserTrackingSpaceSync"
 
-    def __init__(self, seated_mode: bool | None = None, user_height: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, seated_mode: primitives.Bool | None = None, user_height: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +31,7 @@ class UserTrackingSpaceSync(GeneratedComponent, IComponent, IWorldEventReceiver)
             self.user_height = user_height
 
     @property
-    def seated_mode(self) -> bool | None:
+    def seated_mode(self) -> primitives.Bool | None:
         """The SeatedMode field value."""
         member = self.get_member("SeatedMode")
         if member is None:
@@ -40,7 +39,7 @@ class UserTrackingSpaceSync(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @seated_mode.setter
-    def seated_mode(self, value: bool) -> None:
+    def seated_mode(self, value: primitives.Bool) -> None:
         """Set the SeatedMode field value."""
         member = self.get_member("SeatedMode")
         if member is not None:
@@ -51,7 +50,7 @@ class UserTrackingSpaceSync(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def user_height(self) -> np.float32 | None:
+    def user_height(self) -> primitives.Float | None:
         """The UserHeight field value."""
         member = self.get_member("UserHeight")
         if member is None:
@@ -59,7 +58,7 @@ class UserTrackingSpaceSync(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @user_height.setter
-    def user_height(self, value: np.float32) -> None:
+    def user_height(self, value: primitives.Float) -> None:
         """Set the UserHeight field value."""
         member = self.get_member("UserHeight")
         if member is not None:

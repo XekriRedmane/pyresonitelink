@@ -1,8 +1,7 @@
 """Generated component: DebugFeatureUpgrade."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +14,7 @@ class DebugFeatureUpgrade(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugFeatureUpgrade"
 
-    def __init__(self, test: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, test: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +26,7 @@ class DebugFeatureUpgrade(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.test = test
 
     @property
-    def test(self) -> np.int32 | None:
+    def test(self) -> primitives.Int | None:
         """The Test field value."""
         member = self.get_member("Test")
         if member is None:
@@ -35,7 +34,7 @@ class DebugFeatureUpgrade(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @test.setter
-    def test(self, value: np.int32) -> None:
+    def test(self, value: primitives.Int) -> None:
         """Set the Test field value."""
         member = self.get_member("Test")
         if member is not None:

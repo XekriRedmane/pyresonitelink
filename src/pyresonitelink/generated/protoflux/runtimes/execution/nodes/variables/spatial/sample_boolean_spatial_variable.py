@@ -22,7 +22,7 @@ class SampleBooleanSpatialVariable(GeneratedComponent, INodeValueOutput, IExecut
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.SampleBooleanSpatialVariable"
 
-    def __init__(self, point: str | INodeValueOutput[primitives.Float3] | None = None, name: str | INodeObjectOutput[str] | None = None, mode: str | INodeValueOutput[BooleanSpatialVariableMode] | None = None, base_value: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, point: str | INodeValueOutput[primitives.Float3] | None = None, name: str | INodeObjectOutput[primitives.String] | None = None, mode: str | INodeValueOutput[BooleanSpatialVariableMode] | None = None, base_value: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -65,15 +65,15 @@ class SampleBooleanSpatialVariable(GeneratedComponent, INodeValueOutput, IExecut
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @name.setter
-    def name(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Name reference by target ID or INodeObjectOutput[str] instance."""
+    def name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Name reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
@@ -107,15 +107,15 @@ class SampleBooleanSpatialVariable(GeneratedComponent, INodeValueOutput, IExecut
 
     @property
     def base_value(self) -> str | None:
-        """Target ID of the BaseValue reference (targets INodeValueOutput[bool])."""
+        """Target ID of the BaseValue reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("BaseValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @base_value.setter
-    def base_value(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the BaseValue reference by target ID or INodeValueOutput[bool] instance."""
+    def base_value(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the BaseValue reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("BaseValue")
         if isinstance(member, members.Reference):

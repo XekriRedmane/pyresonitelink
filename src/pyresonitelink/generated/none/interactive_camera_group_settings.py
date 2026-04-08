@@ -1,8 +1,7 @@
 """Generated component: InteractiveCameraGroupSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class InteractiveCameraGroupSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraGroupSettings"
 
-    def __init__(self, group_detection_radius: np.float32 | None = None, group_leave_boundary: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, group_detection_radius: primitives.Float | None = None, group_leave_boundary: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +29,7 @@ class InteractiveCameraGroupSettings(GeneratedComponent, ICustomInspector):
             self.group_leave_boundary = group_leave_boundary
 
     @property
-    def group_detection_radius(self) -> np.float32 | None:
+    def group_detection_radius(self) -> primitives.Float | None:
         """The GroupDetectionRadius field value."""
         member = self.get_member("GroupDetectionRadius")
         if member is None:
@@ -38,7 +37,7 @@ class InteractiveCameraGroupSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @group_detection_radius.setter
-    def group_detection_radius(self, value: np.float32) -> None:
+    def group_detection_radius(self, value: primitives.Float) -> None:
         """Set the GroupDetectionRadius field value."""
         member = self.get_member("GroupDetectionRadius")
         if member is not None:
@@ -49,7 +48,7 @@ class InteractiveCameraGroupSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def group_leave_boundary(self) -> np.float32 | None:
+    def group_leave_boundary(self) -> primitives.Float | None:
         """The GroupLeaveBoundary field value."""
         member = self.get_member("GroupLeaveBoundary")
         if member is None:
@@ -57,7 +56,7 @@ class InteractiveCameraGroupSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @group_leave_boundary.setter
-    def group_leave_boundary(self, value: np.float32) -> None:
+    def group_leave_boundary(self, value: primitives.Float) -> None:
         """Set the GroupLeaveBoundary field value."""
         member = self.get_member("GroupLeaveBoundary")
         if member is not None:

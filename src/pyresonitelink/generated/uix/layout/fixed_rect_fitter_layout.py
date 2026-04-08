@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ilayout_element import ILayoutElement
@@ -17,7 +18,7 @@ class FixedRectFitterLayout(GeneratedComponent, ILayoutElement, IUIComputeCompon
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.FixedRectFitterLayout"
 
-    def __init__(self, allow_shrink: bool | None = None, allow_grow: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, allow_shrink: primitives.Bool | None = None, allow_grow: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -71,7 +72,7 @@ class FixedRectFitterLayout(GeneratedComponent, ILayoutElement, IUIComputeCompon
         self.set_member("Mode", value)
 
     @property
-    def allow_shrink(self) -> bool | None:
+    def allow_shrink(self) -> primitives.Bool | None:
         """The AllowShrink field value."""
         member = self.get_member("AllowShrink")
         if member is None:
@@ -79,7 +80,7 @@ class FixedRectFitterLayout(GeneratedComponent, ILayoutElement, IUIComputeCompon
         return getattr(member, 'value', None)
 
     @allow_shrink.setter
-    def allow_shrink(self, value: bool) -> None:
+    def allow_shrink(self, value: primitives.Bool) -> None:
         """Set the AllowShrink field value."""
         member = self.get_member("AllowShrink")
         if member is not None:
@@ -90,7 +91,7 @@ class FixedRectFitterLayout(GeneratedComponent, ILayoutElement, IUIComputeCompon
             )
 
     @property
-    def allow_grow(self) -> bool | None:
+    def allow_grow(self) -> primitives.Bool | None:
         """The AllowGrow field value."""
         member = self.get_member("AllowGrow")
         if member is None:
@@ -98,7 +99,7 @@ class FixedRectFitterLayout(GeneratedComponent, ILayoutElement, IUIComputeCompon
         return getattr(member, 'value', None)
 
     @allow_grow.setter
-    def allow_grow(self, value: bool) -> None:
+    def allow_grow(self, value: primitives.Bool) -> None:
         """Set the AllowGrow field value."""
         member = self.get_member("AllowGrow")
         if member is not None:

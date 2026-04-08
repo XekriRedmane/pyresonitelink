@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -16,14 +17,14 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
 
     Parameterize with a value type::
 
-        ReferenceUserOverride[np.float32]
+        ReferenceUserOverride[primitives.Float]
         ReferenceUserOverride[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceUserOverride<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ReferenceUserOverride<>"
 
-    def __init__(self, target: str | SyncRef[T] | None = None, default: str | T | None = None, create_override_on_write: bool | None = None, persistent_overrides: bool | None = None, clear_on_user_leave: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | SyncRef[T] | None = None, default: str | T | None = None, create_override_on_write: primitives.Bool | None = None, persistent_overrides: primitives.Bool | None = None, clear_on_user_leave: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -89,7 +90,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
             )
 
     @property
-    def create_override_on_write(self) -> bool | None:
+    def create_override_on_write(self) -> primitives.Bool | None:
         """The CreateOverrideOnWrite field value."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is None:
@@ -97,7 +98,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @create_override_on_write.setter
-    def create_override_on_write(self, value: bool) -> None:
+    def create_override_on_write(self, value: primitives.Bool) -> None:
         """Set the CreateOverrideOnWrite field value."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is not None:
@@ -108,7 +109,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
             )
 
     @property
-    def persistent_overrides(self) -> bool | None:
+    def persistent_overrides(self) -> primitives.Bool | None:
         """The PersistentOverrides field value."""
         member = self.get_member("PersistentOverrides")
         if member is None:
@@ -116,7 +117,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @persistent_overrides.setter
-    def persistent_overrides(self, value: bool) -> None:
+    def persistent_overrides(self, value: primitives.Bool) -> None:
         """Set the PersistentOverrides field value."""
         member = self.get_member("PersistentOverrides")
         if member is not None:
@@ -127,7 +128,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
             )
 
     @property
-    def clear_on_user_leave(self) -> bool | None:
+    def clear_on_user_leave(self) -> primitives.Bool | None:
         """The ClearOnUserLeave field value."""
         member = self.get_member("ClearOnUserLeave")
         if member is None:
@@ -135,7 +136,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @clear_on_user_leave.setter
-    def clear_on_user_leave(self, value: bool) -> None:
+    def clear_on_user_leave(self, value: primitives.Bool) -> None:
         """Set the ClearOnUserLeave field value."""
         member = self.get_member("ClearOnUserLeave")
         if member is not None:

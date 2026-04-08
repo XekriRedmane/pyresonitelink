@@ -1,8 +1,7 @@
 """Generated component: UniformSizeOverLifetimeStartEnd."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -17,7 +16,7 @@ class UniformSizeOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.UniformSizeOverLifetimeStartEnd"
 
-    def __init__(self, start_size: np.float32 | None = None, end_size: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, start_size: primitives.Float | None = None, end_size: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +31,7 @@ class UniformSizeOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule,
             self.end_size = end_size
 
     @property
-    def start_size(self) -> np.float32 | None:
+    def start_size(self) -> primitives.Float | None:
         """The StartSize field value."""
         member = self.get_member("StartSize")
         if member is None:
@@ -40,7 +39,7 @@ class UniformSizeOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule,
         return getattr(member, 'value', None)
 
     @start_size.setter
-    def start_size(self, value: np.float32) -> None:
+    def start_size(self, value: primitives.Float) -> None:
         """Set the StartSize field value."""
         member = self.get_member("StartSize")
         if member is not None:
@@ -51,7 +50,7 @@ class UniformSizeOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule,
             )
 
     @property
-    def end_size(self) -> np.float32 | None:
+    def end_size(self) -> primitives.Float | None:
         """The EndSize field value."""
         member = self.get_member("EndSize")
         if member is None:
@@ -59,7 +58,7 @@ class UniformSizeOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule,
         return getattr(member, 'value', None)
 
     @end_size.setter
-    def end_size(self, value: np.float32) -> None:
+    def end_size(self, value: primitives.Float) -> None:
         """Set the EndSize field value."""
         member = self.get_member("EndSize")
         if member is not None:

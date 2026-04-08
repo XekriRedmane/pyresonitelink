@@ -1,8 +1,7 @@
 """Generated component: DebugFeatureReplacement."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +14,7 @@ class DebugFeatureReplacement(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugFeatureReplacement"
 
-    def __init__(self, test: np.int32 | None = None, test2: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, test: primitives.Int | None = None, test2: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +29,7 @@ class DebugFeatureReplacement(GeneratedComponent, IComponent, IWorldEventReceive
             self.test2 = test2
 
     @property
-    def test(self) -> np.int32 | None:
+    def test(self) -> primitives.Int | None:
         """The Test field value."""
         member = self.get_member("Test")
         if member is None:
@@ -38,7 +37,7 @@ class DebugFeatureReplacement(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @test.setter
-    def test(self, value: np.int32) -> None:
+    def test(self, value: primitives.Int) -> None:
         """Set the Test field value."""
         member = self.get_member("Test")
         if member is not None:
@@ -49,7 +48,7 @@ class DebugFeatureReplacement(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def test2(self) -> np.float32 | None:
+    def test2(self) -> primitives.Float | None:
         """The Test2 field value."""
         member = self.get_member("Test2")
         if member is None:
@@ -57,7 +56,7 @@ class DebugFeatureReplacement(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @test2.setter
-    def test2(self, value: np.float32) -> None:
+    def test2(self, value: primitives.Float) -> None:
         """Set the Test2 field value."""
         member = self.get_member("Test2")
         if member is not None:

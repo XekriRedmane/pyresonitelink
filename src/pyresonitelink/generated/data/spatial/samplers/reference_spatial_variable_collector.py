@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.isync_ref_list import ISyncRefList
@@ -16,14 +17,14 @@ class ReferenceSpatialVariableCollector(GenericComponent[T], IComponent, IWorldE
 
     Parameterize with a value type::
 
-        ReferenceSpatialVariableCollector[np.float32]
+        ReferenceSpatialVariableCollector[primitives.Float]
         ReferenceSpatialVariableCollector[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceSpatialVariableCollector<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ReferenceSpatialVariableCollector<>"
 
-    def __init__(self, reference_list: str | ISyncRefList[T] | None = None, variable_name: str | None = None, default_target: str | T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reference_list: str | ISyncRefList[T] | None = None, variable_name: primitives.String | None = None, default_target: str | T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +63,7 @@ class ReferenceSpatialVariableCollector(GenericComponent[T], IComponent, IWorldE
             )
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -70,7 +71,7 @@ class ReferenceSpatialVariableCollector(GenericComponent[T], IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:

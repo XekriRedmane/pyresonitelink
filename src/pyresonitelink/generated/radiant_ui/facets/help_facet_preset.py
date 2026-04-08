@@ -1,6 +1,7 @@
 """Generated component: HelpFacetPreset."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class HelpFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HelpFacetPreset"
 
-    def __init__(self, fully_loaded: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, fully_loaded: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class HelpFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.fully_loaded = fully_loaded
 
     @property
-    def fully_loaded(self) -> bool | None:
+    def fully_loaded(self) -> primitives.Bool | None:
         """The _fullyLoaded field value."""
         member = self.get_member("_fullyLoaded")
         if member is None:
@@ -35,7 +36,7 @@ class HelpFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @fully_loaded.setter
-    def fully_loaded(self, value: bool) -> None:
+    def fully_loaded(self, value: primitives.Bool) -> None:
         """Set the _fullyLoaded field value."""
         member = self.get_member("_fullyLoaded")
         if member is not None:

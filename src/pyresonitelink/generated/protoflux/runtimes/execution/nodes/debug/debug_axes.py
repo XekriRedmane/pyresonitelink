@@ -1,7 +1,5 @@
 """Generated component: DebugAxes."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -25,7 +23,7 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugAxes"
 
-    def __init__(self, next: str | INodeOperation | None = None, position: str | INodeValueOutput[primitives.Float3] | None = None, rotation: str | INodeValueOutput[primitives.FloatQ] | None = None, length: str | INodeValueOutput[np.float32] | None = None, right_color: str | INodeValueOutput[primitives.ColorX] | None = None, up_color: str | INodeValueOutput[primitives.ColorX] | None = None, forward_color: str | INodeValueOutput[primitives.ColorX] | None = None, duration: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, position: str | INodeValueOutput[primitives.Float3] | None = None, rotation: str | INodeValueOutput[primitives.FloatQ] | None = None, length: str | INodeValueOutput[primitives.Float] | None = None, right_color: str | INodeValueOutput[primitives.ColorX] | None = None, up_color: str | INodeValueOutput[primitives.ColorX] | None = None, forward_color: str | INodeValueOutput[primitives.ColorX] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -122,15 +120,15 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def length(self) -> str | None:
-        """Target ID of the Length reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Length reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @length.setter
-    def length(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Length reference by target ID or INodeValueOutput[np.float32] instance."""
+    def length(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Length reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
@@ -206,15 +204,15 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @duration.setter
-    def duration(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Duration reference by target ID or INodeValueOutput[np.float32] instance."""
+    def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):

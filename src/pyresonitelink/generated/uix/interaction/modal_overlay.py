@@ -1,9 +1,8 @@
 """Generated component: ModalOverlay."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.rect_transform import RectTransform
@@ -19,7 +18,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ModalOverlay"
 
-    def __init__(self, show_lerp: np.float32 | None = None, animation_time: np.float32 | None = None, size_root: str | RectTransform | None = None, content_root: str | RectTransform | None = None, close_on_context_menu_action: bool | None = None, close_on_click: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, show_lerp: primitives.Float | None = None, animation_time: primitives.Float | None = None, size_root: str | RectTransform | None = None, content_root: str | RectTransform | None = None, close_on_context_menu_action: primitives.Bool | None = None, close_on_click: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,7 +45,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
             self.close_on_click = close_on_click
 
     @property
-    def show_lerp(self) -> np.float32 | None:
+    def show_lerp(self) -> primitives.Float | None:
         """The ShowLerp field value."""
         member = self.get_member("ShowLerp")
         if member is None:
@@ -54,7 +53,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_lerp.setter
-    def show_lerp(self, value: np.float32) -> None:
+    def show_lerp(self, value: primitives.Float) -> None:
         """Set the ShowLerp field value."""
         member = self.get_member("ShowLerp")
         if member is not None:
@@ -65,7 +64,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
             )
 
     @property
-    def animation_time(self) -> np.float32 | None:
+    def animation_time(self) -> primitives.Float | None:
         """The AnimationTime field value."""
         member = self.get_member("AnimationTime")
         if member is None:
@@ -73,7 +72,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @animation_time.setter
-    def animation_time(self, value: np.float32) -> None:
+    def animation_time(self, value: primitives.Float) -> None:
         """Set the AnimationTime field value."""
         member = self.get_member("AnimationTime")
         if member is not None:
@@ -126,7 +125,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
             )
 
     @property
-    def close_on_context_menu_action(self) -> bool | None:
+    def close_on_context_menu_action(self) -> primitives.Bool | None:
         """The CloseOnContextMenuAction field value."""
         member = self.get_member("CloseOnContextMenuAction")
         if member is None:
@@ -134,7 +133,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @close_on_context_menu_action.setter
-    def close_on_context_menu_action(self, value: bool) -> None:
+    def close_on_context_menu_action(self, value: primitives.Bool) -> None:
         """Set the CloseOnContextMenuAction field value."""
         member = self.get_member("CloseOnContextMenuAction")
         if member is not None:
@@ -145,7 +144,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
             )
 
     @property
-    def close_on_click(self) -> bool | None:
+    def close_on_click(self) -> primitives.Bool | None:
         """The CloseOnClick field value."""
         member = self.get_member("CloseOnClick")
         if member is None:
@@ -153,7 +152,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @close_on_click.setter
-    def close_on_click(self, value: bool) -> None:
+    def close_on_click(self, value: primitives.Bool) -> None:
         """Set the CloseOnClick field value."""
         member = self.get_member("CloseOnClick")
         if member is not None:

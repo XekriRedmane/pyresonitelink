@@ -1,7 +1,5 @@
 """Generated component: CapsuleMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CapsuleMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: np.float32 | None = None, height: np.float32 | None = None, segments: np.int32 | None = None, rings: np.int32 | None = None, uv_scale: primitives.Float2 | None = None, dual_sided: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: primitives.Float | None = None, height: primitives.Float | None = None, segments: primitives.Int | None = None, rings: primitives.Int | None = None, uv_scale: primitives.Float2 | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,7 +55,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             self.dual_sided = dual_sided
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -65,7 +63,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -76,7 +74,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -84,7 +82,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -127,7 +125,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         self.set_member("Profile", value)
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -135,7 +133,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -146,7 +144,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -154,7 +152,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -165,7 +163,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def segments(self) -> np.int32 | None:
+    def segments(self) -> primitives.Int | None:
         """The Segments field value."""
         member = self.get_member("Segments")
         if member is None:
@@ -173,7 +171,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @segments.setter
-    def segments(self, value: np.int32) -> None:
+    def segments(self, value: primitives.Int) -> None:
         """Set the Segments field value."""
         member = self.get_member("Segments")
         if member is not None:
@@ -184,7 +182,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def rings(self) -> np.int32 | None:
+    def rings(self) -> primitives.Int | None:
         """The Rings field value."""
         member = self.get_member("Rings")
         if member is None:
@@ -192,7 +190,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @rings.setter
-    def rings(self, value: np.int32) -> None:
+    def rings(self, value: primitives.Int) -> None:
         """Set the Rings field value."""
         member = self.get_member("Rings")
         if member is not None:
@@ -235,7 +233,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def dual_sided(self) -> bool | None:
+    def dual_sided(self) -> primitives.Bool | None:
         """The DualSided field value."""
         member = self.get_member("DualSided")
         if member is None:
@@ -243,7 +241,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @dual_sided.setter
-    def dual_sided(self, value: bool) -> None:
+    def dual_sided(self, value: primitives.Bool) -> None:
         """Set the DualSided field value."""
         member = self.get_member("DualSided")
         if member is not None:

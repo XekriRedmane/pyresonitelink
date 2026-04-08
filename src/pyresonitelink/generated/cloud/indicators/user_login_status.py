@@ -1,6 +1,7 @@
 """Generated component: UserLoginStatus."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserLoginStatus"
 
-    def __init__(self, is_logged_in: bool | None = None, logged_user_id: str | None = None, logged_username: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_logged_in: primitives.Bool | None = None, logged_user_id: primitives.String | None = None, logged_username: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +34,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.logged_username = logged_username
 
     @property
-    def is_logged_in(self) -> bool | None:
+    def is_logged_in(self) -> primitives.Bool | None:
         """The IsLoggedIn field value."""
         member = self.get_member("IsLoggedIn")
         if member is None:
@@ -41,7 +42,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_logged_in.setter
-    def is_logged_in(self, value: bool) -> None:
+    def is_logged_in(self, value: primitives.Bool) -> None:
         """Set the IsLoggedIn field value."""
         member = self.get_member("IsLoggedIn")
         if member is not None:
@@ -52,7 +53,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def logged_user_id(self) -> str | None:
+    def logged_user_id(self) -> primitives.String | None:
         """The LoggedUserId field value."""
         member = self.get_member("LoggedUserId")
         if member is None:
@@ -60,7 +61,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @logged_user_id.setter
-    def logged_user_id(self, value: str) -> None:
+    def logged_user_id(self, value: primitives.String) -> None:
         """Set the LoggedUserId field value."""
         member = self.get_member("LoggedUserId")
         if member is not None:
@@ -71,7 +72,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def logged_username(self) -> str | None:
+    def logged_username(self) -> primitives.String | None:
         """The LoggedUsername field value."""
         member = self.get_member("LoggedUsername")
         if member is None:
@@ -79,7 +80,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @logged_username.setter
-    def logged_username(self, value: str) -> None:
+    def logged_username(self, value: primitives.String) -> None:
         """Set the LoggedUsername field value."""
         member = self.get_member("LoggedUsername")
         if member is not None:

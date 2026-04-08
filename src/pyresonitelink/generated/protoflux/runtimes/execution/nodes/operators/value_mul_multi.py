@@ -18,7 +18,7 @@ class ValueMulMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        ValueMulMulti[np.float32]
+        ValueMulMulti[primitives.Float]
         ValueMulMulti[primitives.Float3]
     """
 

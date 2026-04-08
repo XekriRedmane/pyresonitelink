@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -18,7 +19,7 @@ class GenericUIContainer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GenericUIContainer"
 
-    def __init__(self, title: str | IField[str] | None = None, close_request: bool | None = None, close_destroy_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, title: str | IField[primitives.String] | None = None, close_request: primitives.Bool | None = None, close_destroy_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +38,15 @@ class GenericUIContainer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def title(self) -> str | None:
-        """Target ID of the Title reference (targets IField[str])."""
+        """Target ID of the Title reference (targets IField[primitives.String])."""
         member = self.get_member("Title")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @title.setter
-    def title(self, target: str | IField[str] | None) -> None:
-        """Set the Title reference by target ID or IField[str] instance."""
+    def title(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Title reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Title")
         if isinstance(member, members.Reference):
@@ -57,7 +58,7 @@ class GenericUIContainer(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def close_request(self) -> bool | None:
+    def close_request(self) -> primitives.Bool | None:
         """The CloseRequest field value."""
         member = self.get_member("CloseRequest")
         if member is None:
@@ -65,7 +66,7 @@ class GenericUIContainer(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @close_request.setter
-    def close_request(self, value: bool) -> None:
+    def close_request(self, value: primitives.Bool) -> None:
         """Set the CloseRequest field value."""
         member = self.get_member("CloseRequest")
         if member is not None:

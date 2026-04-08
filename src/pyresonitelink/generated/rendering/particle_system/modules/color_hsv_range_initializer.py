@@ -1,8 +1,7 @@
 """Generated component: ColorHSV_RangeInitializer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -17,7 +16,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorHSV_RangeInitializer"
 
-    def __init__(self, hue_min: np.float32 | None = None, hue_max: np.float32 | None = None, saturation_min: np.float32 | None = None, saturation_max: np.float32 | None = None, value_min: np.float32 | None = None, value_max: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, hue_min: primitives.Float | None = None, hue_max: primitives.Float | None = None, saturation_min: primitives.Float | None = None, saturation_max: primitives.Float | None = None, value_min: primitives.Float | None = None, value_max: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,7 +43,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
             self.value_max = value_max
 
     @property
-    def hue_min(self) -> np.float32 | None:
+    def hue_min(self) -> primitives.Float | None:
         """The HueMin field value."""
         member = self.get_member("HueMin")
         if member is None:
@@ -52,7 +51,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @hue_min.setter
-    def hue_min(self, value: np.float32) -> None:
+    def hue_min(self, value: primitives.Float) -> None:
         """Set the HueMin field value."""
         member = self.get_member("HueMin")
         if member is not None:
@@ -63,7 +62,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
             )
 
     @property
-    def hue_max(self) -> np.float32 | None:
+    def hue_max(self) -> primitives.Float | None:
         """The HueMax field value."""
         member = self.get_member("HueMax")
         if member is None:
@@ -71,7 +70,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @hue_max.setter
-    def hue_max(self, value: np.float32) -> None:
+    def hue_max(self, value: primitives.Float) -> None:
         """Set the HueMax field value."""
         member = self.get_member("HueMax")
         if member is not None:
@@ -82,7 +81,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
             )
 
     @property
-    def saturation_min(self) -> np.float32 | None:
+    def saturation_min(self) -> primitives.Float | None:
         """The SaturationMin field value."""
         member = self.get_member("SaturationMin")
         if member is None:
@@ -90,7 +89,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @saturation_min.setter
-    def saturation_min(self, value: np.float32) -> None:
+    def saturation_min(self, value: primitives.Float) -> None:
         """Set the SaturationMin field value."""
         member = self.get_member("SaturationMin")
         if member is not None:
@@ -101,7 +100,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
             )
 
     @property
-    def saturation_max(self) -> np.float32 | None:
+    def saturation_max(self) -> primitives.Float | None:
         """The SaturationMax field value."""
         member = self.get_member("SaturationMax")
         if member is None:
@@ -109,7 +108,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @saturation_max.setter
-    def saturation_max(self, value: np.float32) -> None:
+    def saturation_max(self, value: primitives.Float) -> None:
         """Set the SaturationMax field value."""
         member = self.get_member("SaturationMax")
         if member is not None:
@@ -120,7 +119,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
             )
 
     @property
-    def value_min(self) -> np.float32 | None:
+    def value_min(self) -> primitives.Float | None:
         """The ValueMin field value."""
         member = self.get_member("ValueMin")
         if member is None:
@@ -128,7 +127,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @value_min.setter
-    def value_min(self, value: np.float32) -> None:
+    def value_min(self, value: primitives.Float) -> None:
         """Set the ValueMin field value."""
         member = self.get_member("ValueMin")
         if member is not None:
@@ -139,7 +138,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
             )
 
     @property
-    def value_max(self) -> np.float32 | None:
+    def value_max(self) -> primitives.Float | None:
         """The ValueMax field value."""
         member = self.get_member("ValueMax")
         if member is None:
@@ -147,7 +146,7 @@ class ColorHSV_RangeInitializer(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @value_max.setter
-    def value_max(self, value: np.float32) -> None:
+    def value_max(self, value: primitives.Float) -> None:
         """Set the ValueMax field value."""
         member = self.get_member("ValueMax")
         if member is not None:

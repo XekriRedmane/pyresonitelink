@@ -5,6 +5,7 @@ from typing import Any
 S = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.audio_stream import AudioStream
@@ -19,14 +20,14 @@ class UserAudioStream(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        UserAudioStream[np.float32]
+        UserAudioStream[primitives.Float]
         UserAudioStream[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserAudioStream<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.UserAudioStream<>"
 
-    def __init__(self, stream: str | AudioStream[S] | None = None, use_filtered_data: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, stream: str | AudioStream[S] | None = None, use_filtered_data: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +63,7 @@ class UserAudioStream(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def use_filtered_data(self) -> bool | None:
+    def use_filtered_data(self) -> primitives.Bool | None:
         """The UseFilteredData field value."""
         member = self.get_member("UseFilteredData")
         if member is None:
@@ -70,7 +71,7 @@ class UserAudioStream(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_filtered_data.setter
-    def use_filtered_data(self, value: bool) -> None:
+    def use_filtered_data(self, value: primitives.Bool) -> None:
         """Set the UseFilteredData field value."""
         member = self.get_member("UseFilteredData")
         if member is not None:

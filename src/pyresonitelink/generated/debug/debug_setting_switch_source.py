@@ -1,6 +1,7 @@
 """Generated component: DebugSettingSwitchSource."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class DebugSettingSwitchSource(GeneratedComponent, IComponent, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugSettingSwitchSource"
 
-    def __init__(self, current_profile: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, current_profile: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class DebugSettingSwitchSource(GeneratedComponent, IComponent, IWorldEventReceiv
             self.current_profile = current_profile
 
     @property
-    def current_profile(self) -> str | None:
+    def current_profile(self) -> primitives.String | None:
         """The CurrentProfile field value."""
         member = self.get_member("CurrentProfile")
         if member is None:
@@ -35,7 +36,7 @@ class DebugSettingSwitchSource(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @current_profile.setter
-    def current_profile(self, value: str) -> None:
+    def current_profile(self, value: primitives.String) -> None:
         """Set the CurrentProfile field value."""
         member = self.get_member("CurrentProfile")
         if member is not None:

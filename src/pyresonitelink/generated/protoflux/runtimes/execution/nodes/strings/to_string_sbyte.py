@@ -1,8 +1,7 @@
 """Generated component: ToString_Sbyte."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -23,7 +22,7 @@ class ToString_Sbyte(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ParsingFormatting.ToString_Sbyte"
 
-    def __init__(self, v: str | INodeValueOutput[np.int8] | None = None, format_: str | INodeObjectOutput[str] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, v: str | INodeValueOutput[primitives.SByte] | None = None, format_: str | INodeObjectOutput[primitives.String] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,15 +41,15 @@ class ToString_Sbyte(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def v(self) -> str | None:
-        """Target ID of the V reference (targets INodeValueOutput[np.int8])."""
+        """Target ID of the V reference (targets INodeValueOutput[primitives.SByte])."""
         member = self.get_member("V")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @v.setter
-    def v(self, target: str | INodeValueOutput[np.int8] | None) -> None:
-        """Set the V reference by target ID or INodeValueOutput[np.int8] instance."""
+    def v(self, target: str | INodeValueOutput[primitives.SByte] | None) -> None:
+        """Set the V reference by target ID or INodeValueOutput[primitives.SByte] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("V")
         if isinstance(member, members.Reference):
@@ -63,15 +62,15 @@ class ToString_Sbyte(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def format_(self) -> str | None:
-        """Target ID of the Format reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Format reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Format")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @format_.setter
-    def format_(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Format reference by target ID or INodeObjectOutput[str] instance."""
+    def format_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Format reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Format")
         if isinstance(member, members.Reference):

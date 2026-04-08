@@ -1,8 +1,7 @@
 """Generated component: DelayUpdatesOrTimeWithValueSecondsInt."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -22,14 +21,14 @@ class DelayUpdatesOrTimeWithValueSecondsInt(GenericComponent[T], IAsyncNodeOpera
 
     Parameterize with a value type::
 
-        DelayUpdatesOrTimeWithValueSecondsInt[np.float32]
+        DelayUpdatesOrTimeWithValueSecondsInt[primitives.Float]
         DelayUpdatesOrTimeWithValueSecondsInt[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async.DelayUpdatesOrTimeWithValueSecondsInt<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async.DelayUpdatesOrTimeWithValueSecondsInt<>"
 
-    def __init__(self, next: str | INodeOperation | None = None, on_triggered: str | INodeOperation | None = None, updates: str | INodeValueOutput[np.int32] | None = None, value: str | INodeValueOutput[T] | None = None, duration: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, on_triggered: str | INodeOperation | None = None, updates: str | INodeValueOutput[primitives.Int] | None = None, value: str | INodeValueOutput[T] | None = None, duration: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -96,15 +95,15 @@ class DelayUpdatesOrTimeWithValueSecondsInt(GenericComponent[T], IAsyncNodeOpera
 
     @property
     def updates(self) -> str | None:
-        """Target ID of the Updates reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Updates reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Updates")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @updates.setter
-    def updates(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Updates reference by target ID or INodeValueOutput[np.int32] instance."""
+    def updates(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Updates reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Updates")
         if isinstance(member, members.Reference):
@@ -151,15 +150,15 @@ class DelayUpdatesOrTimeWithValueSecondsInt(GenericComponent[T], IAsyncNodeOpera
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @duration.setter
-    def duration(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Duration reference by target ID or INodeValueOutput[np.int32] instance."""
+    def duration(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Duration reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):

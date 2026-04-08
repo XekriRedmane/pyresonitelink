@@ -1,7 +1,5 @@
 """Generated component: TextureSheetAnimator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TextureSheetAnimator"
 
-    def __init__(self, tile_grid_size: primitives.Int2 | None = None, animation_cycle_count: np.float32 | None = None, row_index: np.int32 | None = None, use_random_row: bool | None = None, start_with_random_offset: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tile_grid_size: primitives.Int2 | None = None, animation_cycle_count: primitives.Float | None = None, row_index: primitives.Int | None = None, use_random_row: primitives.Bool | None = None, start_with_random_offset: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +60,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
             )
 
     @property
-    def animation_cycle_count(self) -> np.float32 | None:
+    def animation_cycle_count(self) -> primitives.Float | None:
         """The AnimationCycleCount field value."""
         member = self.get_member("AnimationCycleCount")
         if member is None:
@@ -70,7 +68,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
         return getattr(member, 'value', None)
 
     @animation_cycle_count.setter
-    def animation_cycle_count(self, value: np.float32) -> None:
+    def animation_cycle_count(self, value: primitives.Float) -> None:
         """Set the AnimationCycleCount field value."""
         member = self.get_member("AnimationCycleCount")
         if member is not None:
@@ -94,7 +92,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
         self.set_member("AnimationType", value)
 
     @property
-    def row_index(self) -> np.int32 | None:
+    def row_index(self) -> primitives.Int | None:
         """The RowIndex field value."""
         member = self.get_member("RowIndex")
         if member is None:
@@ -102,7 +100,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
         return getattr(member, 'value', None)
 
     @row_index.setter
-    def row_index(self, value: np.int32) -> None:
+    def row_index(self, value: primitives.Int) -> None:
         """Set the RowIndex field value."""
         member = self.get_member("RowIndex")
         if member is not None:
@@ -113,7 +111,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
             )
 
     @property
-    def use_random_row(self) -> bool | None:
+    def use_random_row(self) -> primitives.Bool | None:
         """The UseRandomRow field value."""
         member = self.get_member("UseRandomRow")
         if member is None:
@@ -121,7 +119,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
         return getattr(member, 'value', None)
 
     @use_random_row.setter
-    def use_random_row(self, value: bool) -> None:
+    def use_random_row(self, value: primitives.Bool) -> None:
         """Set the UseRandomRow field value."""
         member = self.get_member("UseRandomRow")
         if member is not None:
@@ -132,7 +130,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
             )
 
     @property
-    def start_with_random_offset(self) -> bool | None:
+    def start_with_random_offset(self) -> primitives.Bool | None:
         """The StartWithRandomOffset field value."""
         member = self.get_member("StartWithRandomOffset")
         if member is None:
@@ -140,7 +138,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
         return getattr(member, 'value', None)
 
     @start_with_random_offset.setter
-    def start_with_random_offset(self, value: bool) -> None:
+    def start_with_random_offset(self, value: primitives.Bool) -> None:
         """Set the StartWithRandomOffset field value."""
         member = self.get_member("StartWithRandomOffset")
         if member is not None:

@@ -1,8 +1,7 @@
 """Generated component: SigmoidDouble."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class SigmoidDouble(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.SigmoidDouble"
 
-    def __init__(self, x: str | INodeValueOutput[np.float64] | None = None, e: str | INodeValueOutput[np.float64] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, x: str | INodeValueOutput[primitives.Double] | None = None, e: str | INodeValueOutput[primitives.Double] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +36,15 @@ class SigmoidDouble(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def x(self) -> str | None:
-        """Target ID of the X reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the X reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @x.setter
-    def x(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the X reference by target ID or INodeValueOutput[np.float64] instance."""
+    def x(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the X reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("X")
         if isinstance(member, members.Reference):
@@ -58,15 +57,15 @@ class SigmoidDouble(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def e(self) -> str | None:
-        """Target ID of the E reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the E reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("E")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @e.setter
-    def e(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the E reference by target ID or INodeValueOutput[np.float64] instance."""
+    def e(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the E reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("E")
         if isinstance(member, members.Reference):

@@ -1,7 +1,5 @@
 """Generated component: ItemShelf."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,7 +23,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ItemShelf"
 
-    def __init__(self, ignore_grabber: str | Grabber | None = None, min_length: np.float32 | None = None, width: np.float32 | None = None, thickness: np.float32 | None = None, max_item_size: np.float32 | None = None, max_plane_distance: np.float32 | None = None, max_height_distance: np.float32 | None = None, target_length: np.float32 | None = None, visual: str | Slot | None = None, content: str | Slot | None = None, material: str | PBS_RimMetallic | None = None, visual_offset: str | IField[primitives.Float3] | None = None, shelf_mesh: str | BevelStripeMesh | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, ignore_grabber: str | Grabber | None = None, min_length: primitives.Float | None = None, width: primitives.Float | None = None, thickness: primitives.Float | None = None, max_item_size: primitives.Float | None = None, max_plane_distance: primitives.Float | None = None, max_height_distance: primitives.Float | None = None, target_length: primitives.Float | None = None, visual: str | Slot | None = None, content: str | Slot | None = None, material: str | PBS_RimMetallic | None = None, visual_offset: str | IField[primitives.Float3] | None = None, shelf_mesh: str | BevelStripeMesh | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -110,7 +108,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
             )
 
     @property
-    def min_length(self) -> np.float32 | None:
+    def min_length(self) -> primitives.Float | None:
         """The MinLength field value."""
         member = self.get_member("MinLength")
         if member is None:
@@ -118,7 +116,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
         return getattr(member, 'value', None)
 
     @min_length.setter
-    def min_length(self, value: np.float32) -> None:
+    def min_length(self, value: primitives.Float) -> None:
         """Set the MinLength field value."""
         member = self.get_member("MinLength")
         if member is not None:
@@ -129,7 +127,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
             )
 
     @property
-    def width(self) -> np.float32 | None:
+    def width(self) -> primitives.Float | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -137,7 +135,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.float32) -> None:
+    def width(self, value: primitives.Float) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -148,7 +146,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -156,7 +154,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -167,7 +165,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
             )
 
     @property
-    def max_item_size(self) -> np.float32 | None:
+    def max_item_size(self) -> primitives.Float | None:
         """The MaxItemSize field value."""
         member = self.get_member("MaxItemSize")
         if member is None:
@@ -175,7 +173,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
         return getattr(member, 'value', None)
 
     @max_item_size.setter
-    def max_item_size(self, value: np.float32) -> None:
+    def max_item_size(self, value: primitives.Float) -> None:
         """Set the MaxItemSize field value."""
         member = self.get_member("MaxItemSize")
         if member is not None:
@@ -186,7 +184,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
             )
 
     @property
-    def max_plane_distance(self) -> np.float32 | None:
+    def max_plane_distance(self) -> primitives.Float | None:
         """The MaxPlaneDistance field value."""
         member = self.get_member("MaxPlaneDistance")
         if member is None:
@@ -194,7 +192,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
         return getattr(member, 'value', None)
 
     @max_plane_distance.setter
-    def max_plane_distance(self, value: np.float32) -> None:
+    def max_plane_distance(self, value: primitives.Float) -> None:
         """Set the MaxPlaneDistance field value."""
         member = self.get_member("MaxPlaneDistance")
         if member is not None:
@@ -205,7 +203,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
             )
 
     @property
-    def max_height_distance(self) -> np.float32 | None:
+    def max_height_distance(self) -> primitives.Float | None:
         """The MaxHeightDistance field value."""
         member = self.get_member("MaxHeightDistance")
         if member is None:
@@ -213,7 +211,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
         return getattr(member, 'value', None)
 
     @max_height_distance.setter
-    def max_height_distance(self, value: np.float32) -> None:
+    def max_height_distance(self, value: primitives.Float) -> None:
         """Set the MaxHeightDistance field value."""
         member = self.get_member("MaxHeightDistance")
         if member is not None:
@@ -224,7 +222,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
             )
 
     @property
-    def target_length(self) -> np.float32 | None:
+    def target_length(self) -> primitives.Float | None:
         """The _targetLength field value."""
         member = self.get_member("_targetLength")
         if member is None:
@@ -232,7 +230,7 @@ class ItemShelf(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock,
         return getattr(member, 'value', None)
 
     @target_length.setter
-    def target_length(self, value: np.float32) -> None:
+    def target_length(self, value: primitives.Float) -> None:
         """Set the _targetLength field value."""
         member = self.get_member("_targetLength")
         if member is not None:

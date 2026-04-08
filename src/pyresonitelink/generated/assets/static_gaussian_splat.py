@@ -1,7 +1,5 @@
 """Generated component: StaticGaussianSplat."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
@@ -81,7 +79,7 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             resolink, "ClipWithBoundingBox", {"bounds": bounds, "boundsOrientation": bounds_orientation}, debug,
         )
 
-    async def clip_with_sphere(self, resolink: protocols.ResoniteLinkClient, center: primitives.Float3, radius: np.float32, debug: bool = False) -> dict:
+    async def clip_with_sphere(self, resolink: protocols.ResoniteLinkClient, center: primitives.Float3, radius: primitives.Float, debug: bool = False) -> dict:
         """Call the ClipWithSphere sync method.
 
         Args:
@@ -97,7 +95,7 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             resolink, "ClipWithSphere", {"center": center, "radius": radius}, debug,
         )
 
-    async def clip_with_cylinder(self, resolink: protocols.ResoniteLinkClient, center: primitives.Float3, radius: np.float32, height: np.float32, orientation: primitives.FloatQ, debug: bool = False) -> dict:
+    async def clip_with_cylinder(self, resolink: protocols.ResoniteLinkClient, center: primitives.Float3, radius: primitives.Float, height: primitives.Float, orientation: primitives.FloatQ, debug: bool = False) -> dict:
         """Call the ClipWithCylinder sync method.
 
         Args:

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -17,7 +18,7 @@ class LODGroup(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LODGroup"
 
-    def __init__(self, cross_fade: bool | None = None, animate_cross_fading: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, cross_fade: primitives.Bool | None = None, animate_cross_fading: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +46,7 @@ class LODGroup(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRece
         self.set_member("LODs", value)
 
     @property
-    def cross_fade(self) -> bool | None:
+    def cross_fade(self) -> primitives.Bool | None:
         """The CrossFade field value."""
         member = self.get_member("CrossFade")
         if member is None:
@@ -53,7 +54,7 @@ class LODGroup(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @cross_fade.setter
-    def cross_fade(self, value: bool) -> None:
+    def cross_fade(self, value: primitives.Bool) -> None:
         """Set the CrossFade field value."""
         member = self.get_member("CrossFade")
         if member is not None:
@@ -64,7 +65,7 @@ class LODGroup(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRece
             )
 
     @property
-    def animate_cross_fading(self) -> bool | None:
+    def animate_cross_fading(self) -> primitives.Bool | None:
         """The AnimateCrossFading field value."""
         member = self.get_member("AnimateCrossFading")
         if member is None:
@@ -72,7 +73,7 @@ class LODGroup(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @animate_cross_fading.setter
-    def animate_cross_fading(self, value: bool) -> None:
+    def animate_cross_fading(self, value: primitives.Bool) -> None:
         """Set the AnimateCrossFading field value."""
         member = self.get_member("AnimateCrossFading")
         if member is not None:

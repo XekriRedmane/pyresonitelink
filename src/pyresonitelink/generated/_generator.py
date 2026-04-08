@@ -33,20 +33,20 @@ _PRIMITIVE_WIRE_NAMES: frozenset[str] = frozenset({
 # is_array is implicit: entries without [] are scalar fields, entries with []
 # are array fields. The python_type_str for arrays is the element type.
 _PRIMITIVE_FIELD_MAP: dict[str, tuple[str, str]] = {
-    "bool": ("bool", "FieldBool"),
-    "byte": ("np.uint8", "FieldByte"),
-    "sbyte": ("np.int8", "FieldSbyte"),
-    "short": ("np.int16", "FieldShort"),
-    "ushort": ("np.uint16", "FieldUshort"),
-    "int": ("np.int32", "FieldInt"),
-    "uint": ("np.uint32", "FieldUint"),
-    "long": ("np.int64", "FieldLong"),
-    "ulong": ("np.uint64", "FieldUlong"),
-    "float": ("np.float32", "FieldFloat"),
-    "double": ("np.float64", "FieldDouble"),
+    "bool": ("primitives.Bool", "FieldBool"),
+    "byte": ("primitives.Byte", "FieldByte"),
+    "sbyte": ("primitives.SByte", "FieldSbyte"),
+    "short": ("primitives.Short", "FieldShort"),
+    "ushort": ("primitives.UShort", "FieldUshort"),
+    "int": ("primitives.Int", "FieldInt"),
+    "uint": ("primitives.UInt", "FieldUint"),
+    "long": ("primitives.Long", "FieldLong"),
+    "ulong": ("primitives.ULong", "FieldUlong"),
+    "float": ("primitives.Float", "FieldFloat"),
+    "double": ("primitives.Double", "FieldDouble"),
     "decimal": ("Decimal", "FieldDecimal"),
-    "char": ("str", "FieldChar"),
-    "string": ("str", "FieldString"),
+    "char": ("primitives.Char", "FieldChar"),
+    "string": ("primitives.String", "FieldString"),
     "Uri": ("str", "FieldUri"),
     "TimeSpan": ("str", "FieldTimeSpan"),
     "DateTime": ("str", "FieldDateTime"),
@@ -100,17 +100,17 @@ _PRIMITIVE_FIELD_MAP: dict[str, tuple[str, str]] = {
     "BoundingBox": ("primitives.BoundingBox", "FieldBoundingBox"),
     # Nullable variants — wire format uses "type?" suffix.
     # The value can be None or the inner type.
-    "bool?": ("bool", "FieldNullableBool"),
-    "byte?": ("np.uint8", "FieldNullableByte"),
-    "sbyte?": ("np.int8", "FieldNullableSbyte"),
-    "short?": ("np.int16", "FieldNullableShort"),
-    "ushort?": ("np.uint16", "FieldNullableUshort"),
-    "int?": ("np.int32", "FieldNullableInt"),
-    "uint?": ("np.uint32", "FieldNullableUint"),
-    "long?": ("np.int64", "FieldNullableLong"),
-    "ulong?": ("np.uint64", "FieldNullableUlong"),
-    "float?": ("np.float32", "FieldNullableFloat"),
-    "double?": ("np.float64", "FieldNullableDouble"),
+    "bool?": ("primitives.Bool", "FieldNullableBool"),
+    "byte?": ("primitives.Byte", "FieldNullableByte"),
+    "sbyte?": ("primitives.SByte", "FieldNullableSbyte"),
+    "short?": ("primitives.Short", "FieldNullableShort"),
+    "ushort?": ("primitives.UShort", "FieldNullableUshort"),
+    "int?": ("primitives.Int", "FieldNullableInt"),
+    "uint?": ("primitives.UInt", "FieldNullableUint"),
+    "long?": ("primitives.Long", "FieldNullableLong"),
+    "ulong?": ("primitives.ULong", "FieldNullableUlong"),
+    "float?": ("primitives.Float", "FieldNullableFloat"),
+    "double?": ("primitives.Double", "FieldNullableDouble"),
     "TimeSpan?": ("str", "FieldNullableTimeSpan"),
     "DateTime?": ("str", "FieldNullableDateTime"),
     "color?": ("primitives.Color", "FieldNullableColor"),
@@ -126,18 +126,18 @@ _PRIMITIVE_FIELD_MAP: dict[str, tuple[str, str]] = {
     "doubleQ?": ("primitives.DoubleQ", "FieldNullableDoubleQ"),
     # Array variants — wire format uses "type[]" suffix.
     # The python_type_str is the element type; the field class stores a list.
-    "bool[]": ("np.bool_", "ArrayBool"),
-    "byte[]": ("np.uint8", "ArrayByte"),
-    "sbyte[]": ("np.int8", "ArraySbyte"),
-    "short[]": ("np.int16", "ArrayShort"),
-    "ushort[]": ("np.uint16", "ArrayUshort"),
-    "int[]": ("np.int32", "ArrayInt"),
-    "uint[]": ("np.uint32", "ArrayUint"),
-    "long[]": ("np.int64", "ArrayLong"),
-    "ulong[]": ("np.uint64", "ArrayUlong"),
-    "float[]": ("np.float32", "ArrayFloat"),
-    "double[]": ("np.float64", "ArrayDouble"),
-    "string[]": ("str", "ArrayString"),
+    "bool[]": ("primitives.Bool", "ArrayBool"),
+    "byte[]": ("primitives.Byte", "ArrayByte"),
+    "sbyte[]": ("primitives.SByte", "ArraySbyte"),
+    "short[]": ("primitives.Short", "ArrayShort"),
+    "ushort[]": ("primitives.UShort", "ArrayUshort"),
+    "int[]": ("primitives.Int", "ArrayInt"),
+    "uint[]": ("primitives.UInt", "ArrayUint"),
+    "long[]": ("primitives.Long", "ArrayLong"),
+    "ulong[]": ("primitives.ULong", "ArrayUlong"),
+    "float[]": ("primitives.Float", "ArrayFloat"),
+    "double[]": ("primitives.Double", "ArrayDouble"),
+    "string[]": ("primitives.String", "ArrayString"),
     "Uri[]": ("str", "ArrayUri"),
     "TimeSpan[]": ("str", "ArrayTimeSpan"),
     "DateTime[]": ("str", "ArrayDateTime"),
@@ -841,7 +841,7 @@ def generate_component_source(
         lines.append("")
         lines.append(f"    Parameterize with a value type::")
         lines.append(f"")
-        lines.append(f"        {class_name}[np.float32]")
+        lines.append(f"        {class_name}[primitives.Float]")
         lines.append(f"        {class_name}[primitives.Float3]")
     lines.append('    """')
     lines.append("")
@@ -1242,7 +1242,7 @@ def _primitive_python_name(wire_name: str) -> str | None:
     # Look up in the field map for the Python type string
     entry = _PRIMITIVE_FIELD_MAP.get(bare)
     if entry:
-        py_type = entry[0]  # e.g. "np.float32" or "primitives.Float3"
+        py_type = entry[0]  # e.g. "primitives.Float" or "primitives.Float3"
         return f"{py_type} | None" if is_nullable else py_type
     return None
 
@@ -1251,7 +1251,7 @@ def _ref_type_annotation(resonite_type: str) -> str:
     """Produce the Python type annotation string for a reference target.
 
     Recursively maps Resonite type strings to Python annotations:
-    ``"INodeValueOutput<float>"`` → ``"INodeValueOutput[np.float32]"``.
+    ``"INodeValueOutput<float>"`` → ``"INodeValueOutput[primitives.Float]"``.
     ``"IAssetProvider<AudioClip>"`` → ``"IAssetProvider[AudioClip]"``.
     ``"INodeObjectOutput<IAssetProvider<AudioClip>>"``
         → ``"INodeObjectOutput[IAssetProvider[AudioClip]]"``.

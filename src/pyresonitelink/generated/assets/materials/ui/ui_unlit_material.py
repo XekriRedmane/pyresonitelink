@@ -1,7 +1,5 @@
 """Generated component: UI_UnlitMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UI_UnlitMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, rect: primitives.Rect | None = None, rect_clip: bool | None = None, stencil_id: np.uint8 | None = None, stencil_write_mask: np.uint8 | None = None, stencil_read_mask: np.uint8 | None = None, render_queue: np.int32 | None = None, shader: str | IAssetProvider[Shader] | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, tint: primitives.ColorX | None = None, overlay: bool | None = None, overlay_tint: primitives.ColorX | None = None, alpha_cutoff: np.float32 | None = None, alpha_clip: bool | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, mask_scale: primitives.Float2 | None = None, mask_offset: primitives.Float2 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, shader: str | IAssetProvider[Shader] | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, tint: primitives.ColorX | None = None, overlay: primitives.Bool | None = None, overlay_tint: primitives.ColorX | None = None, alpha_cutoff: primitives.Float | None = None, alpha_clip: primitives.Bool | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, mask_scale: primitives.Float2 | None = None, mask_offset: primitives.Float2 | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -96,7 +94,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
             self.offset_units = offset_units
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -104,7 +102,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -134,7 +132,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
             )
 
     @property
-    def rect_clip(self) -> bool | None:
+    def rect_clip(self) -> primitives.Bool | None:
         """The RectClip field value."""
         member = self.get_member("RectClip")
         if member is None:
@@ -142,7 +140,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @rect_clip.setter
-    def rect_clip(self, value: bool) -> None:
+    def rect_clip(self, value: primitives.Bool) -> None:
         """Set the RectClip field value."""
         member = self.get_member("RectClip")
         if member is not None:
@@ -192,7 +190,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         self.set_member("StencilOperation", value)
 
     @property
-    def stencil_id(self) -> np.uint8 | None:
+    def stencil_id(self) -> primitives.Byte | None:
         """The StencilID field value."""
         member = self.get_member("StencilID")
         if member is None:
@@ -200,7 +198,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @stencil_id.setter
-    def stencil_id(self, value: np.uint8) -> None:
+    def stencil_id(self, value: primitives.Byte) -> None:
         """Set the StencilID field value."""
         member = self.get_member("StencilID")
         if member is not None:
@@ -211,7 +209,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
             )
 
     @property
-    def stencil_write_mask(self) -> np.uint8 | None:
+    def stencil_write_mask(self) -> primitives.Byte | None:
         """The StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is None:
@@ -219,7 +217,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @stencil_write_mask.setter
-    def stencil_write_mask(self, value: np.uint8) -> None:
+    def stencil_write_mask(self, value: primitives.Byte) -> None:
         """Set the StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is not None:
@@ -230,7 +228,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
             )
 
     @property
-    def stencil_read_mask(self) -> np.uint8 | None:
+    def stencil_read_mask(self) -> primitives.Byte | None:
         """The StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is None:
@@ -238,7 +236,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @stencil_read_mask.setter
-    def stencil_read_mask(self, value: np.uint8) -> None:
+    def stencil_read_mask(self, value: primitives.Byte) -> None:
         """Set the StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is not None:
@@ -249,7 +247,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -257,7 +255,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -367,7 +365,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
             )
 
     @property
-    def overlay(self) -> bool | None:
+    def overlay(self) -> primitives.Bool | None:
         """The Overlay field value."""
         member = self.get_member("Overlay")
         if member is None:
@@ -375,7 +373,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @overlay.setter
-    def overlay(self, value: bool) -> None:
+    def overlay(self, value: primitives.Bool) -> None:
         """Set the Overlay field value."""
         member = self.get_member("Overlay")
         if member is not None:
@@ -405,7 +403,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
             )
 
     @property
-    def alpha_cutoff(self) -> np.float32 | None:
+    def alpha_cutoff(self) -> primitives.Float | None:
         """The AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is None:
@@ -413,7 +411,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @alpha_cutoff.setter
-    def alpha_cutoff(self, value: np.float32) -> None:
+    def alpha_cutoff(self, value: primitives.Float) -> None:
         """Set the AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is not None:
@@ -424,7 +422,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
             )
 
     @property
-    def alpha_clip(self) -> bool | None:
+    def alpha_clip(self) -> primitives.Bool | None:
         """The AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is None:
@@ -432,7 +430,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @alpha_clip.setter
-    def alpha_clip(self, value: bool) -> None:
+    def alpha_clip(self, value: primitives.Bool) -> None:
         """Set the AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is not None:
@@ -580,7 +578,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         self.set_member("ZTest", value)
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -588,7 +586,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -599,7 +597,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -607,7 +605,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:

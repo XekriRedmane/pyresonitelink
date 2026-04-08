@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -17,7 +18,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonParentUnderUser"
 
-    def __init__(self, root: str | Slot | None = None, find_object_root: bool | None = None, unparent_when_parented: bool | None = None, preserve_original_space: bool | None = None, original_space: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, root: str | Slot | None = None, find_object_root: primitives.Bool | None = None, unparent_when_parented: primitives.Bool | None = None, preserve_original_space: primitives.Bool | None = None, original_space: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +63,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
             )
 
     @property
-    def find_object_root(self) -> bool | None:
+    def find_object_root(self) -> primitives.Bool | None:
         """The FindObjectRoot field value."""
         member = self.get_member("FindObjectRoot")
         if member is None:
@@ -70,7 +71,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
         return getattr(member, 'value', None)
 
     @find_object_root.setter
-    def find_object_root(self, value: bool) -> None:
+    def find_object_root(self, value: primitives.Bool) -> None:
         """Set the FindObjectRoot field value."""
         member = self.get_member("FindObjectRoot")
         if member is not None:
@@ -81,7 +82,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
             )
 
     @property
-    def unparent_when_parented(self) -> bool | None:
+    def unparent_when_parented(self) -> primitives.Bool | None:
         """The UnparentWhenParented field value."""
         member = self.get_member("UnparentWhenParented")
         if member is None:
@@ -89,7 +90,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
         return getattr(member, 'value', None)
 
     @unparent_when_parented.setter
-    def unparent_when_parented(self, value: bool) -> None:
+    def unparent_when_parented(self, value: primitives.Bool) -> None:
         """Set the UnparentWhenParented field value."""
         member = self.get_member("UnparentWhenParented")
         if member is not None:
@@ -100,7 +101,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
             )
 
     @property
-    def preserve_original_space(self) -> bool | None:
+    def preserve_original_space(self) -> primitives.Bool | None:
         """The PreserveOriginalSpace field value."""
         member = self.get_member("PreserveOriginalSpace")
         if member is None:
@@ -108,7 +109,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
         return getattr(member, 'value', None)
 
     @preserve_original_space.setter
-    def preserve_original_space(self, value: bool) -> None:
+    def preserve_original_space(self, value: primitives.Bool) -> None:
         """Set the PreserveOriginalSpace field value."""
         member = self.get_member("PreserveOriginalSpace")
         if member is not None:

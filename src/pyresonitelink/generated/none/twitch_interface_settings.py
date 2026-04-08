@@ -1,6 +1,7 @@
 """Generated component: TwitchInterfaceSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class TwitchInterfaceSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TwitchInterfaceSettings"
 
-    def __init__(self, channel_name: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, channel_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class TwitchInterfaceSettings(GeneratedComponent, ICustomInspector):
             self.channel_name = channel_name
 
     @property
-    def channel_name(self) -> str | None:
+    def channel_name(self) -> primitives.String | None:
         """The ChannelName field value."""
         member = self.get_member("ChannelName")
         if member is None:
@@ -33,7 +34,7 @@ class TwitchInterfaceSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @channel_name.setter
-    def channel_name(self, value: str) -> None:
+    def channel_name(self, value: primitives.String) -> None:
         """Set the ChannelName field value."""
         member = self.get_member("ChannelName")
         if member is not None:

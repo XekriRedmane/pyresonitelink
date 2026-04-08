@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -17,7 +18,7 @@ class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BooleanSpatialVariableDriver"
 
-    def __init__(self, drive: str | IField[bool] | None = None, variable_name: str | None = None, default_value: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, drive: str | IField[primitives.Bool] | None = None, variable_name: primitives.String | None = None, default_value: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,15 +37,15 @@ class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def drive(self) -> str | None:
-        """Target ID of the Drive reference (targets IField[bool])."""
+        """Target ID of the Drive reference (targets IField[primitives.Bool])."""
         member = self.get_member("Drive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @drive.setter
-    def drive(self, target: str | IField[bool] | None) -> None:
-        """Set the Drive reference by target ID or IField[bool] instance."""
+    def drive(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the Drive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Drive")
         if isinstance(member, members.Reference):
@@ -56,7 +57,7 @@ class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRe
             )
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -64,7 +65,7 @@ class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:
@@ -88,7 +89,7 @@ class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRe
         self.set_member("Mode", value)
 
     @property
-    def default_value(self) -> bool | None:
+    def default_value(self) -> primitives.Bool | None:
         """The DefaultValue field value."""
         member = self.get_member("DefaultValue")
         if member is None:
@@ -96,7 +97,7 @@ class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @default_value.setter
-    def default_value(self, value: bool) -> None:
+    def default_value(self, value: primitives.Bool) -> None:
         """Set the DefaultValue field value."""
         member = self.get_member("DefaultValue")
         if member is not None:

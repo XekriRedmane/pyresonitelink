@@ -1,7 +1,5 @@
 """Generated component: Perspective360Panner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -18,7 +16,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Perspective360Panner"
 
-    def __init__(self, idle_fov: np.float32 | None = None, hover_fov: np.float32 | None = None, fov_speed: np.float32 | None = None, horizontal_panning_acceleration: np.float32 | None = None, horizontal_panning_speed: np.float32 | None = None, vertical_panning_speed: np.float32 | None = None, vertical_range: np.float32 | None = None, angle_offset: primitives.Float2 | None = None, fov: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, idle_fov: primitives.Float | None = None, hover_fov: primitives.Float | None = None, fov_speed: primitives.Float | None = None, horizontal_panning_acceleration: primitives.Float | None = None, horizontal_panning_speed: primitives.Float | None = None, vertical_panning_speed: primitives.Float | None = None, vertical_range: primitives.Float | None = None, angle_offset: primitives.Float2 | None = None, fov: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +52,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
             self.fov = fov
 
     @property
-    def idle_fov(self) -> np.float32 | None:
+    def idle_fov(self) -> primitives.Float | None:
         """The IdleFOV field value."""
         member = self.get_member("IdleFOV")
         if member is None:
@@ -62,7 +60,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @idle_fov.setter
-    def idle_fov(self, value: np.float32) -> None:
+    def idle_fov(self, value: primitives.Float) -> None:
         """Set the IdleFOV field value."""
         member = self.get_member("IdleFOV")
         if member is not None:
@@ -73,7 +71,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
             )
 
     @property
-    def hover_fov(self) -> np.float32 | None:
+    def hover_fov(self) -> primitives.Float | None:
         """The HoverFOV field value."""
         member = self.get_member("HoverFOV")
         if member is None:
@@ -81,7 +79,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @hover_fov.setter
-    def hover_fov(self, value: np.float32) -> None:
+    def hover_fov(self, value: primitives.Float) -> None:
         """Set the HoverFOV field value."""
         member = self.get_member("HoverFOV")
         if member is not None:
@@ -92,7 +90,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
             )
 
     @property
-    def fov_speed(self) -> np.float32 | None:
+    def fov_speed(self) -> primitives.Float | None:
         """The FOVSpeed field value."""
         member = self.get_member("FOVSpeed")
         if member is None:
@@ -100,7 +98,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @fov_speed.setter
-    def fov_speed(self, value: np.float32) -> None:
+    def fov_speed(self, value: primitives.Float) -> None:
         """Set the FOVSpeed field value."""
         member = self.get_member("FOVSpeed")
         if member is not None:
@@ -111,7 +109,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
             )
 
     @property
-    def horizontal_panning_acceleration(self) -> np.float32 | None:
+    def horizontal_panning_acceleration(self) -> primitives.Float | None:
         """The HorizontalPanningAcceleration field value."""
         member = self.get_member("HorizontalPanningAcceleration")
         if member is None:
@@ -119,7 +117,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @horizontal_panning_acceleration.setter
-    def horizontal_panning_acceleration(self, value: np.float32) -> None:
+    def horizontal_panning_acceleration(self, value: primitives.Float) -> None:
         """Set the HorizontalPanningAcceleration field value."""
         member = self.get_member("HorizontalPanningAcceleration")
         if member is not None:
@@ -130,7 +128,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
             )
 
     @property
-    def horizontal_panning_speed(self) -> np.float32 | None:
+    def horizontal_panning_speed(self) -> primitives.Float | None:
         """The HorizontalPanningSpeed field value."""
         member = self.get_member("HorizontalPanningSpeed")
         if member is None:
@@ -138,7 +136,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @horizontal_panning_speed.setter
-    def horizontal_panning_speed(self, value: np.float32) -> None:
+    def horizontal_panning_speed(self, value: primitives.Float) -> None:
         """Set the HorizontalPanningSpeed field value."""
         member = self.get_member("HorizontalPanningSpeed")
         if member is not None:
@@ -149,7 +147,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
             )
 
     @property
-    def vertical_panning_speed(self) -> np.float32 | None:
+    def vertical_panning_speed(self) -> primitives.Float | None:
         """The VerticalPanningSpeed field value."""
         member = self.get_member("VerticalPanningSpeed")
         if member is None:
@@ -157,7 +155,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @vertical_panning_speed.setter
-    def vertical_panning_speed(self, value: np.float32) -> None:
+    def vertical_panning_speed(self, value: primitives.Float) -> None:
         """Set the VerticalPanningSpeed field value."""
         member = self.get_member("VerticalPanningSpeed")
         if member is not None:
@@ -168,7 +166,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
             )
 
     @property
-    def vertical_range(self) -> np.float32 | None:
+    def vertical_range(self) -> primitives.Float | None:
         """The VerticalRange field value."""
         member = self.get_member("VerticalRange")
         if member is None:
@@ -176,7 +174,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @vertical_range.setter
-    def vertical_range(self, value: np.float32) -> None:
+    def vertical_range(self, value: primitives.Float) -> None:
         """Set the VerticalRange field value."""
         member = self.get_member("VerticalRange")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: AvatarPoseNode."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseNode"
 
-    def __init__(self, equip_order_priority: np.int32 | None = None, run_after_input_update: bool | None = None, is_tracking: bool | None = None, source_is_tracking: bool | None = None, source_is_active: bool | None = None, source_is_simulated: bool | None = None, object_slot: str | AvatarObjectSlot | None = None, source: str | Slot | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, scale: str | IField[primitives.Float3] | None = None, active: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, equip_order_priority: primitives.Int | None = None, run_after_input_update: primitives.Bool | None = None, is_tracking: primitives.Bool | None = None, source_is_tracking: primitives.Bool | None = None, source_is_active: primitives.Bool | None = None, source_is_simulated: primitives.Bool | None = None, object_slot: str | AvatarObjectSlot | None = None, source: str | Slot | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, scale: str | IField[primitives.Float3] | None = None, active: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -81,7 +79,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
         self.set_member("Node", value)
 
     @property
-    def equip_order_priority(self) -> np.int32 | None:
+    def equip_order_priority(self) -> primitives.Int | None:
         """The EquipOrderPriority field value."""
         member = self.get_member("EquipOrderPriority")
         if member is None:
@@ -89,7 +87,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
         return getattr(member, 'value', None)
 
     @equip_order_priority.setter
-    def equip_order_priority(self, value: np.int32) -> None:
+    def equip_order_priority(self, value: primitives.Int) -> None:
         """Set the EquipOrderPriority field value."""
         member = self.get_member("EquipOrderPriority")
         if member is not None:
@@ -100,7 +98,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
             )
 
     @property
-    def run_after_input_update(self) -> bool | None:
+    def run_after_input_update(self) -> primitives.Bool | None:
         """The RunAfterInputUpdate field value."""
         member = self.get_member("RunAfterInputUpdate")
         if member is None:
@@ -108,7 +106,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
         return getattr(member, 'value', None)
 
     @run_after_input_update.setter
-    def run_after_input_update(self, value: bool) -> None:
+    def run_after_input_update(self, value: primitives.Bool) -> None:
         """Set the RunAfterInputUpdate field value."""
         member = self.get_member("RunAfterInputUpdate")
         if member is not None:
@@ -132,7 +130,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
         self.set_member("MutuallyExclusiveNodes", value)
 
     @property
-    def is_tracking(self) -> bool | None:
+    def is_tracking(self) -> primitives.Bool | None:
         """The IsTracking field value."""
         member = self.get_member("IsTracking")
         if member is None:
@@ -140,7 +138,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
         return getattr(member, 'value', None)
 
     @is_tracking.setter
-    def is_tracking(self, value: bool) -> None:
+    def is_tracking(self, value: primitives.Bool) -> None:
         """Set the IsTracking field value."""
         member = self.get_member("IsTracking")
         if member is not None:
@@ -151,7 +149,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
             )
 
     @property
-    def source_is_tracking(self) -> bool | None:
+    def source_is_tracking(self) -> primitives.Bool | None:
         """The SourceIsTracking field value."""
         member = self.get_member("SourceIsTracking")
         if member is None:
@@ -159,7 +157,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
         return getattr(member, 'value', None)
 
     @source_is_tracking.setter
-    def source_is_tracking(self, value: bool) -> None:
+    def source_is_tracking(self, value: primitives.Bool) -> None:
         """Set the SourceIsTracking field value."""
         member = self.get_member("SourceIsTracking")
         if member is not None:
@@ -170,7 +168,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
             )
 
     @property
-    def source_is_active(self) -> bool | None:
+    def source_is_active(self) -> primitives.Bool | None:
         """The SourceIsActive field value."""
         member = self.get_member("SourceIsActive")
         if member is None:
@@ -178,7 +176,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
         return getattr(member, 'value', None)
 
     @source_is_active.setter
-    def source_is_active(self, value: bool) -> None:
+    def source_is_active(self, value: primitives.Bool) -> None:
         """Set the SourceIsActive field value."""
         member = self.get_member("SourceIsActive")
         if member is not None:
@@ -189,7 +187,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
             )
 
     @property
-    def source_is_simulated(self) -> bool | None:
+    def source_is_simulated(self) -> primitives.Bool | None:
         """The SourceIsSimulated field value."""
         member = self.get_member("SourceIsSimulated")
         if member is None:
@@ -197,7 +195,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
         return getattr(member, 'value', None)
 
     @source_is_simulated.setter
-    def source_is_simulated(self, value: bool) -> None:
+    def source_is_simulated(self, value: primitives.Bool) -> None:
         """Set the SourceIsSimulated field value."""
         member = self.get_member("SourceIsSimulated")
         if member is not None:
@@ -314,15 +312,15 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def active(self) -> str | None:
-        """Target ID of the _active reference (targets IField[bool])."""
+        """Target ID of the _active reference (targets IField[primitives.Bool])."""
         member = self.get_member("_active")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @active.setter
-    def active(self, target: str | IField[bool] | None) -> None:
-        """Set the _active reference by target ID or IField[bool] instance."""
+    def active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _active reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_active")
         if isinstance(member, members.Reference):

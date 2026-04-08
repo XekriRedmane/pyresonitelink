@@ -1,7 +1,5 @@
 """Generated component: PingPong_Uint_Uint4."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class PingPong_Uint_Uint4(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.PingPong_Uint_Uint4"
 
-    def __init__(self, n: str | INodeValueOutput[np.uint32] | None = None, length: str | INodeValueOutput[primitives.UInt4] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, n: str | INodeValueOutput[primitives.UInt] | None = None, length: str | INodeValueOutput[primitives.UInt4] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,15 +36,15 @@ class PingPong_Uint_Uint4(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     @property
     def n(self) -> str | None:
-        """Target ID of the N reference (targets INodeValueOutput[np.uint32])."""
+        """Target ID of the N reference (targets INodeValueOutput[primitives.UInt])."""
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @n.setter
-    def n(self, target: str | INodeValueOutput[np.uint32] | None) -> None:
-        """Set the N reference by target ID or INodeValueOutput[np.uint32] instance."""
+    def n(self, target: str | INodeValueOutput[primitives.UInt] | None) -> None:
+        """Set the N reference by target ID or INodeValueOutput[primitives.UInt] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("N")
         if isinstance(member, members.Reference):

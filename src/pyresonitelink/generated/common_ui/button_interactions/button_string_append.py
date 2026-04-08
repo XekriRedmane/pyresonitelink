@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -17,7 +18,7 @@ class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonStringAppend"
 
-    def __init__(self, target_string: str | IField[str] | None = None, append_string: str | None = None, append_in_front: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_string: str | IField[primitives.String] | None = None, append_string: primitives.String | None = None, append_in_front: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,15 +37,15 @@ class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def target_string(self) -> str | None:
-        """Target ID of the TargetString reference (targets IField[str])."""
+        """Target ID of the TargetString reference (targets IField[primitives.String])."""
         member = self.get_member("TargetString")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_string.setter
-    def target_string(self, target: str | IField[str] | None) -> None:
-        """Set the TargetString reference by target ID or IField[str] instance."""
+    def target_string(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the TargetString reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetString")
         if isinstance(member, members.Reference):
@@ -56,7 +57,7 @@ class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def append_string(self) -> str | None:
+    def append_string(self) -> primitives.String | None:
         """The AppendString field value."""
         member = self.get_member("AppendString")
         if member is None:
@@ -64,7 +65,7 @@ class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @append_string.setter
-    def append_string(self, value: str) -> None:
+    def append_string(self, value: primitives.String) -> None:
         """Set the AppendString field value."""
         member = self.get_member("AppendString")
         if member is not None:
@@ -75,7 +76,7 @@ class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def append_in_front(self) -> bool | None:
+    def append_in_front(self) -> primitives.Bool | None:
         """The AppendInFront field value."""
         member = self.get_member("AppendInFront")
         if member is None:
@@ -83,7 +84,7 @@ class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @append_in_front.setter
-    def append_in_front(self, value: bool) -> None:
+    def append_in_front(self, value: primitives.Bool) -> None:
         """Set the AppendInFront field value."""
         member = self.get_member("AppendInFront")
         if member is not None:

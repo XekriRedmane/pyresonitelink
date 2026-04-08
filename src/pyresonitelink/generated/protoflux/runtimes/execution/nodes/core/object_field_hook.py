@@ -23,7 +23,7 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     Parameterize with a value type::
 
-        ObjectFieldHook[np.float32]
+        ObjectFieldHook[primitives.Float]
         ObjectFieldHook[primitives.Float3]
     """
 

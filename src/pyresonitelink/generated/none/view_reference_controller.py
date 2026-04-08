@@ -19,7 +19,7 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ViewReferenceController"
 
-    def __init__(self, position_stream: str | ValueStream[primitives.Float3] | None = None, rotation_stream: str | ValueStream[primitives.FloatQ] | None = None, object_slot: str | AvatarObjectSlot | None = None, should_voice_be_active: bool | None = None, object_slot_scale: str | IField[primitives.Float3] | None = None, object_slot_active: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, position_stream: str | ValueStream[primitives.Float3] | None = None, rotation_stream: str | ValueStream[primitives.FloatQ] | None = None, object_slot: str | AvatarObjectSlot | None = None, should_voice_be_active: primitives.Bool | None = None, object_slot_scale: str | IField[primitives.Float3] | None = None, object_slot_active: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -109,7 +109,7 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
             )
 
     @property
-    def should_voice_be_active(self) -> bool | None:
+    def should_voice_be_active(self) -> primitives.Bool | None:
         """The ShouldVoiceBeActive field value."""
         member = self.get_member("ShouldVoiceBeActive")
         if member is None:
@@ -117,7 +117,7 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
         return getattr(member, 'value', None)
 
     @should_voice_be_active.setter
-    def should_voice_be_active(self, value: bool) -> None:
+    def should_voice_be_active(self, value: primitives.Bool) -> None:
         """Set the ShouldVoiceBeActive field value."""
         member = self.get_member("ShouldVoiceBeActive")
         if member is not None:
@@ -150,15 +150,15 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def object_slot_active(self) -> str | None:
-        """Target ID of the _objectSlotActive reference (targets IField[bool])."""
+        """Target ID of the _objectSlotActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_objectSlotActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @object_slot_active.setter
-    def object_slot_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _objectSlotActive reference by target ID or IField[bool] instance."""
+    def object_slot_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _objectSlotActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_objectSlotActive")
         if isinstance(member, members.Reference):

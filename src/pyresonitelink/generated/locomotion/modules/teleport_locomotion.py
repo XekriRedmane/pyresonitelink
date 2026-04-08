@@ -1,7 +1,5 @@
 """Generated component: TeleportLocomotion."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -27,7 +25,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TeleportLocomotion"
 
-    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, backstep_distance: np.float32 | None = None, activation_time: np.float32 | None = None, height_input_max: np.float32 | None = None, height_input_min: np.float32 | None = None, initial_force_min: np.float32 | None = None, initial_force_max: np.float32 | None = None, range_exp: np.float32 | None = None, step_unit: np.float32 | None = None, drag: np.float32 | None = None, max_small_object_size: np.float32 | None = None, wall_distance: np.float32 | None = None, path_mesh: str | BallisticPathMesh | None = None, path_material: str | PBS_RimMetallic | None = None, path_renderer: str | MeshRenderer | None = None, path_visual: str | Slot | None = None, target_point_visual: str | Slot | None = None, character_controller: str | CharacterController | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, backstep_distance: primitives.Float | None = None, activation_time: primitives.Float | None = None, height_input_max: primitives.Float | None = None, height_input_min: primitives.Float | None = None, initial_force_min: primitives.Float | None = None, initial_force_max: primitives.Float | None = None, range_exp: primitives.Float | None = None, step_unit: primitives.Float | None = None, drag: primitives.Float | None = None, max_small_object_size: primitives.Float | None = None, wall_distance: primitives.Float | None = None, path_mesh: str | BallisticPathMesh | None = None, path_material: str | PBS_RimMetallic | None = None, path_renderer: str | MeshRenderer | None = None, path_visual: str | Slot | None = None, target_point_visual: str | Slot | None = None, character_controller: str | CharacterController | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -214,7 +212,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         self.set_member("Turn", value)
 
     @property
-    def backstep_distance(self) -> np.float32 | None:
+    def backstep_distance(self) -> primitives.Float | None:
         """The BackstepDistance field value."""
         member = self.get_member("BackstepDistance")
         if member is None:
@@ -222,7 +220,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @backstep_distance.setter
-    def backstep_distance(self, value: np.float32) -> None:
+    def backstep_distance(self, value: primitives.Float) -> None:
         """Set the BackstepDistance field value."""
         member = self.get_member("BackstepDistance")
         if member is not None:
@@ -233,7 +231,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def activation_time(self) -> np.float32 | None:
+    def activation_time(self) -> primitives.Float | None:
         """The ActivationTime field value."""
         member = self.get_member("ActivationTime")
         if member is None:
@@ -241,7 +239,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @activation_time.setter
-    def activation_time(self, value: np.float32) -> None:
+    def activation_time(self, value: primitives.Float) -> None:
         """Set the ActivationTime field value."""
         member = self.get_member("ActivationTime")
         if member is not None:
@@ -252,7 +250,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def height_input_max(self) -> np.float32 | None:
+    def height_input_max(self) -> primitives.Float | None:
         """The HeightInputMax field value."""
         member = self.get_member("HeightInputMax")
         if member is None:
@@ -260,7 +258,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @height_input_max.setter
-    def height_input_max(self, value: np.float32) -> None:
+    def height_input_max(self, value: primitives.Float) -> None:
         """Set the HeightInputMax field value."""
         member = self.get_member("HeightInputMax")
         if member is not None:
@@ -271,7 +269,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def height_input_min(self) -> np.float32 | None:
+    def height_input_min(self) -> primitives.Float | None:
         """The HeightInputMin field value."""
         member = self.get_member("HeightInputMin")
         if member is None:
@@ -279,7 +277,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @height_input_min.setter
-    def height_input_min(self, value: np.float32) -> None:
+    def height_input_min(self, value: primitives.Float) -> None:
         """Set the HeightInputMin field value."""
         member = self.get_member("HeightInputMin")
         if member is not None:
@@ -290,7 +288,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def initial_force_min(self) -> np.float32 | None:
+    def initial_force_min(self) -> primitives.Float | None:
         """The InitialForceMin field value."""
         member = self.get_member("InitialForceMin")
         if member is None:
@@ -298,7 +296,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @initial_force_min.setter
-    def initial_force_min(self, value: np.float32) -> None:
+    def initial_force_min(self, value: primitives.Float) -> None:
         """Set the InitialForceMin field value."""
         member = self.get_member("InitialForceMin")
         if member is not None:
@@ -309,7 +307,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def initial_force_max(self) -> np.float32 | None:
+    def initial_force_max(self) -> primitives.Float | None:
         """The InitialForceMax field value."""
         member = self.get_member("InitialForceMax")
         if member is None:
@@ -317,7 +315,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @initial_force_max.setter
-    def initial_force_max(self, value: np.float32) -> None:
+    def initial_force_max(self, value: primitives.Float) -> None:
         """Set the InitialForceMax field value."""
         member = self.get_member("InitialForceMax")
         if member is not None:
@@ -328,7 +326,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def range_exp(self) -> np.float32 | None:
+    def range_exp(self) -> primitives.Float | None:
         """The RangeExp field value."""
         member = self.get_member("RangeExp")
         if member is None:
@@ -336,7 +334,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @range_exp.setter
-    def range_exp(self, value: np.float32) -> None:
+    def range_exp(self, value: primitives.Float) -> None:
         """Set the RangeExp field value."""
         member = self.get_member("RangeExp")
         if member is not None:
@@ -347,7 +345,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def step_unit(self) -> np.float32 | None:
+    def step_unit(self) -> primitives.Float | None:
         """The StepUnit field value."""
         member = self.get_member("StepUnit")
         if member is None:
@@ -355,7 +353,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @step_unit.setter
-    def step_unit(self, value: np.float32) -> None:
+    def step_unit(self, value: primitives.Float) -> None:
         """Set the StepUnit field value."""
         member = self.get_member("StepUnit")
         if member is not None:
@@ -366,7 +364,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def drag(self) -> np.float32 | None:
+    def drag(self) -> primitives.Float | None:
         """The Drag field value."""
         member = self.get_member("Drag")
         if member is None:
@@ -374,7 +372,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @drag.setter
-    def drag(self, value: np.float32) -> None:
+    def drag(self, value: primitives.Float) -> None:
         """Set the Drag field value."""
         member = self.get_member("Drag")
         if member is not None:
@@ -385,7 +383,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def max_small_object_size(self) -> np.float32 | None:
+    def max_small_object_size(self) -> primitives.Float | None:
         """The MaxSmallObjectSize field value."""
         member = self.get_member("MaxSmallObjectSize")
         if member is None:
@@ -393,7 +391,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @max_small_object_size.setter
-    def max_small_object_size(self, value: np.float32) -> None:
+    def max_small_object_size(self, value: primitives.Float) -> None:
         """Set the MaxSmallObjectSize field value."""
         member = self.get_member("MaxSmallObjectSize")
         if member is not None:
@@ -404,7 +402,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
             )
 
     @property
-    def wall_distance(self) -> np.float32 | None:
+    def wall_distance(self) -> primitives.Float | None:
         """The WallDistance field value."""
         member = self.get_member("WallDistance")
         if member is None:
@@ -412,7 +410,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @wall_distance.setter
-    def wall_distance(self, value: np.float32) -> None:
+    def wall_distance(self, value: primitives.Float) -> None:
         """Set the WallDistance field value."""
         member = self.get_member("WallDistance")
         if member is not None:

@@ -19,7 +19,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleElement"
 
-    def __init__(self, group: str | ScaleGroup | None = None, respond_to_physical_touch: bool | None = None, respond_to_remote_touch: bool | None = None, scale_target: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, group: str | ScaleGroup | None = None, respond_to_physical_touch: primitives.Bool | None = None, respond_to_remote_touch: primitives.Bool | None = None, scale_target: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +61,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def respond_to_physical_touch(self) -> bool | None:
+    def respond_to_physical_touch(self) -> primitives.Bool | None:
         """The RespondToPhysicalTouch field value."""
         member = self.get_member("RespondToPhysicalTouch")
         if member is None:
@@ -69,7 +69,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @respond_to_physical_touch.setter
-    def respond_to_physical_touch(self, value: bool) -> None:
+    def respond_to_physical_touch(self, value: primitives.Bool) -> None:
         """Set the RespondToPhysicalTouch field value."""
         member = self.get_member("RespondToPhysicalTouch")
         if member is not None:
@@ -80,7 +80,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def respond_to_remote_touch(self) -> bool | None:
+    def respond_to_remote_touch(self) -> primitives.Bool | None:
         """The RespondToRemoteTouch field value."""
         member = self.get_member("RespondToRemoteTouch")
         if member is None:
@@ -88,7 +88,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @respond_to_remote_touch.setter
-    def respond_to_remote_touch(self, value: bool) -> None:
+    def respond_to_remote_touch(self, value: primitives.Bool) -> None:
         """Set the RespondToRemoteTouch field value."""
         member = self.get_member("RespondToRemoteTouch")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: AssetFrameSlot."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,14 +20,14 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
 
     Parameterize with a value type::
 
-        AssetFrameSlot[np.float32]
+        AssetFrameSlot[primitives.Float]
         AssetFrameSlot[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AssetFrameSlot<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.AssetFrameSlot<>"
 
-    def __init__(self, frame_size: np.float32 | None = None, frame_anim_speed: np.float32 | None = None, snap_anim_time: np.float32 | None = None, current: str | Slot | None = None, current_ratio: primitives.Float2 | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, frame_size: primitives.Float | None = None, frame_anim_speed: primitives.Float | None = None, snap_anim_time: primitives.Float | None = None, current: str | Slot | None = None, current_ratio: primitives.Float2 | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -56,7 +54,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
             self.collider = collider
 
     @property
-    def frame_size(self) -> np.float32 | None:
+    def frame_size(self) -> primitives.Float | None:
         """The FrameSize field value."""
         member = self.get_member("FrameSize")
         if member is None:
@@ -64,7 +62,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
         return getattr(member, 'value', None)
 
     @frame_size.setter
-    def frame_size(self, value: np.float32) -> None:
+    def frame_size(self, value: primitives.Float) -> None:
         """Set the FrameSize field value."""
         member = self.get_member("FrameSize")
         if member is not None:
@@ -75,7 +73,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
             )
 
     @property
-    def frame_anim_speed(self) -> np.float32 | None:
+    def frame_anim_speed(self) -> primitives.Float | None:
         """The FrameAnimSpeed field value."""
         member = self.get_member("FrameAnimSpeed")
         if member is None:
@@ -83,7 +81,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
         return getattr(member, 'value', None)
 
     @frame_anim_speed.setter
-    def frame_anim_speed(self, value: np.float32) -> None:
+    def frame_anim_speed(self, value: primitives.Float) -> None:
         """Set the FrameAnimSpeed field value."""
         member = self.get_member("FrameAnimSpeed")
         if member is not None:
@@ -94,7 +92,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
             )
 
     @property
-    def snap_anim_time(self) -> np.float32 | None:
+    def snap_anim_time(self) -> primitives.Float | None:
         """The SnapAnimTime field value."""
         member = self.get_member("SnapAnimTime")
         if member is None:
@@ -102,7 +100,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
         return getattr(member, 'value', None)
 
     @snap_anim_time.setter
-    def snap_anim_time(self, value: np.float32) -> None:
+    def snap_anim_time(self, value: primitives.Float) -> None:
         """Set the SnapAnimTime field value."""
         member = self.get_member("SnapAnimTime")
         if member is not None:

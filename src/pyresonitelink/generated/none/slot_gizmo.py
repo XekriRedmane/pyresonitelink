@@ -24,7 +24,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlotGizmo"
 
-    def __init__(self, is_folded: bool | None = None, active_gizmo: str | Worker | None = None, target_slot: str | Slot | None = None, position_drive: str | IField[primitives.Float3] | None = None, scale_drive: str | IField[primitives.Float3] | None = None, bounds_mesh: str | TubeBoxMesh | None = None, bounds_root: str | Slot | None = None, bounds_rotation: str | IField[primitives.FloatQ] | None = None, bounds_offset: str | IField[primitives.Float3] | None = None, bounds_active: str | IField[bool] | None = None, name_text: str | IField[str] | None = None, name_offset: str | IField[primitives.Float3] | None = None, name_rotation: str | IField[primitives.FloatQ] | None = None, name_active: str | IField[bool] | None = None, x_pos_segment: str | SegmentMesh | None = None, y_pos_segment: str | SegmentMesh | None = None, z_pos_segment: str | SegmentMesh | None = None, root_anchor: str | PointAnchor | None = None, translation_gizmo: str | TranslationGizmo | None = None, rotation_gizmo: str | RotationGizmo | None = None, scale_gizmo: str | ScaleGizmo | None = None, is_local_space: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_folded: primitives.Bool | None = None, active_gizmo: str | Worker | None = None, target_slot: str | Slot | None = None, position_drive: str | IField[primitives.Float3] | None = None, scale_drive: str | IField[primitives.Float3] | None = None, bounds_mesh: str | TubeBoxMesh | None = None, bounds_root: str | Slot | None = None, bounds_rotation: str | IField[primitives.FloatQ] | None = None, bounds_offset: str | IField[primitives.Float3] | None = None, bounds_active: str | IField[primitives.Bool] | None = None, name_text: str | IField[primitives.String] | None = None, name_offset: str | IField[primitives.Float3] | None = None, name_rotation: str | IField[primitives.FloatQ] | None = None, name_active: str | IField[primitives.Bool] | None = None, x_pos_segment: str | SegmentMesh | None = None, y_pos_segment: str | SegmentMesh | None = None, z_pos_segment: str | SegmentMesh | None = None, root_anchor: str | PointAnchor | None = None, translation_gizmo: str | TranslationGizmo | None = None, rotation_gizmo: str | RotationGizmo | None = None, scale_gizmo: str | ScaleGizmo | None = None, is_local_space: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -99,7 +99,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
             self.is_local_space = is_local_space
 
     @property
-    def is_folded(self) -> bool | None:
+    def is_folded(self) -> primitives.Bool | None:
         """The _isFolded field value."""
         member = self.get_member("_isFolded")
         if member is None:
@@ -107,7 +107,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_folded.setter
-    def is_folded(self, value: bool) -> None:
+    def is_folded(self, value: primitives.Bool) -> None:
         """Set the _isFolded field value."""
         member = self.get_member("_isFolded")
         if member is not None:
@@ -287,15 +287,15 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def bounds_active(self) -> str | None:
-        """Target ID of the _boundsActive reference (targets IField[bool])."""
+        """Target ID of the _boundsActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_boundsActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @bounds_active.setter
-    def bounds_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _boundsActive reference by target ID or IField[bool] instance."""
+    def bounds_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _boundsActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_boundsActive")
         if isinstance(member, members.Reference):
@@ -308,15 +308,15 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def name_text(self) -> str | None:
-        """Target ID of the _nameText reference (targets IField[str])."""
+        """Target ID of the _nameText reference (targets IField[primitives.String])."""
         member = self.get_member("_nameText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @name_text.setter
-    def name_text(self, target: str | IField[str] | None) -> None:
-        """Set the _nameText reference by target ID or IField[str] instance."""
+    def name_text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _nameText reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_nameText")
         if isinstance(member, members.Reference):
@@ -371,15 +371,15 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def name_active(self) -> str | None:
-        """Target ID of the _nameActive reference (targets IField[bool])."""
+        """Target ID of the _nameActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_nameActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @name_active.setter
-    def name_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _nameActive reference by target ID or IField[bool] instance."""
+    def name_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _nameActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_nameActive")
         if isinstance(member, members.Reference):
@@ -551,7 +551,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
             )
 
     @property
-    def is_local_space(self) -> bool | None:
+    def is_local_space(self) -> primitives.Bool | None:
         """The IsLocalSpace field value."""
         member = self.get_member("IsLocalSpace")
         if member is None:
@@ -559,7 +559,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_local_space.setter
-    def is_local_space(self, value: bool) -> None:
+    def is_local_space(self, value: primitives.Bool) -> None:
         """Set the IsLocalSpace field value."""
         member = self.get_member("IsLocalSpace")
         if member is not None:

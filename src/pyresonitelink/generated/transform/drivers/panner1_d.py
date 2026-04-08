@@ -1,9 +1,8 @@
 """Generated component: Panner1D."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -19,7 +18,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Panner1D"
 
-    def __init__(self, target: str | IField[np.float32] | None = None, offset: np.float32 | None = None, pre_offset: np.float32 | None = None, speed: np.float32 | None = None, repeat: np.float32 | None = None, ping_pong: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.Float] | None = None, offset: primitives.Float | None = None, pre_offset: primitives.Float | None = None, speed: primitives.Float | None = None, repeat: primitives.Float | None = None, ping_pong: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -47,15 +46,15 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField[np.float32])."""
+        """Target ID of the _target reference (targets IField[primitives.Float])."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _target reference by target ID or IField[np.float32] instance."""
+    def target(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _target reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
@@ -67,7 +66,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The _offset field value."""
         member = self.get_member("_offset")
         if member is None:
@@ -75,7 +74,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the _offset field value."""
         member = self.get_member("_offset")
         if member is not None:
@@ -86,7 +85,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def pre_offset(self) -> np.float32 | None:
+    def pre_offset(self) -> primitives.Float | None:
         """The _preOffset field value."""
         member = self.get_member("_preOffset")
         if member is None:
@@ -94,7 +93,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @pre_offset.setter
-    def pre_offset(self, value: np.float32) -> None:
+    def pre_offset(self, value: primitives.Float) -> None:
         """Set the _preOffset field value."""
         member = self.get_member("_preOffset")
         if member is not None:
@@ -105,7 +104,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def speed(self) -> np.float32 | None:
+    def speed(self) -> primitives.Float | None:
         """The _speed field value."""
         member = self.get_member("_speed")
         if member is None:
@@ -113,7 +112,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @speed.setter
-    def speed(self, value: np.float32) -> None:
+    def speed(self, value: primitives.Float) -> None:
         """Set the _speed field value."""
         member = self.get_member("_speed")
         if member is not None:
@@ -124,7 +123,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def repeat(self) -> np.float32 | None:
+    def repeat(self) -> primitives.Float | None:
         """The _repeat field value."""
         member = self.get_member("_repeat")
         if member is None:
@@ -132,7 +131,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @repeat.setter
-    def repeat(self, value: np.float32) -> None:
+    def repeat(self, value: primitives.Float) -> None:
         """Set the _repeat field value."""
         member = self.get_member("_repeat")
         if member is not None:
@@ -143,7 +142,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ping_pong(self) -> bool | None:
+    def ping_pong(self) -> primitives.Bool | None:
         """The PingPong field value."""
         member = self.get_member("PingPong")
         if member is None:
@@ -151,7 +150,7 @@ class Panner1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ping_pong.setter
-    def ping_pong(self, value: bool) -> None:
+    def ping_pong(self, value: primitives.Bool) -> None:
         """Set the PingPong field value."""
         member = self.get_member("PingPong")
         if member is not None:

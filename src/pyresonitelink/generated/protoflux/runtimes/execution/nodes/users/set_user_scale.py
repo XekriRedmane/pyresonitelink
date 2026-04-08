@@ -1,8 +1,7 @@
 """Generated component: SetUserScale."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -25,7 +24,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.SetUserScale"
 
-    def __init__(self, user_root: str | INodeObjectOutput[UserRoot] | None = None, scale: str | INodeValueOutput[np.float32] | None = None, animation_time: str | INodeValueOutput[np.float32] | None = None, on_scale_change_start: str | INodeOperation | None = None, on_animation_finished: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user_root: str | INodeObjectOutput[UserRoot] | None = None, scale: str | INodeValueOutput[primitives.Float] | None = None, animation_time: str | INodeValueOutput[primitives.Float] | None = None, on_scale_change_start: str | INodeOperation | None = None, on_animation_finished: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -71,15 +70,15 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the Scale reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Scale reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @scale.setter
-    def scale(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Scale reference by target ID or INodeValueOutput[np.float32] instance."""
+    def scale(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Scale reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
@@ -92,15 +91,15 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def animation_time(self) -> str | None:
-        """Target ID of the AnimationTime reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the AnimationTime reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("AnimationTime")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @animation_time.setter
-    def animation_time(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the AnimationTime reference by target ID or INodeValueOutput[np.float32] instance."""
+    def animation_time(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the AnimationTime reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("AnimationTime")
         if isinstance(member, members.Reference):

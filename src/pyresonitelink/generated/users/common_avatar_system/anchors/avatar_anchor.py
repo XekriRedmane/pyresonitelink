@@ -1,7 +1,5 @@
 """Generated component: AvatarAnchor."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchor"
 
-    def __init__(self, highlight: bool | None = None, min_scale: np.float32 | None = None, max_scale: np.float32 | None = None, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up_on_enter: bool | None = None, preserve_up_on_exit: bool | None = None, unparent_everything_on_destroy: bool | None = None, restore_reference: str | Slot | None = None, original_space: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, highlight: primitives.Bool | None = None, min_scale: primitives.Float | None = None, max_scale: primitives.Float | None = None, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up_on_enter: primitives.Bool | None = None, preserve_up_on_exit: primitives.Bool | None = None, unparent_everything_on_destroy: primitives.Bool | None = None, restore_reference: str | Slot | None = None, original_space: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -68,7 +66,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             self.original_scale = original_scale
 
     @property
-    def highlight(self) -> bool | None:
+    def highlight(self) -> primitives.Bool | None:
         """The Highlight field value."""
         member = self.get_member("Highlight")
         if member is None:
@@ -76,7 +74,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @highlight.setter
-    def highlight(self, value: bool) -> None:
+    def highlight(self, value: primitives.Bool) -> None:
         """Set the Highlight field value."""
         member = self.get_member("Highlight")
         if member is not None:
@@ -100,7 +98,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
         self.set_member("ParentSpace", value)
 
     @property
-    def min_scale(self) -> np.float32 | None:
+    def min_scale(self) -> primitives.Float | None:
         """The MinScale field value."""
         member = self.get_member("MinScale")
         if member is None:
@@ -108,7 +106,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_scale.setter
-    def min_scale(self, value: np.float32) -> None:
+    def min_scale(self, value: primitives.Float) -> None:
         """Set the MinScale field value."""
         member = self.get_member("MinScale")
         if member is not None:
@@ -119,7 +117,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             )
 
     @property
-    def max_scale(self) -> np.float32 | None:
+    def max_scale(self) -> primitives.Float | None:
         """The MaxScale field value."""
         member = self.get_member("MaxScale")
         if member is None:
@@ -127,7 +125,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_scale.setter
-    def max_scale(self, value: np.float32) -> None:
+    def max_scale(self, value: primitives.Float) -> None:
         """Set the MaxScale field value."""
         member = self.get_member("MaxScale")
         if member is not None:
@@ -206,7 +204,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             )
 
     @property
-    def preserve_up_on_enter(self) -> bool | None:
+    def preserve_up_on_enter(self) -> primitives.Bool | None:
         """The PreserveUpOnEnter field value."""
         member = self.get_member("PreserveUpOnEnter")
         if member is None:
@@ -214,7 +212,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @preserve_up_on_enter.setter
-    def preserve_up_on_enter(self, value: bool) -> None:
+    def preserve_up_on_enter(self, value: primitives.Bool) -> None:
         """Set the PreserveUpOnEnter field value."""
         member = self.get_member("PreserveUpOnEnter")
         if member is not None:
@@ -225,7 +223,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             )
 
     @property
-    def preserve_up_on_exit(self) -> bool | None:
+    def preserve_up_on_exit(self) -> primitives.Bool | None:
         """The PreserveUpOnExit field value."""
         member = self.get_member("PreserveUpOnExit")
         if member is None:
@@ -233,7 +231,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @preserve_up_on_exit.setter
-    def preserve_up_on_exit(self, value: bool) -> None:
+    def preserve_up_on_exit(self, value: primitives.Bool) -> None:
         """Set the PreserveUpOnExit field value."""
         member = self.get_member("PreserveUpOnExit")
         if member is not None:
@@ -244,7 +242,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             )
 
     @property
-    def unparent_everything_on_destroy(self) -> bool | None:
+    def unparent_everything_on_destroy(self) -> primitives.Bool | None:
         """The UnparentEverythingOnDestroy field value."""
         member = self.get_member("UnparentEverythingOnDestroy")
         if member is None:
@@ -252,7 +250,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @unparent_everything_on_destroy.setter
-    def unparent_everything_on_destroy(self, value: bool) -> None:
+    def unparent_everything_on_destroy(self, value: primitives.Bool) -> None:
         """Set the UnparentEverythingOnDestroy field value."""
         member = self.get_member("UnparentEverythingOnDestroy")
         if member is not None:
@@ -395,7 +393,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             )
 
     @property
-    def original_scale(self) -> np.float32 | None:
+    def original_scale(self) -> primitives.Float | None:
         """The _originalScale field value."""
         member = self.get_member("_originalScale")
         if member is None:
@@ -403,7 +401,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @original_scale.setter
-    def original_scale(self, value: np.float32) -> None:
+    def original_scale(self, value: primitives.Float) -> None:
         """Set the _originalScale field value."""
         member = self.get_member("_originalScale")
         if member is not None:

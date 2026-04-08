@@ -17,7 +17,7 @@ class ObjectConstant(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T
 
     Parameterize with a value type::
 
-        ObjectConstant[np.float32]
+        ObjectConstant[primitives.Float]
         ObjectConstant[primitives.Float3]
     """
 

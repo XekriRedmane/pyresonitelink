@@ -1,8 +1,7 @@
 """Generated component: InteractiveCameraAnchorSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraAnchorSettings"
 
-    def __init__(self, interpolate_between_anchors: bool | None = None, anchor_interpolation_speed: np.float32 | None = None, use_linear_interpolation: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, interpolate_between_anchors: primitives.Bool | None = None, anchor_interpolation_speed: primitives.Float | None = None, use_linear_interpolation: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
             self.use_linear_interpolation = use_linear_interpolation
 
     @property
-    def interpolate_between_anchors(self) -> bool | None:
+    def interpolate_between_anchors(self) -> primitives.Bool | None:
         """The InterpolateBetweenAnchors field value."""
         member = self.get_member("InterpolateBetweenAnchors")
         if member is None:
@@ -41,7 +40,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @interpolate_between_anchors.setter
-    def interpolate_between_anchors(self, value: bool) -> None:
+    def interpolate_between_anchors(self, value: primitives.Bool) -> None:
         """Set the InterpolateBetweenAnchors field value."""
         member = self.get_member("InterpolateBetweenAnchors")
         if member is not None:
@@ -52,7 +51,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def anchor_interpolation_speed(self) -> np.float32 | None:
+    def anchor_interpolation_speed(self) -> primitives.Float | None:
         """The AnchorInterpolationSpeed field value."""
         member = self.get_member("AnchorInterpolationSpeed")
         if member is None:
@@ -60,7 +59,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @anchor_interpolation_speed.setter
-    def anchor_interpolation_speed(self, value: np.float32) -> None:
+    def anchor_interpolation_speed(self, value: primitives.Float) -> None:
         """Set the AnchorInterpolationSpeed field value."""
         member = self.get_member("AnchorInterpolationSpeed")
         if member is not None:
@@ -71,7 +70,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def use_linear_interpolation(self) -> bool | None:
+    def use_linear_interpolation(self) -> primitives.Bool | None:
         """The UseLinearInterpolation field value."""
         member = self.get_member("UseLinearInterpolation")
         if member is None:
@@ -79,7 +78,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_linear_interpolation.setter
-    def use_linear_interpolation(self, value: bool) -> None:
+    def use_linear_interpolation(self, value: primitives.Bool) -> None:
         """Set the UseLinearInterpolation field value."""
         member = self.get_member("UseLinearInterpolation")
         if member is not None:

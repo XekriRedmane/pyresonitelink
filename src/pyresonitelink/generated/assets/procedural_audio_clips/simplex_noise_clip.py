@@ -1,8 +1,7 @@
 """Generated component: SimplexNoiseClip."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -19,7 +18,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SimplexNoiseClip"
 
-    def __init__(self, high_priority_integration: bool | None = None, frequency: np.float32 | None = None, amplitude: np.float32 | None = None, duration: np.float32 | None = None, offset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, frequency: primitives.Float | None = None, amplitude: primitives.Float | None = None, duration: primitives.Float | None = None, offset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,7 +42,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             self.offset = offset
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -51,7 +50,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -62,7 +61,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def frequency(self) -> np.float32 | None:
+    def frequency(self) -> primitives.Float | None:
         """The Frequency field value."""
         member = self.get_member("Frequency")
         if member is None:
@@ -70,7 +69,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @frequency.setter
-    def frequency(self, value: np.float32) -> None:
+    def frequency(self, value: primitives.Float) -> None:
         """Set the Frequency field value."""
         member = self.get_member("Frequency")
         if member is not None:
@@ -81,7 +80,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def amplitude(self) -> np.float32 | None:
+    def amplitude(self) -> primitives.Float | None:
         """The Amplitude field value."""
         member = self.get_member("Amplitude")
         if member is None:
@@ -89,7 +88,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @amplitude.setter
-    def amplitude(self, value: np.float32) -> None:
+    def amplitude(self, value: primitives.Float) -> None:
         """Set the Amplitude field value."""
         member = self.get_member("Amplitude")
         if member is not None:
@@ -100,7 +99,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def duration(self) -> np.float32 | None:
+    def duration(self) -> primitives.Float | None:
         """The Duration field value."""
         member = self.get_member("Duration")
         if member is None:
@@ -108,7 +107,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @duration.setter
-    def duration(self, value: np.float32) -> None:
+    def duration(self, value: primitives.Float) -> None:
         """Set the Duration field value."""
         member = self.get_member("Duration")
         if member is not None:
@@ -119,7 +118,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -127,7 +126,7 @@ class SimplexNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:

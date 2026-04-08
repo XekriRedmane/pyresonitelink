@@ -1,9 +1,8 @@
 """Generated component: OriginRadialForce."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -18,7 +17,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.OriginRadialForce"
 
-    def __init__(self, force: np.float32 | None = None, min_distance: np.float32 | None = None, max_distance: np.float32 | None = None, min_force: np.float32 | None = None, max_force: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, force: primitives.Float | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, min_force: primitives.Float | None = None, max_force: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +41,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
             self.max_force = max_force
 
     @property
-    def force(self) -> np.float32 | None:
+    def force(self) -> primitives.Float | None:
         """The Force field value."""
         member = self.get_member("Force")
         if member is None:
@@ -50,7 +49,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
         return getattr(member, 'value', None)
 
     @force.setter
-    def force(self, value: np.float32) -> None:
+    def force(self, value: primitives.Float) -> None:
         """Set the Force field value."""
         member = self.get_member("Force")
         if member is not None:
@@ -74,7 +73,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
         self.set_member("Mode", value)
 
     @property
-    def min_distance(self) -> np.float32 | None:
+    def min_distance(self) -> primitives.Float | None:
         """The MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is None:
@@ -82,7 +81,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
         return getattr(member, 'value', None)
 
     @min_distance.setter
-    def min_distance(self, value: np.float32) -> None:
+    def min_distance(self, value: primitives.Float) -> None:
         """Set the MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is not None:
@@ -93,7 +92,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
             )
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -101,7 +100,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:
@@ -112,7 +111,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
             )
 
     @property
-    def min_force(self) -> np.float32 | None:
+    def min_force(self) -> primitives.Float | None:
         """The MinForce field value."""
         member = self.get_member("MinForce")
         if member is None:
@@ -120,7 +119,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
         return getattr(member, 'value', None)
 
     @min_force.setter
-    def min_force(self, value: np.float32) -> None:
+    def min_force(self, value: primitives.Float) -> None:
         """Set the MinForce field value."""
         member = self.get_member("MinForce")
         if member is not None:
@@ -131,7 +130,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
             )
 
     @property
-    def max_force(self) -> np.float32 | None:
+    def max_force(self) -> primitives.Float | None:
         """The MaxForce field value."""
         member = self.get_member("MaxForce")
         if member is None:
@@ -139,7 +138,7 @@ class OriginRadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventRe
         return getattr(member, 'value', None)
 
     @max_force.setter
-    def max_force(self, value: np.float32) -> None:
+    def max_force(self, value: primitives.Float) -> None:
         """Set the MaxForce field value."""
         member = self.get_member("MaxForce")
         if member is not None:

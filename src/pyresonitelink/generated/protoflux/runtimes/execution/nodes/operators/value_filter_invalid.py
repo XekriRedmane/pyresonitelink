@@ -18,7 +18,7 @@ class ValueFilterInvalid(GenericComponent[T], INodeValueOutput[T], IExecutionNod
 
     Parameterize with a value type::
 
-        ValueFilterInvalid[np.float32]
+        ValueFilterInvalid[primitives.Float]
         ValueFilterInvalid[primitives.Float3]
     """
 

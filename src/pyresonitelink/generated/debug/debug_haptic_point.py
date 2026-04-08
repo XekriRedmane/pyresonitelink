@@ -1,8 +1,7 @@
 """Generated component: DebugHapticPoint."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ihaptic_source import IHapticSource
@@ -18,7 +17,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugHapticPoint"
 
-    def __init__(self, intensity: np.float32 | None = None, index: np.int32 | None = None, position: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, intensity: primitives.Float | None = None, index: primitives.Int | None = None, position: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +35,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
             self.position = position
 
     @property
-    def intensity(self) -> np.float32 | None:
+    def intensity(self) -> primitives.Float | None:
         """The Intensity field value."""
         member = self.get_member("Intensity")
         if member is None:
@@ -44,7 +43,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @intensity.setter
-    def intensity(self, value: np.float32) -> None:
+    def intensity(self, value: primitives.Float) -> None:
         """Set the Intensity field value."""
         member = self.get_member("Intensity")
         if member is not None:
@@ -55,7 +54,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
             )
 
     @property
-    def index(self) -> np.int32 | None:
+    def index(self) -> primitives.Int | None:
         """The Index field value."""
         member = self.get_member("Index")
         if member is None:
@@ -63,7 +62,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @index.setter
-    def index(self, value: np.int32) -> None:
+    def index(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:
@@ -74,7 +73,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
             )
 
     @property
-    def position(self) -> str | None:
+    def position(self) -> primitives.String | None:
         """The Position field value."""
         member = self.get_member("Position")
         if member is None:
@@ -82,7 +81,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @position.setter
-    def position(self, value: str) -> None:
+    def position(self, value: primitives.String) -> None:
         """Set the Position field value."""
         member = self.get_member("Position")
         if member is not None:

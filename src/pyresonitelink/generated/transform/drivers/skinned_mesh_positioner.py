@@ -1,7 +1,5 @@
 """Generated component: SkinnedMeshPositioner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SkinnedMeshPositioner"
 
-    def __init__(self, skin: str | SkinnedMeshRenderer | None = None, triangle_index: np.int32 | None = None, barycentric_coordinate: primitives.Float3 | None = None, local_position: primitives.Float3 | None = None, local_rotation: primitives.FloatQ | None = None, local_scale: primitives.Float3 | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, scale_drive: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, skin: str | SkinnedMeshRenderer | None = None, triangle_index: primitives.Int | None = None, barycentric_coordinate: primitives.Float3 | None = None, local_position: primitives.Float3 | None = None, local_rotation: primitives.FloatQ | None = None, local_scale: primitives.Float3 | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, scale_drive: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -80,7 +78,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
             )
 
     @property
-    def triangle_index(self) -> np.int32 | None:
+    def triangle_index(self) -> primitives.Int | None:
         """The TriangleIndex field value."""
         member = self.get_member("TriangleIndex")
         if member is None:
@@ -88,7 +86,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
         return getattr(member, 'value', None)
 
     @triangle_index.setter
-    def triangle_index(self, value: np.int32) -> None:
+    def triangle_index(self, value: primitives.Int) -> None:
         """Set the TriangleIndex field value."""
         member = self.get_member("TriangleIndex")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: StoppedPlayableCleaner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iplayable import IPlayable
@@ -20,7 +19,7 @@ class StoppedPlayableCleaner(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StoppedPlayableCleaner"
 
-    def __init__(self, playable: str | IPlayable | None = None, grace_period: np.float32 | None = None, checking_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, playable: str | IPlayable | None = None, grace_period: primitives.Float | None = None, checking_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,7 +58,7 @@ class StoppedPlayableCleaner(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def grace_period(self) -> np.float32 | None:
+    def grace_period(self) -> primitives.Float | None:
         """The GracePeriod field value."""
         member = self.get_member("GracePeriod")
         if member is None:
@@ -67,7 +66,7 @@ class StoppedPlayableCleaner(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @grace_period.setter
-    def grace_period(self, value: np.float32) -> None:
+    def grace_period(self, value: primitives.Float) -> None:
         """Set the GracePeriod field value."""
         member = self.get_member("GracePeriod")
         if member is not None:

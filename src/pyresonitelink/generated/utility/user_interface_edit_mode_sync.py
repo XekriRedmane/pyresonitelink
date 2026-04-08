@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -16,7 +17,7 @@ class UserInterfaceEditModeSync(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserInterfaceEditModeSync"
 
-    def __init__(self, edit_mode_active: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, edit_mode_active: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +42,7 @@ class UserInterfaceEditModeSync(GeneratedComponent, IComponent, IWorldEventRecei
         self.set_member("TargetUser", value)
 
     @property
-    def edit_mode_active(self) -> bool | None:
+    def edit_mode_active(self) -> primitives.Bool | None:
         """The EditModeActive field value."""
         member = self.get_member("EditModeActive")
         if member is None:
@@ -49,7 +50,7 @@ class UserInterfaceEditModeSync(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @edit_mode_active.setter
-    def edit_mode_active(self, value: bool) -> None:
+    def edit_mode_active(self, value: primitives.Bool) -> None:
         """Set the EditModeActive field value."""
         member = self.get_member("EditModeActive")
         if member is not None:

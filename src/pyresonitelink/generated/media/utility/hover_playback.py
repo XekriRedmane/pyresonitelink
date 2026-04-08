@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_playback import SyncPlayback
@@ -17,7 +18,7 @@ class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HoverPlayback"
 
-    def __init__(self, target: str | SyncPlayback | None = None, from_beginning: bool | None = None, loop: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | SyncPlayback | None = None, from_beginning: primitives.Bool | None = None, loop: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,7 +70,7 @@ class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
         self.set_member("Trigger", value)
 
     @property
-    def from_beginning(self) -> bool | None:
+    def from_beginning(self) -> primitives.Bool | None:
         """The FromBeginning field value."""
         member = self.get_member("FromBeginning")
         if member is None:
@@ -77,7 +78,7 @@ class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @from_beginning.setter
-    def from_beginning(self, value: bool) -> None:
+    def from_beginning(self, value: primitives.Bool) -> None:
         """Set the FromBeginning field value."""
         member = self.get_member("FromBeginning")
         if member is not None:
@@ -88,7 +89,7 @@ class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def loop(self) -> bool | None:
+    def loop(self) -> primitives.Bool | None:
         """The Loop field value."""
         member = self.get_member("Loop")
         if member is None:
@@ -96,7 +97,7 @@ class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @loop.setter
-    def loop(self, value: bool) -> None:
+    def loop(self, value: primitives.Bool) -> None:
         """Set the Loop field value."""
         member = self.get_member("Loop")
         if member is not None:

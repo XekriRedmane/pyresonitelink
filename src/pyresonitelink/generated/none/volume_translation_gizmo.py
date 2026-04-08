@@ -1,7 +1,5 @@
 """Generated component: VolumeTranslationGizmo."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VolumeTranslationGizmo"
 
-    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_point: str | IField[primitives.Float3] | None = None, use_custom_visual: bool | None = None, custom_visual_root: str | Slot | None = None, visual_root: str | Slot | None = None, cube_size: np.float32 | None = None, create_undo_steps: bool | None = None, collider_size: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: primitives.Bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_point: str | IField[primitives.Float3] | None = None, use_custom_visual: primitives.Bool | None = None, custom_visual_root: str | Slot | None = None, visual_root: str | Slot | None = None, cube_size: primitives.Float | None = None, create_undo_steps: primitives.Bool | None = None, collider_size: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -100,7 +98,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
             )
 
     @property
-    def auto_position_at_target_slot(self) -> bool | None:
+    def auto_position_at_target_slot(self) -> primitives.Bool | None:
         """The AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
@@ -108,7 +106,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
         return getattr(member, 'value', None)
 
     @auto_position_at_target_slot.setter
-    def auto_position_at_target_slot(self, value: bool) -> None:
+    def auto_position_at_target_slot(self, value: primitives.Bool) -> None:
         """Set the AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is not None:
@@ -300,7 +298,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
             )
 
     @property
-    def use_custom_visual(self) -> bool | None:
+    def use_custom_visual(self) -> primitives.Bool | None:
         """The UseCustomVisual field value."""
         member = self.get_member("UseCustomVisual")
         if member is None:
@@ -308,7 +306,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
         return getattr(member, 'value', None)
 
     @use_custom_visual.setter
-    def use_custom_visual(self, value: bool) -> None:
+    def use_custom_visual(self, value: primitives.Bool) -> None:
         """Set the UseCustomVisual field value."""
         member = self.get_member("UseCustomVisual")
         if member is not None:
@@ -361,7 +359,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
             )
 
     @property
-    def cube_size(self) -> np.float32 | None:
+    def cube_size(self) -> primitives.Float | None:
         """The CubeSize field value."""
         member = self.get_member("CubeSize")
         if member is None:
@@ -369,7 +367,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
         return getattr(member, 'value', None)
 
     @cube_size.setter
-    def cube_size(self, value: np.float32) -> None:
+    def cube_size(self, value: primitives.Float) -> None:
         """Set the CubeSize field value."""
         member = self.get_member("CubeSize")
         if member is not None:
@@ -380,7 +378,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
             )
 
     @property
-    def create_undo_steps(self) -> bool | None:
+    def create_undo_steps(self) -> primitives.Bool | None:
         """The CreateUndoSteps field value."""
         member = self.get_member("CreateUndoSteps")
         if member is None:
@@ -388,7 +386,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
         return getattr(member, 'value', None)
 
     @create_undo_steps.setter
-    def create_undo_steps(self, value: bool) -> None:
+    def create_undo_steps(self, value: primitives.Bool) -> None:
         """Set the CreateUndoSteps field value."""
         member = self.get_member("CreateUndoSteps")
         if member is not None:

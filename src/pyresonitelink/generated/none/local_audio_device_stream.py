@@ -1,8 +1,7 @@
 """Generated component: LocalAudioDeviceStream."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_audio_data_source import IWorldAudioDataSource
@@ -16,7 +15,7 @@ class LocalAudioDeviceStream(GeneratedComponent, IWorldAudioDataSource, ICompone
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocalAudioDeviceStream"
 
-    def __init__(self, audio_device_index: np.int32 | None = None, use_filtered_data: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, audio_device_index: primitives.Int | None = None, use_filtered_data: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +30,7 @@ class LocalAudioDeviceStream(GeneratedComponent, IWorldAudioDataSource, ICompone
             self.use_filtered_data = use_filtered_data
 
     @property
-    def audio_device_index(self) -> np.int32 | None:
+    def audio_device_index(self) -> primitives.Int | None:
         """The AudioDeviceIndex field value."""
         member = self.get_member("AudioDeviceIndex")
         if member is None:
@@ -39,7 +38,7 @@ class LocalAudioDeviceStream(GeneratedComponent, IWorldAudioDataSource, ICompone
         return getattr(member, 'value', None)
 
     @audio_device_index.setter
-    def audio_device_index(self, value: np.int32) -> None:
+    def audio_device_index(self, value: primitives.Int) -> None:
         """Set the AudioDeviceIndex field value."""
         member = self.get_member("AudioDeviceIndex")
         if member is not None:
@@ -50,7 +49,7 @@ class LocalAudioDeviceStream(GeneratedComponent, IWorldAudioDataSource, ICompone
             )
 
     @property
-    def use_filtered_data(self) -> bool | None:
+    def use_filtered_data(self) -> primitives.Bool | None:
         """The UseFilteredData field value."""
         member = self.get_member("UseFilteredData")
         if member is None:
@@ -58,7 +57,7 @@ class LocalAudioDeviceStream(GeneratedComponent, IWorldAudioDataSource, ICompone
         return getattr(member, 'value', None)
 
     @use_filtered_data.setter
-    def use_filtered_data(self, value: bool) -> None:
+    def use_filtered_data(self, value: primitives.Bool) -> None:
         """Set the UseFilteredData field value."""
         member = self.get_member("UseFilteredData")
         if member is not None:

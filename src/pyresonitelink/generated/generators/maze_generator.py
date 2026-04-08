@@ -1,7 +1,5 @@
 """Generated component: MazeGenerator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MazeGenerator"
 
-    def __init__(self, seed: np.int32 | None = None, cells: primitives.Int2 | None = None, wall_size: primitives.Float2 | None = None, point0: primitives.Int2 | None = None, point1: primitives.Int2 | None = None, material: str | MaterialProvider | None = None, bake: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, seed: primitives.Int | None = None, cells: primitives.Int2 | None = None, wall_size: primitives.Float2 | None = None, point0: primitives.Int2 | None = None, point1: primitives.Int2 | None = None, material: str | MaterialProvider | None = None, bake: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -52,7 +50,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             self.bake = bake
 
     @property
-    def seed(self) -> np.int32 | None:
+    def seed(self) -> primitives.Int | None:
         """The Seed field value."""
         member = self.get_member("Seed")
         if member is None:
@@ -60,7 +58,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @seed.setter
-    def seed(self, value: np.int32) -> None:
+    def seed(self, value: primitives.Int) -> None:
         """Set the Seed field value."""
         member = self.get_member("Seed")
         if member is not None:
@@ -168,7 +166,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def bake(self) -> bool | None:
+    def bake(self) -> primitives.Bool | None:
         """The Bake field value."""
         member = self.get_member("Bake")
         if member is None:
@@ -176,7 +174,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @bake.setter
-    def bake(self, value: bool) -> None:
+    def bake(self, value: primitives.Bool) -> None:
         """Set the Bake field value."""
         member = self.get_member("Bake")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: NoclipLocomotion."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class NoclipLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModu
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NoclipLocomotion"
 
-    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, max_speed: np.float32 | None = None, minimum_fly_speed_ratio: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, max_speed: primitives.Float | None = None, minimum_fly_speed_ratio: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -165,7 +163,7 @@ class NoclipLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModu
         self.set_member("Turn", value)
 
     @property
-    def max_speed(self) -> np.float32 | None:
+    def max_speed(self) -> primitives.Float | None:
         """The MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is None:
@@ -173,7 +171,7 @@ class NoclipLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModu
         return getattr(member, 'value', None)
 
     @max_speed.setter
-    def max_speed(self, value: np.float32) -> None:
+    def max_speed(self, value: primitives.Float) -> None:
         """Set the MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is not None:
@@ -184,7 +182,7 @@ class NoclipLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModu
             )
 
     @property
-    def minimum_fly_speed_ratio(self) -> np.float32 | None:
+    def minimum_fly_speed_ratio(self) -> primitives.Float | None:
         """The MinimumFlySpeedRatio field value."""
         member = self.get_member("MinimumFlySpeedRatio")
         if member is None:
@@ -192,7 +190,7 @@ class NoclipLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModu
         return getattr(member, 'value', None)
 
     @minimum_fly_speed_ratio.setter
-    def minimum_fly_speed_ratio(self, value: np.float32) -> None:
+    def minimum_fly_speed_ratio(self, value: primitives.Float) -> None:
         """Set the MinimumFlySpeedRatio field value."""
         member = self.get_member("MinimumFlySpeedRatio")
         if member is not None:

@@ -1,8 +1,7 @@
 """Generated component: AssetGatherSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class AssetGatherSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AssetGatherSettings"
 
-    def __init__(self, max_concurrent_asset_transfers: np.int32 | None = None, max_concurrent_downloads: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, max_concurrent_asset_transfers: primitives.Int | None = None, max_concurrent_downloads: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +29,7 @@ class AssetGatherSettings(GeneratedComponent, ICustomInspector):
             self.max_concurrent_downloads = max_concurrent_downloads
 
     @property
-    def max_concurrent_asset_transfers(self) -> np.int32 | None:
+    def max_concurrent_asset_transfers(self) -> primitives.Int | None:
         """The MaxConcurrentAssetTransfers field value."""
         member = self.get_member("MaxConcurrentAssetTransfers")
         if member is None:
@@ -38,7 +37,7 @@ class AssetGatherSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @max_concurrent_asset_transfers.setter
-    def max_concurrent_asset_transfers(self, value: np.int32) -> None:
+    def max_concurrent_asset_transfers(self, value: primitives.Int) -> None:
         """Set the MaxConcurrentAssetTransfers field value."""
         member = self.get_member("MaxConcurrentAssetTransfers")
         if member is not None:
@@ -49,7 +48,7 @@ class AssetGatherSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def max_concurrent_downloads(self) -> np.int32 | None:
+    def max_concurrent_downloads(self) -> primitives.Int | None:
         """The MaxConcurrentDownloads field value."""
         member = self.get_member("MaxConcurrentDownloads")
         if member is None:
@@ -57,7 +56,7 @@ class AssetGatherSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @max_concurrent_downloads.setter
-    def max_concurrent_downloads(self, value: np.int32) -> None:
+    def max_concurrent_downloads(self, value: primitives.Int) -> None:
         """Set the MaxConcurrentDownloads field value."""
         member = self.get_member("MaxConcurrentDownloads")
         if member is not None:

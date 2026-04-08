@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.setting_manager import SettingManager
@@ -15,7 +16,7 @@ class SettingManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SettingManager"
 
-    def __init__(self, owner_id: str | None = None, supressed_by: str | SettingManager | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, owner_id: primitives.String | None = None, supressed_by: str | SettingManager | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class SettingManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.supressed_by = supressed_by
 
     @property
-    def owner_id(self) -> str | None:
+    def owner_id(self) -> primitives.String | None:
         """The OwnerId field value."""
         member = self.get_member("OwnerId")
         if member is None:
@@ -38,7 +39,7 @@ class SettingManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @owner_id.setter
-    def owner_id(self, value: str) -> None:
+    def owner_id(self, value: primitives.String) -> None:
         """Set the OwnerId field value."""
         member = self.get_member("OwnerId")
         if member is not None:

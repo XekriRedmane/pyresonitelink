@@ -1,8 +1,7 @@
 """Generated component: BabbleSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class BabbleSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BabbleSettings"
 
-    def __init__(self, osc_data_port: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, osc_data_port: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +26,7 @@ class BabbleSettings(GeneratedComponent, ICustomInspector):
             self.osc_data_port = osc_data_port
 
     @property
-    def osc_data_port(self) -> np.int32 | None:
+    def osc_data_port(self) -> primitives.Int | None:
         """The OSC_DataPort field value."""
         member = self.get_member("OSC_DataPort")
         if member is None:
@@ -35,7 +34,7 @@ class BabbleSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @osc_data_port.setter
-    def osc_data_port(self, value: np.int32) -> None:
+    def osc_data_port(self, value: primitives.Int) -> None:
         """Set the OSC_DataPort field value."""
         member = self.get_member("OSC_DataPort")
         if member is not None:

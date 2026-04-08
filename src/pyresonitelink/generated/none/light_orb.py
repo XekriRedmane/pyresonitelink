@@ -17,7 +17,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LightOrb"
 
-    def __init__(self, flip_on_touch: bool | None = None, light: str | Light | None = None, emission_color: str | IField[primitives.ColorX] | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, flip_on_touch: primitives.Bool | None = None, light: str | Light | None = None, emission_color: str | IField[primitives.ColorX] | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +41,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
             self.accept_remote_touch = accept_remote_touch
 
     @property
-    def flip_on_touch(self) -> bool | None:
+    def flip_on_touch(self) -> primitives.Bool | None:
         """The FlipOnTouch field value."""
         member = self.get_member("FlipOnTouch")
         if member is None:
@@ -49,7 +49,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @flip_on_touch.setter
-    def flip_on_touch(self, value: bool) -> None:
+    def flip_on_touch(self, value: primitives.Bool) -> None:
         """Set the FlipOnTouch field value."""
         member = self.get_member("FlipOnTouch")
         if member is not None:
@@ -102,7 +102,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -110,7 +110,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -121,7 +121,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -129,7 +129,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:

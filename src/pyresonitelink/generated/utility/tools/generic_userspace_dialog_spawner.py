@@ -13,7 +13,7 @@ class GenericUserspaceDialogSpawner(GenericComponent[T], IButtonPressReceiver, I
 
     Parameterize with a value type::
 
-        GenericUserspaceDialogSpawner[np.float32]
+        GenericUserspaceDialogSpawner[primitives.Float]
         GenericUserspaceDialogSpawner[primitives.Float3]
     """
 

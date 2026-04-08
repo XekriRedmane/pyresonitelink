@@ -1,7 +1,5 @@
 """Generated component: LegacyRadio."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,7 +23,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyRadio"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, is_enabled: bool | None = None, radius: np.float32 | None = None, color: primitives.ColorX | None = None, selected: bool | None = None, collider_radius: str | IField[np.float32] | None = None, icosphere: str | IcoSphereMesh | None = None, material: str | PBS_RimMetallic | None = None, group: str | LegacyRadioGroup | None = None, order_number: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, is_enabled: primitives.Bool | None = None, radius: primitives.Float | None = None, color: primitives.ColorX | None = None, selected: primitives.Bool | None = None, collider_radius: str | IField[primitives.Float] | None = None, icosphere: str | IcoSphereMesh | None = None, material: str | PBS_RimMetallic | None = None, group: str | LegacyRadioGroup | None = None, order_number: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -91,7 +89,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -99,7 +97,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -110,7 +108,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -118,7 +116,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -129,7 +127,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def is_enabled(self) -> bool | None:
+    def is_enabled(self) -> primitives.Bool | None:
         """The IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is None:
@@ -137,7 +135,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_enabled.setter
-    def is_enabled(self, value: bool) -> None:
+    def is_enabled(self, value: primitives.Bool) -> None:
         """Set the IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is not None:
@@ -148,7 +146,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -156,7 +154,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -186,7 +184,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def selected(self) -> bool | None:
+    def selected(self) -> primitives.Bool | None:
         """The Selected field value."""
         member = self.get_member("Selected")
         if member is None:
@@ -194,7 +192,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @selected.setter
-    def selected(self, value: bool) -> None:
+    def selected(self, value: primitives.Bool) -> None:
         """Set the Selected field value."""
         member = self.get_member("Selected")
         if member is not None:
@@ -206,15 +204,15 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     @property
     def collider_radius(self) -> str | None:
-        """Target ID of the _colliderRadius reference (targets IField[np.float32])."""
+        """Target ID of the _colliderRadius reference (targets IField[primitives.Float])."""
         member = self.get_member("_colliderRadius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @collider_radius.setter
-    def collider_radius(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _colliderRadius reference by target ID or IField[np.float32] instance."""
+    def collider_radius(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _colliderRadius reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_colliderRadius")
         if isinstance(member, members.Reference):
@@ -289,7 +287,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def order_number(self) -> np.int32 | None:
+    def order_number(self) -> primitives.Int | None:
         """The _orderNumber field value."""
         member = self.get_member("_orderNumber")
         if member is None:
@@ -297,7 +295,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @order_number.setter
-    def order_number(self, value: np.int32) -> None:
+    def order_number(self, value: primitives.Int) -> None:
         """Set the _orderNumber field value."""
         member = self.get_member("_orderNumber")
         if member is not None:

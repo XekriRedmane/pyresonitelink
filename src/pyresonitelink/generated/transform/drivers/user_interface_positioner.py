@@ -1,7 +1,5 @@
 """Generated component: UserInterfacePositioner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserInterfacePositioner"
 
-    def __init__(self, use_head: bool | None = None, rotate_vertical_only: bool | None = None, position_speed: np.float32 | None = None, rotation_speed: np.float32 | None = None, activation_distance: np.float32 | None = None, activation_angle: np.float32 | None = None, deactivation_distance: np.float32 | None = None, deactivation_angle: np.float32 | None = None, target_position: primitives.Float3 | None = None, target_rotation: primitives.FloatQ | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_head: primitives.Bool | None = None, rotate_vertical_only: primitives.Bool | None = None, position_speed: primitives.Float | None = None, rotation_speed: primitives.Float | None = None, activation_distance: primitives.Float | None = None, activation_angle: primitives.Float | None = None, deactivation_distance: primitives.Float | None = None, deactivation_angle: primitives.Float | None = None, target_position: primitives.Float3 | None = None, target_rotation: primitives.FloatQ | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -78,7 +76,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
         self.set_member("TargetUser", value)
 
     @property
-    def use_head(self) -> bool | None:
+    def use_head(self) -> primitives.Bool | None:
         """The UseHead field value."""
         member = self.get_member("UseHead")
         if member is None:
@@ -86,7 +84,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @use_head.setter
-    def use_head(self, value: bool) -> None:
+    def use_head(self, value: primitives.Bool) -> None:
         """Set the UseHead field value."""
         member = self.get_member("UseHead")
         if member is not None:
@@ -97,7 +95,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def rotate_vertical_only(self) -> bool | None:
+    def rotate_vertical_only(self) -> primitives.Bool | None:
         """The RotateVerticalOnly field value."""
         member = self.get_member("RotateVerticalOnly")
         if member is None:
@@ -105,7 +103,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @rotate_vertical_only.setter
-    def rotate_vertical_only(self, value: bool) -> None:
+    def rotate_vertical_only(self, value: primitives.Bool) -> None:
         """Set the RotateVerticalOnly field value."""
         member = self.get_member("RotateVerticalOnly")
         if member is not None:
@@ -116,7 +114,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def position_speed(self) -> np.float32 | None:
+    def position_speed(self) -> primitives.Float | None:
         """The PositionSpeed field value."""
         member = self.get_member("PositionSpeed")
         if member is None:
@@ -124,7 +122,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @position_speed.setter
-    def position_speed(self, value: np.float32) -> None:
+    def position_speed(self, value: primitives.Float) -> None:
         """Set the PositionSpeed field value."""
         member = self.get_member("PositionSpeed")
         if member is not None:
@@ -135,7 +133,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def rotation_speed(self) -> np.float32 | None:
+    def rotation_speed(self) -> primitives.Float | None:
         """The RotationSpeed field value."""
         member = self.get_member("RotationSpeed")
         if member is None:
@@ -143,7 +141,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @rotation_speed.setter
-    def rotation_speed(self, value: np.float32) -> None:
+    def rotation_speed(self, value: primitives.Float) -> None:
         """Set the RotationSpeed field value."""
         member = self.get_member("RotationSpeed")
         if member is not None:
@@ -154,7 +152,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def activation_distance(self) -> np.float32 | None:
+    def activation_distance(self) -> primitives.Float | None:
         """The ActivationDistance field value."""
         member = self.get_member("ActivationDistance")
         if member is None:
@@ -162,7 +160,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @activation_distance.setter
-    def activation_distance(self, value: np.float32) -> None:
+    def activation_distance(self, value: primitives.Float) -> None:
         """Set the ActivationDistance field value."""
         member = self.get_member("ActivationDistance")
         if member is not None:
@@ -173,7 +171,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def activation_angle(self) -> np.float32 | None:
+    def activation_angle(self) -> primitives.Float | None:
         """The ActivationAngle field value."""
         member = self.get_member("ActivationAngle")
         if member is None:
@@ -181,7 +179,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @activation_angle.setter
-    def activation_angle(self, value: np.float32) -> None:
+    def activation_angle(self, value: primitives.Float) -> None:
         """Set the ActivationAngle field value."""
         member = self.get_member("ActivationAngle")
         if member is not None:
@@ -192,7 +190,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def deactivation_distance(self) -> np.float32 | None:
+    def deactivation_distance(self) -> primitives.Float | None:
         """The DeactivationDistance field value."""
         member = self.get_member("DeactivationDistance")
         if member is None:
@@ -200,7 +198,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @deactivation_distance.setter
-    def deactivation_distance(self, value: np.float32) -> None:
+    def deactivation_distance(self, value: primitives.Float) -> None:
         """Set the DeactivationDistance field value."""
         member = self.get_member("DeactivationDistance")
         if member is not None:
@@ -211,7 +209,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def deactivation_angle(self) -> np.float32 | None:
+    def deactivation_angle(self) -> primitives.Float | None:
         """The DeactivationAngle field value."""
         member = self.get_member("DeactivationAngle")
         if member is None:
@@ -219,7 +217,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @deactivation_angle.setter
-    def deactivation_angle(self, value: np.float32) -> None:
+    def deactivation_angle(self, value: primitives.Float) -> None:
         """Set the DeactivationAngle field value."""
         member = self.get_member("DeactivationAngle")
         if member is not None:

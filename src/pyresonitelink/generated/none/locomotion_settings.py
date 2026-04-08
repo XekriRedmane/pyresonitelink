@@ -1,6 +1,7 @@
 """Generated component: LocomotionSettings."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -25,7 +26,7 @@ class LocomotionSettings(GeneratedComponent, ICustomInspector):
         """Set the LocomotionPreferences member."""
         self.set_member("LocomotionPreferences", value)
 
-    async def get_entry(self, resolink: protocols.ResoniteLinkClient, key: str, debug: bool = False) -> dict:
+    async def get_entry(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
         """Call the GetEntry sync method.
 
         Args:

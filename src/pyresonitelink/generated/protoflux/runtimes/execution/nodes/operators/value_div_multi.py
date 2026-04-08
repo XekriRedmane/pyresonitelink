@@ -18,7 +18,7 @@ class ValueDivMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        ValueDivMulti[np.float32]
+        ValueDivMulti[primitives.Float]
         ValueDivMulti[primitives.Float3]
     """
 

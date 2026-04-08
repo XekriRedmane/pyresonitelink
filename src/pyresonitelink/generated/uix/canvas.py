@@ -1,7 +1,5 @@
 """Generated component: Canvas."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -31,7 +29,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Canvas"
 
-    def __init__(self, size: primitives.Float2 | None = None, edit_mode_only: bool | None = None, accept_remote_touch: bool | None = None, accept_physical_touch: bool | None = None, accept_existing_touch: bool | None = None, high_priority_integration: bool | None = None, ignore_touches_from_behind: bool | None = None, block_all_interactions: bool | None = None, laser_pass_through: bool | None = None, pixel_scale: np.float32 | None = None, unit_scale: np.float32 | None = None, root_rect: str | RectTransform | None = None, collider: str | BoxCollider | None = None, collider_size: str | IField[primitives.Float3] | None = None, collider_offset: str | IField[primitives.Float3] | None = None, starting_offset: np.int32 | None = None, starting_mask_depth: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, size: primitives.Float2 | None = None, edit_mode_only: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_existing_touch: primitives.Bool | None = None, high_priority_integration: primitives.Bool | None = None, ignore_touches_from_behind: primitives.Bool | None = None, block_all_interactions: primitives.Bool | None = None, laser_pass_through: primitives.Bool | None = None, pixel_scale: primitives.Float | None = None, unit_scale: primitives.Float | None = None, root_rect: str | RectTransform | None = None, collider: str | BoxCollider | None = None, collider_size: str | IField[primitives.Float3] | None = None, collider_offset: str | IField[primitives.Float3] | None = None, starting_offset: primitives.Int | None = None, starting_mask_depth: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -110,7 +108,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def edit_mode_only(self) -> bool | None:
+    def edit_mode_only(self) -> primitives.Bool | None:
         """The EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is None:
@@ -118,7 +116,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @edit_mode_only.setter
-    def edit_mode_only(self, value: bool) -> None:
+    def edit_mode_only(self, value: primitives.Bool) -> None:
         """Set the EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is not None:
@@ -129,7 +127,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -137,7 +135,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -148,7 +146,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -156,7 +154,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -167,7 +165,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def accept_existing_touch(self) -> bool | None:
+    def accept_existing_touch(self) -> primitives.Bool | None:
         """The AcceptExistingTouch field value."""
         member = self.get_member("AcceptExistingTouch")
         if member is None:
@@ -175,7 +173,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @accept_existing_touch.setter
-    def accept_existing_touch(self, value: bool) -> None:
+    def accept_existing_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptExistingTouch field value."""
         member = self.get_member("AcceptExistingTouch")
         if member is not None:
@@ -186,7 +184,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -194,7 +192,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -205,7 +203,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def ignore_touches_from_behind(self) -> bool | None:
+    def ignore_touches_from_behind(self) -> primitives.Bool | None:
         """The IgnoreTouchesFromBehind field value."""
         member = self.get_member("IgnoreTouchesFromBehind")
         if member is None:
@@ -213,7 +211,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @ignore_touches_from_behind.setter
-    def ignore_touches_from_behind(self, value: bool) -> None:
+    def ignore_touches_from_behind(self, value: primitives.Bool) -> None:
         """Set the IgnoreTouchesFromBehind field value."""
         member = self.get_member("IgnoreTouchesFromBehind")
         if member is not None:
@@ -224,7 +222,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def block_all_interactions(self) -> bool | None:
+    def block_all_interactions(self) -> primitives.Bool | None:
         """The BlockAllInteractions field value."""
         member = self.get_member("BlockAllInteractions")
         if member is None:
@@ -232,7 +230,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @block_all_interactions.setter
-    def block_all_interactions(self, value: bool) -> None:
+    def block_all_interactions(self, value: primitives.Bool) -> None:
         """Set the BlockAllInteractions field value."""
         member = self.get_member("BlockAllInteractions")
         if member is not None:
@@ -243,7 +241,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def laser_pass_through(self) -> bool | None:
+    def laser_pass_through(self) -> primitives.Bool | None:
         """The LaserPassThrough field value."""
         member = self.get_member("LaserPassThrough")
         if member is None:
@@ -251,7 +249,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @laser_pass_through.setter
-    def laser_pass_through(self, value: bool) -> None:
+    def laser_pass_through(self, value: primitives.Bool) -> None:
         """Set the LaserPassThrough field value."""
         member = self.get_member("LaserPassThrough")
         if member is not None:
@@ -262,7 +260,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def pixel_scale(self) -> np.float32 | None:
+    def pixel_scale(self) -> primitives.Float | None:
         """The PixelScale field value."""
         member = self.get_member("PixelScale")
         if member is None:
@@ -270,7 +268,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @pixel_scale.setter
-    def pixel_scale(self, value: np.float32) -> None:
+    def pixel_scale(self, value: primitives.Float) -> None:
         """Set the PixelScale field value."""
         member = self.get_member("PixelScale")
         if member is not None:
@@ -281,7 +279,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def unit_scale(self) -> np.float32 | None:
+    def unit_scale(self) -> primitives.Float | None:
         """The UnitScale field value."""
         member = self.get_member("UnitScale")
         if member is None:
@@ -289,7 +287,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @unit_scale.setter
-    def unit_scale(self, value: np.float32) -> None:
+    def unit_scale(self, value: primitives.Float) -> None:
         """Set the UnitScale field value."""
         member = self.get_member("UnitScale")
         if member is not None:
@@ -397,7 +395,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def starting_offset(self) -> np.int32 | None:
+    def starting_offset(self) -> primitives.Int | None:
         """The StartingOffset field value."""
         member = self.get_member("StartingOffset")
         if member is None:
@@ -405,7 +403,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @starting_offset.setter
-    def starting_offset(self, value: np.int32) -> None:
+    def starting_offset(self, value: primitives.Int) -> None:
         """Set the StartingOffset field value."""
         member = self.get_member("StartingOffset")
         if member is not None:
@@ -416,7 +414,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def starting_mask_depth(self) -> np.int32 | None:
+    def starting_mask_depth(self) -> primitives.Int | None:
         """The StartingMaskDepth field value."""
         member = self.get_member("StartingMaskDepth")
         if member is None:
@@ -424,7 +422,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
         return getattr(member, 'value', None)
 
     @starting_mask_depth.setter
-    def starting_mask_depth(self, value: np.int32) -> None:
+    def starting_mask_depth(self, value: primitives.Int) -> None:
         """Set the StartingMaskDepth field value."""
         member = self.get_member("StartingMaskDepth")
         if member is not None:

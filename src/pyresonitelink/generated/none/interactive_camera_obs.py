@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.canvas import Canvas
@@ -23,7 +24,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraOBS"
 
-    def __init__(self, canvas: str | Canvas | None = None, panel: str | LegacyPanel | None = None, current_panel: str | RectTransform | None = None, container: str | Slot | None = None, camera_control: str | InteractiveCameraControl | None = None, connect_address: str | TextField | None = None, connect_password: str | TextField | None = None, status: str | Text | None = None, active: bool | None = None, stream_time: str | Text | None = None, bytes_per_sec: str | Text | None = None, fps: str | Text | None = None, dropped_frames: str | Text | None = None, stream_button: str | Button | None = None, record_button: str | Button | None = None, launch_ob_sbutton: str | Button | None = None, auto_mirror: str | Checkbox | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, canvas: str | Canvas | None = None, panel: str | LegacyPanel | None = None, current_panel: str | RectTransform | None = None, container: str | Slot | None = None, camera_control: str | InteractiveCameraControl | None = None, connect_address: str | TextField | None = None, connect_password: str | TextField | None = None, status: str | Text | None = None, active: primitives.Bool | None = None, stream_time: str | Text | None = None, bytes_per_sec: str | Text | None = None, fps: str | Text | None = None, dropped_frames: str | Text | None = None, stream_button: str | Button | None = None, record_button: str | Button | None = None, launch_ob_sbutton: str | Button | None = None, auto_mirror: str | Checkbox | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -251,7 +252,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def active(self) -> bool | None:
+    def active(self) -> primitives.Bool | None:
         """The _active field value."""
         member = self.get_member("_active")
         if member is None:
@@ -259,7 +260,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @active.setter
-    def active(self, value: bool) -> None:
+    def active(self, value: primitives.Bool) -> None:
         """Set the _active field value."""
         member = self.get_member("_active")
         if member is not None:

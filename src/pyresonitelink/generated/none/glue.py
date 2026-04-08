@@ -1,9 +1,8 @@
 """Generated component: Glue."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -17,7 +16,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Glue"
 
-    def __init__(self, active: bool | None = None, dry_time: np.float32 | None = None, expire: np.float64 | None = None, gluing_user: str | User | None = None, force_dry: bool | None = None, is_drying: bool | None = None, dry_start_time: np.float64 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, active: primitives.Bool | None = None, dry_time: primitives.Float | None = None, expire: primitives.Double | None = None, gluing_user: str | User | None = None, force_dry: primitives.Bool | None = None, is_drying: primitives.Bool | None = None, dry_start_time: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,7 +59,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("GlueMode", value)
 
     @property
-    def active(self) -> bool | None:
+    def active(self) -> primitives.Bool | None:
         """The Active field value."""
         member = self.get_member("Active")
         if member is None:
@@ -68,7 +67,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @active.setter
-    def active(self, value: bool) -> None:
+    def active(self, value: primitives.Bool) -> None:
         """Set the Active field value."""
         member = self.get_member("Active")
         if member is not None:
@@ -79,7 +78,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def dry_time(self) -> np.float32 | None:
+    def dry_time(self) -> primitives.Float | None:
         """The DryTime field value."""
         member = self.get_member("DryTime")
         if member is None:
@@ -87,7 +86,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @dry_time.setter
-    def dry_time(self, value: np.float32) -> None:
+    def dry_time(self, value: primitives.Float) -> None:
         """Set the DryTime field value."""
         member = self.get_member("DryTime")
         if member is not None:
@@ -98,7 +97,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def expire(self) -> np.float64 | None:
+    def expire(self) -> primitives.Double | None:
         """The Expire field value."""
         member = self.get_member("Expire")
         if member is None:
@@ -106,7 +105,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @expire.setter
-    def expire(self, value: np.float64) -> None:
+    def expire(self, value: primitives.Double) -> None:
         """Set the Expire field value."""
         member = self.get_member("Expire")
         if member is not None:
@@ -138,7 +137,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def force_dry(self) -> bool | None:
+    def force_dry(self) -> primitives.Bool | None:
         """The _forceDry field value."""
         member = self.get_member("_forceDry")
         if member is None:
@@ -146,7 +145,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @force_dry.setter
-    def force_dry(self, value: bool) -> None:
+    def force_dry(self, value: primitives.Bool) -> None:
         """Set the _forceDry field value."""
         member = self.get_member("_forceDry")
         if member is not None:
@@ -157,7 +156,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_drying(self) -> bool | None:
+    def is_drying(self) -> primitives.Bool | None:
         """The isDrying field value."""
         member = self.get_member("isDrying")
         if member is None:
@@ -165,7 +164,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_drying.setter
-    def is_drying(self, value: bool) -> None:
+    def is_drying(self, value: primitives.Bool) -> None:
         """Set the isDrying field value."""
         member = self.get_member("isDrying")
         if member is not None:
@@ -176,7 +175,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def dry_start_time(self) -> np.float64 | None:
+    def dry_start_time(self) -> primitives.Double | None:
         """The dryStartTime field value."""
         member = self.get_member("dryStartTime")
         if member is None:
@@ -184,7 +183,7 @@ class Glue(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @dry_start_time.setter
-    def dry_start_time(self, value: np.float64) -> None:
+    def dry_start_time(self, value: primitives.Double) -> None:
         """Set the dryStartTime field value."""
         member = self.get_member("dryStartTime")
         if member is not None:

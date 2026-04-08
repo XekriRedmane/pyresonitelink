@@ -1,9 +1,8 @@
 """Generated component: AudioOutputDeviceSelection."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -17,7 +16,7 @@ class AudioOutputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioOutputDeviceSelection"
 
-    def __init__(self, selected_device_index: np.int32 | None = None, selected_device_name: str | None = None, device_button_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, selected_device_index: primitives.Int | None = None, selected_device_name: primitives.String | None = None, device_button_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,7 +34,7 @@ class AudioOutputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRece
             self.device_button_root = device_button_root
 
     @property
-    def selected_device_index(self) -> np.int32 | None:
+    def selected_device_index(self) -> primitives.Int | None:
         """The SelectedDeviceIndex field value."""
         member = self.get_member("SelectedDeviceIndex")
         if member is None:
@@ -43,7 +42,7 @@ class AudioOutputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @selected_device_index.setter
-    def selected_device_index(self, value: np.int32) -> None:
+    def selected_device_index(self, value: primitives.Int) -> None:
         """Set the SelectedDeviceIndex field value."""
         member = self.get_member("SelectedDeviceIndex")
         if member is not None:
@@ -54,7 +53,7 @@ class AudioOutputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRece
             )
 
     @property
-    def selected_device_name(self) -> str | None:
+    def selected_device_name(self) -> primitives.String | None:
         """The SelectedDeviceName field value."""
         member = self.get_member("SelectedDeviceName")
         if member is None:
@@ -62,7 +61,7 @@ class AudioOutputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @selected_device_name.setter
-    def selected_device_name(self, value: str) -> None:
+    def selected_device_name(self, value: primitives.String) -> None:
         """Set the SelectedDeviceName field value."""
         member = self.get_member("SelectedDeviceName")
         if member is not None:

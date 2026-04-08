@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -17,7 +18,7 @@ class FontCollection(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FontCollection"
 
-    def __init__(self, high_priority_integration: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +30,7 @@ class FontCollection(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.high_priority_integration = high_priority_integration
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -37,7 +38,7 @@ class FontCollection(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:

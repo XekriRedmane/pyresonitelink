@@ -1,7 +1,5 @@
 """Generated component: TubeBoxMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TubeBoxMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: primitives.Float3 | None = None, tube_radius: np.float32 | None = None, segment_points: np.int32 | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: primitives.Float3 | None = None, tube_radius: primitives.Float | None = None, segment_points: primitives.Int | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +52,7 @@ class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             self.uv_offset = uv_offset
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -62,7 +60,7 @@ class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -73,7 +71,7 @@ class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -81,7 +79,7 @@ class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -143,7 +141,7 @@ class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def tube_radius(self) -> np.float32 | None:
+    def tube_radius(self) -> primitives.Float | None:
         """The TubeRadius field value."""
         member = self.get_member("TubeRadius")
         if member is None:
@@ -151,7 +149,7 @@ class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @tube_radius.setter
-    def tube_radius(self, value: np.float32) -> None:
+    def tube_radius(self, value: primitives.Float) -> None:
         """Set the TubeRadius field value."""
         member = self.get_member("TubeRadius")
         if member is not None:
@@ -162,7 +160,7 @@ class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def segment_points(self) -> np.int32 | None:
+    def segment_points(self) -> primitives.Int | None:
         """The SegmentPoints field value."""
         member = self.get_member("SegmentPoints")
         if member is None:
@@ -170,7 +168,7 @@ class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @segment_points.setter
-    def segment_points(self, value: np.int32) -> None:
+    def segment_points(self, value: primitives.Int) -> None:
         """Set the SegmentPoints field value."""
         member = self.get_member("SegmentPoints")
         if member is not None:

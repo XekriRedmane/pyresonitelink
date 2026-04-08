@@ -18,7 +18,7 @@ class ValueDec(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueDec[np.float32]
+        ValueDec[primitives.Float]
         ValueDec[primitives.Float3]
     """
 

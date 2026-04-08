@@ -1,7 +1,5 @@
 """Generated component: Slider."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Slider"
 
-    def __init__(self, base_color: primitives.ColorX | None = None, legacy_normal_color: primitives.ColorX | None = None, legacy_highlight_color: primitives.ColorX | None = None, legacy_press_color: primitives.ColorX | None = None, legacy_disabled_color: primitives.ColorX | None = None, legacy_color_drive: str | IField[primitives.ColorX] | None = None, is_pressed: bool | None = None, is_hovering: bool | None = None, value: np.float32 | None = None, min: np.float32 | None = None, max: np.float32 | None = None, integers: bool | None = None, max_is_exclusive: bool | None = None, power: np.float32 | None = None, clamp: bool | None = None, vibration_threshold: np.float32 | None = None, anchor_offset: primitives.Float2 | None = None, handle_anchor_min_drive: str | IField[primitives.Float2] | None = None, handle_anchor_max_drive: str | IField[primitives.Float2] | None = None, fill_line_drive: str | IField[primitives.Float2] | None = None, require_lock_in_to_interact: bool | None = None, require_initial_press: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, base_color: primitives.ColorX | None = None, legacy_normal_color: primitives.ColorX | None = None, legacy_highlight_color: primitives.ColorX | None = None, legacy_press_color: primitives.ColorX | None = None, legacy_disabled_color: primitives.ColorX | None = None, legacy_color_drive: str | IField[primitives.ColorX] | None = None, is_pressed: primitives.Bool | None = None, is_hovering: primitives.Bool | None = None, value: primitives.Float | None = None, min: primitives.Float | None = None, max: primitives.Float | None = None, integers: primitives.Bool | None = None, max_is_exclusive: primitives.Bool | None = None, power: primitives.Float | None = None, clamp: primitives.Bool | None = None, vibration_threshold: primitives.Float | None = None, anchor_offset: primitives.Float2 | None = None, handle_anchor_min_drive: str | IField[primitives.Float2] | None = None, handle_anchor_max_drive: str | IField[primitives.Float2] | None = None, fill_line_drive: str | IField[primitives.Float2] | None = None, require_lock_in_to_interact: primitives.Bool | None = None, require_initial_press: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -238,7 +236,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def is_pressed(self) -> bool | None:
+    def is_pressed(self) -> primitives.Bool | None:
         """The IsPressed field value."""
         member = self.get_member("IsPressed")
         if member is None:
@@ -246,7 +244,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @is_pressed.setter
-    def is_pressed(self, value: bool) -> None:
+    def is_pressed(self, value: primitives.Bool) -> None:
         """Set the IsPressed field value."""
         member = self.get_member("IsPressed")
         if member is not None:
@@ -257,7 +255,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def is_hovering(self) -> bool | None:
+    def is_hovering(self) -> primitives.Bool | None:
         """The IsHovering field value."""
         member = self.get_member("IsHovering")
         if member is None:
@@ -265,7 +263,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @is_hovering.setter
-    def is_hovering(self, value: bool) -> None:
+    def is_hovering(self, value: primitives.Bool) -> None:
         """Set the IsHovering field value."""
         member = self.get_member("IsHovering")
         if member is not None:
@@ -276,7 +274,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def value(self) -> np.float32 | None:
+    def value(self) -> primitives.Float | None:
         """The Value field value."""
         member = self.get_member("Value")
         if member is None:
@@ -284,7 +282,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @value.setter
-    def value(self, value: np.float32) -> None:
+    def value(self, value: primitives.Float) -> None:
         """Set the Value field value."""
         member = self.get_member("Value")
         if member is not None:
@@ -295,7 +293,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def min(self) -> np.float32 | None:
+    def min(self) -> primitives.Float | None:
         """The Min field value."""
         member = self.get_member("Min")
         if member is None:
@@ -303,7 +301,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @min.setter
-    def min(self, value: np.float32) -> None:
+    def min(self, value: primitives.Float) -> None:
         """Set the Min field value."""
         member = self.get_member("Min")
         if member is not None:
@@ -314,7 +312,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def max(self) -> np.float32 | None:
+    def max(self) -> primitives.Float | None:
         """The Max field value."""
         member = self.get_member("Max")
         if member is None:
@@ -322,7 +320,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @max.setter
-    def max(self, value: np.float32) -> None:
+    def max(self, value: primitives.Float) -> None:
         """Set the Max field value."""
         member = self.get_member("Max")
         if member is not None:
@@ -333,7 +331,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def integers(self) -> bool | None:
+    def integers(self) -> primitives.Bool | None:
         """The Integers field value."""
         member = self.get_member("Integers")
         if member is None:
@@ -341,7 +339,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @integers.setter
-    def integers(self, value: bool) -> None:
+    def integers(self, value: primitives.Bool) -> None:
         """Set the Integers field value."""
         member = self.get_member("Integers")
         if member is not None:
@@ -352,7 +350,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def max_is_exclusive(self) -> bool | None:
+    def max_is_exclusive(self) -> primitives.Bool | None:
         """The MaxIsExclusive field value."""
         member = self.get_member("MaxIsExclusive")
         if member is None:
@@ -360,7 +358,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @max_is_exclusive.setter
-    def max_is_exclusive(self, value: bool) -> None:
+    def max_is_exclusive(self, value: primitives.Bool) -> None:
         """Set the MaxIsExclusive field value."""
         member = self.get_member("MaxIsExclusive")
         if member is not None:
@@ -371,7 +369,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def power(self) -> np.float32 | None:
+    def power(self) -> primitives.Float | None:
         """The Power field value."""
         member = self.get_member("Power")
         if member is None:
@@ -379,7 +377,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @power.setter
-    def power(self, value: np.float32) -> None:
+    def power(self, value: primitives.Float) -> None:
         """Set the Power field value."""
         member = self.get_member("Power")
         if member is not None:
@@ -390,7 +388,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def clamp(self) -> bool | None:
+    def clamp(self) -> primitives.Bool | None:
         """The Clamp field value."""
         member = self.get_member("Clamp")
         if member is None:
@@ -398,7 +396,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @clamp.setter
-    def clamp(self, value: bool) -> None:
+    def clamp(self, value: primitives.Bool) -> None:
         """Set the Clamp field value."""
         member = self.get_member("Clamp")
         if member is not None:
@@ -409,7 +407,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def vibration_threshold(self) -> np.float32 | None:
+    def vibration_threshold(self) -> primitives.Float | None:
         """The VibrationThreshold field value."""
         member = self.get_member("VibrationThreshold")
         if member is None:
@@ -417,7 +415,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @vibration_threshold.setter
-    def vibration_threshold(self, value: np.float32) -> None:
+    def vibration_threshold(self, value: primitives.Float) -> None:
         """Set the VibrationThreshold field value."""
         member = self.get_member("VibrationThreshold")
         if member is not None:
@@ -523,7 +521,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def require_lock_in_to_interact(self) -> bool | None:
+    def require_lock_in_to_interact(self) -> primitives.Bool | None:
         """The RequireLockInToInteract field value."""
         member = self.get_member("RequireLockInToInteract")
         if member is None:
@@ -531,7 +529,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @require_lock_in_to_interact.setter
-    def require_lock_in_to_interact(self, value: bool) -> None:
+    def require_lock_in_to_interact(self, value: primitives.Bool) -> None:
         """Set the RequireLockInToInteract field value."""
         member = self.get_member("RequireLockInToInteract")
         if member is not None:
@@ -542,7 +540,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def require_initial_press(self) -> bool | None:
+    def require_initial_press(self) -> primitives.Bool | None:
         """The RequireInitialPress field value."""
         member = self.get_member("RequireInitialPress")
         if member is None:
@@ -550,7 +548,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @require_initial_press.setter
-    def require_initial_press(self, value: bool) -> None:
+    def require_initial_press(self, value: primitives.Bool) -> None:
         """Set the RequireInitialPress field value."""
         member = self.get_member("RequireInitialPress")
         if member is not None:

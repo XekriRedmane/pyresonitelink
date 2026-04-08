@@ -1,7 +1,5 @@
 """Generated component: ReflectionProbe."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbe"
 
-    def __init__(self, importance: np.int32 | None = None, intensity: np.float32 | None = None, blend_distance: np.float32 | None = None, box_size: primitives.Float3 | None = None, box_projection: bool | None = None, baked_cubemap: str | IAssetProvider[Cubemap] | None = None, resolution: np.int32 | None = None, hdr: bool | None = None, shadow_distance: np.float32 | None = None, background_color: primitives.ColorX | None = None, near_clip: np.float32 | None = None, far_clip: np.float32 | None = None, skybox_only: bool | None = None, show_debug_visuals: bool | None = None, debug_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, importance: primitives.Int | None = None, intensity: primitives.Float | None = None, blend_distance: primitives.Float | None = None, box_size: primitives.Float3 | None = None, box_projection: primitives.Bool | None = None, baked_cubemap: str | IAssetProvider[Cubemap] | None = None, resolution: primitives.Int | None = None, hdr: primitives.Bool | None = None, shadow_distance: primitives.Float | None = None, background_color: primitives.ColorX | None = None, near_clip: primitives.Float | None = None, far_clip: primitives.Float | None = None, skybox_only: primitives.Bool | None = None, show_debug_visuals: primitives.Bool | None = None, debug_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -91,7 +89,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         self.set_member("ProbeType", value)
 
     @property
-    def importance(self) -> np.int32 | None:
+    def importance(self) -> primitives.Int | None:
         """The Importance field value."""
         member = self.get_member("Importance")
         if member is None:
@@ -99,7 +97,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @importance.setter
-    def importance(self, value: np.int32) -> None:
+    def importance(self, value: primitives.Int) -> None:
         """Set the Importance field value."""
         member = self.get_member("Importance")
         if member is not None:
@@ -110,7 +108,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def intensity(self) -> np.float32 | None:
+    def intensity(self) -> primitives.Float | None:
         """The Intensity field value."""
         member = self.get_member("Intensity")
         if member is None:
@@ -118,7 +116,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @intensity.setter
-    def intensity(self, value: np.float32) -> None:
+    def intensity(self, value: primitives.Float) -> None:
         """Set the Intensity field value."""
         member = self.get_member("Intensity")
         if member is not None:
@@ -129,7 +127,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def blend_distance(self) -> np.float32 | None:
+    def blend_distance(self) -> primitives.Float | None:
         """The BlendDistance field value."""
         member = self.get_member("BlendDistance")
         if member is None:
@@ -137,7 +135,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @blend_distance.setter
-    def blend_distance(self, value: np.float32) -> None:
+    def blend_distance(self, value: primitives.Float) -> None:
         """Set the BlendDistance field value."""
         member = self.get_member("BlendDistance")
         if member is not None:
@@ -167,7 +165,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def box_projection(self) -> bool | None:
+    def box_projection(self) -> primitives.Bool | None:
         """The BoxProjection field value."""
         member = self.get_member("BoxProjection")
         if member is None:
@@ -175,7 +173,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @box_projection.setter
-    def box_projection(self, value: bool) -> None:
+    def box_projection(self, value: primitives.Bool) -> None:
         """Set the BoxProjection field value."""
         member = self.get_member("BoxProjection")
         if member is not None:
@@ -233,7 +231,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         self.set_member("TimeSlicing", value)
 
     @property
-    def resolution(self) -> np.int32 | None:
+    def resolution(self) -> primitives.Int | None:
         """The Resolution field value."""
         member = self.get_member("Resolution")
         if member is None:
@@ -241,7 +239,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @resolution.setter
-    def resolution(self, value: np.int32) -> None:
+    def resolution(self, value: primitives.Int) -> None:
         """Set the Resolution field value."""
         member = self.get_member("Resolution")
         if member is not None:
@@ -252,7 +250,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def hdr(self) -> bool | None:
+    def hdr(self) -> primitives.Bool | None:
         """The HDR field value."""
         member = self.get_member("HDR")
         if member is None:
@@ -260,7 +258,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @hdr.setter
-    def hdr(self, value: bool) -> None:
+    def hdr(self, value: primitives.Bool) -> None:
         """Set the HDR field value."""
         member = self.get_member("HDR")
         if member is not None:
@@ -271,7 +269,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def shadow_distance(self) -> np.float32 | None:
+    def shadow_distance(self) -> primitives.Float | None:
         """The ShadowDistance field value."""
         member = self.get_member("ShadowDistance")
         if member is None:
@@ -279,7 +277,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @shadow_distance.setter
-    def shadow_distance(self, value: np.float32) -> None:
+    def shadow_distance(self, value: primitives.Float) -> None:
         """Set the ShadowDistance field value."""
         member = self.get_member("ShadowDistance")
         if member is not None:
@@ -322,7 +320,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def near_clip(self) -> np.float32 | None:
+    def near_clip(self) -> primitives.Float | None:
         """The NearClip field value."""
         member = self.get_member("NearClip")
         if member is None:
@@ -330,7 +328,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @near_clip.setter
-    def near_clip(self, value: np.float32) -> None:
+    def near_clip(self, value: primitives.Float) -> None:
         """Set the NearClip field value."""
         member = self.get_member("NearClip")
         if member is not None:
@@ -341,7 +339,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def far_clip(self) -> np.float32 | None:
+    def far_clip(self) -> primitives.Float | None:
         """The FarClip field value."""
         member = self.get_member("FarClip")
         if member is None:
@@ -349,7 +347,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @far_clip.setter
-    def far_clip(self, value: np.float32) -> None:
+    def far_clip(self, value: primitives.Float) -> None:
         """Set the FarClip field value."""
         member = self.get_member("FarClip")
         if member is not None:
@@ -360,7 +358,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def skybox_only(self) -> bool | None:
+    def skybox_only(self) -> primitives.Bool | None:
         """The SkyboxOnly field value."""
         member = self.get_member("SkyboxOnly")
         if member is None:
@@ -368,7 +366,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @skybox_only.setter
-    def skybox_only(self, value: bool) -> None:
+    def skybox_only(self, value: primitives.Bool) -> None:
         """Set the SkyboxOnly field value."""
         member = self.get_member("SkyboxOnly")
         if member is not None:
@@ -379,7 +377,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def show_debug_visuals(self) -> bool | None:
+    def show_debug_visuals(self) -> primitives.Bool | None:
         """The ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
@@ -387,7 +385,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @show_debug_visuals.setter
-    def show_debug_visuals(self, value: bool) -> None:
+    def show_debug_visuals(self, value: primitives.Bool) -> None:
         """Set the ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is not None:

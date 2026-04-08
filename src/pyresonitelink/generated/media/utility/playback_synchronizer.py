@@ -1,9 +1,8 @@
 """Generated component: PlaybackSynchronizer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_playback import SyncPlayback
@@ -20,7 +19,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PlaybackSynchronizer"
 
-    def __init__(self, target: str | SyncPlayback | None = None, source: str | IPlayable | None = None, use_normalized_position: bool | None = None, position_offset: np.float32 | None = None, position_rate: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | SyncPlayback | None = None, source: str | IPlayable | None = None, use_normalized_position: primitives.Bool | None = None, position_offset: primitives.Float | None = None, position_rate: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -86,7 +85,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def use_normalized_position(self) -> bool | None:
+    def use_normalized_position(self) -> primitives.Bool | None:
         """The UseNormalizedPosition field value."""
         member = self.get_member("UseNormalizedPosition")
         if member is None:
@@ -94,7 +93,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_normalized_position.setter
-    def use_normalized_position(self, value: bool) -> None:
+    def use_normalized_position(self, value: primitives.Bool) -> None:
         """Set the UseNormalizedPosition field value."""
         member = self.get_member("UseNormalizedPosition")
         if member is not None:
@@ -105,7 +104,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def position_offset(self) -> np.float32 | None:
+    def position_offset(self) -> primitives.Float | None:
         """The PositionOffset field value."""
         member = self.get_member("PositionOffset")
         if member is None:
@@ -113,7 +112,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @position_offset.setter
-    def position_offset(self, value: np.float32) -> None:
+    def position_offset(self, value: primitives.Float) -> None:
         """Set the PositionOffset field value."""
         member = self.get_member("PositionOffset")
         if member is not None:
@@ -124,7 +123,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def position_rate(self) -> np.float32 | None:
+    def position_rate(self) -> primitives.Float | None:
         """The PositionRate field value."""
         member = self.get_member("PositionRate")
         if member is None:
@@ -132,7 +131,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @position_rate.setter
-    def position_rate(self, value: np.float32) -> None:
+    def position_rate(self, value: primitives.Float) -> None:
         """Set the PositionRate field value."""
         member = self.get_member("PositionRate")
         if member is not None:

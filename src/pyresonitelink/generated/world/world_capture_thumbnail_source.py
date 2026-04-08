@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -18,7 +19,7 @@ class WorldCaptureThumbnailSource(GeneratedComponent, IWorldThumbnailSource, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldCaptureThumbnailSource"
 
-    def __init__(self, overlay: str | IAssetProvider[Texture2D] | None = None, exclude_users_in_capture: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, overlay: str | IAssetProvider[Texture2D] | None = None, exclude_users_in_capture: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +55,7 @@ class WorldCaptureThumbnailSource(GeneratedComponent, IWorldThumbnailSource, IWo
             )
 
     @property
-    def exclude_users_in_capture(self) -> bool | None:
+    def exclude_users_in_capture(self) -> primitives.Bool | None:
         """The ExcludeUsersInCapture field value."""
         member = self.get_member("ExcludeUsersInCapture")
         if member is None:
@@ -62,7 +63,7 @@ class WorldCaptureThumbnailSource(GeneratedComponent, IWorldThumbnailSource, IWo
         return getattr(member, 'value', None)
 
     @exclude_users_in_capture.setter
-    def exclude_users_in_capture(self, value: bool) -> None:
+    def exclude_users_in_capture(self, value: primitives.Bool) -> None:
         """Set the ExcludeUsersInCapture field value."""
         member = self.get_member("ExcludeUsersInCapture")
         if member is not None:

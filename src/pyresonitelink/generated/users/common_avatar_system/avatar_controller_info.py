@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -17,7 +18,7 @@ class AvatarControllerInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarControllerInfo"
 
-    def __init__(self, target_user: str | User | None = None, controller_device_model: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_user: str | User | None = None, controller_device_model: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -79,7 +80,7 @@ class AvatarControllerInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("ControllerType", value)
 
     @property
-    def controller_device_model(self) -> str | None:
+    def controller_device_model(self) -> primitives.String | None:
         """The ControllerDeviceModel field value."""
         member = self.get_member("ControllerDeviceModel")
         if member is None:
@@ -87,7 +88,7 @@ class AvatarControllerInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @controller_device_model.setter
-    def controller_device_model(self, value: str) -> None:
+    def controller_device_model(self, value: primitives.String) -> None:
         """Set the ControllerDeviceModel field value."""
         member = self.get_member("ControllerDeviceModel")
         if member is not None:

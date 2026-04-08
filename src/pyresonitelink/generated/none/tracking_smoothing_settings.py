@@ -1,8 +1,7 @@
 """Generated component: TrackingSmoothingSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TrackingSmoothingSettings"
 
-    def __init__(self, hand_position_smoothing: np.float32 | None = None, hand_rotation_smoothing: np.float32 | None = None, feet_position_smoothing: np.float32 | None = None, feet_rotation_smoothing: np.float32 | None = None, hips_position_smoothing: np.float32 | None = None, hips_rotation_smoothing: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, hand_position_smoothing: primitives.Float | None = None, hand_rotation_smoothing: primitives.Float | None = None, feet_position_smoothing: primitives.Float | None = None, feet_rotation_smoothing: primitives.Float | None = None, hips_position_smoothing: primitives.Float | None = None, hips_rotation_smoothing: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +41,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
             self.hips_rotation_smoothing = hips_rotation_smoothing
 
     @property
-    def hand_position_smoothing(self) -> np.float32 | None:
+    def hand_position_smoothing(self) -> primitives.Float | None:
         """The HandPositionSmoothing field value."""
         member = self.get_member("HandPositionSmoothing")
         if member is None:
@@ -50,7 +49,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @hand_position_smoothing.setter
-    def hand_position_smoothing(self, value: np.float32) -> None:
+    def hand_position_smoothing(self, value: primitives.Float) -> None:
         """Set the HandPositionSmoothing field value."""
         member = self.get_member("HandPositionSmoothing")
         if member is not None:
@@ -61,7 +60,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def hand_rotation_smoothing(self) -> np.float32 | None:
+    def hand_rotation_smoothing(self) -> primitives.Float | None:
         """The HandRotationSmoothing field value."""
         member = self.get_member("HandRotationSmoothing")
         if member is None:
@@ -69,7 +68,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @hand_rotation_smoothing.setter
-    def hand_rotation_smoothing(self, value: np.float32) -> None:
+    def hand_rotation_smoothing(self, value: primitives.Float) -> None:
         """Set the HandRotationSmoothing field value."""
         member = self.get_member("HandRotationSmoothing")
         if member is not None:
@@ -80,7 +79,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def feet_position_smoothing(self) -> np.float32 | None:
+    def feet_position_smoothing(self) -> primitives.Float | None:
         """The FeetPositionSmoothing field value."""
         member = self.get_member("FeetPositionSmoothing")
         if member is None:
@@ -88,7 +87,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @feet_position_smoothing.setter
-    def feet_position_smoothing(self, value: np.float32) -> None:
+    def feet_position_smoothing(self, value: primitives.Float) -> None:
         """Set the FeetPositionSmoothing field value."""
         member = self.get_member("FeetPositionSmoothing")
         if member is not None:
@@ -99,7 +98,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def feet_rotation_smoothing(self) -> np.float32 | None:
+    def feet_rotation_smoothing(self) -> primitives.Float | None:
         """The FeetRotationSmoothing field value."""
         member = self.get_member("FeetRotationSmoothing")
         if member is None:
@@ -107,7 +106,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @feet_rotation_smoothing.setter
-    def feet_rotation_smoothing(self, value: np.float32) -> None:
+    def feet_rotation_smoothing(self, value: primitives.Float) -> None:
         """Set the FeetRotationSmoothing field value."""
         member = self.get_member("FeetRotationSmoothing")
         if member is not None:
@@ -118,7 +117,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def hips_position_smoothing(self) -> np.float32 | None:
+    def hips_position_smoothing(self) -> primitives.Float | None:
         """The HipsPositionSmoothing field value."""
         member = self.get_member("HipsPositionSmoothing")
         if member is None:
@@ -126,7 +125,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @hips_position_smoothing.setter
-    def hips_position_smoothing(self, value: np.float32) -> None:
+    def hips_position_smoothing(self, value: primitives.Float) -> None:
         """Set the HipsPositionSmoothing field value."""
         member = self.get_member("HipsPositionSmoothing")
         if member is not None:
@@ -137,7 +136,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def hips_rotation_smoothing(self) -> np.float32 | None:
+    def hips_rotation_smoothing(self) -> primitives.Float | None:
         """The HipsRotationSmoothing field value."""
         member = self.get_member("HipsRotationSmoothing")
         if member is None:
@@ -145,7 +144,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @hips_rotation_smoothing.setter
-    def hips_rotation_smoothing(self, value: np.float32) -> None:
+    def hips_rotation_smoothing(self, value: primitives.Float) -> None:
         """Set the HipsRotationSmoothing field value."""
         member = self.get_member("HipsRotationSmoothing")
         if member is not None:

@@ -14,7 +14,7 @@ class Driver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        Driver[np.float32]
+        Driver[primitives.Float]
         Driver[primitives.Float3]
     """
 

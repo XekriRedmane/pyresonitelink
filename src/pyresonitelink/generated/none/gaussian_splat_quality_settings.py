@@ -1,9 +1,8 @@
 """Generated component: GaussianSplatQualitySettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class GaussianSplatQualitySettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GaussianSplatQualitySettings"
 
-    def __init__(self, advanced_quality: bool | None = None, sort_mega_operations_per_camera: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, advanced_quality: primitives.Bool | None = None, sort_mega_operations_per_camera: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,7 +56,7 @@ class GaussianSplatQualitySettings(GeneratedComponent, ICustomInspector):
         self.set_member("MinLocalQuality", value)
 
     @property
-    def advanced_quality(self) -> bool | None:
+    def advanced_quality(self) -> primitives.Bool | None:
         """The AdvancedQuality field value."""
         member = self.get_member("AdvancedQuality")
         if member is None:
@@ -65,7 +64,7 @@ class GaussianSplatQualitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @advanced_quality.setter
-    def advanced_quality(self, value: bool) -> None:
+    def advanced_quality(self, value: primitives.Bool) -> None:
         """Set the AdvancedQuality field value."""
         member = self.get_member("AdvancedQuality")
         if member is not None:
@@ -128,7 +127,7 @@ class GaussianSplatQualitySettings(GeneratedComponent, ICustomInspector):
         self.set_member("SphericalHarmonicsFormat", value)
 
     @property
-    def sort_mega_operations_per_camera(self) -> np.float32 | None:
+    def sort_mega_operations_per_camera(self) -> primitives.Float | None:
         """The SortMegaOperationsPerCamera field value."""
         member = self.get_member("SortMegaOperationsPerCamera")
         if member is None:
@@ -136,7 +135,7 @@ class GaussianSplatQualitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @sort_mega_operations_per_camera.setter
-    def sort_mega_operations_per_camera(self, value: np.float32) -> None:
+    def sort_mega_operations_per_camera(self, value: primitives.Float) -> None:
         """Set the SortMegaOperationsPerCamera field value."""
         member = self.get_member("SortMegaOperationsPerCamera")
         if member is not None:

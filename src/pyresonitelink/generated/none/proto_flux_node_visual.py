@@ -20,7 +20,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxNodeVisual"
 
-    def __init__(self, node: str | ProtoFluxNode | None = None, is_selected: bool | None = None, is_highlighted: bool | None = None, node_hover_area: str | HoverArea | None = None, bg_image: str | Image | None = None, inputs_root: str | Slot | None = None, outputs_root: str | Slot | None = None, references_root: str | Slot | None = None, overview_visual: str | IField[bool] | None = None, overview_bg: str | IField[primitives.ColorX] | None = None, label_bg: str | IField[bool] | None = None, label_text: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | ProtoFluxNode | None = None, is_selected: primitives.Bool | None = None, is_highlighted: primitives.Bool | None = None, node_hover_area: str | HoverArea | None = None, bg_image: str | Image | None = None, inputs_root: str | Slot | None = None, outputs_root: str | Slot | None = None, references_root: str | Slot | None = None, overview_visual: str | IField[primitives.Bool] | None = None, overview_bg: str | IField[primitives.ColorX] | None = None, label_bg: str | IField[primitives.Bool] | None = None, label_text: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -86,7 +86,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_selected(self) -> bool | None:
+    def is_selected(self) -> primitives.Bool | None:
         """The IsSelected field value."""
         member = self.get_member("IsSelected")
         if member is None:
@@ -94,7 +94,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_selected.setter
-    def is_selected(self, value: bool) -> None:
+    def is_selected(self, value: primitives.Bool) -> None:
         """Set the IsSelected field value."""
         member = self.get_member("IsSelected")
         if member is not None:
@@ -105,7 +105,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_highlighted(self) -> bool | None:
+    def is_highlighted(self) -> primitives.Bool | None:
         """The IsHighlighted field value."""
         member = self.get_member("IsHighlighted")
         if member is None:
@@ -113,7 +113,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_highlighted.setter
-    def is_highlighted(self, value: bool) -> None:
+    def is_highlighted(self, value: primitives.Bool) -> None:
         """Set the IsHighlighted field value."""
         member = self.get_member("IsHighlighted")
         if member is not None:
@@ -230,15 +230,15 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def overview_visual(self) -> str | None:
-        """Target ID of the _overviewVisual reference (targets IField[bool])."""
+        """Target ID of the _overviewVisual reference (targets IField[primitives.Bool])."""
         member = self.get_member("_overviewVisual")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @overview_visual.setter
-    def overview_visual(self, target: str | IField[bool] | None) -> None:
-        """Set the _overviewVisual reference by target ID or IField[bool] instance."""
+    def overview_visual(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _overviewVisual reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_overviewVisual")
         if isinstance(member, members.Reference):
@@ -272,15 +272,15 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label_bg(self) -> str | None:
-        """Target ID of the _labelBg reference (targets IField[bool])."""
+        """Target ID of the _labelBg reference (targets IField[primitives.Bool])."""
         member = self.get_member("_labelBg")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @label_bg.setter
-    def label_bg(self, target: str | IField[bool] | None) -> None:
-        """Set the _labelBg reference by target ID or IField[bool] instance."""
+    def label_bg(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _labelBg reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_labelBg")
         if isinstance(member, members.Reference):
@@ -293,15 +293,15 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label_text(self) -> str | None:
-        """Target ID of the _labelText reference (targets IField[bool])."""
+        """Target ID of the _labelText reference (targets IField[primitives.Bool])."""
         member = self.get_member("_labelText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @label_text.setter
-    def label_text(self, target: str | IField[bool] | None) -> None:
-        """Set the _labelText reference by target ID or IField[bool] instance."""
+    def label_text(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _labelText reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_labelText")
         if isinstance(member, members.Reference):

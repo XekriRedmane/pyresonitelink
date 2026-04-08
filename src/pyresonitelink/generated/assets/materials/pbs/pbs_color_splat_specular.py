@@ -1,7 +1,5 @@
 """Generated component: PBS_ColorSplatSpecular."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_ColorSplatSpecular"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, multi_value: bool | None = None, color_map: str | IAssetProvider[ITexture2D] | None = None, color_map_scale: primitives.Float2 | None = None, color_map_offset: primitives.Float2 | None = None, packed_height_map: str | IAssetProvider[ITexture2D] | None = None, height_transition_range: np.float32 | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_color2: primitives.ColorX | None = None, albedo_color3: primitives.ColorX | None = None, albedo_texture0: str | IAssetProvider[ITexture2D] | None = None, albedo_texture1: str | IAssetProvider[ITexture2D] | None = None, albedo_texture2: str | IAssetProvider[ITexture2D] | None = None, albedo_texture3: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_color2: primitives.ColorX | None = None, emissive_color3: primitives.ColorX | None = None, emissive_map0: str | IAssetProvider[ITexture2D] | None = None, emissive_map1: str | IAssetProvider[ITexture2D] | None = None, emissive_map2: str | IAssetProvider[ITexture2D] | None = None, emissive_map3: str | IAssetProvider[ITexture2D] | None = None, packed_emission_map: str | IAssetProvider[ITexture2D] | None = None, packed_normal_map01: str | IAssetProvider[ITexture2D] | None = None, packed_normal_map23: str | IAssetProvider[ITexture2D] | None = None, normal_scale0: np.float32 | None = None, normal_scale1: np.float32 | None = None, normal_scale2: np.float32 | None = None, normal_scale3: np.float32 | None = None, alpha_clip: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, specular_color0: primitives.ColorX | None = None, specular_color1: primitives.ColorX | None = None, specular_color2: primitives.ColorX | None = None, specular_color3: primitives.ColorX | None = None, specular_map0: str | IAssetProvider[ITexture2D] | None = None, specular_map1: str | IAssetProvider[ITexture2D] | None = None, specular_map2: str | IAssetProvider[ITexture2D] | None = None, specular_map3: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, multi_value: primitives.Bool | None = None, color_map: str | IAssetProvider[ITexture2D] | None = None, color_map_scale: primitives.Float2 | None = None, color_map_offset: primitives.Float2 | None = None, packed_height_map: str | IAssetProvider[ITexture2D] | None = None, height_transition_range: primitives.Float | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_color2: primitives.ColorX | None = None, albedo_color3: primitives.ColorX | None = None, albedo_texture0: str | IAssetProvider[ITexture2D] | None = None, albedo_texture1: str | IAssetProvider[ITexture2D] | None = None, albedo_texture2: str | IAssetProvider[ITexture2D] | None = None, albedo_texture3: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_color2: primitives.ColorX | None = None, emissive_color3: primitives.ColorX | None = None, emissive_map0: str | IAssetProvider[ITexture2D] | None = None, emissive_map1: str | IAssetProvider[ITexture2D] | None = None, emissive_map2: str | IAssetProvider[ITexture2D] | None = None, emissive_map3: str | IAssetProvider[ITexture2D] | None = None, packed_emission_map: str | IAssetProvider[ITexture2D] | None = None, packed_normal_map01: str | IAssetProvider[ITexture2D] | None = None, packed_normal_map23: str | IAssetProvider[ITexture2D] | None = None, normal_scale0: primitives.Float | None = None, normal_scale1: primitives.Float | None = None, normal_scale2: primitives.Float | None = None, normal_scale3: primitives.Float | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color0: primitives.ColorX | None = None, specular_color1: primitives.ColorX | None = None, specular_color2: primitives.ColorX | None = None, specular_color3: primitives.ColorX | None = None, specular_map0: str | IAssetProvider[ITexture2D] | None = None, specular_map1: str | IAssetProvider[ITexture2D] | None = None, specular_map2: str | IAssetProvider[ITexture2D] | None = None, specular_map3: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -166,7 +164,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             self.specular_map3 = specular_map3
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -174,7 +172,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -206,7 +204,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def multi_value(self) -> bool | None:
+    def multi_value(self) -> primitives.Bool | None:
         """The MultiValue field value."""
         member = self.get_member("MultiValue")
         if member is None:
@@ -214,7 +212,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @multi_value.setter
-    def multi_value(self, value: bool) -> None:
+    def multi_value(self, value: primitives.Bool) -> None:
         """Set the MultiValue field value."""
         member = self.get_member("MultiValue")
         if member is not None:
@@ -305,7 +303,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def height_transition_range(self) -> np.float32 | None:
+    def height_transition_range(self) -> primitives.Float | None:
         """The HeightTransitionRange field value."""
         member = self.get_member("HeightTransitionRange")
         if member is None:
@@ -313,7 +311,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @height_transition_range.setter
-    def height_transition_range(self, value: np.float32) -> None:
+    def height_transition_range(self, value: primitives.Float) -> None:
         """Set the HeightTransitionRange field value."""
         member = self.get_member("HeightTransitionRange")
         if member is not None:
@@ -745,7 +743,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def normal_scale0(self) -> np.float32 | None:
+    def normal_scale0(self) -> primitives.Float | None:
         """The NormalScale0 field value."""
         member = self.get_member("NormalScale0")
         if member is None:
@@ -753,7 +751,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @normal_scale0.setter
-    def normal_scale0(self, value: np.float32) -> None:
+    def normal_scale0(self, value: primitives.Float) -> None:
         """Set the NormalScale0 field value."""
         member = self.get_member("NormalScale0")
         if member is not None:
@@ -764,7 +762,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def normal_scale1(self) -> np.float32 | None:
+    def normal_scale1(self) -> primitives.Float | None:
         """The NormalScale1 field value."""
         member = self.get_member("NormalScale1")
         if member is None:
@@ -772,7 +770,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @normal_scale1.setter
-    def normal_scale1(self, value: np.float32) -> None:
+    def normal_scale1(self, value: primitives.Float) -> None:
         """Set the NormalScale1 field value."""
         member = self.get_member("NormalScale1")
         if member is not None:
@@ -783,7 +781,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def normal_scale2(self) -> np.float32 | None:
+    def normal_scale2(self) -> primitives.Float | None:
         """The NormalScale2 field value."""
         member = self.get_member("NormalScale2")
         if member is None:
@@ -791,7 +789,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @normal_scale2.setter
-    def normal_scale2(self, value: np.float32) -> None:
+    def normal_scale2(self, value: primitives.Float) -> None:
         """Set the NormalScale2 field value."""
         member = self.get_member("NormalScale2")
         if member is not None:
@@ -802,7 +800,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def normal_scale3(self) -> np.float32 | None:
+    def normal_scale3(self) -> primitives.Float | None:
         """The NormalScale3 field value."""
         member = self.get_member("NormalScale3")
         if member is None:
@@ -810,7 +808,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @normal_scale3.setter
-    def normal_scale3(self, value: np.float32) -> None:
+    def normal_scale3(self, value: primitives.Float) -> None:
         """Set the NormalScale3 field value."""
         member = self.get_member("NormalScale3")
         if member is not None:
@@ -821,7 +819,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def alpha_clip(self) -> np.float32 | None:
+    def alpha_clip(self) -> primitives.Float | None:
         """The AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is None:
@@ -829,7 +827,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @alpha_clip.setter
-    def alpha_clip(self, value: np.float32) -> None:
+    def alpha_clip(self, value: primitives.Float) -> None:
         """Set the AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is not None:
@@ -840,7 +838,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -848,7 +846,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -859,7 +857,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -867,7 +865,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -878,7 +876,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -886,7 +884,7 @@ class PBS_ColorSplatSpecular(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

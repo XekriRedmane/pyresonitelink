@@ -1,9 +1,8 @@
 """Generated component: RadiantDash."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.radiant_dash_screen import RadiantDashScreen
@@ -29,7 +28,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantDash"
 
-    def __init__(self, current_screen: str | RadiantDashScreen | None = None, open: bool | None = None, animation_speed: np.float32 | None = None, screen_projection: bool | None = None, curvature: np.float32 | None = None, screen_switching_enabled: bool | None = None, screens_container: str | Slot | None = None, camera: str | Camera | None = None, render_texture: str | RenderTextureProvider | None = None, top_container: str | Slot | None = None, top_mesh: str | CurvedPlaneMesh | None = None, screen_mesh: str | CurvedPlaneMesh | None = None, buttons_mesh: str | CurvedPlaneMesh | None = None, top_material: str | UnlitMaterial | None = None, screen_material: str | UnlitMaterial | None = None, buttons_material: str | UnlitMaterial | None = None, overlay_effect_material: str | UI_UnlitMaterial | None = None, top_border_material: str | UV_RectMaterial | None = None, screen_border_material: str | UV_RectMaterial | None = None, buttons_border_material: str | UV_RectMaterial | None = None, render_root: str | Slot | None = None, top_root: str | Slot | None = None, screen_root: str | Slot | None = None, buttons_root: str | Slot | None = None, visuals_root: str | Slot | None = None, effect_root: str | Slot | None = None, top_canvas: str | Canvas | None = None, buttons_uiroot: str | Slot | None = None, buttons_canvas: str | Canvas | None = None, style: str | ParticleStyle | None = None, particle_colors: str | ColorRangeInitializer | None = None, emitter: str | MeshEmitter | None = None, top_collider: str | MeshCollider | None = None, screen_collider: str | MeshCollider | None = None, buttons_collider: str | MeshCollider | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, current_screen: str | RadiantDashScreen | None = None, open: primitives.Bool | None = None, animation_speed: primitives.Float | None = None, screen_projection: primitives.Bool | None = None, curvature: primitives.Float | None = None, screen_switching_enabled: primitives.Bool | None = None, screens_container: str | Slot | None = None, camera: str | Camera | None = None, render_texture: str | RenderTextureProvider | None = None, top_container: str | Slot | None = None, top_mesh: str | CurvedPlaneMesh | None = None, screen_mesh: str | CurvedPlaneMesh | None = None, buttons_mesh: str | CurvedPlaneMesh | None = None, top_material: str | UnlitMaterial | None = None, screen_material: str | UnlitMaterial | None = None, buttons_material: str | UnlitMaterial | None = None, overlay_effect_material: str | UI_UnlitMaterial | None = None, top_border_material: str | UV_RectMaterial | None = None, screen_border_material: str | UV_RectMaterial | None = None, buttons_border_material: str | UV_RectMaterial | None = None, render_root: str | Slot | None = None, top_root: str | Slot | None = None, screen_root: str | Slot | None = None, buttons_root: str | Slot | None = None, visuals_root: str | Slot | None = None, effect_root: str | Slot | None = None, top_canvas: str | Canvas | None = None, buttons_uiroot: str | Slot | None = None, buttons_canvas: str | Canvas | None = None, style: str | ParticleStyle | None = None, particle_colors: str | ColorRangeInitializer | None = None, emitter: str | MeshEmitter | None = None, top_collider: str | MeshCollider | None = None, screen_collider: str | MeshCollider | None = None, buttons_collider: str | MeshCollider | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -164,7 +163,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def open(self) -> bool | None:
+    def open(self) -> primitives.Bool | None:
         """The Open field value."""
         member = self.get_member("Open")
         if member is None:
@@ -172,7 +171,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @open.setter
-    def open(self, value: bool) -> None:
+    def open(self, value: primitives.Bool) -> None:
         """Set the Open field value."""
         member = self.get_member("Open")
         if member is not None:
@@ -183,7 +182,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def animation_speed(self) -> np.float32 | None:
+    def animation_speed(self) -> primitives.Float | None:
         """The AnimationSpeed field value."""
         member = self.get_member("AnimationSpeed")
         if member is None:
@@ -191,7 +190,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @animation_speed.setter
-    def animation_speed(self, value: np.float32) -> None:
+    def animation_speed(self, value: primitives.Float) -> None:
         """Set the AnimationSpeed field value."""
         member = self.get_member("AnimationSpeed")
         if member is not None:
@@ -202,7 +201,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def screen_projection(self) -> bool | None:
+    def screen_projection(self) -> primitives.Bool | None:
         """The ScreenProjection field value."""
         member = self.get_member("ScreenProjection")
         if member is None:
@@ -210,7 +209,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @screen_projection.setter
-    def screen_projection(self, value: bool) -> None:
+    def screen_projection(self, value: primitives.Bool) -> None:
         """Set the ScreenProjection field value."""
         member = self.get_member("ScreenProjection")
         if member is not None:
@@ -221,7 +220,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def curvature(self) -> np.float32 | None:
+    def curvature(self) -> primitives.Float | None:
         """The Curvature field value."""
         member = self.get_member("Curvature")
         if member is None:
@@ -229,7 +228,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @curvature.setter
-    def curvature(self, value: np.float32) -> None:
+    def curvature(self, value: primitives.Float) -> None:
         """Set the Curvature field value."""
         member = self.get_member("Curvature")
         if member is not None:
@@ -253,7 +252,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("AspectRatioCompensation", value)
 
     @property
-    def screen_switching_enabled(self) -> bool | None:
+    def screen_switching_enabled(self) -> primitives.Bool | None:
         """The ScreenSwitchingEnabled field value."""
         member = self.get_member("ScreenSwitchingEnabled")
         if member is None:
@@ -261,7 +260,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @screen_switching_enabled.setter
-    def screen_switching_enabled(self, value: bool) -> None:
+    def screen_switching_enabled(self, value: primitives.Bool) -> None:
         """Set the ScreenSwitchingEnabled field value."""
         member = self.get_member("ScreenSwitchingEnabled")
         if member is not None:

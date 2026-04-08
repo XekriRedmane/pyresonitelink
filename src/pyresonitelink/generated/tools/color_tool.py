@@ -23,7 +23,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, color: primitives.ColorX | None = None, ensure_unique_material: bool | None = None, color_dialog: str | ColorDialogInterface | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, color: primitives.ColorX | None = None, ensure_unique_material: primitives.Bool | None = None, color_dialog: str | ColorDialogInterface | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -93,7 +93,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -101,7 +101,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -112,7 +112,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -120,7 +120,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -131,7 +131,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -139,7 +139,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -171,7 +171,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -179,7 +179,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -209,7 +209,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def ensure_unique_material(self) -> bool | None:
+    def ensure_unique_material(self) -> primitives.Bool | None:
         """The EnsureUniqueMaterial field value."""
         member = self.get_member("EnsureUniqueMaterial")
         if member is None:
@@ -217,7 +217,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @ensure_unique_material.setter
-    def ensure_unique_material(self, value: bool) -> None:
+    def ensure_unique_material(self, value: primitives.Bool) -> None:
         """Set the EnsureUniqueMaterial field value."""
         member = self.get_member("EnsureUniqueMaterial")
         if member is not None:

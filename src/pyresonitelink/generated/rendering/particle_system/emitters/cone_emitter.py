@@ -1,7 +1,5 @@
 """Generated component: ConeEmitter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ConeEmitter"
 
-    def __init__(self, system: str | ParticleSystem | None = None, rate: np.float32 | None = None, burst_on_activated_min: np.float32 | None = None, burst_on_activated_max: np.float32 | None = None, burst_on_start: bool | None = None, base_radius: np.float32 | None = None, height: np.float32 | None = None, emit_from_shell: bool | None = None, random_direction_weight: np.float32 | None = None, direction: primitives.Float3 | None = None, relative_direction_reference_point: primitives.Float3 | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, base_radius: primitives.Float | None = None, height: primitives.Float | None = None, emit_from_shell: primitives.Bool | None = None, random_direction_weight: primitives.Float | None = None, direction: primitives.Float3 | None = None, relative_direction_reference_point: primitives.Float3 | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -85,7 +83,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def rate(self) -> np.float32 | None:
+    def rate(self) -> primitives.Float | None:
         """The Rate field value."""
         member = self.get_member("Rate")
         if member is None:
@@ -93,7 +91,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @rate.setter
-    def rate(self, value: np.float32) -> None:
+    def rate(self, value: primitives.Float) -> None:
         """Set the Rate field value."""
         member = self.get_member("Rate")
         if member is not None:
@@ -104,7 +102,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def burst_on_activated_min(self) -> np.float32 | None:
+    def burst_on_activated_min(self) -> primitives.Float | None:
         """The BurstOnActivatedMin field value."""
         member = self.get_member("BurstOnActivatedMin")
         if member is None:
@@ -112,7 +110,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @burst_on_activated_min.setter
-    def burst_on_activated_min(self, value: np.float32) -> None:
+    def burst_on_activated_min(self, value: primitives.Float) -> None:
         """Set the BurstOnActivatedMin field value."""
         member = self.get_member("BurstOnActivatedMin")
         if member is not None:
@@ -123,7 +121,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def burst_on_activated_max(self) -> np.float32 | None:
+    def burst_on_activated_max(self) -> primitives.Float | None:
         """The BurstOnActivatedMax field value."""
         member = self.get_member("BurstOnActivatedMax")
         if member is None:
@@ -131,7 +129,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @burst_on_activated_max.setter
-    def burst_on_activated_max(self, value: np.float32) -> None:
+    def burst_on_activated_max(self, value: primitives.Float) -> None:
         """Set the BurstOnActivatedMax field value."""
         member = self.get_member("BurstOnActivatedMax")
         if member is not None:
@@ -142,7 +140,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def burst_on_start(self) -> bool | None:
+    def burst_on_start(self) -> primitives.Bool | None:
         """The BurstOnStart field value."""
         member = self.get_member("BurstOnStart")
         if member is None:
@@ -150,7 +148,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @burst_on_start.setter
-    def burst_on_start(self, value: bool) -> None:
+    def burst_on_start(self, value: primitives.Bool) -> None:
         """Set the BurstOnStart field value."""
         member = self.get_member("BurstOnStart")
         if member is not None:
@@ -161,7 +159,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def base_radius(self) -> np.float32 | None:
+    def base_radius(self) -> primitives.Float | None:
         """The BaseRadius field value."""
         member = self.get_member("BaseRadius")
         if member is None:
@@ -169,7 +167,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @base_radius.setter
-    def base_radius(self, value: np.float32) -> None:
+    def base_radius(self, value: primitives.Float) -> None:
         """Set the BaseRadius field value."""
         member = self.get_member("BaseRadius")
         if member is not None:
@@ -180,7 +178,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -188,7 +186,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -199,7 +197,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def emit_from_shell(self) -> bool | None:
+    def emit_from_shell(self) -> primitives.Bool | None:
         """The EmitFromShell field value."""
         member = self.get_member("EmitFromShell")
         if member is None:
@@ -207,7 +205,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @emit_from_shell.setter
-    def emit_from_shell(self, value: bool) -> None:
+    def emit_from_shell(self, value: primitives.Bool) -> None:
         """Set the EmitFromShell field value."""
         member = self.get_member("EmitFromShell")
         if member is not None:
@@ -231,7 +229,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
         self.set_member("DirectionMode", value)
 
     @property
-    def random_direction_weight(self) -> np.float32 | None:
+    def random_direction_weight(self) -> primitives.Float | None:
         """The RandomDirectionWeight field value."""
         member = self.get_member("RandomDirectionWeight")
         if member is None:
@@ -239,7 +237,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @random_direction_weight.setter
-    def random_direction_weight(self, value: np.float32) -> None:
+    def random_direction_weight(self, value: primitives.Float) -> None:
         """Set the RandomDirectionWeight field value."""
         member = self.get_member("RandomDirectionWeight")
         if member is not None:

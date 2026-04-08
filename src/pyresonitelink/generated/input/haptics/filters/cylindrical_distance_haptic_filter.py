@@ -1,8 +1,7 @@
 """Generated component: CylindricalDistanceHapticFilter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -17,7 +16,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CylindricalDistanceHapticFilter"
 
-    def __init__(self, start_radius: np.float32 | None = None, end_radius: np.float32 | None = None, start_radius_intensity: np.float32 | None = None, end_radius_intensity: np.float32 | None = None, radius_power: np.float32 | None = None, start_axis_offset: np.float32 | None = None, end_axis_offset: np.float32 | None = None, start_axis_intensity: np.float32 | None = None, end_axis_intensity: np.float32 | None = None, axis_power: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, start_radius: primitives.Float | None = None, end_radius: primitives.Float | None = None, start_radius_intensity: primitives.Float | None = None, end_radius_intensity: primitives.Float | None = None, radius_power: primitives.Float | None = None, start_axis_offset: primitives.Float | None = None, end_axis_offset: primitives.Float | None = None, start_axis_intensity: primitives.Float | None = None, end_axis_intensity: primitives.Float | None = None, axis_power: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -56,7 +55,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             self.axis_power = axis_power
 
     @property
-    def start_radius(self) -> np.float32 | None:
+    def start_radius(self) -> primitives.Float | None:
         """The StartRadius field value."""
         member = self.get_member("StartRadius")
         if member is None:
@@ -64,7 +63,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @start_radius.setter
-    def start_radius(self, value: np.float32) -> None:
+    def start_radius(self, value: primitives.Float) -> None:
         """Set the StartRadius field value."""
         member = self.get_member("StartRadius")
         if member is not None:
@@ -75,7 +74,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def end_radius(self) -> np.float32 | None:
+    def end_radius(self) -> primitives.Float | None:
         """The EndRadius field value."""
         member = self.get_member("EndRadius")
         if member is None:
@@ -83,7 +82,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @end_radius.setter
-    def end_radius(self, value: np.float32) -> None:
+    def end_radius(self, value: primitives.Float) -> None:
         """Set the EndRadius field value."""
         member = self.get_member("EndRadius")
         if member is not None:
@@ -94,7 +93,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def start_radius_intensity(self) -> np.float32 | None:
+    def start_radius_intensity(self) -> primitives.Float | None:
         """The StartRadiusIntensity field value."""
         member = self.get_member("StartRadiusIntensity")
         if member is None:
@@ -102,7 +101,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @start_radius_intensity.setter
-    def start_radius_intensity(self, value: np.float32) -> None:
+    def start_radius_intensity(self, value: primitives.Float) -> None:
         """Set the StartRadiusIntensity field value."""
         member = self.get_member("StartRadiusIntensity")
         if member is not None:
@@ -113,7 +112,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def end_radius_intensity(self) -> np.float32 | None:
+    def end_radius_intensity(self) -> primitives.Float | None:
         """The EndRadiusIntensity field value."""
         member = self.get_member("EndRadiusIntensity")
         if member is None:
@@ -121,7 +120,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @end_radius_intensity.setter
-    def end_radius_intensity(self, value: np.float32) -> None:
+    def end_radius_intensity(self, value: primitives.Float) -> None:
         """Set the EndRadiusIntensity field value."""
         member = self.get_member("EndRadiusIntensity")
         if member is not None:
@@ -132,7 +131,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def radius_power(self) -> np.float32 | None:
+    def radius_power(self) -> primitives.Float | None:
         """The RadiusPower field value."""
         member = self.get_member("RadiusPower")
         if member is None:
@@ -140,7 +139,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @radius_power.setter
-    def radius_power(self, value: np.float32) -> None:
+    def radius_power(self, value: primitives.Float) -> None:
         """Set the RadiusPower field value."""
         member = self.get_member("RadiusPower")
         if member is not None:
@@ -151,7 +150,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def start_axis_offset(self) -> np.float32 | None:
+    def start_axis_offset(self) -> primitives.Float | None:
         """The StartAxisOffset field value."""
         member = self.get_member("StartAxisOffset")
         if member is None:
@@ -159,7 +158,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @start_axis_offset.setter
-    def start_axis_offset(self, value: np.float32) -> None:
+    def start_axis_offset(self, value: primitives.Float) -> None:
         """Set the StartAxisOffset field value."""
         member = self.get_member("StartAxisOffset")
         if member is not None:
@@ -170,7 +169,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def end_axis_offset(self) -> np.float32 | None:
+    def end_axis_offset(self) -> primitives.Float | None:
         """The EndAxisOffset field value."""
         member = self.get_member("EndAxisOffset")
         if member is None:
@@ -178,7 +177,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @end_axis_offset.setter
-    def end_axis_offset(self, value: np.float32) -> None:
+    def end_axis_offset(self, value: primitives.Float) -> None:
         """Set the EndAxisOffset field value."""
         member = self.get_member("EndAxisOffset")
         if member is not None:
@@ -189,7 +188,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def start_axis_intensity(self) -> np.float32 | None:
+    def start_axis_intensity(self) -> primitives.Float | None:
         """The StartAxisIntensity field value."""
         member = self.get_member("StartAxisIntensity")
         if member is None:
@@ -197,7 +196,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @start_axis_intensity.setter
-    def start_axis_intensity(self, value: np.float32) -> None:
+    def start_axis_intensity(self, value: primitives.Float) -> None:
         """Set the StartAxisIntensity field value."""
         member = self.get_member("StartAxisIntensity")
         if member is not None:
@@ -208,7 +207,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def end_axis_intensity(self) -> np.float32 | None:
+    def end_axis_intensity(self) -> primitives.Float | None:
         """The EndAxisIntensity field value."""
         member = self.get_member("EndAxisIntensity")
         if member is None:
@@ -216,7 +215,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @end_axis_intensity.setter
-    def end_axis_intensity(self, value: np.float32) -> None:
+    def end_axis_intensity(self, value: primitives.Float) -> None:
         """Set the EndAxisIntensity field value."""
         member = self.get_member("EndAxisIntensity")
         if member is not None:
@@ -227,7 +226,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def axis_power(self) -> np.float32 | None:
+    def axis_power(self) -> primitives.Float | None:
         """The AxisPower field value."""
         member = self.get_member("AxisPower")
         if member is None:
@@ -235,7 +234,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @axis_power.setter
-    def axis_power(self, value: np.float32) -> None:
+    def axis_power(self, value: primitives.Float) -> None:
         """Set the AxisPower field value."""
         member = self.get_member("AxisPower")
         if member is not None:

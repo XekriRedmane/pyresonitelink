@@ -1,8 +1,7 @@
 """Generated component: CirclePointGenerator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ipoint_generator import IPointGenerator
@@ -17,7 +16,7 @@ class CirclePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CirclePointGenerator"
 
-    def __init__(self, radius: np.float32 | None = None, shell: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, radius: primitives.Float | None = None, shell: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +31,7 @@ class CirclePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
             self.shell = shell
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -40,7 +39,7 @@ class CirclePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -51,7 +50,7 @@ class CirclePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
             )
 
     @property
-    def shell(self) -> bool | None:
+    def shell(self) -> primitives.Bool | None:
         """The Shell field value."""
         member = self.get_member("Shell")
         if member is None:
@@ -59,7 +58,7 @@ class CirclePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @shell.setter
-    def shell(self, value: bool) -> None:
+    def shell(self, value: primitives.Bool) -> None:
         """Set the Shell field value."""
         member = self.get_member("Shell")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: RelayTouchSource."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -17,7 +16,7 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RelayTouchSource"
 
-    def __init__(self, auto_update_user: str | User | None = None, out_of_sight_angle: np.float32 | None = None, max_touch_penetration_distance: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_update_user: str | User | None = None, out_of_sight_angle: primitives.Float | None = None, max_touch_penetration_distance: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -56,7 +55,7 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def out_of_sight_angle(self) -> np.float32 | None:
+    def out_of_sight_angle(self) -> primitives.Float | None:
         """The OutOfSightAngle field value."""
         member = self.get_member("OutOfSightAngle")
         if member is None:
@@ -64,7 +63,7 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @out_of_sight_angle.setter
-    def out_of_sight_angle(self, value: np.float32) -> None:
+    def out_of_sight_angle(self, value: primitives.Float) -> None:
         """Set the OutOfSightAngle field value."""
         member = self.get_member("OutOfSightAngle")
         if member is not None:
@@ -75,7 +74,7 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_touch_penetration_distance(self) -> np.float32 | None:
+    def max_touch_penetration_distance(self) -> primitives.Float | None:
         """The MaxTouchPenetrationDistance field value."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is None:
@@ -83,7 +82,7 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_touch_penetration_distance.setter
-    def max_touch_penetration_distance(self, value: np.float32) -> None:
+    def max_touch_penetration_distance(self, value: primitives.Float) -> None:
         """Set the MaxTouchPenetrationDistance field value."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: ReflectionProbeWizard."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +18,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbeWizard"
 
-    def __init__(self, root: str | Slot | None = None, process_disabled: bool | None = None, teleport_user_to_probe: bool | None = None, tag: str | TextField | None = None, delay_between_probes: str | FloatTextEditorParser | None = None, bake_count: np.int32 | None = None, bake_index: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, root: str | Slot | None = None, process_disabled: primitives.Bool | None = None, teleport_user_to_probe: primitives.Bool | None = None, tag: str | TextField | None = None, delay_between_probes: str | FloatTextEditorParser | None = None, bake_count: primitives.Int | None = None, bake_index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -70,7 +69,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
             )
 
     @property
-    def process_disabled(self) -> bool | None:
+    def process_disabled(self) -> primitives.Bool | None:
         """The ProcessDisabled field value."""
         member = self.get_member("ProcessDisabled")
         if member is None:
@@ -78,7 +77,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
         return getattr(member, 'value', None)
 
     @process_disabled.setter
-    def process_disabled(self, value: bool) -> None:
+    def process_disabled(self, value: primitives.Bool) -> None:
         """Set the ProcessDisabled field value."""
         member = self.get_member("ProcessDisabled")
         if member is not None:
@@ -89,7 +88,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
             )
 
     @property
-    def teleport_user_to_probe(self) -> bool | None:
+    def teleport_user_to_probe(self) -> primitives.Bool | None:
         """The TeleportUserToProbe field value."""
         member = self.get_member("TeleportUserToProbe")
         if member is None:
@@ -97,7 +96,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
         return getattr(member, 'value', None)
 
     @teleport_user_to_probe.setter
-    def teleport_user_to_probe(self, value: bool) -> None:
+    def teleport_user_to_probe(self, value: primitives.Bool) -> None:
         """Set the TeleportUserToProbe field value."""
         member = self.get_member("TeleportUserToProbe")
         if member is not None:
@@ -150,7 +149,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
             )
 
     @property
-    def bake_count(self) -> np.int32 | None:
+    def bake_count(self) -> primitives.Int | None:
         """The _bakeCount field value."""
         member = self.get_member("_bakeCount")
         if member is None:
@@ -158,7 +157,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
         return getattr(member, 'value', None)
 
     @bake_count.setter
-    def bake_count(self, value: np.int32) -> None:
+    def bake_count(self, value: primitives.Int) -> None:
         """Set the _bakeCount field value."""
         member = self.get_member("_bakeCount")
         if member is not None:
@@ -169,7 +168,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
             )
 
     @property
-    def bake_index(self) -> np.int32 | None:
+    def bake_index(self) -> primitives.Int | None:
         """The _bakeIndex field value."""
         member = self.get_member("_bakeIndex")
         if member is None:
@@ -177,7 +176,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
         return getattr(member, 'value', None)
 
     @bake_index.setter
-    def bake_index(self, value: np.int32) -> None:
+    def bake_index(self, value: primitives.Int) -> None:
         """Set the _bakeIndex field value."""
         member = self.get_member("_bakeIndex")
         if member is not None:

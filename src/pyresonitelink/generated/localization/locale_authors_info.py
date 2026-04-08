@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -18,7 +19,7 @@ class LocaleAuthorsInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocaleAuthorsInfo"
 
-    def __init__(self, locale: str | IAssetProvider[LocaleResource] | None = None, credits_string: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, locale: str | IAssetProvider[LocaleResource] | None = None, credits_string: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +55,7 @@ class LocaleAuthorsInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def credits_string(self) -> str | None:
+    def credits_string(self) -> primitives.String | None:
         """The CreditsString field value."""
         member = self.get_member("CreditsString")
         if member is None:
@@ -62,7 +63,7 @@ class LocaleAuthorsInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @credits_string.setter
-    def credits_string(self, value: str) -> None:
+    def credits_string(self, value: primitives.String) -> None:
         """Set the CreditsString field value."""
         member = self.get_member("CreditsString")
         if member is not None:

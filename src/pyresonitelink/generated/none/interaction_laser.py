@@ -1,7 +1,5 @@
 """Generated component: InteractionLaser."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -27,7 +25,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionLaser"
 
-    def __init__(self, smooth_speed: np.float32 | None = None, smooth_modulate_start_angle: np.float32 | None = None, smooth_modulate_end_angle: np.float32 | None = None, smooth_modulate_exp: np.float32 | None = None, smooth_modulate_multiplier: np.float32 | None = None, stick_threshold: np.float32 | None = None, show_in_desktop: bool | None = None, max_touch_penetration_distance: np.float32 | None = None, stick_point_space: str | Slot | None = None, stick_point_position: primitives.Float3 | None = None, handler: str | InteractionHandler | None = None, last_hit: str | Slot | None = None, last_interaction_target: str | IInteractionTarget | None = None, last_interaction_modifier: str | ILaserInteractionModifier | None = None, hit_color: primitives.ColorX | None = None, laser_texture_speed: np.float32 | None = None, touch_source: str | RelayTouchSource | None = None, laser_mesh: str | BentTubeMesh | None = None, laser_material: str | OverlayUnlitMaterial | None = None, laser_texture: str | StaticTexture2D | None = None, behind_laser_tint: str | IField[primitives.ColorX] | None = None, laser_render_queue: str | IField[np.int32] | None = None, laser_front_texture_offset: str | IField[primitives.Float2] | None = None, laser_behind_texture_offset: str | IField[primitives.Float2] | None = None, direct_point: str | IField[primitives.Float3] | None = None, actual_point: str | IField[primitives.Float3] | None = None, start_color: str | IField[primitives.ColorX] | None = None, end_color: str | IField[primitives.ColorX] | None = None, point_slot: str | Slot | None = None, point_slot_pos: str | IField[primitives.Float3] | None = None, laser_visible: str | IField[bool] | None = None, cursor_visible: str | IField[bool] | None = None, cursor_root: str | Slot | None = None, cursor_image_root: str | Slot | None = None, cursor_texture: str | StaticTexture2D | None = None, cursor_material: str | OverlayUnlitMaterial | None = None, cursor_front_tint: str | IField[primitives.ColorX] | None = None, cursor_behind_tint: str | IField[primitives.ColorX] | None = None, cursor_render_queue: str | IField[np.int32] | None = None, cursor_orientation: str | IField[primitives.FloatQ] | None = None, cursor_tint: primitives.ColorX | None = None, direct_cursor_visuals_visible: bool | None = None, direct_cursor_active: str | IField[bool] | None = None, direct_cursor_root: str | Slot | None = None, direct_cursor_image_root: str | Slot | None = None, direct_cursor_offset: str | IField[primitives.Float3] | None = None, direct_cursor_orientation: str | IField[primitives.FloatQ] | None = None, direct_line_target: str | IField[primitives.Float3] | None = None, direct_line_mesh: str | SegmentMesh | None = None, segment_color_front: str | IField[primitives.ColorX] | None = None, segment_color_behind: str | IField[primitives.ColorX] | None = None, segment_render_queue: str | IField[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, smooth_speed: primitives.Float | None = None, smooth_modulate_start_angle: primitives.Float | None = None, smooth_modulate_end_angle: primitives.Float | None = None, smooth_modulate_exp: primitives.Float | None = None, smooth_modulate_multiplier: primitives.Float | None = None, stick_threshold: primitives.Float | None = None, show_in_desktop: primitives.Bool | None = None, max_touch_penetration_distance: primitives.Float | None = None, stick_point_space: str | Slot | None = None, stick_point_position: primitives.Float3 | None = None, handler: str | InteractionHandler | None = None, last_hit: str | Slot | None = None, last_interaction_target: str | IInteractionTarget | None = None, last_interaction_modifier: str | ILaserInteractionModifier | None = None, hit_color: primitives.ColorX | None = None, laser_texture_speed: primitives.Float | None = None, touch_source: str | RelayTouchSource | None = None, laser_mesh: str | BentTubeMesh | None = None, laser_material: str | OverlayUnlitMaterial | None = None, laser_texture: str | StaticTexture2D | None = None, behind_laser_tint: str | IField[primitives.ColorX] | None = None, laser_render_queue: str | IField[primitives.Int] | None = None, laser_front_texture_offset: str | IField[primitives.Float2] | None = None, laser_behind_texture_offset: str | IField[primitives.Float2] | None = None, direct_point: str | IField[primitives.Float3] | None = None, actual_point: str | IField[primitives.Float3] | None = None, start_color: str | IField[primitives.ColorX] | None = None, end_color: str | IField[primitives.ColorX] | None = None, point_slot: str | Slot | None = None, point_slot_pos: str | IField[primitives.Float3] | None = None, laser_visible: str | IField[primitives.Bool] | None = None, cursor_visible: str | IField[primitives.Bool] | None = None, cursor_root: str | Slot | None = None, cursor_image_root: str | Slot | None = None, cursor_texture: str | StaticTexture2D | None = None, cursor_material: str | OverlayUnlitMaterial | None = None, cursor_front_tint: str | IField[primitives.ColorX] | None = None, cursor_behind_tint: str | IField[primitives.ColorX] | None = None, cursor_render_queue: str | IField[primitives.Int] | None = None, cursor_orientation: str | IField[primitives.FloatQ] | None = None, cursor_tint: primitives.ColorX | None = None, direct_cursor_visuals_visible: primitives.Bool | None = None, direct_cursor_active: str | IField[primitives.Bool] | None = None, direct_cursor_root: str | Slot | None = None, direct_cursor_image_root: str | Slot | None = None, direct_cursor_offset: str | IField[primitives.Float3] | None = None, direct_cursor_orientation: str | IField[primitives.FloatQ] | None = None, direct_line_target: str | IField[primitives.Float3] | None = None, direct_line_mesh: str | SegmentMesh | None = None, segment_color_front: str | IField[primitives.ColorX] | None = None, segment_color_behind: str | IField[primitives.ColorX] | None = None, segment_render_queue: str | IField[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -192,7 +190,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.segment_render_queue = segment_render_queue
 
     @property
-    def smooth_speed(self) -> np.float32 | None:
+    def smooth_speed(self) -> primitives.Float | None:
         """The SmoothSpeed field value."""
         member = self.get_member("SmoothSpeed")
         if member is None:
@@ -200,7 +198,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @smooth_speed.setter
-    def smooth_speed(self, value: np.float32) -> None:
+    def smooth_speed(self, value: primitives.Float) -> None:
         """Set the SmoothSpeed field value."""
         member = self.get_member("SmoothSpeed")
         if member is not None:
@@ -211,7 +209,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def smooth_modulate_start_angle(self) -> np.float32 | None:
+    def smooth_modulate_start_angle(self) -> primitives.Float | None:
         """The SmoothModulateStartAngle field value."""
         member = self.get_member("SmoothModulateStartAngle")
         if member is None:
@@ -219,7 +217,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @smooth_modulate_start_angle.setter
-    def smooth_modulate_start_angle(self, value: np.float32) -> None:
+    def smooth_modulate_start_angle(self, value: primitives.Float) -> None:
         """Set the SmoothModulateStartAngle field value."""
         member = self.get_member("SmoothModulateStartAngle")
         if member is not None:
@@ -230,7 +228,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def smooth_modulate_end_angle(self) -> np.float32 | None:
+    def smooth_modulate_end_angle(self) -> primitives.Float | None:
         """The SmoothModulateEndAngle field value."""
         member = self.get_member("SmoothModulateEndAngle")
         if member is None:
@@ -238,7 +236,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @smooth_modulate_end_angle.setter
-    def smooth_modulate_end_angle(self, value: np.float32) -> None:
+    def smooth_modulate_end_angle(self, value: primitives.Float) -> None:
         """Set the SmoothModulateEndAngle field value."""
         member = self.get_member("SmoothModulateEndAngle")
         if member is not None:
@@ -249,7 +247,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def smooth_modulate_exp(self) -> np.float32 | None:
+    def smooth_modulate_exp(self) -> primitives.Float | None:
         """The SmoothModulateExp field value."""
         member = self.get_member("SmoothModulateExp")
         if member is None:
@@ -257,7 +255,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @smooth_modulate_exp.setter
-    def smooth_modulate_exp(self, value: np.float32) -> None:
+    def smooth_modulate_exp(self, value: primitives.Float) -> None:
         """Set the SmoothModulateExp field value."""
         member = self.get_member("SmoothModulateExp")
         if member is not None:
@@ -268,7 +266,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def smooth_modulate_multiplier(self) -> np.float32 | None:
+    def smooth_modulate_multiplier(self) -> primitives.Float | None:
         """The SmoothModulateMultiplier field value."""
         member = self.get_member("SmoothModulateMultiplier")
         if member is None:
@@ -276,7 +274,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @smooth_modulate_multiplier.setter
-    def smooth_modulate_multiplier(self, value: np.float32) -> None:
+    def smooth_modulate_multiplier(self, value: primitives.Float) -> None:
         """Set the SmoothModulateMultiplier field value."""
         member = self.get_member("SmoothModulateMultiplier")
         if member is not None:
@@ -287,7 +285,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def stick_threshold(self) -> np.float32 | None:
+    def stick_threshold(self) -> primitives.Float | None:
         """The StickThreshold field value."""
         member = self.get_member("StickThreshold")
         if member is None:
@@ -295,7 +293,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @stick_threshold.setter
-    def stick_threshold(self, value: np.float32) -> None:
+    def stick_threshold(self, value: primitives.Float) -> None:
         """Set the StickThreshold field value."""
         member = self.get_member("StickThreshold")
         if member is not None:
@@ -306,7 +304,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def show_in_desktop(self) -> bool | None:
+    def show_in_desktop(self) -> primitives.Bool | None:
         """The ShowInDesktop field value."""
         member = self.get_member("ShowInDesktop")
         if member is None:
@@ -314,7 +312,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_in_desktop.setter
-    def show_in_desktop(self, value: bool) -> None:
+    def show_in_desktop(self, value: primitives.Bool) -> None:
         """Set the ShowInDesktop field value."""
         member = self.get_member("ShowInDesktop")
         if member is not None:
@@ -325,7 +323,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_touch_penetration_distance(self) -> np.float32 | None:
+    def max_touch_penetration_distance(self) -> primitives.Float | None:
         """The MaxTouchPenetrationDistance field value."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is None:
@@ -333,7 +331,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_touch_penetration_distance.setter
-    def max_touch_penetration_distance(self, value: np.float32) -> None:
+    def max_touch_penetration_distance(self, value: primitives.Float) -> None:
         """Set the MaxTouchPenetrationDistance field value."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is not None:
@@ -487,7 +485,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def laser_texture_speed(self) -> np.float32 | None:
+    def laser_texture_speed(self) -> primitives.Float | None:
         """The _laserTextureSpeed field value."""
         member = self.get_member("_laserTextureSpeed")
         if member is None:
@@ -495,7 +493,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @laser_texture_speed.setter
-    def laser_texture_speed(self, value: np.float32) -> None:
+    def laser_texture_speed(self, value: primitives.Float) -> None:
         """Set the _laserTextureSpeed field value."""
         member = self.get_member("_laserTextureSpeed")
         if member is not None:
@@ -612,15 +610,15 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_render_queue(self) -> str | None:
-        """Target ID of the _laserRenderQueue reference (targets IField[np.int32])."""
+        """Target ID of the _laserRenderQueue reference (targets IField[primitives.Int])."""
         member = self.get_member("_laserRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @laser_render_queue.setter
-    def laser_render_queue(self, target: str | IField[np.int32] | None) -> None:
-        """Set the _laserRenderQueue reference by target ID or IField[np.int32] instance."""
+    def laser_render_queue(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the _laserRenderQueue reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_laserRenderQueue")
         if isinstance(member, members.Reference):
@@ -801,15 +799,15 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_visible(self) -> str | None:
-        """Target ID of the _laserVisible reference (targets IField[bool])."""
+        """Target ID of the _laserVisible reference (targets IField[primitives.Bool])."""
         member = self.get_member("_laserVisible")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @laser_visible.setter
-    def laser_visible(self, target: str | IField[bool] | None) -> None:
-        """Set the _laserVisible reference by target ID or IField[bool] instance."""
+    def laser_visible(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _laserVisible reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_laserVisible")
         if isinstance(member, members.Reference):
@@ -822,15 +820,15 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_visible(self) -> str | None:
-        """Target ID of the _cursorVisible reference (targets IField[bool])."""
+        """Target ID of the _cursorVisible reference (targets IField[primitives.Bool])."""
         member = self.get_member("_cursorVisible")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @cursor_visible.setter
-    def cursor_visible(self, target: str | IField[bool] | None) -> None:
-        """Set the _cursorVisible reference by target ID or IField[bool] instance."""
+    def cursor_visible(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _cursorVisible reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_cursorVisible")
         if isinstance(member, members.Reference):
@@ -969,15 +967,15 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_render_queue(self) -> str | None:
-        """Target ID of the _cursorRenderQueue reference (targets IField[np.int32])."""
+        """Target ID of the _cursorRenderQueue reference (targets IField[primitives.Int])."""
         member = self.get_member("_cursorRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @cursor_render_queue.setter
-    def cursor_render_queue(self, target: str | IField[np.int32] | None) -> None:
-        """Set the _cursorRenderQueue reference by target ID or IField[np.int32] instance."""
+    def cursor_render_queue(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the _cursorRenderQueue reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_cursorRenderQueue")
         if isinstance(member, members.Reference):
@@ -1029,7 +1027,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def direct_cursor_visuals_visible(self) -> bool | None:
+    def direct_cursor_visuals_visible(self) -> primitives.Bool | None:
         """The _directCursorVisualsVisible field value."""
         member = self.get_member("_directCursorVisualsVisible")
         if member is None:
@@ -1037,7 +1035,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @direct_cursor_visuals_visible.setter
-    def direct_cursor_visuals_visible(self, value: bool) -> None:
+    def direct_cursor_visuals_visible(self, value: primitives.Bool) -> None:
         """Set the _directCursorVisualsVisible field value."""
         member = self.get_member("_directCursorVisualsVisible")
         if member is not None:
@@ -1049,15 +1047,15 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_cursor_active(self) -> str | None:
-        """Target ID of the _directCursorActive reference (targets IField[bool])."""
+        """Target ID of the _directCursorActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_directCursorActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @direct_cursor_active.setter
-    def direct_cursor_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _directCursorActive reference by target ID or IField[bool] instance."""
+    def direct_cursor_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _directCursorActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_directCursorActive")
         if isinstance(member, members.Reference):
@@ -1238,15 +1236,15 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def segment_render_queue(self) -> str | None:
-        """Target ID of the _segmentRenderQueue reference (targets IField[np.int32])."""
+        """Target ID of the _segmentRenderQueue reference (targets IField[primitives.Int])."""
         member = self.get_member("_segmentRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @segment_render_queue.setter
-    def segment_render_queue(self, target: str | IField[np.int32] | None) -> None:
-        """Set the _segmentRenderQueue reference by target ID or IField[np.int32] instance."""
+    def segment_render_queue(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the _segmentRenderQueue reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_segmentRenderQueue")
         if isinstance(member, members.Reference):

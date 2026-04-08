@@ -1,9 +1,8 @@
 """Generated component: DebugSphereSectorDistance."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugSphereSectorDistance"
 
-    def __init__(self, angle: np.float32 | None = None, radius: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, angle: primitives.Float | None = None, radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventRecei
             self.radius = radius
 
     @property
-    def angle(self) -> np.float32 | None:
+    def angle(self) -> primitives.Float | None:
         """The Angle field value."""
         member = self.get_member("Angle")
         if member is None:
@@ -41,7 +40,7 @@ class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @angle.setter
-    def angle(self, value: np.float32) -> None:
+    def angle(self, value: primitives.Float) -> None:
         """Set the Angle field value."""
         member = self.get_member("Angle")
         if member is not None:
@@ -52,7 +51,7 @@ class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -60,7 +59,7 @@ class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:

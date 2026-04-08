@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -18,7 +19,7 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HyperlinkDisplayInterface"
 
-    def __init__(self, item_name: str | IField[str] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[str] | None = None, is_instance: bool | None = None, url: str | IField[str] | None = None, url_string: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, item_name: str | IField[primitives.String] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[primitives.String] | None = None, is_instance: primitives.Bool | None = None, url: str | IField[str] | None = None, url_string: str | IField[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,15 +47,15 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[str])."""
+        """Target ID of the ItemName reference (targets IField[primitives.String])."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_name.setter
-    def item_name(self, target: str | IField[str] | None) -> None:
-        """Set the ItemName reference by target ID or IField[str] instance."""
+    def item_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
@@ -88,15 +89,15 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[str])."""
+        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spawning_user_id.setter
-    def spawning_user_id(self, target: str | IField[str] | None) -> None:
-        """Set the SpawningUserID reference by target ID or IField[str] instance."""
+    def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
@@ -108,7 +109,7 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
             )
 
     @property
-    def is_instance(self) -> bool | None:
+    def is_instance(self) -> primitives.Bool | None:
         """The IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is None:
@@ -116,7 +117,7 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
         return getattr(member, 'value', None)
 
     @is_instance.setter
-    def is_instance(self, value: bool) -> None:
+    def is_instance(self, value: primitives.Bool) -> None:
         """Set the IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is not None:
@@ -149,15 +150,15 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     @property
     def url_string(self) -> str | None:
-        """Target ID of the UrlString reference (targets IField[str])."""
+        """Target ID of the UrlString reference (targets IField[primitives.String])."""
         member = self.get_member("UrlString")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @url_string.setter
-    def url_string(self, target: str | IField[str] | None) -> None:
-        """Set the UrlString reference by target ID or IField[str] instance."""
+    def url_string(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the UrlString reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("UrlString")
         if isinstance(member, members.Reference):

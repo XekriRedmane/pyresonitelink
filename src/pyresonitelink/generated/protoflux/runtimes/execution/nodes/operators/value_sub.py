@@ -18,7 +18,7 @@ class ValueSub(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueSub[np.float32]
+        ValueSub[primitives.Float]
         ValueSub[primitives.Float3]
     """
 

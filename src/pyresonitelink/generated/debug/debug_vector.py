@@ -16,7 +16,7 @@ class DebugVector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugVector"
 
-    def __init__(self, position_offset: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, vector: primitives.Float3 | None = None, color: primitives.ColorX | None = None, use_global_space: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, position_offset: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, vector: primitives.Float3 | None = None, color: primitives.ColorX | None = None, use_global_space: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -116,7 +116,7 @@ class DebugVector(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def use_global_space(self) -> bool | None:
+    def use_global_space(self) -> primitives.Bool | None:
         """The UseGlobalSpace field value."""
         member = self.get_member("UseGlobalSpace")
         if member is None:
@@ -124,7 +124,7 @@ class DebugVector(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_global_space.setter
-    def use_global_space(self, value: bool) -> None:
+    def use_global_space(self, value: primitives.Bool) -> None:
         """Set the UseGlobalSpace field value."""
         member = self.get_member("UseGlobalSpace")
         if member is not None:

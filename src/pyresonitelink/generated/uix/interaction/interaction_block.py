@@ -1,6 +1,7 @@
 """Generated component: InteractionBlock."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iui_interactable import IUIInteractable
@@ -15,7 +16,7 @@ class InteractionBlock(GeneratedComponent, IUIInteractable, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.InteractionBlock"
 
-    def __init__(self, touch_exit_lock: bool | None = None, touch_enter_lock: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, touch_exit_lock: primitives.Bool | None = None, touch_enter_lock: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class InteractionBlock(GeneratedComponent, IUIInteractable, IWorldEventReceiver)
             self.touch_enter_lock = touch_enter_lock
 
     @property
-    def touch_exit_lock(self) -> bool | None:
+    def touch_exit_lock(self) -> primitives.Bool | None:
         """The TouchExitLock field value."""
         member = self.get_member("TouchExitLock")
         if member is None:
@@ -38,7 +39,7 @@ class InteractionBlock(GeneratedComponent, IUIInteractable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @touch_exit_lock.setter
-    def touch_exit_lock(self, value: bool) -> None:
+    def touch_exit_lock(self, value: primitives.Bool) -> None:
         """Set the TouchExitLock field value."""
         member = self.get_member("TouchExitLock")
         if member is not None:
@@ -49,7 +50,7 @@ class InteractionBlock(GeneratedComponent, IUIInteractable, IWorldEventReceiver)
             )
 
     @property
-    def touch_enter_lock(self) -> bool | None:
+    def touch_enter_lock(self) -> primitives.Bool | None:
         """The TouchEnterLock field value."""
         member = self.get_member("TouchEnterLock")
         if member is None:
@@ -57,7 +58,7 @@ class InteractionBlock(GeneratedComponent, IUIInteractable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @touch_enter_lock.setter
-    def touch_enter_lock(self, value: bool) -> None:
+    def touch_enter_lock(self, value: primitives.Bool) -> None:
         """Set the TouchEnterLock field value."""
         member = self.get_member("TouchEnterLock")
         if member is not None:

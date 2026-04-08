@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -17,14 +18,14 @@ class ReferenceEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiv
 
     Parameterize with a value type::
 
-        ReferenceEqualityDriver[np.float32]
+        ReferenceEqualityDriver[primitives.Float]
         ReferenceEqualityDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceEqualityDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ReferenceEqualityDriver<>"
 
-    def __init__(self, target_reference: str | SyncRef[T] | None = None, reference: str | T | None = None, target: str | IField[bool] | None = None, invert: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_reference: str | SyncRef[T] | None = None, reference: str | T | None = None, target: str | IField[primitives.Bool] | None = None, invert: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -88,15 +89,15 @@ class ReferenceEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[bool])."""
+        """Target ID of the Target reference (targets IField[primitives.Bool])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[bool] | None) -> None:
-        """Set the Target reference by target ID or IField[bool] instance."""
+    def target(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -108,7 +109,7 @@ class ReferenceEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiv
             )
 
     @property
-    def invert(self) -> bool | None:
+    def invert(self) -> primitives.Bool | None:
         """The Invert field value."""
         member = self.get_member("Invert")
         if member is None:
@@ -116,7 +117,7 @@ class ReferenceEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @invert.setter
-    def invert(self, value: bool) -> None:
+    def invert(self, value: primitives.Bool) -> None:
         """Set the Invert field value."""
         member = self.get_member("Invert")
         if member is not None:

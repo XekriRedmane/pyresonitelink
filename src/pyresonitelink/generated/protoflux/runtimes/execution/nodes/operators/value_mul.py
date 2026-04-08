@@ -18,7 +18,7 @@ class ValueMul(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueMul[np.float32]
+        ValueMul[primitives.Float]
         ValueMul[primitives.Float3]
     """
 

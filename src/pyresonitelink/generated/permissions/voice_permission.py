@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworker_permissions import IWorkerPermissions
@@ -17,7 +18,7 @@ class VoicePermission(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VoicePermission"
 
-    def __init__(self, allow_change_other_users: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, allow_change_other_users: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +43,7 @@ class VoicePermission(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
         self.set_member("MaxAllowedVoiceMode", value)
 
     @property
-    def allow_change_other_users(self) -> bool | None:
+    def allow_change_other_users(self) -> primitives.Bool | None:
         """The AllowChangeOtherUsers field value."""
         member = self.get_member("AllowChangeOtherUsers")
         if member is None:
@@ -50,7 +51,7 @@ class VoicePermission(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @allow_change_other_users.setter
-    def allow_change_other_users(self, value: bool) -> None:
+    def allow_change_other_users(self, value: primitives.Bool) -> None:
         """Set the AllowChangeOtherUsers field value."""
         member = self.get_member("AllowChangeOtherUsers")
         if member is not None:

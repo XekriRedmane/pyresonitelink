@@ -1,7 +1,5 @@
 """Generated component: ChannelMatrixMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ChannelMatrixMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, rect: primitives.Rect | None = None, rect_clip: bool | None = None, stencil_id: np.uint8 | None = None, stencil_write_mask: np.uint8 | None = None, stencil_read_mask: np.uint8 | None = None, render_queue: np.int32 | None = None, shader: str | IAssetProvider[Shader] | None = None, red_from_red: np.float32 | None = None, red_from_green: np.float32 | None = None, red_from_blue: np.float32 | None = None, red_offset: np.float32 | None = None, green_from_red: np.float32 | None = None, green_from_green: np.float32 | None = None, green_from_blue: np.float32 | None = None, green_offset: np.float32 | None = None, blue_from_red: np.float32 | None = None, blue_from_green: np.float32 | None = None, blue_from_blue: np.float32 | None = None, blue_offset: np.float32 | None = None, clamp_red_min: np.float32 | None = None, clamp_green_min: np.float32 | None = None, clamp_blue_min: np.float32 | None = None, clamp_red_max: np.float32 | None = None, clamp_green_max: np.float32 | None = None, clamp_blue_max: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, shader: str | IAssetProvider[Shader] | None = None, red_from_red: primitives.Float | None = None, red_from_green: primitives.Float | None = None, red_from_blue: primitives.Float | None = None, red_offset: primitives.Float | None = None, green_from_red: primitives.Float | None = None, green_from_green: primitives.Float | None = None, green_from_blue: primitives.Float | None = None, green_offset: primitives.Float | None = None, blue_from_red: primitives.Float | None = None, blue_from_green: primitives.Float | None = None, blue_from_blue: primitives.Float | None = None, blue_offset: primitives.Float | None = None, clamp_red_min: primitives.Float | None = None, clamp_green_min: primitives.Float | None = None, clamp_blue_min: primitives.Float | None = None, clamp_red_max: primitives.Float | None = None, clamp_green_max: primitives.Float | None = None, clamp_blue_max: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -109,7 +107,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             self.clamp_blue_max = clamp_blue_max
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -117,7 +115,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -147,7 +145,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def rect_clip(self) -> bool | None:
+    def rect_clip(self) -> primitives.Bool | None:
         """The RectClip field value."""
         member = self.get_member("RectClip")
         if member is None:
@@ -155,7 +153,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @rect_clip.setter
-    def rect_clip(self, value: bool) -> None:
+    def rect_clip(self, value: primitives.Bool) -> None:
         """Set the RectClip field value."""
         member = self.get_member("RectClip")
         if member is not None:
@@ -205,7 +203,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         self.set_member("StencilOperation", value)
 
     @property
-    def stencil_id(self) -> np.uint8 | None:
+    def stencil_id(self) -> primitives.Byte | None:
         """The StencilID field value."""
         member = self.get_member("StencilID")
         if member is None:
@@ -213,7 +211,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @stencil_id.setter
-    def stencil_id(self, value: np.uint8) -> None:
+    def stencil_id(self, value: primitives.Byte) -> None:
         """Set the StencilID field value."""
         member = self.get_member("StencilID")
         if member is not None:
@@ -224,7 +222,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def stencil_write_mask(self) -> np.uint8 | None:
+    def stencil_write_mask(self) -> primitives.Byte | None:
         """The StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is None:
@@ -232,7 +230,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @stencil_write_mask.setter
-    def stencil_write_mask(self, value: np.uint8) -> None:
+    def stencil_write_mask(self, value: primitives.Byte) -> None:
         """Set the StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is not None:
@@ -243,7 +241,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def stencil_read_mask(self) -> np.uint8 | None:
+    def stencil_read_mask(self) -> primitives.Byte | None:
         """The StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is None:
@@ -251,7 +249,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @stencil_read_mask.setter
-    def stencil_read_mask(self, value: np.uint8) -> None:
+    def stencil_read_mask(self, value: primitives.Byte) -> None:
         """Set the StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is not None:
@@ -262,7 +260,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -270,7 +268,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -302,7 +300,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def red_from_red(self) -> np.float32 | None:
+    def red_from_red(self) -> primitives.Float | None:
         """The RedFromRed field value."""
         member = self.get_member("RedFromRed")
         if member is None:
@@ -310,7 +308,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @red_from_red.setter
-    def red_from_red(self, value: np.float32) -> None:
+    def red_from_red(self, value: primitives.Float) -> None:
         """Set the RedFromRed field value."""
         member = self.get_member("RedFromRed")
         if member is not None:
@@ -321,7 +319,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def red_from_green(self) -> np.float32 | None:
+    def red_from_green(self) -> primitives.Float | None:
         """The RedFromGreen field value."""
         member = self.get_member("RedFromGreen")
         if member is None:
@@ -329,7 +327,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @red_from_green.setter
-    def red_from_green(self, value: np.float32) -> None:
+    def red_from_green(self, value: primitives.Float) -> None:
         """Set the RedFromGreen field value."""
         member = self.get_member("RedFromGreen")
         if member is not None:
@@ -340,7 +338,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def red_from_blue(self) -> np.float32 | None:
+    def red_from_blue(self) -> primitives.Float | None:
         """The RedFromBlue field value."""
         member = self.get_member("RedFromBlue")
         if member is None:
@@ -348,7 +346,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @red_from_blue.setter
-    def red_from_blue(self, value: np.float32) -> None:
+    def red_from_blue(self, value: primitives.Float) -> None:
         """Set the RedFromBlue field value."""
         member = self.get_member("RedFromBlue")
         if member is not None:
@@ -359,7 +357,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def red_offset(self) -> np.float32 | None:
+    def red_offset(self) -> primitives.Float | None:
         """The RedOffset field value."""
         member = self.get_member("RedOffset")
         if member is None:
@@ -367,7 +365,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @red_offset.setter
-    def red_offset(self, value: np.float32) -> None:
+    def red_offset(self, value: primitives.Float) -> None:
         """Set the RedOffset field value."""
         member = self.get_member("RedOffset")
         if member is not None:
@@ -378,7 +376,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def green_from_red(self) -> np.float32 | None:
+    def green_from_red(self) -> primitives.Float | None:
         """The GreenFromRed field value."""
         member = self.get_member("GreenFromRed")
         if member is None:
@@ -386,7 +384,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @green_from_red.setter
-    def green_from_red(self, value: np.float32) -> None:
+    def green_from_red(self, value: primitives.Float) -> None:
         """Set the GreenFromRed field value."""
         member = self.get_member("GreenFromRed")
         if member is not None:
@@ -397,7 +395,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def green_from_green(self) -> np.float32 | None:
+    def green_from_green(self) -> primitives.Float | None:
         """The GreenFromGreen field value."""
         member = self.get_member("GreenFromGreen")
         if member is None:
@@ -405,7 +403,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @green_from_green.setter
-    def green_from_green(self, value: np.float32) -> None:
+    def green_from_green(self, value: primitives.Float) -> None:
         """Set the GreenFromGreen field value."""
         member = self.get_member("GreenFromGreen")
         if member is not None:
@@ -416,7 +414,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def green_from_blue(self) -> np.float32 | None:
+    def green_from_blue(self) -> primitives.Float | None:
         """The GreenFromBlue field value."""
         member = self.get_member("GreenFromBlue")
         if member is None:
@@ -424,7 +422,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @green_from_blue.setter
-    def green_from_blue(self, value: np.float32) -> None:
+    def green_from_blue(self, value: primitives.Float) -> None:
         """Set the GreenFromBlue field value."""
         member = self.get_member("GreenFromBlue")
         if member is not None:
@@ -435,7 +433,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def green_offset(self) -> np.float32 | None:
+    def green_offset(self) -> primitives.Float | None:
         """The GreenOffset field value."""
         member = self.get_member("GreenOffset")
         if member is None:
@@ -443,7 +441,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @green_offset.setter
-    def green_offset(self, value: np.float32) -> None:
+    def green_offset(self, value: primitives.Float) -> None:
         """Set the GreenOffset field value."""
         member = self.get_member("GreenOffset")
         if member is not None:
@@ -454,7 +452,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def blue_from_red(self) -> np.float32 | None:
+    def blue_from_red(self) -> primitives.Float | None:
         """The BlueFromRed field value."""
         member = self.get_member("BlueFromRed")
         if member is None:
@@ -462,7 +460,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @blue_from_red.setter
-    def blue_from_red(self, value: np.float32) -> None:
+    def blue_from_red(self, value: primitives.Float) -> None:
         """Set the BlueFromRed field value."""
         member = self.get_member("BlueFromRed")
         if member is not None:
@@ -473,7 +471,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def blue_from_green(self) -> np.float32 | None:
+    def blue_from_green(self) -> primitives.Float | None:
         """The BlueFromGreen field value."""
         member = self.get_member("BlueFromGreen")
         if member is None:
@@ -481,7 +479,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @blue_from_green.setter
-    def blue_from_green(self, value: np.float32) -> None:
+    def blue_from_green(self, value: primitives.Float) -> None:
         """Set the BlueFromGreen field value."""
         member = self.get_member("BlueFromGreen")
         if member is not None:
@@ -492,7 +490,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def blue_from_blue(self) -> np.float32 | None:
+    def blue_from_blue(self) -> primitives.Float | None:
         """The BlueFromBlue field value."""
         member = self.get_member("BlueFromBlue")
         if member is None:
@@ -500,7 +498,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @blue_from_blue.setter
-    def blue_from_blue(self, value: np.float32) -> None:
+    def blue_from_blue(self, value: primitives.Float) -> None:
         """Set the BlueFromBlue field value."""
         member = self.get_member("BlueFromBlue")
         if member is not None:
@@ -511,7 +509,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def blue_offset(self) -> np.float32 | None:
+    def blue_offset(self) -> primitives.Float | None:
         """The BlueOffset field value."""
         member = self.get_member("BlueOffset")
         if member is None:
@@ -519,7 +517,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @blue_offset.setter
-    def blue_offset(self, value: np.float32) -> None:
+    def blue_offset(self, value: primitives.Float) -> None:
         """Set the BlueOffset field value."""
         member = self.get_member("BlueOffset")
         if member is not None:
@@ -530,7 +528,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def clamp_red_min(self) -> np.float32 | None:
+    def clamp_red_min(self) -> primitives.Float | None:
         """The ClampRedMin field value."""
         member = self.get_member("ClampRedMin")
         if member is None:
@@ -538,7 +536,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @clamp_red_min.setter
-    def clamp_red_min(self, value: np.float32) -> None:
+    def clamp_red_min(self, value: primitives.Float) -> None:
         """Set the ClampRedMin field value."""
         member = self.get_member("ClampRedMin")
         if member is not None:
@@ -549,7 +547,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def clamp_green_min(self) -> np.float32 | None:
+    def clamp_green_min(self) -> primitives.Float | None:
         """The ClampGreenMin field value."""
         member = self.get_member("ClampGreenMin")
         if member is None:
@@ -557,7 +555,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @clamp_green_min.setter
-    def clamp_green_min(self, value: np.float32) -> None:
+    def clamp_green_min(self, value: primitives.Float) -> None:
         """Set the ClampGreenMin field value."""
         member = self.get_member("ClampGreenMin")
         if member is not None:
@@ -568,7 +566,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def clamp_blue_min(self) -> np.float32 | None:
+    def clamp_blue_min(self) -> primitives.Float | None:
         """The ClampBlueMin field value."""
         member = self.get_member("ClampBlueMin")
         if member is None:
@@ -576,7 +574,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @clamp_blue_min.setter
-    def clamp_blue_min(self, value: np.float32) -> None:
+    def clamp_blue_min(self, value: primitives.Float) -> None:
         """Set the ClampBlueMin field value."""
         member = self.get_member("ClampBlueMin")
         if member is not None:
@@ -587,7 +585,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def clamp_red_max(self) -> np.float32 | None:
+    def clamp_red_max(self) -> primitives.Float | None:
         """The ClampRedMax field value."""
         member = self.get_member("ClampRedMax")
         if member is None:
@@ -595,7 +593,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @clamp_red_max.setter
-    def clamp_red_max(self, value: np.float32) -> None:
+    def clamp_red_max(self, value: primitives.Float) -> None:
         """Set the ClampRedMax field value."""
         member = self.get_member("ClampRedMax")
         if member is not None:
@@ -606,7 +604,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def clamp_green_max(self) -> np.float32 | None:
+    def clamp_green_max(self) -> primitives.Float | None:
         """The ClampGreenMax field value."""
         member = self.get_member("ClampGreenMax")
         if member is None:
@@ -614,7 +612,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @clamp_green_max.setter
-    def clamp_green_max(self, value: np.float32) -> None:
+    def clamp_green_max(self, value: primitives.Float) -> None:
         """Set the ClampGreenMax field value."""
         member = self.get_member("ClampGreenMax")
         if member is not None:
@@ -625,7 +623,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
             )
 
     @property
-    def clamp_blue_max(self) -> np.float32 | None:
+    def clamp_blue_max(self) -> primitives.Float | None:
         """The ClampBlueMax field value."""
         member = self.get_member("ClampBlueMax")
         if member is None:
@@ -633,7 +631,7 @@ class ChannelMatrixMaterial(GeneratedComponent, IUIX_Material, ICustomInspector,
         return getattr(member, 'value', None)
 
     @clamp_blue_max.setter
-    def clamp_blue_max(self, value: np.float32) -> None:
+    def clamp_blue_max(self, value: primitives.Float) -> None:
         """Set the ClampBlueMax field value."""
         member = self.get_member("ClampBlueMax")
         if member is not None:

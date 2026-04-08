@@ -1,7 +1,5 @@
 """Generated component: UVW_ProceduralTexture3D."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UVW_ProceduralTexture3D"
 
-    def __init__(self, high_priority_integration: bool | None = None, anisotropic_level: np.int32 | None = None, size: primitives.Int3 | None = None, value_offset: primitives.Float3 | None = None, value_multiplier: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, anisotropic_level: primitives.Int | None = None, size: primitives.Int3 | None = None, value_offset: primitives.Float3 | None = None, value_multiplier: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,7 +42,7 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
             self.value_multiplier = value_multiplier
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -52,7 +50,7 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -76,7 +74,7 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
         self.set_member("FilterMode", value)
 
     @property
-    def anisotropic_level(self) -> np.int32 | None:
+    def anisotropic_level(self) -> primitives.Int | None:
         """The AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is None:
@@ -84,7 +82,7 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @anisotropic_level.setter
-    def anisotropic_level(self, value: np.int32) -> None:
+    def anisotropic_level(self, value: primitives.Int) -> None:
         """Set the AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is not None:

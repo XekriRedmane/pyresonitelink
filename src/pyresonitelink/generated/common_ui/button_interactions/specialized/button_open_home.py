@@ -1,6 +1,7 @@
 """Generated component: ButtonOpenHome."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
@@ -15,7 +16,7 @@ class ButtonOpenHome(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonOpenHome"
 
-    def __init__(self, group_owner_id: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, group_owner_id: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class ButtonOpenHome(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
             self.group_owner_id = group_owner_id
 
     @property
-    def group_owner_id(self) -> str | None:
+    def group_owner_id(self) -> primitives.String | None:
         """The GroupOwnerId field value."""
         member = self.get_member("GroupOwnerId")
         if member is None:
@@ -35,7 +36,7 @@ class ButtonOpenHome(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @group_owner_id.setter
-    def group_owner_id(self, value: str) -> None:
+    def group_owner_id(self, value: primitives.String) -> None:
         """Set the GroupOwnerId field value."""
         member = self.get_member("GroupOwnerId")
         if member is not None:

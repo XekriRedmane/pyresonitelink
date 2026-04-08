@@ -1,7 +1,5 @@
 """Generated component: WorldOrb."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -32,7 +30,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldOrb"
 
-    def __init__(self, session_starting_user: str | User | None = None, url: str | None = None, active_users: np.int32 | None = None, record_state_updated: bool | None = None, is_public: bool | None = None, can_modify: bool | None = None, long_press_indicator_color: primitives.ColorX | None = None, long_press_time: np.float32 | None = None, long_press_indicator: str | RingMesh | None = None, long_press_indicator_material: str | UnlitMaterial | None = None, last_fetched_url: str | None = None, is_read_only: bool | None = None, orb_root: str | Slot | None = None, info_root: str | Slot | None = None, thumb_tex: str | StaticTexture2D | None = None, thumb_material: str | Projection360Material | None = None, shell_material: str | PBS_RimMetallic | None = None, name_text: str | TextRenderer | None = None, creator_text: str | TextRenderer | None = None, visits_text: str | TextRenderer | None = None, users_text: str | TextRenderer | None = None, name_position: str | IField[primitives.Float3] | None = None, creator_position: str | IField[primitives.Float3] | None = None, visits_position: str | IField[primitives.Float3] | None = None, users_position: str | IField[primitives.Float3] | None = None, user_count_text: str | IField[str] | None = None, size_drive: str | IField[primitives.Float3] | None = None, icon_slot: str | Slot | None = None, icon_texture: str | StaticTexture2D | None = None, icon_material: str | UnlitMaterial | None = None, icon_position: str | IField[primitives.Float3] | None = None, session_start_dialog: str | NewWorldDialog | None = None, last_touch: np.float64 | None = None, last_flash: np.float64 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, session_starting_user: str | User | None = None, url: str | None = None, active_users: primitives.Int | None = None, record_state_updated: primitives.Bool | None = None, is_public: primitives.Bool | None = None, can_modify: primitives.Bool | None = None, long_press_indicator_color: primitives.ColorX | None = None, long_press_time: primitives.Float | None = None, long_press_indicator: str | RingMesh | None = None, long_press_indicator_material: str | UnlitMaterial | None = None, last_fetched_url: str | None = None, is_read_only: primitives.Bool | None = None, orb_root: str | Slot | None = None, info_root: str | Slot | None = None, thumb_tex: str | StaticTexture2D | None = None, thumb_material: str | Projection360Material | None = None, shell_material: str | PBS_RimMetallic | None = None, name_text: str | TextRenderer | None = None, creator_text: str | TextRenderer | None = None, visits_text: str | TextRenderer | None = None, users_text: str | TextRenderer | None = None, name_position: str | IField[primitives.Float3] | None = None, creator_position: str | IField[primitives.Float3] | None = None, visits_position: str | IField[primitives.Float3] | None = None, users_position: str | IField[primitives.Float3] | None = None, user_count_text: str | IField[primitives.String] | None = None, size_drive: str | IField[primitives.Float3] | None = None, icon_slot: str | Slot | None = None, icon_texture: str | StaticTexture2D | None = None, icon_material: str | UnlitMaterial | None = None, icon_position: str | IField[primitives.Float3] | None = None, session_start_dialog: str | NewWorldDialog | None = None, last_touch: primitives.Double | None = None, last_flash: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -209,7 +207,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
         self.set_member("Visit", value)
 
     @property
-    def active_users(self) -> np.int32 | None:
+    def active_users(self) -> primitives.Int | None:
         """The ActiveUsers field value."""
         member = self.get_member("ActiveUsers")
         if member is None:
@@ -217,7 +215,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
         return getattr(member, 'value', None)
 
     @active_users.setter
-    def active_users(self, value: np.int32) -> None:
+    def active_users(self, value: primitives.Int) -> None:
         """Set the ActiveUsers field value."""
         member = self.get_member("ActiveUsers")
         if member is not None:
@@ -228,7 +226,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
             )
 
     @property
-    def record_state_updated(self) -> bool | None:
+    def record_state_updated(self) -> primitives.Bool | None:
         """The RecordStateUpdated field value."""
         member = self.get_member("RecordStateUpdated")
         if member is None:
@@ -236,7 +234,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
         return getattr(member, 'value', None)
 
     @record_state_updated.setter
-    def record_state_updated(self, value: bool) -> None:
+    def record_state_updated(self, value: primitives.Bool) -> None:
         """Set the RecordStateUpdated field value."""
         member = self.get_member("RecordStateUpdated")
         if member is not None:
@@ -247,7 +245,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
             )
 
     @property
-    def is_public(self) -> bool | None:
+    def is_public(self) -> primitives.Bool | None:
         """The IsPublic field value."""
         member = self.get_member("IsPublic")
         if member is None:
@@ -255,7 +253,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
         return getattr(member, 'value', None)
 
     @is_public.setter
-    def is_public(self, value: bool) -> None:
+    def is_public(self, value: primitives.Bool) -> None:
         """Set the IsPublic field value."""
         member = self.get_member("IsPublic")
         if member is not None:
@@ -266,7 +264,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
             )
 
     @property
-    def can_modify(self) -> bool | None:
+    def can_modify(self) -> primitives.Bool | None:
         """The CanModify field value."""
         member = self.get_member("CanModify")
         if member is None:
@@ -274,7 +272,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
         return getattr(member, 'value', None)
 
     @can_modify.setter
-    def can_modify(self, value: bool) -> None:
+    def can_modify(self, value: primitives.Bool) -> None:
         """Set the CanModify field value."""
         member = self.get_member("CanModify")
         if member is not None:
@@ -304,7 +302,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
             )
 
     @property
-    def long_press_time(self) -> np.float32 | None:
+    def long_press_time(self) -> primitives.Float | None:
         """The LongPressTime field value."""
         member = self.get_member("LongPressTime")
         if member is None:
@@ -312,7 +310,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
         return getattr(member, 'value', None)
 
     @long_press_time.setter
-    def long_press_time(self, value: np.float32) -> None:
+    def long_press_time(self, value: primitives.Float) -> None:
         """Set the LongPressTime field value."""
         member = self.get_member("LongPressTime")
         if member is not None:
@@ -384,7 +382,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
             )
 
     @property
-    def is_read_only(self) -> bool | None:
+    def is_read_only(self) -> primitives.Bool | None:
         """The _isReadOnly field value."""
         member = self.get_member("_isReadOnly")
         if member is None:
@@ -392,7 +390,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
         return getattr(member, 'value', None)
 
     @is_read_only.setter
-    def is_read_only(self, value: bool) -> None:
+    def is_read_only(self, value: primitives.Bool) -> None:
         """Set the _isReadOnly field value."""
         member = self.get_member("_isReadOnly")
         if member is not None:
@@ -677,15 +675,15 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def user_count_text(self) -> str | None:
-        """Target ID of the _userCountText reference (targets IField[str])."""
+        """Target ID of the _userCountText reference (targets IField[primitives.String])."""
         member = self.get_member("_userCountText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @user_count_text.setter
-    def user_count_text(self, target: str | IField[str] | None) -> None:
-        """Set the _userCountText reference by target ID or IField[str] instance."""
+    def user_count_text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _userCountText reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_userCountText")
         if isinstance(member, members.Reference):
@@ -823,7 +821,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
             )
 
     @property
-    def last_touch(self) -> np.float64 | None:
+    def last_touch(self) -> primitives.Double | None:
         """The _lastTouch field value."""
         member = self.get_member("_lastTouch")
         if member is None:
@@ -831,7 +829,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
         return getattr(member, 'value', None)
 
     @last_touch.setter
-    def last_touch(self, value: np.float64) -> None:
+    def last_touch(self, value: primitives.Double) -> None:
         """Set the _lastTouch field value."""
         member = self.get_member("_lastTouch")
         if member is not None:
@@ -842,7 +840,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
             )
 
     @property
-    def last_flash(self) -> np.float64 | None:
+    def last_flash(self) -> primitives.Double | None:
         """The _lastFlash field value."""
         member = self.get_member("_lastFlash")
         if member is None:
@@ -850,7 +848,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
         return getattr(member, 'value', None)
 
     @last_flash.setter
-    def last_flash(self, value: np.float64) -> None:
+    def last_flash(self, value: primitives.Double) -> None:
         """Set the _lastFlash field value."""
         member = self.get_member("_lastFlash")
         if member is not None:

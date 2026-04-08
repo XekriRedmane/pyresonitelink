@@ -1,8 +1,7 @@
 """Generated component: SessionControlDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -25,7 +24,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionControlDialog"
 
-    def __init__(self, content_root: str | Slot | None = None, world_name: str | TextField | None = None, max_users: str | IntTextEditorParser | None = None, away_kick_enabled: str | Checkbox | None = None, away_kick_minutes: str | FloatTextEditorParser | None = None, autosave_enabled: str | Checkbox | None = None, autosave_minutes: str | FloatTextEditorParser | None = None, autoclean_enabled: str | Checkbox | None = None, autoclean_minutes: str | FloatTextEditorParser | None = None, mobile_friendly: str | Checkbox | None = None, hide_from_listing: str | Checkbox | None = None, description: str | TextField | None = None, world_name_button: str | Button | None = None, description_button: str | Button | None = None, max_users_button: str | Button | None = None, away_kick_enabled_button: str | Button | None = None, away_kick_minutes_button: str | Button | None = None, autosave_enabled_button: str | Button | None = None, autosave_minutes_button: str | Button | None = None, autoclean_enabled_button: str | Button | None = None, autoclean_minutes_button: str | Button | None = None, mobile_friendly_button: str | Button | None = None, hide_from_listing_button: str | Button | None = None, permission_overrides_indicator: str | Text | None = None, permission_overrides_button: str | Button | None = None, get_session_orb: str | Button | None = None, get_world_orb: str | Button | None = None, edit_mode: str | Button | None = None, copy_session_url: str | Button | None = None, copy_world_url: str | Button | None = None, copy_record_url: str | Button | None = None, world_name_sync: str | WorldValueSync[str] | None = None, description_sync: str | WorldValueSync[str] | None = None, max_users_sync: str | WorldValueSync[np.int32] | None = None, away_kick_enabled_sync: str | WorldValueSync[bool] | None = None, away_kick_minutes_sync: str | WorldValueSync[np.float32] | None = None, autosave_enabled_sync: str | WorldValueSync[bool] | None = None, autosave_minutes_sync: str | WorldValueSync[np.float32] | None = None, autoclean_enabled_sync: str | WorldValueSync[bool] | None = None, autoclean_seconds_sync: str | WorldValueSync[np.float32] | None = None, mobile_friendly_sync: str | WorldValueSync[bool] | None = None, hide_from_listing_sync: str | WorldValueSync[bool] | None = None, edit_mode_sync: str | WorldValueSync[bool] | None = None, access_level_sync: str | WorldValueSync[SessionAccessLevel] | None = None, custom_verifier_label: str | Text | None = None, custom_verifier_checkbox: str | Checkbox | None = None, custom_verifier_button: str | Button | None = None, custom_verifier_sync: str | WorldValueSync[bool] | None = None, ui_content_root: str | Slot | None = None, slide_swap: str | SlideSwapRegion | None = None, save_world: str | Button | None = None, save_world_as: str | Button | None = None, save_world_copy: str | Button | None = None, enable_resonite_link: str | Button | None = None, resonite_link_port: str | Text | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, content_root: str | Slot | None = None, world_name: str | TextField | None = None, max_users: str | IntTextEditorParser | None = None, away_kick_enabled: str | Checkbox | None = None, away_kick_minutes: str | FloatTextEditorParser | None = None, autosave_enabled: str | Checkbox | None = None, autosave_minutes: str | FloatTextEditorParser | None = None, autoclean_enabled: str | Checkbox | None = None, autoclean_minutes: str | FloatTextEditorParser | None = None, mobile_friendly: str | Checkbox | None = None, hide_from_listing: str | Checkbox | None = None, description: str | TextField | None = None, world_name_button: str | Button | None = None, description_button: str | Button | None = None, max_users_button: str | Button | None = None, away_kick_enabled_button: str | Button | None = None, away_kick_minutes_button: str | Button | None = None, autosave_enabled_button: str | Button | None = None, autosave_minutes_button: str | Button | None = None, autoclean_enabled_button: str | Button | None = None, autoclean_minutes_button: str | Button | None = None, mobile_friendly_button: str | Button | None = None, hide_from_listing_button: str | Button | None = None, permission_overrides_indicator: str | Text | None = None, permission_overrides_button: str | Button | None = None, get_session_orb: str | Button | None = None, get_world_orb: str | Button | None = None, edit_mode: str | Button | None = None, copy_session_url: str | Button | None = None, copy_world_url: str | Button | None = None, copy_record_url: str | Button | None = None, world_name_sync: str | WorldValueSync[primitives.String] | None = None, description_sync: str | WorldValueSync[primitives.String] | None = None, max_users_sync: str | WorldValueSync[primitives.Int] | None = None, away_kick_enabled_sync: str | WorldValueSync[primitives.Bool] | None = None, away_kick_minutes_sync: str | WorldValueSync[primitives.Float] | None = None, autosave_enabled_sync: str | WorldValueSync[primitives.Bool] | None = None, autosave_minutes_sync: str | WorldValueSync[primitives.Float] | None = None, autoclean_enabled_sync: str | WorldValueSync[primitives.Bool] | None = None, autoclean_seconds_sync: str | WorldValueSync[primitives.Float] | None = None, mobile_friendly_sync: str | WorldValueSync[primitives.Bool] | None = None, hide_from_listing_sync: str | WorldValueSync[primitives.Bool] | None = None, edit_mode_sync: str | WorldValueSync[primitives.Bool] | None = None, access_level_sync: str | WorldValueSync[SessionAccessLevel] | None = None, custom_verifier_label: str | Text | None = None, custom_verifier_checkbox: str | Checkbox | None = None, custom_verifier_button: str | Button | None = None, custom_verifier_sync: str | WorldValueSync[primitives.Bool] | None = None, ui_content_root: str | Slot | None = None, slide_swap: str | SlideSwapRegion | None = None, save_world: str | Button | None = None, save_world_as: str | Button | None = None, save_world_copy: str | Button | None = None, enable_resonite_link: str | Button | None = None, resonite_link_port: str | Text | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -890,15 +889,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def world_name_sync(self) -> str | None:
-        """Target ID of the _worldNameSync reference (targets WorldValueSync[str])."""
+        """Target ID of the _worldNameSync reference (targets WorldValueSync[primitives.String])."""
         member = self.get_member("_worldNameSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @world_name_sync.setter
-    def world_name_sync(self, target: str | WorldValueSync[str] | None) -> None:
-        """Set the _worldNameSync reference by target ID or WorldValueSync[str] instance."""
+    def world_name_sync(self, target: str | WorldValueSync[primitives.String] | None) -> None:
+        """Set the _worldNameSync reference by target ID or WorldValueSync[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_worldNameSync")
         if isinstance(member, members.Reference):
@@ -911,15 +910,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def description_sync(self) -> str | None:
-        """Target ID of the _descriptionSync reference (targets WorldValueSync[str])."""
+        """Target ID of the _descriptionSync reference (targets WorldValueSync[primitives.String])."""
         member = self.get_member("_descriptionSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @description_sync.setter
-    def description_sync(self, target: str | WorldValueSync[str] | None) -> None:
-        """Set the _descriptionSync reference by target ID or WorldValueSync[str] instance."""
+    def description_sync(self, target: str | WorldValueSync[primitives.String] | None) -> None:
+        """Set the _descriptionSync reference by target ID or WorldValueSync[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_descriptionSync")
         if isinstance(member, members.Reference):
@@ -932,15 +931,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_users_sync(self) -> str | None:
-        """Target ID of the _maxUsersSync reference (targets WorldValueSync[np.int32])."""
+        """Target ID of the _maxUsersSync reference (targets WorldValueSync[primitives.Int])."""
         member = self.get_member("_maxUsersSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @max_users_sync.setter
-    def max_users_sync(self, target: str | WorldValueSync[np.int32] | None) -> None:
-        """Set the _maxUsersSync reference by target ID or WorldValueSync[np.int32] instance."""
+    def max_users_sync(self, target: str | WorldValueSync[primitives.Int] | None) -> None:
+        """Set the _maxUsersSync reference by target ID or WorldValueSync[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_maxUsersSync")
         if isinstance(member, members.Reference):
@@ -953,15 +952,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_enabled_sync(self) -> str | None:
-        """Target ID of the _awayKickEnabledSync reference (targets WorldValueSync[bool])."""
+        """Target ID of the _awayKickEnabledSync reference (targets WorldValueSync[primitives.Bool])."""
         member = self.get_member("_awayKickEnabledSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @away_kick_enabled_sync.setter
-    def away_kick_enabled_sync(self, target: str | WorldValueSync[bool] | None) -> None:
-        """Set the _awayKickEnabledSync reference by target ID or WorldValueSync[bool] instance."""
+    def away_kick_enabled_sync(self, target: str | WorldValueSync[primitives.Bool] | None) -> None:
+        """Set the _awayKickEnabledSync reference by target ID or WorldValueSync[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_awayKickEnabledSync")
         if isinstance(member, members.Reference):
@@ -974,15 +973,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_minutes_sync(self) -> str | None:
-        """Target ID of the _awayKickMinutesSync reference (targets WorldValueSync[np.float32])."""
+        """Target ID of the _awayKickMinutesSync reference (targets WorldValueSync[primitives.Float])."""
         member = self.get_member("_awayKickMinutesSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @away_kick_minutes_sync.setter
-    def away_kick_minutes_sync(self, target: str | WorldValueSync[np.float32] | None) -> None:
-        """Set the _awayKickMinutesSync reference by target ID or WorldValueSync[np.float32] instance."""
+    def away_kick_minutes_sync(self, target: str | WorldValueSync[primitives.Float] | None) -> None:
+        """Set the _awayKickMinutesSync reference by target ID or WorldValueSync[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_awayKickMinutesSync")
         if isinstance(member, members.Reference):
@@ -995,15 +994,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autosave_enabled_sync(self) -> str | None:
-        """Target ID of the _autosaveEnabledSync reference (targets WorldValueSync[bool])."""
+        """Target ID of the _autosaveEnabledSync reference (targets WorldValueSync[primitives.Bool])."""
         member = self.get_member("_autosaveEnabledSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @autosave_enabled_sync.setter
-    def autosave_enabled_sync(self, target: str | WorldValueSync[bool] | None) -> None:
-        """Set the _autosaveEnabledSync reference by target ID or WorldValueSync[bool] instance."""
+    def autosave_enabled_sync(self, target: str | WorldValueSync[primitives.Bool] | None) -> None:
+        """Set the _autosaveEnabledSync reference by target ID or WorldValueSync[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_autosaveEnabledSync")
         if isinstance(member, members.Reference):
@@ -1016,15 +1015,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autosave_minutes_sync(self) -> str | None:
-        """Target ID of the _autosaveMinutesSync reference (targets WorldValueSync[np.float32])."""
+        """Target ID of the _autosaveMinutesSync reference (targets WorldValueSync[primitives.Float])."""
         member = self.get_member("_autosaveMinutesSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @autosave_minutes_sync.setter
-    def autosave_minutes_sync(self, target: str | WorldValueSync[np.float32] | None) -> None:
-        """Set the _autosaveMinutesSync reference by target ID or WorldValueSync[np.float32] instance."""
+    def autosave_minutes_sync(self, target: str | WorldValueSync[primitives.Float] | None) -> None:
+        """Set the _autosaveMinutesSync reference by target ID or WorldValueSync[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_autosaveMinutesSync")
         if isinstance(member, members.Reference):
@@ -1037,15 +1036,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autoclean_enabled_sync(self) -> str | None:
-        """Target ID of the _autocleanEnabledSync reference (targets WorldValueSync[bool])."""
+        """Target ID of the _autocleanEnabledSync reference (targets WorldValueSync[primitives.Bool])."""
         member = self.get_member("_autocleanEnabledSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @autoclean_enabled_sync.setter
-    def autoclean_enabled_sync(self, target: str | WorldValueSync[bool] | None) -> None:
-        """Set the _autocleanEnabledSync reference by target ID or WorldValueSync[bool] instance."""
+    def autoclean_enabled_sync(self, target: str | WorldValueSync[primitives.Bool] | None) -> None:
+        """Set the _autocleanEnabledSync reference by target ID or WorldValueSync[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_autocleanEnabledSync")
         if isinstance(member, members.Reference):
@@ -1058,15 +1057,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autoclean_seconds_sync(self) -> str | None:
-        """Target ID of the _autocleanSecondsSync reference (targets WorldValueSync[np.float32])."""
+        """Target ID of the _autocleanSecondsSync reference (targets WorldValueSync[primitives.Float])."""
         member = self.get_member("_autocleanSecondsSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @autoclean_seconds_sync.setter
-    def autoclean_seconds_sync(self, target: str | WorldValueSync[np.float32] | None) -> None:
-        """Set the _autocleanSecondsSync reference by target ID or WorldValueSync[np.float32] instance."""
+    def autoclean_seconds_sync(self, target: str | WorldValueSync[primitives.Float] | None) -> None:
+        """Set the _autocleanSecondsSync reference by target ID or WorldValueSync[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_autocleanSecondsSync")
         if isinstance(member, members.Reference):
@@ -1079,15 +1078,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mobile_friendly_sync(self) -> str | None:
-        """Target ID of the _mobileFriendlySync reference (targets WorldValueSync[bool])."""
+        """Target ID of the _mobileFriendlySync reference (targets WorldValueSync[primitives.Bool])."""
         member = self.get_member("_mobileFriendlySync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @mobile_friendly_sync.setter
-    def mobile_friendly_sync(self, target: str | WorldValueSync[bool] | None) -> None:
-        """Set the _mobileFriendlySync reference by target ID or WorldValueSync[bool] instance."""
+    def mobile_friendly_sync(self, target: str | WorldValueSync[primitives.Bool] | None) -> None:
+        """Set the _mobileFriendlySync reference by target ID or WorldValueSync[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_mobileFriendlySync")
         if isinstance(member, members.Reference):
@@ -1100,15 +1099,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hide_from_listing_sync(self) -> str | None:
-        """Target ID of the _hideFromListingSync reference (targets WorldValueSync[bool])."""
+        """Target ID of the _hideFromListingSync reference (targets WorldValueSync[primitives.Bool])."""
         member = self.get_member("_hideFromListingSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @hide_from_listing_sync.setter
-    def hide_from_listing_sync(self, target: str | WorldValueSync[bool] | None) -> None:
-        """Set the _hideFromListingSync reference by target ID or WorldValueSync[bool] instance."""
+    def hide_from_listing_sync(self, target: str | WorldValueSync[primitives.Bool] | None) -> None:
+        """Set the _hideFromListingSync reference by target ID or WorldValueSync[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_hideFromListingSync")
         if isinstance(member, members.Reference):
@@ -1121,15 +1120,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def edit_mode_sync(self) -> str | None:
-        """Target ID of the _editModeSync reference (targets WorldValueSync[bool])."""
+        """Target ID of the _editModeSync reference (targets WorldValueSync[primitives.Bool])."""
         member = self.get_member("_editModeSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @edit_mode_sync.setter
-    def edit_mode_sync(self, target: str | WorldValueSync[bool] | None) -> None:
-        """Set the _editModeSync reference by target ID or WorldValueSync[bool] instance."""
+    def edit_mode_sync(self, target: str | WorldValueSync[primitives.Bool] | None) -> None:
+        """Set the _editModeSync reference by target ID or WorldValueSync[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_editModeSync")
         if isinstance(member, members.Reference):
@@ -1226,15 +1225,15 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def custom_verifier_sync(self) -> str | None:
-        """Target ID of the _customVerifierSync reference (targets WorldValueSync[bool])."""
+        """Target ID of the _customVerifierSync reference (targets WorldValueSync[primitives.Bool])."""
         member = self.get_member("_customVerifierSync")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @custom_verifier_sync.setter
-    def custom_verifier_sync(self, target: str | WorldValueSync[bool] | None) -> None:
-        """Set the _customVerifierSync reference by target ID or WorldValueSync[bool] instance."""
+    def custom_verifier_sync(self, target: str | WorldValueSync[primitives.Bool] | None) -> None:
+        """Set the _customVerifierSync reference by target ID or WorldValueSync[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, WorldValueSync) else target  # type: ignore[assignment]
         member = self.get_member("_customVerifierSync")
         if isinstance(member, members.Reference):

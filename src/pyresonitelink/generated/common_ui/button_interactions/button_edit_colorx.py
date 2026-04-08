@@ -19,7 +19,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonEditColorX"
 
-    def __init__(self, target: str | IField[primitives.ColorX] | None = None, color_picker: str | ColorDialogInterface | None = None, continuous: bool | None = None, alpha: bool | None = None, hdr: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.ColorX] | None = None, color_picker: str | ColorDialogInterface | None = None, continuous: primitives.Bool | None = None, alpha: primitives.Bool | None = None, hdr: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -85,7 +85,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
             )
 
     @property
-    def continuous(self) -> bool | None:
+    def continuous(self) -> primitives.Bool | None:
         """The Continuous field value."""
         member = self.get_member("Continuous")
         if member is None:
@@ -93,7 +93,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @continuous.setter
-    def continuous(self, value: bool) -> None:
+    def continuous(self, value: primitives.Bool) -> None:
         """Set the Continuous field value."""
         member = self.get_member("Continuous")
         if member is not None:
@@ -104,7 +104,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
             )
 
     @property
-    def alpha(self) -> bool | None:
+    def alpha(self) -> primitives.Bool | None:
         """The Alpha field value."""
         member = self.get_member("Alpha")
         if member is None:
@@ -112,7 +112,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @alpha.setter
-    def alpha(self, value: bool) -> None:
+    def alpha(self, value: primitives.Bool) -> None:
         """Set the Alpha field value."""
         member = self.get_member("Alpha")
         if member is not None:
@@ -123,7 +123,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
             )
 
     @property
-    def hdr(self) -> bool | None:
+    def hdr(self) -> primitives.Bool | None:
         """The HDR field value."""
         member = self.get_member("HDR")
         if member is None:
@@ -131,7 +131,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @hdr.setter
-    def hdr(self, value: bool) -> None:
+    def hdr(self, value: primitives.Bool) -> None:
         """Set the HDR field value."""
         member = self.get_member("HDR")
         if member is not None:

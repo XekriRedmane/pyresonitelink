@@ -1,9 +1,8 @@
 """Generated component: AudioInputDeviceInfo."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class AudioInputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioInputDeviceInfo"
 
-    def __init__(self, device_index: np.int32 | None = None, device_name: str | None = None, is_app_default: bool | None = None, is_system_default: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, device_index: primitives.Int | None = None, device_name: primitives.String | None = None, is_app_default: primitives.Bool | None = None, is_system_default: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +38,7 @@ class AudioInputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.is_system_default = is_system_default
 
     @property
-    def device_index(self) -> np.int32 | None:
+    def device_index(self) -> primitives.Int | None:
         """The DeviceIndex field value."""
         member = self.get_member("DeviceIndex")
         if member is None:
@@ -47,7 +46,7 @@ class AudioInputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @device_index.setter
-    def device_index(self, value: np.int32) -> None:
+    def device_index(self, value: primitives.Int) -> None:
         """Set the DeviceIndex field value."""
         member = self.get_member("DeviceIndex")
         if member is not None:
@@ -58,7 +57,7 @@ class AudioInputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def device_name(self) -> str | None:
+    def device_name(self) -> primitives.String | None:
         """The DeviceName field value."""
         member = self.get_member("DeviceName")
         if member is None:
@@ -66,7 +65,7 @@ class AudioInputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @device_name.setter
-    def device_name(self, value: str) -> None:
+    def device_name(self, value: primitives.String) -> None:
         """Set the DeviceName field value."""
         member = self.get_member("DeviceName")
         if member is not None:
@@ -77,7 +76,7 @@ class AudioInputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_app_default(self) -> bool | None:
+    def is_app_default(self) -> primitives.Bool | None:
         """The IsAppDefault field value."""
         member = self.get_member("IsAppDefault")
         if member is None:
@@ -85,7 +84,7 @@ class AudioInputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_app_default.setter
-    def is_app_default(self, value: bool) -> None:
+    def is_app_default(self, value: primitives.Bool) -> None:
         """Set the IsAppDefault field value."""
         member = self.get_member("IsAppDefault")
         if member is not None:
@@ -96,7 +95,7 @@ class AudioInputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_system_default(self) -> bool | None:
+    def is_system_default(self) -> primitives.Bool | None:
         """The IsSystemDefault field value."""
         member = self.get_member("IsSystemDefault")
         if member is None:
@@ -104,7 +103,7 @@ class AudioInputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_system_default.setter
-    def is_system_default(self, value: bool) -> None:
+    def is_system_default(self, value: primitives.Bool) -> None:
         """Set the IsSystemDefault field value."""
         member = self.get_member("IsSystemDefault")
         if member is not None:

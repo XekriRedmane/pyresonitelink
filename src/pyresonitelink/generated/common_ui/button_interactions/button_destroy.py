@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.idestroyable import IDestroyable
@@ -17,7 +18,7 @@ class ButtonDestroy(GeneratedComponent, IButtonPressReceiver, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonDestroy"
 
-    def __init__(self, target: str | IDestroyable | None = None, find_object_root: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IDestroyable | None = None, find_object_root: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -53,7 +54,7 @@ class ButtonDestroy(GeneratedComponent, IButtonPressReceiver, IWorldEventReceive
             )
 
     @property
-    def find_object_root(self) -> bool | None:
+    def find_object_root(self) -> primitives.Bool | None:
         """The FindObjectRoot field value."""
         member = self.get_member("FindObjectRoot")
         if member is None:
@@ -61,7 +62,7 @@ class ButtonDestroy(GeneratedComponent, IButtonPressReceiver, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @find_object_root.setter
-    def find_object_root(self, value: bool) -> None:
+    def find_object_root(self, value: primitives.Bool) -> None:
         """Set the FindObjectRoot field value."""
         member = self.get_member("FindObjectRoot")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: LegacyPanel."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -26,7 +24,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyPanel"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, show_header: bool | None = None, show_handle: bool | None = None, padding: np.float32 | None = None, zpadding: np.float32 | None = None, thickness: np.float32 | None = None, color: primitives.ColorX | None = None, material: str | PBS_RimMetallic | None = None, panel_mesh: str | BevelPlaneMesh | None = None, panel_pos: str | IField[primitives.Float3] | None = None, handle_active: str | IField[bool] | None = None, header_active: str | IField[bool] | None = None, handle_mesh: str | BevelStripeMesh | None = None, handle_pos: str | IField[primitives.Float3] | None = None, handle_collider_size: str | IField[primitives.Float3] | None = None, header_title_mesh: str | BevelStripeMesh | None = None, header_button_mesh: str | BevelStripeMesh | None = None, header_collider: str | IField[primitives.Float3] | None = None, header_pos: str | IField[primitives.Float3] | None = None, header_title_pos: str | IField[primitives.Float3] | None = None, title: str | None = None, title_text: str | TextRenderer | None = None, indicate_private: bool | None = None, title_pos: str | IField[primitives.Float3] | None = None, title_bounds: str | IField[primitives.Float2] | None = None, content_slot: str | Slot | None = None, header_root: str | Slot | None = None, handle_anchor_point: str | Slot | None = None, handle_anchor_point_position: str | IField[primitives.Float3] | None = None, highlighted_button: str | TitleButton | None = None, pin_button: str | TitleButton | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, show_header: primitives.Bool | None = None, show_handle: primitives.Bool | None = None, padding: primitives.Float | None = None, zpadding: primitives.Float | None = None, thickness: primitives.Float | None = None, color: primitives.ColorX | None = None, material: str | PBS_RimMetallic | None = None, panel_mesh: str | BevelPlaneMesh | None = None, panel_pos: str | IField[primitives.Float3] | None = None, handle_active: str | IField[primitives.Bool] | None = None, header_active: str | IField[primitives.Bool] | None = None, handle_mesh: str | BevelStripeMesh | None = None, handle_pos: str | IField[primitives.Float3] | None = None, handle_collider_size: str | IField[primitives.Float3] | None = None, header_title_mesh: str | BevelStripeMesh | None = None, header_button_mesh: str | BevelStripeMesh | None = None, header_collider: str | IField[primitives.Float3] | None = None, header_pos: str | IField[primitives.Float3] | None = None, header_title_pos: str | IField[primitives.Float3] | None = None, title: primitives.String | None = None, title_text: str | TextRenderer | None = None, indicate_private: primitives.Bool | None = None, title_pos: str | IField[primitives.Float3] | None = None, title_bounds: str | IField[primitives.Float2] | None = None, content_slot: str | Slot | None = None, header_root: str | Slot | None = None, handle_anchor_point: str | Slot | None = None, handle_anchor_point_position: str | IField[primitives.Float3] | None = None, highlighted_button: str | TitleButton | None = None, pin_button: str | TitleButton | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -155,7 +153,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -163,7 +161,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -174,7 +172,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -182,7 +180,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -193,7 +191,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def show_header(self) -> bool | None:
+    def show_header(self) -> primitives.Bool | None:
         """The ShowHeader field value."""
         member = self.get_member("ShowHeader")
         if member is None:
@@ -201,7 +199,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @show_header.setter
-    def show_header(self, value: bool) -> None:
+    def show_header(self, value: primitives.Bool) -> None:
         """Set the ShowHeader field value."""
         member = self.get_member("ShowHeader")
         if member is not None:
@@ -212,7 +210,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def show_handle(self) -> bool | None:
+    def show_handle(self) -> primitives.Bool | None:
         """The ShowHandle field value."""
         member = self.get_member("ShowHandle")
         if member is None:
@@ -220,7 +218,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @show_handle.setter
-    def show_handle(self, value: bool) -> None:
+    def show_handle(self, value: primitives.Bool) -> None:
         """Set the ShowHandle field value."""
         member = self.get_member("ShowHandle")
         if member is not None:
@@ -231,7 +229,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def padding(self) -> np.float32 | None:
+    def padding(self) -> primitives.Float | None:
         """The Padding field value."""
         member = self.get_member("Padding")
         if member is None:
@@ -239,7 +237,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @padding.setter
-    def padding(self, value: np.float32) -> None:
+    def padding(self, value: primitives.Float) -> None:
         """Set the Padding field value."""
         member = self.get_member("Padding")
         if member is not None:
@@ -250,7 +248,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def zpadding(self) -> np.float32 | None:
+    def zpadding(self) -> primitives.Float | None:
         """The ZPadding field value."""
         member = self.get_member("ZPadding")
         if member is None:
@@ -258,7 +256,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @zpadding.setter
-    def zpadding(self, value: np.float32) -> None:
+    def zpadding(self, value: primitives.Float) -> None:
         """Set the ZPadding field value."""
         member = self.get_member("ZPadding")
         if member is not None:
@@ -269,7 +267,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -277,7 +275,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -397,15 +395,15 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def handle_active(self) -> str | None:
-        """Target ID of the _handleActive reference (targets IField[bool])."""
+        """Target ID of the _handleActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_handleActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @handle_active.setter
-    def handle_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _handleActive reference by target ID or IField[bool] instance."""
+    def handle_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _handleActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_handleActive")
         if isinstance(member, members.Reference):
@@ -418,15 +416,15 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def header_active(self) -> str | None:
-        """Target ID of the _headerActive reference (targets IField[bool])."""
+        """Target ID of the _headerActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_headerActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @header_active.setter
-    def header_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _headerActive reference by target ID or IField[bool] instance."""
+    def header_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _headerActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_headerActive")
         if isinstance(member, members.Reference):
@@ -606,7 +604,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def title(self) -> str | None:
+    def title(self) -> primitives.String | None:
         """The _title field value."""
         member = self.get_member("_title")
         if member is None:
@@ -614,7 +612,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @title.setter
-    def title(self, value: str) -> None:
+    def title(self, value: primitives.String) -> None:
         """Set the _title field value."""
         member = self.get_member("_title")
         if member is not None:
@@ -646,7 +644,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def indicate_private(self) -> bool | None:
+    def indicate_private(self) -> primitives.Bool | None:
         """The _indicatePrivate field value."""
         member = self.get_member("_indicatePrivate")
         if member is None:
@@ -654,7 +652,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @indicate_private.setter
-    def indicate_private(self, value: bool) -> None:
+    def indicate_private(self, value: primitives.Bool) -> None:
         """Set the _indicatePrivate field value."""
         member = self.get_member("_indicatePrivate")
         if member is not None:

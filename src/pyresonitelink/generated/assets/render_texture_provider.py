@@ -1,7 +1,5 @@
 """Generated component: RenderTextureProvider."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class RenderTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RenderTextureProvider"
 
-    def __init__(self, size: primitives.Int2 | None = None, depth: np.int32 | None = None, anisotropic_level: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, size: primitives.Int2 | None = None, depth: primitives.Int | None = None, anisotropic_level: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,7 +55,7 @@ class RenderTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspe
             )
 
     @property
-    def depth(self) -> np.int32 | None:
+    def depth(self) -> primitives.Int | None:
         """The Depth field value."""
         member = self.get_member("Depth")
         if member is None:
@@ -65,7 +63,7 @@ class RenderTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @depth.setter
-    def depth(self, value: np.int32) -> None:
+    def depth(self, value: primitives.Int) -> None:
         """Set the Depth field value."""
         member = self.get_member("Depth")
         if member is not None:
@@ -89,7 +87,7 @@ class RenderTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspe
         self.set_member("FilterMode", value)
 
     @property
-    def anisotropic_level(self) -> np.int32 | None:
+    def anisotropic_level(self) -> primitives.Int | None:
         """The AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is None:
@@ -97,7 +95,7 @@ class RenderTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @anisotropic_level.setter
-    def anisotropic_level(self, value: np.int32) -> None:
+    def anisotropic_level(self, value: primitives.Int) -> None:
         """Set the AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is not None:

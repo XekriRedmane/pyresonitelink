@@ -1,8 +1,7 @@
 """Generated component: DesktopTextureProvider."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
@@ -18,7 +17,7 @@ class DesktopTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInsp
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopTextureProvider"
 
-    def __init__(self, display_index: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, display_index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +29,7 @@ class DesktopTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInsp
             self.display_index = display_index
 
     @property
-    def display_index(self) -> np.int32 | None:
+    def display_index(self) -> primitives.Int | None:
         """The DisplayIndex field value."""
         member = self.get_member("DisplayIndex")
         if member is None:
@@ -38,7 +37,7 @@ class DesktopTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInsp
         return getattr(member, 'value', None)
 
     @display_index.setter
-    def display_index(self, value: np.int32) -> None:
+    def display_index(self, value: primitives.Int) -> None:
         """Set the DisplayIndex field value."""
         member = self.get_member("DisplayIndex")
         if member is not None:

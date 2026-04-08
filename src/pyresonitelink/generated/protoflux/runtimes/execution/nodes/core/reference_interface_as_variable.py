@@ -20,7 +20,7 @@ class ReferenceInterfaceAsVariable(GenericComponent[T], IVariable, INodeObjectOu
 
     Parameterize with a value type::
 
-        ReferenceInterfaceAsVariable[np.float32]
+        ReferenceInterfaceAsVariable[primitives.Float]
         ReferenceInterfaceAsVariable[primitives.Float3]
     """
 

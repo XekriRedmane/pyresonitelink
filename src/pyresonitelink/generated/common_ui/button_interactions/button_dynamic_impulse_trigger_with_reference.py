@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.slot import Slot
@@ -17,14 +18,14 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     Parameterize with a value type::
 
-        ButtonDynamicImpulseTriggerWithReference[np.float32]
+        ButtonDynamicImpulseTriggerWithReference[primitives.Float]
         ButtonDynamicImpulseTriggerWithReference[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonDynamicImpulseTriggerWithReference<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ButtonDynamicImpulseTriggerWithReference<>"
 
-    def __init__(self, target: str | Slot | None = None, exclude_disabled: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | Slot | None = None, exclude_disabled: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,7 +61,7 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
             )
 
     @property
-    def exclude_disabled(self) -> bool | None:
+    def exclude_disabled(self) -> primitives.Bool | None:
         """The ExcludeDisabled field value."""
         member = self.get_member("ExcludeDisabled")
         if member is None:
@@ -68,7 +69,7 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
         return getattr(member, 'value', None)
 
     @exclude_disabled.setter
-    def exclude_disabled(self, value: bool) -> None:
+    def exclude_disabled(self, value: primitives.Bool) -> None:
         """Set the ExcludeDisabled field value."""
         member = self.get_member("ExcludeDisabled")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: CubemapAssetMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,7 +19,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CubemapAssetMetadata"
 
-    def __init__(self, cubemap: str | IAssetProvider[Cubemap] | None = None, size: np.int32 | None = None, has_mip_maps: bool | None = None, mip_map_count: np.int32 | None = None, memory_bytes: np.int64 | None = None, formatted_memory_bytes: str | None = None, actual_loaded_variant: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, cubemap: str | IAssetProvider[Cubemap] | None = None, size: primitives.Int | None = None, has_mip_maps: primitives.Bool | None = None, mip_map_count: primitives.Int | None = None, memory_bytes: primitives.Long | None = None, formatted_memory_bytes: primitives.String | None = None, actual_loaded_variant: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -71,7 +70,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def size(self) -> np.int32 | None:
+    def size(self) -> primitives.Int | None:
         """The Size field value."""
         member = self.get_member("Size")
         if member is None:
@@ -79,7 +78,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @size.setter
-    def size(self, value: np.int32) -> None:
+    def size(self, value: primitives.Int) -> None:
         """Set the Size field value."""
         member = self.get_member("Size")
         if member is not None:
@@ -90,7 +89,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def has_mip_maps(self) -> bool | None:
+    def has_mip_maps(self) -> primitives.Bool | None:
         """The HasMipMaps field value."""
         member = self.get_member("HasMipMaps")
         if member is None:
@@ -98,7 +97,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_mip_maps.setter
-    def has_mip_maps(self, value: bool) -> None:
+    def has_mip_maps(self, value: primitives.Bool) -> None:
         """Set the HasMipMaps field value."""
         member = self.get_member("HasMipMaps")
         if member is not None:
@@ -109,7 +108,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def mip_map_count(self) -> np.int32 | None:
+    def mip_map_count(self) -> primitives.Int | None:
         """The MipMapCount field value."""
         member = self.get_member("MipMapCount")
         if member is None:
@@ -117,7 +116,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @mip_map_count.setter
-    def mip_map_count(self, value: np.int32) -> None:
+    def mip_map_count(self, value: primitives.Int) -> None:
         """Set the MipMapCount field value."""
         member = self.get_member("MipMapCount")
         if member is not None:
@@ -128,7 +127,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def memory_bytes(self) -> np.int64 | None:
+    def memory_bytes(self) -> primitives.Long | None:
         """The MemoryBytes field value."""
         member = self.get_member("MemoryBytes")
         if member is None:
@@ -136,7 +135,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @memory_bytes.setter
-    def memory_bytes(self, value: np.int64) -> None:
+    def memory_bytes(self, value: primitives.Long) -> None:
         """Set the MemoryBytes field value."""
         member = self.get_member("MemoryBytes")
         if member is not None:
@@ -147,7 +146,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def formatted_memory_bytes(self) -> str | None:
+    def formatted_memory_bytes(self) -> primitives.String | None:
         """The FormattedMemoryBytes field value."""
         member = self.get_member("FormattedMemoryBytes")
         if member is None:
@@ -155,7 +154,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @formatted_memory_bytes.setter
-    def formatted_memory_bytes(self, value: str) -> None:
+    def formatted_memory_bytes(self, value: primitives.String) -> None:
         """Set the FormattedMemoryBytes field value."""
         member = self.get_member("FormattedMemoryBytes")
         if member is not None:
@@ -179,7 +178,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("Format", value)
 
     @property
-    def actual_loaded_variant(self) -> str | None:
+    def actual_loaded_variant(self) -> primitives.String | None:
         """The ActualLoadedVariant field value."""
         member = self.get_member("ActualLoadedVariant")
         if member is None:
@@ -187,7 +186,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @actual_loaded_variant.setter
-    def actual_loaded_variant(self, value: str) -> None:
+    def actual_loaded_variant(self, value: primitives.String) -> None:
         """Set the ActualLoadedVariant field value."""
         member = self.get_member("ActualLoadedVariant")
         if member is not None:

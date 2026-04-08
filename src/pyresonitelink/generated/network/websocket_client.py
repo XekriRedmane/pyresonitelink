@@ -1,9 +1,8 @@
 """Generated component: WebsocketClient."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WebsocketClient"
 
-    def __init__(self, url: str | None = None, access_reason: str | None = None, connect_retry_interval: np.float32 | None = None, is_connected: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, access_reason: primitives.String | None = None, connect_retry_interval: primitives.Float | None = None, is_connected: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -71,7 +70,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("HandlingUser", value)
 
     @property
-    def access_reason(self) -> str | None:
+    def access_reason(self) -> primitives.String | None:
         """The AccessReason field value."""
         member = self.get_member("AccessReason")
         if member is None:
@@ -79,7 +78,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @access_reason.setter
-    def access_reason(self, value: str) -> None:
+    def access_reason(self, value: primitives.String) -> None:
         """Set the AccessReason field value."""
         member = self.get_member("AccessReason")
         if member is not None:
@@ -90,7 +89,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def connect_retry_interval(self) -> np.float32 | None:
+    def connect_retry_interval(self) -> primitives.Float | None:
         """The ConnectRetryInterval field value."""
         member = self.get_member("ConnectRetryInterval")
         if member is None:
@@ -98,7 +97,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @connect_retry_interval.setter
-    def connect_retry_interval(self, value: np.float32) -> None:
+    def connect_retry_interval(self, value: primitives.Float) -> None:
         """Set the ConnectRetryInterval field value."""
         member = self.get_member("ConnectRetryInterval")
         if member is not None:
@@ -109,7 +108,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_connected(self) -> bool | None:
+    def is_connected(self) -> primitives.Bool | None:
         """The IsConnected field value."""
         member = self.get_member("IsConnected")
         if member is None:
@@ -117,7 +116,7 @@ class WebsocketClient(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_connected.setter
-    def is_connected(self, value: bool) -> None:
+    def is_connected(self, value: primitives.Bool) -> None:
         """Set the IsConnected field value."""
         member = self.get_member("IsConnected")
         if member is not None:

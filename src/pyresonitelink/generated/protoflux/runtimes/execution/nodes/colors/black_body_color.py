@@ -1,8 +1,7 @@
 """Generated component: BlackBodyColor."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class BlackBodyColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.BlackBodyColor"
 
-    def __init__(self, temperature: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, temperature: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,15 +33,15 @@ class BlackBodyColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def temperature(self) -> str | None:
-        """Target ID of the Temperature reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Temperature reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Temperature")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @temperature.setter
-    def temperature(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Temperature reference by target ID or INodeValueOutput[np.float32] instance."""
+    def temperature(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Temperature reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Temperature")
         if isinstance(member, members.Reference):

@@ -1,9 +1,8 @@
 """Generated component: MicrophoneTool."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -24,7 +23,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MicrophoneTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, quality: np.float32 | None = None, recording_user: str | User | None = None, is_recording: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, quality: primitives.Float | None = None, recording_user: str | User | None = None, is_recording: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -94,7 +93,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -102,7 +101,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -113,7 +112,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -121,7 +120,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -132,7 +131,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -140,7 +139,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -172,7 +171,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -180,7 +179,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -204,7 +203,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
         self.set_member("Format", value)
 
     @property
-    def quality(self) -> np.float32 | None:
+    def quality(self) -> primitives.Float | None:
         """The Quality field value."""
         member = self.get_member("Quality")
         if member is None:
@@ -212,7 +211,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
         return getattr(member, 'value', None)
 
     @quality.setter
-    def quality(self, value: np.float32) -> None:
+    def quality(self, value: primitives.Float) -> None:
         """Set the Quality field value."""
         member = self.get_member("Quality")
         if member is not None:
@@ -270,7 +269,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
             )
 
     @property
-    def is_recording(self) -> bool | None:
+    def is_recording(self) -> primitives.Bool | None:
         """The IsRecording field value."""
         member = self.get_member("IsRecording")
         if member is None:
@@ -278,7 +277,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
         return getattr(member, 'value', None)
 
     @is_recording.setter
-    def is_recording(self, value: bool) -> None:
+    def is_recording(self, value: primitives.Bool) -> None:
         """Set the IsRecording field value."""
         member = self.get_member("IsRecording")
         if member is not None:

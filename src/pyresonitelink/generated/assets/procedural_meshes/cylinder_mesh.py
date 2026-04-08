@@ -1,7 +1,5 @@
 """Generated component: CylinderMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CylinderMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, height: np.float32 | None = None, radius: np.float32 | None = None, sides: np.int32 | None = None, caps: bool | None = None, flat_shading: bool | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, height: primitives.Float | None = None, radius: primitives.Float | None = None, sides: primitives.Int | None = None, caps: primitives.Bool | None = None, flat_shading: primitives.Bool | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,7 +55,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.uv_scale = uv_scale
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -65,7 +63,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -76,7 +74,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -84,7 +82,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -127,7 +125,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         self.set_member("Profile", value)
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -135,7 +133,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -146,7 +144,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -154,7 +152,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -165,7 +163,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def sides(self) -> np.int32 | None:
+    def sides(self) -> primitives.Int | None:
         """The Sides field value."""
         member = self.get_member("Sides")
         if member is None:
@@ -173,7 +171,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @sides.setter
-    def sides(self, value: np.int32) -> None:
+    def sides(self, value: primitives.Int) -> None:
         """Set the Sides field value."""
         member = self.get_member("Sides")
         if member is not None:
@@ -184,7 +182,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def caps(self) -> bool | None:
+    def caps(self) -> primitives.Bool | None:
         """The Caps field value."""
         member = self.get_member("Caps")
         if member is None:
@@ -192,7 +190,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @caps.setter
-    def caps(self, value: bool) -> None:
+    def caps(self, value: primitives.Bool) -> None:
         """Set the Caps field value."""
         member = self.get_member("Caps")
         if member is not None:
@@ -203,7 +201,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def flat_shading(self) -> bool | None:
+    def flat_shading(self) -> primitives.Bool | None:
         """The FlatShading field value."""
         member = self.get_member("FlatShading")
         if member is None:
@@ -211,7 +209,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @flat_shading.setter
-    def flat_shading(self, value: bool) -> None:
+    def flat_shading(self, value: primitives.Bool) -> None:
         """Set the FlatShading field value."""
         member = self.get_member("FlatShading")
         if member is not None:

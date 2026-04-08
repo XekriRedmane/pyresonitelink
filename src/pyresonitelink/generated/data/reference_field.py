@@ -14,7 +14,7 @@ class ReferenceField(GenericComponent[T], IReferenceSource[T], IWorldEventReceiv
 
     Parameterize with a value type::
 
-        ReferenceField[np.float32]
+        ReferenceField[primitives.Float]
         ReferenceField[primitives.Float3]
     """
 

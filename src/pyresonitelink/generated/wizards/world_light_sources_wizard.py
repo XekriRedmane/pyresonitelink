@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +20,7 @@ class WorldLightSourcesWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldLightSourcesWizard"
 
-    def __init__(self, root: str | Slot | None = None, process_point_lights: bool | None = None, process_spot_lights: bool | None = None, process_directional_lights: bool | None = None, process_disabled: bool | None = None, tag: str | TextField | None = None, intensity_field: str | FloatTextEditorParser | None = None, range_field: str | FloatTextEditorParser | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, root: str | Slot | None = None, process_point_lights: primitives.Bool | None = None, process_spot_lights: primitives.Bool | None = None, process_directional_lights: primitives.Bool | None = None, process_disabled: primitives.Bool | None = None, tag: str | TextField | None = None, intensity_field: str | FloatTextEditorParser | None = None, range_field: str | FloatTextEditorParser | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -73,7 +74,7 @@ class WorldLightSourcesWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
             )
 
     @property
-    def process_point_lights(self) -> bool | None:
+    def process_point_lights(self) -> primitives.Bool | None:
         """The ProcessPointLights field value."""
         member = self.get_member("ProcessPointLights")
         if member is None:
@@ -81,7 +82,7 @@ class WorldLightSourcesWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
         return getattr(member, 'value', None)
 
     @process_point_lights.setter
-    def process_point_lights(self, value: bool) -> None:
+    def process_point_lights(self, value: primitives.Bool) -> None:
         """Set the ProcessPointLights field value."""
         member = self.get_member("ProcessPointLights")
         if member is not None:
@@ -92,7 +93,7 @@ class WorldLightSourcesWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
             )
 
     @property
-    def process_spot_lights(self) -> bool | None:
+    def process_spot_lights(self) -> primitives.Bool | None:
         """The ProcessSpotLights field value."""
         member = self.get_member("ProcessSpotLights")
         if member is None:
@@ -100,7 +101,7 @@ class WorldLightSourcesWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
         return getattr(member, 'value', None)
 
     @process_spot_lights.setter
-    def process_spot_lights(self, value: bool) -> None:
+    def process_spot_lights(self, value: primitives.Bool) -> None:
         """Set the ProcessSpotLights field value."""
         member = self.get_member("ProcessSpotLights")
         if member is not None:
@@ -111,7 +112,7 @@ class WorldLightSourcesWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
             )
 
     @property
-    def process_directional_lights(self) -> bool | None:
+    def process_directional_lights(self) -> primitives.Bool | None:
         """The ProcessDirectionalLights field value."""
         member = self.get_member("ProcessDirectionalLights")
         if member is None:
@@ -119,7 +120,7 @@ class WorldLightSourcesWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
         return getattr(member, 'value', None)
 
     @process_directional_lights.setter
-    def process_directional_lights(self, value: bool) -> None:
+    def process_directional_lights(self, value: primitives.Bool) -> None:
         """Set the ProcessDirectionalLights field value."""
         member = self.get_member("ProcessDirectionalLights")
         if member is not None:
@@ -130,7 +131,7 @@ class WorldLightSourcesWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
             )
 
     @property
-    def process_disabled(self) -> bool | None:
+    def process_disabled(self) -> primitives.Bool | None:
         """The ProcessDisabled field value."""
         member = self.get_member("ProcessDisabled")
         if member is None:
@@ -138,7 +139,7 @@ class WorldLightSourcesWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
         return getattr(member, 'value', None)
 
     @process_disabled.setter
-    def process_disabled(self, value: bool) -> None:
+    def process_disabled(self, value: primitives.Bool) -> None:
         """Set the ProcessDisabled field value."""
         member = self.get_member("ProcessDisabled")
         if member is not None:

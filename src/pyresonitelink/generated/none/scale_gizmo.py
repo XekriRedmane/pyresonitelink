@@ -1,7 +1,5 @@
 """Generated component: ScaleGizmo."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleGizmo"
 
-    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_scale: str | IField[primitives.Float3] | None = None, handle_length: np.float32 | None = None, x_slot: str | Slot | None = None, y_slot: str | Slot | None = None, z_slot: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: primitives.Bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_scale: str | IField[primitives.Float3] | None = None, handle_length: primitives.Float | None = None, x_slot: str | Slot | None = None, y_slot: str | Slot | None = None, z_slot: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -94,7 +92,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
             )
 
     @property
-    def auto_position_at_target_slot(self) -> bool | None:
+    def auto_position_at_target_slot(self) -> primitives.Bool | None:
         """The AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
@@ -102,7 +100,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_position_at_target_slot.setter
-    def auto_position_at_target_slot(self, value: bool) -> None:
+    def auto_position_at_target_slot(self, value: primitives.Bool) -> None:
         """Set the AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is not None:
@@ -281,7 +279,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
             )
 
     @property
-    def handle_length(self) -> np.float32 | None:
+    def handle_length(self) -> primitives.Float | None:
         """The HandleLength field value."""
         member = self.get_member("HandleLength")
         if member is None:
@@ -289,7 +287,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @handle_length.setter
-    def handle_length(self, value: np.float32) -> None:
+    def handle_length(self, value: primitives.Float) -> None:
         """Set the HandleLength field value."""
         member = self.get_member("HandleLength")
         if member is not None:

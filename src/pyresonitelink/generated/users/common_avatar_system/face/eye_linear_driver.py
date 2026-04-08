@@ -1,7 +1,5 @@
 """Generated component: EyeLinearDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.EyeLinearDriver"
 
-    def __init__(self, eye_manager: str | EyeManager | None = None, projection_plane_size: primitives.Float2 | None = None, projection_point_distance: np.float32 | None = None, position_offset_center: primitives.Float2 | None = None, position_offset_range: primitives.Float2 | None = None, minimum_target_point_distance: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, eye_manager: str | EyeManager | None = None, projection_plane_size: primitives.Float2 | None = None, projection_point_distance: primitives.Float | None = None, position_offset_center: primitives.Float2 | None = None, position_offset_range: primitives.Float2 | None = None, minimum_target_point_distance: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -87,7 +85,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def projection_point_distance(self) -> np.float32 | None:
+    def projection_point_distance(self) -> primitives.Float | None:
         """The ProjectionPointDistance field value."""
         member = self.get_member("ProjectionPointDistance")
         if member is None:
@@ -95,7 +93,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @projection_point_distance.setter
-    def projection_point_distance(self, value: np.float32) -> None:
+    def projection_point_distance(self, value: primitives.Float) -> None:
         """Set the ProjectionPointDistance field value."""
         member = self.get_member("ProjectionPointDistance")
         if member is not None:
@@ -144,7 +142,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def minimum_target_point_distance(self) -> np.float32 | None:
+    def minimum_target_point_distance(self) -> primitives.Float | None:
         """The MinimumTargetPointDistance field value."""
         member = self.get_member("MinimumTargetPointDistance")
         if member is None:
@@ -152,7 +150,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @minimum_target_point_distance.setter
-    def minimum_target_point_distance(self, value: np.float32) -> None:
+    def minimum_target_point_distance(self, value: primitives.Float) -> None:
         """Set the MinimumTargetPointDistance field value."""
         member = self.get_member("MinimumTargetPointDistance")
         if member is not None:

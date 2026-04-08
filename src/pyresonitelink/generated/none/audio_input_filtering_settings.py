@@ -1,8 +1,7 @@
 """Generated component: AudioInputFilteringSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioInputFilteringSettings"
 
-    def __init__(self, use_voice_normalization: bool | None = None, normalization_threshold: np.float32 | None = None, use_noise_suppression: bool | None = None, noise_gate_threshold: np.float32 | None = None, noise_gate_attack: np.float32 | None = None, noise_gate_hold: np.float32 | None = None, noise_gate_release: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_voice_normalization: primitives.Bool | None = None, normalization_threshold: primitives.Float | None = None, use_noise_suppression: primitives.Bool | None = None, noise_gate_threshold: primitives.Float | None = None, noise_gate_attack: primitives.Float | None = None, noise_gate_hold: primitives.Float | None = None, noise_gate_release: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +44,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
             self.noise_gate_release = noise_gate_release
 
     @property
-    def use_voice_normalization(self) -> bool | None:
+    def use_voice_normalization(self) -> primitives.Bool | None:
         """The UseVoiceNormalization field value."""
         member = self.get_member("UseVoiceNormalization")
         if member is None:
@@ -53,7 +52,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_voice_normalization.setter
-    def use_voice_normalization(self, value: bool) -> None:
+    def use_voice_normalization(self, value: primitives.Bool) -> None:
         """Set the UseVoiceNormalization field value."""
         member = self.get_member("UseVoiceNormalization")
         if member is not None:
@@ -64,7 +63,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def normalization_threshold(self) -> np.float32 | None:
+    def normalization_threshold(self) -> primitives.Float | None:
         """The NormalizationThreshold field value."""
         member = self.get_member("NormalizationThreshold")
         if member is None:
@@ -72,7 +71,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @normalization_threshold.setter
-    def normalization_threshold(self, value: np.float32) -> None:
+    def normalization_threshold(self, value: primitives.Float) -> None:
         """Set the NormalizationThreshold field value."""
         member = self.get_member("NormalizationThreshold")
         if member is not None:
@@ -83,7 +82,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def use_noise_suppression(self) -> bool | None:
+    def use_noise_suppression(self) -> primitives.Bool | None:
         """The UseNoiseSuppression field value."""
         member = self.get_member("UseNoiseSuppression")
         if member is None:
@@ -91,7 +90,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_noise_suppression.setter
-    def use_noise_suppression(self, value: bool) -> None:
+    def use_noise_suppression(self, value: primitives.Bool) -> None:
         """Set the UseNoiseSuppression field value."""
         member = self.get_member("UseNoiseSuppression")
         if member is not None:
@@ -102,7 +101,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def noise_gate_threshold(self) -> np.float32 | None:
+    def noise_gate_threshold(self) -> primitives.Float | None:
         """The NoiseGateThreshold field value."""
         member = self.get_member("NoiseGateThreshold")
         if member is None:
@@ -110,7 +109,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @noise_gate_threshold.setter
-    def noise_gate_threshold(self, value: np.float32) -> None:
+    def noise_gate_threshold(self, value: primitives.Float) -> None:
         """Set the NoiseGateThreshold field value."""
         member = self.get_member("NoiseGateThreshold")
         if member is not None:
@@ -121,7 +120,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def noise_gate_attack(self) -> np.float32 | None:
+    def noise_gate_attack(self) -> primitives.Float | None:
         """The NoiseGateAttack field value."""
         member = self.get_member("NoiseGateAttack")
         if member is None:
@@ -129,7 +128,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @noise_gate_attack.setter
-    def noise_gate_attack(self, value: np.float32) -> None:
+    def noise_gate_attack(self, value: primitives.Float) -> None:
         """Set the NoiseGateAttack field value."""
         member = self.get_member("NoiseGateAttack")
         if member is not None:
@@ -140,7 +139,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def noise_gate_hold(self) -> np.float32 | None:
+    def noise_gate_hold(self) -> primitives.Float | None:
         """The NoiseGateHold field value."""
         member = self.get_member("NoiseGateHold")
         if member is None:
@@ -148,7 +147,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @noise_gate_hold.setter
-    def noise_gate_hold(self, value: np.float32) -> None:
+    def noise_gate_hold(self, value: primitives.Float) -> None:
         """Set the NoiseGateHold field value."""
         member = self.get_member("NoiseGateHold")
         if member is not None:
@@ -159,7 +158,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def noise_gate_release(self) -> np.float32 | None:
+    def noise_gate_release(self) -> primitives.Float | None:
         """The NoiseGateRelease field value."""
         member = self.get_member("NoiseGateRelease")
         if member is None:
@@ -167,7 +166,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @noise_gate_release.setter
-    def noise_gate_release(self, value: np.float32) -> None:
+    def noise_gate_release(self, value: primitives.Float) -> None:
         """Set the NoiseGateRelease field value."""
         member = self.get_member("NoiseGateRelease")
         if member is not None:

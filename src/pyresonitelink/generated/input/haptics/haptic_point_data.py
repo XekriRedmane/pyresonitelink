@@ -1,9 +1,8 @@
 """Generated component: HapticPointData."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HapticPointData"
 
-    def __init__(self, index: np.int32 | None = None, force: np.float32 | None = None, temperature: np.float32 | None = None, pain: np.float32 | None = None, vibration: np.float32 | None = None, total_activation_intensity: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, index: primitives.Int | None = None, force: primitives.Float | None = None, temperature: primitives.Float | None = None, pain: primitives.Float | None = None, vibration: primitives.Float | None = None, total_activation_intensity: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +44,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.total_activation_intensity = total_activation_intensity
 
     @property
-    def index(self) -> np.int32 | None:
+    def index(self) -> primitives.Int | None:
         """The Index field value."""
         member = self.get_member("Index")
         if member is None:
@@ -53,7 +52,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @index.setter
-    def index(self, value: np.int32) -> None:
+    def index(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:
@@ -77,7 +76,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("User", value)
 
     @property
-    def force(self) -> np.float32 | None:
+    def force(self) -> primitives.Float | None:
         """The Force field value."""
         member = self.get_member("Force")
         if member is None:
@@ -85,7 +84,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @force.setter
-    def force(self, value: np.float32) -> None:
+    def force(self, value: primitives.Float) -> None:
         """Set the Force field value."""
         member = self.get_member("Force")
         if member is not None:
@@ -96,7 +95,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def temperature(self) -> np.float32 | None:
+    def temperature(self) -> primitives.Float | None:
         """The Temperature field value."""
         member = self.get_member("Temperature")
         if member is None:
@@ -104,7 +103,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @temperature.setter
-    def temperature(self, value: np.float32) -> None:
+    def temperature(self, value: primitives.Float) -> None:
         """Set the Temperature field value."""
         member = self.get_member("Temperature")
         if member is not None:
@@ -115,7 +114,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def pain(self) -> np.float32 | None:
+    def pain(self) -> primitives.Float | None:
         """The Pain field value."""
         member = self.get_member("Pain")
         if member is None:
@@ -123,7 +122,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @pain.setter
-    def pain(self, value: np.float32) -> None:
+    def pain(self, value: primitives.Float) -> None:
         """Set the Pain field value."""
         member = self.get_member("Pain")
         if member is not None:
@@ -134,7 +133,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def vibration(self) -> np.float32 | None:
+    def vibration(self) -> primitives.Float | None:
         """The Vibration field value."""
         member = self.get_member("Vibration")
         if member is None:
@@ -142,7 +141,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @vibration.setter
-    def vibration(self, value: np.float32) -> None:
+    def vibration(self, value: primitives.Float) -> None:
         """Set the Vibration field value."""
         member = self.get_member("Vibration")
         if member is not None:
@@ -153,7 +152,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def total_activation_intensity(self) -> np.float32 | None:
+    def total_activation_intensity(self) -> primitives.Float | None:
         """The TotalActivationIntensity field value."""
         member = self.get_member("TotalActivationIntensity")
         if member is None:
@@ -161,7 +160,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @total_activation_intensity.setter
-    def total_activation_intensity(self, value: np.float32) -> None:
+    def total_activation_intensity(self, value: primitives.Float) -> None:
         """Set the TotalActivationIntensity field value."""
         member = self.get_member("TotalActivationIntensity")
         if member is not None:

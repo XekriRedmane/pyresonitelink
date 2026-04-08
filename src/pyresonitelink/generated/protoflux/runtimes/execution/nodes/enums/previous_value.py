@@ -21,7 +21,7 @@ class PreviousValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        PreviousValue[np.float32]
+        PreviousValue[primitives.Float]
         PreviousValue[primitives.Float3]
     """
 

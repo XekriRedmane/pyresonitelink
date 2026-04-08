@@ -14,7 +14,7 @@ class FieldHookBase+Proxy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        FieldHookBase+Proxy[np.float32]
+        FieldHookBase+Proxy[primitives.Float]
         FieldHookBase+Proxy[primitives.Float3]
     """
 

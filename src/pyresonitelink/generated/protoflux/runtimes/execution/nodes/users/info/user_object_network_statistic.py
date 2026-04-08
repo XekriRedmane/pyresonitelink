@@ -1,6 +1,7 @@
 """Generated component: UserObjectNetworkStatistic."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -19,14 +20,14 @@ class UserObjectNetworkStatistic(GenericComponent[T], INodeObjectOutput[T], IExe
 
     Parameterize with a value type::
 
-        UserObjectNetworkStatistic[np.float32]
+        UserObjectNetworkStatistic[primitives.Float]
         UserObjectNetworkStatistic[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserObjectNetworkStatistic<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserObjectNetworkStatistic<>"
 
-    def __init__(self, name: str | INodeObjectOutput[str] | None = None, user: str | INodeObjectOutput[User] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, name: str | INodeObjectOutput[primitives.String] | None = None, user: str | INodeObjectOutput[User] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,15 +43,15 @@ class UserObjectNetworkStatistic(GenericComponent[T], INodeObjectOutput[T], IExe
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @name.setter
-    def name(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Name reference by target ID or INodeObjectOutput[str] instance."""
+    def name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Name reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Name")
         if isinstance(member, members.Reference):

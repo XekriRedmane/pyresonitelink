@@ -1,9 +1,8 @@
 """Generated component: AxisAligner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class AxisAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AxisAligner"
 
-    def __init__(self, auto_add_children: bool | None = None, separation: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_add_children: primitives.Bool | None = None, separation: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class AxisAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.separation = separation
 
     @property
-    def auto_add_children(self) -> bool | None:
+    def auto_add_children(self) -> primitives.Bool | None:
         """The AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is None:
@@ -41,7 +40,7 @@ class AxisAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_add_children.setter
-    def auto_add_children(self, value: bool) -> None:
+    def auto_add_children(self, value: primitives.Bool) -> None:
         """Set the AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is not None:
@@ -156,7 +155,7 @@ class AxisAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("ElementAxisZAlign", value)
 
     @property
-    def separation(self) -> np.float32 | None:
+    def separation(self) -> primitives.Float | None:
         """The Separation field value."""
         member = self.get_member("Separation")
         if member is None:
@@ -164,7 +163,7 @@ class AxisAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @separation.setter
-    def separation(self, value: np.float32) -> None:
+    def separation(self, value: primitives.Float) -> None:
         """Set the Separation field value."""
         member = self.get_member("Separation")
         if member is not None:

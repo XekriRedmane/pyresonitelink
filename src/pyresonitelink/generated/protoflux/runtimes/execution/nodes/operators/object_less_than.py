@@ -19,7 +19,7 @@ class ObjectLessThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T]
 
     Parameterize with a value type::
 
-        ObjectLessThan[np.float32]
+        ObjectLessThan[primitives.Float]
         ObjectLessThan[primitives.Float3]
     """
 

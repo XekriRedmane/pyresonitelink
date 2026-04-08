@@ -14,7 +14,7 @@ class GlobalValue(GenericComponent[T], IGlobalValueProxy[T], IComponent, IWorldE
 
     Parameterize with a value type::
 
-        GlobalValue[np.float32]
+        GlobalValue[primitives.Float]
         GlobalValue[primitives.Float3]
     """
 

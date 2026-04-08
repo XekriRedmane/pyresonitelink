@@ -1,7 +1,5 @@
 """Generated component: CrossMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CrossMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: np.float32 | None = None, bar_ratio: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: primitives.Float | None = None, bar_ratio: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +43,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             self.bar_ratio = bar_ratio
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -53,7 +51,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -64,7 +62,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -72,7 +70,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -115,7 +113,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         self.set_member("Profile", value)
 
     @property
-    def size(self) -> np.float32 | None:
+    def size(self) -> primitives.Float | None:
         """The Size field value."""
         member = self.get_member("Size")
         if member is None:
@@ -123,7 +121,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @size.setter
-    def size(self, value: np.float32) -> None:
+    def size(self, value: primitives.Float) -> None:
         """Set the Size field value."""
         member = self.get_member("Size")
         if member is not None:
@@ -134,7 +132,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def bar_ratio(self) -> np.float32 | None:
+    def bar_ratio(self) -> primitives.Float | None:
         """The BarRatio field value."""
         member = self.get_member("BarRatio")
         if member is None:
@@ -142,7 +140,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @bar_ratio.setter
-    def bar_ratio(self, value: np.float32) -> None:
+    def bar_ratio(self, value: primitives.Float) -> None:
         """Set the BarRatio field value."""
         member = self.get_member("BarRatio")
         if member is not None:

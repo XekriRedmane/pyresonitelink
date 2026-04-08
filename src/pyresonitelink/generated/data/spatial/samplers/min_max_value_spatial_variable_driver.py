@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class MinMaxValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEv
 
     Parameterize with a value type::
 
-        MinMaxValueSpatialVariableDriver[np.float32]
+        MinMaxValueSpatialVariableDriver[primitives.Float]
         MinMaxValueSpatialVariableDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MinMaxValueSpatialVariableDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.MinMaxValueSpatialVariableDriver<>"
 
-    def __init__(self, min_drive: str | IField[T] | None = None, max_drive: str | IField[T] | None = None, variable_name: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_drive: str | IField[T] | None = None, max_drive: str | IField[T] | None = None, variable_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -83,7 +84,7 @@ class MinMaxValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEv
             )
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -91,7 +92,7 @@ class MinMaxValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:

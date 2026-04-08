@@ -1,8 +1,7 @@
 """Generated component: AudioSettingSync."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -17,7 +16,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioSettingSync"
 
-    def __init__(self, default_audio_input_device_index: np.int32 | None = None, default_audio_output_device_index: np.int32 | None = None, master_volume: np.float32 | None = None, whisper_voice_volume: np.float32 | None = None, noise_gate_threshold: np.float32 | None = None, noise_gate_attack: np.float32 | None = None, noise_gate_hold: np.float32 | None = None, noise_gate_release: np.float32 | None = None, normalization_threshold: np.float32 | None = None, voice_normalization: bool | None = None, noise_supression: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, default_audio_input_device_index: primitives.Int | None = None, default_audio_output_device_index: primitives.Int | None = None, master_volume: primitives.Float | None = None, whisper_voice_volume: primitives.Float | None = None, noise_gate_threshold: primitives.Float | None = None, noise_gate_attack: primitives.Float | None = None, noise_gate_hold: primitives.Float | None = None, noise_gate_release: primitives.Float | None = None, normalization_threshold: primitives.Float | None = None, voice_normalization: primitives.Bool | None = None, noise_supression: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,7 +58,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.noise_supression = noise_supression
 
     @property
-    def default_audio_input_device_index(self) -> np.int32 | None:
+    def default_audio_input_device_index(self) -> primitives.Int | None:
         """The DefaultAudioInputDeviceIndex field value."""
         member = self.get_member("DefaultAudioInputDeviceIndex")
         if member is None:
@@ -67,7 +66,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @default_audio_input_device_index.setter
-    def default_audio_input_device_index(self, value: np.int32) -> None:
+    def default_audio_input_device_index(self, value: primitives.Int) -> None:
         """Set the DefaultAudioInputDeviceIndex field value."""
         member = self.get_member("DefaultAudioInputDeviceIndex")
         if member is not None:
@@ -78,7 +77,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def default_audio_output_device_index(self) -> np.int32 | None:
+    def default_audio_output_device_index(self) -> primitives.Int | None:
         """The DefaultAudioOutputDeviceIndex field value."""
         member = self.get_member("DefaultAudioOutputDeviceIndex")
         if member is None:
@@ -86,7 +85,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @default_audio_output_device_index.setter
-    def default_audio_output_device_index(self, value: np.int32) -> None:
+    def default_audio_output_device_index(self, value: primitives.Int) -> None:
         """Set the DefaultAudioOutputDeviceIndex field value."""
         member = self.get_member("DefaultAudioOutputDeviceIndex")
         if member is not None:
@@ -97,7 +96,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def master_volume(self) -> np.float32 | None:
+    def master_volume(self) -> primitives.Float | None:
         """The MasterVolume field value."""
         member = self.get_member("MasterVolume")
         if member is None:
@@ -105,7 +104,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @master_volume.setter
-    def master_volume(self, value: np.float32) -> None:
+    def master_volume(self, value: primitives.Float) -> None:
         """Set the MasterVolume field value."""
         member = self.get_member("MasterVolume")
         if member is not None:
@@ -116,7 +115,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def whisper_voice_volume(self) -> np.float32 | None:
+    def whisper_voice_volume(self) -> primitives.Float | None:
         """The WhisperVoiceVolume field value."""
         member = self.get_member("WhisperVoiceVolume")
         if member is None:
@@ -124,7 +123,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @whisper_voice_volume.setter
-    def whisper_voice_volume(self, value: np.float32) -> None:
+    def whisper_voice_volume(self, value: primitives.Float) -> None:
         """Set the WhisperVoiceVolume field value."""
         member = self.get_member("WhisperVoiceVolume")
         if member is not None:
@@ -135,7 +134,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def noise_gate_threshold(self) -> np.float32 | None:
+    def noise_gate_threshold(self) -> primitives.Float | None:
         """The NoiseGateThreshold field value."""
         member = self.get_member("NoiseGateThreshold")
         if member is None:
@@ -143,7 +142,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @noise_gate_threshold.setter
-    def noise_gate_threshold(self, value: np.float32) -> None:
+    def noise_gate_threshold(self, value: primitives.Float) -> None:
         """Set the NoiseGateThreshold field value."""
         member = self.get_member("NoiseGateThreshold")
         if member is not None:
@@ -154,7 +153,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def noise_gate_attack(self) -> np.float32 | None:
+    def noise_gate_attack(self) -> primitives.Float | None:
         """The NoiseGateAttack field value."""
         member = self.get_member("NoiseGateAttack")
         if member is None:
@@ -162,7 +161,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @noise_gate_attack.setter
-    def noise_gate_attack(self, value: np.float32) -> None:
+    def noise_gate_attack(self, value: primitives.Float) -> None:
         """Set the NoiseGateAttack field value."""
         member = self.get_member("NoiseGateAttack")
         if member is not None:
@@ -173,7 +172,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def noise_gate_hold(self) -> np.float32 | None:
+    def noise_gate_hold(self) -> primitives.Float | None:
         """The NoiseGateHold field value."""
         member = self.get_member("NoiseGateHold")
         if member is None:
@@ -181,7 +180,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @noise_gate_hold.setter
-    def noise_gate_hold(self, value: np.float32) -> None:
+    def noise_gate_hold(self, value: primitives.Float) -> None:
         """Set the NoiseGateHold field value."""
         member = self.get_member("NoiseGateHold")
         if member is not None:
@@ -192,7 +191,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def noise_gate_release(self) -> np.float32 | None:
+    def noise_gate_release(self) -> primitives.Float | None:
         """The NoiseGateRelease field value."""
         member = self.get_member("NoiseGateRelease")
         if member is None:
@@ -200,7 +199,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @noise_gate_release.setter
-    def noise_gate_release(self, value: np.float32) -> None:
+    def noise_gate_release(self, value: primitives.Float) -> None:
         """Set the NoiseGateRelease field value."""
         member = self.get_member("NoiseGateRelease")
         if member is not None:
@@ -211,7 +210,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def normalization_threshold(self) -> np.float32 | None:
+    def normalization_threshold(self) -> primitives.Float | None:
         """The NormalizationThreshold field value."""
         member = self.get_member("NormalizationThreshold")
         if member is None:
@@ -219,7 +218,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @normalization_threshold.setter
-    def normalization_threshold(self, value: np.float32) -> None:
+    def normalization_threshold(self, value: primitives.Float) -> None:
         """Set the NormalizationThreshold field value."""
         member = self.get_member("NormalizationThreshold")
         if member is not None:
@@ -230,7 +229,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def voice_normalization(self) -> bool | None:
+    def voice_normalization(self) -> primitives.Bool | None:
         """The VoiceNormalization field value."""
         member = self.get_member("VoiceNormalization")
         if member is None:
@@ -238,7 +237,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @voice_normalization.setter
-    def voice_normalization(self, value: bool) -> None:
+    def voice_normalization(self, value: primitives.Bool) -> None:
         """Set the VoiceNormalization field value."""
         member = self.get_member("VoiceNormalization")
         if member is not None:
@@ -249,7 +248,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def noise_supression(self) -> bool | None:
+    def noise_supression(self) -> primitives.Bool | None:
         """The NoiseSupression field value."""
         member = self.get_member("NoiseSupression")
         if member is None:
@@ -257,7 +256,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @noise_supression.setter
-    def noise_supression(self, value: bool) -> None:
+    def noise_supression(self, value: primitives.Bool) -> None:
         """Set the NoiseSupression field value."""
         member = self.get_member("NoiseSupression")
         if member is not None:

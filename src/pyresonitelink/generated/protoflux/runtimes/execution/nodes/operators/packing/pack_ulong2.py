@@ -1,8 +1,7 @@
 """Generated component: Pack_Ulong2."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class Pack_Ulong2(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.Pack_Ulong2"
 
-    def __init__(self, x: str | INodeValueOutput[np.uint64] | None = None, y: str | INodeValueOutput[np.uint64] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, x: str | INodeValueOutput[primitives.ULong] | None = None, y: str | INodeValueOutput[primitives.ULong] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +36,15 @@ class Pack_Ulong2(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def x(self) -> str | None:
-        """Target ID of the X reference (targets INodeValueOutput[np.uint64])."""
+        """Target ID of the X reference (targets INodeValueOutput[primitives.ULong])."""
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @x.setter
-    def x(self, target: str | INodeValueOutput[np.uint64] | None) -> None:
-        """Set the X reference by target ID or INodeValueOutput[np.uint64] instance."""
+    def x(self, target: str | INodeValueOutput[primitives.ULong] | None) -> None:
+        """Set the X reference by target ID or INodeValueOutput[primitives.ULong] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("X")
         if isinstance(member, members.Reference):
@@ -58,15 +57,15 @@ class Pack_Ulong2(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def y(self) -> str | None:
-        """Target ID of the Y reference (targets INodeValueOutput[np.uint64])."""
+        """Target ID of the Y reference (targets INodeValueOutput[primitives.ULong])."""
         member = self.get_member("Y")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @y.setter
-    def y(self, target: str | INodeValueOutput[np.uint64] | None) -> None:
-        """Set the Y reference by target ID or INodeValueOutput[np.uint64] instance."""
+    def y(self, target: str | INodeValueOutput[primitives.ULong] | None) -> None:
+        """Set the Y reference by target ID or INodeValueOutput[primitives.ULong] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Y")
         if isinstance(member, members.Reference):

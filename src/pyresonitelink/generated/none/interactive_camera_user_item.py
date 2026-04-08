@@ -1,8 +1,7 @@
 """Generated component: InteractiveCameraUserItem."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.interactive_camera_control import InteractiveCameraControl
@@ -19,7 +18,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraUserItem"
 
-    def __init__(self, control: str | InteractiveCameraControl | None = None, username: str | Text | None = None, voice_default: str | Button | None = None, voice_mute: str | Button | None = None, voice_shout: str | Button | None = None, voice_broadcast: str | Button | None = None, group_auto: str | Button | None = None, group_exclude: str | Button | None = None, group_include: str | Button | None = None, camera_operator: str | Button | None = None, framing_target: str | Button | None = None, volume_slider: str | Slider[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, control: str | InteractiveCameraControl | None = None, username: str | Text | None = None, voice_default: str | Button | None = None, voice_mute: str | Button | None = None, voice_shout: str | Button | None = None, voice_broadcast: str | Button | None = None, group_auto: str | Button | None = None, group_exclude: str | Button | None = None, group_include: str | Button | None = None, camera_operator: str | Button | None = None, framing_target: str | Button | None = None, volume_slider: str | Slider[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -296,15 +295,15 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def volume_slider(self) -> str | None:
-        """Target ID of the _volumeSlider reference (targets Slider[np.float32])."""
+        """Target ID of the _volumeSlider reference (targets Slider[primitives.Float])."""
         member = self.get_member("_volumeSlider")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @volume_slider.setter
-    def volume_slider(self, target: str | Slider[np.float32] | None) -> None:
-        """Set the _volumeSlider reference by target ID or Slider[np.float32] instance."""
+    def volume_slider(self, target: str | Slider[primitives.Float] | None) -> None:
+        """Set the _volumeSlider reference by target ID or Slider[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, Slider) else target  # type: ignore[assignment]
         member = self.get_member("_volumeSlider")
         if isinstance(member, members.Reference):

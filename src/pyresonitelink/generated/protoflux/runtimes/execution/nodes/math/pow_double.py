@@ -1,8 +1,7 @@
 """Generated component: Pow_Double."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class Pow_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Pow_Double"
 
-    def __init__(self, n: str | INodeValueOutput[np.float64] | None = None, power: str | INodeValueOutput[np.float64] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, n: str | INodeValueOutput[primitives.Double] | None = None, power: str | INodeValueOutput[primitives.Double] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +36,15 @@ class Pow_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
 
     @property
     def n(self) -> str | None:
-        """Target ID of the N reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the N reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @n.setter
-    def n(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the N reference by target ID or INodeValueOutput[np.float64] instance."""
+    def n(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the N reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("N")
         if isinstance(member, members.Reference):
@@ -58,15 +57,15 @@ class Pow_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
 
     @property
     def power(self) -> str | None:
-        """Target ID of the Power reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the Power reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("Power")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @power.setter
-    def power(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the Power reference by target ID or INodeValueOutput[np.float64] instance."""
+    def power(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the Power reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Power")
         if isinstance(member, members.Reference):

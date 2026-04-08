@@ -1,6 +1,7 @@
 """Generated component: LocalFireWhileTrue."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
@@ -22,7 +23,7 @@ class LocalFireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappable
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.LocalFireWhileTrue"
 
-    def __init__(self, on_update: str | ISyncNodeOperation | None = None, condition: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, on_update: str | ISyncNodeOperation | None = None, condition: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +60,15 @@ class LocalFireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappable
 
     @property
     def condition(self) -> str | None:
-        """Target ID of the Condition reference (targets INodeValueOutput[bool])."""
+        """Target ID of the Condition reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @condition.setter
-    def condition(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the Condition reference by target ID or INodeValueOutput[bool] instance."""
+    def condition(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the Condition reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):

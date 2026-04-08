@@ -1,7 +1,5 @@
 """Generated component: Camera."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Camera"
 
-    def __init__(self, double_buffered: bool | None = None, forward_only: bool | None = None, orthographic_size: np.float32 | None = None, field_of_view: np.float32 | None = None, near_clipping: np.float32 | None = None, far_clipping: np.float32 | None = None, use_transform_scale: bool | None = None, clear_color: primitives.ColorX | None = None, viewport: primitives.Rect | None = None, depth: np.float32 | None = None, render_texture: str | IAssetProvider[RenderTexture] | None = None, postprocessing: bool | None = None, screen_space_reflections: bool | None = None, motion_blur: bool | None = None, render_shadows: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, double_buffered: primitives.Bool | None = None, forward_only: primitives.Bool | None = None, orthographic_size: primitives.Float | None = None, field_of_view: primitives.Float | None = None, near_clipping: primitives.Float | None = None, far_clipping: primitives.Float | None = None, use_transform_scale: primitives.Bool | None = None, clear_color: primitives.ColorX | None = None, viewport: primitives.Rect | None = None, depth: primitives.Float | None = None, render_texture: str | IAssetProvider[RenderTexture] | None = None, postprocessing: primitives.Bool | None = None, screen_space_reflections: primitives.Bool | None = None, motion_blur: primitives.Bool | None = None, render_shadows: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -76,7 +74,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             self.render_shadows = render_shadows
 
     @property
-    def double_buffered(self) -> bool | None:
+    def double_buffered(self) -> primitives.Bool | None:
         """The DoubleBuffered field value."""
         member = self.get_member("DoubleBuffered")
         if member is None:
@@ -84,7 +82,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @double_buffered.setter
-    def double_buffered(self, value: bool) -> None:
+    def double_buffered(self, value: primitives.Bool) -> None:
         """Set the DoubleBuffered field value."""
         member = self.get_member("DoubleBuffered")
         if member is not None:
@@ -95,7 +93,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def forward_only(self) -> bool | None:
+    def forward_only(self) -> primitives.Bool | None:
         """The ForwardOnly field value."""
         member = self.get_member("ForwardOnly")
         if member is None:
@@ -103,7 +101,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @forward_only.setter
-    def forward_only(self, value: bool) -> None:
+    def forward_only(self, value: primitives.Bool) -> None:
         """Set the ForwardOnly field value."""
         member = self.get_member("ForwardOnly")
         if member is not None:
@@ -127,7 +125,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         self.set_member("Projection", value)
 
     @property
-    def orthographic_size(self) -> np.float32 | None:
+    def orthographic_size(self) -> primitives.Float | None:
         """The OrthographicSize field value."""
         member = self.get_member("OrthographicSize")
         if member is None:
@@ -135,7 +133,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @orthographic_size.setter
-    def orthographic_size(self, value: np.float32) -> None:
+    def orthographic_size(self, value: primitives.Float) -> None:
         """Set the OrthographicSize field value."""
         member = self.get_member("OrthographicSize")
         if member is not None:
@@ -146,7 +144,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def field_of_view(self) -> np.float32 | None:
+    def field_of_view(self) -> primitives.Float | None:
         """The FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is None:
@@ -154,7 +152,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @field_of_view.setter
-    def field_of_view(self, value: np.float32) -> None:
+    def field_of_view(self, value: primitives.Float) -> None:
         """Set the FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is not None:
@@ -165,7 +163,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def near_clipping(self) -> np.float32 | None:
+    def near_clipping(self) -> primitives.Float | None:
         """The NearClipping field value."""
         member = self.get_member("NearClipping")
         if member is None:
@@ -173,7 +171,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @near_clipping.setter
-    def near_clipping(self, value: np.float32) -> None:
+    def near_clipping(self, value: primitives.Float) -> None:
         """Set the NearClipping field value."""
         member = self.get_member("NearClipping")
         if member is not None:
@@ -184,7 +182,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def far_clipping(self) -> np.float32 | None:
+    def far_clipping(self) -> primitives.Float | None:
         """The FarClipping field value."""
         member = self.get_member("FarClipping")
         if member is None:
@@ -192,7 +190,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @far_clipping.setter
-    def far_clipping(self, value: np.float32) -> None:
+    def far_clipping(self, value: primitives.Float) -> None:
         """Set the FarClipping field value."""
         member = self.get_member("FarClipping")
         if member is not None:
@@ -203,7 +201,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def use_transform_scale(self) -> bool | None:
+    def use_transform_scale(self) -> primitives.Bool | None:
         """The UseTransformScale field value."""
         member = self.get_member("UseTransformScale")
         if member is None:
@@ -211,7 +209,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @use_transform_scale.setter
-    def use_transform_scale(self, value: bool) -> None:
+    def use_transform_scale(self, value: primitives.Bool) -> None:
         """Set the UseTransformScale field value."""
         member = self.get_member("UseTransformScale")
         if member is not None:
@@ -273,7 +271,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def depth(self) -> np.float32 | None:
+    def depth(self) -> primitives.Float | None:
         """The Depth field value."""
         member = self.get_member("Depth")
         if member is None:
@@ -281,7 +279,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @depth.setter
-    def depth(self, value: np.float32) -> None:
+    def depth(self, value: primitives.Float) -> None:
         """Set the Depth field value."""
         member = self.get_member("Depth")
         if member is not None:
@@ -313,7 +311,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def postprocessing(self) -> bool | None:
+    def postprocessing(self) -> primitives.Bool | None:
         """The Postprocessing field value."""
         member = self.get_member("Postprocessing")
         if member is None:
@@ -321,7 +319,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @postprocessing.setter
-    def postprocessing(self, value: bool) -> None:
+    def postprocessing(self, value: primitives.Bool) -> None:
         """Set the Postprocessing field value."""
         member = self.get_member("Postprocessing")
         if member is not None:
@@ -332,7 +330,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def screen_space_reflections(self) -> bool | None:
+    def screen_space_reflections(self) -> primitives.Bool | None:
         """The ScreenSpaceReflections field value."""
         member = self.get_member("ScreenSpaceReflections")
         if member is None:
@@ -340,7 +338,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @screen_space_reflections.setter
-    def screen_space_reflections(self, value: bool) -> None:
+    def screen_space_reflections(self, value: primitives.Bool) -> None:
         """Set the ScreenSpaceReflections field value."""
         member = self.get_member("ScreenSpaceReflections")
         if member is not None:
@@ -351,7 +349,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def motion_blur(self) -> bool | None:
+    def motion_blur(self) -> primitives.Bool | None:
         """The MotionBlur field value."""
         member = self.get_member("MotionBlur")
         if member is None:
@@ -359,7 +357,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @motion_blur.setter
-    def motion_blur(self, value: bool) -> None:
+    def motion_blur(self, value: primitives.Bool) -> None:
         """Set the MotionBlur field value."""
         member = self.get_member("MotionBlur")
         if member is not None:
@@ -370,7 +368,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
             )
 
     @property
-    def render_shadows(self) -> bool | None:
+    def render_shadows(self) -> primitives.Bool | None:
         """The RenderShadows field value."""
         member = self.get_member("RenderShadows")
         if member is None:
@@ -378,7 +376,7 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @render_shadows.setter
-    def render_shadows(self, value: bool) -> None:
+    def render_shadows(self, value: primitives.Bool) -> None:
         """Set the RenderShadows field value."""
         member = self.get_member("RenderShadows")
         if member is not None:

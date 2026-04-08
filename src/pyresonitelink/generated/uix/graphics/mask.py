@@ -1,6 +1,7 @@
 """Generated component: Mask."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iui_compute_component import IUIComputeComponent
@@ -15,7 +16,7 @@ class Mask(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Mask"
 
-    def __init__(self, show_mask_graphic: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, show_mask_graphic: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class Mask(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             self.show_mask_graphic = show_mask_graphic
 
     @property
-    def show_mask_graphic(self) -> bool | None:
+    def show_mask_graphic(self) -> primitives.Bool | None:
         """The ShowMaskGraphic field value."""
         member = self.get_member("ShowMaskGraphic")
         if member is None:
@@ -35,7 +36,7 @@ class Mask(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_mask_graphic.setter
-    def show_mask_graphic(self, value: bool) -> None:
+    def show_mask_graphic(self, value: primitives.Bool) -> None:
         """Set the ShowMaskGraphic field value."""
         member = self.get_member("ShowMaskGraphic")
         if member is not None:

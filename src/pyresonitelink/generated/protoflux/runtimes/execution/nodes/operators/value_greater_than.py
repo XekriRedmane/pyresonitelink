@@ -18,7 +18,7 @@ class ValueGreaterThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     Parameterize with a value type::
 
-        ValueGreaterThan[np.float32]
+        ValueGreaterThan[primitives.Float]
         ValueGreaterThan[primitives.Float3]
     """
 

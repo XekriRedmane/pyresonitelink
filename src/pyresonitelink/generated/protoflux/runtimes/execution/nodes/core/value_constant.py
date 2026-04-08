@@ -17,7 +17,7 @@ class ValueConstant(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        ValueConstant[np.float32]
+        ValueConstant[primitives.Float]
         ValueConstant[primitives.Float3]
     """
 

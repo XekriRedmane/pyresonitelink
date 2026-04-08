@@ -1,9 +1,8 @@
 """Generated component: WorldSubmitter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +18,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldSubmitter"
 
-    def __init__(self, group_id: str | None = None, radius: np.float32 | None = None, height: np.float32 | None = None, visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, group_id: primitives.String | None = None, radius: primitives.Float | None = None, height: primitives.Float | None = None, visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +39,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.visual = visual
 
     @property
-    def group_id(self) -> str | None:
+    def group_id(self) -> primitives.String | None:
         """The GroupId field value."""
         member = self.get_member("GroupId")
         if member is None:
@@ -48,7 +47,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @group_id.setter
-    def group_id(self, value: str) -> None:
+    def group_id(self, value: primitives.String) -> None:
         """Set the GroupId field value."""
         member = self.get_member("GroupId")
         if member is not None:
@@ -59,7 +58,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -67,7 +66,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -78,7 +77,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -86,7 +85,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:

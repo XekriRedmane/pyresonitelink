@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent
@@ -16,7 +17,7 @@ class AvatarNameTagAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarNameTagAssigner"
 
-    def __init__(self, dequipped_label: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, dequipped_label: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -93,7 +94,7 @@ class AvatarNameTagAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldEv
         self.set_member("BackgroundTargets", value)
 
     @property
-    def dequipped_label(self) -> str | None:
+    def dequipped_label(self) -> primitives.String | None:
         """The DequippedLabel field value."""
         member = self.get_member("DequippedLabel")
         if member is None:
@@ -101,7 +102,7 @@ class AvatarNameTagAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @dequipped_label.setter
-    def dequipped_label(self, value: str) -> None:
+    def dequipped_label(self, value: primitives.String) -> None:
         """Set the DequippedLabel field value."""
         member = self.get_member("DequippedLabel")
         if member is not None:

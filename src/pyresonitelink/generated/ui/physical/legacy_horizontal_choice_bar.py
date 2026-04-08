@@ -1,7 +1,5 @@
 """Generated component: LegacyHorizontalChoiceBar."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyHorizontalChoiceBar"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, width: np.float32 | None = None, height: np.float32 | None = None, thickness: np.float32 | None = None, spacing: np.float32 | None = None, slant: np.float32 | None = None, symmetrical: bool | None = None, root: str | Slot | None = None, root_scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, spacing: primitives.Float | None = None, slant: primitives.Float | None = None, symmetrical: primitives.Bool | None = None, root: str | Slot | None = None, root_scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -85,7 +83,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -93,7 +91,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -104,7 +102,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -112,7 +110,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -136,7 +134,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
         self.set_member("_items", value)
 
     @property
-    def width(self) -> np.float32 | None:
+    def width(self) -> primitives.Float | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -144,7 +142,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.float32) -> None:
+    def width(self, value: primitives.Float) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -155,7 +153,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -163,7 +161,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -174,7 +172,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -182,7 +180,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -193,7 +191,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def spacing(self) -> np.float32 | None:
+    def spacing(self) -> primitives.Float | None:
         """The Spacing field value."""
         member = self.get_member("Spacing")
         if member is None:
@@ -201,7 +199,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @spacing.setter
-    def spacing(self, value: np.float32) -> None:
+    def spacing(self, value: primitives.Float) -> None:
         """Set the Spacing field value."""
         member = self.get_member("Spacing")
         if member is not None:
@@ -212,7 +210,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def slant(self) -> np.float32 | None:
+    def slant(self) -> primitives.Float | None:
         """The Slant field value."""
         member = self.get_member("Slant")
         if member is None:
@@ -220,7 +218,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @slant.setter
-    def slant(self, value: np.float32) -> None:
+    def slant(self, value: primitives.Float) -> None:
         """Set the Slant field value."""
         member = self.get_member("Slant")
         if member is not None:
@@ -231,7 +229,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def symmetrical(self) -> bool | None:
+    def symmetrical(self) -> primitives.Bool | None:
         """The Symmetrical field value."""
         member = self.get_member("Symmetrical")
         if member is None:
@@ -239,7 +237,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @symmetrical.setter
-    def symmetrical(self, value: bool) -> None:
+    def symmetrical(self, value: primitives.Bool) -> None:
         """Set the Symmetrical field value."""
         member = self.get_member("Symmetrical")
         if member is not None:

@@ -18,14 +18,14 @@ class StandaloneRectMesh(GenericComponent[T], IAssetProvider[T], ICustomInspecto
 
     Parameterize with a value type::
 
-        StandaloneRectMesh[np.float32]
+        StandaloneRectMesh[primitives.Float]
         StandaloneRectMesh[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StandaloneRectMesh<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.StandaloneRectMesh<>"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rect: primitives.Rect | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rect: primitives.Rect | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,7 +46,7 @@ class StandaloneRectMesh(GenericComponent[T], IAssetProvider[T], ICustomInspecto
             self.rect = rect
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -54,7 +54,7 @@ class StandaloneRectMesh(GenericComponent[T], IAssetProvider[T], ICustomInspecto
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -65,7 +65,7 @@ class StandaloneRectMesh(GenericComponent[T], IAssetProvider[T], ICustomInspecto
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -73,7 +73,7 @@ class StandaloneRectMesh(GenericComponent[T], IAssetProvider[T], ICustomInspecto
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:

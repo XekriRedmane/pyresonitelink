@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -16,7 +17,7 @@ class OSC_Handler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OSC_Handler"
 
-    def __init__(self, access_reason: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, access_reason: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +42,7 @@ class OSC_Handler(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("HandlingUser", value)
 
     @property
-    def access_reason(self) -> str | None:
+    def access_reason(self) -> primitives.String | None:
         """The AccessReason field value."""
         member = self.get_member("AccessReason")
         if member is None:
@@ -49,7 +50,7 @@ class OSC_Handler(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @access_reason.setter
-    def access_reason(self, value: str) -> None:
+    def access_reason(self, value: primitives.String) -> None:
         """Set the AccessReason field value."""
         member = self.get_member("AccessReason")
         if member is not None:

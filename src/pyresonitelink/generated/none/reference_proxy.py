@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_element import IWorldElement
@@ -16,7 +17,7 @@ class ReferenceProxy(GeneratedComponent, IReferenceSource, ITriggerActionReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceProxy"
 
-    def __init__(self, reference: str | IWorldElement | None = None, spawn_instance_on_trigger: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reference: str | IWorldElement | None = None, spawn_instance_on_trigger: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -52,7 +53,7 @@ class ReferenceProxy(GeneratedComponent, IReferenceSource, ITriggerActionReceive
             )
 
     @property
-    def spawn_instance_on_trigger(self) -> bool | None:
+    def spawn_instance_on_trigger(self) -> primitives.Bool | None:
         """The SpawnInstanceOnTrigger field value."""
         member = self.get_member("SpawnInstanceOnTrigger")
         if member is None:
@@ -60,7 +61,7 @@ class ReferenceProxy(GeneratedComponent, IReferenceSource, ITriggerActionReceive
         return getattr(member, 'value', None)
 
     @spawn_instance_on_trigger.setter
-    def spawn_instance_on_trigger(self, value: bool) -> None:
+    def spawn_instance_on_trigger(self, value: primitives.Bool) -> None:
         """Set the SpawnInstanceOnTrigger field value."""
         member = self.get_member("SpawnInstanceOnTrigger")
         if member is not None:

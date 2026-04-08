@@ -1,7 +1,5 @@
 """Generated component: PhysicalLocomotion."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -27,7 +25,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhysicalLocomotion"
 
-    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, min_initialization_delay: np.float32 | None = None, max_initialization_delay: np.float32 | None = None, initialization_collider_root: str | Slot | None = None, use_speed_from_user_settings: bool | None = None, description: str | None = None, grip_on_hold: bool | None = None, grip_radius: np.float32 | None = None, grip_velocity_multiplier: np.float32 | None = None, hand_grip_rotation_smooth_speed: np.float32 | None = None, fall_respawn_position: np.float32 | None = None, make_gravity_character_local: bool | None = None, auto_align_vertical_with_gravity_speed: np.float32 | None = None, manual_align_vertical_with_gravity_speed: np.float32 | None = None, air_deceleration_speed: np.float32 | None = None, grip_scale_delay: np.float32 | None = None, allow_crouch: bool | None = None, maximum_normalized_speed: np.float32 | None = None, default_icon: str | None = None, default_color: primitives.ColorX | None = None, character_controller: str | CharacterController | None = None, legacy_name: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, min_initialization_delay: primitives.Float | None = None, max_initialization_delay: primitives.Float | None = None, initialization_collider_root: str | Slot | None = None, use_speed_from_user_settings: primitives.Bool | None = None, description: primitives.String | None = None, grip_on_hold: primitives.Bool | None = None, grip_radius: primitives.Float | None = None, grip_velocity_multiplier: primitives.Float | None = None, hand_grip_rotation_smooth_speed: primitives.Float | None = None, fall_respawn_position: primitives.Float | None = None, make_gravity_character_local: primitives.Bool | None = None, auto_align_vertical_with_gravity_speed: primitives.Float | None = None, manual_align_vertical_with_gravity_speed: primitives.Float | None = None, air_deceleration_speed: primitives.Float | None = None, grip_scale_delay: primitives.Float | None = None, allow_crouch: primitives.Bool | None = None, maximum_normalized_speed: primitives.Float | None = None, default_icon: str | None = None, default_color: primitives.ColorX | None = None, character_controller: str | CharacterController | None = None, legacy_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -239,7 +237,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         self.set_member("Archetype", value)
 
     @property
-    def min_initialization_delay(self) -> np.float32 | None:
+    def min_initialization_delay(self) -> primitives.Float | None:
         """The MinInitializationDelay field value."""
         member = self.get_member("MinInitializationDelay")
         if member is None:
@@ -247,7 +245,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @min_initialization_delay.setter
-    def min_initialization_delay(self, value: np.float32) -> None:
+    def min_initialization_delay(self, value: primitives.Float) -> None:
         """Set the MinInitializationDelay field value."""
         member = self.get_member("MinInitializationDelay")
         if member is not None:
@@ -258,7 +256,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def max_initialization_delay(self) -> np.float32 | None:
+    def max_initialization_delay(self) -> primitives.Float | None:
         """The MaxInitializationDelay field value."""
         member = self.get_member("MaxInitializationDelay")
         if member is None:
@@ -266,7 +264,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @max_initialization_delay.setter
-    def max_initialization_delay(self, value: np.float32) -> None:
+    def max_initialization_delay(self, value: primitives.Float) -> None:
         """Set the MaxInitializationDelay field value."""
         member = self.get_member("MaxInitializationDelay")
         if member is not None:
@@ -298,7 +296,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def use_speed_from_user_settings(self) -> bool | None:
+    def use_speed_from_user_settings(self) -> primitives.Bool | None:
         """The UseSpeedFromUserSettings field value."""
         member = self.get_member("UseSpeedFromUserSettings")
         if member is None:
@@ -306,7 +304,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @use_speed_from_user_settings.setter
-    def use_speed_from_user_settings(self, value: bool) -> None:
+    def use_speed_from_user_settings(self, value: primitives.Bool) -> None:
         """Set the UseSpeedFromUserSettings field value."""
         member = self.get_member("UseSpeedFromUserSettings")
         if member is not None:
@@ -317,7 +315,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def description(self) -> str | None:
+    def description(self) -> primitives.String | None:
         """The Description field value."""
         member = self.get_member("Description")
         if member is None:
@@ -325,7 +323,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @description.setter
-    def description(self, value: str) -> None:
+    def description(self, value: primitives.String) -> None:
         """Set the Description field value."""
         member = self.get_member("Description")
         if member is not None:
@@ -362,7 +360,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         self.set_member("Gripping", value)
 
     @property
-    def grip_on_hold(self) -> bool | None:
+    def grip_on_hold(self) -> primitives.Bool | None:
         """The GripOnHold field value."""
         member = self.get_member("GripOnHold")
         if member is None:
@@ -370,7 +368,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @grip_on_hold.setter
-    def grip_on_hold(self, value: bool) -> None:
+    def grip_on_hold(self, value: primitives.Bool) -> None:
         """Set the GripOnHold field value."""
         member = self.get_member("GripOnHold")
         if member is not None:
@@ -381,7 +379,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def grip_radius(self) -> np.float32 | None:
+    def grip_radius(self) -> primitives.Float | None:
         """The GripRadius field value."""
         member = self.get_member("GripRadius")
         if member is None:
@@ -389,7 +387,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @grip_radius.setter
-    def grip_radius(self, value: np.float32) -> None:
+    def grip_radius(self, value: primitives.Float) -> None:
         """Set the GripRadius field value."""
         member = self.get_member("GripRadius")
         if member is not None:
@@ -400,7 +398,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def grip_velocity_multiplier(self) -> np.float32 | None:
+    def grip_velocity_multiplier(self) -> primitives.Float | None:
         """The GripVelocityMultiplier field value."""
         member = self.get_member("GripVelocityMultiplier")
         if member is None:
@@ -408,7 +406,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @grip_velocity_multiplier.setter
-    def grip_velocity_multiplier(self, value: np.float32) -> None:
+    def grip_velocity_multiplier(self, value: primitives.Float) -> None:
         """Set the GripVelocityMultiplier field value."""
         member = self.get_member("GripVelocityMultiplier")
         if member is not None:
@@ -445,7 +443,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         self.set_member("GripObjectRotationMode", value)
 
     @property
-    def hand_grip_rotation_smooth_speed(self) -> np.float32 | None:
+    def hand_grip_rotation_smooth_speed(self) -> primitives.Float | None:
         """The HandGripRotationSmoothSpeed field value."""
         member = self.get_member("HandGripRotationSmoothSpeed")
         if member is None:
@@ -453,7 +451,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @hand_grip_rotation_smooth_speed.setter
-    def hand_grip_rotation_smooth_speed(self, value: np.float32) -> None:
+    def hand_grip_rotation_smooth_speed(self, value: primitives.Float) -> None:
         """Set the HandGripRotationSmoothSpeed field value."""
         member = self.get_member("HandGripRotationSmoothSpeed")
         if member is not None:
@@ -464,7 +462,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def fall_respawn_position(self) -> np.float32 | None:
+    def fall_respawn_position(self) -> primitives.Float | None:
         """The FallRespawnPosition field value."""
         member = self.get_member("FallRespawnPosition")
         if member is None:
@@ -472,7 +470,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @fall_respawn_position.setter
-    def fall_respawn_position(self, value: np.float32) -> None:
+    def fall_respawn_position(self, value: primitives.Float) -> None:
         """Set the FallRespawnPosition field value."""
         member = self.get_member("FallRespawnPosition")
         if member is not None:
@@ -483,7 +481,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def make_gravity_character_local(self) -> bool | None:
+    def make_gravity_character_local(self) -> primitives.Bool | None:
         """The MakeGravityCharacterLocal field value."""
         member = self.get_member("MakeGravityCharacterLocal")
         if member is None:
@@ -491,7 +489,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @make_gravity_character_local.setter
-    def make_gravity_character_local(self, value: bool) -> None:
+    def make_gravity_character_local(self, value: primitives.Bool) -> None:
         """Set the MakeGravityCharacterLocal field value."""
         member = self.get_member("MakeGravityCharacterLocal")
         if member is not None:
@@ -502,7 +500,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def auto_align_vertical_with_gravity_speed(self) -> np.float32 | None:
+    def auto_align_vertical_with_gravity_speed(self) -> primitives.Float | None:
         """The AutoAlignVerticalWithGravitySpeed field value."""
         member = self.get_member("AutoAlignVerticalWithGravitySpeed")
         if member is None:
@@ -510,7 +508,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @auto_align_vertical_with_gravity_speed.setter
-    def auto_align_vertical_with_gravity_speed(self, value: np.float32) -> None:
+    def auto_align_vertical_with_gravity_speed(self, value: primitives.Float) -> None:
         """Set the AutoAlignVerticalWithGravitySpeed field value."""
         member = self.get_member("AutoAlignVerticalWithGravitySpeed")
         if member is not None:
@@ -521,7 +519,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def manual_align_vertical_with_gravity_speed(self) -> np.float32 | None:
+    def manual_align_vertical_with_gravity_speed(self) -> primitives.Float | None:
         """The ManualAlignVerticalWithGravitySpeed field value."""
         member = self.get_member("ManualAlignVerticalWithGravitySpeed")
         if member is None:
@@ -529,7 +527,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @manual_align_vertical_with_gravity_speed.setter
-    def manual_align_vertical_with_gravity_speed(self, value: np.float32) -> None:
+    def manual_align_vertical_with_gravity_speed(self, value: primitives.Float) -> None:
         """Set the ManualAlignVerticalWithGravitySpeed field value."""
         member = self.get_member("ManualAlignVerticalWithGravitySpeed")
         if member is not None:
@@ -540,7 +538,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def air_deceleration_speed(self) -> np.float32 | None:
+    def air_deceleration_speed(self) -> primitives.Float | None:
         """The AirDecelerationSpeed field value."""
         member = self.get_member("AirDecelerationSpeed")
         if member is None:
@@ -548,7 +546,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @air_deceleration_speed.setter
-    def air_deceleration_speed(self, value: np.float32) -> None:
+    def air_deceleration_speed(self, value: primitives.Float) -> None:
         """Set the AirDecelerationSpeed field value."""
         member = self.get_member("AirDecelerationSpeed")
         if member is not None:
@@ -559,7 +557,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def grip_scale_delay(self) -> np.float32 | None:
+    def grip_scale_delay(self) -> primitives.Float | None:
         """The GripScaleDelay field value."""
         member = self.get_member("GripScaleDelay")
         if member is None:
@@ -567,7 +565,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @grip_scale_delay.setter
-    def grip_scale_delay(self, value: np.float32) -> None:
+    def grip_scale_delay(self, value: primitives.Float) -> None:
         """Set the GripScaleDelay field value."""
         member = self.get_member("GripScaleDelay")
         if member is not None:
@@ -578,7 +576,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def allow_crouch(self) -> bool | None:
+    def allow_crouch(self) -> primitives.Bool | None:
         """The AllowCrouch field value."""
         member = self.get_member("AllowCrouch")
         if member is None:
@@ -586,7 +584,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @allow_crouch.setter
-    def allow_crouch(self, value: bool) -> None:
+    def allow_crouch(self, value: primitives.Bool) -> None:
         """Set the AllowCrouch field value."""
         member = self.get_member("AllowCrouch")
         if member is not None:
@@ -597,7 +595,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def maximum_normalized_speed(self) -> np.float32 | None:
+    def maximum_normalized_speed(self) -> primitives.Float | None:
         """The MaximumNormalizedSpeed field value."""
         member = self.get_member("MaximumNormalizedSpeed")
         if member is None:
@@ -605,7 +603,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @maximum_normalized_speed.setter
-    def maximum_normalized_speed(self, value: np.float32) -> None:
+    def maximum_normalized_speed(self, value: primitives.Float) -> None:
         """Set the MaximumNormalizedSpeed field value."""
         member = self.get_member("MaximumNormalizedSpeed")
         if member is not None:
@@ -675,7 +673,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def legacy_name(self) -> str | None:
+    def legacy_name(self) -> primitives.String | None:
         """The __legacyName field value."""
         member = self.get_member("__legacyName")
         if member is None:
@@ -683,7 +681,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
         return getattr(member, 'value', None)
 
     @legacy_name.setter
-    def legacy_name(self, value: str) -> None:
+    def legacy_name(self, value: primitives.String) -> None:
         """Set the __legacyName field value."""
         member = self.get_member("__legacyName")
         if member is not None:

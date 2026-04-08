@@ -1,7 +1,5 @@
 """Generated component: TexturePackingWizard."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TexturePackingWizard"
 
-    def __init__(self, rtexture: str | IAssetProvider[ITexture2D] | None = None, rfallback_value: np.float32 | None = None, rinvert: bool | None = None, gtexture: str | IAssetProvider[ITexture2D] | None = None, gfallback_value: np.float32 | None = None, ginvert: bool | None = None, btexture: str | IAssetProvider[ITexture2D] | None = None, bfallback_value: np.float32 | None = None, binvert: bool | None = None, atexture: str | IAssetProvider[ITexture2D] | None = None, afallback_value: np.float32 | None = None, ainvert: bool | None = None, empty_fallback_resolution: primitives.Int2 | None = None, generate_mips: bool | None = None, output_texture: str | IAssetProvider[ITexture2D] | None = None, is_processing: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, rtexture: str | IAssetProvider[ITexture2D] | None = None, rfallback_value: primitives.Float | None = None, rinvert: primitives.Bool | None = None, gtexture: str | IAssetProvider[ITexture2D] | None = None, gfallback_value: primitives.Float | None = None, ginvert: primitives.Bool | None = None, btexture: str | IAssetProvider[ITexture2D] | None = None, bfallback_value: primitives.Float | None = None, binvert: primitives.Bool | None = None, atexture: str | IAssetProvider[ITexture2D] | None = None, afallback_value: primitives.Float | None = None, ainvert: primitives.Bool | None = None, empty_fallback_resolution: primitives.Int2 | None = None, generate_mips: primitives.Bool | None = None, output_texture: str | IAssetProvider[ITexture2D] | None = None, is_processing: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -101,7 +99,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def rfallback_value(self) -> np.float32 | None:
+    def rfallback_value(self) -> primitives.Float | None:
         """The RFallbackValue field value."""
         member = self.get_member("RFallbackValue")
         if member is None:
@@ -109,7 +107,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @rfallback_value.setter
-    def rfallback_value(self, value: np.float32) -> None:
+    def rfallback_value(self, value: primitives.Float) -> None:
         """Set the RFallbackValue field value."""
         member = self.get_member("RFallbackValue")
         if member is not None:
@@ -133,7 +131,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         self.set_member("RColorChannel", value)
 
     @property
-    def rinvert(self) -> bool | None:
+    def rinvert(self) -> primitives.Bool | None:
         """The RInvert field value."""
         member = self.get_member("RInvert")
         if member is None:
@@ -141,7 +139,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @rinvert.setter
-    def rinvert(self, value: bool) -> None:
+    def rinvert(self, value: primitives.Bool) -> None:
         """Set the RInvert field value."""
         member = self.get_member("RInvert")
         if member is not None:
@@ -173,7 +171,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def gfallback_value(self) -> np.float32 | None:
+    def gfallback_value(self) -> primitives.Float | None:
         """The GFallbackValue field value."""
         member = self.get_member("GFallbackValue")
         if member is None:
@@ -181,7 +179,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @gfallback_value.setter
-    def gfallback_value(self, value: np.float32) -> None:
+    def gfallback_value(self, value: primitives.Float) -> None:
         """Set the GFallbackValue field value."""
         member = self.get_member("GFallbackValue")
         if member is not None:
@@ -205,7 +203,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         self.set_member("GColorChannel", value)
 
     @property
-    def ginvert(self) -> bool | None:
+    def ginvert(self) -> primitives.Bool | None:
         """The GInvert field value."""
         member = self.get_member("GInvert")
         if member is None:
@@ -213,7 +211,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @ginvert.setter
-    def ginvert(self, value: bool) -> None:
+    def ginvert(self, value: primitives.Bool) -> None:
         """Set the GInvert field value."""
         member = self.get_member("GInvert")
         if member is not None:
@@ -245,7 +243,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def bfallback_value(self) -> np.float32 | None:
+    def bfallback_value(self) -> primitives.Float | None:
         """The BFallbackValue field value."""
         member = self.get_member("BFallbackValue")
         if member is None:
@@ -253,7 +251,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @bfallback_value.setter
-    def bfallback_value(self, value: np.float32) -> None:
+    def bfallback_value(self, value: primitives.Float) -> None:
         """Set the BFallbackValue field value."""
         member = self.get_member("BFallbackValue")
         if member is not None:
@@ -277,7 +275,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         self.set_member("BColorChannel", value)
 
     @property
-    def binvert(self) -> bool | None:
+    def binvert(self) -> primitives.Bool | None:
         """The BInvert field value."""
         member = self.get_member("BInvert")
         if member is None:
@@ -285,7 +283,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @binvert.setter
-    def binvert(self, value: bool) -> None:
+    def binvert(self, value: primitives.Bool) -> None:
         """Set the BInvert field value."""
         member = self.get_member("BInvert")
         if member is not None:
@@ -317,7 +315,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def afallback_value(self) -> np.float32 | None:
+    def afallback_value(self) -> primitives.Float | None:
         """The AFallbackValue field value."""
         member = self.get_member("AFallbackValue")
         if member is None:
@@ -325,7 +323,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @afallback_value.setter
-    def afallback_value(self, value: np.float32) -> None:
+    def afallback_value(self, value: primitives.Float) -> None:
         """Set the AFallbackValue field value."""
         member = self.get_member("AFallbackValue")
         if member is not None:
@@ -349,7 +347,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         self.set_member("AColorChannel", value)
 
     @property
-    def ainvert(self) -> bool | None:
+    def ainvert(self) -> primitives.Bool | None:
         """The AInvert field value."""
         member = self.get_member("AInvert")
         if member is None:
@@ -357,7 +355,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @ainvert.setter
-    def ainvert(self, value: bool) -> None:
+    def ainvert(self, value: primitives.Bool) -> None:
         """Set the AInvert field value."""
         member = self.get_member("AInvert")
         if member is not None:
@@ -413,7 +411,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def generate_mips(self) -> bool | None:
+    def generate_mips(self) -> primitives.Bool | None:
         """The GenerateMips field value."""
         member = self.get_member("GenerateMips")
         if member is None:
@@ -421,7 +419,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @generate_mips.setter
-    def generate_mips(self, value: bool) -> None:
+    def generate_mips(self, value: primitives.Bool) -> None:
         """Set the GenerateMips field value."""
         member = self.get_member("GenerateMips")
         if member is not None:
@@ -453,7 +451,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def is_processing(self) -> bool | None:
+    def is_processing(self) -> primitives.Bool | None:
         """The IsProcessing field value."""
         member = self.get_member("IsProcessing")
         if member is None:
@@ -461,7 +459,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         return getattr(member, 'value', None)
 
     @is_processing.setter
-    def is_processing(self, value: bool) -> None:
+    def is_processing(self, value: primitives.Bool) -> None:
         """Set the IsProcessing field value."""
         member = self.get_member("IsProcessing")
         if member is not None:

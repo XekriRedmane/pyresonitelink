@@ -18,7 +18,7 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GripPoseReference"
 
-    def __init__(self, root_pos: primitives.Float3 | None = None, tip_reference: str | Slot | None = None, show_visual: bool | None = None, disable_slider: bool | None = None, active_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, root_pos: primitives.Float3 | None = None, tip_reference: str | Slot | None = None, show_visual: primitives.Bool | None = None, disable_slider: primitives.Bool | None = None, active_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -95,7 +95,7 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def show_visual(self) -> bool | None:
+    def show_visual(self) -> primitives.Bool | None:
         """The ShowVisual field value."""
         member = self.get_member("ShowVisual")
         if member is None:
@@ -103,7 +103,7 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_visual.setter
-    def show_visual(self, value: bool) -> None:
+    def show_visual(self, value: primitives.Bool) -> None:
         """Set the ShowVisual field value."""
         member = self.get_member("ShowVisual")
         if member is not None:
@@ -114,7 +114,7 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def disable_slider(self) -> bool | None:
+    def disable_slider(self) -> primitives.Bool | None:
         """The DisableSlider field value."""
         member = self.get_member("DisableSlider")
         if member is None:
@@ -122,7 +122,7 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @disable_slider.setter
-    def disable_slider(self, value: bool) -> None:
+    def disable_slider(self, value: primitives.Bool) -> None:
         """Set the DisableSlider field value."""
         member = self.get_member("DisableSlider")
         if member is not None:

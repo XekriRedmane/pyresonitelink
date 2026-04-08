@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.worker import Worker
@@ -17,7 +18,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.SpawnOrDestroy"
 
-    def __init__(self, target: str | Worker | None = None, target_parent: str | Slot | None = None, preserve_assets: bool | None = None, send_destroying_events: bool | None = None, saved_object: str | None = None, is_component: bool | None = None, reference_table: str | SavedReferenceTable | None = None, is_saving: bool | None = None, description: str | None = None, performed: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | Worker | None = None, target_parent: str | Slot | None = None, preserve_assets: primitives.Bool | None = None, send_destroying_events: primitives.Bool | None = None, saved_object: str | None = None, is_component: primitives.Bool | None = None, reference_table: str | SavedReferenceTable | None = None, is_saving: primitives.Bool | None = None, description: primitives.String | None = None, performed: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -111,7 +112,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
         self.set_member("_mode", value)
 
     @property
-    def preserve_assets(self) -> bool | None:
+    def preserve_assets(self) -> primitives.Bool | None:
         """The _preserveAssets field value."""
         member = self.get_member("_preserveAssets")
         if member is None:
@@ -119,7 +120,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @preserve_assets.setter
-    def preserve_assets(self, value: bool) -> None:
+    def preserve_assets(self, value: primitives.Bool) -> None:
         """Set the _preserveAssets field value."""
         member = self.get_member("_preserveAssets")
         if member is not None:
@@ -130,7 +131,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def send_destroying_events(self) -> bool | None:
+    def send_destroying_events(self) -> primitives.Bool | None:
         """The _sendDestroyingEvents field value."""
         member = self.get_member("_sendDestroyingEvents")
         if member is None:
@@ -138,7 +139,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @send_destroying_events.setter
-    def send_destroying_events(self, value: bool) -> None:
+    def send_destroying_events(self, value: primitives.Bool) -> None:
         """Set the _sendDestroyingEvents field value."""
         member = self.get_member("_sendDestroyingEvents")
         if member is not None:
@@ -168,7 +169,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def is_component(self) -> bool | None:
+    def is_component(self) -> primitives.Bool | None:
         """The _isComponent field value."""
         member = self.get_member("_isComponent")
         if member is None:
@@ -176,7 +177,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_component.setter
-    def is_component(self, value: bool) -> None:
+    def is_component(self, value: primitives.Bool) -> None:
         """Set the _isComponent field value."""
         member = self.get_member("_isComponent")
         if member is not None:
@@ -208,7 +209,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def is_saving(self) -> bool | None:
+    def is_saving(self) -> primitives.Bool | None:
         """The _isSaving field value."""
         member = self.get_member("_isSaving")
         if member is None:
@@ -216,7 +217,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_saving.setter
-    def is_saving(self, value: bool) -> None:
+    def is_saving(self, value: primitives.Bool) -> None:
         """Set the _isSaving field value."""
         member = self.get_member("_isSaving")
         if member is not None:
@@ -227,7 +228,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def description(self) -> str | None:
+    def description(self) -> primitives.String | None:
         """The _description field value."""
         member = self.get_member("_description")
         if member is None:
@@ -235,7 +236,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @description.setter
-    def description(self, value: str) -> None:
+    def description(self, value: primitives.String) -> None:
         """Set the _description field value."""
         member = self.get_member("_description")
         if member is not None:
@@ -246,7 +247,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def performed(self) -> bool | None:
+    def performed(self) -> primitives.Bool | None:
         """The _performed field value."""
         member = self.get_member("_performed")
         if member is None:
@@ -254,7 +255,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @performed.setter
-    def performed(self, value: bool) -> None:
+    def performed(self, value: primitives.Bool) -> None:
         """Set the _performed field value."""
         member = self.get_member("_performed")
         if member is not None:

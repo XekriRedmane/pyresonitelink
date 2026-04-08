@@ -1,7 +1,5 @@
 """Generated component: BevelPlaneMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BevelPlaneMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, width: np.float32 | None = None, height: np.float32 | None = None, thickness: np.float32 | None = None, top_left_cut: np.float32 | None = None, bottom_right_cut: np.float32 | None = None, relief: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, top_left_cut: primitives.Float | None = None, bottom_right_cut: primitives.Float | None = None, relief: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,7 +55,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.relief = relief
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -65,7 +63,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -76,7 +74,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -84,7 +82,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -127,7 +125,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         self.set_member("Profile", value)
 
     @property
-    def width(self) -> np.float32 | None:
+    def width(self) -> primitives.Float | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -135,7 +133,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.float32) -> None:
+    def width(self, value: primitives.Float) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -146,7 +144,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -154,7 +152,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -165,7 +163,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -173,7 +171,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -184,7 +182,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def top_left_cut(self) -> np.float32 | None:
+    def top_left_cut(self) -> primitives.Float | None:
         """The TopLeftCut field value."""
         member = self.get_member("TopLeftCut")
         if member is None:
@@ -192,7 +190,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @top_left_cut.setter
-    def top_left_cut(self, value: np.float32) -> None:
+    def top_left_cut(self, value: primitives.Float) -> None:
         """Set the TopLeftCut field value."""
         member = self.get_member("TopLeftCut")
         if member is not None:
@@ -203,7 +201,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def bottom_right_cut(self) -> np.float32 | None:
+    def bottom_right_cut(self) -> primitives.Float | None:
         """The BottomRightCut field value."""
         member = self.get_member("BottomRightCut")
         if member is None:
@@ -211,7 +209,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @bottom_right_cut.setter
-    def bottom_right_cut(self, value: np.float32) -> None:
+    def bottom_right_cut(self, value: primitives.Float) -> None:
         """Set the BottomRightCut field value."""
         member = self.get_member("BottomRightCut")
         if member is not None:
@@ -222,7 +220,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def relief(self) -> bool | None:
+    def relief(self) -> primitives.Bool | None:
         """The Relief field value."""
         member = self.get_member("Relief")
         if member is None:
@@ -230,7 +228,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @relief.setter
-    def relief(self, value: bool) -> None:
+    def relief(self, value: primitives.Bool) -> None:
         """Set the Relief field value."""
         member = self.get_member("Relief")
         if member is not None:

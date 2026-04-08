@@ -20,7 +20,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.DualColorImage"
 
-    def __init__(self, sprite: str | IAssetProvider[Sprite] | None = None, material: str | IAssetProvider[Material] | None = None, preserve_aspect: bool | None = None, flip_horizontally: bool | None = None, flip_vertically: bool | None = None, interaction_target: bool | None = None, fill_rect: primitives.Rect | None = None, legacy_zwrite: bool | None = None, tint: primitives.ColorX | None = None, secondary_tint: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, sprite: str | IAssetProvider[Sprite] | None = None, material: str | IAssetProvider[Material] | None = None, preserve_aspect: primitives.Bool | None = None, flip_horizontally: primitives.Bool | None = None, flip_vertically: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, fill_rect: primitives.Rect | None = None, legacy_zwrite: primitives.Bool | None = None, tint: primitives.ColorX | None = None, secondary_tint: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -101,7 +101,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
             )
 
     @property
-    def preserve_aspect(self) -> bool | None:
+    def preserve_aspect(self) -> primitives.Bool | None:
         """The PreserveAspect field value."""
         member = self.get_member("PreserveAspect")
         if member is None:
@@ -109,7 +109,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @preserve_aspect.setter
-    def preserve_aspect(self, value: bool) -> None:
+    def preserve_aspect(self, value: primitives.Bool) -> None:
         """Set the PreserveAspect field value."""
         member = self.get_member("PreserveAspect")
         if member is not None:
@@ -133,7 +133,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
         self.set_member("NineSliceSizing", value)
 
     @property
-    def flip_horizontally(self) -> bool | None:
+    def flip_horizontally(self) -> primitives.Bool | None:
         """The FlipHorizontally field value."""
         member = self.get_member("FlipHorizontally")
         if member is None:
@@ -141,7 +141,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @flip_horizontally.setter
-    def flip_horizontally(self, value: bool) -> None:
+    def flip_horizontally(self, value: primitives.Bool) -> None:
         """Set the FlipHorizontally field value."""
         member = self.get_member("FlipHorizontally")
         if member is not None:
@@ -152,7 +152,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
             )
 
     @property
-    def flip_vertically(self) -> bool | None:
+    def flip_vertically(self) -> primitives.Bool | None:
         """The FlipVertically field value."""
         member = self.get_member("FlipVertically")
         if member is None:
@@ -160,7 +160,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @flip_vertically.setter
-    def flip_vertically(self, value: bool) -> None:
+    def flip_vertically(self, value: primitives.Bool) -> None:
         """Set the FlipVertically field value."""
         member = self.get_member("FlipVertically")
         if member is not None:
@@ -171,7 +171,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
             )
 
     @property
-    def interaction_target(self) -> bool | None:
+    def interaction_target(self) -> primitives.Bool | None:
         """The InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is None:
@@ -179,7 +179,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @interaction_target.setter
-    def interaction_target(self, value: bool) -> None:
+    def interaction_target(self, value: primitives.Bool) -> None:
         """Set the InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is not None:
@@ -209,7 +209,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
             )
 
     @property
-    def legacy_zwrite(self) -> bool | None:
+    def legacy_zwrite(self) -> primitives.Bool | None:
         """The __legacyZWrite field value."""
         member = self.get_member("__legacyZWrite")
         if member is None:
@@ -217,7 +217,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @legacy_zwrite.setter
-    def legacy_zwrite(self, value: bool) -> None:
+    def legacy_zwrite(self, value: primitives.Bool) -> None:
         """Set the __legacyZWrite field value."""
         member = self.get_member("__legacyZWrite")
         if member is not None:

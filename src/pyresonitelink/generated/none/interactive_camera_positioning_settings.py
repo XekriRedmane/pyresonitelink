@@ -1,6 +1,7 @@
 """Generated component: InteractiveCameraPositioningSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraPositioningSettings"
 
-    def __init__(self, avoid_occlusion: bool | None = None, keep_in_world_space: bool | None = None, movement_wobble: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, avoid_occlusion: primitives.Bool | None = None, keep_in_world_space: primitives.Bool | None = None, movement_wobble: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +32,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
             self.movement_wobble = movement_wobble
 
     @property
-    def avoid_occlusion(self) -> bool | None:
+    def avoid_occlusion(self) -> primitives.Bool | None:
         """The AvoidOcclusion field value."""
         member = self.get_member("AvoidOcclusion")
         if member is None:
@@ -39,7 +40,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
         return getattr(member, 'value', None)
 
     @avoid_occlusion.setter
-    def avoid_occlusion(self, value: bool) -> None:
+    def avoid_occlusion(self, value: primitives.Bool) -> None:
         """Set the AvoidOcclusion field value."""
         member = self.get_member("AvoidOcclusion")
         if member is not None:
@@ -50,7 +51,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
             )
 
     @property
-    def keep_in_world_space(self) -> bool | None:
+    def keep_in_world_space(self) -> primitives.Bool | None:
         """The KeepInWorldSpace field value."""
         member = self.get_member("KeepInWorldSpace")
         if member is None:
@@ -58,7 +59,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
         return getattr(member, 'value', None)
 
     @keep_in_world_space.setter
-    def keep_in_world_space(self, value: bool) -> None:
+    def keep_in_world_space(self, value: primitives.Bool) -> None:
         """Set the KeepInWorldSpace field value."""
         member = self.get_member("KeepInWorldSpace")
         if member is not None:
@@ -69,7 +70,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
             )
 
     @property
-    def movement_wobble(self) -> bool | None:
+    def movement_wobble(self) -> primitives.Bool | None:
         """The MovementWobble field value."""
         member = self.get_member("MovementWobble")
         if member is None:
@@ -77,7 +78,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
         return getattr(member, 'value', None)
 
     @movement_wobble.setter
-    def movement_wobble(self, value: bool) -> None:
+    def movement_wobble(self, value: primitives.Bool) -> None:
         """Set the MovementWobble field value."""
         member = self.get_member("MovementWobble")
         if member is not None:

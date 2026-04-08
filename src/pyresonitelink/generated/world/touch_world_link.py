@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.world_link import WorldLink
@@ -17,7 +18,7 @@ class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TouchWorldLink"
 
-    def __init__(self, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, accept_out_of_sight_touch: bool | None = None, world_link: str | WorldLink | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, world_link: str | WorldLink | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,7 +39,7 @@ class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
             self.world_link = world_link
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -46,7 +47,7 @@ class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -57,7 +58,7 @@ class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -65,7 +66,7 @@ class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -76,7 +77,7 @@ class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_out_of_sight_touch(self) -> bool | None:
+    def accept_out_of_sight_touch(self) -> primitives.Bool | None:
         """The AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is None:
@@ -84,7 +85,7 @@ class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_out_of_sight_touch.setter
-    def accept_out_of_sight_touch(self, value: bool) -> None:
+    def accept_out_of_sight_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is not None:

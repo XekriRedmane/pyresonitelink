@@ -1,7 +1,5 @@
 """Generated component: DisplayInfo."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class DisplayInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DisplayInfo"
 
-    def __init__(self, display_index: np.int32 | None = None, resolution: primitives.Int2 | None = None, offset: primitives.Int2 | None = None, dpi: primitives.Float2 | None = None, refresh_rate: np.float64 | None = None, is_primary: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, display_index: primitives.Int | None = None, resolution: primitives.Int2 | None = None, offset: primitives.Int2 | None = None, dpi: primitives.Float2 | None = None, refresh_rate: primitives.Double | None = None, is_primary: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,7 +44,7 @@ class DisplayInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.is_primary = is_primary
 
     @property
-    def display_index(self) -> np.int32 | None:
+    def display_index(self) -> primitives.Int | None:
         """The DisplayIndex field value."""
         member = self.get_member("DisplayIndex")
         if member is None:
@@ -54,7 +52,7 @@ class DisplayInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @display_index.setter
-    def display_index(self, value: np.int32) -> None:
+    def display_index(self, value: primitives.Int) -> None:
         """Set the DisplayIndex field value."""
         member = self.get_member("DisplayIndex")
         if member is not None:
@@ -122,7 +120,7 @@ class DisplayInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def refresh_rate(self) -> np.float64 | None:
+    def refresh_rate(self) -> primitives.Double | None:
         """The RefreshRate field value."""
         member = self.get_member("RefreshRate")
         if member is None:
@@ -130,7 +128,7 @@ class DisplayInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @refresh_rate.setter
-    def refresh_rate(self, value: np.float64) -> None:
+    def refresh_rate(self, value: primitives.Double) -> None:
         """Set the RefreshRate field value."""
         member = self.get_member("RefreshRate")
         if member is not None:
@@ -154,7 +152,7 @@ class DisplayInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("Orientation", value)
 
     @property
-    def is_primary(self) -> bool | None:
+    def is_primary(self) -> primitives.Bool | None:
         """The IsPrimary field value."""
         member = self.get_member("IsPrimary")
         if member is None:
@@ -162,7 +160,7 @@ class DisplayInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_primary.setter
-    def is_primary(self, value: bool) -> None:
+    def is_primary(self, value: primitives.Bool) -> None:
         """Set the IsPrimary field value."""
         member = self.get_member("IsPrimary")
         if member is not None:

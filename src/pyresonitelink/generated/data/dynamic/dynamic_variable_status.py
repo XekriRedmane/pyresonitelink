@@ -1,6 +1,7 @@
 """Generated component: DynamicVariableStatus."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.idynamic_variable import IDynamicVariable
@@ -15,14 +16,14 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
 
     Parameterize with a value type::
 
-        DynamicVariableStatus[np.float32]
+        DynamicVariableStatus[primitives.Float]
         DynamicVariableStatus[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicVariableStatus<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.DynamicVariableStatus<>"
 
-    def __init__(self, variable_name: str | None = None, is_linked_to_space: bool | None = None, variable_exists: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, is_linked_to_space: primitives.Bool | None = None, variable_exists: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +41,7 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
             self.variable_exists = variable_exists
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -48,7 +49,7 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:
@@ -59,7 +60,7 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
             )
 
     @property
-    def is_linked_to_space(self) -> bool | None:
+    def is_linked_to_space(self) -> primitives.Bool | None:
         """The IsLinkedToSpace field value."""
         member = self.get_member("IsLinkedToSpace")
         if member is None:
@@ -67,7 +68,7 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
         return getattr(member, 'value', None)
 
     @is_linked_to_space.setter
-    def is_linked_to_space(self, value: bool) -> None:
+    def is_linked_to_space(self, value: primitives.Bool) -> None:
         """Set the IsLinkedToSpace field value."""
         member = self.get_member("IsLinkedToSpace")
         if member is not None:
@@ -78,7 +79,7 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
             )
 
     @property
-    def variable_exists(self) -> bool | None:
+    def variable_exists(self) -> primitives.Bool | None:
         """The VariableExists field value."""
         member = self.get_member("VariableExists")
         if member is None:
@@ -86,7 +87,7 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
         return getattr(member, 'value', None)
 
     @variable_exists.setter
-    def variable_exists(self, value: bool) -> None:
+    def variable_exists(self, value: primitives.Bool) -> None:
         """Set the VariableExists field value."""
         member = self.get_member("VariableExists")
         if member is not None:

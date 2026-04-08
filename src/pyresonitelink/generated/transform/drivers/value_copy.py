@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class ValueCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ValueCopy[np.float32]
+        ValueCopy[primitives.Float]
         ValueCopy[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueCopy<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ValueCopy<>"
 
-    def __init__(self, source: str | IField[T] | None = None, target: str | IField[T] | None = None, write_back: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[T] | None = None, target: str | IField[T] | None = None, write_back: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -83,7 +84,7 @@ class ValueCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def write_back(self) -> bool | None:
+    def write_back(self) -> primitives.Bool | None:
         """The WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is None:
@@ -91,7 +92,7 @@ class ValueCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @write_back.setter
-    def write_back(self, value: bool) -> None:
+    def write_back(self, value: primitives.Bool) -> None:
         """Set the WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: AudioZitaReverb+LegacyRangeMapper."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -17,7 +16,7 @@ class AudioZitaReverb+LegacyRangeMapper(GeneratedComponent, IComponent, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioZitaReverb+LegacyRangeMapper"
 
-    def __init__(self, min_distance: np.float32 | None = None, max_distance: np.float32 | None = None, radius: str | IField[np.float32] | None = None, blend_distance: str | IField[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, radius: str | IField[primitives.Float] | None = None, blend_distance: str | IField[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,7 +37,7 @@ class AudioZitaReverb+LegacyRangeMapper(GeneratedComponent, IComponent, IWorldEv
             self.blend_distance = blend_distance
 
     @property
-    def min_distance(self) -> np.float32 | None:
+    def min_distance(self) -> primitives.Float | None:
         """The MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is None:
@@ -46,7 +45,7 @@ class AudioZitaReverb+LegacyRangeMapper(GeneratedComponent, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @min_distance.setter
-    def min_distance(self, value: np.float32) -> None:
+    def min_distance(self, value: primitives.Float) -> None:
         """Set the MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is not None:
@@ -57,7 +56,7 @@ class AudioZitaReverb+LegacyRangeMapper(GeneratedComponent, IComponent, IWorldEv
             )
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -65,7 +64,7 @@ class AudioZitaReverb+LegacyRangeMapper(GeneratedComponent, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:
@@ -77,15 +76,15 @@ class AudioZitaReverb+LegacyRangeMapper(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def radius(self) -> str | None:
-        """Target ID of the Radius reference (targets IField[np.float32])."""
+        """Target ID of the Radius reference (targets IField[primitives.Float])."""
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @radius.setter
-    def radius(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Radius reference by target ID or IField[np.float32] instance."""
+    def radius(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Radius reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
@@ -98,15 +97,15 @@ class AudioZitaReverb+LegacyRangeMapper(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def blend_distance(self) -> str | None:
-        """Target ID of the BlendDistance reference (targets IField[np.float32])."""
+        """Target ID of the BlendDistance reference (targets IField[primitives.Float])."""
         member = self.get_member("BlendDistance")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @blend_distance.setter
-    def blend_distance(self, target: str | IField[np.float32] | None) -> None:
-        """Set the BlendDistance reference by target ID or IField[np.float32] instance."""
+    def blend_distance(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the BlendDistance reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("BlendDistance")
         if isinstance(member, members.Reference):

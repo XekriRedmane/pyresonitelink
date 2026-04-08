@@ -1,7 +1,5 @@
 """Generated component: WireframeMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WireframeMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, thickness: np.float32 | None = None, screen_space: bool | None = None, line_color: primitives.ColorX | None = None, fill_color: primitives.ColorX | None = None, inner_line_color: primitives.ColorX | None = None, inner_fill_color: primitives.ColorX | None = None, use_fresnel: bool | None = None, line_far_color: primitives.ColorX | None = None, fill_far_color: primitives.ColorX | None = None, inner_line_far_color: primitives.ColorX | None = None, inner_fill_far_color: primitives.ColorX | None = None, exp: np.float32 | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, double_sided: bool | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, regular: str | IAssetProvider[Shader] | None = None, regular_double_sided: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, thickness: primitives.Float | None = None, screen_space: primitives.Bool | None = None, line_color: primitives.ColorX | None = None, fill_color: primitives.ColorX | None = None, inner_line_color: primitives.ColorX | None = None, inner_fill_color: primitives.ColorX | None = None, use_fresnel: primitives.Bool | None = None, line_far_color: primitives.ColorX | None = None, fill_far_color: primitives.ColorX | None = None, inner_line_far_color: primitives.ColorX | None = None, inner_fill_far_color: primitives.ColorX | None = None, exp: primitives.Float | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, double_sided: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, regular: str | IAssetProvider[Shader] | None = None, regular_double_sided: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -92,7 +90,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             self.regular_double_sided = regular_double_sided
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -100,7 +98,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -111,7 +109,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -119,7 +117,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -130,7 +128,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             )
 
     @property
-    def screen_space(self) -> bool | None:
+    def screen_space(self) -> primitives.Bool | None:
         """The ScreenSpace field value."""
         member = self.get_member("ScreenSpace")
         if member is None:
@@ -138,7 +136,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @screen_space.setter
-    def screen_space(self, value: bool) -> None:
+    def screen_space(self, value: primitives.Bool) -> None:
         """Set the ScreenSpace field value."""
         member = self.get_member("ScreenSpace")
         if member is not None:
@@ -225,7 +223,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             )
 
     @property
-    def use_fresnel(self) -> bool | None:
+    def use_fresnel(self) -> primitives.Bool | None:
         """The UseFresnel field value."""
         member = self.get_member("UseFresnel")
         if member is None:
@@ -233,7 +231,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @use_fresnel.setter
-    def use_fresnel(self, value: bool) -> None:
+    def use_fresnel(self, value: primitives.Bool) -> None:
         """Set the UseFresnel field value."""
         member = self.get_member("UseFresnel")
         if member is not None:
@@ -320,7 +318,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             )
 
     @property
-    def exp(self) -> np.float32 | None:
+    def exp(self) -> primitives.Float | None:
         """The Exp field value."""
         member = self.get_member("Exp")
         if member is None:
@@ -328,7 +326,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @exp.setter
-    def exp(self, value: np.float32) -> None:
+    def exp(self, value: primitives.Float) -> None:
         """Set the Exp field value."""
         member = self.get_member("Exp")
         if member is not None:
@@ -373,7 +371,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         self.set_member("ZWrite", value)
 
     @property
-    def double_sided(self) -> bool | None:
+    def double_sided(self) -> primitives.Bool | None:
         """The DoubleSided field value."""
         member = self.get_member("DoubleSided")
         if member is None:
@@ -381,7 +379,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @double_sided.setter
-    def double_sided(self, value: bool) -> None:
+    def double_sided(self, value: primitives.Bool) -> None:
         """Set the DoubleSided field value."""
         member = self.get_member("DoubleSided")
         if member is not None:
@@ -392,7 +390,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -400,7 +398,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -411,7 +409,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -419,7 +417,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -430,7 +428,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -438,7 +436,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

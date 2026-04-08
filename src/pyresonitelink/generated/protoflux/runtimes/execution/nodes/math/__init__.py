@@ -591,14 +591,12 @@ from .random.random_rgb_a_color import RandomRGBA_Color
 from .random.random_rgb_a_colorx import RandomRGBA_ColorX
 from .random.random_rgb_color import RandomRGB_Color
 from .random.random_rgb_colorx import RandomRGB_ColorX
-from .random.random_rgba_color import RandomRGBA_Color
 from .random.random_rotation import RandomRotation
 from .random.random_slerp_float_q import RandomSlerpFloatQ
 from .random.random_string import RandomString
 from .random.simplex_noise_1_d import SimplexNoise_1D
 from .random.simplex_noise_2d import SimplexNoise_2D
 from .random.simplex_noise_3d import SimplexNoise_3D
-from .random.simplex_noise_4_d import SimplexNoise_4D
 from .random.simplex_noise_4d import SimplexNoise_4D
 from .rects.clip_rect import ClipRect
 from .rects.encapsulate_rect import EncapsulateRect

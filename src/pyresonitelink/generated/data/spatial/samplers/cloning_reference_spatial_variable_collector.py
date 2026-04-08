@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.slot import Slot
@@ -15,14 +16,14 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        CloningReferenceSpatialVariableCollector[np.float32]
+        CloningReferenceSpatialVariableCollector[primitives.Float]
         CloningReferenceSpatialVariableCollector[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CloningReferenceSpatialVariableCollector<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.CloningReferenceSpatialVariableCollector<>"
 
-    def __init__(self, clone_parent: str | Slot | None = None, make_clones_local: bool | None = None, variable_name: str | None = None, reference_list: str | ISyncRefList[T] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, clone_parent: str | Slot | None = None, make_clones_local: primitives.Bool | None = None, variable_name: primitives.String | None = None, reference_list: str | ISyncRefList[T] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -64,7 +65,7 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
             )
 
     @property
-    def make_clones_local(self) -> bool | None:
+    def make_clones_local(self) -> primitives.Bool | None:
         """The MakeClonesLocal field value."""
         member = self.get_member("MakeClonesLocal")
         if member is None:
@@ -72,7 +73,7 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
         return getattr(member, 'value', None)
 
     @make_clones_local.setter
-    def make_clones_local(self, value: bool) -> None:
+    def make_clones_local(self, value: primitives.Bool) -> None:
         """Set the MakeClonesLocal field value."""
         member = self.get_member("MakeClonesLocal")
         if member is not None:
@@ -83,7 +84,7 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
             )
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -91,7 +92,7 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:

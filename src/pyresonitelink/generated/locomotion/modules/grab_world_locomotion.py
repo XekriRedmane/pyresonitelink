@@ -1,7 +1,5 @@
 """Generated component: GrabWorldLocomotion."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,7 +23,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabWorldLocomotion"
 
-    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, activation_threshold: np.float32 | None = None, deactivation_threshold: np.float32 | None = None, visual: str | Slot | None = None, cross_mesh: str | CrossMesh | None = None, material: str | PBS_RimMetallic | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold: primitives.Float | None = None, visual: str | Slot | None = None, cross_mesh: str | CrossMesh | None = None, material: str | PBS_RimMetallic | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -176,7 +174,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
         self.set_member("Turn", value)
 
     @property
-    def activation_threshold(self) -> np.float32 | None:
+    def activation_threshold(self) -> primitives.Float | None:
         """The ActivationThreshold field value."""
         member = self.get_member("ActivationThreshold")
         if member is None:
@@ -184,7 +182,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
         return getattr(member, 'value', None)
 
     @activation_threshold.setter
-    def activation_threshold(self, value: np.float32) -> None:
+    def activation_threshold(self, value: primitives.Float) -> None:
         """Set the ActivationThreshold field value."""
         member = self.get_member("ActivationThreshold")
         if member is not None:
@@ -195,7 +193,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
             )
 
     @property
-    def deactivation_threshold(self) -> np.float32 | None:
+    def deactivation_threshold(self) -> primitives.Float | None:
         """The DeactivationThreshold field value."""
         member = self.get_member("DeactivationThreshold")
         if member is None:
@@ -203,7 +201,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
         return getattr(member, 'value', None)
 
     @deactivation_threshold.setter
-    def deactivation_threshold(self, value: np.float32) -> None:
+    def deactivation_threshold(self, value: primitives.Float) -> None:
         """Set the DeactivationThreshold field value."""
         member = self.get_member("DeactivationThreshold")
         if member is not None:

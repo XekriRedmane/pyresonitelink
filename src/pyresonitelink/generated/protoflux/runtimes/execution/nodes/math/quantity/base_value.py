@@ -21,7 +21,7 @@ class BaseValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     Parameterize with a value type::
 
-        BaseValue[np.float32]
+        BaseValue[primitives.Float]
         BaseValue[primitives.Float3]
     """
 

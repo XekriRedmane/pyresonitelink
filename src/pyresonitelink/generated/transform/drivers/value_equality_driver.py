@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ValueEqualityDriver[np.float32]
+        ValueEqualityDriver[primitives.Float]
         ValueEqualityDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueEqualityDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ValueEqualityDriver<>"
 
-    def __init__(self, target_value: str | IField[T] | None = None, reference: T | None = None, target: str | IField[bool] | None = None, invert: bool | None = None, use_approximate_comparison: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_value: str | IField[T] | None = None, reference: T | None = None, target: str | IField[primitives.Bool] | None = None, invert: primitives.Bool | None = None, use_approximate_comparison: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -88,15 +89,15 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[bool])."""
+        """Target ID of the Target reference (targets IField[primitives.Bool])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[bool] | None) -> None:
-        """Set the Target reference by target ID or IField[bool] instance."""
+    def target(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -108,7 +109,7 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def invert(self) -> bool | None:
+    def invert(self) -> primitives.Bool | None:
         """The Invert field value."""
         member = self.get_member("Invert")
         if member is None:
@@ -116,7 +117,7 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @invert.setter
-    def invert(self, value: bool) -> None:
+    def invert(self, value: primitives.Bool) -> None:
         """Set the Invert field value."""
         member = self.get_member("Invert")
         if member is not None:
@@ -127,7 +128,7 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def use_approximate_comparison(self) -> bool | None:
+    def use_approximate_comparison(self) -> primitives.Bool | None:
         """The UseApproximateComparison field value."""
         member = self.get_member("UseApproximateComparison")
         if member is None:
@@ -135,7 +136,7 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_approximate_comparison.setter
-    def use_approximate_comparison(self, value: bool) -> None:
+    def use_approximate_comparison(self, value: primitives.Bool) -> None:
         """Set the UseApproximateComparison field value."""
         member = self.get_member("UseApproximateComparison")
         if member is not None:

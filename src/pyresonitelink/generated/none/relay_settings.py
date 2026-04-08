@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -14,7 +15,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RelaySettings"
 
-    def __init__(self, always_use_relay: bool | None = None, use_closest_available_relay: bool | None = None, relay_priorities_enabled: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, always_use_relay: primitives.Bool | None = None, use_closest_available_relay: primitives.Bool | None = None, relay_priorities_enabled: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +33,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
             self.relay_priorities_enabled = relay_priorities_enabled
 
     @property
-    def always_use_relay(self) -> bool | None:
+    def always_use_relay(self) -> primitives.Bool | None:
         """The AlwaysUseRelay field value."""
         member = self.get_member("AlwaysUseRelay")
         if member is None:
@@ -40,7 +41,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @always_use_relay.setter
-    def always_use_relay(self, value: bool) -> None:
+    def always_use_relay(self, value: primitives.Bool) -> None:
         """Set the AlwaysUseRelay field value."""
         member = self.get_member("AlwaysUseRelay")
         if member is not None:
@@ -51,7 +52,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def use_closest_available_relay(self) -> bool | None:
+    def use_closest_available_relay(self) -> primitives.Bool | None:
         """The UseClosestAvailableRelay field value."""
         member = self.get_member("UseClosestAvailableRelay")
         if member is None:
@@ -59,7 +60,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_closest_available_relay.setter
-    def use_closest_available_relay(self, value: bool) -> None:
+    def use_closest_available_relay(self, value: primitives.Bool) -> None:
         """Set the UseClosestAvailableRelay field value."""
         member = self.get_member("UseClosestAvailableRelay")
         if member is not None:
@@ -83,7 +84,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
         self.set_member("RelayPriorities", value)
 
     @property
-    def relay_priorities_enabled(self) -> bool | None:
+    def relay_priorities_enabled(self) -> primitives.Bool | None:
         """The RelayPrioritiesEnabled field value."""
         member = self.get_member("RelayPrioritiesEnabled")
         if member is None:
@@ -91,7 +92,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @relay_priorities_enabled.setter
-    def relay_priorities_enabled(self, value: bool) -> None:
+    def relay_priorities_enabled(self, value: primitives.Bool) -> None:
         """Set the RelayPrioritiesEnabled field value."""
         member = self.get_member("RelayPrioritiesEnabled")
         if member is not None:
@@ -101,7 +102,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
                 "RelayPrioritiesEnabled", fields.FieldBool(value=value)
             )
 
-    async def get_entry(self, resolink: protocols.ResoniteLinkClient, key: str, debug: bool = False) -> dict:
+    async def get_entry(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
         """Call the GetEntry sync method.
 
         Args:

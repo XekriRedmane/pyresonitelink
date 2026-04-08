@@ -1,7 +1,5 @@
 """Generated component: CharacterTeleporter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterTeleporter"
 
-    def __init__(self, triggers_only: bool | None = None, minimum_velocity: np.float32 | None = None, direction_reference: primitives.Float3 | None = None, max_direction_angle: np.float32 | None = None, ignore_parent_user: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, triggers_only: primitives.Bool | None = None, minimum_velocity: primitives.Float | None = None, direction_reference: primitives.Float3 | None = None, max_direction_angle: primitives.Float | None = None, ignore_parent_user: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,7 +41,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.ignore_parent_user = ignore_parent_user
 
     @property
-    def triggers_only(self) -> bool | None:
+    def triggers_only(self) -> primitives.Bool | None:
         """The TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is None:
@@ -51,7 +49,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @triggers_only.setter
-    def triggers_only(self, value: bool) -> None:
+    def triggers_only(self, value: primitives.Bool) -> None:
         """Set the TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is not None:
@@ -75,7 +73,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("Exits", value)
 
     @property
-    def minimum_velocity(self) -> np.float32 | None:
+    def minimum_velocity(self) -> primitives.Float | None:
         """The MinimumVelocity field value."""
         member = self.get_member("MinimumVelocity")
         if member is None:
@@ -83,7 +81,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @minimum_velocity.setter
-    def minimum_velocity(self, value: np.float32) -> None:
+    def minimum_velocity(self, value: primitives.Float) -> None:
         """Set the MinimumVelocity field value."""
         member = self.get_member("MinimumVelocity")
         if member is not None:
@@ -113,7 +111,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_direction_angle(self) -> np.float32 | None:
+    def max_direction_angle(self) -> primitives.Float | None:
         """The MaxDirectionAngle field value."""
         member = self.get_member("MaxDirectionAngle")
         if member is None:
@@ -121,7 +119,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_direction_angle.setter
-    def max_direction_angle(self, value: np.float32) -> None:
+    def max_direction_angle(self, value: primitives.Float) -> None:
         """Set the MaxDirectionAngle field value."""
         member = self.get_member("MaxDirectionAngle")
         if member is not None:
@@ -132,7 +130,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ignore_parent_user(self) -> bool | None:
+    def ignore_parent_user(self) -> primitives.Bool | None:
         """The IgnoreParentUser field value."""
         member = self.get_member("IgnoreParentUser")
         if member is None:
@@ -140,7 +138,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ignore_parent_user.setter
-    def ignore_parent_user(self, value: bool) -> None:
+    def ignore_parent_user(self, value: primitives.Bool) -> None:
         """Set the IgnoreParentUser field value."""
         member = self.get_member("IgnoreParentUser")
         if member is not None:

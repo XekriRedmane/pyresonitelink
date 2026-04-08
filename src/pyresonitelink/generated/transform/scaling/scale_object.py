@@ -1,7 +1,5 @@
 """Generated component: ScaleObject."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleObject"
 
-    def __init__(self, manager: str | ScaleObjectManager | None = None, scale_power: np.float32 | None = None, scale_position: primitives.Float3 | None = None, override_far_transition_offset: primitives.Float3 | None = None, custom_transition: bool | None = None, transition_lerp: np.float32 | None = None, active: str | IField[bool] | None = None, position: str | IField[primitives.Float3] | None = None, scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, manager: str | ScaleObjectManager | None = None, scale_power: primitives.Float | None = None, scale_position: primitives.Float3 | None = None, override_far_transition_offset: primitives.Float3 | None = None, custom_transition: primitives.Bool | None = None, transition_lerp: primitives.Float | None = None, active: str | IField[primitives.Bool] | None = None, position: str | IField[primitives.Float3] | None = None, scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -78,7 +76,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def scale_power(self) -> np.float32 | None:
+    def scale_power(self) -> primitives.Float | None:
         """The ScalePower field value."""
         member = self.get_member("ScalePower")
         if member is None:
@@ -86,7 +84,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @scale_power.setter
-    def scale_power(self, value: np.float32) -> None:
+    def scale_power(self, value: primitives.Float) -> None:
         """Set the ScalePower field value."""
         member = self.get_member("ScalePower")
         if member is not None:
@@ -135,7 +133,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def custom_transition(self) -> bool | None:
+    def custom_transition(self) -> primitives.Bool | None:
         """The CustomTransition field value."""
         member = self.get_member("CustomTransition")
         if member is None:
@@ -143,7 +141,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @custom_transition.setter
-    def custom_transition(self, value: bool) -> None:
+    def custom_transition(self, value: primitives.Bool) -> None:
         """Set the CustomTransition field value."""
         member = self.get_member("CustomTransition")
         if member is not None:
@@ -154,7 +152,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def transition_lerp(self) -> np.float32 | None:
+    def transition_lerp(self) -> primitives.Float | None:
         """The TransitionLerp field value."""
         member = self.get_member("TransitionLerp")
         if member is None:
@@ -162,7 +160,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @transition_lerp.setter
-    def transition_lerp(self, value: np.float32) -> None:
+    def transition_lerp(self, value: primitives.Float) -> None:
         """Set the TransitionLerp field value."""
         member = self.get_member("TransitionLerp")
         if member is not None:
@@ -174,15 +172,15 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active(self) -> str | None:
-        """Target ID of the _active reference (targets IField[bool])."""
+        """Target ID of the _active reference (targets IField[primitives.Bool])."""
         member = self.get_member("_active")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @active.setter
-    def active(self, target: str | IField[bool] | None) -> None:
-        """Set the _active reference by target ID or IField[bool] instance."""
+    def active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _active reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_active")
         if isinstance(member, members.Reference):

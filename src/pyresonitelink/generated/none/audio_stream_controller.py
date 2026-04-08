@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -17,7 +18,7 @@ class AudioStreamController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioStreamController"
 
-    def __init__(self, stream: str | IAudioStream | None = None, audio_output: str | AudioOutput | None = None, is_playing_for_owner: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, stream: str | IAudioStream | None = None, audio_output: str | AudioOutput | None = None, is_playing_for_owner: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -77,7 +78,7 @@ class AudioStreamController(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def is_playing_for_owner(self) -> bool | None:
+    def is_playing_for_owner(self) -> primitives.Bool | None:
         """The IsPlayingForOwner field value."""
         member = self.get_member("IsPlayingForOwner")
         if member is None:
@@ -85,7 +86,7 @@ class AudioStreamController(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @is_playing_for_owner.setter
-    def is_playing_for_owner(self, value: bool) -> None:
+    def is_playing_for_owner(self, value: primitives.Bool) -> None:
         """Set the IsPlayingForOwner field value."""
         member = self.get_member("IsPlayingForOwner")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: SliderMemberEditor."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -19,7 +18,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SliderMemberEditor"
 
-    def __init__(self, continuous: bool | None = None, path: str | None = None, target: str | IField | None = None, slider: str | Slider[np.float32] | None = None, slider_value: str | IField[np.float32] | None = None, text_editor: str | PrimitiveMemberEditor | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, continuous: primitives.Bool | None = None, path: primitives.String | None = None, target: str | IField | None = None, slider: str | Slider[primitives.Float] | None = None, slider_value: str | IField[primitives.Float] | None = None, text_editor: str | PrimitiveMemberEditor | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,7 +45,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.text_editor = text_editor
 
     @property
-    def continuous(self) -> bool | None:
+    def continuous(self) -> primitives.Bool | None:
         """The Continuous field value."""
         member = self.get_member("Continuous")
         if member is None:
@@ -54,7 +53,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @continuous.setter
-    def continuous(self, value: bool) -> None:
+    def continuous(self, value: primitives.Bool) -> None:
         """Set the Continuous field value."""
         member = self.get_member("Continuous")
         if member is not None:
@@ -65,7 +64,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def path(self) -> str | None:
+    def path(self) -> primitives.String | None:
         """The _path field value."""
         member = self.get_member("_path")
         if member is None:
@@ -73,7 +72,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @path.setter
-    def path(self, value: str) -> None:
+    def path(self, value: primitives.String) -> None:
         """Set the _path field value."""
         member = self.get_member("_path")
         if member is not None:
@@ -106,15 +105,15 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider(self) -> str | None:
-        """Target ID of the _slider reference (targets Slider[np.float32])."""
+        """Target ID of the _slider reference (targets Slider[primitives.Float])."""
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @slider.setter
-    def slider(self, target: str | Slider[np.float32] | None) -> None:
-        """Set the _slider reference by target ID or Slider[np.float32] instance."""
+    def slider(self, target: str | Slider[primitives.Float] | None) -> None:
+        """Set the _slider reference by target ID or Slider[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, Slider) else target  # type: ignore[assignment]
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):
@@ -127,15 +126,15 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider_value(self) -> str | None:
-        """Target ID of the _sliderValue reference (targets IField[np.float32])."""
+        """Target ID of the _sliderValue reference (targets IField[primitives.Float])."""
         member = self.get_member("_sliderValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @slider_value.setter
-    def slider_value(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _sliderValue reference by target ID or IField[np.float32] instance."""
+    def slider_value(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _sliderValue reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_sliderValue")
         if isinstance(member, members.Reference):

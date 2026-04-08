@@ -13,7 +13,7 @@ class ButtonValueActionTrigger(GenericComponent[T], IButtonPressReceiver, IWorld
 
     Parameterize with a value type::
 
-        ButtonValueActionTrigger[np.float32]
+        ButtonValueActionTrigger[primitives.Float]
         ButtonValueActionTrigger[primitives.Float3]
     """
 

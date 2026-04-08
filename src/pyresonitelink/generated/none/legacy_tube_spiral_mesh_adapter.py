@@ -1,7 +1,5 @@
 """Generated component: LegacyTubeSpiralMeshAdapter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -18,7 +16,7 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyTubeSpiralMeshAdapter"
 
-    def __init__(self, upward_trend: np.float32 | None = None, length: np.float32 | None = None, end_point: str | IField[primitives.Float3] | None = None, coil_count: str | IField[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, upward_trend: primitives.Float | None = None, length: primitives.Float | None = None, end_point: str | IField[primitives.Float3] | None = None, coil_count: str | IField[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +37,7 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
             self.coil_count = coil_count
 
     @property
-    def upward_trend(self) -> np.float32 | None:
+    def upward_trend(self) -> primitives.Float | None:
         """The UpwardTrend field value."""
         member = self.get_member("UpwardTrend")
         if member is None:
@@ -47,7 +45,7 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @upward_trend.setter
-    def upward_trend(self, value: np.float32) -> None:
+    def upward_trend(self, value: primitives.Float) -> None:
         """Set the UpwardTrend field value."""
         member = self.get_member("UpwardTrend")
         if member is not None:
@@ -58,7 +56,7 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
             )
 
     @property
-    def length(self) -> np.float32 | None:
+    def length(self) -> primitives.Float | None:
         """The Length field value."""
         member = self.get_member("Length")
         if member is None:
@@ -66,7 +64,7 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @length.setter
-    def length(self, value: np.float32) -> None:
+    def length(self, value: primitives.Float) -> None:
         """Set the Length field value."""
         member = self.get_member("Length")
         if member is not None:
@@ -99,15 +97,15 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def coil_count(self) -> str | None:
-        """Target ID of the CoilCount reference (targets IField[np.float32])."""
+        """Target ID of the CoilCount reference (targets IField[primitives.Float])."""
         member = self.get_member("CoilCount")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @coil_count.setter
-    def coil_count(self, target: str | IField[np.float32] | None) -> None:
-        """Set the CoilCount reference by target ID or IField[np.float32] instance."""
+    def coil_count(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the CoilCount reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("CoilCount")
         if isinstance(member, members.Reference):

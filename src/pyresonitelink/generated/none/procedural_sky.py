@@ -1,7 +1,5 @@
 """Generated component: ProceduralSky."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -18,7 +16,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProceduralSky"
 
-    def __init__(self, sun_size: np.float32 | None = None, sun: str | Light | None = None, atmosphere_thickness: np.float32 | None = None, sky_tint: primitives.ColorX | None = None, ground_color: primitives.ColorX | None = None, exposure: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, sun_size: primitives.Float | None = None, sun: str | Light | None = None, atmosphere_thickness: primitives.Float | None = None, sky_tint: primitives.ColorX | None = None, ground_color: primitives.ColorX | None = None, exposure: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +56,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("SunQuality", value)
 
     @property
-    def sun_size(self) -> np.float32 | None:
+    def sun_size(self) -> primitives.Float | None:
         """The SunSize field value."""
         member = self.get_member("SunSize")
         if member is None:
@@ -66,7 +64,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @sun_size.setter
-    def sun_size(self, value: np.float32) -> None:
+    def sun_size(self, value: primitives.Float) -> None:
         """Set the SunSize field value."""
         member = self.get_member("SunSize")
         if member is not None:
@@ -98,7 +96,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def atmosphere_thickness(self) -> np.float32 | None:
+    def atmosphere_thickness(self) -> primitives.Float | None:
         """The AtmosphereThickness field value."""
         member = self.get_member("AtmosphereThickness")
         if member is None:
@@ -106,7 +104,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @atmosphere_thickness.setter
-    def atmosphere_thickness(self, value: np.float32) -> None:
+    def atmosphere_thickness(self, value: primitives.Float) -> None:
         """Set the AtmosphereThickness field value."""
         member = self.get_member("AtmosphereThickness")
         if member is not None:
@@ -155,7 +153,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def exposure(self) -> np.float32 | None:
+    def exposure(self) -> primitives.Float | None:
         """The Exposure field value."""
         member = self.get_member("Exposure")
         if member is None:
@@ -163,7 +161,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @exposure.setter
-    def exposure(self, value: np.float32) -> None:
+    def exposure(self, value: primitives.Float) -> None:
         """Set the Exposure field value."""
         member = self.get_member("Exposure")
         if member is not None:

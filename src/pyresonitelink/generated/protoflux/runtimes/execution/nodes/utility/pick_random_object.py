@@ -18,7 +18,7 @@ class PickRandomObject(GenericComponent[T], INodeObjectOutput[T], IExecutionNode
 
     Parameterize with a value type::
 
-        PickRandomObject[np.float32]
+        PickRandomObject[primitives.Float]
         PickRandomObject[primitives.Float3]
     """
 

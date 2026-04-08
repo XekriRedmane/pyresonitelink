@@ -21,7 +21,7 @@ class EnumToUlong(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     Parameterize with a value type::
 
-        EnumToUlong[np.float32]
+        EnumToUlong[primitives.Float]
         EnumToUlong[primitives.Float3]
     """
 

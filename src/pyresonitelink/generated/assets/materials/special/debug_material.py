@@ -1,7 +1,5 @@
 """Generated component: DebugMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, scale: np.float32 | None = None, offset: primitives.Float3 | None = None, normalize: bool | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, scale: primitives.Float | None = None, offset: primitives.Float3 | None = None, normalize: primitives.Bool | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,7 +46,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             self.render_queue = render_queue
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -56,7 +54,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -88,7 +86,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def scale(self) -> np.float32 | None:
+    def scale(self) -> primitives.Float | None:
         """The Scale field value."""
         member = self.get_member("Scale")
         if member is None:
@@ -96,7 +94,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @scale.setter
-    def scale(self, value: np.float32) -> None:
+    def scale(self, value: primitives.Float) -> None:
         """Set the Scale field value."""
         member = self.get_member("Scale")
         if member is not None:
@@ -139,7 +137,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         self.set_member("Visualize", value)
 
     @property
-    def normalize(self) -> bool | None:
+    def normalize(self) -> primitives.Bool | None:
         """The Normalize field value."""
         member = self.get_member("Normalize")
         if member is None:
@@ -147,7 +145,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @normalize.setter
-    def normalize(self, value: bool) -> None:
+    def normalize(self, value: primitives.Bool) -> None:
         """Set the Normalize field value."""
         member = self.get_member("Normalize")
         if member is not None:
@@ -158,7 +156,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -166,7 +164,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

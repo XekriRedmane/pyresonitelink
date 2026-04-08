@@ -1,9 +1,8 @@
 """Generated component: ControllerHapticPointMapper."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class ControllerHapticPointMapper(GeneratedComponent, IComponent, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ControllerHapticPointMapper"
 
-    def __init__(self, priority: np.int32 | None = None, show_debug_visuals: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, priority: primitives.Int | None = None, show_debug_visuals: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class ControllerHapticPointMapper(GeneratedComponent, IComponent, IWorldEventRec
             self.show_debug_visuals = show_debug_visuals
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -41,7 +40,7 @@ class ControllerHapticPointMapper(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:
@@ -52,7 +51,7 @@ class ControllerHapticPointMapper(GeneratedComponent, IComponent, IWorldEventRec
             )
 
     @property
-    def show_debug_visuals(self) -> bool | None:
+    def show_debug_visuals(self) -> primitives.Bool | None:
         """The ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
@@ -60,7 +59,7 @@ class ControllerHapticPointMapper(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @show_debug_visuals.setter
-    def show_debug_visuals(self, value: bool) -> None:
+    def show_debug_visuals(self, value: primitives.Bool) -> None:
         """Set the ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is not None:

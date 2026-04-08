@@ -1,8 +1,7 @@
 """Generated component: ValueDemultiplex."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -20,14 +19,14 @@ class ValueDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIns
 
     Parameterize with a value type::
 
-        ValueDemultiplex[np.float32]
+        ValueDemultiplex[primitives.Float]
         ValueDemultiplex[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueDemultiplex<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueDemultiplex<>"
 
-    def __init__(self, value: str | INodeValueOutput[T] | None = None, default_value: str | INodeValueOutput[T] | None = None, index: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | INodeValueOutput[T] | None = None, default_value: str | INodeValueOutput[T] | None = None, index: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -88,15 +87,15 @@ class ValueDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIns
 
     @property
     def index(self) -> str | None:
-        """Target ID of the Index reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Index reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @index.setter
-    def index(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Index reference by target ID or INodeValueOutput[np.int32] instance."""
+    def index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Index reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Index")
         if isinstance(member, members.Reference):

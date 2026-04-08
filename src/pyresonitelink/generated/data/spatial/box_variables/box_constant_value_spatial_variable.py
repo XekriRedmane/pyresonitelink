@@ -1,7 +1,5 @@
 """Generated component: BoxConstantValueSpatialVariable."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,14 +17,14 @@ class BoxConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], 
 
     Parameterize with a value type::
 
-        BoxConstantValueSpatialVariable[np.float32]
+        BoxConstantValueSpatialVariable[primitives.Float]
         BoxConstantValueSpatialVariable[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxConstantValueSpatialVariable<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.BoxConstantValueSpatialVariable<>"
 
-    def __init__(self, variable_name: str | None = None, priority: np.int32 | None = None, size: primitives.Float3 | None = None, blend_distance: np.float32 | None = None, value: T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, size: primitives.Float3 | None = None, blend_distance: primitives.Float | None = None, value: T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -50,7 +48,7 @@ class BoxConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], 
             self.value = value
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -58,7 +56,7 @@ class BoxConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], 
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:
@@ -69,7 +67,7 @@ class BoxConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], 
             )
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -77,7 +75,7 @@ class BoxConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], 
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:
@@ -107,7 +105,7 @@ class BoxConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], 
             )
 
     @property
-    def blend_distance(self) -> np.float32 | None:
+    def blend_distance(self) -> primitives.Float | None:
         """The BlendDistance field value."""
         member = self.get_member("BlendDistance")
         if member is None:
@@ -115,7 +113,7 @@ class BoxConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], 
         return getattr(member, 'value', None)
 
     @blend_distance.setter
-    def blend_distance(self, value: np.float32) -> None:
+    def blend_distance(self, value: primitives.Float) -> None:
         """Set the BlendDistance field value."""
         member = self.get_member("BlendDistance")
         if member is not None:

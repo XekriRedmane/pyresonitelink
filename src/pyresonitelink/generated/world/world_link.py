@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_link import IWorldLink
@@ -16,7 +17,7 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldLink"
 
-    def __init__(self, url: str | None = None, auto_focus: bool | None = None, get_existing: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, auto_focus: primitives.Bool | None = None, get_existing: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -79,7 +80,7 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
         self.set_member("WorldRelation", value)
 
     @property
-    def auto_focus(self) -> bool | None:
+    def auto_focus(self) -> primitives.Bool | None:
         """The AutoFocus field value."""
         member = self.get_member("AutoFocus")
         if member is None:
@@ -87,7 +88,7 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_focus.setter
-    def auto_focus(self, value: bool) -> None:
+    def auto_focus(self, value: primitives.Bool) -> None:
         """Set the AutoFocus field value."""
         member = self.get_member("AutoFocus")
         if member is not None:
@@ -98,7 +99,7 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
             )
 
     @property
-    def get_existing(self) -> bool | None:
+    def get_existing(self) -> primitives.Bool | None:
         """The GetExisting field value."""
         member = self.get_member("GetExisting")
         if member is None:
@@ -106,7 +107,7 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @get_existing.setter
-    def get_existing(self, value: bool) -> None:
+    def get_existing(self, value: primitives.Bool) -> None:
         """Set the GetExisting field value."""
         member = self.get_member("GetExisting")
         if member is not None:

@@ -1,8 +1,7 @@
 """Generated component: TriggerHapticsInHierarchy."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -26,7 +25,7 @@ class TriggerHapticsInHierarchy(GeneratedComponent, IMappableNode, ISyncNodeOper
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Haptics.TriggerHapticsInHierarchy"
 
-    def __init__(self, next: str | INodeOperation | None = None, target_hierarchy: str | INodeObjectOutput[Slot] | None = None, relative_intensity: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, target_hierarchy: str | INodeObjectOutput[Slot] | None = None, relative_intensity: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -87,15 +86,15 @@ class TriggerHapticsInHierarchy(GeneratedComponent, IMappableNode, ISyncNodeOper
 
     @property
     def relative_intensity(self) -> str | None:
-        """Target ID of the RelativeIntensity reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the RelativeIntensity reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("RelativeIntensity")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @relative_intensity.setter
-    def relative_intensity(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the RelativeIntensity reference by target ID or INodeValueOutput[np.float32] instance."""
+    def relative_intensity(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the RelativeIntensity reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("RelativeIntensity")
         if isinstance(member, members.Reference):

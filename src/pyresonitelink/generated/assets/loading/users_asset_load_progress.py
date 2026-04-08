@@ -1,11 +1,11 @@
 """Generated component: UsersAssetLoadProgress."""
 
 from typing import Any
-import numpy as np
 
 A = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,14 +20,14 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
 
     Parameterize with a value type::
 
-        UsersAssetLoadProgress[np.float32]
+        UsersAssetLoadProgress[primitives.Float]
         UsersAssetLoadProgress[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UsersAssetLoadProgress<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.UsersAssetLoadProgress<>"
 
-    def __init__(self, asset: str | IAssetProvider[A] | None = None, total_users: np.int32 | None = None, users_not_loaded: np.int32 | None = None, users_loading: np.int32 | None = None, users_partially_loaded: np.int32 | None = None, users_fully_loaded: np.int32 | None = None, users_failed_to_load: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, asset: str | IAssetProvider[A] | None = None, total_users: primitives.Int | None = None, users_not_loaded: primitives.Int | None = None, users_loading: primitives.Int | None = None, users_partially_loaded: primitives.Int | None = None, users_fully_loaded: primitives.Int | None = None, users_failed_to_load: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -91,7 +91,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
         self.set_member("ProgressInfo", value)
 
     @property
-    def total_users(self) -> np.int32 | None:
+    def total_users(self) -> primitives.Int | None:
         """The TotalUsers field value."""
         member = self.get_member("TotalUsers")
         if member is None:
@@ -99,7 +99,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @total_users.setter
-    def total_users(self, value: np.int32) -> None:
+    def total_users(self, value: primitives.Int) -> None:
         """Set the TotalUsers field value."""
         member = self.get_member("TotalUsers")
         if member is not None:
@@ -110,7 +110,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
             )
 
     @property
-    def users_not_loaded(self) -> np.int32 | None:
+    def users_not_loaded(self) -> primitives.Int | None:
         """The UsersNotLoaded field value."""
         member = self.get_member("UsersNotLoaded")
         if member is None:
@@ -118,7 +118,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @users_not_loaded.setter
-    def users_not_loaded(self, value: np.int32) -> None:
+    def users_not_loaded(self, value: primitives.Int) -> None:
         """Set the UsersNotLoaded field value."""
         member = self.get_member("UsersNotLoaded")
         if member is not None:
@@ -129,7 +129,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
             )
 
     @property
-    def users_loading(self) -> np.int32 | None:
+    def users_loading(self) -> primitives.Int | None:
         """The UsersLoading field value."""
         member = self.get_member("UsersLoading")
         if member is None:
@@ -137,7 +137,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @users_loading.setter
-    def users_loading(self, value: np.int32) -> None:
+    def users_loading(self, value: primitives.Int) -> None:
         """Set the UsersLoading field value."""
         member = self.get_member("UsersLoading")
         if member is not None:
@@ -148,7 +148,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
             )
 
     @property
-    def users_partially_loaded(self) -> np.int32 | None:
+    def users_partially_loaded(self) -> primitives.Int | None:
         """The UsersPartiallyLoaded field value."""
         member = self.get_member("UsersPartiallyLoaded")
         if member is None:
@@ -156,7 +156,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @users_partially_loaded.setter
-    def users_partially_loaded(self, value: np.int32) -> None:
+    def users_partially_loaded(self, value: primitives.Int) -> None:
         """Set the UsersPartiallyLoaded field value."""
         member = self.get_member("UsersPartiallyLoaded")
         if member is not None:
@@ -167,7 +167,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
             )
 
     @property
-    def users_fully_loaded(self) -> np.int32 | None:
+    def users_fully_loaded(self) -> primitives.Int | None:
         """The UsersFullyLoaded field value."""
         member = self.get_member("UsersFullyLoaded")
         if member is None:
@@ -175,7 +175,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @users_fully_loaded.setter
-    def users_fully_loaded(self, value: np.int32) -> None:
+    def users_fully_loaded(self, value: primitives.Int) -> None:
         """Set the UsersFullyLoaded field value."""
         member = self.get_member("UsersFullyLoaded")
         if member is not None:
@@ -186,7 +186,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
             )
 
     @property
-    def users_failed_to_load(self) -> np.int32 | None:
+    def users_failed_to_load(self) -> primitives.Int | None:
         """The UsersFailedToLoad field value."""
         member = self.get_member("UsersFailedToLoad")
         if member is None:
@@ -194,7 +194,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @users_failed_to_load.setter
-    def users_failed_to_load(self, value: np.int32) -> None:
+    def users_failed_to_load(self, value: primitives.Int) -> None:
         """Set the UsersFailedToLoad field value."""
         member = self.get_member("UsersFailedToLoad")
         if member is not None:

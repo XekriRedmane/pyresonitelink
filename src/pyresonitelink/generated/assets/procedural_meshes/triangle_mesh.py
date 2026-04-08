@@ -19,7 +19,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TriangleMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, auto_normals: bool | None = None, auto_tangents: bool | None = None, dual_sided: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, auto_normals: primitives.Bool | None = None, auto_tangents: primitives.Bool | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,7 +46,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.dual_sided = dual_sided
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -54,7 +54,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -65,7 +65,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -73,7 +73,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -155,7 +155,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         self.set_member("Vertex2", value)
 
     @property
-    def auto_normals(self) -> bool | None:
+    def auto_normals(self) -> primitives.Bool | None:
         """The AutoNormals field value."""
         member = self.get_member("AutoNormals")
         if member is None:
@@ -163,7 +163,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @auto_normals.setter
-    def auto_normals(self, value: bool) -> None:
+    def auto_normals(self, value: primitives.Bool) -> None:
         """Set the AutoNormals field value."""
         member = self.get_member("AutoNormals")
         if member is not None:
@@ -174,7 +174,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def auto_tangents(self) -> bool | None:
+    def auto_tangents(self) -> primitives.Bool | None:
         """The AutoTangents field value."""
         member = self.get_member("AutoTangents")
         if member is None:
@@ -182,7 +182,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @auto_tangents.setter
-    def auto_tangents(self, value: bool) -> None:
+    def auto_tangents(self, value: primitives.Bool) -> None:
         """Set the AutoTangents field value."""
         member = self.get_member("AutoTangents")
         if member is not None:
@@ -193,7 +193,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def dual_sided(self) -> bool | None:
+    def dual_sided(self) -> primitives.Bool | None:
         """The DualSided field value."""
         member = self.get_member("DualSided")
         if member is None:
@@ -201,7 +201,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @dual_sided.setter
-    def dual_sided(self, value: bool) -> None:
+    def dual_sided(self, value: primitives.Bool) -> None:
         """Set the DualSided field value."""
         member = self.get_member("DualSided")
         if member is not None:

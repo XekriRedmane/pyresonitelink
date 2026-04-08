@@ -1,9 +1,8 @@
 """Generated component: ReferenceMultiplexer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -18,14 +17,14 @@ class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     Parameterize with a value type::
 
-        ReferenceMultiplexer[np.float32]
+        ReferenceMultiplexer[primitives.Float]
         ReferenceMultiplexer[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceMultiplexer<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ReferenceMultiplexer<>"
 
-    def __init__(self, target: str | SyncRef[T] | None = None, index: np.int32 | None = None, allow_write_back: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | SyncRef[T] | None = None, index: primitives.Int | None = None, allow_write_back: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -64,7 +63,7 @@ class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver)
             )
 
     @property
-    def index(self) -> np.int32 | None:
+    def index(self) -> primitives.Int | None:
         """The Index field value."""
         member = self.get_member("Index")
         if member is None:
@@ -72,7 +71,7 @@ class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @index.setter
-    def index(self, value: np.int32) -> None:
+    def index(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:
@@ -96,7 +95,7 @@ class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver)
         self.set_member("References", value)
 
     @property
-    def allow_write_back(self) -> bool | None:
+    def allow_write_back(self) -> primitives.Bool | None:
         """The AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is None:
@@ -104,7 +103,7 @@ class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @allow_write_back.setter
-    def allow_write_back(self, value: bool) -> None:
+    def allow_write_back(self, value: primitives.Bool) -> None:
         """Set the AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is not None:

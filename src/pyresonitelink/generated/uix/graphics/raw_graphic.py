@@ -20,7 +20,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.RawGraphic"
 
-    def __init__(self, material: str | IAssetProvider[Material] | None = None, property_block: str | IAssetProvider[MaterialPropertyBlock] | None = None, fill_rect: primitives.Rect | None = None, color: primitives.ColorX | None = None, uv_rect: primitives.Rect | None = None, normal: primitives.Float3 | None = None, tangent: primitives.Float4 | None = None, hide_with_no_material: bool | None = None, preserve_uv_aspect_ratio: bool | None = None, interaction_target: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, material: str | IAssetProvider[Material] | None = None, property_block: str | IAssetProvider[MaterialPropertyBlock] | None = None, fill_rect: primitives.Rect | None = None, color: primitives.ColorX | None = None, uv_rect: primitives.Rect | None = None, normal: primitives.Float3 | None = None, tangent: primitives.Float4 | None = None, hide_with_no_material: primitives.Bool | None = None, preserve_uv_aspect_ratio: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -209,7 +209,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             )
 
     @property
-    def hide_with_no_material(self) -> bool | None:
+    def hide_with_no_material(self) -> primitives.Bool | None:
         """The HideWithNoMaterial field value."""
         member = self.get_member("HideWithNoMaterial")
         if member is None:
@@ -217,7 +217,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @hide_with_no_material.setter
-    def hide_with_no_material(self, value: bool) -> None:
+    def hide_with_no_material(self, value: primitives.Bool) -> None:
         """Set the HideWithNoMaterial field value."""
         member = self.get_member("HideWithNoMaterial")
         if member is not None:
@@ -228,7 +228,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             )
 
     @property
-    def preserve_uv_aspect_ratio(self) -> bool | None:
+    def preserve_uv_aspect_ratio(self) -> primitives.Bool | None:
         """The PreserveUVAspectRatio field value."""
         member = self.get_member("PreserveUVAspectRatio")
         if member is None:
@@ -236,7 +236,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @preserve_uv_aspect_ratio.setter
-    def preserve_uv_aspect_ratio(self, value: bool) -> None:
+    def preserve_uv_aspect_ratio(self, value: primitives.Bool) -> None:
         """Set the PreserveUVAspectRatio field value."""
         member = self.get_member("PreserveUVAspectRatio")
         if member is not None:
@@ -247,7 +247,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             )
 
     @property
-    def interaction_target(self) -> bool | None:
+    def interaction_target(self) -> primitives.Bool | None:
         """The InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is None:
@@ -255,7 +255,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @interaction_target.setter
-    def interaction_target(self, value: bool) -> None:
+    def interaction_target(self, value: primitives.Bool) -> None:
         """Set the InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is not None:

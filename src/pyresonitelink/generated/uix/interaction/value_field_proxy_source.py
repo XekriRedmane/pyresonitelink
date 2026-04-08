@@ -16,7 +16,7 @@ class ValueFieldProxySource(GenericComponent[T], IUIGrabbable, IValueFieldProxyS
 
     Parameterize with a value type::
 
-        ValueFieldProxySource[np.float32]
+        ValueFieldProxySource[primitives.Float]
         ValueFieldProxySource[primitives.Float3]
     """
 

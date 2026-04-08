@@ -1,8 +1,7 @@
 """Generated component: AudioZitaReverb."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -20,7 +19,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioZitaReverb"
 
-    def __init__(self, in_delay: np.float32 | None = None, crossover: np.float32 | None = None, rt60_low: np.float32 | None = None, rt60_mid: np.float32 | None = None, high_frequency_damping: np.float32 | None = None, eq1_frequency: np.float32 | None = None, eq1_level: np.float32 | None = None, eq2_frequency: np.float32 | None = None, eq2_level: np.float32 | None = None, mix: np.float32 | None = None, level: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, in_delay: primitives.Float | None = None, crossover: primitives.Float | None = None, rt60_low: primitives.Float | None = None, rt60_mid: primitives.Float | None = None, high_frequency_damping: primitives.Float | None = None, eq1_frequency: primitives.Float | None = None, eq1_level: primitives.Float | None = None, eq2_frequency: primitives.Float | None = None, eq2_level: primitives.Float | None = None, mix: primitives.Float | None = None, level: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +61,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             self.level = level
 
     @property
-    def in_delay(self) -> np.float32 | None:
+    def in_delay(self) -> primitives.Float | None:
         """The InDelay field value."""
         member = self.get_member("InDelay")
         if member is None:
@@ -70,7 +69,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @in_delay.setter
-    def in_delay(self, value: np.float32) -> None:
+    def in_delay(self, value: primitives.Float) -> None:
         """Set the InDelay field value."""
         member = self.get_member("InDelay")
         if member is not None:
@@ -81,7 +80,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def crossover(self) -> np.float32 | None:
+    def crossover(self) -> primitives.Float | None:
         """The Crossover field value."""
         member = self.get_member("Crossover")
         if member is None:
@@ -89,7 +88,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @crossover.setter
-    def crossover(self, value: np.float32) -> None:
+    def crossover(self, value: primitives.Float) -> None:
         """Set the Crossover field value."""
         member = self.get_member("Crossover")
         if member is not None:
@@ -100,7 +99,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def rt60_low(self) -> np.float32 | None:
+    def rt60_low(self) -> primitives.Float | None:
         """The RT60Low field value."""
         member = self.get_member("RT60Low")
         if member is None:
@@ -108,7 +107,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @rt60_low.setter
-    def rt60_low(self, value: np.float32) -> None:
+    def rt60_low(self, value: primitives.Float) -> None:
         """Set the RT60Low field value."""
         member = self.get_member("RT60Low")
         if member is not None:
@@ -119,7 +118,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def rt60_mid(self) -> np.float32 | None:
+    def rt60_mid(self) -> primitives.Float | None:
         """The RT60Mid field value."""
         member = self.get_member("RT60Mid")
         if member is None:
@@ -127,7 +126,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @rt60_mid.setter
-    def rt60_mid(self, value: np.float32) -> None:
+    def rt60_mid(self, value: primitives.Float) -> None:
         """Set the RT60Mid field value."""
         member = self.get_member("RT60Mid")
         if member is not None:
@@ -138,7 +137,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def high_frequency_damping(self) -> np.float32 | None:
+    def high_frequency_damping(self) -> primitives.Float | None:
         """The HighFrequencyDamping field value."""
         member = self.get_member("HighFrequencyDamping")
         if member is None:
@@ -146,7 +145,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @high_frequency_damping.setter
-    def high_frequency_damping(self, value: np.float32) -> None:
+    def high_frequency_damping(self, value: primitives.Float) -> None:
         """Set the HighFrequencyDamping field value."""
         member = self.get_member("HighFrequencyDamping")
         if member is not None:
@@ -157,7 +156,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def eq1_frequency(self) -> np.float32 | None:
+    def eq1_frequency(self) -> primitives.Float | None:
         """The EQ1Frequency field value."""
         member = self.get_member("EQ1Frequency")
         if member is None:
@@ -165,7 +164,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @eq1_frequency.setter
-    def eq1_frequency(self, value: np.float32) -> None:
+    def eq1_frequency(self, value: primitives.Float) -> None:
         """Set the EQ1Frequency field value."""
         member = self.get_member("EQ1Frequency")
         if member is not None:
@@ -176,7 +175,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def eq1_level(self) -> np.float32 | None:
+    def eq1_level(self) -> primitives.Float | None:
         """The EQ1Level field value."""
         member = self.get_member("EQ1Level")
         if member is None:
@@ -184,7 +183,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @eq1_level.setter
-    def eq1_level(self, value: np.float32) -> None:
+    def eq1_level(self, value: primitives.Float) -> None:
         """Set the EQ1Level field value."""
         member = self.get_member("EQ1Level")
         if member is not None:
@@ -195,7 +194,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def eq2_frequency(self) -> np.float32 | None:
+    def eq2_frequency(self) -> primitives.Float | None:
         """The EQ2Frequency field value."""
         member = self.get_member("EQ2Frequency")
         if member is None:
@@ -203,7 +202,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @eq2_frequency.setter
-    def eq2_frequency(self, value: np.float32) -> None:
+    def eq2_frequency(self, value: primitives.Float) -> None:
         """Set the EQ2Frequency field value."""
         member = self.get_member("EQ2Frequency")
         if member is not None:
@@ -214,7 +213,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def eq2_level(self) -> np.float32 | None:
+    def eq2_level(self) -> primitives.Float | None:
         """The EQ2Level field value."""
         member = self.get_member("EQ2Level")
         if member is None:
@@ -222,7 +221,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @eq2_level.setter
-    def eq2_level(self, value: np.float32) -> None:
+    def eq2_level(self, value: primitives.Float) -> None:
         """Set the EQ2Level field value."""
         member = self.get_member("EQ2Level")
         if member is not None:
@@ -233,7 +232,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def mix(self) -> np.float32 | None:
+    def mix(self) -> primitives.Float | None:
         """The Mix field value."""
         member = self.get_member("Mix")
         if member is None:
@@ -241,7 +240,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @mix.setter
-    def mix(self, value: np.float32) -> None:
+    def mix(self, value: primitives.Float) -> None:
         """Set the Mix field value."""
         member = self.get_member("Mix")
         if member is not None:
@@ -252,7 +251,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     @property
-    def level(self) -> np.float32 | None:
+    def level(self) -> primitives.Float | None:
         """The Level field value."""
         member = self.get_member("Level")
         if member is None:
@@ -260,7 +259,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         return getattr(member, 'value', None)
 
     @level.setter
-    def level(self, value: np.float32) -> None:
+    def level(self, value: primitives.Float) -> None:
         """Set the Level field value."""
         member = self.get_member("Level")
         if member is not None:

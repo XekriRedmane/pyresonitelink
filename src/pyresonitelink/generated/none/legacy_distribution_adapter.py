@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -16,7 +17,7 @@ class LegacyDistributionAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyDistributionAdapter"
 
-    def __init__(self, use_random_distribution: bool | None = None, distribution: str | IField[ParticleFollowerDistribution] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_random_distribution: primitives.Bool | None = None, distribution: str | IField[ParticleFollowerDistribution] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +32,7 @@ class LegacyDistributionAdapter(GeneratedComponent, IComponent, IWorldEventRecei
             self.distribution = distribution
 
     @property
-    def use_random_distribution(self) -> bool | None:
+    def use_random_distribution(self) -> primitives.Bool | None:
         """The UseRandomDistribution field value."""
         member = self.get_member("UseRandomDistribution")
         if member is None:
@@ -39,7 +40,7 @@ class LegacyDistributionAdapter(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @use_random_distribution.setter
-    def use_random_distribution(self, value: bool) -> None:
+    def use_random_distribution(self, value: primitives.Bool) -> None:
         """Set the UseRandomDistribution field value."""
         member = self.get_member("UseRandomDistribution")
         if member is not None:

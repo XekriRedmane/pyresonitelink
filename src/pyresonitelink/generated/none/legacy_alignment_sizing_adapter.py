@@ -1,7 +1,5 @@
 """Generated component: LegacyAlignmentSizingAdapter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyAlignmentSizingAdapter"
 
-    def __init__(self, length_scale: np.float32 | None = None, velocity_scale: np.float32 | None = None, particle_mesh: str | AssetRef[Mesh] | None = None, using_stretch: bool | None = None, rotation_simulator: str | IField[bool] | None = None, orient_by_velocity: str | IField[bool] | None = None, pivot_module: str | IField[bool] | None = None, use_local_rotation: str | IField[bool] | None = None, size_modifier_enabled: str | IField[bool] | None = None, size_offset_byvelocity_enabled: str | IField[bool] | None = None, orient_up: str | IField[primitives.Float3] | None = None, length_size_multiplier: str | IField[primitives.Float3] | None = None, velocity_size_multiplier: str | IField[primitives.Float3] | None = None, pivot_multiplier: str | IField[primitives.Float3] | None = None, billboard_alignment: str | IField[BillboardAlignment] | None = None, mesh_alignment: str | IField[MeshAlignment] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, length_scale: primitives.Float | None = None, velocity_scale: primitives.Float | None = None, particle_mesh: str | AssetRef[Mesh] | None = None, using_stretch: primitives.Bool | None = None, rotation_simulator: str | IField[primitives.Bool] | None = None, orient_by_velocity: str | IField[primitives.Bool] | None = None, pivot_module: str | IField[primitives.Bool] | None = None, use_local_rotation: str | IField[primitives.Bool] | None = None, size_modifier_enabled: str | IField[primitives.Bool] | None = None, size_offset_byvelocity_enabled: str | IField[primitives.Bool] | None = None, orient_up: str | IField[primitives.Float3] | None = None, length_size_multiplier: str | IField[primitives.Float3] | None = None, velocity_size_multiplier: str | IField[primitives.Float3] | None = None, pivot_multiplier: str | IField[primitives.Float3] | None = None, billboard_alignment: str | IField[BillboardAlignment] | None = None, mesh_alignment: str | IField[MeshAlignment] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -79,7 +77,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
             self.mesh_alignment = mesh_alignment
 
     @property
-    def length_scale(self) -> np.float32 | None:
+    def length_scale(self) -> primitives.Float | None:
         """The LengthScale field value."""
         member = self.get_member("LengthScale")
         if member is None:
@@ -87,7 +85,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @length_scale.setter
-    def length_scale(self, value: np.float32) -> None:
+    def length_scale(self, value: primitives.Float) -> None:
         """Set the LengthScale field value."""
         member = self.get_member("LengthScale")
         if member is not None:
@@ -98,7 +96,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
             )
 
     @property
-    def velocity_scale(self) -> np.float32 | None:
+    def velocity_scale(self) -> primitives.Float | None:
         """The VelocityScale field value."""
         member = self.get_member("VelocityScale")
         if member is None:
@@ -106,7 +104,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @velocity_scale.setter
-    def velocity_scale(self, value: np.float32) -> None:
+    def velocity_scale(self, value: primitives.Float) -> None:
         """Set the VelocityScale field value."""
         member = self.get_member("VelocityScale")
         if member is not None:
@@ -151,7 +149,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
             )
 
     @property
-    def using_stretch(self) -> bool | None:
+    def using_stretch(self) -> primitives.Bool | None:
         """The UsingStretch field value."""
         member = self.get_member("UsingStretch")
         if member is None:
@@ -159,7 +157,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @using_stretch.setter
-    def using_stretch(self, value: bool) -> None:
+    def using_stretch(self, value: primitives.Bool) -> None:
         """Set the UsingStretch field value."""
         member = self.get_member("UsingStretch")
         if member is not None:
@@ -171,15 +169,15 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def rotation_simulator(self) -> str | None:
-        """Target ID of the RotationSimulator reference (targets IField[bool])."""
+        """Target ID of the RotationSimulator reference (targets IField[primitives.Bool])."""
         member = self.get_member("RotationSimulator")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @rotation_simulator.setter
-    def rotation_simulator(self, target: str | IField[bool] | None) -> None:
-        """Set the RotationSimulator reference by target ID or IField[bool] instance."""
+    def rotation_simulator(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the RotationSimulator reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("RotationSimulator")
         if isinstance(member, members.Reference):
@@ -192,15 +190,15 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def orient_by_velocity(self) -> str | None:
-        """Target ID of the OrientByVelocity reference (targets IField[bool])."""
+        """Target ID of the OrientByVelocity reference (targets IField[primitives.Bool])."""
         member = self.get_member("OrientByVelocity")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @orient_by_velocity.setter
-    def orient_by_velocity(self, target: str | IField[bool] | None) -> None:
-        """Set the OrientByVelocity reference by target ID or IField[bool] instance."""
+    def orient_by_velocity(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the OrientByVelocity reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("OrientByVelocity")
         if isinstance(member, members.Reference):
@@ -213,15 +211,15 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def pivot_module(self) -> str | None:
-        """Target ID of the PivotModule reference (targets IField[bool])."""
+        """Target ID of the PivotModule reference (targets IField[primitives.Bool])."""
         member = self.get_member("PivotModule")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @pivot_module.setter
-    def pivot_module(self, target: str | IField[bool] | None) -> None:
-        """Set the PivotModule reference by target ID or IField[bool] instance."""
+    def pivot_module(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the PivotModule reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("PivotModule")
         if isinstance(member, members.Reference):
@@ -234,15 +232,15 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def use_local_rotation(self) -> str | None:
-        """Target ID of the UseLocalRotation reference (targets IField[bool])."""
+        """Target ID of the UseLocalRotation reference (targets IField[primitives.Bool])."""
         member = self.get_member("UseLocalRotation")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @use_local_rotation.setter
-    def use_local_rotation(self, target: str | IField[bool] | None) -> None:
-        """Set the UseLocalRotation reference by target ID or IField[bool] instance."""
+    def use_local_rotation(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the UseLocalRotation reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("UseLocalRotation")
         if isinstance(member, members.Reference):
@@ -255,15 +253,15 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def size_modifier_enabled(self) -> str | None:
-        """Target ID of the SizeModifierEnabled reference (targets IField[bool])."""
+        """Target ID of the SizeModifierEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("SizeModifierEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @size_modifier_enabled.setter
-    def size_modifier_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the SizeModifierEnabled reference by target ID or IField[bool] instance."""
+    def size_modifier_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the SizeModifierEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SizeModifierEnabled")
         if isinstance(member, members.Reference):
@@ -276,15 +274,15 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def size_offset_byvelocity_enabled(self) -> str | None:
-        """Target ID of the SizeOffsetByvelocityEnabled reference (targets IField[bool])."""
+        """Target ID of the SizeOffsetByvelocityEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("SizeOffsetByvelocityEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @size_offset_byvelocity_enabled.setter
-    def size_offset_byvelocity_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the SizeOffsetByvelocityEnabled reference by target ID or IField[bool] instance."""
+    def size_offset_byvelocity_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the SizeOffsetByvelocityEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SizeOffsetByvelocityEnabled")
         if isinstance(member, members.Reference):

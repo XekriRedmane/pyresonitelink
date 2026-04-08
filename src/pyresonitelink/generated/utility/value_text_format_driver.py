@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class ValueTextFormatDriver(GenericComponent[T], IComponent, IWorldEventReceiver
 
     Parameterize with a value type::
 
-        ValueTextFormatDriver[np.float32]
+        ValueTextFormatDriver[primitives.Float]
         ValueTextFormatDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueTextFormatDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ValueTextFormatDriver<>"
 
-    def __init__(self, source: str | IField[T] | None = None, format_: str | None = None, text: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[T] | None = None, format_: primitives.String | None = None, text: str | IField[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +63,7 @@ class ValueTextFormatDriver(GenericComponent[T], IComponent, IWorldEventReceiver
             )
 
     @property
-    def format_(self) -> str | None:
+    def format_(self) -> primitives.String | None:
         """The Format field value."""
         member = self.get_member("Format")
         if member is None:
@@ -70,7 +71,7 @@ class ValueTextFormatDriver(GenericComponent[T], IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @format_.setter
-    def format_(self, value: str) -> None:
+    def format_(self, value: primitives.String) -> None:
         """Set the Format field value."""
         member = self.get_member("Format")
         if member is not None:
@@ -82,15 +83,15 @@ class ValueTextFormatDriver(GenericComponent[T], IComponent, IWorldEventReceiver
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[str])."""
+        """Target ID of the Text reference (targets IField[primitives.String])."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text.setter
-    def text(self, target: str | IField[str] | None) -> None:
-        """Set the Text reference by target ID or IField[str] instance."""
+    def text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Text reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Text")
         if isinstance(member, members.Reference):

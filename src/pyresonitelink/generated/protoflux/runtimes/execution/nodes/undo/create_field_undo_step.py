@@ -1,6 +1,7 @@
 """Generated component: CreateFieldUndoStep."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -23,7 +24,7 @@ class CreateFieldUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.CreateFieldUndoStep"
 
-    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[IField] | None = None, force_new: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[IField] | None = None, force_new: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -84,15 +85,15 @@ class CreateFieldUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def force_new(self) -> str | None:
-        """Target ID of the ForceNew reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ForceNew reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ForceNew")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @force_new.setter
-    def force_new(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ForceNew reference by target ID or INodeValueOutput[bool] instance."""
+    def force_new(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ForceNew reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ForceNew")
         if isinstance(member, members.Reference):

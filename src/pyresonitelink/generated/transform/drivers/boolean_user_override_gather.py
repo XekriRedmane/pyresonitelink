@@ -1,9 +1,8 @@
 """Generated component: BooleanUserOverrideGather."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -19,7 +18,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BooleanUserOverrideGather"
 
-    def __init__(self, default: bool | None = None, create_override_on_write: bool | None = None, persistent_overrides: bool | None = None, clear_on_user_leave: bool | None = None, target: str | IField[bool] | None = None, any: bool | None = None, all: bool | None = None, none: bool | None = None, true_count: np.int32 | None = None, false_count: np.int32 | None = None, exclude_headless: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, default: primitives.Bool | None = None, create_override_on_write: primitives.Bool | None = None, persistent_overrides: primitives.Bool | None = None, clear_on_user_leave: primitives.Bool | None = None, target: str | IField[primitives.Bool] | None = None, any: primitives.Bool | None = None, all: primitives.Bool | None = None, none: primitives.Bool | None = None, true_count: primitives.Int | None = None, false_count: primitives.Int | None = None, exclude_headless: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +60,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             self.exclude_headless = exclude_headless
 
     @property
-    def default(self) -> bool | None:
+    def default(self) -> primitives.Bool | None:
         """The Default field value."""
         member = self.get_member("Default")
         if member is None:
@@ -69,7 +68,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @default.setter
-    def default(self, value: bool) -> None:
+    def default(self, value: primitives.Bool) -> None:
         """Set the Default field value."""
         member = self.get_member("Default")
         if member is not None:
@@ -80,7 +79,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def create_override_on_write(self) -> bool | None:
+    def create_override_on_write(self) -> primitives.Bool | None:
         """The CreateOverrideOnWrite field value."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is None:
@@ -88,7 +87,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @create_override_on_write.setter
-    def create_override_on_write(self, value: bool) -> None:
+    def create_override_on_write(self, value: primitives.Bool) -> None:
         """Set the CreateOverrideOnWrite field value."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is not None:
@@ -99,7 +98,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def persistent_overrides(self) -> bool | None:
+    def persistent_overrides(self) -> primitives.Bool | None:
         """The PersistentOverrides field value."""
         member = self.get_member("PersistentOverrides")
         if member is None:
@@ -107,7 +106,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @persistent_overrides.setter
-    def persistent_overrides(self, value: bool) -> None:
+    def persistent_overrides(self, value: primitives.Bool) -> None:
         """Set the PersistentOverrides field value."""
         member = self.get_member("PersistentOverrides")
         if member is not None:
@@ -118,7 +117,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def clear_on_user_leave(self) -> bool | None:
+    def clear_on_user_leave(self) -> primitives.Bool | None:
         """The ClearOnUserLeave field value."""
         member = self.get_member("ClearOnUserLeave")
         if member is None:
@@ -126,7 +125,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @clear_on_user_leave.setter
-    def clear_on_user_leave(self, value: bool) -> None:
+    def clear_on_user_leave(self, value: primitives.Bool) -> None:
         """Set the ClearOnUserLeave field value."""
         member = self.get_member("ClearOnUserLeave")
         if member is not None:
@@ -138,15 +137,15 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[bool])."""
+        """Target ID of the Target reference (targets IField[primitives.Bool])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[bool] | None) -> None:
-        """Set the Target reference by target ID or IField[bool] instance."""
+    def target(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -158,7 +157,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def any(self) -> bool | None:
+    def any(self) -> primitives.Bool | None:
         """The Any field value."""
         member = self.get_member("Any")
         if member is None:
@@ -166,7 +165,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @any.setter
-    def any(self, value: bool) -> None:
+    def any(self, value: primitives.Bool) -> None:
         """Set the Any field value."""
         member = self.get_member("Any")
         if member is not None:
@@ -177,7 +176,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def all(self) -> bool | None:
+    def all(self) -> primitives.Bool | None:
         """The All field value."""
         member = self.get_member("All")
         if member is None:
@@ -185,7 +184,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @all.setter
-    def all(self, value: bool) -> None:
+    def all(self, value: primitives.Bool) -> None:
         """Set the All field value."""
         member = self.get_member("All")
         if member is not None:
@@ -196,7 +195,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def none(self) -> bool | None:
+    def none(self) -> primitives.Bool | None:
         """The None field value."""
         member = self.get_member("None")
         if member is None:
@@ -204,7 +203,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @none.setter
-    def none(self, value: bool) -> None:
+    def none(self, value: primitives.Bool) -> None:
         """Set the None field value."""
         member = self.get_member("None")
         if member is not None:
@@ -215,7 +214,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def true_count(self) -> np.int32 | None:
+    def true_count(self) -> primitives.Int | None:
         """The TrueCount field value."""
         member = self.get_member("TrueCount")
         if member is None:
@@ -223,7 +222,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @true_count.setter
-    def true_count(self, value: np.int32) -> None:
+    def true_count(self, value: primitives.Int) -> None:
         """Set the TrueCount field value."""
         member = self.get_member("TrueCount")
         if member is not None:
@@ -234,7 +233,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def false_count(self) -> np.int32 | None:
+    def false_count(self) -> primitives.Int | None:
         """The FalseCount field value."""
         member = self.get_member("FalseCount")
         if member is None:
@@ -242,7 +241,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @false_count.setter
-    def false_count(self, value: np.int32) -> None:
+    def false_count(self, value: primitives.Int) -> None:
         """Set the FalseCount field value."""
         member = self.get_member("FalseCount")
         if member is not None:
@@ -253,7 +252,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def exclude_headless(self) -> bool | None:
+    def exclude_headless(self) -> primitives.Bool | None:
         """The ExcludeHeadless field value."""
         member = self.get_member("ExcludeHeadless")
         if member is None:
@@ -261,7 +260,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @exclude_headless.setter
-    def exclude_headless(self, value: bool) -> None:
+    def exclude_headless(self, value: primitives.Bool) -> None:
         """Set the ExcludeHeadless field value."""
         member = self.get_member("ExcludeHeadless")
         if member is not None:

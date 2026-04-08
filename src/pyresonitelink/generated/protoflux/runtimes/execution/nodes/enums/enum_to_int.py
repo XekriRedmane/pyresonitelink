@@ -21,7 +21,7 @@ class EnumToInt(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     Parameterize with a value type::
 
-        EnumToInt[np.float32]
+        EnumToInt[primitives.Float]
         EnumToInt[primitives.Float3]
     """
 

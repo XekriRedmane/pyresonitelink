@@ -1,8 +1,7 @@
 """Generated component: AvatarAnchorLocomotionRelease."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iinput_update_receiver import IInputUpdateReceiver
@@ -18,7 +17,7 @@ class AvatarAnchorLocomotionRelease(GeneratedComponent, IInputUpdateReceiver, IC
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorLocomotionRelease"
 
-    def __init__(self, release_on_binary_action: bool | None = None, release_strength_threshold: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, release_on_binary_action: primitives.Bool | None = None, release_strength_threshold: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class AvatarAnchorLocomotionRelease(GeneratedComponent, IInputUpdateReceiver, IC
             self.release_strength_threshold = release_strength_threshold
 
     @property
-    def release_on_binary_action(self) -> bool | None:
+    def release_on_binary_action(self) -> primitives.Bool | None:
         """The ReleaseOnBinaryAction field value."""
         member = self.get_member("ReleaseOnBinaryAction")
         if member is None:
@@ -41,7 +40,7 @@ class AvatarAnchorLocomotionRelease(GeneratedComponent, IInputUpdateReceiver, IC
         return getattr(member, 'value', None)
 
     @release_on_binary_action.setter
-    def release_on_binary_action(self, value: bool) -> None:
+    def release_on_binary_action(self, value: primitives.Bool) -> None:
         """Set the ReleaseOnBinaryAction field value."""
         member = self.get_member("ReleaseOnBinaryAction")
         if member is not None:
@@ -52,7 +51,7 @@ class AvatarAnchorLocomotionRelease(GeneratedComponent, IInputUpdateReceiver, IC
             )
 
     @property
-    def release_strength_threshold(self) -> np.float32 | None:
+    def release_strength_threshold(self) -> primitives.Float | None:
         """The ReleaseStrengthThreshold field value."""
         member = self.get_member("ReleaseStrengthThreshold")
         if member is None:
@@ -60,7 +59,7 @@ class AvatarAnchorLocomotionRelease(GeneratedComponent, IInputUpdateReceiver, IC
         return getattr(member, 'value', None)
 
     @release_strength_threshold.setter
-    def release_strength_threshold(self, value: np.float32) -> None:
+    def release_strength_threshold(self, value: primitives.Float) -> None:
         """Set the ReleaseStrengthThreshold field value."""
         member = self.get_member("ReleaseStrengthThreshold")
         if member is not None:

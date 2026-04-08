@@ -1,7 +1,5 @@
 """Generated component: InteractiveCamera."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -35,7 +33,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCamera"
 
-    def __init__(self, preview_width: np.int32 | None = None, preview_height: np.int32 | None = None, render_width: np.int32 | None = None, stereo_separation: np.float32 | None = None, timer_interval: np.float32 | None = None, timer_enabled: bool | None = None, timer_count_indicator: str | IField[str] | None = None, timer_color_indicator: str | IField[primitives.ColorX] | None = None, timer_user: str | User | None = None, main_camera: str | Camera | None = None, secondary_camera: str | Camera | None = None, preview_texture: str | RenderTextureProvider | None = None, display_material: str | IStereoMaterial | None = None, quality: np.float32 | None = None, spawn_photo_in_world: bool | None = None, photo_spawn_point: str | Slot | None = None, photo_spawn_size: np.float32 | None = None, panorama_indicator: str | Slot | None = None, panorama_indicator_size: str | IField[primitives.Float3] | None = None, object_target_source: str | Slot | None = None, object_target_source_active: str | IField[bool] | None = None, object_auto_pose: bool | None = None, hide_lasers_on_capture: bool | None = None, capture_sound: str | IAssetProvider[AudioClip] | None = None, timer_start_sound: str | IAssetProvider[AudioClip] | None = None, timer_countdown_slow_player: str | AudioClipPlayer | None = None, timer_countdown_fast_player: str | AudioClipPlayer | None = None, timer_countdown_slow_output: str | AudioOutput | None = None, timer_countdown_fast_output: str | AudioOutput | None = None, preview_scale: primitives.Float2 | None = None, camera_model_override: str | None = None, frustum_visual: str | CameraFrustumMesh | None = None, default_near_clip: np.float32 | None = None, default_far_clip: np.float32 | None = None, frustum_position: str | IField[primitives.Float3] | None = None, frustum_rotation: str | IField[primitives.FloatQ] | None = None, frustum_vertical_fov: str | IField[np.float32] | None = None, frustum_horizontal_fov: str | IField[np.float32] | None = None, frustum_near: str | IField[np.float32] | None = None, frustum_far: str | IField[np.float32] | None = None, left_cam_offset: str | IField[primitives.Float3] | None = None, right_cam_offset: str | IField[primitives.Float3] | None = None, left_cam_orientation: str | IField[primitives.FloatQ] | None = None, right_cam_orientation: str | IField[primitives.FloatQ] | None = None, camera_rendering: str | IField[bool] | None = None, secondary_camera_rendering: str | IField[bool] | None = None, force_visuals_off: bool | None = None, auto_hide_proximity: np.float32 | None = None, active_anchor: str | InteractiveCameraAnchor | None = None, anchor_interpolation_speed: np.float32 | None = None, anchor_linear_interpolation: bool | None = None, head_point_offset: primitives.Float3 | None = None, angle_position: np.float32 | None = None, distance: np.float32 | None = None, height_offset: np.float32 | None = None, first_person_pitch: np.float32 | None = None, first_person_roll: np.float32 | None = None, first_person_offset: np.float32 | None = None, group_include_radius: np.float32 | None = None, group_exclude_radius: np.float32 | None = None, position_smooth_speed: np.float32 | None = None, angle_position_smooth_speed: np.float32 | None = None, framing_smooth_speed: np.float32 | None = None, wobble_magnitude: primitives.Float3 | None = None, wobble_seed: primitives.Float3 | None = None, wobble_speed: primitives.Float3 | None = None, framing_viewport_position: primitives.Float2 | None = None, avoid_occlusion: bool | None = None, occlusion_include_players: bool | None = None, occlusion_include_any_colliders: bool | None = None, position_stream: str | ValueStream[primitives.Float3] | None = None, rotation_stream: str | ValueStream[primitives.FloatQ] | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, release_position: primitives.Float3 | None = None, release_rotation: primitives.FloatQ | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, preview_width: primitives.Int | None = None, preview_height: primitives.Int | None = None, render_width: primitives.Int | None = None, stereo_separation: primitives.Float | None = None, timer_interval: primitives.Float | None = None, timer_enabled: primitives.Bool | None = None, timer_count_indicator: str | IField[primitives.String] | None = None, timer_color_indicator: str | IField[primitives.ColorX] | None = None, timer_user: str | User | None = None, main_camera: str | Camera | None = None, secondary_camera: str | Camera | None = None, preview_texture: str | RenderTextureProvider | None = None, display_material: str | IStereoMaterial | None = None, quality: primitives.Float | None = None, spawn_photo_in_world: primitives.Bool | None = None, photo_spawn_point: str | Slot | None = None, photo_spawn_size: primitives.Float | None = None, panorama_indicator: str | Slot | None = None, panorama_indicator_size: str | IField[primitives.Float3] | None = None, object_target_source: str | Slot | None = None, object_target_source_active: str | IField[primitives.Bool] | None = None, object_auto_pose: primitives.Bool | None = None, hide_lasers_on_capture: primitives.Bool | None = None, capture_sound: str | IAssetProvider[AudioClip] | None = None, timer_start_sound: str | IAssetProvider[AudioClip] | None = None, timer_countdown_slow_player: str | AudioClipPlayer | None = None, timer_countdown_fast_player: str | AudioClipPlayer | None = None, timer_countdown_slow_output: str | AudioOutput | None = None, timer_countdown_fast_output: str | AudioOutput | None = None, preview_scale: primitives.Float2 | None = None, camera_model_override: primitives.String | None = None, frustum_visual: str | CameraFrustumMesh | None = None, default_near_clip: primitives.Float | None = None, default_far_clip: primitives.Float | None = None, frustum_position: str | IField[primitives.Float3] | None = None, frustum_rotation: str | IField[primitives.FloatQ] | None = None, frustum_vertical_fov: str | IField[primitives.Float] | None = None, frustum_horizontal_fov: str | IField[primitives.Float] | None = None, frustum_near: str | IField[primitives.Float] | None = None, frustum_far: str | IField[primitives.Float] | None = None, left_cam_offset: str | IField[primitives.Float3] | None = None, right_cam_offset: str | IField[primitives.Float3] | None = None, left_cam_orientation: str | IField[primitives.FloatQ] | None = None, right_cam_orientation: str | IField[primitives.FloatQ] | None = None, camera_rendering: str | IField[primitives.Bool] | None = None, secondary_camera_rendering: str | IField[primitives.Bool] | None = None, force_visuals_off: primitives.Bool | None = None, auto_hide_proximity: primitives.Float | None = None, active_anchor: str | InteractiveCameraAnchor | None = None, anchor_interpolation_speed: primitives.Float | None = None, anchor_linear_interpolation: primitives.Bool | None = None, head_point_offset: primitives.Float3 | None = None, angle_position: primitives.Float | None = None, distance: primitives.Float | None = None, height_offset: primitives.Float | None = None, first_person_pitch: primitives.Float | None = None, first_person_roll: primitives.Float | None = None, first_person_offset: primitives.Float | None = None, group_include_radius: primitives.Float | None = None, group_exclude_radius: primitives.Float | None = None, position_smooth_speed: primitives.Float | None = None, angle_position_smooth_speed: primitives.Float | None = None, framing_smooth_speed: primitives.Float | None = None, wobble_magnitude: primitives.Float3 | None = None, wobble_seed: primitives.Float3 | None = None, wobble_speed: primitives.Float3 | None = None, framing_viewport_position: primitives.Float2 | None = None, avoid_occlusion: primitives.Bool | None = None, occlusion_include_players: primitives.Bool | None = None, occlusion_include_any_colliders: primitives.Bool | None = None, position_stream: str | ValueStream[primitives.Float3] | None = None, rotation_stream: str | ValueStream[primitives.FloatQ] | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, release_position: primitives.Float3 | None = None, release_rotation: primitives.FloatQ | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -285,7 +283,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         self.set_member("CameraMode", value)
 
     @property
-    def preview_width(self) -> np.int32 | None:
+    def preview_width(self) -> primitives.Int | None:
         """The PreviewWidth field value."""
         member = self.get_member("PreviewWidth")
         if member is None:
@@ -293,7 +291,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @preview_width.setter
-    def preview_width(self, value: np.int32) -> None:
+    def preview_width(self, value: primitives.Int) -> None:
         """Set the PreviewWidth field value."""
         member = self.get_member("PreviewWidth")
         if member is not None:
@@ -304,7 +302,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def preview_height(self) -> np.int32 | None:
+    def preview_height(self) -> primitives.Int | None:
         """The PreviewHeight field value."""
         member = self.get_member("PreviewHeight")
         if member is None:
@@ -312,7 +310,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @preview_height.setter
-    def preview_height(self, value: np.int32) -> None:
+    def preview_height(self, value: primitives.Int) -> None:
         """Set the PreviewHeight field value."""
         member = self.get_member("PreviewHeight")
         if member is not None:
@@ -323,7 +321,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def render_width(self) -> np.int32 | None:
+    def render_width(self) -> primitives.Int | None:
         """The RenderWidth field value."""
         member = self.get_member("RenderWidth")
         if member is None:
@@ -331,7 +329,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @render_width.setter
-    def render_width(self, value: np.int32) -> None:
+    def render_width(self, value: primitives.Int) -> None:
         """Set the RenderWidth field value."""
         member = self.get_member("RenderWidth")
         if member is not None:
@@ -342,7 +340,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def stereo_separation(self) -> np.float32 | None:
+    def stereo_separation(self) -> primitives.Float | None:
         """The StereoSeparation field value."""
         member = self.get_member("StereoSeparation")
         if member is None:
@@ -350,7 +348,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @stereo_separation.setter
-    def stereo_separation(self, value: np.float32) -> None:
+    def stereo_separation(self, value: primitives.Float) -> None:
         """Set the StereoSeparation field value."""
         member = self.get_member("StereoSeparation")
         if member is not None:
@@ -361,7 +359,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def timer_interval(self) -> np.float32 | None:
+    def timer_interval(self) -> primitives.Float | None:
         """The TimerInterval field value."""
         member = self.get_member("TimerInterval")
         if member is None:
@@ -369,7 +367,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @timer_interval.setter
-    def timer_interval(self, value: np.float32) -> None:
+    def timer_interval(self, value: primitives.Float) -> None:
         """Set the TimerInterval field value."""
         member = self.get_member("TimerInterval")
         if member is not None:
@@ -380,7 +378,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def timer_enabled(self) -> bool | None:
+    def timer_enabled(self) -> primitives.Bool | None:
         """The TimerEnabled field value."""
         member = self.get_member("TimerEnabled")
         if member is None:
@@ -388,7 +386,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @timer_enabled.setter
-    def timer_enabled(self, value: bool) -> None:
+    def timer_enabled(self, value: primitives.Bool) -> None:
         """Set the TimerEnabled field value."""
         member = self.get_member("TimerEnabled")
         if member is not None:
@@ -400,15 +398,15 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_count_indicator(self) -> str | None:
-        """Target ID of the TimerCountIndicator reference (targets IField[str])."""
+        """Target ID of the TimerCountIndicator reference (targets IField[primitives.String])."""
         member = self.get_member("TimerCountIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @timer_count_indicator.setter
-    def timer_count_indicator(self, target: str | IField[str] | None) -> None:
-        """Set the TimerCountIndicator reference by target ID or IField[str] instance."""
+    def timer_count_indicator(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the TimerCountIndicator reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TimerCountIndicator")
         if isinstance(member, members.Reference):
@@ -559,7 +557,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         self.set_member("Format", value)
 
     @property
-    def quality(self) -> np.float32 | None:
+    def quality(self) -> primitives.Float | None:
         """The Quality field value."""
         member = self.get_member("Quality")
         if member is None:
@@ -567,7 +565,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @quality.setter
-    def quality(self, value: np.float32) -> None:
+    def quality(self, value: primitives.Float) -> None:
         """Set the Quality field value."""
         member = self.get_member("Quality")
         if member is not None:
@@ -578,7 +576,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def spawn_photo_in_world(self) -> bool | None:
+    def spawn_photo_in_world(self) -> primitives.Bool | None:
         """The SpawnPhotoInWorld field value."""
         member = self.get_member("SpawnPhotoInWorld")
         if member is None:
@@ -586,7 +584,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @spawn_photo_in_world.setter
-    def spawn_photo_in_world(self, value: bool) -> None:
+    def spawn_photo_in_world(self, value: primitives.Bool) -> None:
         """Set the SpawnPhotoInWorld field value."""
         member = self.get_member("SpawnPhotoInWorld")
         if member is not None:
@@ -618,7 +616,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def photo_spawn_size(self) -> np.float32 | None:
+    def photo_spawn_size(self) -> primitives.Float | None:
         """The PhotoSpawnSize field value."""
         member = self.get_member("PhotoSpawnSize")
         if member is None:
@@ -626,7 +624,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @photo_spawn_size.setter
-    def photo_spawn_size(self, value: np.float32) -> None:
+    def photo_spawn_size(self, value: primitives.Float) -> None:
         """Set the PhotoSpawnSize field value."""
         member = self.get_member("PhotoSpawnSize")
         if member is not None:
@@ -701,15 +699,15 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def object_target_source_active(self) -> str | None:
-        """Target ID of the ObjectTargetSourceActive reference (targets IField[bool])."""
+        """Target ID of the ObjectTargetSourceActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("ObjectTargetSourceActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @object_target_source_active.setter
-    def object_target_source_active(self, target: str | IField[bool] | None) -> None:
-        """Set the ObjectTargetSourceActive reference by target ID or IField[bool] instance."""
+    def object_target_source_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the ObjectTargetSourceActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ObjectTargetSourceActive")
         if isinstance(member, members.Reference):
@@ -721,7 +719,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def object_auto_pose(self) -> bool | None:
+    def object_auto_pose(self) -> primitives.Bool | None:
         """The ObjectAutoPose field value."""
         member = self.get_member("ObjectAutoPose")
         if member is None:
@@ -729,7 +727,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @object_auto_pose.setter
-    def object_auto_pose(self, value: bool) -> None:
+    def object_auto_pose(self, value: primitives.Bool) -> None:
         """Set the ObjectAutoPose field value."""
         member = self.get_member("ObjectAutoPose")
         if member is not None:
@@ -740,7 +738,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def hide_lasers_on_capture(self) -> bool | None:
+    def hide_lasers_on_capture(self) -> primitives.Bool | None:
         """The HideLasersOnCapture field value."""
         member = self.get_member("HideLasersOnCapture")
         if member is None:
@@ -748,7 +746,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @hide_lasers_on_capture.setter
-    def hide_lasers_on_capture(self, value: bool) -> None:
+    def hide_lasers_on_capture(self, value: primitives.Bool) -> None:
         """Set the HideLasersOnCapture field value."""
         member = self.get_member("HideLasersOnCapture")
         if member is not None:
@@ -904,7 +902,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def camera_model_override(self) -> str | None:
+    def camera_model_override(self) -> primitives.String | None:
         """The CameraModelOverride field value."""
         member = self.get_member("CameraModelOverride")
         if member is None:
@@ -912,7 +910,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @camera_model_override.setter
-    def camera_model_override(self, value: str) -> None:
+    def camera_model_override(self, value: primitives.String) -> None:
         """Set the CameraModelOverride field value."""
         member = self.get_member("CameraModelOverride")
         if member is not None:
@@ -944,7 +942,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def default_near_clip(self) -> np.float32 | None:
+    def default_near_clip(self) -> primitives.Float | None:
         """The DefaultNearClip field value."""
         member = self.get_member("DefaultNearClip")
         if member is None:
@@ -952,7 +950,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @default_near_clip.setter
-    def default_near_clip(self, value: np.float32) -> None:
+    def default_near_clip(self, value: primitives.Float) -> None:
         """Set the DefaultNearClip field value."""
         member = self.get_member("DefaultNearClip")
         if member is not None:
@@ -963,7 +961,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def default_far_clip(self) -> np.float32 | None:
+    def default_far_clip(self) -> primitives.Float | None:
         """The DefaultFarClip field value."""
         member = self.get_member("DefaultFarClip")
         if member is None:
@@ -971,7 +969,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @default_far_clip.setter
-    def default_far_clip(self, value: np.float32) -> None:
+    def default_far_clip(self, value: primitives.Float) -> None:
         """Set the DefaultFarClip field value."""
         member = self.get_member("DefaultFarClip")
         if member is not None:
@@ -1025,15 +1023,15 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_vertical_fov(self) -> str | None:
-        """Target ID of the _frustumVerticalFOV reference (targets IField[np.float32])."""
+        """Target ID of the _frustumVerticalFOV reference (targets IField[primitives.Float])."""
         member = self.get_member("_frustumVerticalFOV")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @frustum_vertical_fov.setter
-    def frustum_vertical_fov(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _frustumVerticalFOV reference by target ID or IField[np.float32] instance."""
+    def frustum_vertical_fov(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _frustumVerticalFOV reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_frustumVerticalFOV")
         if isinstance(member, members.Reference):
@@ -1046,15 +1044,15 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_horizontal_fov(self) -> str | None:
-        """Target ID of the _frustumHorizontalFOV reference (targets IField[np.float32])."""
+        """Target ID of the _frustumHorizontalFOV reference (targets IField[primitives.Float])."""
         member = self.get_member("_frustumHorizontalFOV")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @frustum_horizontal_fov.setter
-    def frustum_horizontal_fov(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _frustumHorizontalFOV reference by target ID or IField[np.float32] instance."""
+    def frustum_horizontal_fov(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _frustumHorizontalFOV reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_frustumHorizontalFOV")
         if isinstance(member, members.Reference):
@@ -1067,15 +1065,15 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_near(self) -> str | None:
-        """Target ID of the _frustumNear reference (targets IField[np.float32])."""
+        """Target ID of the _frustumNear reference (targets IField[primitives.Float])."""
         member = self.get_member("_frustumNear")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @frustum_near.setter
-    def frustum_near(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _frustumNear reference by target ID or IField[np.float32] instance."""
+    def frustum_near(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _frustumNear reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_frustumNear")
         if isinstance(member, members.Reference):
@@ -1088,15 +1086,15 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_far(self) -> str | None:
-        """Target ID of the _frustumFar reference (targets IField[np.float32])."""
+        """Target ID of the _frustumFar reference (targets IField[primitives.Float])."""
         member = self.get_member("_frustumFar")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @frustum_far.setter
-    def frustum_far(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _frustumFar reference by target ID or IField[np.float32] instance."""
+    def frustum_far(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _frustumFar reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_frustumFar")
         if isinstance(member, members.Reference):
@@ -1193,15 +1191,15 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def camera_rendering(self) -> str | None:
-        """Target ID of the _cameraRendering reference (targets IField[bool])."""
+        """Target ID of the _cameraRendering reference (targets IField[primitives.Bool])."""
         member = self.get_member("_cameraRendering")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @camera_rendering.setter
-    def camera_rendering(self, target: str | IField[bool] | None) -> None:
-        """Set the _cameraRendering reference by target ID or IField[bool] instance."""
+    def camera_rendering(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _cameraRendering reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_cameraRendering")
         if isinstance(member, members.Reference):
@@ -1214,15 +1212,15 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def secondary_camera_rendering(self) -> str | None:
-        """Target ID of the _secondaryCameraRendering reference (targets IField[bool])."""
+        """Target ID of the _secondaryCameraRendering reference (targets IField[primitives.Bool])."""
         member = self.get_member("_secondaryCameraRendering")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @secondary_camera_rendering.setter
-    def secondary_camera_rendering(self, target: str | IField[bool] | None) -> None:
-        """Set the _secondaryCameraRendering reference by target ID or IField[bool] instance."""
+    def secondary_camera_rendering(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _secondaryCameraRendering reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_secondaryCameraRendering")
         if isinstance(member, members.Reference):
@@ -1273,7 +1271,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         self.set_member("RenderOnlyForUsers", value)
 
     @property
-    def force_visuals_off(self) -> bool | None:
+    def force_visuals_off(self) -> primitives.Bool | None:
         """The ForceVisualsOff field value."""
         member = self.get_member("ForceVisualsOff")
         if member is None:
@@ -1281,7 +1279,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @force_visuals_off.setter
-    def force_visuals_off(self, value: bool) -> None:
+    def force_visuals_off(self, value: primitives.Bool) -> None:
         """Set the ForceVisualsOff field value."""
         member = self.get_member("ForceVisualsOff")
         if member is not None:
@@ -1305,7 +1303,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         self.set_member("VisualActiveFields", value)
 
     @property
-    def auto_hide_proximity(self) -> np.float32 | None:
+    def auto_hide_proximity(self) -> primitives.Float | None:
         """The AutoHideProximity field value."""
         member = self.get_member("AutoHideProximity")
         if member is None:
@@ -1313,7 +1311,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @auto_hide_proximity.setter
-    def auto_hide_proximity(self, value: np.float32) -> None:
+    def auto_hide_proximity(self, value: primitives.Float) -> None:
         """Set the AutoHideProximity field value."""
         member = self.get_member("AutoHideProximity")
         if member is not None:
@@ -1397,7 +1395,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def anchor_interpolation_speed(self) -> np.float32 | None:
+    def anchor_interpolation_speed(self) -> primitives.Float | None:
         """The AnchorInterpolationSpeed field value."""
         member = self.get_member("AnchorInterpolationSpeed")
         if member is None:
@@ -1405,7 +1403,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @anchor_interpolation_speed.setter
-    def anchor_interpolation_speed(self, value: np.float32) -> None:
+    def anchor_interpolation_speed(self, value: primitives.Float) -> None:
         """Set the AnchorInterpolationSpeed field value."""
         member = self.get_member("AnchorInterpolationSpeed")
         if member is not None:
@@ -1416,7 +1414,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def anchor_linear_interpolation(self) -> bool | None:
+    def anchor_linear_interpolation(self) -> primitives.Bool | None:
         """The AnchorLinearInterpolation field value."""
         member = self.get_member("AnchorLinearInterpolation")
         if member is None:
@@ -1424,7 +1422,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @anchor_linear_interpolation.setter
-    def anchor_linear_interpolation(self, value: bool) -> None:
+    def anchor_linear_interpolation(self, value: primitives.Bool) -> None:
         """Set the AnchorLinearInterpolation field value."""
         member = self.get_member("AnchorLinearInterpolation")
         if member is not None:
@@ -1467,7 +1465,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def angle_position(self) -> np.float32 | None:
+    def angle_position(self) -> primitives.Float | None:
         """The AnglePosition field value."""
         member = self.get_member("AnglePosition")
         if member is None:
@@ -1475,7 +1473,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @angle_position.setter
-    def angle_position(self, value: np.float32) -> None:
+    def angle_position(self, value: primitives.Float) -> None:
         """Set the AnglePosition field value."""
         member = self.get_member("AnglePosition")
         if member is not None:
@@ -1486,7 +1484,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def distance(self) -> np.float32 | None:
+    def distance(self) -> primitives.Float | None:
         """The Distance field value."""
         member = self.get_member("Distance")
         if member is None:
@@ -1494,7 +1492,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @distance.setter
-    def distance(self, value: np.float32) -> None:
+    def distance(self, value: primitives.Float) -> None:
         """Set the Distance field value."""
         member = self.get_member("Distance")
         if member is not None:
@@ -1505,7 +1503,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def height_offset(self) -> np.float32 | None:
+    def height_offset(self) -> primitives.Float | None:
         """The HeightOffset field value."""
         member = self.get_member("HeightOffset")
         if member is None:
@@ -1513,7 +1511,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @height_offset.setter
-    def height_offset(self, value: np.float32) -> None:
+    def height_offset(self, value: primitives.Float) -> None:
         """Set the HeightOffset field value."""
         member = self.get_member("HeightOffset")
         if member is not None:
@@ -1524,7 +1522,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def first_person_pitch(self) -> np.float32 | None:
+    def first_person_pitch(self) -> primitives.Float | None:
         """The FirstPersonPitch field value."""
         member = self.get_member("FirstPersonPitch")
         if member is None:
@@ -1532,7 +1530,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @first_person_pitch.setter
-    def first_person_pitch(self, value: np.float32) -> None:
+    def first_person_pitch(self, value: primitives.Float) -> None:
         """Set the FirstPersonPitch field value."""
         member = self.get_member("FirstPersonPitch")
         if member is not None:
@@ -1543,7 +1541,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def first_person_roll(self) -> np.float32 | None:
+    def first_person_roll(self) -> primitives.Float | None:
         """The FirstPersonRoll field value."""
         member = self.get_member("FirstPersonRoll")
         if member is None:
@@ -1551,7 +1549,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @first_person_roll.setter
-    def first_person_roll(self, value: np.float32) -> None:
+    def first_person_roll(self, value: primitives.Float) -> None:
         """Set the FirstPersonRoll field value."""
         member = self.get_member("FirstPersonRoll")
         if member is not None:
@@ -1562,7 +1560,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def first_person_offset(self) -> np.float32 | None:
+    def first_person_offset(self) -> primitives.Float | None:
         """The FirstPersonOffset field value."""
         member = self.get_member("FirstPersonOffset")
         if member is None:
@@ -1570,7 +1568,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @first_person_offset.setter
-    def first_person_offset(self, value: np.float32) -> None:
+    def first_person_offset(self, value: primitives.Float) -> None:
         """Set the FirstPersonOffset field value."""
         member = self.get_member("FirstPersonOffset")
         if member is not None:
@@ -1581,7 +1579,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def group_include_radius(self) -> np.float32 | None:
+    def group_include_radius(self) -> primitives.Float | None:
         """The GroupIncludeRadius field value."""
         member = self.get_member("GroupIncludeRadius")
         if member is None:
@@ -1589,7 +1587,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @group_include_radius.setter
-    def group_include_radius(self, value: np.float32) -> None:
+    def group_include_radius(self, value: primitives.Float) -> None:
         """Set the GroupIncludeRadius field value."""
         member = self.get_member("GroupIncludeRadius")
         if member is not None:
@@ -1600,7 +1598,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def group_exclude_radius(self) -> np.float32 | None:
+    def group_exclude_radius(self) -> primitives.Float | None:
         """The GroupExcludeRadius field value."""
         member = self.get_member("GroupExcludeRadius")
         if member is None:
@@ -1608,7 +1606,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @group_exclude_radius.setter
-    def group_exclude_radius(self, value: np.float32) -> None:
+    def group_exclude_radius(self, value: primitives.Float) -> None:
         """Set the GroupExcludeRadius field value."""
         member = self.get_member("GroupExcludeRadius")
         if member is not None:
@@ -1645,7 +1643,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         self.set_member("ForceGroupExclude", value)
 
     @property
-    def position_smooth_speed(self) -> np.float32 | None:
+    def position_smooth_speed(self) -> primitives.Float | None:
         """The PositionSmoothSpeed field value."""
         member = self.get_member("PositionSmoothSpeed")
         if member is None:
@@ -1653,7 +1651,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @position_smooth_speed.setter
-    def position_smooth_speed(self, value: np.float32) -> None:
+    def position_smooth_speed(self, value: primitives.Float) -> None:
         """Set the PositionSmoothSpeed field value."""
         member = self.get_member("PositionSmoothSpeed")
         if member is not None:
@@ -1664,7 +1662,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def angle_position_smooth_speed(self) -> np.float32 | None:
+    def angle_position_smooth_speed(self) -> primitives.Float | None:
         """The AnglePositionSmoothSpeed field value."""
         member = self.get_member("AnglePositionSmoothSpeed")
         if member is None:
@@ -1672,7 +1670,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @angle_position_smooth_speed.setter
-    def angle_position_smooth_speed(self, value: np.float32) -> None:
+    def angle_position_smooth_speed(self, value: primitives.Float) -> None:
         """Set the AnglePositionSmoothSpeed field value."""
         member = self.get_member("AnglePositionSmoothSpeed")
         if member is not None:
@@ -1683,7 +1681,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def framing_smooth_speed(self) -> np.float32 | None:
+    def framing_smooth_speed(self) -> primitives.Float | None:
         """The FramingSmoothSpeed field value."""
         member = self.get_member("FramingSmoothSpeed")
         if member is None:
@@ -1691,7 +1689,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @framing_smooth_speed.setter
-    def framing_smooth_speed(self, value: np.float32) -> None:
+    def framing_smooth_speed(self, value: primitives.Float) -> None:
         """Set the FramingSmoothSpeed field value."""
         member = self.get_member("FramingSmoothSpeed")
         if member is not None:
@@ -1778,7 +1776,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def avoid_occlusion(self) -> bool | None:
+    def avoid_occlusion(self) -> primitives.Bool | None:
         """The AvoidOcclusion field value."""
         member = self.get_member("AvoidOcclusion")
         if member is None:
@@ -1786,7 +1784,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @avoid_occlusion.setter
-    def avoid_occlusion(self, value: bool) -> None:
+    def avoid_occlusion(self, value: primitives.Bool) -> None:
         """Set the AvoidOcclusion field value."""
         member = self.get_member("AvoidOcclusion")
         if member is not None:
@@ -1797,7 +1795,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def occlusion_include_players(self) -> bool | None:
+    def occlusion_include_players(self) -> primitives.Bool | None:
         """The OcclusionIncludePlayers field value."""
         member = self.get_member("OcclusionIncludePlayers")
         if member is None:
@@ -1805,7 +1803,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @occlusion_include_players.setter
-    def occlusion_include_players(self, value: bool) -> None:
+    def occlusion_include_players(self, value: primitives.Bool) -> None:
         """Set the OcclusionIncludePlayers field value."""
         member = self.get_member("OcclusionIncludePlayers")
         if member is not None:
@@ -1816,7 +1814,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def occlusion_include_any_colliders(self) -> bool | None:
+    def occlusion_include_any_colliders(self) -> primitives.Bool | None:
         """The OcclusionIncludeAnyColliders field value."""
         member = self.get_member("OcclusionIncludeAnyColliders")
         if member is None:
@@ -1824,7 +1822,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         return getattr(member, 'value', None)
 
     @occlusion_include_any_colliders.setter
-    def occlusion_include_any_colliders(self, value: bool) -> None:
+    def occlusion_include_any_colliders(self, value: primitives.Bool) -> None:
         """Set the OcclusionIncludeAnyColliders field value."""
         member = self.get_member("OcclusionIncludeAnyColliders")
         if member is not None:

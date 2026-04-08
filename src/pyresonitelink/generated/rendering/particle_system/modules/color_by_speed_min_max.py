@@ -1,7 +1,5 @@
 """Generated component: ColorBySpeedMinMax."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -18,7 +16,7 @@ class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorBySpeedMinMax"
 
-    def __init__(self, min_speed: np.float32 | None = None, max_speed: np.float32 | None = None, min_color: primitives.ColorX | None = None, max_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_speed: primitives.Float | None = None, max_speed: primitives.Float | None = None, min_color: primitives.ColorX | None = None, max_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +37,7 @@ class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventR
             self.max_color = max_color
 
     @property
-    def min_speed(self) -> np.float32 | None:
+    def min_speed(self) -> primitives.Float | None:
         """The MinSpeed field value."""
         member = self.get_member("MinSpeed")
         if member is None:
@@ -47,7 +45,7 @@ class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventR
         return getattr(member, 'value', None)
 
     @min_speed.setter
-    def min_speed(self, value: np.float32) -> None:
+    def min_speed(self, value: primitives.Float) -> None:
         """Set the MinSpeed field value."""
         member = self.get_member("MinSpeed")
         if member is not None:
@@ -58,7 +56,7 @@ class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventR
             )
 
     @property
-    def max_speed(self) -> np.float32 | None:
+    def max_speed(self) -> primitives.Float | None:
         """The MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is None:
@@ -66,7 +64,7 @@ class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventR
         return getattr(member, 'value', None)
 
     @max_speed.setter
-    def max_speed(self, value: np.float32) -> None:
+    def max_speed(self, value: primitives.Float) -> None:
         """Set the MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is not None:

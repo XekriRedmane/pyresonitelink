@@ -1,9 +1,8 @@
 """Generated component: SpawnArc."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iuser_spawn_area import IUserSpawnArea
@@ -18,7 +17,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SpawnArc"
 
-    def __init__(self, weight: np.float32 | None = None, capacity: np.int32 | None = None, radius: np.float32 | None = None, arc: np.float32 | None = None, users_per_arc: np.int32 | None = None, center_arc_offset: np.float32 | None = None, grow_both_sides: bool | None = None, row_height_offset: np.float32 | None = None, orient_user: bool | None = None, parent_user: bool | None = None, tilt_users: bool | None = None, show_test: bool | None = None, test_slots: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, weight: primitives.Float | None = None, capacity: primitives.Int | None = None, radius: primitives.Float | None = None, arc: primitives.Float | None = None, users_per_arc: primitives.Int | None = None, center_arc_offset: primitives.Float | None = None, grow_both_sides: primitives.Bool | None = None, row_height_offset: primitives.Float | None = None, orient_user: primitives.Bool | None = None, parent_user: primitives.Bool | None = None, tilt_users: primitives.Bool | None = None, show_test: primitives.Bool | None = None, test_slots: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,7 +65,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             self.test_slots = test_slots
 
     @property
-    def weight(self) -> np.float32 | None:
+    def weight(self) -> primitives.Float | None:
         """The Weight field value."""
         member = self.get_member("Weight")
         if member is None:
@@ -74,7 +73,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @weight.setter
-    def weight(self, value: np.float32) -> None:
+    def weight(self, value: primitives.Float) -> None:
         """Set the Weight field value."""
         member = self.get_member("Weight")
         if member is not None:
@@ -85,7 +84,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def capacity(self) -> np.int32 | None:
+    def capacity(self) -> primitives.Int | None:
         """The Capacity field value."""
         member = self.get_member("Capacity")
         if member is None:
@@ -93,7 +92,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @capacity.setter
-    def capacity(self, value: np.int32) -> None:
+    def capacity(self, value: primitives.Int) -> None:
         """Set the Capacity field value."""
         member = self.get_member("Capacity")
         if member is not None:
@@ -104,7 +103,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -112,7 +111,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -123,7 +122,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def arc(self) -> np.float32 | None:
+    def arc(self) -> primitives.Float | None:
         """The Arc field value."""
         member = self.get_member("Arc")
         if member is None:
@@ -131,7 +130,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @arc.setter
-    def arc(self, value: np.float32) -> None:
+    def arc(self, value: primitives.Float) -> None:
         """Set the Arc field value."""
         member = self.get_member("Arc")
         if member is not None:
@@ -142,7 +141,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def users_per_arc(self) -> np.int32 | None:
+    def users_per_arc(self) -> primitives.Int | None:
         """The UsersPerArc field value."""
         member = self.get_member("UsersPerArc")
         if member is None:
@@ -150,7 +149,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_per_arc.setter
-    def users_per_arc(self, value: np.int32) -> None:
+    def users_per_arc(self, value: primitives.Int) -> None:
         """Set the UsersPerArc field value."""
         member = self.get_member("UsersPerArc")
         if member is not None:
@@ -161,7 +160,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def center_arc_offset(self) -> np.float32 | None:
+    def center_arc_offset(self) -> primitives.Float | None:
         """The CenterArcOffset field value."""
         member = self.get_member("CenterArcOffset")
         if member is None:
@@ -169,7 +168,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @center_arc_offset.setter
-    def center_arc_offset(self, value: np.float32) -> None:
+    def center_arc_offset(self, value: primitives.Float) -> None:
         """Set the CenterArcOffset field value."""
         member = self.get_member("CenterArcOffset")
         if member is not None:
@@ -180,7 +179,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def grow_both_sides(self) -> bool | None:
+    def grow_both_sides(self) -> primitives.Bool | None:
         """The GrowBothSides field value."""
         member = self.get_member("GrowBothSides")
         if member is None:
@@ -188,7 +187,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @grow_both_sides.setter
-    def grow_both_sides(self, value: bool) -> None:
+    def grow_both_sides(self, value: primitives.Bool) -> None:
         """Set the GrowBothSides field value."""
         member = self.get_member("GrowBothSides")
         if member is not None:
@@ -199,7 +198,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def row_height_offset(self) -> np.float32 | None:
+    def row_height_offset(self) -> primitives.Float | None:
         """The RowHeightOffset field value."""
         member = self.get_member("RowHeightOffset")
         if member is None:
@@ -207,7 +206,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @row_height_offset.setter
-    def row_height_offset(self, value: np.float32) -> None:
+    def row_height_offset(self, value: primitives.Float) -> None:
         """Set the RowHeightOffset field value."""
         member = self.get_member("RowHeightOffset")
         if member is not None:
@@ -218,7 +217,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def orient_user(self) -> bool | None:
+    def orient_user(self) -> primitives.Bool | None:
         """The OrientUser field value."""
         member = self.get_member("OrientUser")
         if member is None:
@@ -226,7 +225,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @orient_user.setter
-    def orient_user(self, value: bool) -> None:
+    def orient_user(self, value: primitives.Bool) -> None:
         """Set the OrientUser field value."""
         member = self.get_member("OrientUser")
         if member is not None:
@@ -237,7 +236,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def parent_user(self) -> bool | None:
+    def parent_user(self) -> primitives.Bool | None:
         """The ParentUser field value."""
         member = self.get_member("ParentUser")
         if member is None:
@@ -245,7 +244,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @parent_user.setter
-    def parent_user(self, value: bool) -> None:
+    def parent_user(self, value: primitives.Bool) -> None:
         """Set the ParentUser field value."""
         member = self.get_member("ParentUser")
         if member is not None:
@@ -256,7 +255,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def tilt_users(self) -> bool | None:
+    def tilt_users(self) -> primitives.Bool | None:
         """The TiltUsers field value."""
         member = self.get_member("TiltUsers")
         if member is None:
@@ -264,7 +263,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @tilt_users.setter
-    def tilt_users(self, value: bool) -> None:
+    def tilt_users(self, value: primitives.Bool) -> None:
         """Set the TiltUsers field value."""
         member = self.get_member("TiltUsers")
         if member is not None:
@@ -301,7 +300,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         self.set_member("RotationNode", value)
 
     @property
-    def show_test(self) -> bool | None:
+    def show_test(self) -> primitives.Bool | None:
         """The _showTest field value."""
         member = self.get_member("_showTest")
         if member is None:
@@ -309,7 +308,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_test.setter
-    def show_test(self, value: bool) -> None:
+    def show_test(self, value: primitives.Bool) -> None:
         """Set the _showTest field value."""
         member = self.get_member("_showTest")
         if member is not None:
@@ -320,7 +319,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def test_slots(self) -> np.int32 | None:
+    def test_slots(self) -> primitives.Int | None:
         """The _testSlots field value."""
         member = self.get_member("_testSlots")
         if member is None:
@@ -328,7 +327,7 @@ class SpawnArc(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @test_slots.setter
-    def test_slots(self, value: np.int32) -> None:
+    def test_slots(self, value: primitives.Int) -> None:
         """Set the _testSlots field value."""
         member = self.get_member("_testSlots")
         if member is not None:

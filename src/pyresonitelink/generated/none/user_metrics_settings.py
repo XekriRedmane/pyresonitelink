@@ -1,8 +1,7 @@
 """Generated component: UserMetricsSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class UserMetricsSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserMetricsSettings"
 
-    def __init__(self, user_height: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user_height: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +26,7 @@ class UserMetricsSettings(GeneratedComponent, ICustomInspector):
             self.user_height = user_height
 
     @property
-    def user_height(self) -> np.float32 | None:
+    def user_height(self) -> primitives.Float | None:
         """The UserHeight field value."""
         member = self.get_member("UserHeight")
         if member is None:
@@ -35,7 +34,7 @@ class UserMetricsSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @user_height.setter
-    def user_height(self, value: np.float32) -> None:
+    def user_height(self, value: primitives.Float) -> None:
         """Set the UserHeight field value."""
         member = self.get_member("UserHeight")
         if member is not None:

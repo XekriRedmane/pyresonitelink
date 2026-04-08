@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,7 +21,7 @@ class TrailsRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponen
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TrailsRenderBufferRenderer"
 
-    def __init__(self, buffer: str | IAssetProvider[TrailsRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, generate_lighting_data: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, buffer: str | IAssetProvider[TrailsRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, generate_lighting_data: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -106,7 +107,7 @@ class TrailsRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponen
         self.set_member("MotionVectorMode", value)
 
     @property
-    def generate_lighting_data(self) -> bool | None:
+    def generate_lighting_data(self) -> primitives.Bool | None:
         """The GenerateLightingData field value."""
         member = self.get_member("GenerateLightingData")
         if member is None:
@@ -114,7 +115,7 @@ class TrailsRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponen
         return getattr(member, 'value', None)
 
     @generate_lighting_data.setter
-    def generate_lighting_data(self, value: bool) -> None:
+    def generate_lighting_data(self, value: primitives.Bool) -> None:
         """Set the GenerateLightingData field value."""
         member = self.get_member("GenerateLightingData")
         if member is not None:

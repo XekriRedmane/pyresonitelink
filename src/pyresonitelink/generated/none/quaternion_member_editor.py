@@ -18,7 +18,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.QuaternionMemberEditor"
 
-    def __init__(self, continuous: bool | None = None, path: str | None = None, target: str | IField | None = None, vertical: bool | None = None, x_editor: str | TextEditor | None = None, y_editor: str | TextEditor | None = None, z_editor: str | TextEditor | None = None, x_drive: str | IField[str] | None = None, y_drive: str | IField[str] | None = None, z_drive: str | IField[str] | None = None, x_button: str | Button | None = None, y_button: str | Button | None = None, z_button: str | Button | None = None, editing_value: primitives.Double3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, continuous: primitives.Bool | None = None, path: primitives.String | None = None, target: str | IField | None = None, vertical: primitives.Bool | None = None, x_editor: str | TextEditor | None = None, y_editor: str | TextEditor | None = None, z_editor: str | TextEditor | None = None, x_drive: str | IField[primitives.String] | None = None, y_drive: str | IField[primitives.String] | None = None, z_drive: str | IField[primitives.String] | None = None, x_button: str | Button | None = None, y_button: str | Button | None = None, z_button: str | Button | None = None, editing_value: primitives.Double3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,7 +69,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
             self.editing_value = editing_value
 
     @property
-    def continuous(self) -> bool | None:
+    def continuous(self) -> primitives.Bool | None:
         """The Continuous field value."""
         member = self.get_member("Continuous")
         if member is None:
@@ -77,7 +77,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @continuous.setter
-    def continuous(self, value: bool) -> None:
+    def continuous(self, value: primitives.Bool) -> None:
         """Set the Continuous field value."""
         member = self.get_member("Continuous")
         if member is not None:
@@ -88,7 +88,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def path(self) -> str | None:
+    def path(self) -> primitives.String | None:
         """The _path field value."""
         member = self.get_member("_path")
         if member is None:
@@ -96,7 +96,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @path.setter
-    def path(self, value: str) -> None:
+    def path(self, value: primitives.String) -> None:
         """Set the _path field value."""
         member = self.get_member("_path")
         if member is not None:
@@ -128,7 +128,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def vertical(self) -> bool | None:
+    def vertical(self) -> primitives.Bool | None:
         """The Vertical field value."""
         member = self.get_member("Vertical")
         if member is None:
@@ -136,7 +136,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @vertical.setter
-    def vertical(self, value: bool) -> None:
+    def vertical(self, value: primitives.Bool) -> None:
         """Set the Vertical field value."""
         member = self.get_member("Vertical")
         if member is not None:
@@ -211,15 +211,15 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def x_drive(self) -> str | None:
-        """Target ID of the _xDrive reference (targets IField[str])."""
+        """Target ID of the _xDrive reference (targets IField[primitives.String])."""
         member = self.get_member("_xDrive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @x_drive.setter
-    def x_drive(self, target: str | IField[str] | None) -> None:
-        """Set the _xDrive reference by target ID or IField[str] instance."""
+    def x_drive(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _xDrive reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_xDrive")
         if isinstance(member, members.Reference):
@@ -232,15 +232,15 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def y_drive(self) -> str | None:
-        """Target ID of the _yDrive reference (targets IField[str])."""
+        """Target ID of the _yDrive reference (targets IField[primitives.String])."""
         member = self.get_member("_yDrive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @y_drive.setter
-    def y_drive(self, target: str | IField[str] | None) -> None:
-        """Set the _yDrive reference by target ID or IField[str] instance."""
+    def y_drive(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _yDrive reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_yDrive")
         if isinstance(member, members.Reference):
@@ -253,15 +253,15 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def z_drive(self) -> str | None:
-        """Target ID of the _zDrive reference (targets IField[str])."""
+        """Target ID of the _zDrive reference (targets IField[primitives.String])."""
         member = self.get_member("_zDrive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @z_drive.setter
-    def z_drive(self, target: str | IField[str] | None) -> None:
-        """Set the _zDrive reference by target ID or IField[str] instance."""
+    def z_drive(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _zDrive reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_zDrive")
         if isinstance(member, members.Reference):

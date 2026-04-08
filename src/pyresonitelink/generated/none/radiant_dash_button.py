@@ -1,6 +1,7 @@
 """Generated component: RadiantDashButton."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.radiant_dash import RadiantDash
@@ -22,7 +23,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantDashButton"
 
-    def __init__(self, dash: str | RadiantDash | None = None, screen: str | RadiantDashScreen | None = None, switching_enabled: str | IField[bool] | None = None, screen_enabled: str | IField[bool] | None = None, current_screen: str | SyncRef[RadiantDashScreen] | None = None, button: str | Button | None = None, text: str | Text | None = None, text_bg: str | Image | None = None, icon: str | Image | None = None, layout: str | LayoutElement | None = None, root_rect: str | RectTransform | None = None, icon_rect: str | RectTransform | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, dash: str | RadiantDash | None = None, screen: str | RadiantDashScreen | None = None, switching_enabled: str | IField[primitives.Bool] | None = None, screen_enabled: str | IField[primitives.Bool] | None = None, current_screen: str | SyncRef[RadiantDashScreen] | None = None, button: str | Button | None = None, text: str | Text | None = None, text_bg: str | Image | None = None, icon: str | Image | None = None, layout: str | LayoutElement | None = None, root_rect: str | RectTransform | None = None, icon_rect: str | RectTransform | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -110,15 +111,15 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def switching_enabled(self) -> str | None:
-        """Target ID of the _switchingEnabled reference (targets IField[bool])."""
+        """Target ID of the _switchingEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_switchingEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @switching_enabled.setter
-    def switching_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _switchingEnabled reference by target ID or IField[bool] instance."""
+    def switching_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _switchingEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_switchingEnabled")
         if isinstance(member, members.Reference):
@@ -131,15 +132,15 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def screen_enabled(self) -> str | None:
-        """Target ID of the _screenEnabled reference (targets IField[bool])."""
+        """Target ID of the _screenEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_screenEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @screen_enabled.setter
-    def screen_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _screenEnabled reference by target ID or IField[bool] instance."""
+    def screen_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _screenEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_screenEnabled")
         if isinstance(member, members.Reference):

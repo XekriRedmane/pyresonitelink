@@ -1,8 +1,7 @@
 """Generated component: KeyboardLookSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.KeyboardLookSettings"
 
-    def __init__(self, look_enabled: bool | None = None, horizontal_speed: np.float32 | None = None, vertical_speed: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, look_enabled: primitives.Bool | None = None, horizontal_speed: primitives.Float | None = None, vertical_speed: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
             self.vertical_speed = vertical_speed
 
     @property
-    def look_enabled(self) -> bool | None:
+    def look_enabled(self) -> primitives.Bool | None:
         """The LookEnabled field value."""
         member = self.get_member("LookEnabled")
         if member is None:
@@ -41,7 +40,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @look_enabled.setter
-    def look_enabled(self, value: bool) -> None:
+    def look_enabled(self, value: primitives.Bool) -> None:
         """Set the LookEnabled field value."""
         member = self.get_member("LookEnabled")
         if member is not None:
@@ -52,7 +51,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def horizontal_speed(self) -> np.float32 | None:
+    def horizontal_speed(self) -> primitives.Float | None:
         """The HorizontalSpeed field value."""
         member = self.get_member("HorizontalSpeed")
         if member is None:
@@ -60,7 +59,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @horizontal_speed.setter
-    def horizontal_speed(self, value: np.float32) -> None:
+    def horizontal_speed(self, value: primitives.Float) -> None:
         """Set the HorizontalSpeed field value."""
         member = self.get_member("HorizontalSpeed")
         if member is not None:
@@ -71,7 +70,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def vertical_speed(self) -> np.float32 | None:
+    def vertical_speed(self) -> primitives.Float | None:
         """The VerticalSpeed field value."""
         member = self.get_member("VerticalSpeed")
         if member is None:
@@ -79,7 +78,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @vertical_speed.setter
-    def vertical_speed(self, value: np.float32) -> None:
+    def vertical_speed(self, value: primitives.Float) -> None:
         """Set the VerticalSpeed field value."""
         member = self.get_member("VerticalSpeed")
         if member is not None:

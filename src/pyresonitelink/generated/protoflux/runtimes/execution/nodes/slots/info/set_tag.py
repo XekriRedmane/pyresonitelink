@@ -1,6 +1,7 @@
 """Generated component: SetTag."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -22,7 +23,7 @@ class SetTag(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICus
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetTag"
 
-    def __init__(self, next: str | INodeOperation | None = None, instance: str | INodeObjectOutput[Slot] | None = None, tag: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, instance: str | INodeObjectOutput[Slot] | None = None, tag: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -83,15 +84,15 @@ class SetTag(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICus
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the Tag reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Tag reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @tag.setter
-    def tag(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Tag reference by target ID or INodeObjectOutput[str] instance."""
+    def tag(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Tag reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):

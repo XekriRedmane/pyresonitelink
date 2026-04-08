@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -16,14 +17,14 @@ class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ParentReferenceLink[np.float32]
+        ParentReferenceLink[primitives.Float]
         ParentReferenceLink[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ParentReferenceLink<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ParentReferenceLink<>"
 
-    def __init__(self, match_tag: str | None = None, target: str | SyncRef[T] | None = None, write_back: bool | None = None, default_reference: str | T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, match_tag: primitives.String | None = None, target: str | SyncRef[T] | None = None, write_back: primitives.Bool | None = None, default_reference: str | T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,7 +45,7 @@ class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
             self.default_reference = default_reference
 
     @property
-    def match_tag(self) -> str | None:
+    def match_tag(self) -> primitives.String | None:
         """The MatchTag field value."""
         member = self.get_member("MatchTag")
         if member is None:
@@ -52,7 +53,7 @@ class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @match_tag.setter
-    def match_tag(self, value: str) -> None:
+    def match_tag(self, value: primitives.String) -> None:
         """Set the MatchTag field value."""
         member = self.get_member("MatchTag")
         if member is not None:
@@ -84,7 +85,7 @@ class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def write_back(self) -> bool | None:
+    def write_back(self) -> primitives.Bool | None:
         """The WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is None:
@@ -92,7 +93,7 @@ class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @write_back.setter
-    def write_back(self, value: bool) -> None:
+    def write_back(self, value: primitives.Bool) -> None:
         """Set the WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is not None:

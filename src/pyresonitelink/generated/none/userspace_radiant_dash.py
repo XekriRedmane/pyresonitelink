@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -25,7 +26,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserspaceRadiantDash"
 
-    def __init__(self, block_open_close: bool | None = None, freeform: bool | None = None, dash: str | RadiantDash | None = None, dash_visual_root: str | Slot | None = None, positioner: str | UserInterfacePositioner | None = None, modal_overlay: str | ModalOverlayManager | None = None, legacy_inventory_panel: str | LegacyCanvasPanel | None = None, legacy_inventory: str | InventoryBrowser | None = None, slider: str | Slider | None = None, lookat: str | LookAt | None = None, ui_edit_mode_toggle: str | Slot | None = None, always_on_facet_root: str | Slot | None = None, screens_workspace: str | Workspace | None = None, top_workspace: str | Workspace | None = None, notifications: str | NotificationPanel | None = None, notifications_root: str | Slot | None = None, notifications_holder: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, block_open_close: primitives.Bool | None = None, freeform: primitives.Bool | None = None, dash: str | RadiantDash | None = None, dash_visual_root: str | Slot | None = None, positioner: str | UserInterfacePositioner | None = None, modal_overlay: str | ModalOverlayManager | None = None, legacy_inventory_panel: str | LegacyCanvasPanel | None = None, legacy_inventory: str | InventoryBrowser | None = None, slider: str | Slider | None = None, lookat: str | LookAt | None = None, ui_edit_mode_toggle: str | Slot | None = None, always_on_facet_root: str | Slot | None = None, screens_workspace: str | Workspace | None = None, top_workspace: str | Workspace | None = None, notifications: str | NotificationPanel | None = None, notifications_root: str | Slot | None = None, notifications_holder: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -85,7 +86,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.notifications_holder = notifications_holder
 
     @property
-    def block_open_close(self) -> bool | None:
+    def block_open_close(self) -> primitives.Bool | None:
         """The BlockOpenClose field value."""
         member = self.get_member("BlockOpenClose")
         if member is None:
@@ -93,7 +94,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @block_open_close.setter
-    def block_open_close(self, value: bool) -> None:
+    def block_open_close(self, value: primitives.Bool) -> None:
         """Set the BlockOpenClose field value."""
         member = self.get_member("BlockOpenClose")
         if member is not None:
@@ -104,7 +105,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def freeform(self) -> bool | None:
+    def freeform(self) -> primitives.Bool | None:
         """The Freeform field value."""
         member = self.get_member("Freeform")
         if member is None:
@@ -112,7 +113,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @freeform.setter
-    def freeform(self, value: bool) -> None:
+    def freeform(self, value: primitives.Bool) -> None:
         """Set the Freeform field value."""
         member = self.get_member("Freeform")
         if member is not None:

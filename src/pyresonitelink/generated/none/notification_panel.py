@@ -1,9 +1,8 @@
 """Generated component: NotificationPanel."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.userspace_radiant_dash import UserspaceRadiantDash
@@ -20,7 +19,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NotificationPanel"
 
-    def __init__(self, display_duration: np.float32 | None = None, dash: str | UserspaceRadiantDash | None = None, canvas: str | Canvas | None = None, notification_clip: str | IAssetProvider[AudioClip] | None = None, contact_request_clip: str | IAssetProvider[AudioClip] | None = None, invite_clip: str | IAssetProvider[AudioClip] | None = None, invite_request_clip: str | IAssetProvider[AudioClip] | None = None, sociable_clip: str | IAssetProvider[AudioClip] | None = None, user_join_clip: str | IAssetProvider[AudioClip] | None = None, user_leave_clip: str | IAssetProvider[AudioClip] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, display_duration: primitives.Float | None = None, dash: str | UserspaceRadiantDash | None = None, canvas: str | Canvas | None = None, notification_clip: str | IAssetProvider[AudioClip] | None = None, contact_request_clip: str | IAssetProvider[AudioClip] | None = None, invite_clip: str | IAssetProvider[AudioClip] | None = None, invite_request_clip: str | IAssetProvider[AudioClip] | None = None, sociable_clip: str | IAssetProvider[AudioClip] | None = None, user_join_clip: str | IAssetProvider[AudioClip] | None = None, user_leave_clip: str | IAssetProvider[AudioClip] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,7 +58,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.user_leave_clip = user_leave_clip
 
     @property
-    def display_duration(self) -> np.float32 | None:
+    def display_duration(self) -> primitives.Float | None:
         """The DisplayDuration field value."""
         member = self.get_member("DisplayDuration")
         if member is None:
@@ -67,7 +66,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @display_duration.setter
-    def display_duration(self, value: np.float32) -> None:
+    def display_duration(self, value: primitives.Float) -> None:
         """Set the DisplayDuration field value."""
         member = self.get_member("DisplayDuration")
         if member is not None:

@@ -18,7 +18,7 @@ class ValueNotEquals(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T]
 
     Parameterize with a value type::
 
-        ValueNotEquals[np.float32]
+        ValueNotEquals[primitives.Float]
         ValueNotEquals[primitives.Float3]
     """
 

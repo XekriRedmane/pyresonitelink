@@ -20,7 +20,7 @@ class TiledRawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.TiledRawImage"
 
-    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, material: str | IAssetProvider[Material] | None = None, tint: primitives.ColorX | None = None, tile_size: primitives.Float2 | None = None, tile_offset: primitives.Float2 | None = None, interaction_target: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, material: str | IAssetProvider[Material] | None = None, tint: primitives.ColorX | None = None, tile_size: primitives.Float2 | None = None, tile_offset: primitives.Float2 | None = None, interaction_target: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -159,7 +159,7 @@ class TiledRawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver
             )
 
     @property
-    def interaction_target(self) -> bool | None:
+    def interaction_target(self) -> primitives.Bool | None:
         """The InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is None:
@@ -167,7 +167,7 @@ class TiledRawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @interaction_target.setter
-    def interaction_target(self, value: bool) -> None:
+    def interaction_target(self, value: primitives.Bool) -> None:
         """Set the InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is not None:

@@ -1,8 +1,7 @@
 """Generated component: DesktopInteractionRelay."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iui_interactable import IUIInteractable
@@ -19,7 +18,7 @@ class DesktopInteractionRelay(GeneratedComponent, IUIInteractable, IFocusable, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopInteractionRelay"
 
-    def __init__(self, display_index: np.int32 | None = None, use_legacy_text_input: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, display_index: primitives.Int | None = None, use_legacy_text_input: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,7 +33,7 @@ class DesktopInteractionRelay(GeneratedComponent, IUIInteractable, IFocusable, I
             self.use_legacy_text_input = use_legacy_text_input
 
     @property
-    def display_index(self) -> np.int32 | None:
+    def display_index(self) -> primitives.Int | None:
         """The DisplayIndex field value."""
         member = self.get_member("DisplayIndex")
         if member is None:
@@ -42,7 +41,7 @@ class DesktopInteractionRelay(GeneratedComponent, IUIInteractable, IFocusable, I
         return getattr(member, 'value', None)
 
     @display_index.setter
-    def display_index(self, value: np.int32) -> None:
+    def display_index(self, value: primitives.Int) -> None:
         """Set the DisplayIndex field value."""
         member = self.get_member("DisplayIndex")
         if member is not None:
@@ -53,7 +52,7 @@ class DesktopInteractionRelay(GeneratedComponent, IUIInteractable, IFocusable, I
             )
 
     @property
-    def use_legacy_text_input(self) -> bool | None:
+    def use_legacy_text_input(self) -> primitives.Bool | None:
         """The UseLegacyTextInput field value."""
         member = self.get_member("UseLegacyTextInput")
         if member is None:
@@ -61,7 +60,7 @@ class DesktopInteractionRelay(GeneratedComponent, IUIInteractable, IFocusable, I
         return getattr(member, 'value', None)
 
     @use_legacy_text_input.setter
-    def use_legacy_text_input(self, value: bool) -> None:
+    def use_legacy_text_input(self, value: primitives.Bool) -> None:
         """Set the UseLegacyTextInput field value."""
         member = self.get_member("UseLegacyTextInput")
         if member is not None:

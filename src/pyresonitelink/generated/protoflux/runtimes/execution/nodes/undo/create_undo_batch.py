@@ -1,6 +1,7 @@
 """Generated component: CreateUndoBatch."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -21,7 +22,7 @@ class CreateUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.CreateUndoBatch"
 
-    def __init__(self, description: str | INodeObjectOutput[str] | None = None, create: str | ISyncNodeOperation | None = None, on_created: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, description: str | INodeObjectOutput[primitives.String] | None = None, create: str | ISyncNodeOperation | None = None, on_created: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,15 +41,15 @@ class CreateUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def description(self) -> str | None:
-        """Target ID of the Description reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Description reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @description.setter
-    def description(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Description reference by target ID or INodeObjectOutput[str] instance."""
+    def description(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Description reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Description")
         if isinstance(member, members.Reference):

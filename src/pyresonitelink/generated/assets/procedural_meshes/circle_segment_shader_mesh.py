@@ -1,7 +1,5 @@
 """Generated component: CircleSegmentShaderMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CircleSegmentShaderMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius_start: np.float32 | None = None, thickness: np.float32 | None = None, angle_start: np.float32 | None = None, arc_length: np.float32 | None = None, fill_color: primitives.ColorX | None = None, border_color: primitives.ColorX | None = None, border_size: np.float32 | None = None, rounded_corner_radius: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius_start: primitives.Float | None = None, thickness: primitives.Float | None = None, angle_start: primitives.Float | None = None, arc_length: primitives.Float | None = None, fill_color: primitives.ColorX | None = None, border_color: primitives.ColorX | None = None, border_size: primitives.Float | None = None, rounded_corner_radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,7 +61,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             self.rounded_corner_radius = rounded_corner_radius
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -71,7 +69,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -82,7 +80,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -90,7 +88,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -133,7 +131,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         self.set_member("Profile", value)
 
     @property
-    def radius_start(self) -> np.float32 | None:
+    def radius_start(self) -> primitives.Float | None:
         """The RadiusStart field value."""
         member = self.get_member("RadiusStart")
         if member is None:
@@ -141,7 +139,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @radius_start.setter
-    def radius_start(self, value: np.float32) -> None:
+    def radius_start(self, value: primitives.Float) -> None:
         """Set the RadiusStart field value."""
         member = self.get_member("RadiusStart")
         if member is not None:
@@ -152,7 +150,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -160,7 +158,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -171,7 +169,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def angle_start(self) -> np.float32 | None:
+    def angle_start(self) -> primitives.Float | None:
         """The AngleStart field value."""
         member = self.get_member("AngleStart")
         if member is None:
@@ -179,7 +177,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @angle_start.setter
-    def angle_start(self, value: np.float32) -> None:
+    def angle_start(self, value: primitives.Float) -> None:
         """Set the AngleStart field value."""
         member = self.get_member("AngleStart")
         if member is not None:
@@ -190,7 +188,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def arc_length(self) -> np.float32 | None:
+    def arc_length(self) -> primitives.Float | None:
         """The ArcLength field value."""
         member = self.get_member("ArcLength")
         if member is None:
@@ -198,7 +196,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @arc_length.setter
-    def arc_length(self, value: np.float32) -> None:
+    def arc_length(self, value: primitives.Float) -> None:
         """Set the ArcLength field value."""
         member = self.get_member("ArcLength")
         if member is not None:
@@ -247,7 +245,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def border_size(self) -> np.float32 | None:
+    def border_size(self) -> primitives.Float | None:
         """The BorderSize field value."""
         member = self.get_member("BorderSize")
         if member is None:
@@ -255,7 +253,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @border_size.setter
-    def border_size(self, value: np.float32) -> None:
+    def border_size(self, value: primitives.Float) -> None:
         """Set the BorderSize field value."""
         member = self.get_member("BorderSize")
         if member is not None:
@@ -266,7 +264,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def rounded_corner_radius(self) -> np.float32 | None:
+    def rounded_corner_radius(self) -> primitives.Float | None:
         """The RoundedCornerRadius field value."""
         member = self.get_member("RoundedCornerRadius")
         if member is None:
@@ -274,7 +272,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @rounded_corner_radius.setter
-    def rounded_corner_radius(self, value: np.float32) -> None:
+    def rounded_corner_radius(self, value: primitives.Float) -> None:
         """Set the RoundedCornerRadius field value."""
         member = self.get_member("RoundedCornerRadius")
         if member is not None:

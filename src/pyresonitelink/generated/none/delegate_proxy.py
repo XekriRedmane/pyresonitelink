@@ -11,7 +11,7 @@ class DelegateProxy(GenericComponent[T], IDelegateProxy, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        DelegateProxy[np.float32]
+        DelegateProxy[primitives.Float]
         DelegateProxy[primitives.Float3]
     """
 

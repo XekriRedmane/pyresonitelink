@@ -1,6 +1,7 @@
 """Generated component: VirtualKeyTextDrive."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.virtual_key import VirtualKey
@@ -17,7 +18,7 @@ class VirtualKeyTextDrive(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VirtualKeyTextDrive"
 
-    def __init__(self, key: str | VirtualKey | None = None, text: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, key: str | VirtualKey | None = None, text: str | IField[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,15 +55,15 @@ class VirtualKeyTextDrive(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[str])."""
+        """Target ID of the Text reference (targets IField[primitives.String])."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text.setter
-    def text(self, target: str | IField[str] | None) -> None:
-        """Set the Text reference by target ID or IField[str] instance."""
+    def text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Text reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Text")
         if isinstance(member, members.Reference):

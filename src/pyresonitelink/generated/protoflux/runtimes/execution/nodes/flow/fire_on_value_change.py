@@ -23,7 +23,7 @@ class FireOnValueChange(GenericComponent[T], IProtoFluxEngineProxyNode, IMappabl
 
     Parameterize with a value type::
 
-        FireOnValueChange[np.float32]
+        FireOnValueChange[primitives.Float]
         FireOnValueChange[primitives.Float3]
     """
 

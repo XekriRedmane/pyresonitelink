@@ -21,7 +21,7 @@ class DelayWithObjectTimeSpan(GenericComponent[T], IAsyncNodeOperation, IExecuti
 
     Parameterize with a value type::
 
-        DelayWithObjectTimeSpan[np.float32]
+        DelayWithObjectTimeSpan[primitives.Float]
         DelayWithObjectTimeSpan[primitives.Float3]
     """
 

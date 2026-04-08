@@ -1,6 +1,7 @@
 """Generated component: PackNullable."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -19,14 +20,14 @@ class PackNullable(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        PackNullable[np.float32]
+        PackNullable[primitives.Float]
         PackNullable[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.PackNullable<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.PackNullable<>"
 
-    def __init__(self, value: str | INodeValueOutput[T] | None = None, has_value: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | INodeValueOutput[T] | None = None, has_value: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,15 +64,15 @@ class PackNullable(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T],
 
     @property
     def has_value(self) -> str | None:
-        """Target ID of the HasValue reference (targets INodeValueOutput[bool])."""
+        """Target ID of the HasValue reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("HasValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_value.setter
-    def has_value(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the HasValue reference by target ID or INodeValueOutput[bool] instance."""
+    def has_value(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the HasValue reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("HasValue")
         if isinstance(member, members.Reference):

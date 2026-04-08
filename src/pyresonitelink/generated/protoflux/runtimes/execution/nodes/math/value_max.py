@@ -18,7 +18,7 @@ class ValueMax(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueMax[np.float32]
+        ValueMax[primitives.Float]
         ValueMax[primitives.Float3]
     """
 

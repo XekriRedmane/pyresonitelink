@@ -13,7 +13,7 @@ class DataModelObjectRefStore+Store(GenericComponent[T], IComponent, IWorldEvent
 
     Parameterize with a value type::
 
-        DataModelObjectRefStore+Store[np.float32]
+        DataModelObjectRefStore+Store[primitives.Float]
         DataModelObjectRefStore+Store[primitives.Float3]
     """
 

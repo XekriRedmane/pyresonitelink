@@ -1,7 +1,5 @@
 """Generated component: UnlitDistanceLerpMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UnlitDistanceLerpMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, local_space: bool | None = None, point: primitives.Float3 | None = None, distance: np.float32 | None = None, transition_range: np.float32 | None = None, near_texture: str | IAssetProvider[ITexture2D] | None = None, far_texture: str | IAssetProvider[ITexture2D] | None = None, near_texture_scale: primitives.Float2 | None = None, near_texture_offset: primitives.Float2 | None = None, far_texture_scale: primitives.Float2 | None = None, far_texture_offset: primitives.Float2 | None = None, near_color: primitives.ColorX | None = None, far_color: primitives.ColorX | None = None, use_vertex_colors: bool | None = None, alpha_cutoff: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, local_space: primitives.Bool | None = None, point: primitives.Float3 | None = None, distance: primitives.Float | None = None, transition_range: primitives.Float | None = None, near_texture: str | IAssetProvider[ITexture2D] | None = None, far_texture: str | IAssetProvider[ITexture2D] | None = None, near_texture_scale: primitives.Float2 | None = None, near_texture_offset: primitives.Float2 | None = None, far_texture_scale: primitives.Float2 | None = None, far_texture_offset: primitives.Float2 | None = None, near_color: primitives.ColorX | None = None, far_color: primitives.ColorX | None = None, use_vertex_colors: primitives.Bool | None = None, alpha_cutoff: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -88,7 +86,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             self.render_queue = render_queue
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -96,7 +94,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -128,7 +126,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             )
 
     @property
-    def local_space(self) -> bool | None:
+    def local_space(self) -> primitives.Bool | None:
         """The LocalSpace field value."""
         member = self.get_member("LocalSpace")
         if member is None:
@@ -136,7 +134,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @local_space.setter
-    def local_space(self, value: bool) -> None:
+    def local_space(self, value: primitives.Bool) -> None:
         """Set the LocalSpace field value."""
         member = self.get_member("LocalSpace")
         if member is not None:
@@ -166,7 +164,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             )
 
     @property
-    def distance(self) -> np.float32 | None:
+    def distance(self) -> primitives.Float | None:
         """The Distance field value."""
         member = self.get_member("Distance")
         if member is None:
@@ -174,7 +172,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @distance.setter
-    def distance(self, value: np.float32) -> None:
+    def distance(self, value: primitives.Float) -> None:
         """Set the Distance field value."""
         member = self.get_member("Distance")
         if member is not None:
@@ -185,7 +183,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             )
 
     @property
-    def transition_range(self) -> np.float32 | None:
+    def transition_range(self) -> primitives.Float | None:
         """The TransitionRange field value."""
         member = self.get_member("TransitionRange")
         if member is None:
@@ -193,7 +191,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @transition_range.setter
-    def transition_range(self, value: np.float32) -> None:
+    def transition_range(self, value: primitives.Float) -> None:
         """Set the TransitionRange field value."""
         member = self.get_member("TransitionRange")
         if member is not None:
@@ -360,7 +358,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             )
 
     @property
-    def use_vertex_colors(self) -> bool | None:
+    def use_vertex_colors(self) -> primitives.Bool | None:
         """The UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is None:
@@ -368,7 +366,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @use_vertex_colors.setter
-    def use_vertex_colors(self, value: bool) -> None:
+    def use_vertex_colors(self, value: primitives.Bool) -> None:
         """Set the UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is not None:
@@ -405,7 +403,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         self.set_member("BlendMode", value)
 
     @property
-    def alpha_cutoff(self) -> np.float32 | None:
+    def alpha_cutoff(self) -> primitives.Float | None:
         """The AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is None:
@@ -413,7 +411,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @alpha_cutoff.setter
-    def alpha_cutoff(self, value: np.float32) -> None:
+    def alpha_cutoff(self, value: primitives.Float) -> None:
         """Set the AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is not None:
@@ -450,7 +448,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         self.set_member("ZWrite", value)
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -458,7 +456,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -469,7 +467,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -477,7 +475,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -488,7 +486,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -496,7 +494,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

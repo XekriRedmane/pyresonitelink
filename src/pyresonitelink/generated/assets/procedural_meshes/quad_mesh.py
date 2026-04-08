@@ -19,7 +19,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.QuadMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rotation: primitives.FloatQ | None = None, size: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, scale_uv_with_size: bool | None = None, dual_sided: bool | None = None, use_vertex_colors: bool | None = None, upper_left_color: primitives.ColorX | None = None, lower_left_color: primitives.ColorX | None = None, lower_right_color: primitives.ColorX | None = None, upper_right_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rotation: primitives.FloatQ | None = None, size: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, scale_uv_with_size: primitives.Bool | None = None, dual_sided: primitives.Bool | None = None, use_vertex_colors: primitives.Bool | None = None, upper_left_color: primitives.ColorX | None = None, lower_left_color: primitives.ColorX | None = None, lower_right_color: primitives.ColorX | None = None, upper_right_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -70,7 +70,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             self.upper_right_color = upper_right_color
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -78,7 +78,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -89,7 +89,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -97,7 +97,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -216,7 +216,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def scale_uv_with_size(self) -> bool | None:
+    def scale_uv_with_size(self) -> primitives.Bool | None:
         """The ScaleUVWithSize field value."""
         member = self.get_member("ScaleUVWithSize")
         if member is None:
@@ -224,7 +224,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @scale_uv_with_size.setter
-    def scale_uv_with_size(self, value: bool) -> None:
+    def scale_uv_with_size(self, value: primitives.Bool) -> None:
         """Set the ScaleUVWithSize field value."""
         member = self.get_member("ScaleUVWithSize")
         if member is not None:
@@ -235,7 +235,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def dual_sided(self) -> bool | None:
+    def dual_sided(self) -> primitives.Bool | None:
         """The DualSided field value."""
         member = self.get_member("DualSided")
         if member is None:
@@ -243,7 +243,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @dual_sided.setter
-    def dual_sided(self, value: bool) -> None:
+    def dual_sided(self, value: primitives.Bool) -> None:
         """Set the DualSided field value."""
         member = self.get_member("DualSided")
         if member is not None:
@@ -254,7 +254,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def use_vertex_colors(self) -> bool | None:
+    def use_vertex_colors(self) -> primitives.Bool | None:
         """The UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is None:
@@ -262,7 +262,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @use_vertex_colors.setter
-    def use_vertex_colors(self, value: bool) -> None:
+    def use_vertex_colors(self, value: primitives.Bool) -> None:
         """Set the UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is not None:

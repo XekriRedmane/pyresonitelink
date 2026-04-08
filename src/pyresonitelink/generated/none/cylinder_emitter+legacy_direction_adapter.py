@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ivalue import IValue
@@ -18,7 +19,7 @@ class CylinderEmitter+LegacyDirectionAdapter(GeneratedComponent, IComponent, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.CylinderEmitter+LegacyDirectionAdapter"
 
-    def __init__(self, force_direction: bool | None = None, emit_from_shell: str | IValue[bool] | None = None, direction: str | IField[CylinderEmitterDirection] | None = None, caps_direction: str | IField[CylinderEmitterCapsDirection] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, force_direction: primitives.Bool | None = None, emit_from_shell: str | IValue[primitives.Bool] | None = None, direction: str | IField[CylinderEmitterDirection] | None = None, caps_direction: str | IField[CylinderEmitterCapsDirection] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +40,7 @@ class CylinderEmitter+LegacyDirectionAdapter(GeneratedComponent, IComponent, IWo
             self.caps_direction = caps_direction
 
     @property
-    def force_direction(self) -> bool | None:
+    def force_direction(self) -> primitives.Bool | None:
         """The ForceDirection field value."""
         member = self.get_member("ForceDirection")
         if member is None:
@@ -47,7 +48,7 @@ class CylinderEmitter+LegacyDirectionAdapter(GeneratedComponent, IComponent, IWo
         return getattr(member, 'value', None)
 
     @force_direction.setter
-    def force_direction(self, value: bool) -> None:
+    def force_direction(self, value: primitives.Bool) -> None:
         """Set the ForceDirection field value."""
         member = self.get_member("ForceDirection")
         if member is not None:
@@ -59,15 +60,15 @@ class CylinderEmitter+LegacyDirectionAdapter(GeneratedComponent, IComponent, IWo
 
     @property
     def emit_from_shell(self) -> str | None:
-        """Target ID of the EmitFromShell reference (targets IValue[bool])."""
+        """Target ID of the EmitFromShell reference (targets IValue[primitives.Bool])."""
         member = self.get_member("EmitFromShell")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @emit_from_shell.setter
-    def emit_from_shell(self, target: str | IValue[bool] | None) -> None:
-        """Set the EmitFromShell reference by target ID or IValue[bool] instance."""
+    def emit_from_shell(self, target: str | IValue[primitives.Bool] | None) -> None:
+        """Set the EmitFromShell reference by target ID or IValue[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
         member = self.get_member("EmitFromShell")
         if isinstance(member, members.Reference):

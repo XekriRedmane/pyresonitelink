@@ -1,7 +1,5 @@
 """Generated component: MaterialTool."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,7 +23,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MaterialTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, orb_slot: str | Slot | None = None, area_radius: np.float32 | None = None, area_indicator: str | Slot | None = None, area_indicator_radius: str | IField[np.float32] | None = None, area_indicator_offset: str | IField[primitives.Float3] | None = None, area_indicator_active: str | IField[bool] | None = None, knob_control_active: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, orb_slot: str | Slot | None = None, area_radius: primitives.Float | None = None, area_indicator: str | Slot | None = None, area_indicator_radius: str | IField[primitives.Float] | None = None, area_indicator_offset: str | IField[primitives.Float3] | None = None, area_indicator_active: str | IField[primitives.Bool] | None = None, knob_control_active: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -107,7 +105,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -115,7 +113,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -126,7 +124,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -134,7 +132,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -145,7 +143,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -153,7 +151,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -185,7 +183,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -193,7 +191,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -238,7 +236,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
         self.set_member("ReplacementMode", value)
 
     @property
-    def area_radius(self) -> np.float32 | None:
+    def area_radius(self) -> primitives.Float | None:
         """The AreaRadius field value."""
         member = self.get_member("AreaRadius")
         if member is None:
@@ -246,7 +244,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
         return getattr(member, 'value', None)
 
     @area_radius.setter
-    def area_radius(self, value: np.float32) -> None:
+    def area_radius(self, value: primitives.Float) -> None:
         """Set the AreaRadius field value."""
         member = self.get_member("AreaRadius")
         if member is not None:
@@ -279,15 +277,15 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def area_indicator_radius(self) -> str | None:
-        """Target ID of the _areaIndicatorRadius reference (targets IField[np.float32])."""
+        """Target ID of the _areaIndicatorRadius reference (targets IField[primitives.Float])."""
         member = self.get_member("_areaIndicatorRadius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @area_indicator_radius.setter
-    def area_indicator_radius(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _areaIndicatorRadius reference by target ID or IField[np.float32] instance."""
+    def area_indicator_radius(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _areaIndicatorRadius reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_areaIndicatorRadius")
         if isinstance(member, members.Reference):
@@ -321,15 +319,15 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def area_indicator_active(self) -> str | None:
-        """Target ID of the _areaIndicatorActive reference (targets IField[bool])."""
+        """Target ID of the _areaIndicatorActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_areaIndicatorActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @area_indicator_active.setter
-    def area_indicator_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _areaIndicatorActive reference by target ID or IField[bool] instance."""
+    def area_indicator_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _areaIndicatorActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_areaIndicatorActive")
         if isinstance(member, members.Reference):
@@ -342,15 +340,15 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def knob_control_active(self) -> str | None:
-        """Target ID of the _knobControlActive reference (targets IField[bool])."""
+        """Target ID of the _knobControlActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_knobControlActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @knob_control_active.setter
-    def knob_control_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _knobControlActive reference by target ID or IField[bool] instance."""
+    def knob_control_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _knobControlActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_knobControlActive")
         if isinstance(member, members.Reference):

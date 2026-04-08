@@ -1,7 +1,5 @@
 """Generated component: StripeWireMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StripeWireMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, tangent0: primitives.Float3 | None = None, tangent1: primitives.Float3 | None = None, orientation0: primitives.FloatQ | None = None, orientation1: primitives.FloatQ | None = None, steps: np.int32 | None = None, exp: np.float32 | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, width0: np.float32 | None = None, width1: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, tangent0: primitives.Float3 | None = None, tangent1: primitives.Float3 | None = None, orientation0: primitives.FloatQ | None = None, orientation1: primitives.FloatQ | None = None, steps: primitives.Int | None = None, exp: primitives.Float | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, width0: primitives.Float | None = None, width1: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -81,7 +79,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.width1 = width1
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -89,7 +87,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -100,7 +98,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -108,7 +106,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -265,7 +263,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def steps(self) -> np.int32 | None:
+    def steps(self) -> primitives.Int | None:
         """The Steps field value."""
         member = self.get_member("Steps")
         if member is None:
@@ -273,7 +271,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @steps.setter
-    def steps(self, value: np.int32) -> None:
+    def steps(self, value: primitives.Int) -> None:
         """Set the Steps field value."""
         member = self.get_member("Steps")
         if member is not None:
@@ -284,7 +282,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def exp(self) -> np.float32 | None:
+    def exp(self) -> primitives.Float | None:
         """The Exp field value."""
         member = self.get_member("Exp")
         if member is None:
@@ -292,7 +290,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @exp.setter
-    def exp(self, value: np.float32) -> None:
+    def exp(self, value: primitives.Float) -> None:
         """Set the Exp field value."""
         member = self.get_member("Exp")
         if member is not None:
@@ -379,7 +377,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def width0(self) -> np.float32 | None:
+    def width0(self) -> primitives.Float | None:
         """The Width0 field value."""
         member = self.get_member("Width0")
         if member is None:
@@ -387,7 +385,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @width0.setter
-    def width0(self, value: np.float32) -> None:
+    def width0(self, value: primitives.Float) -> None:
         """Set the Width0 field value."""
         member = self.get_member("Width0")
         if member is not None:
@@ -398,7 +396,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def width1(self) -> np.float32 | None:
+    def width1(self) -> primitives.Float | None:
         """The Width1 field value."""
         member = self.get_member("Width1")
         if member is None:
@@ -406,7 +404,7 @@ class StripeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @width1.setter
-    def width1(self, value: np.float32) -> None:
+    def width1(self, value: primitives.Float) -> None:
         """Set the Width1 field value."""
         member = self.get_member("Width1")
         if member is not None:

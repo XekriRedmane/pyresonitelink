@@ -19,7 +19,7 @@ class ObjectGreaterOrEqual(GenericComponent[T], INodeValueOutput[T], IExecutionN
 
     Parameterize with a value type::
 
-        ObjectGreaterOrEqual[np.float32]
+        ObjectGreaterOrEqual[primitives.Float]
         ObjectGreaterOrEqual[primitives.Float3]
     """
 

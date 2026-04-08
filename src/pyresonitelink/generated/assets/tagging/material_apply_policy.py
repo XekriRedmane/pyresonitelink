@@ -1,6 +1,7 @@
 """Generated component: MaterialApplyPolicy."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
@@ -15,7 +16,7 @@ class MaterialApplyPolicy(GeneratedComponent, IMaterialApplyPolicy, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MaterialApplyPolicy"
 
-    def __init__(self, can_apply: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, can_apply: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class MaterialApplyPolicy(GeneratedComponent, IMaterialApplyPolicy, IWorldEventR
             self.can_apply = can_apply
 
     @property
-    def can_apply(self) -> bool | None:
+    def can_apply(self) -> primitives.Bool | None:
         """The CanApply field value."""
         member = self.get_member("CanApply")
         if member is None:
@@ -35,7 +36,7 @@ class MaterialApplyPolicy(GeneratedComponent, IMaterialApplyPolicy, IWorldEventR
         return getattr(member, 'value', None)
 
     @can_apply.setter
-    def can_apply(self, value: bool) -> None:
+    def can_apply(self, value: primitives.Bool) -> None:
         """Set the CanApply field value."""
         member = self.get_member("CanApply")
         if member is not None:

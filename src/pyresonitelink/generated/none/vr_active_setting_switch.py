@@ -1,6 +1,7 @@
 """Generated component: VR_ActiveSettingSwitch."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 
@@ -11,7 +12,7 @@ class VR_ActiveSettingSwitch(GeneratedComponent):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VR_ActiveSettingSwitch"
 
-    def __init__(self, vr_active: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, vr_active: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -23,7 +24,7 @@ class VR_ActiveSettingSwitch(GeneratedComponent):
             self.vr_active = vr_active
 
     @property
-    def vr_active(self) -> bool | None:
+    def vr_active(self) -> primitives.Bool | None:
         """The VR_Active field value."""
         member = self.get_member("VR_Active")
         if member is None:
@@ -31,7 +32,7 @@ class VR_ActiveSettingSwitch(GeneratedComponent):
         return getattr(member, 'value', None)
 
     @vr_active.setter
-    def vr_active(self, value: bool) -> None:
+    def vr_active(self, value: primitives.Bool) -> None:
         """Set the VR_Active field value."""
         member = self.get_member("VR_Active")
         if member is not None:

@@ -18,7 +18,7 @@ class DivDeltaTime(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], 
 
     Parameterize with a value type::
 
-        DivDeltaTime[np.float32]
+        DivDeltaTime[primitives.Float]
         DivDeltaTime[primitives.Float3]
     """
 

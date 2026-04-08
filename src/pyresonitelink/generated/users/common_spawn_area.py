@@ -1,7 +1,5 @@
 """Generated component: CommonSpawnArea."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonSpawnArea"
 
-    def __init__(self, spawn_point_generator: str | IPointGenerator | None = None, floor_point_ray: primitives.Float3 | None = None, other_user_check_radius: np.float32 | None = None, parent_user: bool | None = None, orient_user: bool | None = None, scale_user: bool | None = None, capacity: np.int32 | None = None, base_weight: np.float32 | None = None, parent_override: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, spawn_point_generator: str | IPointGenerator | None = None, floor_point_ray: primitives.Float3 | None = None, other_user_check_radius: primitives.Float | None = None, parent_user: primitives.Bool | None = None, orient_user: primitives.Bool | None = None, scale_user: primitives.Bool | None = None, capacity: primitives.Int | None = None, base_weight: primitives.Float | None = None, parent_override: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -97,7 +95,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def other_user_check_radius(self) -> np.float32 | None:
+    def other_user_check_radius(self) -> primitives.Float | None:
         """The OtherUserCheckRadius field value."""
         member = self.get_member("OtherUserCheckRadius")
         if member is None:
@@ -105,7 +103,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @other_user_check_radius.setter
-    def other_user_check_radius(self, value: np.float32) -> None:
+    def other_user_check_radius(self, value: primitives.Float) -> None:
         """Set the OtherUserCheckRadius field value."""
         member = self.get_member("OtherUserCheckRadius")
         if member is not None:
@@ -116,7 +114,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def parent_user(self) -> bool | None:
+    def parent_user(self) -> primitives.Bool | None:
         """The ParentUser field value."""
         member = self.get_member("ParentUser")
         if member is None:
@@ -124,7 +122,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @parent_user.setter
-    def parent_user(self, value: bool) -> None:
+    def parent_user(self, value: primitives.Bool) -> None:
         """Set the ParentUser field value."""
         member = self.get_member("ParentUser")
         if member is not None:
@@ -135,7 +133,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def orient_user(self) -> bool | None:
+    def orient_user(self) -> primitives.Bool | None:
         """The OrientUser field value."""
         member = self.get_member("OrientUser")
         if member is None:
@@ -143,7 +141,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @orient_user.setter
-    def orient_user(self, value: bool) -> None:
+    def orient_user(self, value: primitives.Bool) -> None:
         """Set the OrientUser field value."""
         member = self.get_member("OrientUser")
         if member is not None:
@@ -154,7 +152,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def scale_user(self) -> bool | None:
+    def scale_user(self) -> primitives.Bool | None:
         """The ScaleUser field value."""
         member = self.get_member("ScaleUser")
         if member is None:
@@ -162,7 +160,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @scale_user.setter
-    def scale_user(self, value: bool) -> None:
+    def scale_user(self, value: primitives.Bool) -> None:
         """Set the ScaleUser field value."""
         member = self.get_member("ScaleUser")
         if member is not None:
@@ -173,7 +171,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def capacity(self) -> np.int32 | None:
+    def capacity(self) -> primitives.Int | None:
         """The Capacity field value."""
         member = self.get_member("Capacity")
         if member is None:
@@ -181,7 +179,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @capacity.setter
-    def capacity(self, value: np.int32) -> None:
+    def capacity(self, value: primitives.Int) -> None:
         """Set the Capacity field value."""
         member = self.get_member("Capacity")
         if member is not None:
@@ -192,7 +190,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
             )
 
     @property
-    def base_weight(self) -> np.float32 | None:
+    def base_weight(self) -> primitives.Float | None:
         """The BaseWeight field value."""
         member = self.get_member("BaseWeight")
         if member is None:
@@ -200,7 +198,7 @@ class CommonSpawnArea(GeneratedComponent, IUserSpawnArea, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @base_weight.setter
-    def base_weight(self, value: np.float32) -> None:
+    def base_weight(self, value: primitives.Float) -> None:
         """Set the BaseWeight field value."""
         member = self.get_member("BaseWeight")
         if member is not None:

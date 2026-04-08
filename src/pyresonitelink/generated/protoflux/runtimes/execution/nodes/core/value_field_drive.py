@@ -21,7 +21,7 @@ class ValueFieldDrive(GenericComponent[T], IDrive, IProtoFluxEngineProxyNode, IM
 
     Parameterize with a value type::
 
-        ValueFieldDrive[np.float32]
+        ValueFieldDrive[primitives.Float]
         ValueFieldDrive[primitives.Float3]
     """
 

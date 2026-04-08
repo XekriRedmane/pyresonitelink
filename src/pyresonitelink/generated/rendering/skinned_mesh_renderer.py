@@ -1,7 +1,5 @@
 """Generated component: SkinnedMeshRenderer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -27,7 +25,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SkinnedMeshRenderer"
 
-    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, sorting_order: np.int32 | None = None, proxy_bounds_source: str | SkinnedMeshRenderer | None = None, explicit_local_bounds: primitives.BoundingBox | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, sorting_order: primitives.Int | None = None, proxy_bounds_source: str | SkinnedMeshRenderer | None = None, explicit_local_bounds: primitives.BoundingBox | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -121,7 +119,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         self.set_member("MotionVectorMode", value)
 
     @property
-    def sorting_order(self) -> np.int32 | None:
+    def sorting_order(self) -> primitives.Int | None:
         """The SortingOrder field value."""
         member = self.get_member("SortingOrder")
         if member is None:
@@ -129,7 +127,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         return getattr(member, 'value', None)
 
     @sorting_order.setter
-    def sorting_order(self, value: np.int32) -> None:
+    def sorting_order(self, value: primitives.Int) -> None:
         """Set the SortingOrder field value."""
         member = self.get_member("SortingOrder")
         if member is not None:
@@ -218,7 +216,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         """Set the BlendShapeWeights member."""
         self.set_member("BlendShapeWeights", value)
 
-    async def split_blenshape_along_axis(self, resolink: protocols.ResoniteLinkClient, blendshape_index: np.int32, axis: str, center: np.float32, transition: np.float32, negative_suffix: str, positive_suffix: str, debug: bool = False) -> dict:
+    async def split_blenshape_along_axis(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, axis: str, center: primitives.Float, transition: primitives.Float, negative_suffix: primitives.String, positive_suffix: primitives.String, debug: bool = False) -> dict:
         """Call the SplitBlenshapeAlongAxis sync method.
 
         Args:
@@ -238,7 +236,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
             resolink, "SplitBlenshapeAlongAxis", {"blendshapeIndex": blendshape_index, "axis": axis, "center": center, "transition": transition, "negativeSuffix": negative_suffix, "positiveSuffix": positive_suffix}, debug,
         )
 
-    async def bake_blendshape(self, resolink: protocols.ResoniteLinkClient, blendshape_index: np.int32, debug: bool = False) -> dict:
+    async def bake_blendshape(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, debug: bool = False) -> dict:
         """Call the BakeBlendshape sync method.
 
         Args:
@@ -253,7 +251,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
             resolink, "BakeBlendshape", {"blendshapeIndex": blendshape_index}, debug,
         )
 
-    async def remove_blendshape(self, resolink: protocols.ResoniteLinkClient, blendshape_index: np.int32, debug: bool = False) -> dict:
+    async def remove_blendshape(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, debug: bool = False) -> dict:
         """Call the RemoveBlendshape sync method.
 
         Args:

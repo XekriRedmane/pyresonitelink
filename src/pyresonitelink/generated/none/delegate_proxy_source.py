@@ -11,7 +11,7 @@ class DelegateProxySource(GenericComponent[T], IUIGrabbable, IWorldEventReceiver
 
     Parameterize with a value type::
 
-        DelegateProxySource[np.float32]
+        DelegateProxySource[primitives.Float]
         DelegateProxySource[primitives.Float3]
     """
 

@@ -15,7 +15,7 @@ class ConvertibleDecimalDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     Parameterize with a value type::
 
-        ConvertibleDecimalDriver[np.float32]
+        ConvertibleDecimalDriver[primitives.Float]
         ConvertibleDecimalDriver[primitives.Float3]
     """
 

@@ -18,7 +18,7 @@ class ValueRepeat(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     Parameterize with a value type::
 
-        ValueRepeat[np.float32]
+        ValueRepeat[primitives.Float]
         ValueRepeat[primitives.Float3]
     """
 

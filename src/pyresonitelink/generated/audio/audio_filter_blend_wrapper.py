@@ -1,9 +1,8 @@
 """Generated component: AudioFilterBlendWrapper."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.audio_dsp_effect import AudioDSP_Effect
@@ -19,7 +18,7 @@ class AudioFilterBlendWrapper(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioFilterBlendWrapper"
 
-    def __init__(self, blend_weight: np.float32 | None = None, nested_filter: str | AudioDSP_Effect | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, blend_weight: primitives.Float | None = None, nested_filter: str | AudioDSP_Effect | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,7 +33,7 @@ class AudioFilterBlendWrapper(GeneratedComponent, IComponent, IWorldEventReceive
             self.nested_filter = nested_filter
 
     @property
-    def blend_weight(self) -> np.float32 | None:
+    def blend_weight(self) -> primitives.Float | None:
         """The BlendWeight field value."""
         member = self.get_member("BlendWeight")
         if member is None:
@@ -42,7 +41,7 @@ class AudioFilterBlendWrapper(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @blend_weight.setter
-    def blend_weight(self, value: np.float32) -> None:
+    def blend_weight(self, value: primitives.Float) -> None:
         """Set the BlendWeight field value."""
         member = self.get_member("BlendWeight")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: LogN_Double2_Double."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class LogN_Double2_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.LogN_Double2_Double"
 
-    def __init__(self, n: str | INodeValueOutput[primitives.Double2] | None = None, base: str | INodeValueOutput[np.float64] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, n: str | INodeValueOutput[primitives.Double2] | None = None, base: str | INodeValueOutput[primitives.Double] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +57,15 @@ class LogN_Double2_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     @property
     def base(self) -> str | None:
-        """Target ID of the Base reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the Base reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("Base")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @base.setter
-    def base(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the Base reference by target ID or INodeValueOutput[np.float64] instance."""
+    def base(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the Base reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Base")
         if isinstance(member, members.Reference):

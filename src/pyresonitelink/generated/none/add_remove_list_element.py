@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.sync_list import SyncList
@@ -15,14 +16,14 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        AddRemoveListElement[np.float32]
+        AddRemoveListElement[primitives.Float]
         AddRemoveListElement[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.AddRemoveListElement<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.Undo.AddRemoveListElement<>"
 
-    def __init__(self, target_list: str | SyncList[T] | None = None, target_element: str | T | None = None, description: str | None = None, saved_object: str | None = None, reference_table: str | SavedReferenceTable | None = None, is_saving: bool | None = None, performed: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_list: str | SyncList[T] | None = None, target_element: str | T | None = None, description: primitives.String | None = None, saved_object: str | None = None, reference_table: str | SavedReferenceTable | None = None, is_saving: primitives.Bool | None = None, performed: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -94,7 +95,7 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def description(self) -> str | None:
+    def description(self) -> primitives.String | None:
         """The _description field value."""
         member = self.get_member("_description")
         if member is None:
@@ -102,7 +103,7 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @description.setter
-    def description(self, value: str) -> None:
+    def description(self, value: primitives.String) -> None:
         """Set the _description field value."""
         member = self.get_member("_description")
         if member is not None:
@@ -153,7 +154,7 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def is_saving(self) -> bool | None:
+    def is_saving(self) -> primitives.Bool | None:
         """The _isSaving field value."""
         member = self.get_member("_isSaving")
         if member is None:
@@ -161,7 +162,7 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_saving.setter
-    def is_saving(self, value: bool) -> None:
+    def is_saving(self, value: primitives.Bool) -> None:
         """Set the _isSaving field value."""
         member = self.get_member("_isSaving")
         if member is not None:
@@ -185,7 +186,7 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
         self.set_member("_mode", value)
 
     @property
-    def performed(self) -> bool | None:
+    def performed(self) -> primitives.Bool | None:
         """The _performed field value."""
         member = self.get_member("_performed")
         if member is None:
@@ -193,7 +194,7 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @performed.setter
-    def performed(self, value: bool) -> None:
+    def performed(self, value: primitives.Bool) -> None:
         """Set the _performed field value."""
         member = self.get_member("_performed")
         if member is not None:

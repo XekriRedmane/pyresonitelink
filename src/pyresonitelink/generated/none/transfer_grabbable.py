@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.fresnel_material import FresnelMaterial
@@ -15,7 +16,7 @@ class TransferGrabbable(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TransferGrabbable"
 
-    def __init__(self, paste_on_grab: bool | None = None, indicator_material: str | FresnelMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, paste_on_grab: primitives.Bool | None = None, indicator_material: str | FresnelMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class TransferGrabbable(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             self.indicator_material = indicator_material
 
     @property
-    def paste_on_grab(self) -> bool | None:
+    def paste_on_grab(self) -> primitives.Bool | None:
         """The PasteOnGrab field value."""
         member = self.get_member("PasteOnGrab")
         if member is None:
@@ -38,7 +39,7 @@ class TransferGrabbable(GeneratedComponent, IGrabbable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @paste_on_grab.setter
-    def paste_on_grab(self, value: bool) -> None:
+    def paste_on_grab(self, value: primitives.Bool) -> None:
         """Set the PasteOnGrab field value."""
         member = self.get_member("PasteOnGrab")
         if member is not None:

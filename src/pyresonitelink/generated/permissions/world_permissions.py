@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworker_permissions import IWorkerPermissions
@@ -17,7 +18,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldPermissions"
 
-    def __init__(self, allow_saving_items: bool | None = None, allow_transfering_objects_out: bool | None = None, allow_spawning_objects: bool | None = None, allow_swapping_avatars: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, allow_saving_items: primitives.Bool | None = None, allow_transfering_objects_out: primitives.Bool | None = None, allow_spawning_objects: primitives.Bool | None = None, allow_swapping_avatars: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,7 +39,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
             self.allow_swapping_avatars = allow_swapping_avatars
 
     @property
-    def allow_saving_items(self) -> bool | None:
+    def allow_saving_items(self) -> primitives.Bool | None:
         """The AllowSavingItems field value."""
         member = self.get_member("AllowSavingItems")
         if member is None:
@@ -46,7 +47,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
         return getattr(member, 'value', None)
 
     @allow_saving_items.setter
-    def allow_saving_items(self, value: bool) -> None:
+    def allow_saving_items(self, value: primitives.Bool) -> None:
         """Set the AllowSavingItems field value."""
         member = self.get_member("AllowSavingItems")
         if member is not None:
@@ -57,7 +58,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
             )
 
     @property
-    def allow_transfering_objects_out(self) -> bool | None:
+    def allow_transfering_objects_out(self) -> primitives.Bool | None:
         """The AllowTransferingObjectsOut field value."""
         member = self.get_member("AllowTransferingObjectsOut")
         if member is None:
@@ -65,7 +66,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
         return getattr(member, 'value', None)
 
     @allow_transfering_objects_out.setter
-    def allow_transfering_objects_out(self, value: bool) -> None:
+    def allow_transfering_objects_out(self, value: primitives.Bool) -> None:
         """Set the AllowTransferingObjectsOut field value."""
         member = self.get_member("AllowTransferingObjectsOut")
         if member is not None:
@@ -76,7 +77,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
             )
 
     @property
-    def allow_spawning_objects(self) -> bool | None:
+    def allow_spawning_objects(self) -> primitives.Bool | None:
         """The AllowSpawningObjects field value."""
         member = self.get_member("AllowSpawningObjects")
         if member is None:
@@ -84,7 +85,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
         return getattr(member, 'value', None)
 
     @allow_spawning_objects.setter
-    def allow_spawning_objects(self, value: bool) -> None:
+    def allow_spawning_objects(self, value: primitives.Bool) -> None:
         """Set the AllowSpawningObjects field value."""
         member = self.get_member("AllowSpawningObjects")
         if member is not None:
@@ -95,7 +96,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
             )
 
     @property
-    def allow_swapping_avatars(self) -> bool | None:
+    def allow_swapping_avatars(self) -> primitives.Bool | None:
         """The AllowSwappingAvatars field value."""
         member = self.get_member("AllowSwappingAvatars")
         if member is None:
@@ -103,7 +104,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
         return getattr(member, 'value', None)
 
     @allow_swapping_avatars.setter
-    def allow_swapping_avatars(self, value: bool) -> None:
+    def allow_swapping_avatars(self, value: primitives.Bool) -> None:
         """Set the AllowSwappingAvatars field value."""
         member = self.get_member("AllowSwappingAvatars")
         if member is not None:

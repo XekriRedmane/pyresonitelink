@@ -13,14 +13,14 @@ class GenericModalDialogSpawner(GenericComponent[T], IButtonPressReceiver, IWorl
 
     Parameterize with a value type::
 
-        GenericModalDialogSpawner[np.float32]
+        GenericModalDialogSpawner[primitives.Float]
         GenericModalDialogSpawner[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GenericModalDialogSpawner<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.GenericModalDialogSpawner<>"
 
-    def __init__(self, size: primitives.Float2 | None = None, close_on_click: bool | None = None, close_on_context_menu: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, size: primitives.Float2 | None = None, close_on_click: primitives.Bool | None = None, close_on_context_menu: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,7 +57,7 @@ class GenericModalDialogSpawner(GenericComponent[T], IButtonPressReceiver, IWorl
             )
 
     @property
-    def close_on_click(self) -> bool | None:
+    def close_on_click(self) -> primitives.Bool | None:
         """The CloseOnClick field value."""
         member = self.get_member("CloseOnClick")
         if member is None:
@@ -65,7 +65,7 @@ class GenericModalDialogSpawner(GenericComponent[T], IButtonPressReceiver, IWorl
         return getattr(member, 'value', None)
 
     @close_on_click.setter
-    def close_on_click(self, value: bool) -> None:
+    def close_on_click(self, value: primitives.Bool) -> None:
         """Set the CloseOnClick field value."""
         member = self.get_member("CloseOnClick")
         if member is not None:
@@ -76,7 +76,7 @@ class GenericModalDialogSpawner(GenericComponent[T], IButtonPressReceiver, IWorl
             )
 
     @property
-    def close_on_context_menu(self) -> bool | None:
+    def close_on_context_menu(self) -> primitives.Bool | None:
         """The CloseOnContextMenu field value."""
         member = self.get_member("CloseOnContextMenu")
         if member is None:
@@ -84,7 +84,7 @@ class GenericModalDialogSpawner(GenericComponent[T], IButtonPressReceiver, IWorl
         return getattr(member, 'value', None)
 
     @close_on_context_menu.setter
-    def close_on_context_menu(self, value: bool) -> None:
+    def close_on_context_menu(self, value: primitives.Bool) -> None:
         """Set the CloseOnContextMenu field value."""
         member = self.get_member("CloseOnContextMenu")
         if member is not None:

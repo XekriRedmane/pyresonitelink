@@ -1,8 +1,7 @@
 """Generated component: AuthorityTimeBase."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ivalue import IValue
@@ -18,7 +17,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AuthorityTimeBase"
 
-    def __init__(self, base_speed: np.float32 | None = None, actual_speed: np.float32 | None = None, actual_offset: np.float64 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, base_speed: primitives.Float | None = None, actual_speed: primitives.Float | None = None, actual_offset: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +35,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
             self.actual_offset = actual_offset
 
     @property
-    def base_speed(self) -> np.float32 | None:
+    def base_speed(self) -> primitives.Float | None:
         """The BaseSpeed field value."""
         member = self.get_member("BaseSpeed")
         if member is None:
@@ -44,7 +43,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @base_speed.setter
-    def base_speed(self, value: np.float32) -> None:
+    def base_speed(self, value: primitives.Float) -> None:
         """Set the BaseSpeed field value."""
         member = self.get_member("BaseSpeed")
         if member is not None:
@@ -55,7 +54,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
             )
 
     @property
-    def actual_speed(self) -> np.float32 | None:
+    def actual_speed(self) -> primitives.Float | None:
         """The _actualSpeed field value."""
         member = self.get_member("_actualSpeed")
         if member is None:
@@ -63,7 +62,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @actual_speed.setter
-    def actual_speed(self, value: np.float32) -> None:
+    def actual_speed(self, value: primitives.Float) -> None:
         """Set the _actualSpeed field value."""
         member = self.get_member("_actualSpeed")
         if member is not None:
@@ -74,7 +73,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
             )
 
     @property
-    def actual_offset(self) -> np.float64 | None:
+    def actual_offset(self) -> primitives.Double | None:
         """The _actualOffset field value."""
         member = self.get_member("_actualOffset")
         if member is None:
@@ -82,7 +81,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @actual_offset.setter
-    def actual_offset(self, value: np.float64) -> None:
+    def actual_offset(self, value: primitives.Double) -> None:
         """Set the _actualOffset field value."""
         member = self.get_member("_actualOffset")
         if member is not None:

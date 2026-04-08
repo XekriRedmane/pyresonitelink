@@ -14,7 +14,7 @@ class FieldDriveBase+Proxy(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     Parameterize with a value type::
 
-        FieldDriveBase+Proxy[np.float32]
+        FieldDriveBase+Proxy[primitives.Float]
         FieldDriveBase+Proxy[primitives.Float3]
     """
 

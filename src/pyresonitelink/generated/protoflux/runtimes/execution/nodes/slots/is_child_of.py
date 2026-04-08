@@ -1,6 +1,7 @@
 """Generated component: IsChildOf."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -21,7 +22,7 @@ class IsChildOf(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.IsChildOf"
 
-    def __init__(self, instance: str | INodeObjectOutput[Slot] | None = None, other: str | INodeObjectOutput[Slot] | None = None, include_self: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, instance: str | INodeObjectOutput[Slot] | None = None, other: str | INodeObjectOutput[Slot] | None = None, include_self: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -82,15 +83,15 @@ class IsChildOf(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
 
     @property
     def include_self(self) -> str | None:
-        """Target ID of the IncludeSelf reference (targets INodeValueOutput[bool])."""
+        """Target ID of the IncludeSelf reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("IncludeSelf")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @include_self.setter
-    def include_self(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the IncludeSelf reference by target ID or INodeValueOutput[bool] instance."""
+    def include_self(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the IncludeSelf reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("IncludeSelf")
         if isinstance(member, members.Reference):

@@ -1,7 +1,5 @@
 """Generated component: CheckerboardCubemap."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CheckerboardCubemap"
 
-    def __init__(self, high_priority_integration: bool | None = None, anisotropic_level: np.int32 | None = None, mipmap_bias: np.float32 | None = None, size: np.int32 | None = None, mipmaps: bool | None = None, checker_size: np.int32 | None = None, pos_x_color0: primitives.ColorX | None = None, pos_x_color1: primitives.ColorX | None = None, neg_x_color0: primitives.ColorX | None = None, neg_x_color1: primitives.ColorX | None = None, pos_y_color0: primitives.ColorX | None = None, pos_y_color1: primitives.ColorX | None = None, neg_y_color0: primitives.ColorX | None = None, neg_y_color1: primitives.ColorX | None = None, pos_z_color0: primitives.ColorX | None = None, pos_z_color1: primitives.ColorX | None = None, neg_z_color0: primitives.ColorX | None = None, neg_z_color1: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, anisotropic_level: primitives.Int | None = None, mipmap_bias: primitives.Float | None = None, size: primitives.Int | None = None, mipmaps: primitives.Bool | None = None, checker_size: primitives.Int | None = None, pos_x_color0: primitives.ColorX | None = None, pos_x_color1: primitives.ColorX | None = None, neg_x_color0: primitives.ColorX | None = None, neg_x_color1: primitives.ColorX | None = None, pos_y_color0: primitives.ColorX | None = None, pos_y_color1: primitives.ColorX | None = None, neg_y_color0: primitives.ColorX | None = None, neg_y_color1: primitives.ColorX | None = None, pos_z_color0: primitives.ColorX | None = None, pos_z_color1: primitives.ColorX | None = None, neg_z_color0: primitives.ColorX | None = None, neg_z_color1: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -83,7 +81,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
             self.neg_z_color1 = neg_z_color1
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -91,7 +89,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -115,7 +113,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
         self.set_member("FilterMode", value)
 
     @property
-    def anisotropic_level(self) -> np.int32 | None:
+    def anisotropic_level(self) -> primitives.Int | None:
         """The AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is None:
@@ -123,7 +121,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @anisotropic_level.setter
-    def anisotropic_level(self, value: np.int32) -> None:
+    def anisotropic_level(self, value: primitives.Int) -> None:
         """Set the AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is not None:
@@ -134,7 +132,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
             )
 
     @property
-    def mipmap_bias(self) -> np.float32 | None:
+    def mipmap_bias(self) -> primitives.Float | None:
         """The MipmapBias field value."""
         member = self.get_member("MipmapBias")
         if member is None:
@@ -142,7 +140,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @mipmap_bias.setter
-    def mipmap_bias(self, value: np.float32) -> None:
+    def mipmap_bias(self, value: primitives.Float) -> None:
         """Set the MipmapBias field value."""
         member = self.get_member("MipmapBias")
         if member is not None:
@@ -166,7 +164,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
         self.set_member("Profile", value)
 
     @property
-    def size(self) -> np.int32 | None:
+    def size(self) -> primitives.Int | None:
         """The Size field value."""
         member = self.get_member("Size")
         if member is None:
@@ -174,7 +172,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @size.setter
-    def size(self, value: np.int32) -> None:
+    def size(self, value: primitives.Int) -> None:
         """Set the Size field value."""
         member = self.get_member("Size")
         if member is not None:
@@ -185,7 +183,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
             )
 
     @property
-    def mipmaps(self) -> bool | None:
+    def mipmaps(self) -> primitives.Bool | None:
         """The Mipmaps field value."""
         member = self.get_member("Mipmaps")
         if member is None:
@@ -193,7 +191,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @mipmaps.setter
-    def mipmaps(self, value: bool) -> None:
+    def mipmaps(self, value: primitives.Bool) -> None:
         """Set the Mipmaps field value."""
         member = self.get_member("Mipmaps")
         if member is not None:
@@ -217,7 +215,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
         self.set_member("Format", value)
 
     @property
-    def checker_size(self) -> np.int32 | None:
+    def checker_size(self) -> primitives.Int | None:
         """The CheckerSize field value."""
         member = self.get_member("CheckerSize")
         if member is None:
@@ -225,7 +223,7 @@ class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @checker_size.setter
-    def checker_size(self, value: np.int32) -> None:
+    def checker_size(self, value: primitives.Int) -> None:
         """Set the CheckerSize field value."""
         member = self.get_member("CheckerSize")
         if member is not None:

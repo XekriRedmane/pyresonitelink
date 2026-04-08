@@ -1,7 +1,5 @@
 """Generated component: UnlitMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -27,7 +25,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UnlitMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, tint_color: primitives.ColorX | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, mask_scale: primitives.Float2 | None = None, mask_offset: primitives.Float2 | None = None, alpha_cutoff: np.float32 | None = None, use_vertex_colors: bool | None = None, offset_texture: str | IAssetProvider[ITexture2D] | None = None, offset_magnitude: primitives.Float2 | None = None, offset_texture_scale: primitives.Float2 | None = None, offset_texture_offset: primitives.Float2 | None = None, polar_uvmapping: bool | None = None, polar_power: np.float32 | None = None, stereo_texture_transform: bool | None = None, right_eye_texture_scale: primitives.Float2 | None = None, right_eye_texture_offset: primitives.Float2 | None = None, decode_as_normal_map: bool | None = None, use_billboard_geometry: bool | None = None, use_per_billboard_scale: bool | None = None, use_per_billboard_rotation: bool | None = None, use_per_billboard_uv: bool | None = None, billboard_size: primitives.Float2 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, unlit: str | IAssetProvider[Shader] | None = None, unlit_billboard: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, tint_color: primitives.ColorX | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, mask_scale: primitives.Float2 | None = None, mask_offset: primitives.Float2 | None = None, alpha_cutoff: primitives.Float | None = None, use_vertex_colors: primitives.Bool | None = None, offset_texture: str | IAssetProvider[ITexture2D] | None = None, offset_magnitude: primitives.Float2 | None = None, offset_texture_scale: primitives.Float2 | None = None, offset_texture_offset: primitives.Float2 | None = None, polar_uvmapping: primitives.Bool | None = None, polar_power: primitives.Float | None = None, stereo_texture_transform: primitives.Bool | None = None, right_eye_texture_scale: primitives.Float2 | None = None, right_eye_texture_offset: primitives.Float2 | None = None, decode_as_normal_map: primitives.Bool | None = None, use_billboard_geometry: primitives.Bool | None = None, use_per_billboard_scale: primitives.Bool | None = None, use_per_billboard_rotation: primitives.Bool | None = None, use_per_billboard_uv: primitives.Bool | None = None, billboard_size: primitives.Float2 | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, unlit: str | IAssetProvider[Shader] | None = None, unlit_billboard: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -126,7 +124,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             self.unlit_billboard = unlit_billboard
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -134,7 +132,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -308,7 +306,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         self.set_member("BlendMode", value)
 
     @property
-    def alpha_cutoff(self) -> np.float32 | None:
+    def alpha_cutoff(self) -> primitives.Float | None:
         """The AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is None:
@@ -316,7 +314,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @alpha_cutoff.setter
-    def alpha_cutoff(self, value: np.float32) -> None:
+    def alpha_cutoff(self, value: primitives.Float) -> None:
         """Set the AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is not None:
@@ -327,7 +325,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def use_vertex_colors(self) -> bool | None:
+    def use_vertex_colors(self) -> primitives.Bool | None:
         """The UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is None:
@@ -335,7 +333,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @use_vertex_colors.setter
-    def use_vertex_colors(self, value: bool) -> None:
+    def use_vertex_colors(self, value: primitives.Bool) -> None:
         """Set the UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is not None:
@@ -463,7 +461,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def polar_uvmapping(self) -> bool | None:
+    def polar_uvmapping(self) -> primitives.Bool | None:
         """The PolarUVmapping field value."""
         member = self.get_member("PolarUVmapping")
         if member is None:
@@ -471,7 +469,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @polar_uvmapping.setter
-    def polar_uvmapping(self, value: bool) -> None:
+    def polar_uvmapping(self, value: primitives.Bool) -> None:
         """Set the PolarUVmapping field value."""
         member = self.get_member("PolarUVmapping")
         if member is not None:
@@ -482,7 +480,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def polar_power(self) -> np.float32 | None:
+    def polar_power(self) -> primitives.Float | None:
         """The PolarPower field value."""
         member = self.get_member("PolarPower")
         if member is None:
@@ -490,7 +488,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @polar_power.setter
-    def polar_power(self, value: np.float32) -> None:
+    def polar_power(self, value: primitives.Float) -> None:
         """Set the PolarPower field value."""
         member = self.get_member("PolarPower")
         if member is not None:
@@ -501,7 +499,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def stereo_texture_transform(self) -> bool | None:
+    def stereo_texture_transform(self) -> primitives.Bool | None:
         """The StereoTextureTransform field value."""
         member = self.get_member("StereoTextureTransform")
         if member is None:
@@ -509,7 +507,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @stereo_texture_transform.setter
-    def stereo_texture_transform(self, value: bool) -> None:
+    def stereo_texture_transform(self, value: primitives.Bool) -> None:
         """Set the StereoTextureTransform field value."""
         member = self.get_member("StereoTextureTransform")
         if member is not None:
@@ -558,7 +556,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def decode_as_normal_map(self) -> bool | None:
+    def decode_as_normal_map(self) -> primitives.Bool | None:
         """The DecodeAsNormalMap field value."""
         member = self.get_member("DecodeAsNormalMap")
         if member is None:
@@ -566,7 +564,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @decode_as_normal_map.setter
-    def decode_as_normal_map(self, value: bool) -> None:
+    def decode_as_normal_map(self, value: primitives.Bool) -> None:
         """Set the DecodeAsNormalMap field value."""
         member = self.get_member("DecodeAsNormalMap")
         if member is not None:
@@ -577,7 +575,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def use_billboard_geometry(self) -> bool | None:
+    def use_billboard_geometry(self) -> primitives.Bool | None:
         """The UseBillboardGeometry field value."""
         member = self.get_member("UseBillboardGeometry")
         if member is None:
@@ -585,7 +583,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @use_billboard_geometry.setter
-    def use_billboard_geometry(self, value: bool) -> None:
+    def use_billboard_geometry(self, value: primitives.Bool) -> None:
         """Set the UseBillboardGeometry field value."""
         member = self.get_member("UseBillboardGeometry")
         if member is not None:
@@ -596,7 +594,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def use_per_billboard_scale(self) -> bool | None:
+    def use_per_billboard_scale(self) -> primitives.Bool | None:
         """The UsePerBillboardScale field value."""
         member = self.get_member("UsePerBillboardScale")
         if member is None:
@@ -604,7 +602,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @use_per_billboard_scale.setter
-    def use_per_billboard_scale(self, value: bool) -> None:
+    def use_per_billboard_scale(self, value: primitives.Bool) -> None:
         """Set the UsePerBillboardScale field value."""
         member = self.get_member("UsePerBillboardScale")
         if member is not None:
@@ -615,7 +613,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def use_per_billboard_rotation(self) -> bool | None:
+    def use_per_billboard_rotation(self) -> primitives.Bool | None:
         """The UsePerBillboardRotation field value."""
         member = self.get_member("UsePerBillboardRotation")
         if member is None:
@@ -623,7 +621,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @use_per_billboard_rotation.setter
-    def use_per_billboard_rotation(self, value: bool) -> None:
+    def use_per_billboard_rotation(self, value: primitives.Bool) -> None:
         """Set the UsePerBillboardRotation field value."""
         member = self.get_member("UsePerBillboardRotation")
         if member is not None:
@@ -634,7 +632,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def use_per_billboard_uv(self) -> bool | None:
+    def use_per_billboard_uv(self) -> primitives.Bool | None:
         """The UsePerBillboardUV field value."""
         member = self.get_member("UsePerBillboardUV")
         if member is None:
@@ -642,7 +640,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @use_per_billboard_uv.setter
-    def use_per_billboard_uv(self, value: bool) -> None:
+    def use_per_billboard_uv(self, value: primitives.Bool) -> None:
         """Set the UsePerBillboardUV field value."""
         member = self.get_member("UsePerBillboardUV")
         if member is not None:
@@ -672,7 +670,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -680,7 +678,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -691,7 +689,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -699,7 +697,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -710,7 +708,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -718,7 +716,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

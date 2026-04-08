@@ -1,7 +1,5 @@
 """Generated component: LegacyProgressBar."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyProgressBar"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, is_enabled_field: bool | None = None, progress: np.float32 | None = None, bar_color_field: primitives.ColorX | None = None, container_color_field: primitives.ColorX | None = None, width_field: np.float32 | None = None, height_field: np.float32 | None = None, thickness_field: np.float32 | None = None, slant_field: np.float32 | None = None, bar_mesh: str | BevelStripeMesh | None = None, container_mesh: str | BevelStripeMesh | None = None, bar_material: str | PBS_RimMetallic | None = None, container_material: str | PBS_RimMetallic | None = None, bar_position: str | IField[primitives.Float3] | None = None, collider_size: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, is_enabled_field: primitives.Bool | None = None, progress: primitives.Float | None = None, bar_color_field: primitives.ColorX | None = None, container_color_field: primitives.ColorX | None = None, width_field: primitives.Float | None = None, height_field: primitives.Float | None = None, thickness_field: primitives.Float | None = None, slant_field: primitives.Float | None = None, bar_mesh: str | BevelStripeMesh | None = None, container_mesh: str | BevelStripeMesh | None = None, bar_material: str | PBS_RimMetallic | None = None, container_material: str | PBS_RimMetallic | None = None, bar_position: str | IField[primitives.Float3] | None = None, collider_size: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -104,7 +102,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -112,7 +110,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -123,7 +121,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -131,7 +129,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -142,7 +140,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_enabled_field(self) -> bool | None:
+    def is_enabled_field(self) -> primitives.Bool | None:
         """The IsEnabledField field value."""
         member = self.get_member("IsEnabledField")
         if member is None:
@@ -150,7 +148,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_enabled_field.setter
-    def is_enabled_field(self, value: bool) -> None:
+    def is_enabled_field(self, value: primitives.Bool) -> None:
         """Set the IsEnabledField field value."""
         member = self.get_member("IsEnabledField")
         if member is not None:
@@ -161,7 +159,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def progress(self) -> np.float32 | None:
+    def progress(self) -> primitives.Float | None:
         """The Progress field value."""
         member = self.get_member("Progress")
         if member is None:
@@ -169,7 +167,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @progress.setter
-    def progress(self, value: np.float32) -> None:
+    def progress(self, value: primitives.Float) -> None:
         """Set the Progress field value."""
         member = self.get_member("Progress")
         if member is not None:
@@ -218,7 +216,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def width_field(self) -> np.float32 | None:
+    def width_field(self) -> primitives.Float | None:
         """The WidthField field value."""
         member = self.get_member("WidthField")
         if member is None:
@@ -226,7 +224,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @width_field.setter
-    def width_field(self, value: np.float32) -> None:
+    def width_field(self, value: primitives.Float) -> None:
         """Set the WidthField field value."""
         member = self.get_member("WidthField")
         if member is not None:
@@ -237,7 +235,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def height_field(self) -> np.float32 | None:
+    def height_field(self) -> primitives.Float | None:
         """The HeightField field value."""
         member = self.get_member("HeightField")
         if member is None:
@@ -245,7 +243,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @height_field.setter
-    def height_field(self, value: np.float32) -> None:
+    def height_field(self, value: primitives.Float) -> None:
         """Set the HeightField field value."""
         member = self.get_member("HeightField")
         if member is not None:
@@ -256,7 +254,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def thickness_field(self) -> np.float32 | None:
+    def thickness_field(self) -> primitives.Float | None:
         """The ThicknessField field value."""
         member = self.get_member("ThicknessField")
         if member is None:
@@ -264,7 +262,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @thickness_field.setter
-    def thickness_field(self, value: np.float32) -> None:
+    def thickness_field(self, value: primitives.Float) -> None:
         """Set the ThicknessField field value."""
         member = self.get_member("ThicknessField")
         if member is not None:
@@ -275,7 +273,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def slant_field(self) -> np.float32 | None:
+    def slant_field(self) -> primitives.Float | None:
         """The SlantField field value."""
         member = self.get_member("SlantField")
         if member is None:
@@ -283,7 +281,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @slant_field.setter
-    def slant_field(self, value: np.float32) -> None:
+    def slant_field(self, value: primitives.Float) -> None:
         """Set the SlantField field value."""
         member = self.get_member("SlantField")
         if member is not None:

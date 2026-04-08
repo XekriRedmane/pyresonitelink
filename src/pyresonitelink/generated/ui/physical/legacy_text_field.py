@@ -1,7 +1,5 @@
 """Generated component: LegacyTextField."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -27,7 +25,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyTextField"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, color: primitives.ColorX | None = None, width: np.float32 | None = None, height: np.float32 | None = None, thickness: np.float32 | None = None, slant: np.float32 | None = None, text_slot: str | Slot | None = None, text_renderer: str | TextRenderer | None = None, text_editor: str | TextEditor | None = None, material: str | PBS_RimMetallic | None = None, mesh: str | BevelStripeMesh | None = None, text_bounds: str | IField[primitives.Float2] | None = None, collider_size: str | IField[primitives.Float3] | None = None, mesh_left: str | BevelStripeMesh | None = None, mesh_right: str | BevelStripeMesh | None = None, text_left_bounds: str | IField[primitives.Float2] | None = None, text_right_bounds: str | IField[primitives.Float2] | None = None, left_text_renderer: str | TextRenderer | None = None, right_text_renderer: str | TextRenderer | None = None, collider_left_size: str | IField[primitives.Float3] | None = None, collider_right_size: str | IField[primitives.Float3] | None = None, left_offset: str | IField[primitives.Float3] | None = None, right_offset: str | IField[primitives.Float3] | None = None, left_text_position: str | IField[primitives.Float3] | None = None, right_text_position: str | IField[primitives.Float3] | None = None, is_enabled: bool | None = None, hint_text_renderer: str | TextRenderer | None = None, hint_text_bounds: str | IField[primitives.Float2] | None = None, hint_text_enabled: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, color: primitives.ColorX | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, slant: primitives.Float | None = None, text_slot: str | Slot | None = None, text_renderer: str | TextRenderer | None = None, text_editor: str | TextEditor | None = None, material: str | PBS_RimMetallic | None = None, mesh: str | BevelStripeMesh | None = None, text_bounds: str | IField[primitives.Float2] | None = None, collider_size: str | IField[primitives.Float3] | None = None, mesh_left: str | BevelStripeMesh | None = None, mesh_right: str | BevelStripeMesh | None = None, text_left_bounds: str | IField[primitives.Float2] | None = None, text_right_bounds: str | IField[primitives.Float2] | None = None, left_text_renderer: str | TextRenderer | None = None, right_text_renderer: str | TextRenderer | None = None, collider_left_size: str | IField[primitives.Float3] | None = None, collider_right_size: str | IField[primitives.Float3] | None = None, left_offset: str | IField[primitives.Float3] | None = None, right_offset: str | IField[primitives.Float3] | None = None, left_text_position: str | IField[primitives.Float3] | None = None, right_text_position: str | IField[primitives.Float3] | None = None, is_enabled: primitives.Bool | None = None, hint_text_renderer: str | TextRenderer | None = None, hint_text_bounds: str | IField[primitives.Float2] | None = None, hint_text_enabled: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -150,7 +148,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -158,7 +156,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -169,7 +167,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -177,7 +175,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -207,7 +205,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
             )
 
     @property
-    def width(self) -> np.float32 | None:
+    def width(self) -> primitives.Float | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -215,7 +213,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.float32) -> None:
+    def width(self, value: primitives.Float) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -226,7 +224,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -234,7 +232,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -245,7 +243,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -253,7 +251,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -264,7 +262,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
             )
 
     @property
-    def slant(self) -> np.float32 | None:
+    def slant(self) -> primitives.Float | None:
         """The Slant field value."""
         member = self.get_member("Slant")
         if member is None:
@@ -272,7 +270,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
         return getattr(member, 'value', None)
 
     @slant.setter
-    def slant(self, value: np.float32) -> None:
+    def slant(self, value: primitives.Float) -> None:
         """Set the Slant field value."""
         member = self.get_member("Slant")
         if member is not None:
@@ -682,7 +680,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
             )
 
     @property
-    def is_enabled(self) -> bool | None:
+    def is_enabled(self) -> primitives.Bool | None:
         """The IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is None:
@@ -690,7 +688,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
         return getattr(member, 'value', None)
 
     @is_enabled.setter
-    def is_enabled(self, value: bool) -> None:
+    def is_enabled(self, value: primitives.Bool) -> None:
         """Set the IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is not None:
@@ -744,15 +742,15 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def hint_text_enabled(self) -> str | None:
-        """Target ID of the _hintTextEnabled reference (targets IField[bool])."""
+        """Target ID of the _hintTextEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_hintTextEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @hint_text_enabled.setter
-    def hint_text_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _hintTextEnabled reference by target ID or IField[bool] instance."""
+    def hint_text_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _hintTextEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_hintTextEnabled")
         if isinstance(member, members.Reference):

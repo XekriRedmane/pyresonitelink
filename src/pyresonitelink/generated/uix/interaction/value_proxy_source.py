@@ -13,7 +13,7 @@ class ValueProxySource(GenericComponent[T], IUIGrabbable, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ValueProxySource[np.float32]
+        ValueProxySource[primitives.Float]
         ValueProxySource[primitives.Float3]
     """
 

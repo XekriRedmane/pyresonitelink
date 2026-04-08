@@ -1,8 +1,7 @@
 """Generated component: StorageUsageStatus."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -17,7 +16,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StorageUsageStatus"
 
-    def __init__(self, owner_id: str | None = None, group_member_quota: bool | None = None, has_valid_data: bool | None = None, storage_bytes: np.int64 | None = None, full_storage_bytes: np.int64 | None = None, shareable_storage_bytes: np.int64 | None = None, shared_storage_bytes: np.int64 | None = None, usage_bytes: np.int64 | None = None, usage_ratio: np.float32 | None = None, storage_string: str | None = None, full_storage_string: str | None = None, shareable_storage_string: str | None = None, shared_storage_string: str | None = None, usage_string: str | None = None, ratio_string: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, owner_id: primitives.String | None = None, group_member_quota: primitives.Bool | None = None, has_valid_data: primitives.Bool | None = None, storage_bytes: primitives.Long | None = None, full_storage_bytes: primitives.Long | None = None, shareable_storage_bytes: primitives.Long | None = None, shared_storage_bytes: primitives.Long | None = None, usage_bytes: primitives.Long | None = None, usage_ratio: primitives.Float | None = None, storage_string: primitives.String | None = None, full_storage_string: primitives.String | None = None, shareable_storage_string: primitives.String | None = None, shared_storage_string: primitives.String | None = None, usage_string: primitives.String | None = None, ratio_string: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -71,7 +70,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.ratio_string = ratio_string
 
     @property
-    def owner_id(self) -> str | None:
+    def owner_id(self) -> primitives.String | None:
         """The OwnerId field value."""
         member = self.get_member("OwnerId")
         if member is None:
@@ -79,7 +78,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @owner_id.setter
-    def owner_id(self, value: str) -> None:
+    def owner_id(self, value: primitives.String) -> None:
         """Set the OwnerId field value."""
         member = self.get_member("OwnerId")
         if member is not None:
@@ -90,7 +89,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def group_member_quota(self) -> bool | None:
+    def group_member_quota(self) -> primitives.Bool | None:
         """The GroupMemberQuota field value."""
         member = self.get_member("GroupMemberQuota")
         if member is None:
@@ -98,7 +97,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @group_member_quota.setter
-    def group_member_quota(self, value: bool) -> None:
+    def group_member_quota(self, value: primitives.Bool) -> None:
         """Set the GroupMemberQuota field value."""
         member = self.get_member("GroupMemberQuota")
         if member is not None:
@@ -109,7 +108,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def has_valid_data(self) -> bool | None:
+    def has_valid_data(self) -> primitives.Bool | None:
         """The HasValidData field value."""
         member = self.get_member("HasValidData")
         if member is None:
@@ -117,7 +116,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_valid_data.setter
-    def has_valid_data(self, value: bool) -> None:
+    def has_valid_data(self, value: primitives.Bool) -> None:
         """Set the HasValidData field value."""
         member = self.get_member("HasValidData")
         if member is not None:
@@ -128,7 +127,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def storage_bytes(self) -> np.int64 | None:
+    def storage_bytes(self) -> primitives.Long | None:
         """The StorageBytes field value."""
         member = self.get_member("StorageBytes")
         if member is None:
@@ -136,7 +135,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @storage_bytes.setter
-    def storage_bytes(self, value: np.int64) -> None:
+    def storage_bytes(self, value: primitives.Long) -> None:
         """Set the StorageBytes field value."""
         member = self.get_member("StorageBytes")
         if member is not None:
@@ -147,7 +146,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def full_storage_bytes(self) -> np.int64 | None:
+    def full_storage_bytes(self) -> primitives.Long | None:
         """The FullStorageBytes field value."""
         member = self.get_member("FullStorageBytes")
         if member is None:
@@ -155,7 +154,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @full_storage_bytes.setter
-    def full_storage_bytes(self, value: np.int64) -> None:
+    def full_storage_bytes(self, value: primitives.Long) -> None:
         """Set the FullStorageBytes field value."""
         member = self.get_member("FullStorageBytes")
         if member is not None:
@@ -166,7 +165,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def shareable_storage_bytes(self) -> np.int64 | None:
+    def shareable_storage_bytes(self) -> primitives.Long | None:
         """The ShareableStorageBytes field value."""
         member = self.get_member("ShareableStorageBytes")
         if member is None:
@@ -174,7 +173,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @shareable_storage_bytes.setter
-    def shareable_storage_bytes(self, value: np.int64) -> None:
+    def shareable_storage_bytes(self, value: primitives.Long) -> None:
         """Set the ShareableStorageBytes field value."""
         member = self.get_member("ShareableStorageBytes")
         if member is not None:
@@ -185,7 +184,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def shared_storage_bytes(self) -> np.int64 | None:
+    def shared_storage_bytes(self) -> primitives.Long | None:
         """The SharedStorageBytes field value."""
         member = self.get_member("SharedStorageBytes")
         if member is None:
@@ -193,7 +192,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @shared_storage_bytes.setter
-    def shared_storage_bytes(self, value: np.int64) -> None:
+    def shared_storage_bytes(self, value: primitives.Long) -> None:
         """Set the SharedStorageBytes field value."""
         member = self.get_member("SharedStorageBytes")
         if member is not None:
@@ -204,7 +203,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def usage_bytes(self) -> np.int64 | None:
+    def usage_bytes(self) -> primitives.Long | None:
         """The UsageBytes field value."""
         member = self.get_member("UsageBytes")
         if member is None:
@@ -212,7 +211,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @usage_bytes.setter
-    def usage_bytes(self, value: np.int64) -> None:
+    def usage_bytes(self, value: primitives.Long) -> None:
         """Set the UsageBytes field value."""
         member = self.get_member("UsageBytes")
         if member is not None:
@@ -223,7 +222,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def usage_ratio(self) -> np.float32 | None:
+    def usage_ratio(self) -> primitives.Float | None:
         """The UsageRatio field value."""
         member = self.get_member("UsageRatio")
         if member is None:
@@ -231,7 +230,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @usage_ratio.setter
-    def usage_ratio(self, value: np.float32) -> None:
+    def usage_ratio(self, value: primitives.Float) -> None:
         """Set the UsageRatio field value."""
         member = self.get_member("UsageRatio")
         if member is not None:
@@ -242,7 +241,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def storage_string(self) -> str | None:
+    def storage_string(self) -> primitives.String | None:
         """The StorageString field value."""
         member = self.get_member("StorageString")
         if member is None:
@@ -250,7 +249,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @storage_string.setter
-    def storage_string(self, value: str) -> None:
+    def storage_string(self, value: primitives.String) -> None:
         """Set the StorageString field value."""
         member = self.get_member("StorageString")
         if member is not None:
@@ -261,7 +260,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def full_storage_string(self) -> str | None:
+    def full_storage_string(self) -> primitives.String | None:
         """The FullStorageString field value."""
         member = self.get_member("FullStorageString")
         if member is None:
@@ -269,7 +268,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @full_storage_string.setter
-    def full_storage_string(self, value: str) -> None:
+    def full_storage_string(self, value: primitives.String) -> None:
         """Set the FullStorageString field value."""
         member = self.get_member("FullStorageString")
         if member is not None:
@@ -280,7 +279,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def shareable_storage_string(self) -> str | None:
+    def shareable_storage_string(self) -> primitives.String | None:
         """The ShareableStorageString field value."""
         member = self.get_member("ShareableStorageString")
         if member is None:
@@ -288,7 +287,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @shareable_storage_string.setter
-    def shareable_storage_string(self, value: str) -> None:
+    def shareable_storage_string(self, value: primitives.String) -> None:
         """Set the ShareableStorageString field value."""
         member = self.get_member("ShareableStorageString")
         if member is not None:
@@ -299,7 +298,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def shared_storage_string(self) -> str | None:
+    def shared_storage_string(self) -> primitives.String | None:
         """The SharedStorageString field value."""
         member = self.get_member("SharedStorageString")
         if member is None:
@@ -307,7 +306,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @shared_storage_string.setter
-    def shared_storage_string(self, value: str) -> None:
+    def shared_storage_string(self, value: primitives.String) -> None:
         """Set the SharedStorageString field value."""
         member = self.get_member("SharedStorageString")
         if member is not None:
@@ -318,7 +317,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def usage_string(self) -> str | None:
+    def usage_string(self) -> primitives.String | None:
         """The UsageString field value."""
         member = self.get_member("UsageString")
         if member is None:
@@ -326,7 +325,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @usage_string.setter
-    def usage_string(self, value: str) -> None:
+    def usage_string(self, value: primitives.String) -> None:
         """Set the UsageString field value."""
         member = self.get_member("UsageString")
         if member is not None:
@@ -337,7 +336,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ratio_string(self) -> str | None:
+    def ratio_string(self) -> primitives.String | None:
         """The RatioString field value."""
         member = self.get_member("RatioString")
         if member is None:
@@ -345,7 +344,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ratio_string.setter
-    def ratio_string(self, value: str) -> None:
+    def ratio_string(self, value: primitives.String) -> None:
         """Set the RatioString field value."""
         member = self.get_member("RatioString")
         if member is not None:

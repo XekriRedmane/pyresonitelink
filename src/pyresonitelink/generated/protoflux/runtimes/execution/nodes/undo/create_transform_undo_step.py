@@ -1,6 +1,7 @@
 """Generated component: CreateTransformUndoStep."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -23,7 +24,7 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.CreateTransformUndoStep"
 
-    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[Slot] | None = None, save_parent: str | INodeValueOutput[bool] | None = None, save_position: str | INodeValueOutput[bool] | None = None, save_rotation: str | INodeValueOutput[bool] | None = None, save_scale: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[Slot] | None = None, save_parent: str | INodeValueOutput[primitives.Bool] | None = None, save_position: str | INodeValueOutput[primitives.Bool] | None = None, save_rotation: str | INodeValueOutput[primitives.Bool] | None = None, save_scale: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -93,15 +94,15 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def save_parent(self) -> str | None:
-        """Target ID of the SaveParent reference (targets INodeValueOutput[bool])."""
+        """Target ID of the SaveParent reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("SaveParent")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @save_parent.setter
-    def save_parent(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the SaveParent reference by target ID or INodeValueOutput[bool] instance."""
+    def save_parent(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the SaveParent reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("SaveParent")
         if isinstance(member, members.Reference):
@@ -114,15 +115,15 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def save_position(self) -> str | None:
-        """Target ID of the SavePosition reference (targets INodeValueOutput[bool])."""
+        """Target ID of the SavePosition reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("SavePosition")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @save_position.setter
-    def save_position(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the SavePosition reference by target ID or INodeValueOutput[bool] instance."""
+    def save_position(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the SavePosition reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("SavePosition")
         if isinstance(member, members.Reference):
@@ -135,15 +136,15 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def save_rotation(self) -> str | None:
-        """Target ID of the SaveRotation reference (targets INodeValueOutput[bool])."""
+        """Target ID of the SaveRotation reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("SaveRotation")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @save_rotation.setter
-    def save_rotation(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the SaveRotation reference by target ID or INodeValueOutput[bool] instance."""
+    def save_rotation(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the SaveRotation reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("SaveRotation")
         if isinstance(member, members.Reference):
@@ -156,15 +157,15 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def save_scale(self) -> str | None:
-        """Target ID of the SaveScale reference (targets INodeValueOutput[bool])."""
+        """Target ID of the SaveScale reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("SaveScale")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @save_scale.setter
-    def save_scale(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the SaveScale reference by target ID or INodeValueOutput[bool] instance."""
+    def save_scale(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the SaveScale reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("SaveScale")
         if isinstance(member, members.Reference):

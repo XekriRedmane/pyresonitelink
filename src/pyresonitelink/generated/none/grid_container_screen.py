@@ -22,7 +22,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GridContainerScreen"
 
-    def __init__(self, icon: str | None = None, active_color: primitives.ColorX | None = None, label: str | None = None, screen_enabled: bool | None = None, base_resolution: primitives.Float2 | None = None, screen_root: str | Slot | None = None, screen_canvas: str | Canvas | None = None, modal_overlay_manager: str | ModalOverlayManager | None = None, button: str | RadiantDashButton | None = None, icon_texture: str | IAssetProvider[Texture2D] | None = None, grid_container: str | GridContainer | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, icon: str | None = None, active_color: primitives.ColorX | None = None, label: primitives.String | None = None, screen_enabled: primitives.Bool | None = None, base_resolution: primitives.Float2 | None = None, screen_root: str | Slot | None = None, screen_canvas: str | Canvas | None = None, modal_overlay_manager: str | ModalOverlayManager | None = None, button: str | RadiantDashButton | None = None, icon_texture: str | IAssetProvider[Texture2D] | None = None, grid_container: str | GridContainer | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -102,7 +102,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def label(self) -> str | None:
+    def label(self) -> primitives.String | None:
         """The Label field value."""
         member = self.get_member("Label")
         if member is None:
@@ -110,7 +110,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @label.setter
-    def label(self, value: str) -> None:
+    def label(self, value: primitives.String) -> None:
         """Set the Label field value."""
         member = self.get_member("Label")
         if member is not None:
@@ -121,7 +121,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def screen_enabled(self) -> bool | None:
+    def screen_enabled(self) -> primitives.Bool | None:
         """The ScreenEnabled field value."""
         member = self.get_member("ScreenEnabled")
         if member is None:
@@ -129,7 +129,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @screen_enabled.setter
-    def screen_enabled(self, value: bool) -> None:
+    def screen_enabled(self, value: primitives.Bool) -> None:
         """Set the ScreenEnabled field value."""
         member = self.get_member("ScreenEnabled")
         if member is not None:

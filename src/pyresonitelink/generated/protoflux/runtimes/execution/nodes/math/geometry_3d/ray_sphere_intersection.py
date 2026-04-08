@@ -1,7 +1,5 @@
 """Generated component: RaySphereIntersection."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry3D.RaySphereIntersection"
 
-    def __init__(self, center: str | INodeValueOutput[primitives.Float3] | None = None, radius: str | INodeValueOutput[np.float32] | None = None, ray_origin: str | INodeValueOutput[primitives.Float3] | None = None, ray_direction: str | INodeValueOutput[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, center: str | INodeValueOutput[primitives.Float3] | None = None, radius: str | INodeValueOutput[primitives.Float] | None = None, ray_origin: str | INodeValueOutput[primitives.Float3] | None = None, ray_direction: str | INodeValueOutput[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -65,15 +63,15 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def radius(self) -> str | None:
-        """Target ID of the Radius reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Radius reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @radius.setter
-    def radius(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Radius reference by target ID or INodeValueOutput[np.float32] instance."""
+    def radius(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Radius reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):

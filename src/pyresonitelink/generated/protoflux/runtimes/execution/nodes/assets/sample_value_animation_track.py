@@ -1,8 +1,7 @@
 """Generated component: SampleValueAnimationTrack."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -22,14 +21,14 @@ class SampleValueAnimationTrack(GenericComponent[T], INodeValueOutput[T], IExecu
 
     Parameterize with a value type::
 
-        SampleValueAnimationTrack[np.float32]
+        SampleValueAnimationTrack[primitives.Float]
         SampleValueAnimationTrack[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.SampleValueAnimationTrack<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.SampleValueAnimationTrack<>"
 
-    def __init__(self, animation: str | INodeObjectOutput[Animation] | None = None, track_index: str | INodeValueOutput[np.int32] | None = None, time: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, animation: str | INodeObjectOutput[Animation] | None = None, track_index: str | INodeValueOutput[primitives.Int] | None = None, time: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,15 +68,15 @@ class SampleValueAnimationTrack(GenericComponent[T], INodeValueOutput[T], IExecu
 
     @property
     def track_index(self) -> str | None:
-        """Target ID of the TrackIndex reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the TrackIndex reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("TrackIndex")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @track_index.setter
-    def track_index(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the TrackIndex reference by target ID or INodeValueOutput[np.int32] instance."""
+    def track_index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the TrackIndex reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("TrackIndex")
         if isinstance(member, members.Reference):
@@ -90,15 +89,15 @@ class SampleValueAnimationTrack(GenericComponent[T], INodeValueOutput[T], IExecu
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Time reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @time.setter
-    def time(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Time reference by target ID or INodeValueOutput[np.float32] instance."""
+    def time(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Time reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Time")
         if isinstance(member, members.Reference):

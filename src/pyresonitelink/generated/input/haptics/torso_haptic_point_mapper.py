@@ -1,9 +1,8 @@
 """Generated component: TorsoHapticPointMapper."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TorsoHapticPointMapper"
 
-    def __init__(self, priority: np.int32 | None = None, show_debug_visuals: bool | None = None, normalized_start: np.float32 | None = None, normalized_end: np.float32 | None = None, lower_width: np.float32 | None = None, upper_width: np.float32 | None = None, front_offset: np.float32 | None = None, back_offset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, priority: primitives.Int | None = None, show_debug_visuals: primitives.Bool | None = None, normalized_start: primitives.Float | None = None, normalized_end: primitives.Float | None = None, lower_width: primitives.Float | None = None, upper_width: primitives.Float | None = None, front_offset: primitives.Float | None = None, back_offset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -51,7 +50,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
             self.back_offset = back_offset
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -59,7 +58,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:
@@ -70,7 +69,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def show_debug_visuals(self) -> bool | None:
+    def show_debug_visuals(self) -> primitives.Bool | None:
         """The ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
@@ -78,7 +77,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @show_debug_visuals.setter
-    def show_debug_visuals(self, value: bool) -> None:
+    def show_debug_visuals(self, value: primitives.Bool) -> None:
         """Set the ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is not None:
@@ -102,7 +101,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
         self.set_member("BoneChain", value)
 
     @property
-    def normalized_start(self) -> np.float32 | None:
+    def normalized_start(self) -> primitives.Float | None:
         """The NormalizedStart field value."""
         member = self.get_member("NormalizedStart")
         if member is None:
@@ -110,7 +109,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @normalized_start.setter
-    def normalized_start(self, value: np.float32) -> None:
+    def normalized_start(self, value: primitives.Float) -> None:
         """Set the NormalizedStart field value."""
         member = self.get_member("NormalizedStart")
         if member is not None:
@@ -121,7 +120,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def normalized_end(self) -> np.float32 | None:
+    def normalized_end(self) -> primitives.Float | None:
         """The NormalizedEnd field value."""
         member = self.get_member("NormalizedEnd")
         if member is None:
@@ -129,7 +128,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @normalized_end.setter
-    def normalized_end(self, value: np.float32) -> None:
+    def normalized_end(self, value: primitives.Float) -> None:
         """Set the NormalizedEnd field value."""
         member = self.get_member("NormalizedEnd")
         if member is not None:
@@ -140,7 +139,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def lower_width(self) -> np.float32 | None:
+    def lower_width(self) -> primitives.Float | None:
         """The LowerWidth field value."""
         member = self.get_member("LowerWidth")
         if member is None:
@@ -148,7 +147,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @lower_width.setter
-    def lower_width(self, value: np.float32) -> None:
+    def lower_width(self, value: primitives.Float) -> None:
         """Set the LowerWidth field value."""
         member = self.get_member("LowerWidth")
         if member is not None:
@@ -159,7 +158,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def upper_width(self) -> np.float32 | None:
+    def upper_width(self) -> primitives.Float | None:
         """The UpperWidth field value."""
         member = self.get_member("UpperWidth")
         if member is None:
@@ -167,7 +166,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @upper_width.setter
-    def upper_width(self, value: np.float32) -> None:
+    def upper_width(self, value: primitives.Float) -> None:
         """Set the UpperWidth field value."""
         member = self.get_member("UpperWidth")
         if member is not None:
@@ -178,7 +177,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def front_offset(self) -> np.float32 | None:
+    def front_offset(self) -> primitives.Float | None:
         """The FrontOffset field value."""
         member = self.get_member("FrontOffset")
         if member is None:
@@ -186,7 +185,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @front_offset.setter
-    def front_offset(self, value: np.float32) -> None:
+    def front_offset(self, value: primitives.Float) -> None:
         """Set the FrontOffset field value."""
         member = self.get_member("FrontOffset")
         if member is not None:
@@ -197,7 +196,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def back_offset(self) -> np.float32 | None:
+    def back_offset(self) -> primitives.Float | None:
         """The BackOffset field value."""
         member = self.get_member("BackOffset")
         if member is None:
@@ -205,7 +204,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @back_offset.setter
-    def back_offset(self, value: np.float32) -> None:
+    def back_offset(self, value: primitives.Float) -> None:
         """Set the BackOffset field value."""
         member = self.get_member("BackOffset")
         if member is not None:

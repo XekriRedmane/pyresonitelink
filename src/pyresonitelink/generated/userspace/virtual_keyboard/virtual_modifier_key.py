@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.virtual_keyboard import VirtualKeyboard
@@ -17,7 +18,7 @@ class VirtualModifierKey(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VirtualModifierKey"
 
-    def __init__(self, keyboard: str | VirtualKeyboard | None = None, state: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, keyboard: str | VirtualKeyboard | None = None, state: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -53,7 +54,7 @@ class VirtualModifierKey(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def state(self) -> bool | None:
+    def state(self) -> primitives.Bool | None:
         """The State field value."""
         member = self.get_member("State")
         if member is None:
@@ -61,7 +62,7 @@ class VirtualModifierKey(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @state.setter
-    def state(self, value: bool) -> None:
+    def state(self, value: primitives.Bool) -> None:
         """Set the State field value."""
         member = self.get_member("State")
         if member is not None:

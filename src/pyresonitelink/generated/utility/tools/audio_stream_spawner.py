@@ -1,8 +1,7 @@
 """Generated component: AudioStreamSpawner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -18,7 +17,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioStreamSpawner"
 
-    def __init__(self, bitrate_kbps: np.float32 | None = None, device_id: str | None = None, bitrate_string: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, bitrate_kbps: primitives.Float | None = None, device_id: primitives.String | None = None, bitrate_string: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +35,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             self.bitrate_string = bitrate_string
 
     @property
-    def bitrate_kbps(self) -> np.float32 | None:
+    def bitrate_kbps(self) -> primitives.Float | None:
         """The BitrateKbps field value."""
         member = self.get_member("BitrateKbps")
         if member is None:
@@ -44,7 +43,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @bitrate_kbps.setter
-    def bitrate_kbps(self, value: np.float32) -> None:
+    def bitrate_kbps(self, value: primitives.Float) -> None:
         """Set the BitrateKbps field value."""
         member = self.get_member("BitrateKbps")
         if member is not None:
@@ -55,7 +54,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def device_id(self) -> str | None:
+    def device_id(self) -> primitives.String | None:
         """The DeviceID field value."""
         member = self.get_member("DeviceID")
         if member is None:
@@ -63,7 +62,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @device_id.setter
-    def device_id(self, value: str) -> None:
+    def device_id(self, value: primitives.String) -> None:
         """Set the DeviceID field value."""
         member = self.get_member("DeviceID")
         if member is not None:
@@ -74,7 +73,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def bitrate_string(self) -> str | None:
+    def bitrate_string(self) -> primitives.String | None:
         """The _bitrateString field value."""
         member = self.get_member("_bitrateString")
         if member is None:
@@ -82,7 +81,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @bitrate_string.setter
-    def bitrate_string(self, value: str) -> None:
+    def bitrate_string(self, value: primitives.String) -> None:
         """Set the _bitrateString field value."""
         member = self.get_member("_bitrateString")
         if member is not None:

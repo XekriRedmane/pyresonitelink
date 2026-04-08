@@ -1,7 +1,5 @@
 """Generated component: ITexture2DAssetMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ITexture2DAssetMetadata"
 
-    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, size: primitives.Int2 | None = None, width: np.int32 | None = None, height: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, size: primitives.Int2 | None = None, width: primitives.Int | None = None, height: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -82,7 +80,7 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def width(self) -> np.int32 | None:
+    def width(self) -> primitives.Int | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -90,7 +88,7 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.int32) -> None:
+    def width(self, value: primitives.Int) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -101,7 +99,7 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def height(self) -> np.int32 | None:
+    def height(self) -> primitives.Int | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -109,7 +107,7 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.int32) -> None:
+    def height(self, value: primitives.Int) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:

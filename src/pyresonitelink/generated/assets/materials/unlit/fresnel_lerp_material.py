@@ -1,7 +1,5 @@
 """Generated component: FresnelLerpMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FresnelLerpMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, lerp: np.float32 | None = None, lerp_texture: str | IAssetProvider[ITexture2D] | None = None, lerp_texture_scale: primitives.Float2 | None = None, lerp_texture_offset: primitives.Float2 | None = None, lerp_texture_polar_uv: bool | None = None, lerp_texture_polar_power: np.float32 | None = None, exponent0: np.float32 | None = None, exponent1: np.float32 | None = None, gamma_curve: np.float32 | None = None, far_color0: primitives.ColorX | None = None, near_color0: primitives.ColorX | None = None, far_color1: primitives.ColorX | None = None, near_color1: primitives.ColorX | None = None, far_texture0: str | IAssetProvider[ITexture2D] | None = None, near_texture0: str | IAssetProvider[ITexture2D] | None = None, far_texture1: str | IAssetProvider[ITexture2D] | None = None, near_texture1: str | IAssetProvider[ITexture2D] | None = None, normal_map0: str | IAssetProvider[ITexture2D] | None = None, normal_map1: str | IAssetProvider[ITexture2D] | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, lerp: primitives.Float | None = None, lerp_texture: str | IAssetProvider[ITexture2D] | None = None, lerp_texture_scale: primitives.Float2 | None = None, lerp_texture_offset: primitives.Float2 | None = None, lerp_texture_polar_uv: primitives.Bool | None = None, lerp_texture_polar_power: primitives.Float | None = None, exponent0: primitives.Float | None = None, exponent1: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, far_color0: primitives.ColorX | None = None, near_color0: primitives.ColorX | None = None, far_color1: primitives.ColorX | None = None, near_color1: primitives.ColorX | None = None, far_texture0: str | IAssetProvider[ITexture2D] | None = None, near_texture0: str | IAssetProvider[ITexture2D] | None = None, far_texture1: str | IAssetProvider[ITexture2D] | None = None, near_texture1: str | IAssetProvider[ITexture2D] | None = None, normal_map0: str | IAssetProvider[ITexture2D] | None = None, normal_map1: str | IAssetProvider[ITexture2D] | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -103,7 +101,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             self.render_queue = render_queue
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -111,7 +109,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -143,7 +141,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def lerp(self) -> np.float32 | None:
+    def lerp(self) -> primitives.Float | None:
         """The Lerp field value."""
         member = self.get_member("Lerp")
         if member is None:
@@ -151,7 +149,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @lerp.setter
-    def lerp(self, value: np.float32) -> None:
+    def lerp(self, value: primitives.Float) -> None:
         """Set the Lerp field value."""
         member = self.get_member("Lerp")
         if member is not None:
@@ -221,7 +219,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def lerp_texture_polar_uv(self) -> bool | None:
+    def lerp_texture_polar_uv(self) -> primitives.Bool | None:
         """The LerpTexturePolarUV field value."""
         member = self.get_member("LerpTexturePolarUV")
         if member is None:
@@ -229,7 +227,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @lerp_texture_polar_uv.setter
-    def lerp_texture_polar_uv(self, value: bool) -> None:
+    def lerp_texture_polar_uv(self, value: primitives.Bool) -> None:
         """Set the LerpTexturePolarUV field value."""
         member = self.get_member("LerpTexturePolarUV")
         if member is not None:
@@ -240,7 +238,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def lerp_texture_polar_power(self) -> np.float32 | None:
+    def lerp_texture_polar_power(self) -> primitives.Float | None:
         """The LerpTexturePolarPower field value."""
         member = self.get_member("LerpTexturePolarPower")
         if member is None:
@@ -248,7 +246,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @lerp_texture_polar_power.setter
-    def lerp_texture_polar_power(self, value: np.float32) -> None:
+    def lerp_texture_polar_power(self, value: primitives.Float) -> None:
         """Set the LerpTexturePolarPower field value."""
         member = self.get_member("LerpTexturePolarPower")
         if member is not None:
@@ -259,7 +257,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def exponent0(self) -> np.float32 | None:
+    def exponent0(self) -> primitives.Float | None:
         """The Exponent0 field value."""
         member = self.get_member("Exponent0")
         if member is None:
@@ -267,7 +265,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @exponent0.setter
-    def exponent0(self, value: np.float32) -> None:
+    def exponent0(self, value: primitives.Float) -> None:
         """Set the Exponent0 field value."""
         member = self.get_member("Exponent0")
         if member is not None:
@@ -278,7 +276,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def exponent1(self) -> np.float32 | None:
+    def exponent1(self) -> primitives.Float | None:
         """The Exponent1 field value."""
         member = self.get_member("Exponent1")
         if member is None:
@@ -286,7 +284,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @exponent1.setter
-    def exponent1(self, value: np.float32) -> None:
+    def exponent1(self, value: primitives.Float) -> None:
         """Set the Exponent1 field value."""
         member = self.get_member("Exponent1")
         if member is not None:
@@ -297,7 +295,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def gamma_curve(self) -> np.float32 | None:
+    def gamma_curve(self) -> primitives.Float | None:
         """The GammaCurve field value."""
         member = self.get_member("GammaCurve")
         if member is None:
@@ -305,7 +303,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @gamma_curve.setter
-    def gamma_curve(self, value: np.float32) -> None:
+    def gamma_curve(self, value: primitives.Float) -> None:
         """Set the GammaCurve field value."""
         member = self.get_member("GammaCurve")
         if member is not None:
@@ -557,7 +555,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         self.set_member("ZWrite", value)
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -565,7 +563,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -576,7 +574,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -584,7 +582,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -595,7 +593,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -603,7 +601,7 @@ class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

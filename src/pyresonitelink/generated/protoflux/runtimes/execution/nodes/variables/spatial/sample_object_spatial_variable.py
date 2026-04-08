@@ -20,14 +20,14 @@ class SampleObjectSpatialVariable(GenericComponent[T], INodeObjectOutput[T], IEx
 
     Parameterize with a value type::
 
-        SampleObjectSpatialVariable[np.float32]
+        SampleObjectSpatialVariable[primitives.Float]
         SampleObjectSpatialVariable[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.SampleObjectSpatialVariable<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.SampleObjectSpatialVariable<>"
 
-    def __init__(self, point: str | INodeValueOutput[primitives.Float3] | None = None, name: str | INodeObjectOutput[str] | None = None, default_value: str | INodeObjectOutput[T] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, point: str | INodeValueOutput[primitives.Float3] | None = None, name: str | INodeObjectOutput[primitives.String] | None = None, default_value: str | INodeObjectOutput[T] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,15 +67,15 @@ class SampleObjectSpatialVariable(GenericComponent[T], INodeObjectOutput[T], IEx
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @name.setter
-    def name(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Name reference by target ID or INodeObjectOutput[str] instance."""
+    def name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Name reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Name")
         if isinstance(member, members.Reference):

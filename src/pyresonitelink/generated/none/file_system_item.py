@@ -16,7 +16,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FileSystemItem"
 
-    def __init__(self, browser: str | BrowserDialog | None = None, selected_color: primitives.ColorX | None = None, selected_text: primitives.ColorX | None = None, normal_color: primitives.ColorX | None = None, normal_text: primitives.ColorX | None = None, name: str | None = None, base_path: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, browser: str | BrowserDialog | None = None, selected_color: primitives.ColorX | None = None, selected_text: primitives.ColorX | None = None, normal_color: primitives.ColorX | None = None, normal_text: primitives.ColorX | None = None, name: primitives.String | None = None, base_path: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -143,7 +143,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
             )
 
     @property
-    def name(self) -> str | None:
+    def name(self) -> primitives.String | None:
         """The Name field value."""
         member = self.get_member("Name")
         if member is None:
@@ -151,7 +151,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @name.setter
-    def name(self, value: str) -> None:
+    def name(self, value: primitives.String) -> None:
         """Set the Name field value."""
         member = self.get_member("Name")
         if member is not None:
@@ -162,7 +162,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
             )
 
     @property
-    def base_path(self) -> str | None:
+    def base_path(self) -> primitives.String | None:
         """The BasePath field value."""
         member = self.get_member("BasePath")
         if member is None:
@@ -170,7 +170,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @base_path.setter
-    def base_path(self, value: str) -> None:
+    def base_path(self, value: primitives.String) -> None:
         """Set the BasePath field value."""
         member = self.get_member("BasePath")
         if member is not None:

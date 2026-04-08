@@ -18,7 +18,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextEditor"
 
-    def __init__(self, text: str | IText | None = None, undo: bool | None = None, undo_description: str | None = None, auto_caret_color_field: bool | None = None, caret_color_field: primitives.ColorX | None = None, selection_color_field: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, text: str | IText | None = None, undo: primitives.Bool | None = None, undo_description: primitives.String | None = None, auto_caret_color_field: primitives.Bool | None = None, caret_color_field: primitives.ColorX | None = None, selection_color_field: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,7 +66,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
             )
 
     @property
-    def undo(self) -> bool | None:
+    def undo(self) -> primitives.Bool | None:
         """The Undo field value."""
         member = self.get_member("Undo")
         if member is None:
@@ -74,7 +74,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @undo.setter
-    def undo(self, value: bool) -> None:
+    def undo(self, value: primitives.Bool) -> None:
         """Set the Undo field value."""
         member = self.get_member("Undo")
         if member is not None:
@@ -85,7 +85,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
             )
 
     @property
-    def undo_description(self) -> str | None:
+    def undo_description(self) -> primitives.String | None:
         """The UndoDescription field value."""
         member = self.get_member("UndoDescription")
         if member is None:
@@ -93,7 +93,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @undo_description.setter
-    def undo_description(self, value: str) -> None:
+    def undo_description(self, value: primitives.String) -> None:
         """Set the UndoDescription field value."""
         member = self.get_member("UndoDescription")
         if member is not None:
@@ -117,7 +117,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
         self.set_member("FinishHandling", value)
 
     @property
-    def auto_caret_color_field(self) -> bool | None:
+    def auto_caret_color_field(self) -> primitives.Bool | None:
         """The AutoCaretColorField field value."""
         member = self.get_member("AutoCaretColorField")
         if member is None:
@@ -125,7 +125,7 @@ class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_caret_color_field.setter
-    def auto_caret_color_field(self, value: bool) -> None:
+    def auto_caret_color_field(self, value: primitives.Bool) -> None:
         """Set the AutoCaretColorField field value."""
         member = self.get_member("AutoCaretColorField")
         if member is not None:

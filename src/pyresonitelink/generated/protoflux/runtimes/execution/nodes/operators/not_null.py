@@ -19,7 +19,7 @@ class NotNull(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
 
     Parameterize with a value type::
 
-        NotNull[np.float32]
+        NotNull[primitives.Float]
         NotNull[primitives.Float3]
     """
 

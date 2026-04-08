@@ -1,6 +1,7 @@
 """Generated component: PlaybackStateDriver."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iplayable import IPlayable
@@ -17,7 +18,7 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PlaybackStateDriver"
 
-    def __init__(self, source: str | IPlayable | None = None, is_playing: str | IField[bool] | None = None, is_not_playing: str | IField[bool] | None = None, is_paused: str | IField[bool] | None = None, is_stopped: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IPlayable | None = None, is_playing: str | IField[primitives.Bool] | None = None, is_not_playing: str | IField[primitives.Bool] | None = None, is_paused: str | IField[primitives.Bool] | None = None, is_stopped: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,15 +64,15 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_playing(self) -> str | None:
-        """Target ID of the IsPlaying reference (targets IField[bool])."""
+        """Target ID of the IsPlaying reference (targets IField[primitives.Bool])."""
         member = self.get_member("IsPlaying")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_playing.setter
-    def is_playing(self, target: str | IField[bool] | None) -> None:
-        """Set the IsPlaying reference by target ID or IField[bool] instance."""
+    def is_playing(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the IsPlaying reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("IsPlaying")
         if isinstance(member, members.Reference):
@@ -84,15 +85,15 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_not_playing(self) -> str | None:
-        """Target ID of the IsNotPlaying reference (targets IField[bool])."""
+        """Target ID of the IsNotPlaying reference (targets IField[primitives.Bool])."""
         member = self.get_member("IsNotPlaying")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_not_playing.setter
-    def is_not_playing(self, target: str | IField[bool] | None) -> None:
-        """Set the IsNotPlaying reference by target ID or IField[bool] instance."""
+    def is_not_playing(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the IsNotPlaying reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("IsNotPlaying")
         if isinstance(member, members.Reference):
@@ -105,15 +106,15 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_paused(self) -> str | None:
-        """Target ID of the IsPaused reference (targets IField[bool])."""
+        """Target ID of the IsPaused reference (targets IField[primitives.Bool])."""
         member = self.get_member("IsPaused")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_paused.setter
-    def is_paused(self, target: str | IField[bool] | None) -> None:
-        """Set the IsPaused reference by target ID or IField[bool] instance."""
+    def is_paused(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the IsPaused reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("IsPaused")
         if isinstance(member, members.Reference):
@@ -126,15 +127,15 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_stopped(self) -> str | None:
-        """Target ID of the IsStopped reference (targets IField[bool])."""
+        """Target ID of the IsStopped reference (targets IField[primitives.Bool])."""
         member = self.get_member("IsStopped")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_stopped.setter
-    def is_stopped(self, target: str | IField[bool] | None) -> None:
-        """Set the IsStopped reference by target ID or IField[bool] instance."""
+    def is_stopped(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the IsStopped reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("IsStopped")
         if isinstance(member, members.Reference):

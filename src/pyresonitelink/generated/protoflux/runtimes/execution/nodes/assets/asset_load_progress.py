@@ -23,7 +23,7 @@ class AssetLoadProgress(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
 
     Parameterize with a value type::
 
-        AssetLoadProgress[np.float32]
+        AssetLoadProgress[primitives.Float]
         AssetLoadProgress[primitives.Float3]
     """
 

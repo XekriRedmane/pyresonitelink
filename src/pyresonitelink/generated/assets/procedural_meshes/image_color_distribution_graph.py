@@ -1,7 +1,5 @@
 """Generated component: ImageColorDistributionGraph."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ImageColorDistributionGraph"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, texture: str | IAssetProvider[Texture2D] | None = None, max_texture_size: np.int32 | None = None, base_size: np.float32 | None = None, accumulate_size: np.float32 | None = None, max_size: np.float32 | None = None, scale: primitives.Float3 | None = None, alpha_threshold: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, texture: str | IAssetProvider[Texture2D] | None = None, max_texture_size: primitives.Int | None = None, base_size: primitives.Float | None = None, accumulate_size: primitives.Float | None = None, max_size: primitives.Float | None = None, scale: primitives.Float3 | None = None, alpha_threshold: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +59,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
             self.alpha_threshold = alpha_threshold
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -69,7 +67,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -80,7 +78,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -88,7 +86,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -165,7 +163,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
         self.set_member("ColorSpace", value)
 
     @property
-    def max_texture_size(self) -> np.int32 | None:
+    def max_texture_size(self) -> primitives.Int | None:
         """The MaxTextureSize field value."""
         member = self.get_member("MaxTextureSize")
         if member is None:
@@ -173,7 +171,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
         return getattr(member, 'value', None)
 
     @max_texture_size.setter
-    def max_texture_size(self, value: np.int32) -> None:
+    def max_texture_size(self, value: primitives.Int) -> None:
         """Set the MaxTextureSize field value."""
         member = self.get_member("MaxTextureSize")
         if member is not None:
@@ -184,7 +182,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
             )
 
     @property
-    def base_size(self) -> np.float32 | None:
+    def base_size(self) -> primitives.Float | None:
         """The BaseSize field value."""
         member = self.get_member("BaseSize")
         if member is None:
@@ -192,7 +190,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
         return getattr(member, 'value', None)
 
     @base_size.setter
-    def base_size(self, value: np.float32) -> None:
+    def base_size(self, value: primitives.Float) -> None:
         """Set the BaseSize field value."""
         member = self.get_member("BaseSize")
         if member is not None:
@@ -203,7 +201,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
             )
 
     @property
-    def accumulate_size(self) -> np.float32 | None:
+    def accumulate_size(self) -> primitives.Float | None:
         """The AccumulateSize field value."""
         member = self.get_member("AccumulateSize")
         if member is None:
@@ -211,7 +209,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
         return getattr(member, 'value', None)
 
     @accumulate_size.setter
-    def accumulate_size(self, value: np.float32) -> None:
+    def accumulate_size(self, value: primitives.Float) -> None:
         """Set the AccumulateSize field value."""
         member = self.get_member("AccumulateSize")
         if member is not None:
@@ -222,7 +220,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
             )
 
     @property
-    def max_size(self) -> np.float32 | None:
+    def max_size(self) -> primitives.Float | None:
         """The MaxSize field value."""
         member = self.get_member("MaxSize")
         if member is None:
@@ -230,7 +228,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
         return getattr(member, 'value', None)
 
     @max_size.setter
-    def max_size(self, value: np.float32) -> None:
+    def max_size(self, value: primitives.Float) -> None:
         """Set the MaxSize field value."""
         member = self.get_member("MaxSize")
         if member is not None:
@@ -260,7 +258,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
             )
 
     @property
-    def alpha_threshold(self) -> np.float32 | None:
+    def alpha_threshold(self) -> primitives.Float | None:
         """The AlphaThreshold field value."""
         member = self.get_member("AlphaThreshold")
         if member is None:
@@ -268,7 +266,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
         return getattr(member, 'value', None)
 
     @alpha_threshold.setter
-    def alpha_threshold(self, value: np.float32) -> None:
+    def alpha_threshold(self, value: primitives.Float) -> None:
         """Set the AlphaThreshold field value."""
         member = self.get_member("AlphaThreshold")
         if member is not None:

@@ -1,10 +1,10 @@
 """Generated component: TryEnumToInt."""
 
 from typing import Any
-import numpy as np
 
 E = Any
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -22,14 +22,14 @@ class TryEnumToInt(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], 
 
     Parameterize with a value type::
 
-        TryEnumToInt[np.float32]
+        TryEnumToInt[primitives.Float]
         TryEnumToInt[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Enums.TryEnumToInt<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Enums.TryEnumToInt<>"
 
-    def __init__(self, value: str | INodeValueOutput[E] | None = None, fail_value: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | INodeValueOutput[E] | None = None, fail_value: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,15 +66,15 @@ class TryEnumToInt(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], 
 
     @property
     def fail_value(self) -> str | None:
-        """Target ID of the FailValue reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the FailValue reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("FailValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @fail_value.setter
-    def fail_value(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the FailValue reference by target ID or INodeValueOutput[np.int32] instance."""
+    def fail_value(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the FailValue reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("FailValue")
         if isinstance(member, members.Reference):

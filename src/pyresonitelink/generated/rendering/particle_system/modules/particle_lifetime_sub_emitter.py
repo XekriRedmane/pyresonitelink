@@ -1,9 +1,8 @@
 """Generated component: ParticleLifetimeSubEmitter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -18,7 +17,7 @@ class ParticleLifetimeSubEmitter(GeneratedComponent, IParticleSystemModule, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleLifetimeSubEmitter"
 
-    def __init__(self, rate: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, rate: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +29,7 @@ class ParticleLifetimeSubEmitter(GeneratedComponent, IParticleSystemModule, IWor
             self.rate = rate
 
     @property
-    def rate(self) -> np.float32 | None:
+    def rate(self) -> primitives.Float | None:
         """The Rate field value."""
         member = self.get_member("Rate")
         if member is None:
@@ -38,7 +37,7 @@ class ParticleLifetimeSubEmitter(GeneratedComponent, IParticleSystemModule, IWor
         return getattr(member, 'value', None)
 
     @rate.setter
-    def rate(self, value: np.float32) -> None:
+    def rate(self, value: primitives.Float) -> None:
         """Set the Rate field value."""
         member = self.get_member("Rate")
         if member is not None:

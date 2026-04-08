@@ -1,7 +1,5 @@
 """Generated component: TextRenderer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -26,7 +24,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextRenderer"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, font: str | IAssetProvider[FontSet] | None = None, text: str | None = None, parse_rich_text: bool | None = None, null_text: str | None = None, size: np.float32 | None = None, color: primitives.ColorX | None = None, line_height: np.float32 | None = None, bounded: bool | None = None, bounds_size: primitives.Float2 | None = None, mask_pattern: str | None = None, horizontal_auto_size: bool | None = None, vertical_auto_size: bool | None = None, caret_position: np.int32 | None = None, selection_start: np.int32 | None = None, caret_color: primitives.ColorX | None = None, selection_color: primitives.ColorX | None = None, legacy_font_material: str | FontMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, font: str | IAssetProvider[FontSet] | None = None, text: primitives.String | None = None, parse_rich_text: primitives.Bool | None = None, null_text: primitives.String | None = None, size: primitives.Float | None = None, color: primitives.ColorX | None = None, line_height: primitives.Float | None = None, bounded: primitives.Bool | None = None, bounds_size: primitives.Float2 | None = None, mask_pattern: primitives.String | None = None, horizontal_auto_size: primitives.Bool | None = None, vertical_auto_size: primitives.Bool | None = None, caret_position: primitives.Int | None = None, selection_start: primitives.Int | None = None, caret_color: primitives.ColorX | None = None, selection_color: primitives.ColorX | None = None, legacy_font_material: str | FontMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -95,7 +93,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             self.legacy_font_material = legacy_font_material
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -103,7 +101,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -114,7 +112,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -122,7 +120,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -186,7 +184,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def text(self) -> str | None:
+    def text(self) -> primitives.String | None:
         """The Text field value."""
         member = self.get_member("Text")
         if member is None:
@@ -194,7 +192,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @text.setter
-    def text(self, value: str) -> None:
+    def text(self, value: primitives.String) -> None:
         """Set the Text field value."""
         member = self.get_member("Text")
         if member is not None:
@@ -205,7 +203,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def parse_rich_text(self) -> bool | None:
+    def parse_rich_text(self) -> primitives.Bool | None:
         """The ParseRichText field value."""
         member = self.get_member("ParseRichText")
         if member is None:
@@ -213,7 +211,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @parse_rich_text.setter
-    def parse_rich_text(self, value: bool) -> None:
+    def parse_rich_text(self, value: primitives.Bool) -> None:
         """Set the ParseRichText field value."""
         member = self.get_member("ParseRichText")
         if member is not None:
@@ -224,7 +222,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def null_text(self) -> str | None:
+    def null_text(self) -> primitives.String | None:
         """The NullText field value."""
         member = self.get_member("NullText")
         if member is None:
@@ -232,7 +230,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @null_text.setter
-    def null_text(self, value: str) -> None:
+    def null_text(self, value: primitives.String) -> None:
         """Set the NullText field value."""
         member = self.get_member("NullText")
         if member is not None:
@@ -243,7 +241,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def size(self) -> np.float32 | None:
+    def size(self) -> primitives.Float | None:
         """The Size field value."""
         member = self.get_member("Size")
         if member is None:
@@ -251,7 +249,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @size.setter
-    def size(self, value: np.float32) -> None:
+    def size(self, value: primitives.Float) -> None:
         """Set the Size field value."""
         member = self.get_member("Size")
         if member is not None:
@@ -333,7 +331,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         self.set_member("Materials", value)
 
     @property
-    def line_height(self) -> np.float32 | None:
+    def line_height(self) -> primitives.Float | None:
         """The LineHeight field value."""
         member = self.get_member("LineHeight")
         if member is None:
@@ -341,7 +339,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @line_height.setter
-    def line_height(self, value: np.float32) -> None:
+    def line_height(self, value: primitives.Float) -> None:
         """Set the LineHeight field value."""
         member = self.get_member("LineHeight")
         if member is not None:
@@ -352,7 +350,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def bounded(self) -> bool | None:
+    def bounded(self) -> primitives.Bool | None:
         """The Bounded field value."""
         member = self.get_member("Bounded")
         if member is None:
@@ -360,7 +358,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @bounded.setter
-    def bounded(self, value: bool) -> None:
+    def bounded(self, value: primitives.Bool) -> None:
         """Set the Bounded field value."""
         member = self.get_member("Bounded")
         if member is not None:
@@ -403,7 +401,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         self.set_member("BoundsAlignment", value)
 
     @property
-    def mask_pattern(self) -> str | None:
+    def mask_pattern(self) -> primitives.String | None:
         """The MaskPattern field value."""
         member = self.get_member("MaskPattern")
         if member is None:
@@ -411,7 +409,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @mask_pattern.setter
-    def mask_pattern(self, value: str) -> None:
+    def mask_pattern(self, value: primitives.String) -> None:
         """Set the MaskPattern field value."""
         member = self.get_member("MaskPattern")
         if member is not None:
@@ -422,7 +420,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def horizontal_auto_size(self) -> bool | None:
+    def horizontal_auto_size(self) -> primitives.Bool | None:
         """The HorizontalAutoSize field value."""
         member = self.get_member("HorizontalAutoSize")
         if member is None:
@@ -430,7 +428,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @horizontal_auto_size.setter
-    def horizontal_auto_size(self, value: bool) -> None:
+    def horizontal_auto_size(self, value: primitives.Bool) -> None:
         """Set the HorizontalAutoSize field value."""
         member = self.get_member("HorizontalAutoSize")
         if member is not None:
@@ -441,7 +439,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def vertical_auto_size(self) -> bool | None:
+    def vertical_auto_size(self) -> primitives.Bool | None:
         """The VerticalAutoSize field value."""
         member = self.get_member("VerticalAutoSize")
         if member is None:
@@ -449,7 +447,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @vertical_auto_size.setter
-    def vertical_auto_size(self, value: bool) -> None:
+    def vertical_auto_size(self, value: primitives.Bool) -> None:
         """Set the VerticalAutoSize field value."""
         member = self.get_member("VerticalAutoSize")
         if member is not None:
@@ -460,7 +458,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def caret_position(self) -> np.int32 | None:
+    def caret_position(self) -> primitives.Int | None:
         """The CaretPosition field value."""
         member = self.get_member("CaretPosition")
         if member is None:
@@ -468,7 +466,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @caret_position.setter
-    def caret_position(self, value: np.int32) -> None:
+    def caret_position(self, value: primitives.Int) -> None:
         """Set the CaretPosition field value."""
         member = self.get_member("CaretPosition")
         if member is not None:
@@ -479,7 +477,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def selection_start(self) -> np.int32 | None:
+    def selection_start(self) -> primitives.Int | None:
         """The SelectionStart field value."""
         member = self.get_member("SelectionStart")
         if member is None:
@@ -487,7 +485,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
         return getattr(member, 'value', None)
 
     @selection_start.setter
-    def selection_start(self, value: np.int32) -> None:
+    def selection_start(self, value: primitives.Int) -> None:
         """Set the SelectionStart field value."""
         member = self.get_member("SelectionStart")
         if member is not None:

@@ -21,7 +21,7 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FingerPoseStreamManager"
 
-    def __init__(self, user: str | User | None = None, left_is_tracking: str | ValueStream[bool] | None = None, right_is_tracking: str | ValueStream[bool] | None = None, stream: str | MultiValueStream[primitives.FloatQ] | None = None, tracks_metacarpals: bool | None = None, pose_controller: str | UserPoseController | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user: str | User | None = None, left_is_tracking: str | ValueStream[primitives.Bool] | None = None, right_is_tracking: str | ValueStream[primitives.Bool] | None = None, stream: str | MultiValueStream[primitives.FloatQ] | None = None, tracks_metacarpals: primitives.Bool | None = None, pose_controller: str | UserPoseController | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -70,15 +70,15 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
 
     @property
     def left_is_tracking(self) -> str | None:
-        """Target ID of the LeftIsTracking reference (targets ValueStream[bool])."""
+        """Target ID of the LeftIsTracking reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("LeftIsTracking")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @left_is_tracking.setter
-    def left_is_tracking(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the LeftIsTracking reference by target ID or ValueStream[bool] instance."""
+    def left_is_tracking(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the LeftIsTracking reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("LeftIsTracking")
         if isinstance(member, members.Reference):
@@ -91,15 +91,15 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
 
     @property
     def right_is_tracking(self) -> str | None:
-        """Target ID of the RightIsTracking reference (targets ValueStream[bool])."""
+        """Target ID of the RightIsTracking reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("RightIsTracking")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @right_is_tracking.setter
-    def right_is_tracking(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the RightIsTracking reference by target ID or ValueStream[bool] instance."""
+    def right_is_tracking(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the RightIsTracking reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("RightIsTracking")
         if isinstance(member, members.Reference):
@@ -132,7 +132,7 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
             )
 
     @property
-    def tracks_metacarpals(self) -> bool | None:
+    def tracks_metacarpals(self) -> primitives.Bool | None:
         """The TracksMetacarpals field value."""
         member = self.get_member("TracksMetacarpals")
         if member is None:
@@ -140,7 +140,7 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
         return getattr(member, 'value', None)
 
     @tracks_metacarpals.setter
-    def tracks_metacarpals(self, value: bool) -> None:
+    def tracks_metacarpals(self, value: primitives.Bool) -> None:
         """Set the TracksMetacarpals field value."""
         member = self.get_member("TracksMetacarpals")
         if member is not None:

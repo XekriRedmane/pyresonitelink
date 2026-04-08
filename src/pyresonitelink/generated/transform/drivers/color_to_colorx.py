@@ -19,7 +19,7 @@ class ColorToColorX(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorToColorX"
 
-    def __init__(self, source_color: str | IField[primitives.Color] | None = None, source_profile: str | IField[ColorProfile] | None = None, target: str | IField[primitives.ColorX] | None = None, write_back: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source_color: str | IField[primitives.Color] | None = None, source_profile: str | IField[ColorProfile] | None = None, target: str | IField[primitives.ColorX] | None = None, write_back: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -116,7 +116,7 @@ class ColorToColorX(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def write_back(self) -> bool | None:
+    def write_back(self) -> primitives.Bool | None:
         """The WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is None:
@@ -124,7 +124,7 @@ class ColorToColorX(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @write_back.setter
-    def write_back(self, value: bool) -> None:
+    def write_back(self, value: primitives.Bool) -> None:
         """Set the WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is not None:

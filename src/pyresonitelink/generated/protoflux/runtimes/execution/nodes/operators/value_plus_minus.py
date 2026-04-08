@@ -18,7 +18,7 @@ class ValuePlusMinus(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     Parameterize with a value type::
 
-        ValuePlusMinus[np.float32]
+        ValuePlusMinus[primitives.Float]
         ValuePlusMinus[primitives.Float3]
     """
 

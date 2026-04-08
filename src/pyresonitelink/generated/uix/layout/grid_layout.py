@@ -1,7 +1,5 @@
 """Generated component: GridLayout."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.GridLayout"
 
-    def __init__(self, padding_top: np.float32 | None = None, padding_right: np.float32 | None = None, padding_bottom: np.float32 | None = None, padding_left: np.float32 | None = None, cell_size: primitives.Float2 | None = None, spacing: primitives.Float2 | None = None, expand_width_to_fit: bool | None = None, preserve_aspect_on_expand: bool | None = None, align_last_row_individually: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, padding_top: primitives.Float | None = None, padding_right: primitives.Float | None = None, padding_bottom: primitives.Float | None = None, padding_left: primitives.Float | None = None, cell_size: primitives.Float2 | None = None, spacing: primitives.Float2 | None = None, expand_width_to_fit: primitives.Bool | None = None, preserve_aspect_on_expand: primitives.Bool | None = None, align_last_row_individually: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -56,7 +54,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
             self.align_last_row_individually = align_last_row_individually
 
     @property
-    def padding_top(self) -> np.float32 | None:
+    def padding_top(self) -> primitives.Float | None:
         """The PaddingTop field value."""
         member = self.get_member("PaddingTop")
         if member is None:
@@ -64,7 +62,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
         return getattr(member, 'value', None)
 
     @padding_top.setter
-    def padding_top(self, value: np.float32) -> None:
+    def padding_top(self, value: primitives.Float) -> None:
         """Set the PaddingTop field value."""
         member = self.get_member("PaddingTop")
         if member is not None:
@@ -75,7 +73,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
             )
 
     @property
-    def padding_right(self) -> np.float32 | None:
+    def padding_right(self) -> primitives.Float | None:
         """The PaddingRight field value."""
         member = self.get_member("PaddingRight")
         if member is None:
@@ -83,7 +81,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
         return getattr(member, 'value', None)
 
     @padding_right.setter
-    def padding_right(self, value: np.float32) -> None:
+    def padding_right(self, value: primitives.Float) -> None:
         """Set the PaddingRight field value."""
         member = self.get_member("PaddingRight")
         if member is not None:
@@ -94,7 +92,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
             )
 
     @property
-    def padding_bottom(self) -> np.float32 | None:
+    def padding_bottom(self) -> primitives.Float | None:
         """The PaddingBottom field value."""
         member = self.get_member("PaddingBottom")
         if member is None:
@@ -102,7 +100,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
         return getattr(member, 'value', None)
 
     @padding_bottom.setter
-    def padding_bottom(self, value: np.float32) -> None:
+    def padding_bottom(self, value: primitives.Float) -> None:
         """Set the PaddingBottom field value."""
         member = self.get_member("PaddingBottom")
         if member is not None:
@@ -113,7 +111,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
             )
 
     @property
-    def padding_left(self) -> np.float32 | None:
+    def padding_left(self) -> primitives.Float | None:
         """The PaddingLeft field value."""
         member = self.get_member("PaddingLeft")
         if member is None:
@@ -121,7 +119,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
         return getattr(member, 'value', None)
 
     @padding_left.setter
-    def padding_left(self, value: np.float32) -> None:
+    def padding_left(self, value: primitives.Float) -> None:
         """Set the PaddingLeft field value."""
         member = self.get_member("PaddingLeft")
         if member is not None:
@@ -196,7 +194,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
         self.set_member("VerticalAlign", value)
 
     @property
-    def expand_width_to_fit(self) -> bool | None:
+    def expand_width_to_fit(self) -> primitives.Bool | None:
         """The ExpandWidthToFit field value."""
         member = self.get_member("ExpandWidthToFit")
         if member is None:
@@ -204,7 +202,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
         return getattr(member, 'value', None)
 
     @expand_width_to_fit.setter
-    def expand_width_to_fit(self, value: bool) -> None:
+    def expand_width_to_fit(self, value: primitives.Bool) -> None:
         """Set the ExpandWidthToFit field value."""
         member = self.get_member("ExpandWidthToFit")
         if member is not None:
@@ -215,7 +213,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
             )
 
     @property
-    def preserve_aspect_on_expand(self) -> bool | None:
+    def preserve_aspect_on_expand(self) -> primitives.Bool | None:
         """The PreserveAspectOnExpand field value."""
         member = self.get_member("PreserveAspectOnExpand")
         if member is None:
@@ -223,7 +221,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
         return getattr(member, 'value', None)
 
     @preserve_aspect_on_expand.setter
-    def preserve_aspect_on_expand(self, value: bool) -> None:
+    def preserve_aspect_on_expand(self, value: primitives.Bool) -> None:
         """Set the PreserveAspectOnExpand field value."""
         member = self.get_member("PreserveAspectOnExpand")
         if member is not None:
@@ -234,7 +232,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
             )
 
     @property
-    def align_last_row_individually(self) -> bool | None:
+    def align_last_row_individually(self) -> primitives.Bool | None:
         """The AlignLastRowIndividually field value."""
         member = self.get_member("AlignLastRowIndividually")
         if member is None:
@@ -242,7 +240,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
         return getattr(member, 'value', None)
 
     @align_last_row_individually.setter
-    def align_last_row_individually(self, value: bool) -> None:
+    def align_last_row_individually(self, value: primitives.Bool) -> None:
         """Set the AlignLastRowIndividually field value."""
         member = self.get_member("AlignLastRowIndividually")
         if member is not None:

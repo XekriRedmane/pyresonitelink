@@ -1,8 +1,7 @@
 """Generated component: AudioDeviceVolume."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -17,7 +16,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioDeviceVolume"
 
-    def __init__(self, audio_device_index: np.int32 | None = None, volume: np.float32 | None = None, normalized_volume: np.float32 | None = None, smoothing: np.float32 | None = None, power: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, audio_device_index: primitives.Int | None = None, volume: primitives.Float | None = None, normalized_volume: primitives.Float | None = None, smoothing: primitives.Float | None = None, power: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +40,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.power = power
 
     @property
-    def audio_device_index(self) -> np.int32 | None:
+    def audio_device_index(self) -> primitives.Int | None:
         """The AudioDeviceIndex field value."""
         member = self.get_member("AudioDeviceIndex")
         if member is None:
@@ -49,7 +48,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @audio_device_index.setter
-    def audio_device_index(self, value: np.int32) -> None:
+    def audio_device_index(self, value: primitives.Int) -> None:
         """Set the AudioDeviceIndex field value."""
         member = self.get_member("AudioDeviceIndex")
         if member is not None:
@@ -60,7 +59,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def volume(self) -> np.float32 | None:
+    def volume(self) -> primitives.Float | None:
         """The Volume field value."""
         member = self.get_member("Volume")
         if member is None:
@@ -68,7 +67,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @volume.setter
-    def volume(self, value: np.float32) -> None:
+    def volume(self, value: primitives.Float) -> None:
         """Set the Volume field value."""
         member = self.get_member("Volume")
         if member is not None:
@@ -79,7 +78,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def normalized_volume(self) -> np.float32 | None:
+    def normalized_volume(self) -> primitives.Float | None:
         """The NormalizedVolume field value."""
         member = self.get_member("NormalizedVolume")
         if member is None:
@@ -87,7 +86,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @normalized_volume.setter
-    def normalized_volume(self, value: np.float32) -> None:
+    def normalized_volume(self, value: primitives.Float) -> None:
         """Set the NormalizedVolume field value."""
         member = self.get_member("NormalizedVolume")
         if member is not None:
@@ -98,7 +97,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def smoothing(self) -> np.float32 | None:
+    def smoothing(self) -> primitives.Float | None:
         """The Smoothing field value."""
         member = self.get_member("Smoothing")
         if member is None:
@@ -106,7 +105,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @smoothing.setter
-    def smoothing(self, value: np.float32) -> None:
+    def smoothing(self, value: primitives.Float) -> None:
         """Set the Smoothing field value."""
         member = self.get_member("Smoothing")
         if member is not None:
@@ -117,7 +116,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def power(self) -> np.float32 | None:
+    def power(self) -> primitives.Float | None:
         """The Power field value."""
         member = self.get_member("Power")
         if member is None:
@@ -125,7 +124,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @power.setter
-    def power(self, value: np.float32) -> None:
+    def power(self, value: primitives.Float) -> None:
         """Set the Power field value."""
         member = self.get_member("Power")
         if member is not None:

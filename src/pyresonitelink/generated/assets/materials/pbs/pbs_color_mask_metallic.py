@@ -1,7 +1,5 @@
 """Generated component: PBS_ColorMaskMetallic."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_ColorMaskMetallic"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, color_mask_scale: primitives.Float2 | None = None, color_mask_offset: primitives.Float2 | None = None, color_mask: str | IAssetProvider[ITexture2D] | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_color2: primitives.ColorX | None = None, albedo_color3: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_color2: primitives.ColorX | None = None, emissive_color3: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, transparent: bool | None = None, force_zwrite: bool | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, metallic: np.float32 | None = None, smoothness: np.float32 | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, color_mask_scale: primitives.Float2 | None = None, color_mask_offset: primitives.Float2 | None = None, color_mask: str | IAssetProvider[ITexture2D] | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_color2: primitives.ColorX | None = None, albedo_color3: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_color2: primitives.ColorX | None = None, emissive_color3: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, transparent: primitives.Bool | None = None, force_zwrite: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -121,7 +119,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             self.zwrite = zwrite
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -129,7 +127,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -473,7 +471,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -481,7 +479,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -513,7 +511,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def transparent(self) -> bool | None:
+    def transparent(self) -> primitives.Bool | None:
         """The Transparent field value."""
         member = self.get_member("Transparent")
         if member is None:
@@ -521,7 +519,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @transparent.setter
-    def transparent(self, value: bool) -> None:
+    def transparent(self, value: primitives.Bool) -> None:
         """Set the Transparent field value."""
         member = self.get_member("Transparent")
         if member is not None:
@@ -532,7 +530,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def force_zwrite(self) -> bool | None:
+    def force_zwrite(self) -> primitives.Bool | None:
         """The ForceZWrite field value."""
         member = self.get_member("ForceZWrite")
         if member is None:
@@ -540,7 +538,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @force_zwrite.setter
-    def force_zwrite(self, value: bool) -> None:
+    def force_zwrite(self, value: primitives.Bool) -> None:
         """Set the ForceZWrite field value."""
         member = self.get_member("ForceZWrite")
         if member is not None:
@@ -551,7 +549,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -559,7 +557,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -570,7 +568,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -578,7 +576,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -589,7 +587,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -597,7 +595,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -608,7 +606,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def metallic(self) -> np.float32 | None:
+    def metallic(self) -> primitives.Float | None:
         """The Metallic field value."""
         member = self.get_member("Metallic")
         if member is None:
@@ -616,7 +614,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @metallic.setter
-    def metallic(self, value: np.float32) -> None:
+    def metallic(self, value: primitives.Float) -> None:
         """Set the Metallic field value."""
         member = self.get_member("Metallic")
         if member is not None:
@@ -627,7 +625,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def smoothness(self) -> np.float32 | None:
+    def smoothness(self) -> primitives.Float | None:
         """The Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is None:
@@ -635,7 +633,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
         return getattr(member, 'value', None)
 
     @smoothness.setter
-    def smoothness(self, value: np.float32) -> None:
+    def smoothness(self, value: primitives.Float) -> None:
         """Set the Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is not None:

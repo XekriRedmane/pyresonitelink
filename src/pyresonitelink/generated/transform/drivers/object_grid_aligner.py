@@ -1,7 +1,5 @@
 """Generated component: ObjectGridAligner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class ObjectGridAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ObjectGridAligner"
 
-    def __init__(self, auto_add_children: bool | None = None, items_per_row: np.int32 | None = None, cell_size: primitives.Float2 | None = None, lerp_speed: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_add_children: primitives.Bool | None = None, items_per_row: primitives.Int | None = None, cell_size: primitives.Float2 | None = None, lerp_speed: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +38,7 @@ class ObjectGridAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.lerp_speed = lerp_speed
 
     @property
-    def auto_add_children(self) -> bool | None:
+    def auto_add_children(self) -> primitives.Bool | None:
         """The AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is None:
@@ -48,7 +46,7 @@ class ObjectGridAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_add_children.setter
-    def auto_add_children(self, value: bool) -> None:
+    def auto_add_children(self, value: primitives.Bool) -> None:
         """Set the AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is not None:
@@ -72,7 +70,7 @@ class ObjectGridAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("AutoAddIgnoreTags", value)
 
     @property
-    def items_per_row(self) -> np.int32 | None:
+    def items_per_row(self) -> primitives.Int | None:
         """The ItemsPerRow field value."""
         member = self.get_member("ItemsPerRow")
         if member is None:
@@ -80,7 +78,7 @@ class ObjectGridAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @items_per_row.setter
-    def items_per_row(self, value: np.int32) -> None:
+    def items_per_row(self, value: primitives.Int) -> None:
         """Set the ItemsPerRow field value."""
         member = self.get_member("ItemsPerRow")
         if member is not None:
@@ -110,7 +108,7 @@ class ObjectGridAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def lerp_speed(self) -> np.float32 | None:
+    def lerp_speed(self) -> primitives.Float | None:
         """The LerpSpeed field value."""
         member = self.get_member("LerpSpeed")
         if member is None:
@@ -118,7 +116,7 @@ class ObjectGridAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @lerp_speed.setter
-    def lerp_speed(self, value: np.float32) -> None:
+    def lerp_speed(self, value: primitives.Float) -> None:
         """Set the LerpSpeed field value."""
         member = self.get_member("LerpSpeed")
         if member is not None:

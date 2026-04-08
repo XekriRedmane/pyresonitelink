@@ -23,7 +23,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlicingVolumeVisualizer"
 
-    def __init__(self, material: str | VolumeUnlitMaterial | None = None, auto_scale: bool | None = None, renderer: str | MeshRenderer | None = None, mesh: str | BoxMesh | None = None, collider: str | BoxCollider | None = None, scale: str | IField[primitives.Float3] | None = None, slice_planes: str | SyncList[SlicePlane] | None = None, highlights: str | SyncList[Highlight] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, material: str | VolumeUnlitMaterial | None = None, auto_scale: primitives.Bool | None = None, renderer: str | MeshRenderer | None = None, mesh: str | BoxMesh | None = None, collider: str | BoxCollider | None = None, scale: str | IField[primitives.Float3] | None = None, slice_planes: str | SyncList[SlicePlane] | None = None, highlights: str | SyncList[Highlight] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -77,7 +77,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def auto_scale(self) -> bool | None:
+    def auto_scale(self) -> primitives.Bool | None:
         """The AutoScale field value."""
         member = self.get_member("AutoScale")
         if member is None:
@@ -85,7 +85,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @auto_scale.setter
-    def auto_scale(self, value: bool) -> None:
+    def auto_scale(self, value: primitives.Bool) -> None:
         """Set the AutoScale field value."""
         member = self.get_member("AutoScale")
         if member is not None:

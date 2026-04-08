@@ -1,7 +1,5 @@
 """Generated component: Facet."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Facet"
 
-    def __init__(self, min_width: np.float32 | None = None, max_width: np.float32 | None = None, min_height: np.float32 | None = None, max_height: np.float32 | None = None, last_placed_size: primitives.Float2 | None = None, is_standalone: bool | None = None, canvas: str | Canvas | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_width: primitives.Float | None = None, max_width: primitives.Float | None = None, min_height: primitives.Float | None = None, max_height: primitives.Float | None = None, last_placed_size: primitives.Float2 | None = None, is_standalone: primitives.Bool | None = None, canvas: str | Canvas | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -51,7 +49,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
             self.canvas = canvas
 
     @property
-    def min_width(self) -> np.float32 | None:
+    def min_width(self) -> primitives.Float | None:
         """The MinWidth field value."""
         member = self.get_member("MinWidth")
         if member is None:
@@ -59,7 +57,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
         return getattr(member, 'value', None)
 
     @min_width.setter
-    def min_width(self, value: np.float32) -> None:
+    def min_width(self, value: primitives.Float) -> None:
         """Set the MinWidth field value."""
         member = self.get_member("MinWidth")
         if member is not None:
@@ -70,7 +68,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
             )
 
     @property
-    def max_width(self) -> np.float32 | None:
+    def max_width(self) -> primitives.Float | None:
         """The MaxWidth field value."""
         member = self.get_member("MaxWidth")
         if member is None:
@@ -78,7 +76,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
         return getattr(member, 'value', None)
 
     @max_width.setter
-    def max_width(self, value: np.float32) -> None:
+    def max_width(self, value: primitives.Float) -> None:
         """Set the MaxWidth field value."""
         member = self.get_member("MaxWidth")
         if member is not None:
@@ -89,7 +87,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
             )
 
     @property
-    def min_height(self) -> np.float32 | None:
+    def min_height(self) -> primitives.Float | None:
         """The MinHeight field value."""
         member = self.get_member("MinHeight")
         if member is None:
@@ -97,7 +95,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
         return getattr(member, 'value', None)
 
     @min_height.setter
-    def min_height(self, value: np.float32) -> None:
+    def min_height(self, value: primitives.Float) -> None:
         """Set the MinHeight field value."""
         member = self.get_member("MinHeight")
         if member is not None:
@@ -108,7 +106,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
             )
 
     @property
-    def max_height(self) -> np.float32 | None:
+    def max_height(self) -> primitives.Float | None:
         """The MaxHeight field value."""
         member = self.get_member("MaxHeight")
         if member is None:
@@ -116,7 +114,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
         return getattr(member, 'value', None)
 
     @max_height.setter
-    def max_height(self, value: np.float32) -> None:
+    def max_height(self, value: primitives.Float) -> None:
         """Set the MaxHeight field value."""
         member = self.get_member("MaxHeight")
         if member is not None:
@@ -172,7 +170,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
         self.set_member("AllowedAspectRatios", value)
 
     @property
-    def is_standalone(self) -> bool | None:
+    def is_standalone(self) -> primitives.Bool | None:
         """The IsStandalone field value."""
         member = self.get_member("IsStandalone")
         if member is None:
@@ -180,7 +178,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
         return getattr(member, 'value', None)
 
     @is_standalone.setter
-    def is_standalone(self, value: bool) -> None:
+    def is_standalone(self, value: primitives.Bool) -> None:
         """Set the IsStandalone field value."""
         member = self.get_member("IsStandalone")
         if member is not None:

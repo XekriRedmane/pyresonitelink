@@ -1,7 +1,5 @@
 """Generated component: PBS_Specular."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_Specular"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, detail_texture_scale: primitives.Float2 | None = None, detail_texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, height_map: str | IAssetProvider[ITexture2D] | None = None, height_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, detail_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, detail_normal_map: str | IAssetProvider[ITexture2D] | None = None, detail_normal_scale: np.float32 | None = None, alpha_cutoff: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, detail_texture_scale: primitives.Float2 | None = None, detail_texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, height_map: str | IAssetProvider[ITexture2D] | None = None, height_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, detail_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, detail_normal_map: str | IAssetProvider[ITexture2D] | None = None, detail_normal_scale: primitives.Float | None = None, alpha_cutoff: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -105,7 +103,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
             self.specular_map = specular_map
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -113,7 +111,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -301,7 +299,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -309,7 +307,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -362,7 +360,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
             )
 
     @property
-    def height_scale(self) -> np.float32 | None:
+    def height_scale(self) -> primitives.Float | None:
         """The HeightScale field value."""
         member = self.get_member("HeightScale")
         if member is None:
@@ -370,7 +368,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
         return getattr(member, 'value', None)
 
     @height_scale.setter
-    def height_scale(self, value: np.float32) -> None:
+    def height_scale(self, value: primitives.Float) -> None:
         """Set the HeightScale field value."""
         member = self.get_member("HeightScale")
         if member is not None:
@@ -444,7 +442,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
             )
 
     @property
-    def detail_normal_scale(self) -> np.float32 | None:
+    def detail_normal_scale(self) -> primitives.Float | None:
         """The DetailNormalScale field value."""
         member = self.get_member("DetailNormalScale")
         if member is None:
@@ -452,7 +450,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
         return getattr(member, 'value', None)
 
     @detail_normal_scale.setter
-    def detail_normal_scale(self, value: np.float32) -> None:
+    def detail_normal_scale(self, value: primitives.Float) -> None:
         """Set the DetailNormalScale field value."""
         member = self.get_member("DetailNormalScale")
         if member is not None:
@@ -476,7 +474,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
         self.set_member("BlendMode", value)
 
     @property
-    def alpha_cutoff(self) -> np.float32 | None:
+    def alpha_cutoff(self) -> primitives.Float | None:
         """The AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is None:
@@ -484,7 +482,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
         return getattr(member, 'value', None)
 
     @alpha_cutoff.setter
-    def alpha_cutoff(self, value: np.float32) -> None:
+    def alpha_cutoff(self, value: primitives.Float) -> None:
         """Set the AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is not None:
@@ -495,7 +493,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -503,7 +501,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -514,7 +512,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -522,7 +520,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -533,7 +531,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -541,7 +539,7 @@ class PBS_Specular(GeneratedComponent, IPBS_Specular, ICommonMaterial, ICustomIn
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

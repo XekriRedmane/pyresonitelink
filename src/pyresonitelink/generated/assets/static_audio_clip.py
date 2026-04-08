@@ -1,9 +1,8 @@
 """Generated component: StaticAudioClip."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -86,7 +85,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             resolink, "Normalize", {}, debug,
         )
 
-    async def adjust_volume(self, resolink: protocols.ResoniteLinkClient, ratio: np.float32, debug: bool = False) -> dict:
+    async def adjust_volume(self, resolink: protocols.ResoniteLinkClient, ratio: primitives.Float, debug: bool = False) -> dict:
         """Call the AdjustVolume sync method.
 
         Args:
@@ -151,7 +150,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             resolink, "TrimEndSilence", {}, debug,
         )
 
-    async def trim_start(self, resolink: protocols.ResoniteLinkClient, duration: np.float32, debug: bool = False) -> dict:
+    async def trim_start(self, resolink: protocols.ResoniteLinkClient, duration: primitives.Float, debug: bool = False) -> dict:
         """Call the TrimStart sync method.
 
         Args:
@@ -166,7 +165,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             resolink, "TrimStart", {"duration": duration}, debug,
         )
 
-    async def trim_end(self, resolink: protocols.ResoniteLinkClient, duration: np.float32, debug: bool = False) -> dict:
+    async def trim_end(self, resolink: protocols.ResoniteLinkClient, duration: primitives.Float, debug: bool = False) -> dict:
         """Call the TrimEnd sync method.
 
         Args:
@@ -181,7 +180,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             resolink, "TrimEnd", {"duration": duration}, debug,
         )
 
-    async def fade_in(self, resolink: protocols.ResoniteLinkClient, duration: np.float32, debug: bool = False) -> dict:
+    async def fade_in(self, resolink: protocols.ResoniteLinkClient, duration: primitives.Float, debug: bool = False) -> dict:
         """Call the FadeIn sync method.
 
         Args:
@@ -196,7 +195,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             resolink, "FadeIn", {"duration": duration}, debug,
         )
 
-    async def fade_out(self, resolink: protocols.ResoniteLinkClient, duration: np.float32, debug: bool = False) -> dict:
+    async def fade_out(self, resolink: protocols.ResoniteLinkClient, duration: primitives.Float, debug: bool = False) -> dict:
         """Call the FadeOut sync method.
 
         Args:
@@ -211,7 +210,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             resolink, "FadeOut", {"duration": duration}, debug,
         )
 
-    async def make_fade_loop(self, resolink: protocols.ResoniteLinkClient, duration: np.float32, debug: bool = False) -> dict:
+    async def make_fade_loop(self, resolink: protocols.ResoniteLinkClient, duration: primitives.Float, debug: bool = False) -> dict:
         """Call the MakeFadeLoop sync method.
 
         Args:

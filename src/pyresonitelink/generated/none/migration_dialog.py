@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -20,7 +21,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MigrationDialog"
 
-    def __init__(self, username_field: str | TextField | None = None, password_field: str | TextField | None = None, migrate_favorites: bool | None = None, overwrite_favorites: bool | None = None, preserve_old_home: bool | None = None, migrate_contacts: bool | None = None, migrate_message_history: bool | None = None, migrate_records: bool | None = None, migrate_cloud_variables: bool | None = None, migrated_cloud_variable_definitions: bool | None = None, migrate_groups: bool | None = None, groups_root: str | Slot | None = None, groups_message: str | Text | None = None, load_groups_button: str | Button | None = None, swap_region: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, username_field: str | TextField | None = None, password_field: str | TextField | None = None, migrate_favorites: primitives.Bool | None = None, overwrite_favorites: primitives.Bool | None = None, preserve_old_home: primitives.Bool | None = None, migrate_contacts: primitives.Bool | None = None, migrate_message_history: primitives.Bool | None = None, migrate_records: primitives.Bool | None = None, migrate_cloud_variables: primitives.Bool | None = None, migrated_cloud_variable_definitions: primitives.Bool | None = None, migrate_groups: primitives.Bool | None = None, groups_root: str | Slot | None = None, groups_message: str | Text | None = None, load_groups_button: str | Button | None = None, swap_region: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -116,7 +117,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def migrate_favorites(self) -> bool | None:
+    def migrate_favorites(self) -> primitives.Bool | None:
         """The _migrateFavorites field value."""
         member = self.get_member("_migrateFavorites")
         if member is None:
@@ -124,7 +125,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @migrate_favorites.setter
-    def migrate_favorites(self, value: bool) -> None:
+    def migrate_favorites(self, value: primitives.Bool) -> None:
         """Set the _migrateFavorites field value."""
         member = self.get_member("_migrateFavorites")
         if member is not None:
@@ -135,7 +136,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def overwrite_favorites(self) -> bool | None:
+    def overwrite_favorites(self) -> primitives.Bool | None:
         """The _overwriteFavorites field value."""
         member = self.get_member("_overwriteFavorites")
         if member is None:
@@ -143,7 +144,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @overwrite_favorites.setter
-    def overwrite_favorites(self, value: bool) -> None:
+    def overwrite_favorites(self, value: primitives.Bool) -> None:
         """Set the _overwriteFavorites field value."""
         member = self.get_member("_overwriteFavorites")
         if member is not None:
@@ -154,7 +155,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def preserve_old_home(self) -> bool | None:
+    def preserve_old_home(self) -> primitives.Bool | None:
         """The _preserveOldHome field value."""
         member = self.get_member("_preserveOldHome")
         if member is None:
@@ -162,7 +163,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @preserve_old_home.setter
-    def preserve_old_home(self, value: bool) -> None:
+    def preserve_old_home(self, value: primitives.Bool) -> None:
         """Set the _preserveOldHome field value."""
         member = self.get_member("_preserveOldHome")
         if member is not None:
@@ -173,7 +174,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def migrate_contacts(self) -> bool | None:
+    def migrate_contacts(self) -> primitives.Bool | None:
         """The _migrateContacts field value."""
         member = self.get_member("_migrateContacts")
         if member is None:
@@ -181,7 +182,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @migrate_contacts.setter
-    def migrate_contacts(self, value: bool) -> None:
+    def migrate_contacts(self, value: primitives.Bool) -> None:
         """Set the _migrateContacts field value."""
         member = self.get_member("_migrateContacts")
         if member is not None:
@@ -192,7 +193,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def migrate_message_history(self) -> bool | None:
+    def migrate_message_history(self) -> primitives.Bool | None:
         """The _migrateMessageHistory field value."""
         member = self.get_member("_migrateMessageHistory")
         if member is None:
@@ -200,7 +201,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @migrate_message_history.setter
-    def migrate_message_history(self, value: bool) -> None:
+    def migrate_message_history(self, value: primitives.Bool) -> None:
         """Set the _migrateMessageHistory field value."""
         member = self.get_member("_migrateMessageHistory")
         if member is not None:
@@ -211,7 +212,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def migrate_records(self) -> bool | None:
+    def migrate_records(self) -> primitives.Bool | None:
         """The _migrateRecords field value."""
         member = self.get_member("_migrateRecords")
         if member is None:
@@ -219,7 +220,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @migrate_records.setter
-    def migrate_records(self, value: bool) -> None:
+    def migrate_records(self, value: primitives.Bool) -> None:
         """Set the _migrateRecords field value."""
         member = self.get_member("_migrateRecords")
         if member is not None:
@@ -230,7 +231,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def migrate_cloud_variables(self) -> bool | None:
+    def migrate_cloud_variables(self) -> primitives.Bool | None:
         """The _migrateCloudVariables field value."""
         member = self.get_member("_migrateCloudVariables")
         if member is None:
@@ -238,7 +239,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @migrate_cloud_variables.setter
-    def migrate_cloud_variables(self, value: bool) -> None:
+    def migrate_cloud_variables(self, value: primitives.Bool) -> None:
         """Set the _migrateCloudVariables field value."""
         member = self.get_member("_migrateCloudVariables")
         if member is not None:
@@ -249,7 +250,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def migrated_cloud_variable_definitions(self) -> bool | None:
+    def migrated_cloud_variable_definitions(self) -> primitives.Bool | None:
         """The _migratedCloudVariableDefinitions field value."""
         member = self.get_member("_migratedCloudVariableDefinitions")
         if member is None:
@@ -257,7 +258,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @migrated_cloud_variable_definitions.setter
-    def migrated_cloud_variable_definitions(self, value: bool) -> None:
+    def migrated_cloud_variable_definitions(self, value: primitives.Bool) -> None:
         """Set the _migratedCloudVariableDefinitions field value."""
         member = self.get_member("_migratedCloudVariableDefinitions")
         if member is not None:
@@ -268,7 +269,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def migrate_groups(self) -> bool | None:
+    def migrate_groups(self) -> primitives.Bool | None:
         """The _migrateGroups field value."""
         member = self.get_member("_migrateGroups")
         if member is None:
@@ -276,7 +277,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @migrate_groups.setter
-    def migrate_groups(self, value: bool) -> None:
+    def migrate_groups(self, value: primitives.Bool) -> None:
         """Set the _migrateGroups field value."""
         member = self.get_member("_migrateGroups")
         if member is not None:
@@ -383,7 +384,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UIX.SlideSwapRegion'),
             )
 
-    async def set_overwrite(self, resolink: protocols.ResoniteLinkClient, button: str, data: str, overwrite: bool, debug: bool = False) -> dict:
+    async def set_overwrite(self, resolink: protocols.ResoniteLinkClient, button: str, data: str, overwrite: primitives.Bool, debug: bool = False) -> dict:
         """Call the SetOverwrite sync method.
 
         Args:
@@ -400,7 +401,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             resolink, "SetOverwrite", {"button": button, "data": data, "overwrite": overwrite}, debug,
         )
 
-    async def set_preserve_home(self, resolink: protocols.ResoniteLinkClient, button: str, data: str, overwrite: bool, debug: bool = False) -> dict:
+    async def set_preserve_home(self, resolink: protocols.ResoniteLinkClient, button: str, data: str, overwrite: primitives.Bool, debug: bool = False) -> dict:
         """Call the SetPreserveHome sync method.
 
         Args:

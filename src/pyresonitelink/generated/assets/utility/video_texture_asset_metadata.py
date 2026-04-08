@@ -1,7 +1,5 @@
 """Generated component: VideoTextureAssetMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VideoTextureAssetMetadata"
 
-    def __init__(self, texture: str | IAssetProvider[VideoTexture] | None = None, size: primitives.Int2 | None = None, width: np.int32 | None = None, height: np.int32 | None = None, has_alpha: bool | None = None, length: np.float64 | None = None, playback_engine: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[VideoTexture] | None = None, size: primitives.Int2 | None = None, width: primitives.Int | None = None, height: primitives.Int | None = None, has_alpha: primitives.Bool | None = None, length: primitives.Double | None = None, playback_engine: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -91,7 +89,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def width(self) -> np.int32 | None:
+    def width(self) -> primitives.Int | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -99,7 +97,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.int32) -> None:
+    def width(self, value: primitives.Int) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -110,7 +108,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def height(self) -> np.int32 | None:
+    def height(self) -> primitives.Int | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -118,7 +116,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.int32) -> None:
+    def height(self, value: primitives.Int) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -129,7 +127,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def has_alpha(self) -> bool | None:
+    def has_alpha(self) -> primitives.Bool | None:
         """The HasAlpha field value."""
         member = self.get_member("HasAlpha")
         if member is None:
@@ -137,7 +135,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @has_alpha.setter
-    def has_alpha(self, value: bool) -> None:
+    def has_alpha(self, value: primitives.Bool) -> None:
         """Set the HasAlpha field value."""
         member = self.get_member("HasAlpha")
         if member is not None:
@@ -148,7 +146,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def length(self) -> np.float64 | None:
+    def length(self) -> primitives.Double | None:
         """The Length field value."""
         member = self.get_member("Length")
         if member is None:
@@ -156,7 +154,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @length.setter
-    def length(self, value: np.float64) -> None:
+    def length(self, value: primitives.Double) -> None:
         """Set the Length field value."""
         member = self.get_member("Length")
         if member is not None:
@@ -167,7 +165,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def playback_engine(self) -> str | None:
+    def playback_engine(self) -> primitives.String | None:
         """The PlaybackEngine field value."""
         member = self.get_member("PlaybackEngine")
         if member is None:
@@ -175,7 +173,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @playback_engine.setter
-    def playback_engine(self, value: str) -> None:
+    def playback_engine(self, value: primitives.String) -> None:
         """Set the PlaybackEngine field value."""
         member = self.get_member("PlaybackEngine")
         if member is not None:

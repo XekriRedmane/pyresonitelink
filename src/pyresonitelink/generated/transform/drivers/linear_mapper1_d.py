@@ -1,9 +1,8 @@
 """Generated component: LinearMapper1D."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ivalue import IValue
@@ -20,7 +19,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LinearMapper1D"
 
-    def __init__(self, source: str | IValue[np.float32] | None = None, target: str | IField[np.float32] | None = None, source_min: np.float32 | None = None, source_max: np.float32 | None = None, target_min: np.float32 | None = None, target_max: np.float32 | None = None, allow_reverse_mapping: bool | None = None, clamp: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IValue[primitives.Float] | None = None, target: str | IField[primitives.Float] | None = None, source_min: primitives.Float | None = None, source_max: primitives.Float | None = None, target_min: primitives.Float | None = None, target_max: primitives.Float | None = None, allow_reverse_mapping: primitives.Bool | None = None, clamp: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,15 +53,15 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IValue[np.float32])."""
+        """Target ID of the Source reference (targets IValue[primitives.Float])."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @source.setter
-    def source(self, target: str | IValue[np.float32] | None) -> None:
-        """Set the Source reference by target ID or IValue[np.float32] instance."""
+    def source(self, target: str | IValue[primitives.Float] | None) -> None:
+        """Set the Source reference by target ID or IValue[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
@@ -75,15 +74,15 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[np.float32])."""
+        """Target ID of the Target reference (targets IField[primitives.Float])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Target reference by target ID or IField[np.float32] instance."""
+    def target(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -95,7 +94,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def source_min(self) -> np.float32 | None:
+    def source_min(self) -> primitives.Float | None:
         """The SourceMin field value."""
         member = self.get_member("SourceMin")
         if member is None:
@@ -103,7 +102,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @source_min.setter
-    def source_min(self, value: np.float32) -> None:
+    def source_min(self, value: primitives.Float) -> None:
         """Set the SourceMin field value."""
         member = self.get_member("SourceMin")
         if member is not None:
@@ -114,7 +113,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def source_max(self) -> np.float32 | None:
+    def source_max(self) -> primitives.Float | None:
         """The SourceMax field value."""
         member = self.get_member("SourceMax")
         if member is None:
@@ -122,7 +121,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @source_max.setter
-    def source_max(self, value: np.float32) -> None:
+    def source_max(self, value: primitives.Float) -> None:
         """Set the SourceMax field value."""
         member = self.get_member("SourceMax")
         if member is not None:
@@ -133,7 +132,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def target_min(self) -> np.float32 | None:
+    def target_min(self) -> primitives.Float | None:
         """The TargetMin field value."""
         member = self.get_member("TargetMin")
         if member is None:
@@ -141,7 +140,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @target_min.setter
-    def target_min(self, value: np.float32) -> None:
+    def target_min(self, value: primitives.Float) -> None:
         """Set the TargetMin field value."""
         member = self.get_member("TargetMin")
         if member is not None:
@@ -152,7 +151,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def target_max(self) -> np.float32 | None:
+    def target_max(self) -> primitives.Float | None:
         """The TargetMax field value."""
         member = self.get_member("TargetMax")
         if member is None:
@@ -160,7 +159,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @target_max.setter
-    def target_max(self, value: np.float32) -> None:
+    def target_max(self, value: primitives.Float) -> None:
         """Set the TargetMax field value."""
         member = self.get_member("TargetMax")
         if member is not None:
@@ -171,7 +170,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def allow_reverse_mapping(self) -> bool | None:
+    def allow_reverse_mapping(self) -> primitives.Bool | None:
         """The AllowReverseMapping field value."""
         member = self.get_member("AllowReverseMapping")
         if member is None:
@@ -179,7 +178,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @allow_reverse_mapping.setter
-    def allow_reverse_mapping(self, value: bool) -> None:
+    def allow_reverse_mapping(self, value: primitives.Bool) -> None:
         """Set the AllowReverseMapping field value."""
         member = self.get_member("AllowReverseMapping")
         if member is not None:
@@ -190,7 +189,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def clamp(self) -> bool | None:
+    def clamp(self) -> primitives.Bool | None:
         """The Clamp field value."""
         member = self.get_member("Clamp")
         if member is None:
@@ -198,7 +197,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @clamp.setter
-    def clamp(self, value: bool) -> None:
+    def clamp(self, value: primitives.Bool) -> None:
         """Set the Clamp field value."""
         member = self.get_member("Clamp")
         if member is not None:

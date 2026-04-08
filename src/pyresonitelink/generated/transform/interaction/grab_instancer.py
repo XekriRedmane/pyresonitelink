@@ -1,9 +1,8 @@
 """Generated component: GrabInstancer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +18,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabInstancer"
 
-    def __init__(self, template: str | Slot | None = None, container_template: str | Slot | None = None, container_template_instance_root: str | Slot | None = None, activate_root: bool | None = None, enable_grabbable: bool | None = None, set_instance_persistent: bool | None = None, physical: bool | None = None, grab_priority: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, template: str | Slot | None = None, container_template: str | Slot | None = None, container_template_instance_root: str | Slot | None = None, activate_root: primitives.Bool | None = None, enable_grabbable: primitives.Bool | None = None, set_instance_persistent: primitives.Bool | None = None, physical: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -115,7 +114,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             )
 
     @property
-    def activate_root(self) -> bool | None:
+    def activate_root(self) -> primitives.Bool | None:
         """The ActivateRoot field value."""
         member = self.get_member("ActivateRoot")
         if member is None:
@@ -123,7 +122,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @activate_root.setter
-    def activate_root(self, value: bool) -> None:
+    def activate_root(self, value: primitives.Bool) -> None:
         """Set the ActivateRoot field value."""
         member = self.get_member("ActivateRoot")
         if member is not None:
@@ -134,7 +133,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             )
 
     @property
-    def enable_grabbable(self) -> bool | None:
+    def enable_grabbable(self) -> primitives.Bool | None:
         """The EnableGrabbable field value."""
         member = self.get_member("EnableGrabbable")
         if member is None:
@@ -142,7 +141,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @enable_grabbable.setter
-    def enable_grabbable(self, value: bool) -> None:
+    def enable_grabbable(self, value: primitives.Bool) -> None:
         """Set the EnableGrabbable field value."""
         member = self.get_member("EnableGrabbable")
         if member is not None:
@@ -153,7 +152,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             )
 
     @property
-    def set_instance_persistent(self) -> bool | None:
+    def set_instance_persistent(self) -> primitives.Bool | None:
         """The SetInstancePersistent field value."""
         member = self.get_member("SetInstancePersistent")
         if member is None:
@@ -161,7 +160,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @set_instance_persistent.setter
-    def set_instance_persistent(self, value: bool) -> None:
+    def set_instance_persistent(self, value: primitives.Bool) -> None:
         """Set the SetInstancePersistent field value."""
         member = self.get_member("SetInstancePersistent")
         if member is not None:
@@ -185,7 +184,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
         self.set_member("ExcludedParts", value)
 
     @property
-    def physical(self) -> bool | None:
+    def physical(self) -> primitives.Bool | None:
         """The Physical field value."""
         member = self.get_member("Physical")
         if member is None:
@@ -193,7 +192,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @physical.setter
-    def physical(self, value: bool) -> None:
+    def physical(self, value: primitives.Bool) -> None:
         """Set the Physical field value."""
         member = self.get_member("Physical")
         if member is not None:
@@ -204,7 +203,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             )
 
     @property
-    def grab_priority(self) -> np.int32 | None:
+    def grab_priority(self) -> primitives.Int | None:
         """The GrabPriority field value."""
         member = self.get_member("GrabPriority")
         if member is None:
@@ -212,7 +211,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @grab_priority.setter
-    def grab_priority(self, value: np.int32) -> None:
+    def grab_priority(self, value: primitives.Int) -> None:
         """Set the GrabPriority field value."""
         member = self.get_member("GrabPriority")
         if member is not None:

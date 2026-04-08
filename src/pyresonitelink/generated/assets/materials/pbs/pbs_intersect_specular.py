@@ -1,7 +1,5 @@
 """Generated component: PBS_IntersectSpecular."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_IntersectSpecular"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, begin_transition_start: np.float32 | None = None, begin_transition_end: np.float32 | None = None, end_transition_start: np.float32 | None = None, end_transition_end: np.float32 | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, intersect_albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, intersect_emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, begin_transition_start: primitives.Float | None = None, begin_transition_end: primitives.Float | None = None, end_transition_start: primitives.Float | None = None, end_transition_end: primitives.Float | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, intersect_albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, intersect_emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -99,7 +97,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
             self.specular_map = specular_map
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -107,7 +105,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -139,7 +137,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
             )
 
     @property
-    def begin_transition_start(self) -> np.float32 | None:
+    def begin_transition_start(self) -> primitives.Float | None:
         """The BeginTransitionStart field value."""
         member = self.get_member("BeginTransitionStart")
         if member is None:
@@ -147,7 +145,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         return getattr(member, 'value', None)
 
     @begin_transition_start.setter
-    def begin_transition_start(self, value: np.float32) -> None:
+    def begin_transition_start(self, value: primitives.Float) -> None:
         """Set the BeginTransitionStart field value."""
         member = self.get_member("BeginTransitionStart")
         if member is not None:
@@ -158,7 +156,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
             )
 
     @property
-    def begin_transition_end(self) -> np.float32 | None:
+    def begin_transition_end(self) -> primitives.Float | None:
         """The BeginTransitionEnd field value."""
         member = self.get_member("BeginTransitionEnd")
         if member is None:
@@ -166,7 +164,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         return getattr(member, 'value', None)
 
     @begin_transition_end.setter
-    def begin_transition_end(self, value: np.float32) -> None:
+    def begin_transition_end(self, value: primitives.Float) -> None:
         """Set the BeginTransitionEnd field value."""
         member = self.get_member("BeginTransitionEnd")
         if member is not None:
@@ -177,7 +175,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
             )
 
     @property
-    def end_transition_start(self) -> np.float32 | None:
+    def end_transition_start(self) -> primitives.Float | None:
         """The EndTransitionStart field value."""
         member = self.get_member("EndTransitionStart")
         if member is None:
@@ -185,7 +183,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         return getattr(member, 'value', None)
 
     @end_transition_start.setter
-    def end_transition_start(self, value: np.float32) -> None:
+    def end_transition_start(self, value: primitives.Float) -> None:
         """Set the EndTransitionStart field value."""
         member = self.get_member("EndTransitionStart")
         if member is not None:
@@ -196,7 +194,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
             )
 
     @property
-    def end_transition_end(self) -> np.float32 | None:
+    def end_transition_end(self) -> primitives.Float | None:
         """The EndTransitionEnd field value."""
         member = self.get_member("EndTransitionEnd")
         if member is None:
@@ -204,7 +202,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         return getattr(member, 'value', None)
 
     @end_transition_end.setter
-    def end_transition_end(self, value: np.float32) -> None:
+    def end_transition_end(self, value: primitives.Float) -> None:
         """Set the EndTransitionEnd field value."""
         member = self.get_member("EndTransitionEnd")
         if member is not None:
@@ -392,7 +390,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -400,7 +398,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -445,7 +443,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         self.set_member("Culling", value)
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -453,7 +451,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -464,7 +462,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -472,7 +470,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -483,7 +481,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -491,7 +489,7 @@ class PBS_IntersectSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial,
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

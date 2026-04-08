@@ -1,6 +1,7 @@
 """Generated component: CurrentLocaleInfo."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CurrentLocaleInfo"
 
-    def __init__(self, locale_code: str | None = None, language_code: str | None = None, native_locale_name: str | None = None, english_locale_name: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, locale_code: primitives.String | None = None, language_code: primitives.String | None = None, native_locale_name: primitives.String | None = None, english_locale_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +37,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.english_locale_name = english_locale_name
 
     @property
-    def locale_code(self) -> str | None:
+    def locale_code(self) -> primitives.String | None:
         """The LocaleCode field value."""
         member = self.get_member("LocaleCode")
         if member is None:
@@ -44,7 +45,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @locale_code.setter
-    def locale_code(self, value: str) -> None:
+    def locale_code(self, value: primitives.String) -> None:
         """Set the LocaleCode field value."""
         member = self.get_member("LocaleCode")
         if member is not None:
@@ -55,7 +56,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def language_code(self) -> str | None:
+    def language_code(self) -> primitives.String | None:
         """The LanguageCode field value."""
         member = self.get_member("LanguageCode")
         if member is None:
@@ -63,7 +64,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @language_code.setter
-    def language_code(self, value: str) -> None:
+    def language_code(self, value: primitives.String) -> None:
         """Set the LanguageCode field value."""
         member = self.get_member("LanguageCode")
         if member is not None:
@@ -74,7 +75,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def native_locale_name(self) -> str | None:
+    def native_locale_name(self) -> primitives.String | None:
         """The NativeLocaleName field value."""
         member = self.get_member("NativeLocaleName")
         if member is None:
@@ -82,7 +83,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @native_locale_name.setter
-    def native_locale_name(self, value: str) -> None:
+    def native_locale_name(self, value: primitives.String) -> None:
         """Set the NativeLocaleName field value."""
         member = self.get_member("NativeLocaleName")
         if member is not None:
@@ -93,7 +94,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def english_locale_name(self) -> str | None:
+    def english_locale_name(self) -> primitives.String | None:
         """The EnglishLocaleName field value."""
         member = self.get_member("EnglishLocaleName")
         if member is None:
@@ -101,7 +102,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @english_locale_name.setter
-    def english_locale_name(self, value: str) -> None:
+    def english_locale_name(self, value: primitives.String) -> None:
         """Set the EnglishLocaleName field value."""
         member = self.get_member("EnglishLocaleName")
         if member is not None:

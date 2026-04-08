@@ -1,8 +1,7 @@
 """Generated component: LocalLeakyImpulseBucket."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
@@ -24,7 +23,7 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.LocalLeakyImpulseBucket"
 
-    def __init__(self, pulse: str | ISyncNodeOperation | None = None, overflow: str | INodeOperation | None = None, interval: str | INodeValueOutput[np.float32] | None = None, maximum_capacity: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, pulse: str | ISyncNodeOperation | None = None, overflow: str | INodeOperation | None = None, interval: str | INodeValueOutput[primitives.Float] | None = None, maximum_capacity: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -88,15 +87,15 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @property
     def interval(self) -> str | None:
-        """Target ID of the Interval reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Interval reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Interval")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @interval.setter
-    def interval(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Interval reference by target ID or INodeValueOutput[np.float32] instance."""
+    def interval(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Interval reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Interval")
         if isinstance(member, members.Reference):
@@ -109,15 +108,15 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @property
     def maximum_capacity(self) -> str | None:
-        """Target ID of the MaximumCapacity reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the MaximumCapacity reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("MaximumCapacity")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @maximum_capacity.setter
-    def maximum_capacity(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the MaximumCapacity reference by target ID or INodeValueOutput[np.int32] instance."""
+    def maximum_capacity(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the MaximumCapacity reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("MaximumCapacity")
         if isinstance(member, members.Reference):

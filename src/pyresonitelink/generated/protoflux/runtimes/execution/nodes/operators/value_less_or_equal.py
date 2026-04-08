@@ -18,7 +18,7 @@ class ValueLessOrEqual(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     Parameterize with a value type::
 
-        ValueLessOrEqual[np.float32]
+        ValueLessOrEqual[primitives.Float]
         ValueLessOrEqual[primitives.Float3]
     """
 

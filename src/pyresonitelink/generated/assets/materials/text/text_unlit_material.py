@@ -1,7 +1,5 @@
 """Generated component: TextUnlitMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextUnlitMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, font_atlas: str | IAssetProvider[ITexture2D] | None = None, tint_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, background_color: primitives.ColorX | None = None, auto_background_color: bool | None = None, pixel_range: np.float32 | None = None, face_dilate: np.float32 | None = None, outline_thickness: np.float32 | None = None, face_softness: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, font_atlas: str | IAssetProvider[ITexture2D] | None = None, tint_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, background_color: primitives.ColorX | None = None, auto_background_color: primitives.Bool | None = None, pixel_range: primitives.Float | None = None, face_dilate: primitives.Float | None = None, outline_thickness: primitives.Float | None = None, face_softness: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -74,7 +72,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             self.render_queue = render_queue
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -82,7 +80,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -192,7 +190,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             )
 
     @property
-    def auto_background_color(self) -> bool | None:
+    def auto_background_color(self) -> primitives.Bool | None:
         """The AutoBackgroundColor field value."""
         member = self.get_member("AutoBackgroundColor")
         if member is None:
@@ -200,7 +198,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         return getattr(member, 'value', None)
 
     @auto_background_color.setter
-    def auto_background_color(self, value: bool) -> None:
+    def auto_background_color(self, value: primitives.Bool) -> None:
         """Set the AutoBackgroundColor field value."""
         member = self.get_member("AutoBackgroundColor")
         if member is not None:
@@ -224,7 +222,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         self.set_member("GlyphRenderMethod", value)
 
     @property
-    def pixel_range(self) -> np.float32 | None:
+    def pixel_range(self) -> primitives.Float | None:
         """The PixelRange field value."""
         member = self.get_member("PixelRange")
         if member is None:
@@ -232,7 +230,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         return getattr(member, 'value', None)
 
     @pixel_range.setter
-    def pixel_range(self, value: np.float32) -> None:
+    def pixel_range(self, value: primitives.Float) -> None:
         """Set the PixelRange field value."""
         member = self.get_member("PixelRange")
         if member is not None:
@@ -243,7 +241,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             )
 
     @property
-    def face_dilate(self) -> np.float32 | None:
+    def face_dilate(self) -> primitives.Float | None:
         """The FaceDilate field value."""
         member = self.get_member("FaceDilate")
         if member is None:
@@ -251,7 +249,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         return getattr(member, 'value', None)
 
     @face_dilate.setter
-    def face_dilate(self, value: np.float32) -> None:
+    def face_dilate(self, value: primitives.Float) -> None:
         """Set the FaceDilate field value."""
         member = self.get_member("FaceDilate")
         if member is not None:
@@ -262,7 +260,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             )
 
     @property
-    def outline_thickness(self) -> np.float32 | None:
+    def outline_thickness(self) -> primitives.Float | None:
         """The OutlineThickness field value."""
         member = self.get_member("OutlineThickness")
         if member is None:
@@ -270,7 +268,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         return getattr(member, 'value', None)
 
     @outline_thickness.setter
-    def outline_thickness(self, value: np.float32) -> None:
+    def outline_thickness(self, value: primitives.Float) -> None:
         """Set the OutlineThickness field value."""
         member = self.get_member("OutlineThickness")
         if member is not None:
@@ -281,7 +279,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             )
 
     @property
-    def face_softness(self) -> np.float32 | None:
+    def face_softness(self) -> primitives.Float | None:
         """The FaceSoftness field value."""
         member = self.get_member("FaceSoftness")
         if member is None:
@@ -289,7 +287,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         return getattr(member, 'value', None)
 
     @face_softness.setter
-    def face_softness(self, value: np.float32) -> None:
+    def face_softness(self, value: primitives.Float) -> None:
         """Set the FaceSoftness field value."""
         member = self.get_member("FaceSoftness")
         if member is not None:
@@ -352,7 +350,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         self.set_member("ZTest", value)
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -360,7 +358,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -371,7 +369,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -379,7 +377,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -390,7 +388,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -398,7 +396,7 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

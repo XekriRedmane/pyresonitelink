@@ -1,6 +1,7 @@
 """Generated component: EditSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class EditSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.EditSettings"
 
-    def __init__(self, confirm_component_destroy: bool | None = None, confirm_slot_destroy: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, confirm_component_destroy: primitives.Bool | None = None, confirm_slot_destroy: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,7 +29,7 @@ class EditSettings(GeneratedComponent, ICustomInspector):
             self.confirm_slot_destroy = confirm_slot_destroy
 
     @property
-    def confirm_component_destroy(self) -> bool | None:
+    def confirm_component_destroy(self) -> primitives.Bool | None:
         """The ConfirmComponentDestroy field value."""
         member = self.get_member("ConfirmComponentDestroy")
         if member is None:
@@ -36,7 +37,7 @@ class EditSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @confirm_component_destroy.setter
-    def confirm_component_destroy(self, value: bool) -> None:
+    def confirm_component_destroy(self, value: primitives.Bool) -> None:
         """Set the ConfirmComponentDestroy field value."""
         member = self.get_member("ConfirmComponentDestroy")
         if member is not None:
@@ -47,7 +48,7 @@ class EditSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def confirm_slot_destroy(self) -> bool | None:
+    def confirm_slot_destroy(self) -> primitives.Bool | None:
         """The ConfirmSlotDestroy field value."""
         member = self.get_member("ConfirmSlotDestroy")
         if member is None:
@@ -55,7 +56,7 @@ class EditSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @confirm_slot_destroy.setter
-    def confirm_slot_destroy(self, value: bool) -> None:
+    def confirm_slot_destroy(self, value: primitives.Bool) -> None:
         """Set the ConfirmSlotDestroy field value."""
         member = self.get_member("ConfirmSlotDestroy")
         if member is not None:

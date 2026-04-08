@@ -1,7 +1,5 @@
 """Generated component: ProtoFluxTool."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -28,7 +26,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, wire_point: str | Slot | None = None, max_connect_distance: np.float32 | None = None, selection_progress: np.float32 | None = None, hovering_element_name: str | None = None, hovering_element_color: primitives.ColorX | None = None, wire_point_position: str | IField[primitives.Float3] | None = None, text: str | TextRenderer | None = None, current_proxy: str | ProtoFluxElementProxy | None = None, current_temp_wire: str | Slot | None = None, current_cut_line: str | Slot | None = None, cut_line_scale: str | IField[primitives.Float3] | None = None, cut_line_orientation: str | IField[primitives.FloatQ] | None = None, current_highlighted_node: str | ProtoFluxNodeVisual | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, wire_point: str | Slot | None = None, max_connect_distance: primitives.Float | None = None, selection_progress: primitives.Float | None = None, hovering_element_name: primitives.String | None = None, hovering_element_color: primitives.ColorX | None = None, wire_point_position: str | IField[primitives.Float3] | None = None, text: str | TextRenderer | None = None, current_proxy: str | ProtoFluxElementProxy | None = None, current_temp_wire: str | Slot | None = None, current_cut_line: str | Slot | None = None, cut_line_scale: str | IField[primitives.Float3] | None = None, cut_line_orientation: str | IField[primitives.FloatQ] | None = None, current_highlighted_node: str | ProtoFluxNodeVisual | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -128,7 +126,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -136,7 +134,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -147,7 +145,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -155,7 +153,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -166,7 +164,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -174,7 +172,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -206,7 +204,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -214,7 +212,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -259,7 +257,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def max_connect_distance(self) -> np.float32 | None:
+    def max_connect_distance(self) -> primitives.Float | None:
         """The MaxConnectDistance field value."""
         member = self.get_member("MaxConnectDistance")
         if member is None:
@@ -267,7 +265,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @max_connect_distance.setter
-    def max_connect_distance(self, value: np.float32) -> None:
+    def max_connect_distance(self, value: primitives.Float) -> None:
         """Set the MaxConnectDistance field value."""
         member = self.get_member("MaxConnectDistance")
         if member is not None:
@@ -278,7 +276,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def selection_progress(self) -> np.float32 | None:
+    def selection_progress(self) -> primitives.Float | None:
         """The SelectionProgress field value."""
         member = self.get_member("SelectionProgress")
         if member is None:
@@ -286,7 +284,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @selection_progress.setter
-    def selection_progress(self, value: np.float32) -> None:
+    def selection_progress(self, value: primitives.Float) -> None:
         """Set the SelectionProgress field value."""
         member = self.get_member("SelectionProgress")
         if member is not None:
@@ -297,7 +295,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def hovering_element_name(self) -> str | None:
+    def hovering_element_name(self) -> primitives.String | None:
         """The HoveringElementName field value."""
         member = self.get_member("HoveringElementName")
         if member is None:
@@ -305,7 +303,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @hovering_element_name.setter
-    def hovering_element_name(self, value: str) -> None:
+    def hovering_element_name(self, value: primitives.String) -> None:
         """Set the HoveringElementName field value."""
         member = self.get_member("HoveringElementName")
         if member is not None:

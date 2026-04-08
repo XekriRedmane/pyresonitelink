@@ -1,8 +1,7 @@
 """Generated component: EaseInElasticFloat."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class EaseInElasticFloat(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Easing.EaseInElasticFloat"
 
-    def __init__(self, time: str | INodeValueOutput[np.float32] | None = None, amplitude: str | INodeValueOutput[np.float32] | None = None, period: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, time: str | INodeValueOutput[primitives.Float] | None = None, amplitude: str | INodeValueOutput[primitives.Float] | None = None, period: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,15 +39,15 @@ class EaseInElasticFloat(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Time reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @time.setter
-    def time(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Time reference by target ID or INodeValueOutput[np.float32] instance."""
+    def time(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Time reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
@@ -61,15 +60,15 @@ class EaseInElasticFloat(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def amplitude(self) -> str | None:
-        """Target ID of the Amplitude reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Amplitude reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Amplitude")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @amplitude.setter
-    def amplitude(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Amplitude reference by target ID or INodeValueOutput[np.float32] instance."""
+    def amplitude(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Amplitude reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Amplitude")
         if isinstance(member, members.Reference):
@@ -82,15 +81,15 @@ class EaseInElasticFloat(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def period(self) -> str | None:
-        """Target ID of the Period reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Period reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Period")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @period.setter
-    def period(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Period reference by target ID or INodeValueOutput[np.float32] instance."""
+    def period(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Period reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Period")
         if isinstance(member, members.Reference):

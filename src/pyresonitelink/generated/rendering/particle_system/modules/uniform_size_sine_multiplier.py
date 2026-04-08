@@ -1,8 +1,7 @@
 """Generated component: UniformSizeSineMultiplier."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -17,7 +16,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.UniformSizeSineMultiplier"
 
-    def __init__(self, speed: np.float32 | None = None, offset: np.float32 | None = None, min_multiplier: np.float32 | None = None, max_multiplier: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, speed: primitives.Float | None = None, offset: primitives.Float | None = None, min_multiplier: primitives.Float | None = None, max_multiplier: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,7 +37,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
             self.max_multiplier = max_multiplier
 
     @property
-    def speed(self) -> np.float32 | None:
+    def speed(self) -> primitives.Float | None:
         """The Speed field value."""
         member = self.get_member("Speed")
         if member is None:
@@ -46,7 +45,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @speed.setter
-    def speed(self, value: np.float32) -> None:
+    def speed(self, value: primitives.Float) -> None:
         """Set the Speed field value."""
         member = self.get_member("Speed")
         if member is not None:
@@ -57,7 +56,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
             )
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -65,7 +64,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:
@@ -76,7 +75,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
             )
 
     @property
-    def min_multiplier(self) -> np.float32 | None:
+    def min_multiplier(self) -> primitives.Float | None:
         """The MinMultiplier field value."""
         member = self.get_member("MinMultiplier")
         if member is None:
@@ -84,7 +83,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @min_multiplier.setter
-    def min_multiplier(self, value: np.float32) -> None:
+    def min_multiplier(self, value: primitives.Float) -> None:
         """Set the MinMultiplier field value."""
         member = self.get_member("MinMultiplier")
         if member is not None:
@@ -95,7 +94,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
             )
 
     @property
-    def max_multiplier(self) -> np.float32 | None:
+    def max_multiplier(self) -> primitives.Float | None:
         """The MaxMultiplier field value."""
         member = self.get_member("MaxMultiplier")
         if member is None:
@@ -103,7 +102,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
         return getattr(member, 'value', None)
 
     @max_multiplier.setter
-    def max_multiplier(self, value: np.float32) -> None:
+    def max_multiplier(self, value: primitives.Float) -> None:
         """Set the MaxMultiplier field value."""
         member = self.get_member("MaxMultiplier")
         if member is not None:

@@ -14,7 +14,7 @@ class InventoryItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InventoryItem"
 
-    def __init__(self, relative_to_user_root: bool | None = None, saved_rotation: primitives.FloatQ | None = None, saved_scale: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, relative_to_user_root: primitives.Bool | None = None, saved_rotation: primitives.FloatQ | None = None, saved_scale: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +32,7 @@ class InventoryItem(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.saved_scale = saved_scale
 
     @property
-    def relative_to_user_root(self) -> bool | None:
+    def relative_to_user_root(self) -> primitives.Bool | None:
         """The RelativeToUserRoot field value."""
         member = self.get_member("RelativeToUserRoot")
         if member is None:
@@ -40,7 +40,7 @@ class InventoryItem(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @relative_to_user_root.setter
-    def relative_to_user_root(self, value: bool) -> None:
+    def relative_to_user_root(self, value: primitives.Bool) -> None:
         """Set the RelativeToUserRoot field value."""
         member = self.get_member("RelativeToUserRoot")
         if member is not None:

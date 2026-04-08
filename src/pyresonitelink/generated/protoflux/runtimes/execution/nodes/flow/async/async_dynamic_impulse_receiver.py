@@ -1,6 +1,7 @@
 """Generated component: AsyncDynamicImpulseReceiver."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
@@ -22,7 +23,7 @@ class AsyncDynamicImpulseReceiver(GeneratedComponent, IProtoFluxEngineProxyNode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.AsyncDynamicImpulseReceiver"
 
-    def __init__(self, tag: str | IGlobalValueProxy[str] | None = None, on_triggered: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tag: str | IGlobalValueProxy[primitives.String] | None = None, on_triggered: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,15 +39,15 @@ class AsyncDynamicImpulseReceiver(GeneratedComponent, IProtoFluxEngineProxyNode,
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the Tag reference (targets IGlobalValueProxy[str])."""
+        """Target ID of the Tag reference (targets IGlobalValueProxy[primitives.String])."""
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @tag.setter
-    def tag(self, target: str | IGlobalValueProxy[str] | None) -> None:
-        """Set the Tag reference by target ID or IGlobalValueProxy[str] instance."""
+    def tag(self, target: str | IGlobalValueProxy[primitives.String] | None) -> None:
+        """Set the Tag reference by target ID or IGlobalValueProxy[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):

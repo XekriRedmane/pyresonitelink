@@ -1,9 +1,8 @@
 """Generated component: ConstantCharacterControllerModifier."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class ConstantCharacterControllerModifier(GeneratedComponent, IComponent, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConstantCharacterControllerModifier"
 
-    def __init__(self, value: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -56,7 +55,7 @@ class ConstantCharacterControllerModifier(GeneratedComponent, IComponent, IWorld
         self.set_member("ModificationMode", value)
 
     @property
-    def value(self) -> np.float32 | None:
+    def value(self) -> primitives.Float | None:
         """The Value field value."""
         member = self.get_member("Value")
         if member is None:
@@ -64,7 +63,7 @@ class ConstantCharacterControllerModifier(GeneratedComponent, IComponent, IWorld
         return getattr(member, 'value', None)
 
     @value.setter
-    def value(self, value: np.float32) -> None:
+    def value(self, value: primitives.Float) -> None:
         """Set the Value field value."""
         member = self.get_member("Value")
         if member is not None:

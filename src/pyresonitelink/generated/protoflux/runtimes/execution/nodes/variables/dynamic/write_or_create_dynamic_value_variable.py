@@ -1,6 +1,7 @@
 """Generated component: WriteOrCreateDynamicValueVariable."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -23,14 +24,14 @@ class WriteOrCreateDynamicValueVariable(GenericComponent[T], IMappableNode, ISyn
 
     Parameterize with a value type::
 
-        WriteOrCreateDynamicValueVariable[np.float32]
+        WriteOrCreateDynamicValueVariable[primitives.Float]
         WriteOrCreateDynamicValueVariable[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.WriteOrCreateDynamicValueVariable<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.WriteOrCreateDynamicValueVariable<>"
 
-    def __init__(self, target: str | INodeObjectOutput[Slot] | None = None, path: str | INodeObjectOutput[str] | None = None, on_not_found: str | INodeOperation | None = None, on_created: str | INodeOperation | None = None, on_written: str | INodeOperation | None = None, on_failed: str | INodeOperation | None = None, create_directly_on_target: str | INodeValueOutput[bool] | None = None, create_non_persistent: str | INodeValueOutput[bool] | None = None, value: str | INodeValueOutput[T] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | INodeObjectOutput[Slot] | None = None, path: str | INodeObjectOutput[primitives.String] | None = None, on_not_found: str | INodeOperation | None = None, on_created: str | INodeOperation | None = None, on_written: str | INodeOperation | None = None, on_failed: str | INodeOperation | None = None, create_directly_on_target: str | INodeValueOutput[primitives.Bool] | None = None, create_non_persistent: str | INodeValueOutput[primitives.Bool] | None = None, value: str | INodeValueOutput[T] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -88,15 +89,15 @@ class WriteOrCreateDynamicValueVariable(GenericComponent[T], IMappableNode, ISyn
 
     @property
     def path(self) -> str | None:
-        """Target ID of the Path reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Path reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @path.setter
-    def path(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Path reference by target ID or INodeObjectOutput[str] instance."""
+    def path(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Path reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
@@ -193,15 +194,15 @@ class WriteOrCreateDynamicValueVariable(GenericComponent[T], IMappableNode, ISyn
 
     @property
     def create_directly_on_target(self) -> str | None:
-        """Target ID of the CreateDirectlyOnTarget reference (targets INodeValueOutput[bool])."""
+        """Target ID of the CreateDirectlyOnTarget reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("CreateDirectlyOnTarget")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @create_directly_on_target.setter
-    def create_directly_on_target(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the CreateDirectlyOnTarget reference by target ID or INodeValueOutput[bool] instance."""
+    def create_directly_on_target(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the CreateDirectlyOnTarget reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("CreateDirectlyOnTarget")
         if isinstance(member, members.Reference):
@@ -214,15 +215,15 @@ class WriteOrCreateDynamicValueVariable(GenericComponent[T], IMappableNode, ISyn
 
     @property
     def create_non_persistent(self) -> str | None:
-        """Target ID of the CreateNonPersistent reference (targets INodeValueOutput[bool])."""
+        """Target ID of the CreateNonPersistent reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("CreateNonPersistent")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @create_non_persistent.setter
-    def create_non_persistent(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the CreateNonPersistent reference by target ID or INodeValueOutput[bool] instance."""
+    def create_non_persistent(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the CreateNonPersistent reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("CreateNonPersistent")
         if isinstance(member, members.Reference):

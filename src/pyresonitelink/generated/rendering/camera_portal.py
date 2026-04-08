@@ -1,7 +1,5 @@
 """Generated component: CameraPortal."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CameraPortal"
 
-    def __init__(self, renderer: str | MeshRenderer | None = None, reflection_texture: str | IAssetProvider[RenderTexture] | None = None, plane_offset: np.float32 | None = None, plane_normal: primitives.Float3 | None = None, portal_target: str | Slot | None = None, clear_color: primitives.ColorX | None = None, disable_per_pixel_lights: bool | None = None, disable_shadows: bool | None = None, override_far_clip: np.float32 | None = None, override_near_clip: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, renderer: str | MeshRenderer | None = None, reflection_texture: str | IAssetProvider[RenderTexture] | None = None, plane_offset: primitives.Float | None = None, plane_normal: primitives.Float3 | None = None, portal_target: str | Slot | None = None, clear_color: primitives.ColorX | None = None, disable_per_pixel_lights: primitives.Bool | None = None, disable_shadows: primitives.Bool | None = None, override_far_clip: primitives.Float | None = None, override_near_clip: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -105,7 +103,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
             )
 
     @property
-    def plane_offset(self) -> np.float32 | None:
+    def plane_offset(self) -> primitives.Float | None:
         """The PlaneOffset field value."""
         member = self.get_member("PlaneOffset")
         if member is None:
@@ -113,7 +111,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @plane_offset.setter
-    def plane_offset(self, value: np.float32) -> None:
+    def plane_offset(self, value: primitives.Float) -> None:
         """Set the PlaneOffset field value."""
         member = self.get_member("PlaneOffset")
         if member is not None:
@@ -209,7 +207,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
             )
 
     @property
-    def disable_per_pixel_lights(self) -> bool | None:
+    def disable_per_pixel_lights(self) -> primitives.Bool | None:
         """The DisablePerPixelLights field value."""
         member = self.get_member("DisablePerPixelLights")
         if member is None:
@@ -217,7 +215,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @disable_per_pixel_lights.setter
-    def disable_per_pixel_lights(self, value: bool) -> None:
+    def disable_per_pixel_lights(self, value: primitives.Bool) -> None:
         """Set the DisablePerPixelLights field value."""
         member = self.get_member("DisablePerPixelLights")
         if member is not None:
@@ -228,7 +226,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
             )
 
     @property
-    def disable_shadows(self) -> bool | None:
+    def disable_shadows(self) -> primitives.Bool | None:
         """The DisableShadows field value."""
         member = self.get_member("DisableShadows")
         if member is None:
@@ -236,7 +234,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @disable_shadows.setter
-    def disable_shadows(self, value: bool) -> None:
+    def disable_shadows(self, value: primitives.Bool) -> None:
         """Set the DisableShadows field value."""
         member = self.get_member("DisableShadows")
         if member is not None:
@@ -247,7 +245,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
             )
 
     @property
-    def override_far_clip(self) -> np.float32 | None:
+    def override_far_clip(self) -> primitives.Float | None:
         """The OverrideFarClip field value."""
         member = self.get_member("OverrideFarClip")
         if member is None:
@@ -255,7 +253,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @override_far_clip.setter
-    def override_far_clip(self, value: np.float32) -> None:
+    def override_far_clip(self, value: primitives.Float) -> None:
         """Set the OverrideFarClip field value."""
         member = self.get_member("OverrideFarClip")
         if member is not None:
@@ -266,7 +264,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
             )
 
     @property
-    def override_near_clip(self) -> np.float32 | None:
+    def override_near_clip(self) -> primitives.Float | None:
         """The OverrideNearClip field value."""
         member = self.get_member("OverrideNearClip")
         if member is None:
@@ -274,7 +272,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @override_near_clip.setter
-    def override_near_clip(self, value: np.float32) -> None:
+    def override_near_clip(self, value: primitives.Float) -> None:
         """Set the OverrideNearClip field value."""
         member = self.get_member("OverrideNearClip")
         if member is not None:

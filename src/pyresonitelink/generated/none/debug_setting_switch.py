@@ -1,6 +1,7 @@
 """Generated component: DebugSettingSwitch."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 
@@ -11,7 +12,7 @@ class DebugSettingSwitch(GeneratedComponent):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugSettingSwitch"
 
-    def __init__(self, target_profile: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_profile: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -23,7 +24,7 @@ class DebugSettingSwitch(GeneratedComponent):
             self.target_profile = target_profile
 
     @property
-    def target_profile(self) -> str | None:
+    def target_profile(self) -> primitives.String | None:
         """The TargetProfile field value."""
         member = self.get_member("TargetProfile")
         if member is None:
@@ -31,7 +32,7 @@ class DebugSettingSwitch(GeneratedComponent):
         return getattr(member, 'value', None)
 
     @target_profile.setter
-    def target_profile(self, value: str) -> None:
+    def target_profile(self, value: primitives.String) -> None:
         """Set the TargetProfile field value."""
         member = self.get_member("TargetProfile")
         if member is not None:

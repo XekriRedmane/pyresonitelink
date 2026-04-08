@@ -1,8 +1,7 @@
 """Generated component: NestedCanvas."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.canvas import Canvas
@@ -20,7 +19,7 @@ class NestedCanvas(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NestedCanvas"
 
-    def __init__(self, target_canvas: str | Canvas | None = None, render_offset: str | IField[np.int32] | None = None, mask_depth: str | IField[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_canvas: str | Canvas | None = None, render_offset: str | IField[primitives.Int] | None = None, mask_depth: str | IField[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,15 +59,15 @@ class NestedCanvas(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWo
 
     @property
     def render_offset(self) -> str | None:
-        """Target ID of the _renderOffset reference (targets IField[np.int32])."""
+        """Target ID of the _renderOffset reference (targets IField[primitives.Int])."""
         member = self.get_member("_renderOffset")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @render_offset.setter
-    def render_offset(self, target: str | IField[np.int32] | None) -> None:
-        """Set the _renderOffset reference by target ID or IField[np.int32] instance."""
+    def render_offset(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the _renderOffset reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_renderOffset")
         if isinstance(member, members.Reference):
@@ -81,15 +80,15 @@ class NestedCanvas(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWo
 
     @property
     def mask_depth(self) -> str | None:
-        """Target ID of the _maskDepth reference (targets IField[np.int32])."""
+        """Target ID of the _maskDepth reference (targets IField[primitives.Int])."""
         member = self.get_member("_maskDepth")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @mask_depth.setter
-    def mask_depth(self, target: str | IField[np.int32] | None) -> None:
-        """Set the _maskDepth reference by target ID or IField[np.int32] instance."""
+    def mask_depth(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the _maskDepth reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_maskDepth")
         if isinstance(member, members.Reference):

@@ -1,6 +1,7 @@
 """Generated component: WriteTextToFile."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -22,7 +23,7 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Experimental.WriteTextToFile"
 
-    def __init__(self, string: str | INodeObjectOutput[str] | None = None, file_path: str | INodeObjectOutput[str] | None = None, append: str | INodeValueOutput[bool] | None = None, new_line: str | INodeValueOutput[bool] | None = None, on_write_started: str | INodeOperation | None = None, on_write_finished: str | INodeOperation | None = None, on_write_fail: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, string: str | INodeObjectOutput[primitives.String] | None = None, file_path: str | INodeObjectOutput[primitives.String] | None = None, append: str | INodeValueOutput[primitives.Bool] | None = None, new_line: str | INodeValueOutput[primitives.Bool] | None = None, on_write_started: str | INodeOperation | None = None, on_write_finished: str | INodeOperation | None = None, on_write_fail: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -53,15 +54,15 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def string(self) -> str | None:
-        """Target ID of the String reference (targets INodeObjectOutput[str])."""
+        """Target ID of the String reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("String")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @string.setter
-    def string(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the String reference by target ID or INodeObjectOutput[str] instance."""
+    def string(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the String reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("String")
         if isinstance(member, members.Reference):
@@ -74,15 +75,15 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def file_path(self) -> str | None:
-        """Target ID of the FilePath reference (targets INodeObjectOutput[str])."""
+        """Target ID of the FilePath reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("FilePath")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @file_path.setter
-    def file_path(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the FilePath reference by target ID or INodeObjectOutput[str] instance."""
+    def file_path(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the FilePath reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("FilePath")
         if isinstance(member, members.Reference):
@@ -95,15 +96,15 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def append(self) -> str | None:
-        """Target ID of the Append reference (targets INodeValueOutput[bool])."""
+        """Target ID of the Append reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("Append")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @append.setter
-    def append(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the Append reference by target ID or INodeValueOutput[bool] instance."""
+    def append(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the Append reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Append")
         if isinstance(member, members.Reference):
@@ -116,15 +117,15 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def new_line(self) -> str | None:
-        """Target ID of the NewLine reference (targets INodeValueOutput[bool])."""
+        """Target ID of the NewLine reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("NewLine")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @new_line.setter
-    def new_line(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the NewLine reference by target ID or INodeValueOutput[bool] instance."""
+    def new_line(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the NewLine reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("NewLine")
         if isinstance(member, members.Reference):

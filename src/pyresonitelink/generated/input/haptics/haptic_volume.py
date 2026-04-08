@@ -1,9 +1,8 @@
 """Generated component: HapticVolume."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ihaptic_source import IHapticSource
@@ -19,7 +18,7 @@ class HapticVolume(GeneratedComponent, IHapticSource, IComponent, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HapticVolume"
 
-    def __init__(self, intensity: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, intensity: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,7 +43,7 @@ class HapticVolume(GeneratedComponent, IHapticSource, IComponent, IWorldEventRec
         self.set_member("Sensation", value)
 
     @property
-    def intensity(self) -> np.float32 | None:
+    def intensity(self) -> primitives.Float | None:
         """The Intensity field value."""
         member = self.get_member("Intensity")
         if member is None:
@@ -52,7 +51,7 @@ class HapticVolume(GeneratedComponent, IHapticSource, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @intensity.setter
-    def intensity(self, value: np.float32) -> None:
+    def intensity(self, value: primitives.Float) -> None:
         """Set the Intensity field value."""
         member = self.get_member("Intensity")
         if member is not None:

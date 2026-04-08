@@ -13,7 +13,7 @@ class RefProxy(GenericComponent[T], ILastValueProxy[T], IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        RefProxy[np.float32]
+        RefProxy[primitives.Float]
         RefProxy[primitives.Float3]
     """
 

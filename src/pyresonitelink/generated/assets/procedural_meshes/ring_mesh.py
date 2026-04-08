@@ -1,7 +1,5 @@
 """Generated component: RingMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RingMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rotation: primitives.FloatQ | None = None, segments: np.int32 | None = None, arc: np.float32 | None = None, inner_radius: np.float32 | None = None, outer_radius: np.float32 | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rotation: primitives.FloatQ | None = None, segments: primitives.Int | None = None, arc: primitives.Float | None = None, inner_radius: primitives.Float | None = None, outer_radius: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,7 +55,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             self.uv_scale = uv_scale
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -65,7 +63,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -76,7 +74,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -84,7 +82,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -146,7 +144,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def segments(self) -> np.int32 | None:
+    def segments(self) -> primitives.Int | None:
         """The Segments field value."""
         member = self.get_member("Segments")
         if member is None:
@@ -154,7 +152,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @segments.setter
-    def segments(self, value: np.int32) -> None:
+    def segments(self, value: primitives.Int) -> None:
         """Set the Segments field value."""
         member = self.get_member("Segments")
         if member is not None:
@@ -165,7 +163,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def arc(self) -> np.float32 | None:
+    def arc(self) -> primitives.Float | None:
         """The Arc field value."""
         member = self.get_member("Arc")
         if member is None:
@@ -173,7 +171,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @arc.setter
-    def arc(self, value: np.float32) -> None:
+    def arc(self, value: primitives.Float) -> None:
         """Set the Arc field value."""
         member = self.get_member("Arc")
         if member is not None:
@@ -184,7 +182,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def inner_radius(self) -> np.float32 | None:
+    def inner_radius(self) -> primitives.Float | None:
         """The InnerRadius field value."""
         member = self.get_member("InnerRadius")
         if member is None:
@@ -192,7 +190,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @inner_radius.setter
-    def inner_radius(self, value: np.float32) -> None:
+    def inner_radius(self, value: primitives.Float) -> None:
         """Set the InnerRadius field value."""
         member = self.get_member("InnerRadius")
         if member is not None:
@@ -203,7 +201,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def outer_radius(self) -> np.float32 | None:
+    def outer_radius(self) -> primitives.Float | None:
         """The OuterRadius field value."""
         member = self.get_member("OuterRadius")
         if member is None:
@@ -211,7 +209,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @outer_radius.setter
-    def outer_radius(self, value: np.float32) -> None:
+    def outer_radius(self, value: primitives.Float) -> None:
         """Set the OuterRadius field value."""
         member = self.get_member("OuterRadius")
         if member is not None:

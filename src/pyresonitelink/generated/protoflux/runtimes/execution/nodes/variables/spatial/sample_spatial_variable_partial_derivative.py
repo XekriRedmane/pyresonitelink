@@ -1,7 +1,5 @@
 """Generated component: SampleSpatialVariablePartialDerivative."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -23,14 +21,14 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     Parameterize with a value type::
 
-        SampleSpatialVariablePartialDerivative[np.float32]
+        SampleSpatialVariablePartialDerivative[primitives.Float]
         SampleSpatialVariablePartialDerivative[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.SampleSpatialVariablePartialDerivative<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.SampleSpatialVariablePartialDerivative<>"
 
-    def __init__(self, point: str | INodeValueOutput[primitives.Float3] | None = None, orientation: str | INodeValueOutput[primitives.FloatQ] | None = None, name: str | INodeObjectOutput[str] | None = None, mode: str | INodeValueOutput[ValueSpatialVariableMode] | None = None, base_value: str | INodeValueOutput[T] | None = None, sampling_distance: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, point: str | INodeValueOutput[primitives.Float3] | None = None, orientation: str | INodeValueOutput[primitives.FloatQ] | None = None, name: str | INodeObjectOutput[primitives.String] | None = None, mode: str | INodeValueOutput[ValueSpatialVariableMode] | None = None, base_value: str | INodeValueOutput[T] | None = None, sampling_distance: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -100,15 +98,15 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @name.setter
-    def name(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Name reference by target ID or INodeObjectOutput[str] instance."""
+    def name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Name reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
@@ -163,15 +161,15 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @property
     def sampling_distance(self) -> str | None:
-        """Target ID of the SamplingDistance reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the SamplingDistance reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("SamplingDistance")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @sampling_distance.setter
-    def sampling_distance(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the SamplingDistance reference by target ID or INodeValueOutput[np.float32] instance."""
+    def sampling_distance(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the SamplingDistance reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("SamplingDistance")
         if isinstance(member, members.Reference):

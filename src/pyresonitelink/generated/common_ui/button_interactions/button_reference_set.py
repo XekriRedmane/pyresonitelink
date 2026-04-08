@@ -15,7 +15,7 @@ class ButtonReferenceSet(GenericComponent[T], IButtonPressReceiver, IWorldEventR
 
     Parameterize with a value type::
 
-        ButtonReferenceSet[np.float32]
+        ButtonReferenceSet[primitives.Float]
         ButtonReferenceSet[primitives.Float3]
     """
 

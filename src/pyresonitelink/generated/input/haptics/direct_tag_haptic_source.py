@@ -1,8 +1,7 @@
 """Generated component: DirectTagHapticSource."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.idirect_haptic_source import IDirectHapticSource
@@ -18,7 +17,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DirectTagHapticSource"
 
-    def __init__(self, haptic_tag: str | None = None, force: np.float32 | None = None, temperature: np.float32 | None = None, pain: np.float32 | None = None, vibration: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, haptic_tag: primitives.String | None = None, force: primitives.Float | None = None, temperature: primitives.Float | None = None, pain: primitives.Float | None = None, vibration: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +41,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
             self.vibration = vibration
 
     @property
-    def haptic_tag(self) -> str | None:
+    def haptic_tag(self) -> primitives.String | None:
         """The HapticTag field value."""
         member = self.get_member("HapticTag")
         if member is None:
@@ -50,7 +49,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
         return getattr(member, 'value', None)
 
     @haptic_tag.setter
-    def haptic_tag(self, value: str) -> None:
+    def haptic_tag(self, value: primitives.String) -> None:
         """Set the HapticTag field value."""
         member = self.get_member("HapticTag")
         if member is not None:
@@ -61,7 +60,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
             )
 
     @property
-    def force(self) -> np.float32 | None:
+    def force(self) -> primitives.Float | None:
         """The Force field value."""
         member = self.get_member("Force")
         if member is None:
@@ -69,7 +68,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
         return getattr(member, 'value', None)
 
     @force.setter
-    def force(self, value: np.float32) -> None:
+    def force(self, value: primitives.Float) -> None:
         """Set the Force field value."""
         member = self.get_member("Force")
         if member is not None:
@@ -80,7 +79,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
             )
 
     @property
-    def temperature(self) -> np.float32 | None:
+    def temperature(self) -> primitives.Float | None:
         """The Temperature field value."""
         member = self.get_member("Temperature")
         if member is None:
@@ -88,7 +87,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
         return getattr(member, 'value', None)
 
     @temperature.setter
-    def temperature(self, value: np.float32) -> None:
+    def temperature(self, value: primitives.Float) -> None:
         """Set the Temperature field value."""
         member = self.get_member("Temperature")
         if member is not None:
@@ -99,7 +98,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
             )
 
     @property
-    def pain(self) -> np.float32 | None:
+    def pain(self) -> primitives.Float | None:
         """The Pain field value."""
         member = self.get_member("Pain")
         if member is None:
@@ -107,7 +106,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
         return getattr(member, 'value', None)
 
     @pain.setter
-    def pain(self, value: np.float32) -> None:
+    def pain(self, value: primitives.Float) -> None:
         """Set the Pain field value."""
         member = self.get_member("Pain")
         if member is not None:
@@ -118,7 +117,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
             )
 
     @property
-    def vibration(self) -> np.float32 | None:
+    def vibration(self) -> primitives.Float | None:
         """The Vibration field value."""
         member = self.get_member("Vibration")
         if member is None:
@@ -126,7 +125,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
         return getattr(member, 'value', None)
 
     @vibration.setter
-    def vibration(self, value: np.float32) -> None:
+    def vibration(self, value: primitives.Float) -> None:
         """Set the Vibration field value."""
         member = self.get_member("Vibration")
         if member is not None:

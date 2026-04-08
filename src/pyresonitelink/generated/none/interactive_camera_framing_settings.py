@@ -1,7 +1,5 @@
 """Generated component: InteractiveCameraFramingSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -17,7 +15,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraFramingSettings"
 
-    def __init__(self, field_of_view: np.float32 | None = None, angle_position: np.float32 | None = None, distance: np.float32 | None = None, height_offset: np.float32 | None = None, first_person_pitch: np.float32 | None = None, first_person_roll: np.float32 | None = None, first_person_offset: np.float32 | None = None, framing_viewport_position: primitives.Float2 | None = None, aim_in_front_of_head: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, field_of_view: primitives.Float | None = None, angle_position: primitives.Float | None = None, distance: primitives.Float | None = None, height_offset: primitives.Float | None = None, first_person_pitch: primitives.Float | None = None, first_person_roll: primitives.Float | None = None, first_person_offset: primitives.Float | None = None, framing_viewport_position: primitives.Float2 | None = None, aim_in_front_of_head: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,7 +64,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
         self.set_member("PositioningMode", value)
 
     @property
-    def field_of_view(self) -> np.float32 | None:
+    def field_of_view(self) -> primitives.Float | None:
         """The FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is None:
@@ -74,7 +72,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @field_of_view.setter
-    def field_of_view(self, value: np.float32) -> None:
+    def field_of_view(self, value: primitives.Float) -> None:
         """Set the FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is not None:
@@ -85,7 +83,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def angle_position(self) -> np.float32 | None:
+    def angle_position(self) -> primitives.Float | None:
         """The AnglePosition field value."""
         member = self.get_member("AnglePosition")
         if member is None:
@@ -93,7 +91,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @angle_position.setter
-    def angle_position(self, value: np.float32) -> None:
+    def angle_position(self, value: primitives.Float) -> None:
         """Set the AnglePosition field value."""
         member = self.get_member("AnglePosition")
         if member is not None:
@@ -104,7 +102,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def distance(self) -> np.float32 | None:
+    def distance(self) -> primitives.Float | None:
         """The Distance field value."""
         member = self.get_member("Distance")
         if member is None:
@@ -112,7 +110,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @distance.setter
-    def distance(self, value: np.float32) -> None:
+    def distance(self, value: primitives.Float) -> None:
         """Set the Distance field value."""
         member = self.get_member("Distance")
         if member is not None:
@@ -123,7 +121,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def height_offset(self) -> np.float32 | None:
+    def height_offset(self) -> primitives.Float | None:
         """The HeightOffset field value."""
         member = self.get_member("HeightOffset")
         if member is None:
@@ -131,7 +129,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @height_offset.setter
-    def height_offset(self, value: np.float32) -> None:
+    def height_offset(self, value: primitives.Float) -> None:
         """Set the HeightOffset field value."""
         member = self.get_member("HeightOffset")
         if member is not None:
@@ -142,7 +140,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def first_person_pitch(self) -> np.float32 | None:
+    def first_person_pitch(self) -> primitives.Float | None:
         """The FirstPersonPitch field value."""
         member = self.get_member("FirstPersonPitch")
         if member is None:
@@ -150,7 +148,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @first_person_pitch.setter
-    def first_person_pitch(self, value: np.float32) -> None:
+    def first_person_pitch(self, value: primitives.Float) -> None:
         """Set the FirstPersonPitch field value."""
         member = self.get_member("FirstPersonPitch")
         if member is not None:
@@ -161,7 +159,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def first_person_roll(self) -> np.float32 | None:
+    def first_person_roll(self) -> primitives.Float | None:
         """The FirstPersonRoll field value."""
         member = self.get_member("FirstPersonRoll")
         if member is None:
@@ -169,7 +167,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @first_person_roll.setter
-    def first_person_roll(self, value: np.float32) -> None:
+    def first_person_roll(self, value: primitives.Float) -> None:
         """Set the FirstPersonRoll field value."""
         member = self.get_member("FirstPersonRoll")
         if member is not None:
@@ -180,7 +178,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def first_person_offset(self) -> np.float32 | None:
+    def first_person_offset(self) -> primitives.Float | None:
         """The FirstPersonOffset field value."""
         member = self.get_member("FirstPersonOffset")
         if member is None:
@@ -188,7 +186,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @first_person_offset.setter
-    def first_person_offset(self, value: np.float32) -> None:
+    def first_person_offset(self, value: primitives.Float) -> None:
         """Set the FirstPersonOffset field value."""
         member = self.get_member("FirstPersonOffset")
         if member is not None:
@@ -218,7 +216,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def aim_in_front_of_head(self) -> bool | None:
+    def aim_in_front_of_head(self) -> primitives.Bool | None:
         """The AimInFrontOfHead field value."""
         member = self.get_member("AimInFrontOfHead")
         if member is None:
@@ -226,7 +224,7 @@ class InteractiveCameraFramingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @aim_in_front_of_head.setter
-    def aim_in_front_of_head(self, value: bool) -> None:
+    def aim_in_front_of_head(self, value: primitives.Bool) -> None:
         """Set the AimInFrontOfHead field value."""
         member = self.get_member("AimInFrontOfHead")
         if member is not None:

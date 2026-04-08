@@ -18,7 +18,7 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConfirmationHandler"
 
-    def __init__(self, label: str | IField[str] | None = None, color: str | IField[primitives.ColorX] | None = None, original_label: str | None = None, original_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, label: str | IField[primitives.String] | None = None, color: str | IField[primitives.ColorX] | None = None, original_label: primitives.String | None = None, original_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,15 +40,15 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label(self) -> str | None:
-        """Target ID of the Label reference (targets IField[str])."""
+        """Target ID of the Label reference (targets IField[primitives.String])."""
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @label.setter
-    def label(self, target: str | IField[str] | None) -> None:
-        """Set the Label reference by target ID or IField[str] instance."""
+    def label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Label reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
@@ -81,7 +81,7 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def original_label(self) -> str | None:
+    def original_label(self) -> primitives.String | None:
         """The OriginalLabel field value."""
         member = self.get_member("OriginalLabel")
         if member is None:
@@ -89,7 +89,7 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @original_label.setter
-    def original_label(self, value: str) -> None:
+    def original_label(self, value: primitives.String) -> None:
         """Set the OriginalLabel field value."""
         member = self.get_member("OriginalLabel")
         if member is not None:

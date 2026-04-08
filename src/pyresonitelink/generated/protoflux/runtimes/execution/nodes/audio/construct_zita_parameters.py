@@ -1,8 +1,7 @@
 """Generated component: ConstructZitaParameters."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Audio.ConstructZitaParameters"
 
-    def __init__(self, in_delay: str | INodeValueOutput[np.float32] | None = None, crossover: str | INodeValueOutput[np.float32] | None = None, rt60_low: str | INodeValueOutput[np.float32] | None = None, rt60_mid: str | INodeValueOutput[np.float32] | None = None, high_frequency_damping: str | INodeValueOutput[np.float32] | None = None, eq1_frequency: str | INodeValueOutput[np.float32] | None = None, eq1_level: str | INodeValueOutput[np.float32] | None = None, eq2_frequency: str | INodeValueOutput[np.float32] | None = None, eq2_level: str | INodeValueOutput[np.float32] | None = None, mix: str | INodeValueOutput[np.float32] | None = None, level: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, in_delay: str | INodeValueOutput[primitives.Float] | None = None, crossover: str | INodeValueOutput[primitives.Float] | None = None, rt60_low: str | INodeValueOutput[primitives.Float] | None = None, rt60_mid: str | INodeValueOutput[primitives.Float] | None = None, high_frequency_damping: str | INodeValueOutput[primitives.Float] | None = None, eq1_frequency: str | INodeValueOutput[primitives.Float] | None = None, eq1_level: str | INodeValueOutput[primitives.Float] | None = None, eq2_frequency: str | INodeValueOutput[primitives.Float] | None = None, eq2_level: str | INodeValueOutput[primitives.Float] | None = None, mix: str | INodeValueOutput[primitives.Float] | None = None, level: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -64,15 +63,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def in_delay(self) -> str | None:
-        """Target ID of the InDelay reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the InDelay reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("InDelay")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @in_delay.setter
-    def in_delay(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the InDelay reference by target ID or INodeValueOutput[np.float32] instance."""
+    def in_delay(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the InDelay reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("InDelay")
         if isinstance(member, members.Reference):
@@ -85,15 +84,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def crossover(self) -> str | None:
-        """Target ID of the Crossover reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Crossover reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Crossover")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @crossover.setter
-    def crossover(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Crossover reference by target ID or INodeValueOutput[np.float32] instance."""
+    def crossover(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Crossover reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Crossover")
         if isinstance(member, members.Reference):
@@ -106,15 +105,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def rt60_low(self) -> str | None:
-        """Target ID of the RT60Low reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the RT60Low reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("RT60Low")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @rt60_low.setter
-    def rt60_low(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the RT60Low reference by target ID or INodeValueOutput[np.float32] instance."""
+    def rt60_low(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the RT60Low reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("RT60Low")
         if isinstance(member, members.Reference):
@@ -127,15 +126,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def rt60_mid(self) -> str | None:
-        """Target ID of the RT60Mid reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the RT60Mid reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("RT60Mid")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @rt60_mid.setter
-    def rt60_mid(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the RT60Mid reference by target ID or INodeValueOutput[np.float32] instance."""
+    def rt60_mid(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the RT60Mid reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("RT60Mid")
         if isinstance(member, members.Reference):
@@ -148,15 +147,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def high_frequency_damping(self) -> str | None:
-        """Target ID of the HighFrequencyDamping reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the HighFrequencyDamping reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("HighFrequencyDamping")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @high_frequency_damping.setter
-    def high_frequency_damping(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the HighFrequencyDamping reference by target ID or INodeValueOutput[np.float32] instance."""
+    def high_frequency_damping(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the HighFrequencyDamping reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("HighFrequencyDamping")
         if isinstance(member, members.Reference):
@@ -169,15 +168,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def eq1_frequency(self) -> str | None:
-        """Target ID of the EQ1Frequency reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the EQ1Frequency reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("EQ1Frequency")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @eq1_frequency.setter
-    def eq1_frequency(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the EQ1Frequency reference by target ID or INodeValueOutput[np.float32] instance."""
+    def eq1_frequency(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the EQ1Frequency reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("EQ1Frequency")
         if isinstance(member, members.Reference):
@@ -190,15 +189,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def eq1_level(self) -> str | None:
-        """Target ID of the EQ1Level reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the EQ1Level reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("EQ1Level")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @eq1_level.setter
-    def eq1_level(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the EQ1Level reference by target ID or INodeValueOutput[np.float32] instance."""
+    def eq1_level(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the EQ1Level reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("EQ1Level")
         if isinstance(member, members.Reference):
@@ -211,15 +210,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def eq2_frequency(self) -> str | None:
-        """Target ID of the EQ2Frequency reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the EQ2Frequency reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("EQ2Frequency")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @eq2_frequency.setter
-    def eq2_frequency(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the EQ2Frequency reference by target ID or INodeValueOutput[np.float32] instance."""
+    def eq2_frequency(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the EQ2Frequency reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("EQ2Frequency")
         if isinstance(member, members.Reference):
@@ -232,15 +231,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def eq2_level(self) -> str | None:
-        """Target ID of the EQ2Level reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the EQ2Level reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("EQ2Level")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @eq2_level.setter
-    def eq2_level(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the EQ2Level reference by target ID or INodeValueOutput[np.float32] instance."""
+    def eq2_level(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the EQ2Level reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("EQ2Level")
         if isinstance(member, members.Reference):
@@ -253,15 +252,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def mix(self) -> str | None:
-        """Target ID of the Mix reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Mix reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Mix")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @mix.setter
-    def mix(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Mix reference by target ID or INodeValueOutput[np.float32] instance."""
+    def mix(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Mix reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Mix")
         if isinstance(member, members.Reference):
@@ -274,15 +273,15 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def level(self) -> str | None:
-        """Target ID of the Level reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Level reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Level")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @level.setter
-    def level(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Level reference by target ID or INodeValueOutput[np.float32] instance."""
+    def level(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Level reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Level")
         if isinstance(member, members.Reference):

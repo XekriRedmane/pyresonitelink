@@ -1,9 +1,8 @@
 """Generated component: VolumeMeter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_audio_data_source import IWorldAudioDataSource
@@ -19,7 +18,7 @@ class VolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VolumeMeter"
 
-    def __init__(self, smoothing: np.float32 | None = None, power: np.float32 | None = None, source: str | IWorldAudioDataSource | None = None, volume: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, smoothing: primitives.Float | None = None, power: primitives.Float | None = None, source: str | IWorldAudioDataSource | None = None, volume: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +39,7 @@ class VolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.volume = volume
 
     @property
-    def smoothing(self) -> np.float32 | None:
+    def smoothing(self) -> primitives.Float | None:
         """The Smoothing field value."""
         member = self.get_member("Smoothing")
         if member is None:
@@ -48,7 +47,7 @@ class VolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @smoothing.setter
-    def smoothing(self, value: np.float32) -> None:
+    def smoothing(self, value: primitives.Float) -> None:
         """Set the Smoothing field value."""
         member = self.get_member("Smoothing")
         if member is not None:
@@ -59,7 +58,7 @@ class VolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def power(self) -> np.float32 | None:
+    def power(self) -> primitives.Float | None:
         """The Power field value."""
         member = self.get_member("Power")
         if member is None:
@@ -67,7 +66,7 @@ class VolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @power.setter
-    def power(self, value: np.float32) -> None:
+    def power(self, value: primitives.Float) -> None:
         """Set the Power field value."""
         member = self.get_member("Power")
         if member is not None:
@@ -112,7 +111,7 @@ class VolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def volume(self) -> np.float32 | None:
+    def volume(self) -> primitives.Float | None:
         """The Volume field value."""
         member = self.get_member("Volume")
         if member is None:
@@ -120,7 +119,7 @@ class VolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @volume.setter
-    def volume(self, value: np.float32) -> None:
+    def volume(self, value: primitives.Float) -> None:
         """Set the Volume field value."""
         member = self.get_member("Volume")
         if member is not None:

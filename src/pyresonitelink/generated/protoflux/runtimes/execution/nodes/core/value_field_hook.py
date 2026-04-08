@@ -24,7 +24,7 @@ class ValueFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableNo
 
     Parameterize with a value type::
 
-        ValueFieldHook[np.float32]
+        ValueFieldHook[primitives.Float]
         ValueFieldHook[primitives.Float3]
     """
 

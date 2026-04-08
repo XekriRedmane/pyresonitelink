@@ -1,8 +1,7 @@
 """Generated component: RadiantDashStateSync."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -17,7 +16,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantDashStateSync"
 
-    def __init__(self, is_freeform: bool | None = None, is_open: bool | None = None, curvature: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_freeform: primitives.Bool | None = None, is_open: primitives.Bool | None = None, curvature: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,7 +34,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.curvature = curvature
 
     @property
-    def is_freeform(self) -> bool | None:
+    def is_freeform(self) -> primitives.Bool | None:
         """The IsFreeform field value."""
         member = self.get_member("IsFreeform")
         if member is None:
@@ -43,7 +42,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_freeform.setter
-    def is_freeform(self, value: bool) -> None:
+    def is_freeform(self, value: primitives.Bool) -> None:
         """Set the IsFreeform field value."""
         member = self.get_member("IsFreeform")
         if member is not None:
@@ -54,7 +53,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_open(self) -> bool | None:
+    def is_open(self) -> primitives.Bool | None:
         """The IsOpen field value."""
         member = self.get_member("IsOpen")
         if member is None:
@@ -62,7 +61,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_open.setter
-    def is_open(self, value: bool) -> None:
+    def is_open(self, value: primitives.Bool) -> None:
         """Set the IsOpen field value."""
         member = self.get_member("IsOpen")
         if member is not None:
@@ -73,7 +72,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def curvature(self) -> np.float32 | None:
+    def curvature(self) -> primitives.Float | None:
         """The Curvature field value."""
         member = self.get_member("Curvature")
         if member is None:
@@ -81,7 +80,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @curvature.setter
-    def curvature(self, value: np.float32) -> None:
+    def curvature(self, value: primitives.Float) -> None:
         """Set the Curvature field value."""
         member = self.get_member("Curvature")
         if member is not None:

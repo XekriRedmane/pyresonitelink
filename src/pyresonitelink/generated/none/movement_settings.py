@@ -1,9 +1,8 @@
 """Generated component: MovementSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MovementSettings"
 
-    def __init__(self, use_head_direction_for_movement: bool | None = None, use_smooth_turn: bool | None = None, smooth_turn_exclusive_mode: bool | None = None, smooth_turn_speed: np.float32 | None = None, snap_turn_angle: np.float32 | None = None, no_clip_speed: np.float32 | None = None, movement_deadzone: np.float32 | None = None, turning_deadzone: np.float32 | None = None, movement_exponent: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_head_direction_for_movement: primitives.Bool | None = None, use_smooth_turn: primitives.Bool | None = None, smooth_turn_exclusive_mode: primitives.Bool | None = None, smooth_turn_speed: primitives.Float | None = None, snap_turn_angle: primitives.Float | None = None, no_clip_speed: primitives.Float | None = None, movement_deadzone: primitives.Float | None = None, turning_deadzone: primitives.Float | None = None, movement_exponent: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -78,7 +77,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         self.set_member("RightSidewaysMode", value)
 
     @property
-    def use_head_direction_for_movement(self) -> bool | None:
+    def use_head_direction_for_movement(self) -> primitives.Bool | None:
         """The UseHeadDirectionForMovement field value."""
         member = self.get_member("UseHeadDirectionForMovement")
         if member is None:
@@ -86,7 +85,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_head_direction_for_movement.setter
-    def use_head_direction_for_movement(self, value: bool) -> None:
+    def use_head_direction_for_movement(self, value: primitives.Bool) -> None:
         """Set the UseHeadDirectionForMovement field value."""
         member = self.get_member("UseHeadDirectionForMovement")
         if member is not None:
@@ -97,7 +96,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def use_smooth_turn(self) -> bool | None:
+    def use_smooth_turn(self) -> primitives.Bool | None:
         """The UseSmoothTurn field value."""
         member = self.get_member("UseSmoothTurn")
         if member is None:
@@ -105,7 +104,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_smooth_turn.setter
-    def use_smooth_turn(self, value: bool) -> None:
+    def use_smooth_turn(self, value: primitives.Bool) -> None:
         """Set the UseSmoothTurn field value."""
         member = self.get_member("UseSmoothTurn")
         if member is not None:
@@ -116,7 +115,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def smooth_turn_exclusive_mode(self) -> bool | None:
+    def smooth_turn_exclusive_mode(self) -> primitives.Bool | None:
         """The SmoothTurnExclusiveMode field value."""
         member = self.get_member("SmoothTurnExclusiveMode")
         if member is None:
@@ -124,7 +123,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @smooth_turn_exclusive_mode.setter
-    def smooth_turn_exclusive_mode(self, value: bool) -> None:
+    def smooth_turn_exclusive_mode(self, value: primitives.Bool) -> None:
         """Set the SmoothTurnExclusiveMode field value."""
         member = self.get_member("SmoothTurnExclusiveMode")
         if member is not None:
@@ -135,7 +134,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def smooth_turn_speed(self) -> np.float32 | None:
+    def smooth_turn_speed(self) -> primitives.Float | None:
         """The SmoothTurnSpeed field value."""
         member = self.get_member("SmoothTurnSpeed")
         if member is None:
@@ -143,7 +142,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @smooth_turn_speed.setter
-    def smooth_turn_speed(self, value: np.float32) -> None:
+    def smooth_turn_speed(self, value: primitives.Float) -> None:
         """Set the SmoothTurnSpeed field value."""
         member = self.get_member("SmoothTurnSpeed")
         if member is not None:
@@ -154,7 +153,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def snap_turn_angle(self) -> np.float32 | None:
+    def snap_turn_angle(self) -> primitives.Float | None:
         """The SnapTurnAngle field value."""
         member = self.get_member("SnapTurnAngle")
         if member is None:
@@ -162,7 +161,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @snap_turn_angle.setter
-    def snap_turn_angle(self, value: np.float32) -> None:
+    def snap_turn_angle(self, value: primitives.Float) -> None:
         """Set the SnapTurnAngle field value."""
         member = self.get_member("SnapTurnAngle")
         if member is not None:
@@ -173,7 +172,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def no_clip_speed(self) -> np.float32 | None:
+    def no_clip_speed(self) -> primitives.Float | None:
         """The NoClipSpeed field value."""
         member = self.get_member("NoClipSpeed")
         if member is None:
@@ -181,7 +180,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @no_clip_speed.setter
-    def no_clip_speed(self, value: np.float32) -> None:
+    def no_clip_speed(self, value: primitives.Float) -> None:
         """Set the NoClipSpeed field value."""
         member = self.get_member("NoClipSpeed")
         if member is not None:
@@ -192,7 +191,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def movement_deadzone(self) -> np.float32 | None:
+    def movement_deadzone(self) -> primitives.Float | None:
         """The MovementDeadzone field value."""
         member = self.get_member("MovementDeadzone")
         if member is None:
@@ -200,7 +199,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @movement_deadzone.setter
-    def movement_deadzone(self, value: np.float32) -> None:
+    def movement_deadzone(self, value: primitives.Float) -> None:
         """Set the MovementDeadzone field value."""
         member = self.get_member("MovementDeadzone")
         if member is not None:
@@ -211,7 +210,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def turning_deadzone(self) -> np.float32 | None:
+    def turning_deadzone(self) -> primitives.Float | None:
         """The TurningDeadzone field value."""
         member = self.get_member("TurningDeadzone")
         if member is None:
@@ -219,7 +218,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @turning_deadzone.setter
-    def turning_deadzone(self, value: np.float32) -> None:
+    def turning_deadzone(self, value: primitives.Float) -> None:
         """Set the TurningDeadzone field value."""
         member = self.get_member("TurningDeadzone")
         if member is not None:
@@ -230,7 +229,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def movement_exponent(self) -> np.float32 | None:
+    def movement_exponent(self) -> primitives.Float | None:
         """The MovementExponent field value."""
         member = self.get_member("MovementExponent")
         if member is None:
@@ -238,7 +237,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @movement_exponent.setter
-    def movement_exponent(self, value: np.float32) -> None:
+    def movement_exponent(self, value: primitives.Float) -> None:
         """Set the MovementExponent field value."""
         member = self.get_member("MovementExponent")
         if member is not None:

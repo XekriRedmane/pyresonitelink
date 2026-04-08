@@ -1,6 +1,7 @@
 """Generated component: ButtonUserProfileIconSet."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
@@ -15,7 +16,7 @@ class ButtonUserProfileIconSet(GeneratedComponent, IButtonPressReceiver, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonUserProfileIconSet"
 
-    def __init__(self, is_updating: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_updating: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class ButtonUserProfileIconSet(GeneratedComponent, IButtonPressReceiver, IWorldE
             self.is_updating = is_updating
 
     @property
-    def is_updating(self) -> bool | None:
+    def is_updating(self) -> primitives.Bool | None:
         """The IsUpdating field value."""
         member = self.get_member("IsUpdating")
         if member is None:
@@ -35,7 +36,7 @@ class ButtonUserProfileIconSet(GeneratedComponent, IButtonPressReceiver, IWorldE
         return getattr(member, 'value', None)
 
     @is_updating.setter
-    def is_updating(self, value: bool) -> None:
+    def is_updating(self, value: primitives.Bool) -> None:
         """Set the IsUpdating field value."""
         member = self.get_member("IsUpdating")
         if member is not None:

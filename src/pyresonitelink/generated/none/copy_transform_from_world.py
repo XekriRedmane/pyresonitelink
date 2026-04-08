@@ -1,6 +1,7 @@
 """Generated component: CopyTransformFromWorld."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -13,7 +14,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CopyTransformFromWorld"
 
-    def __init__(self, copy_position: bool | None = None, copy_rotation: bool | None = None, copy_scale: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, copy_position: primitives.Bool | None = None, copy_rotation: primitives.Bool | None = None, copy_scale: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +32,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
             self.copy_scale = copy_scale
 
     @property
-    def copy_position(self) -> bool | None:
+    def copy_position(self) -> primitives.Bool | None:
         """The CopyPosition field value."""
         member = self.get_member("CopyPosition")
         if member is None:
@@ -39,7 +40,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @copy_position.setter
-    def copy_position(self, value: bool) -> None:
+    def copy_position(self, value: primitives.Bool) -> None:
         """Set the CopyPosition field value."""
         member = self.get_member("CopyPosition")
         if member is not None:
@@ -50,7 +51,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def copy_rotation(self) -> bool | None:
+    def copy_rotation(self) -> primitives.Bool | None:
         """The CopyRotation field value."""
         member = self.get_member("CopyRotation")
         if member is None:
@@ -58,7 +59,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @copy_rotation.setter
-    def copy_rotation(self, value: bool) -> None:
+    def copy_rotation(self, value: primitives.Bool) -> None:
         """Set the CopyRotation field value."""
         member = self.get_member("CopyRotation")
         if member is not None:
@@ -69,7 +70,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def copy_scale(self) -> bool | None:
+    def copy_scale(self) -> primitives.Bool | None:
         """The CopyScale field value."""
         member = self.get_member("CopyScale")
         if member is None:
@@ -77,7 +78,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @copy_scale.setter
-    def copy_scale(self, value: bool) -> None:
+    def copy_scale(self, value: primitives.Bool) -> None:
         """Set the CopyScale field value."""
         member = self.get_member("CopyScale")
         if member is not None:

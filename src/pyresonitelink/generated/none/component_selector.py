@@ -17,7 +17,7 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ComponentSelector"
 
-    def __init__(self, ui_root: str | Slot | None = None, root_path: str | None = None, custom_generic_type_label: str | IField[str] | None = None, custom_generic_type_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, ui_root: str | Slot | None = None, root_path: primitives.String | None = None, custom_generic_type_label: str | IField[primitives.String] | None = None, custom_generic_type_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,7 +59,7 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
             )
 
     @property
-    def root_path(self) -> str | None:
+    def root_path(self) -> primitives.String | None:
         """The _rootPath field value."""
         member = self.get_member("_rootPath")
         if member is None:
@@ -67,7 +67,7 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
         return getattr(member, 'value', None)
 
     @root_path.setter
-    def root_path(self, value: str) -> None:
+    def root_path(self, value: primitives.String) -> None:
         """Set the _rootPath field value."""
         member = self.get_member("_rootPath")
         if member is not None:
@@ -92,15 +92,15 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
 
     @property
     def custom_generic_type_label(self) -> str | None:
-        """Target ID of the _customGenericTypeLabel reference (targets IField[str])."""
+        """Target ID of the _customGenericTypeLabel reference (targets IField[primitives.String])."""
         member = self.get_member("_customGenericTypeLabel")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @custom_generic_type_label.setter
-    def custom_generic_type_label(self, target: str | IField[str] | None) -> None:
-        """Set the _customGenericTypeLabel reference by target ID or IField[str] instance."""
+    def custom_generic_type_label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _customGenericTypeLabel reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_customGenericTypeLabel")
         if isinstance(member, members.Reference):

@@ -1,7 +1,5 @@
 """Generated component: CharacterController."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterController"
 
-    def __init__(self, simulating_user: str | User | None = None, character_root: str | Slot | None = None, head_reference: str | Slot | None = None, simulate_rotation: bool | None = None, linear_damping: np.float32 | None = None, angular_damping: np.float32 | None = None, margin: np.float32 | None = None, step_up_height: np.float32 | None = None, step_up_check_distance: np.float32 | None = None, kill_vertical_velocity_after_step_up: bool | None = None, edge_detection_depth: np.float32 | None = None, speed: np.float32 | None = None, sliding_speed: np.float32 | None = None, air_speed: np.float32 | None = None, traction_force: np.float32 | None = None, sliding_force: np.float32 | None = None, air_force: np.float32 | None = None, maximum_glue_force: np.float32 | None = None, maximum_traction_slope: np.float32 | None = None, maximum_support_slope: np.float32 | None = None, jump_speed: np.float32 | None = None, sliding_jump_speed: np.float32 | None = None, gravity: primitives.Float3 | None = None, debug_visual_duration: np.float32 | None = None, height: np.float32 | None = None, radius: np.float32 | None = None, mass: np.float32 | None = None, collide_with_other_characters: bool | None = None, ignore_raycasts: bool | None = None, root_at_bottom: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, simulating_user: str | User | None = None, character_root: str | Slot | None = None, head_reference: str | Slot | None = None, simulate_rotation: primitives.Bool | None = None, linear_damping: primitives.Float | None = None, angular_damping: primitives.Float | None = None, margin: primitives.Float | None = None, step_up_height: primitives.Float | None = None, step_up_check_distance: primitives.Float | None = None, kill_vertical_velocity_after_step_up: primitives.Bool | None = None, edge_detection_depth: primitives.Float | None = None, speed: primitives.Float | None = None, sliding_speed: primitives.Float | None = None, air_speed: primitives.Float | None = None, traction_force: primitives.Float | None = None, sliding_force: primitives.Float | None = None, air_force: primitives.Float | None = None, maximum_glue_force: primitives.Float | None = None, maximum_traction_slope: primitives.Float | None = None, maximum_support_slope: primitives.Float | None = None, jump_speed: primitives.Float | None = None, sliding_jump_speed: primitives.Float | None = None, gravity: primitives.Float3 | None = None, debug_visual_duration: primitives.Float | None = None, height: primitives.Float | None = None, radius: primitives.Float | None = None, mass: primitives.Float | None = None, collide_with_other_characters: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, root_at_bottom: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -183,7 +181,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def simulate_rotation(self) -> bool | None:
+    def simulate_rotation(self) -> primitives.Bool | None:
         """The SimulateRotation field value."""
         member = self.get_member("SimulateRotation")
         if member is None:
@@ -191,7 +189,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @simulate_rotation.setter
-    def simulate_rotation(self, value: bool) -> None:
+    def simulate_rotation(self, value: primitives.Bool) -> None:
         """Set the SimulateRotation field value."""
         member = self.get_member("SimulateRotation")
         if member is not None:
@@ -267,7 +265,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         self.set_member("GravityScaling", value)
 
     @property
-    def linear_damping(self) -> np.float32 | None:
+    def linear_damping(self) -> primitives.Float | None:
         """The LinearDamping field value."""
         member = self.get_member("LinearDamping")
         if member is None:
@@ -275,7 +273,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @linear_damping.setter
-    def linear_damping(self, value: np.float32) -> None:
+    def linear_damping(self, value: primitives.Float) -> None:
         """Set the LinearDamping field value."""
         member = self.get_member("LinearDamping")
         if member is not None:
@@ -286,7 +284,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def angular_damping(self) -> np.float32 | None:
+    def angular_damping(self) -> primitives.Float | None:
         """The AngularDamping field value."""
         member = self.get_member("AngularDamping")
         if member is None:
@@ -294,7 +292,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @angular_damping.setter
-    def angular_damping(self, value: np.float32) -> None:
+    def angular_damping(self, value: primitives.Float) -> None:
         """Set the AngularDamping field value."""
         member = self.get_member("AngularDamping")
         if member is not None:
@@ -305,7 +303,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def margin(self) -> np.float32 | None:
+    def margin(self) -> primitives.Float | None:
         """The Margin field value."""
         member = self.get_member("Margin")
         if member is None:
@@ -313,7 +311,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @margin.setter
-    def margin(self, value: np.float32) -> None:
+    def margin(self, value: primitives.Float) -> None:
         """Set the Margin field value."""
         member = self.get_member("Margin")
         if member is not None:
@@ -324,7 +322,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def step_up_height(self) -> np.float32 | None:
+    def step_up_height(self) -> primitives.Float | None:
         """The StepUpHeight field value."""
         member = self.get_member("StepUpHeight")
         if member is None:
@@ -332,7 +330,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @step_up_height.setter
-    def step_up_height(self, value: np.float32) -> None:
+    def step_up_height(self, value: primitives.Float) -> None:
         """Set the StepUpHeight field value."""
         member = self.get_member("StepUpHeight")
         if member is not None:
@@ -343,7 +341,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def step_up_check_distance(self) -> np.float32 | None:
+    def step_up_check_distance(self) -> primitives.Float | None:
         """The StepUpCheckDistance field value."""
         member = self.get_member("StepUpCheckDistance")
         if member is None:
@@ -351,7 +349,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @step_up_check_distance.setter
-    def step_up_check_distance(self, value: np.float32) -> None:
+    def step_up_check_distance(self, value: primitives.Float) -> None:
         """Set the StepUpCheckDistance field value."""
         member = self.get_member("StepUpCheckDistance")
         if member is not None:
@@ -362,7 +360,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def kill_vertical_velocity_after_step_up(self) -> bool | None:
+    def kill_vertical_velocity_after_step_up(self) -> primitives.Bool | None:
         """The KillVerticalVelocityAfterStepUp field value."""
         member = self.get_member("KillVerticalVelocityAfterStepUp")
         if member is None:
@@ -370,7 +368,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @kill_vertical_velocity_after_step_up.setter
-    def kill_vertical_velocity_after_step_up(self, value: bool) -> None:
+    def kill_vertical_velocity_after_step_up(self, value: primitives.Bool) -> None:
         """Set the KillVerticalVelocityAfterStepUp field value."""
         member = self.get_member("KillVerticalVelocityAfterStepUp")
         if member is not None:
@@ -381,7 +379,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def edge_detection_depth(self) -> np.float32 | None:
+    def edge_detection_depth(self) -> primitives.Float | None:
         """The EdgeDetectionDepth field value."""
         member = self.get_member("EdgeDetectionDepth")
         if member is None:
@@ -389,7 +387,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @edge_detection_depth.setter
-    def edge_detection_depth(self, value: np.float32) -> None:
+    def edge_detection_depth(self, value: primitives.Float) -> None:
         """Set the EdgeDetectionDepth field value."""
         member = self.get_member("EdgeDetectionDepth")
         if member is not None:
@@ -400,7 +398,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def speed(self) -> np.float32 | None:
+    def speed(self) -> primitives.Float | None:
         """The Speed field value."""
         member = self.get_member("Speed")
         if member is None:
@@ -408,7 +406,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @speed.setter
-    def speed(self, value: np.float32) -> None:
+    def speed(self, value: primitives.Float) -> None:
         """Set the Speed field value."""
         member = self.get_member("Speed")
         if member is not None:
@@ -419,7 +417,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def sliding_speed(self) -> np.float32 | None:
+    def sliding_speed(self) -> primitives.Float | None:
         """The SlidingSpeed field value."""
         member = self.get_member("SlidingSpeed")
         if member is None:
@@ -427,7 +425,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @sliding_speed.setter
-    def sliding_speed(self, value: np.float32) -> None:
+    def sliding_speed(self, value: primitives.Float) -> None:
         """Set the SlidingSpeed field value."""
         member = self.get_member("SlidingSpeed")
         if member is not None:
@@ -438,7 +436,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def air_speed(self) -> np.float32 | None:
+    def air_speed(self) -> primitives.Float | None:
         """The AirSpeed field value."""
         member = self.get_member("AirSpeed")
         if member is None:
@@ -446,7 +444,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @air_speed.setter
-    def air_speed(self, value: np.float32) -> None:
+    def air_speed(self, value: primitives.Float) -> None:
         """Set the AirSpeed field value."""
         member = self.get_member("AirSpeed")
         if member is not None:
@@ -457,7 +455,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def traction_force(self) -> np.float32 | None:
+    def traction_force(self) -> primitives.Float | None:
         """The TractionForce field value."""
         member = self.get_member("TractionForce")
         if member is None:
@@ -465,7 +463,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @traction_force.setter
-    def traction_force(self, value: np.float32) -> None:
+    def traction_force(self, value: primitives.Float) -> None:
         """Set the TractionForce field value."""
         member = self.get_member("TractionForce")
         if member is not None:
@@ -476,7 +474,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def sliding_force(self) -> np.float32 | None:
+    def sliding_force(self) -> primitives.Float | None:
         """The SlidingForce field value."""
         member = self.get_member("SlidingForce")
         if member is None:
@@ -484,7 +482,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @sliding_force.setter
-    def sliding_force(self, value: np.float32) -> None:
+    def sliding_force(self, value: primitives.Float) -> None:
         """Set the SlidingForce field value."""
         member = self.get_member("SlidingForce")
         if member is not None:
@@ -495,7 +493,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def air_force(self) -> np.float32 | None:
+    def air_force(self) -> primitives.Float | None:
         """The AirForce field value."""
         member = self.get_member("AirForce")
         if member is None:
@@ -503,7 +501,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @air_force.setter
-    def air_force(self, value: np.float32) -> None:
+    def air_force(self, value: primitives.Float) -> None:
         """Set the AirForce field value."""
         member = self.get_member("AirForce")
         if member is not None:
@@ -514,7 +512,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def maximum_glue_force(self) -> np.float32 | None:
+    def maximum_glue_force(self) -> primitives.Float | None:
         """The MaximumGlueForce field value."""
         member = self.get_member("MaximumGlueForce")
         if member is None:
@@ -522,7 +520,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @maximum_glue_force.setter
-    def maximum_glue_force(self, value: np.float32) -> None:
+    def maximum_glue_force(self, value: primitives.Float) -> None:
         """Set the MaximumGlueForce field value."""
         member = self.get_member("MaximumGlueForce")
         if member is not None:
@@ -533,7 +531,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def maximum_traction_slope(self) -> np.float32 | None:
+    def maximum_traction_slope(self) -> primitives.Float | None:
         """The MaximumTractionSlope field value."""
         member = self.get_member("MaximumTractionSlope")
         if member is None:
@@ -541,7 +539,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @maximum_traction_slope.setter
-    def maximum_traction_slope(self, value: np.float32) -> None:
+    def maximum_traction_slope(self, value: primitives.Float) -> None:
         """Set the MaximumTractionSlope field value."""
         member = self.get_member("MaximumTractionSlope")
         if member is not None:
@@ -552,7 +550,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def maximum_support_slope(self) -> np.float32 | None:
+    def maximum_support_slope(self) -> primitives.Float | None:
         """The MaximumSupportSlope field value."""
         member = self.get_member("MaximumSupportSlope")
         if member is None:
@@ -560,7 +558,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @maximum_support_slope.setter
-    def maximum_support_slope(self, value: np.float32) -> None:
+    def maximum_support_slope(self, value: primitives.Float) -> None:
         """Set the MaximumSupportSlope field value."""
         member = self.get_member("MaximumSupportSlope")
         if member is not None:
@@ -571,7 +569,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def jump_speed(self) -> np.float32 | None:
+    def jump_speed(self) -> primitives.Float | None:
         """The JumpSpeed field value."""
         member = self.get_member("JumpSpeed")
         if member is None:
@@ -579,7 +577,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @jump_speed.setter
-    def jump_speed(self, value: np.float32) -> None:
+    def jump_speed(self, value: primitives.Float) -> None:
         """Set the JumpSpeed field value."""
         member = self.get_member("JumpSpeed")
         if member is not None:
@@ -590,7 +588,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def sliding_jump_speed(self) -> np.float32 | None:
+    def sliding_jump_speed(self) -> primitives.Float | None:
         """The SlidingJumpSpeed field value."""
         member = self.get_member("SlidingJumpSpeed")
         if member is None:
@@ -598,7 +596,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @sliding_jump_speed.setter
-    def sliding_jump_speed(self, value: np.float32) -> None:
+    def sliding_jump_speed(self, value: primitives.Float) -> None:
         """Set the SlidingJumpSpeed field value."""
         member = self.get_member("SlidingJumpSpeed")
         if member is not None:
@@ -641,7 +639,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         self.set_member("GravitySpace", value)
 
     @property
-    def debug_visual_duration(self) -> np.float32 | None:
+    def debug_visual_duration(self) -> primitives.Float | None:
         """The DebugVisualDuration field value."""
         member = self.get_member("DebugVisualDuration")
         if member is None:
@@ -649,7 +647,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @debug_visual_duration.setter
-    def debug_visual_duration(self, value: np.float32) -> None:
+    def debug_visual_duration(self, value: primitives.Float) -> None:
         """Set the DebugVisualDuration field value."""
         member = self.get_member("DebugVisualDuration")
         if member is not None:
@@ -660,7 +658,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The __height field value."""
         member = self.get_member("__height")
         if member is None:
@@ -668,7 +666,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the __height field value."""
         member = self.get_member("__height")
         if member is not None:
@@ -679,7 +677,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The __radius field value."""
         member = self.get_member("__radius")
         if member is None:
@@ -687,7 +685,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the __radius field value."""
         member = self.get_member("__radius")
         if member is not None:
@@ -698,7 +696,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def mass(self) -> np.float32 | None:
+    def mass(self) -> primitives.Float | None:
         """The __mass field value."""
         member = self.get_member("__mass")
         if member is None:
@@ -706,7 +704,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @mass.setter
-    def mass(self, value: np.float32) -> None:
+    def mass(self, value: primitives.Float) -> None:
         """Set the __mass field value."""
         member = self.get_member("__mass")
         if member is not None:
@@ -717,7 +715,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def collide_with_other_characters(self) -> bool | None:
+    def collide_with_other_characters(self) -> primitives.Bool | None:
         """The __collideWithOtherCharacters field value."""
         member = self.get_member("__collideWithOtherCharacters")
         if member is None:
@@ -725,7 +723,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @collide_with_other_characters.setter
-    def collide_with_other_characters(self, value: bool) -> None:
+    def collide_with_other_characters(self, value: primitives.Bool) -> None:
         """Set the __collideWithOtherCharacters field value."""
         member = self.get_member("__collideWithOtherCharacters")
         if member is not None:
@@ -736,7 +734,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def ignore_raycasts(self) -> bool | None:
+    def ignore_raycasts(self) -> primitives.Bool | None:
         """The __ignoreRaycasts field value."""
         member = self.get_member("__ignoreRaycasts")
         if member is None:
@@ -744,7 +742,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ignore_raycasts.setter
-    def ignore_raycasts(self, value: bool) -> None:
+    def ignore_raycasts(self, value: primitives.Bool) -> None:
         """Set the __ignoreRaycasts field value."""
         member = self.get_member("__ignoreRaycasts")
         if member is not None:
@@ -755,7 +753,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
             )
 
     @property
-    def root_at_bottom(self) -> bool | None:
+    def root_at_bottom(self) -> primitives.Bool | None:
         """The __rootAtBottom field value."""
         member = self.get_member("__rootAtBottom")
         if member is None:
@@ -763,7 +761,7 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @root_at_bottom.setter
-    def root_at_bottom(self, value: bool) -> None:
+    def root_at_bottom(self, value: primitives.Bool) -> None:
         """Set the __rootAtBottom field value."""
         member = self.get_member("__rootAtBottom")
         if member is not None:

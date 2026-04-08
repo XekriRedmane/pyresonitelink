@@ -18,7 +18,7 @@ class ContinuouslyChangingValueRelay(GenericComponent[T], INodeValueOutput[T], I
 
     Parameterize with a value type::
 
-        ContinuouslyChangingValueRelay[np.float32]
+        ContinuouslyChangingValueRelay[primitives.Float]
         ContinuouslyChangingValueRelay[primitives.Float3]
     """
 

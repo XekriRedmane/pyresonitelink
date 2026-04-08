@@ -1,7 +1,5 @@
 """Generated component: LegacyEnumEditor."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,14 +23,14 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        LegacyEnumEditor[np.float32]
+        LegacyEnumEditor[primitives.Float]
         LegacyEnumEditor[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyEnumEditor<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.LegacyEnumEditor<>"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, color: primitives.ColorX | None = None, width: np.float32 | None = None, height: np.float32 | None = None, thickness: np.float32 | None = None, slant: np.float32 | None = None, text_slot: str | Slot | None = None, text_renderer: str | TextRenderer | None = None, text_editor: str | TextEditor | None = None, material: str | PBS_RimMetallic | None = None, mesh: str | BevelStripeMesh | None = None, text_bounds: str | IField[primitives.Float2] | None = None, collider_size: str | IField[primitives.Float3] | None = None, mesh_left: str | BevelStripeMesh | None = None, mesh_right: str | BevelStripeMesh | None = None, text_left_bounds: str | IField[primitives.Float2] | None = None, text_right_bounds: str | IField[primitives.Float2] | None = None, left_text_renderer: str | TextRenderer | None = None, right_text_renderer: str | TextRenderer | None = None, collider_left_size: str | IField[primitives.Float3] | None = None, collider_right_size: str | IField[primitives.Float3] | None = None, left_offset: str | IField[primitives.Float3] | None = None, right_offset: str | IField[primitives.Float3] | None = None, left_text_position: str | IField[primitives.Float3] | None = None, right_text_position: str | IField[primitives.Float3] | None = None, is_enabled: bool | None = None, value: T | None = None, text_drive: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, color: primitives.ColorX | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, slant: primitives.Float | None = None, text_slot: str | Slot | None = None, text_renderer: str | TextRenderer | None = None, text_editor: str | TextEditor | None = None, material: str | PBS_RimMetallic | None = None, mesh: str | BevelStripeMesh | None = None, text_bounds: str | IField[primitives.Float2] | None = None, collider_size: str | IField[primitives.Float3] | None = None, mesh_left: str | BevelStripeMesh | None = None, mesh_right: str | BevelStripeMesh | None = None, text_left_bounds: str | IField[primitives.Float2] | None = None, text_right_bounds: str | IField[primitives.Float2] | None = None, left_text_renderer: str | TextRenderer | None = None, right_text_renderer: str | TextRenderer | None = None, collider_left_size: str | IField[primitives.Float3] | None = None, collider_right_size: str | IField[primitives.Float3] | None = None, left_offset: str | IField[primitives.Float3] | None = None, right_offset: str | IField[primitives.Float3] | None = None, left_text_position: str | IField[primitives.Float3] | None = None, right_text_position: str | IField[primitives.Float3] | None = None, is_enabled: primitives.Bool | None = None, value: T | None = None, text_drive: str | IField[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -152,7 +150,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -160,7 +158,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -171,7 +169,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -179,7 +177,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -209,7 +207,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def width(self) -> np.float32 | None:
+    def width(self) -> primitives.Float | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -217,7 +215,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.float32) -> None:
+    def width(self, value: primitives.Float) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -228,7 +226,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -236,7 +234,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -247,7 +245,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -255,7 +253,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -266,7 +264,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def slant(self) -> np.float32 | None:
+    def slant(self) -> primitives.Float | None:
         """The Slant field value."""
         member = self.get_member("Slant")
         if member is None:
@@ -274,7 +272,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @slant.setter
-    def slant(self, value: np.float32) -> None:
+    def slant(self, value: primitives.Float) -> None:
         """Set the Slant field value."""
         member = self.get_member("Slant")
         if member is not None:
@@ -684,7 +682,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def is_enabled(self) -> bool | None:
+    def is_enabled(self) -> primitives.Bool | None:
         """The IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is None:
@@ -692,7 +690,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_enabled.setter
-    def is_enabled(self, value: bool) -> None:
+    def is_enabled(self, value: primitives.Bool) -> None:
         """Set the IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is not None:
@@ -723,15 +721,15 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def text_drive(self) -> str | None:
-        """Target ID of the _textDrive reference (targets IField[str])."""
+        """Target ID of the _textDrive reference (targets IField[primitives.String])."""
         member = self.get_member("_textDrive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text_drive.setter
-    def text_drive(self, target: str | IField[str] | None) -> None:
-        """Set the _textDrive reference by target ID or IField[str] instance."""
+    def text_drive(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _textDrive reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_textDrive")
         if isinstance(member, members.Reference):

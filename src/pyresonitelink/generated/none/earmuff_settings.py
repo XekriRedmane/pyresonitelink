@@ -1,8 +1,7 @@
 """Generated component: EarmuffSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.EarmuffSettings"
 
-    def __init__(self, earmuff_enabled: bool | None = None, volume_attenuation: np.float32 | None = None, directionality: np.float32 | None = None, distance: np.float32 | None = None, angle: np.float32 | None = None, transition_start: np.float32 | None = None, transition_length: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, earmuff_enabled: primitives.Bool | None = None, volume_attenuation: primitives.Float | None = None, directionality: primitives.Float | None = None, distance: primitives.Float | None = None, angle: primitives.Float | None = None, transition_start: primitives.Float | None = None, transition_length: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +44,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
             self.transition_length = transition_length
 
     @property
-    def earmuff_enabled(self) -> bool | None:
+    def earmuff_enabled(self) -> primitives.Bool | None:
         """The EarmuffEnabled field value."""
         member = self.get_member("EarmuffEnabled")
         if member is None:
@@ -53,7 +52,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @earmuff_enabled.setter
-    def earmuff_enabled(self, value: bool) -> None:
+    def earmuff_enabled(self, value: primitives.Bool) -> None:
         """Set the EarmuffEnabled field value."""
         member = self.get_member("EarmuffEnabled")
         if member is not None:
@@ -64,7 +63,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def volume_attenuation(self) -> np.float32 | None:
+    def volume_attenuation(self) -> primitives.Float | None:
         """The VolumeAttenuation field value."""
         member = self.get_member("VolumeAttenuation")
         if member is None:
@@ -72,7 +71,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @volume_attenuation.setter
-    def volume_attenuation(self, value: np.float32) -> None:
+    def volume_attenuation(self, value: primitives.Float) -> None:
         """Set the VolumeAttenuation field value."""
         member = self.get_member("VolumeAttenuation")
         if member is not None:
@@ -83,7 +82,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def directionality(self) -> np.float32 | None:
+    def directionality(self) -> primitives.Float | None:
         """The Directionality field value."""
         member = self.get_member("Directionality")
         if member is None:
@@ -91,7 +90,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @directionality.setter
-    def directionality(self, value: np.float32) -> None:
+    def directionality(self, value: primitives.Float) -> None:
         """Set the Directionality field value."""
         member = self.get_member("Directionality")
         if member is not None:
@@ -102,7 +101,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def distance(self) -> np.float32 | None:
+    def distance(self) -> primitives.Float | None:
         """The Distance field value."""
         member = self.get_member("Distance")
         if member is None:
@@ -110,7 +109,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @distance.setter
-    def distance(self, value: np.float32) -> None:
+    def distance(self, value: primitives.Float) -> None:
         """Set the Distance field value."""
         member = self.get_member("Distance")
         if member is not None:
@@ -121,7 +120,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def angle(self) -> np.float32 | None:
+    def angle(self) -> primitives.Float | None:
         """The Angle field value."""
         member = self.get_member("Angle")
         if member is None:
@@ -129,7 +128,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @angle.setter
-    def angle(self, value: np.float32) -> None:
+    def angle(self, value: primitives.Float) -> None:
         """Set the Angle field value."""
         member = self.get_member("Angle")
         if member is not None:
@@ -140,7 +139,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def transition_start(self) -> np.float32 | None:
+    def transition_start(self) -> primitives.Float | None:
         """The TransitionStart field value."""
         member = self.get_member("TransitionStart")
         if member is None:
@@ -148,7 +147,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @transition_start.setter
-    def transition_start(self, value: np.float32) -> None:
+    def transition_start(self, value: primitives.Float) -> None:
         """Set the TransitionStart field value."""
         member = self.get_member("TransitionStart")
         if member is not None:
@@ -159,7 +158,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def transition_length(self) -> np.float32 | None:
+    def transition_length(self) -> primitives.Float | None:
         """The TransitionLength field value."""
         member = self.get_member("TransitionLength")
         if member is None:
@@ -167,7 +166,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @transition_length.setter
-    def transition_length(self, value: np.float32) -> None:
+    def transition_length(self, value: primitives.Float) -> None:
         """Set the TransitionLength field value."""
         member = self.get_member("TransitionLength")
         if member is not None:

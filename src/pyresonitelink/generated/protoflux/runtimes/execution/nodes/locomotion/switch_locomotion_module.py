@@ -1,6 +1,7 @@
 """Generated component: SwitchLocomotionModule."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -23,7 +24,7 @@ class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionN
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion.SwitchLocomotionModule"
 
-    def __init__(self, target_user: str | INodeObjectOutput[User] | None = None, module_name: str | INodeObjectOutput[str] | None = None, exact_match: str | INodeValueOutput[bool] | None = None, on_switched: str | INodeOperation | None = None, on_not_found: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_user: str | INodeObjectOutput[User] | None = None, module_name: str | INodeObjectOutput[primitives.String] | None = None, exact_match: str | INodeValueOutput[primitives.Bool] | None = None, on_switched: str | INodeOperation | None = None, on_not_found: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,15 +70,15 @@ class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionN
 
     @property
     def module_name(self) -> str | None:
-        """Target ID of the ModuleName reference (targets INodeObjectOutput[str])."""
+        """Target ID of the ModuleName reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("ModuleName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @module_name.setter
-    def module_name(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the ModuleName reference by target ID or INodeObjectOutput[str] instance."""
+    def module_name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the ModuleName reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("ModuleName")
         if isinstance(member, members.Reference):
@@ -90,15 +91,15 @@ class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionN
 
     @property
     def exact_match(self) -> str | None:
-        """Target ID of the ExactMatch reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ExactMatch reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ExactMatch")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @exact_match.setter
-    def exact_match(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ExactMatch reference by target ID or INodeValueOutput[bool] instance."""
+    def exact_match(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ExactMatch reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ExactMatch")
         if isinstance(member, members.Reference):

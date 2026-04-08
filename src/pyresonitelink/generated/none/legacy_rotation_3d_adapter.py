@@ -18,7 +18,7 @@ class LegacyRotation3DAdapter(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyRotation3DAdapter"
 
-    def __init__(self, target: str | IField[primitives.Float3] | None = None, value: primitives.Float3 | None = None, particle_mesh: str | AssetRef[Mesh] | None = None, using_stretch: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.Float3] | None = None, value: primitives.Float3 | None = None, particle_mesh: str | AssetRef[Mesh] | None = None, using_stretch: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -101,15 +101,15 @@ class LegacyRotation3DAdapter(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def using_stretch(self) -> str | None:
-        """Target ID of the UsingStretch reference (targets IField[bool])."""
+        """Target ID of the UsingStretch reference (targets IField[primitives.Bool])."""
         member = self.get_member("UsingStretch")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @using_stretch.setter
-    def using_stretch(self, target: str | IField[bool] | None) -> None:
-        """Set the UsingStretch reference by target ID or IField[bool] instance."""
+    def using_stretch(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the UsingStretch reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("UsingStretch")
         if isinstance(member, members.Reference):

@@ -1,7 +1,5 @@
 """Generated component: Atan2_Color_Float."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class Atan2_Color_Float(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Atan2_Color_Float"
 
-    def __init__(self, y: str | INodeValueOutput[primitives.Color] | None = None, x: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, y: str | INodeValueOutput[primitives.Color] | None = None, x: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +57,15 @@ class Atan2_Color_Float(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def x(self) -> str | None:
-        """Target ID of the X reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the X reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @x.setter
-    def x(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the X reference by target ID or INodeValueOutput[np.float32] instance."""
+    def x(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the X reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("X")
         if isinstance(member, members.Reference):

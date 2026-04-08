@@ -1,7 +1,5 @@
 """Generated component: AxisPanner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AxisPanner"
 
-    def __init__(self, time_base: str | IValue[np.float64] | None = None, speed: np.float32 | None = None, range_: np.float32 | None = None, offset: primitives.Float3 | None = None, axis: primitives.Float3 | None = None, reference_scale: primitives.Float3 | None = None, full_scale_range_ratio: np.float32 | None = None, position: str | IField[primitives.Float3] | None = None, scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, time_base: str | IValue[primitives.Double] | None = None, speed: primitives.Float | None = None, range_: primitives.Float | None = None, offset: primitives.Float3 | None = None, axis: primitives.Float3 | None = None, reference_scale: primitives.Float3 | None = None, full_scale_range_ratio: primitives.Float | None = None, position: str | IField[primitives.Float3] | None = None, scale: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,15 +56,15 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def time_base(self) -> str | None:
-        """Target ID of the TimeBase reference (targets IValue[np.float64])."""
+        """Target ID of the TimeBase reference (targets IValue[primitives.Double])."""
         member = self.get_member("TimeBase")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @time_base.setter
-    def time_base(self, target: str | IValue[np.float64] | None) -> None:
-        """Set the TimeBase reference by target ID or IValue[np.float64] instance."""
+    def time_base(self, target: str | IValue[primitives.Double] | None) -> None:
+        """Set the TimeBase reference by target ID or IValue[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
         member = self.get_member("TimeBase")
         if isinstance(member, members.Reference):
@@ -78,7 +76,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def speed(self) -> np.float32 | None:
+    def speed(self) -> primitives.Float | None:
         """The Speed field value."""
         member = self.get_member("Speed")
         if member is None:
@@ -86,7 +84,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @speed.setter
-    def speed(self, value: np.float32) -> None:
+    def speed(self, value: primitives.Float) -> None:
         """Set the Speed field value."""
         member = self.get_member("Speed")
         if member is not None:
@@ -97,7 +95,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def range_(self) -> np.float32 | None:
+    def range_(self) -> primitives.Float | None:
         """The Range field value."""
         member = self.get_member("Range")
         if member is None:
@@ -105,7 +103,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @range_.setter
-    def range_(self, value: np.float32) -> None:
+    def range_(self, value: primitives.Float) -> None:
         """Set the Range field value."""
         member = self.get_member("Range")
         if member is not None:
@@ -173,7 +171,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def full_scale_range_ratio(self) -> np.float32 | None:
+    def full_scale_range_ratio(self) -> primitives.Float | None:
         """The FullScaleRangeRatio field value."""
         member = self.get_member("FullScaleRangeRatio")
         if member is None:
@@ -181,7 +179,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @full_scale_range_ratio.setter
-    def full_scale_range_ratio(self, value: np.float32) -> None:
+    def full_scale_range_ratio(self, value: primitives.Float) -> None:
         """Set the FullScaleRangeRatio field value."""
         member = self.get_member("FullScaleRangeRatio")
         if member is not None:

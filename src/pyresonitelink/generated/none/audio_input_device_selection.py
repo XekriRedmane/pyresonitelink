@@ -1,9 +1,8 @@
 """Generated component: AudioInputDeviceSelection."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -21,7 +20,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioInputDeviceSelection"
 
-    def __init__(self, selected_device_index: np.int32 | None = None, selected_device_name: str | None = None, use_filtered_data: bool | None = None, device_button_root: str | Slot | None = None, audio_stream: str | LocalAudioDeviceStream | None = None, audio_output: str | AudioOutput | None = None, device_volume: str | VolumeMeter | None = None, volume_bar: str | ProgressBar | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, selected_device_index: primitives.Int | None = None, selected_device_name: primitives.String | None = None, use_filtered_data: primitives.Bool | None = None, device_button_root: str | Slot | None = None, audio_stream: str | LocalAudioDeviceStream | None = None, audio_output: str | AudioOutput | None = None, device_volume: str | VolumeMeter | None = None, volume_bar: str | ProgressBar | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +53,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
             self.volume_bar = volume_bar
 
     @property
-    def selected_device_index(self) -> np.int32 | None:
+    def selected_device_index(self) -> primitives.Int | None:
         """The SelectedDeviceIndex field value."""
         member = self.get_member("SelectedDeviceIndex")
         if member is None:
@@ -62,7 +61,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @selected_device_index.setter
-    def selected_device_index(self, value: np.int32) -> None:
+    def selected_device_index(self, value: primitives.Int) -> None:
         """Set the SelectedDeviceIndex field value."""
         member = self.get_member("SelectedDeviceIndex")
         if member is not None:
@@ -73,7 +72,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def selected_device_name(self) -> str | None:
+    def selected_device_name(self) -> primitives.String | None:
         """The SelectedDeviceName field value."""
         member = self.get_member("SelectedDeviceName")
         if member is None:
@@ -81,7 +80,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @selected_device_name.setter
-    def selected_device_name(self, value: str) -> None:
+    def selected_device_name(self, value: primitives.String) -> None:
         """Set the SelectedDeviceName field value."""
         member = self.get_member("SelectedDeviceName")
         if member is not None:
@@ -92,7 +91,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def use_filtered_data(self) -> bool | None:
+    def use_filtered_data(self) -> primitives.Bool | None:
         """The UseFilteredData field value."""
         member = self.get_member("UseFilteredData")
         if member is None:
@@ -100,7 +99,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @use_filtered_data.setter
-    def use_filtered_data(self, value: bool) -> None:
+    def use_filtered_data(self, value: primitives.Bool) -> None:
         """Set the UseFilteredData field value."""
         member = self.get_member("UseFilteredData")
         if member is not None:

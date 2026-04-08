@@ -1,7 +1,5 @@
 """Generated component: MeshEmitter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.MeshEmitter"
 
-    def __init__(self, system: str | ParticleSystem | None = None, rate: np.float32 | None = None, burst_on_activated_min: np.float32 | None = None, burst_on_activated_max: np.float32 | None = None, burst_on_start: bool | None = None, use_vertex_colors: bool | None = None, uniform_distribution: bool | None = None, direction: primitives.Float3 | None = None, random_direction_weight: np.float32 | None = None, color_texture: str | IAssetProvider[Texture2D] | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, mesh: str | IAssetProvider[Mesh] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, use_vertex_colors: primitives.Bool | None = None, uniform_distribution: primitives.Bool | None = None, direction: primitives.Float3 | None = None, random_direction_weight: primitives.Float | None = None, color_texture: str | IAssetProvider[Texture2D] | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, mesh: str | IAssetProvider[Mesh] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -91,7 +89,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def rate(self) -> np.float32 | None:
+    def rate(self) -> primitives.Float | None:
         """The Rate field value."""
         member = self.get_member("Rate")
         if member is None:
@@ -99,7 +97,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @rate.setter
-    def rate(self, value: np.float32) -> None:
+    def rate(self, value: primitives.Float) -> None:
         """Set the Rate field value."""
         member = self.get_member("Rate")
         if member is not None:
@@ -110,7 +108,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def burst_on_activated_min(self) -> np.float32 | None:
+    def burst_on_activated_min(self) -> primitives.Float | None:
         """The BurstOnActivatedMin field value."""
         member = self.get_member("BurstOnActivatedMin")
         if member is None:
@@ -118,7 +116,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @burst_on_activated_min.setter
-    def burst_on_activated_min(self, value: np.float32) -> None:
+    def burst_on_activated_min(self, value: primitives.Float) -> None:
         """Set the BurstOnActivatedMin field value."""
         member = self.get_member("BurstOnActivatedMin")
         if member is not None:
@@ -129,7 +127,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def burst_on_activated_max(self) -> np.float32 | None:
+    def burst_on_activated_max(self) -> primitives.Float | None:
         """The BurstOnActivatedMax field value."""
         member = self.get_member("BurstOnActivatedMax")
         if member is None:
@@ -137,7 +135,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @burst_on_activated_max.setter
-    def burst_on_activated_max(self, value: np.float32) -> None:
+    def burst_on_activated_max(self, value: primitives.Float) -> None:
         """Set the BurstOnActivatedMax field value."""
         member = self.get_member("BurstOnActivatedMax")
         if member is not None:
@@ -148,7 +146,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def burst_on_start(self) -> bool | None:
+    def burst_on_start(self) -> primitives.Bool | None:
         """The BurstOnStart field value."""
         member = self.get_member("BurstOnStart")
         if member is None:
@@ -156,7 +154,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @burst_on_start.setter
-    def burst_on_start(self, value: bool) -> None:
+    def burst_on_start(self, value: primitives.Bool) -> None:
         """Set the BurstOnStart field value."""
         member = self.get_member("BurstOnStart")
         if member is not None:
@@ -180,7 +178,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
         self.set_member("EmitFrom", value)
 
     @property
-    def use_vertex_colors(self) -> bool | None:
+    def use_vertex_colors(self) -> primitives.Bool | None:
         """The UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is None:
@@ -188,7 +186,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @use_vertex_colors.setter
-    def use_vertex_colors(self, value: bool) -> None:
+    def use_vertex_colors(self, value: primitives.Bool) -> None:
         """Set the UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is not None:
@@ -199,7 +197,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def uniform_distribution(self) -> bool | None:
+    def uniform_distribution(self) -> primitives.Bool | None:
         """The UniformDistribution field value."""
         member = self.get_member("UniformDistribution")
         if member is None:
@@ -207,7 +205,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @uniform_distribution.setter
-    def uniform_distribution(self, value: bool) -> None:
+    def uniform_distribution(self, value: primitives.Bool) -> None:
         """Set the UniformDistribution field value."""
         member = self.get_member("UniformDistribution")
         if member is not None:
@@ -250,7 +248,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def random_direction_weight(self) -> np.float32 | None:
+    def random_direction_weight(self) -> primitives.Float | None:
         """The RandomDirectionWeight field value."""
         member = self.get_member("RandomDirectionWeight")
         if member is None:
@@ -258,7 +256,7 @@ class MeshEmitter(GeneratedComponent, IParticleSystemEmitter):
         return getattr(member, 'value', None)
 
     @random_direction_weight.setter
-    def random_direction_weight(self, value: np.float32) -> None:
+    def random_direction_weight(self, value: primitives.Float) -> None:
         """Set the RandomDirectionWeight field value."""
         member = self.get_member("RandomDirectionWeight")
         if member is not None:

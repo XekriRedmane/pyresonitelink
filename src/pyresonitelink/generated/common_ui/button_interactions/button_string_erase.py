@@ -1,9 +1,8 @@
 """Generated component: ButtonStringErase."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -19,7 +18,7 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonStringErase"
 
-    def __init__(self, target_string: str | IField[str] | None = None, count: np.int32 | None = None, erase_from_beginning: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_string: str | IField[primitives.String] | None = None, count: primitives.Int | None = None, erase_from_beginning: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,15 +37,15 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def target_string(self) -> str | None:
-        """Target ID of the TargetString reference (targets IField[str])."""
+        """Target ID of the TargetString reference (targets IField[primitives.String])."""
         member = self.get_member("TargetString")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_string.setter
-    def target_string(self, target: str | IField[str] | None) -> None:
-        """Set the TargetString reference by target ID or IField[str] instance."""
+    def target_string(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the TargetString reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetString")
         if isinstance(member, members.Reference):
@@ -58,7 +57,7 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
             )
 
     @property
-    def count(self) -> np.int32 | None:
+    def count(self) -> primitives.Int | None:
         """The Count field value."""
         member = self.get_member("Count")
         if member is None:
@@ -66,7 +65,7 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
         return getattr(member, 'value', None)
 
     @count.setter
-    def count(self, value: np.int32) -> None:
+    def count(self, value: primitives.Int) -> None:
         """Set the Count field value."""
         member = self.get_member("Count")
         if member is not None:
@@ -77,7 +76,7 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
             )
 
     @property
-    def erase_from_beginning(self) -> bool | None:
+    def erase_from_beginning(self) -> primitives.Bool | None:
         """The EraseFromBeginning field value."""
         member = self.get_member("EraseFromBeginning")
         if member is None:
@@ -85,7 +84,7 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
         return getattr(member, 'value', None)
 
     @erase_from_beginning.setter
-    def erase_from_beginning(self, value: bool) -> None:
+    def erase_from_beginning(self, value: primitives.Bool) -> None:
         """Set the EraseFromBeginning field value."""
         member = self.get_member("EraseFromBeginning")
         if member is not None:

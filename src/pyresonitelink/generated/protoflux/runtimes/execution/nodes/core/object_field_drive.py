@@ -21,7 +21,7 @@ class ObjectFieldDrive(GenericComponent[T], IDrive, IProtoFluxEngineProxyNode, I
 
     Parameterize with a value type::
 
-        ObjectFieldDrive[np.float32]
+        ObjectFieldDrive[primitives.Float]
         ObjectFieldDrive[primitives.Float3]
     """
 

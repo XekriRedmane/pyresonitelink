@@ -1,9 +1,8 @@
 """Generated component: SnapSphere."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +18,7 @@ class SnapSphere(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SnapSphere"
 
-    def __init__(self, radius: np.float32 | None = None, snap_parent: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, radius: primitives.Float | None = None, snap_parent: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,7 +33,7 @@ class SnapSphere(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
             self.snap_parent = snap_parent
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -42,7 +41,7 @@ class SnapSphere(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:

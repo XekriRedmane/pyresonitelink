@@ -1,6 +1,7 @@
 """Generated component: DevModeController."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -13,7 +14,7 @@ class DevModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DevModeController"
 
-    def __init__(self, dev_mode_enabled: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, dev_mode_enabled: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class DevModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.dev_mode_enabled = dev_mode_enabled
 
     @property
-    def dev_mode_enabled(self) -> bool | None:
+    def dev_mode_enabled(self) -> primitives.Bool | None:
         """The DevModeEnabled field value."""
         member = self.get_member("DevModeEnabled")
         if member is None:
@@ -33,7 +34,7 @@ class DevModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @dev_mode_enabled.setter
-    def dev_mode_enabled(self, value: bool) -> None:
+    def dev_mode_enabled(self, value: primitives.Bool) -> None:
         """Set the DevModeEnabled field value."""
         member = self.get_member("DevModeEnabled")
         if member is not None:

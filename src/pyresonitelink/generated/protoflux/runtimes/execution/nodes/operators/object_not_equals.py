@@ -19,7 +19,7 @@ class ObjectNotEquals(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T
 
     Parameterize with a value type::
 
-        ObjectNotEquals[np.float32]
+        ObjectNotEquals[primitives.Float]
         ObjectNotEquals[primitives.Float3]
     """
 

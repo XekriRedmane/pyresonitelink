@@ -1,7 +1,5 @@
 """Generated component: Pow_doubleQ."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class Pow_doubleQ(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Quaternions.Pow_doubleQ"
 
-    def __init__(self, q: str | INodeValueOutput[primitives.DoubleQ] | None = None, pow: str | INodeValueOutput[np.float64] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, q: str | INodeValueOutput[primitives.DoubleQ] | None = None, pow: str | INodeValueOutput[primitives.Double] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +57,15 @@ class Pow_doubleQ(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def pow(self) -> str | None:
-        """Target ID of the Pow reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the Pow reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("Pow")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @pow.setter
-    def pow(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the Pow reference by target ID or INodeValueOutput[np.float64] instance."""
+    def pow(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the Pow reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Pow")
         if isinstance(member, members.Reference):

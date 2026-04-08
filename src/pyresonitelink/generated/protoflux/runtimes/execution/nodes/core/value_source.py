@@ -22,7 +22,7 @@ class ValueSource(GenericComponent[T], IVariable, ISource, INodeValueOutput[T], 
 
     Parameterize with a value type::
 
-        ValueSource[np.float32]
+        ValueSource[primitives.Float]
         ValueSource[primitives.Float3]
     """
 

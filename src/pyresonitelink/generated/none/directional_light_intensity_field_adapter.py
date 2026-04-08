@@ -1,9 +1,8 @@
 """Generated component: DirectionalLightIntensityFieldAdapter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -17,7 +16,7 @@ class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DirectionalLightIntensityFieldAdapter"
 
-    def __init__(self, target: str | IField[np.float32] | None = None, value: np.float32 | None = None, scale: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.Float] | None = None, value: primitives.Float | None = None, scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,15 +35,15 @@ class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWor
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[np.float32])."""
+        """Target ID of the Target reference (targets IField[primitives.Float])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Target reference by target ID or IField[np.float32] instance."""
+    def target(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -56,7 +55,7 @@ class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWor
             )
 
     @property
-    def value(self) -> np.float32 | None:
+    def value(self) -> primitives.Float | None:
         """The Value field value."""
         member = self.get_member("Value")
         if member is None:
@@ -64,7 +63,7 @@ class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @value.setter
-    def value(self, value: np.float32) -> None:
+    def value(self, value: primitives.Float) -> None:
         """Set the Value field value."""
         member = self.get_member("Value")
         if member is not None:
@@ -75,7 +74,7 @@ class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWor
             )
 
     @property
-    def scale(self) -> np.float32 | None:
+    def scale(self) -> primitives.Float | None:
         """The Scale field value."""
         member = self.get_member("Scale")
         if member is None:
@@ -83,7 +82,7 @@ class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @scale.setter
-    def scale(self, value: np.float32) -> None:
+    def scale(self, value: primitives.Float) -> None:
         """Set the Scale field value."""
         member = self.get_member("Scale")
         if member is not None:

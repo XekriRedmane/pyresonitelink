@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent
@@ -16,7 +17,7 @@ class AvatarFacetAnchor(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AvatarFacetAnchor"
 
-    def __init__(self, override_state: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, override_state: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +42,7 @@ class AvatarFacetAnchor(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
         self.set_member("FacetAnchorPoint", value)
 
     @property
-    def override_state(self) -> bool | None:
+    def override_state(self) -> primitives.Bool | None:
         """The OverrideState field value."""
         member = self.get_member("OverrideState")
         if member is None:
@@ -49,7 +50,7 @@ class AvatarFacetAnchor(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @override_state.setter
-    def override_state(self, value: bool) -> None:
+    def override_state(self, value: primitives.Bool) -> None:
         """Set the OverrideState field value."""
         member = self.get_member("OverrideState")
         if member is not None:

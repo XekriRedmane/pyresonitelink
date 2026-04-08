@@ -21,7 +21,7 @@ class PlaneTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PlaneTranslationGizmo"
 
-    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_point: str | IField[primitives.Float3] | None = None, normal: primitives.Float3 | None = None, use_custom_visual: bool | None = None, custom_visual_root: str | Slot | None = None, handle_size: primitives.Float2 | None = None, handle_offset: primitives.Float2 | None = None, create_undo_steps: bool | None = None, visual_root: str | Slot | None = None, visual_rotation: str | IField[primitives.FloatQ] | None = None, visual_position: str | IField[primitives.Float3] | None = None, box_size: str | IField[primitives.Float3] | None = None, lines_root: str | Slot | None = None, line0: str | SegmentMesh | None = None, line1: str | SegmentMesh | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: primitives.Bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_point: str | IField[primitives.Float3] | None = None, normal: primitives.Float3 | None = None, use_custom_visual: primitives.Bool | None = None, custom_visual_root: str | Slot | None = None, handle_size: primitives.Float2 | None = None, handle_offset: primitives.Float2 | None = None, create_undo_steps: primitives.Bool | None = None, visual_root: str | Slot | None = None, visual_rotation: str | IField[primitives.FloatQ] | None = None, visual_position: str | IField[primitives.Float3] | None = None, box_size: str | IField[primitives.Float3] | None = None, lines_root: str | Slot | None = None, line0: str | SegmentMesh | None = None, line1: str | SegmentMesh | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -123,7 +123,7 @@ class PlaneTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEven
             )
 
     @property
-    def auto_position_at_target_slot(self) -> bool | None:
+    def auto_position_at_target_slot(self) -> primitives.Bool | None:
         """The AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
@@ -131,7 +131,7 @@ class PlaneTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEven
         return getattr(member, 'value', None)
 
     @auto_position_at_target_slot.setter
-    def auto_position_at_target_slot(self, value: bool) -> None:
+    def auto_position_at_target_slot(self, value: primitives.Bool) -> None:
         """Set the AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is not None:
@@ -355,7 +355,7 @@ class PlaneTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEven
         self.set_member("NormalSpace", value)
 
     @property
-    def use_custom_visual(self) -> bool | None:
+    def use_custom_visual(self) -> primitives.Bool | None:
         """The UseCustomVisual field value."""
         member = self.get_member("UseCustomVisual")
         if member is None:
@@ -363,7 +363,7 @@ class PlaneTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEven
         return getattr(member, 'value', None)
 
     @use_custom_visual.setter
-    def use_custom_visual(self, value: bool) -> None:
+    def use_custom_visual(self, value: primitives.Bool) -> None:
         """Set the UseCustomVisual field value."""
         member = self.get_member("UseCustomVisual")
         if member is not None:
@@ -433,7 +433,7 @@ class PlaneTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEven
             )
 
     @property
-    def create_undo_steps(self) -> bool | None:
+    def create_undo_steps(self) -> primitives.Bool | None:
         """The CreateUndoSteps field value."""
         member = self.get_member("CreateUndoSteps")
         if member is None:
@@ -441,7 +441,7 @@ class PlaneTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEven
         return getattr(member, 'value', None)
 
     @create_undo_steps.setter
-    def create_undo_steps(self, value: bool) -> None:
+    def create_undo_steps(self, value: primitives.Bool) -> None:
         """Set the CreateUndoSteps field value."""
         member = self.get_member("CreateUndoSteps")
         if member is not None:

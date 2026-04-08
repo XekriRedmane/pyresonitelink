@@ -21,7 +21,7 @@ class EnumToSbyte(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     Parameterize with a value type::
 
-        EnumToSbyte[np.float32]
+        EnumToSbyte[primitives.Float]
         EnumToSbyte[primitives.Float3]
     """
 

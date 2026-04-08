@@ -1,7 +1,5 @@
 """Generated component: AvatarParentNode."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -18,7 +16,7 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarParentNode"
 
-    def __init__(self, destroy_on_dequip: bool | None = None, scale: primitives.Float3 | None = None, equip_order_priority: np.int32 | None = None, original_parent: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, destroy_on_dequip: primitives.Bool | None = None, scale: primitives.Float3 | None = None, equip_order_priority: primitives.Int | None = None, original_parent: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -52,7 +50,7 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
         self.set_member("Node", value)
 
     @property
-    def destroy_on_dequip(self) -> bool | None:
+    def destroy_on_dequip(self) -> primitives.Bool | None:
         """The DestroyOnDequip field value."""
         member = self.get_member("DestroyOnDequip")
         if member is None:
@@ -60,7 +58,7 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @destroy_on_dequip.setter
-    def destroy_on_dequip(self, value: bool) -> None:
+    def destroy_on_dequip(self, value: primitives.Bool) -> None:
         """Set the DestroyOnDequip field value."""
         member = self.get_member("DestroyOnDequip")
         if member is not None:
@@ -90,7 +88,7 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
             )
 
     @property
-    def equip_order_priority(self) -> np.int32 | None:
+    def equip_order_priority(self) -> primitives.Int | None:
         """The EquipOrderPriority field value."""
         member = self.get_member("EquipOrderPriority")
         if member is None:
@@ -98,7 +96,7 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @equip_order_priority.setter
-    def equip_order_priority(self, value: np.int32) -> None:
+    def equip_order_priority(self, value: primitives.Int) -> None:
         """Set the EquipOrderPriority field value."""
         member = self.get_member("EquipOrderPriority")
         if member is not None:

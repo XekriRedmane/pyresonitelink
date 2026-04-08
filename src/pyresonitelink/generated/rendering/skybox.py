@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -20,7 +21,7 @@ class Skybox(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Skybox"
 
-    def __init__(self, material: str | IAssetProvider[Material] | None = None, is_active: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, material: str | IAssetProvider[Material] | None = None, is_active: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -56,7 +57,7 @@ class Skybox(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
             )
 
     @property
-    def is_active(self) -> bool | None:
+    def is_active(self) -> primitives.Bool | None:
         """The IsActive field value."""
         member = self.get_member("IsActive")
         if member is None:
@@ -64,7 +65,7 @@ class Skybox(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @is_active.setter
-    def is_active(self, value: bool) -> None:
+    def is_active(self, value: primitives.Bool) -> None:
         """Set the IsActive field value."""
         member = self.get_member("IsActive")
         if member is not None:

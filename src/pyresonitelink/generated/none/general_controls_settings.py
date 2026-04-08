@@ -1,9 +1,8 @@
 """Generated component: GeneralControlsSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class GeneralControlsSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GeneralControlsSettings"
 
-    def __init__(self, double_click_interval: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, double_click_interval: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +40,7 @@ class GeneralControlsSettings(GeneratedComponent, ICustomInspector):
         self.set_member("PrimaryHand", value)
 
     @property
-    def double_click_interval(self) -> np.float32 | None:
+    def double_click_interval(self) -> primitives.Float | None:
         """The DoubleClickInterval field value."""
         member = self.get_member("DoubleClickInterval")
         if member is None:
@@ -49,7 +48,7 @@ class GeneralControlsSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @double_click_interval.setter
-    def double_click_interval(self, value: np.float32) -> None:
+    def double_click_interval(self, value: primitives.Float) -> None:
         """Set the DoubleClickInterval field value."""
         member = self.get_member("DoubleClickInterval")
         if member is not None:

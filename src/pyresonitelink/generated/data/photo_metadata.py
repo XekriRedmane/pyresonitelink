@@ -1,7 +1,5 @@
 """Generated component: PhotoMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotoMetadata"
 
-    def __init__(self, location_name: str | None = None, location_url: str | None = None, location_hidden_from_listing: bool | None = None, time_taken: str | None = None, taken_global_position: primitives.Float3 | None = None, taken_global_rotation: primitives.FloatQ | None = None, taken_global_scale: primitives.Float3 | None = None, app_version: str | None = None, camera_manufacturer: str | None = None, camera_model: str | None = None, camera_fov: np.float32 | None = None, is360: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, location_name: primitives.String | None = None, location_url: str | None = None, location_hidden_from_listing: primitives.Bool | None = None, time_taken: str | None = None, taken_global_position: primitives.Float3 | None = None, taken_global_rotation: primitives.FloatQ | None = None, taken_global_scale: primitives.Float3 | None = None, app_version: primitives.String | None = None, camera_manufacturer: primitives.String | None = None, camera_model: primitives.String | None = None, camera_fov: primitives.Float | None = None, is360: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -65,7 +63,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             self.is360 = is360
 
     @property
-    def location_name(self) -> str | None:
+    def location_name(self) -> primitives.String | None:
         """The LocationName field value."""
         member = self.get_member("LocationName")
         if member is None:
@@ -73,7 +71,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @location_name.setter
-    def location_name(self, value: str) -> None:
+    def location_name(self, value: primitives.String) -> None:
         """Set the LocationName field value."""
         member = self.get_member("LocationName")
         if member is not None:
@@ -129,7 +127,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         self.set_member("LocationAccessLevel", value)
 
     @property
-    def location_hidden_from_listing(self) -> bool | None:
+    def location_hidden_from_listing(self) -> primitives.Bool | None:
         """The LocationHiddenFromListing field value."""
         member = self.get_member("LocationHiddenFromListing")
         if member is None:
@@ -137,7 +135,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @location_hidden_from_listing.setter
-    def location_hidden_from_listing(self, value: bool) -> None:
+    def location_hidden_from_listing(self, value: primitives.Bool) -> None:
         """Set the LocationHiddenFromListing field value."""
         member = self.get_member("LocationHiddenFromListing")
         if member is not None:
@@ -237,7 +235,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             )
 
     @property
-    def app_version(self) -> str | None:
+    def app_version(self) -> primitives.String | None:
         """The AppVersion field value."""
         member = self.get_member("AppVersion")
         if member is None:
@@ -245,7 +243,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @app_version.setter
-    def app_version(self, value: str) -> None:
+    def app_version(self, value: primitives.String) -> None:
         """Set the AppVersion field value."""
         member = self.get_member("AppVersion")
         if member is not None:
@@ -282,7 +280,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         self.set_member("__legacyPresentUsers", value)
 
     @property
-    def camera_manufacturer(self) -> str | None:
+    def camera_manufacturer(self) -> primitives.String | None:
         """The CameraManufacturer field value."""
         member = self.get_member("CameraManufacturer")
         if member is None:
@@ -290,7 +288,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @camera_manufacturer.setter
-    def camera_manufacturer(self, value: str) -> None:
+    def camera_manufacturer(self, value: primitives.String) -> None:
         """Set the CameraManufacturer field value."""
         member = self.get_member("CameraManufacturer")
         if member is not None:
@@ -301,7 +299,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             )
 
     @property
-    def camera_model(self) -> str | None:
+    def camera_model(self) -> primitives.String | None:
         """The CameraModel field value."""
         member = self.get_member("CameraModel")
         if member is None:
@@ -309,7 +307,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @camera_model.setter
-    def camera_model(self, value: str) -> None:
+    def camera_model(self, value: primitives.String) -> None:
         """Set the CameraModel field value."""
         member = self.get_member("CameraModel")
         if member is not None:
@@ -320,7 +318,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             )
 
     @property
-    def camera_fov(self) -> np.float32 | None:
+    def camera_fov(self) -> primitives.Float | None:
         """The CameraFOV field value."""
         member = self.get_member("CameraFOV")
         if member is None:
@@ -328,7 +326,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @camera_fov.setter
-    def camera_fov(self, value: np.float32) -> None:
+    def camera_fov(self, value: primitives.Float) -> None:
         """Set the CameraFOV field value."""
         member = self.get_member("CameraFOV")
         if member is not None:
@@ -339,7 +337,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             )
 
     @property
-    def is360(self) -> bool | None:
+    def is360(self) -> primitives.Bool | None:
         """The Is360 field value."""
         member = self.get_member("Is360")
         if member is None:
@@ -347,7 +345,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @is360.setter
-    def is360(self, value: bool) -> None:
+    def is360(self, value: primitives.Bool) -> None:
         """Set the Is360 field value."""
         member = self.get_member("Is360")
         if member is not None:

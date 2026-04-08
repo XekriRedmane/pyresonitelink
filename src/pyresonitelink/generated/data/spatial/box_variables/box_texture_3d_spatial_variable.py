@@ -1,7 +1,5 @@
 """Generated component: BoxTexture3D_SpatialVariable."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxTexture3D_SpatialVariable"
 
-    def __init__(self, variable_name: str | None = None, priority: np.int32 | None = None, size: primitives.Float3 | None = None, blend_distance: np.float32 | None = None, texture: str | IAssetProvider[Texture3D] | None = None, use_normalized_coordinates: bool | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, size: primitives.Float3 | None = None, blend_distance: primitives.Float | None = None, texture: str | IAssetProvider[Texture3D] | None = None, use_normalized_coordinates: primitives.Bool | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -55,7 +53,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
             self.offset = offset
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -63,7 +61,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:
@@ -74,7 +72,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
             )
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -82,7 +80,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:
@@ -112,7 +110,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
             )
 
     @property
-    def blend_distance(self) -> np.float32 | None:
+    def blend_distance(self) -> primitives.Float | None:
         """The BlendDistance field value."""
         member = self.get_member("BlendDistance")
         if member is None:
@@ -120,7 +118,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
         return getattr(member, 'value', None)
 
     @blend_distance.setter
-    def blend_distance(self, value: np.float32) -> None:
+    def blend_distance(self, value: primitives.Float) -> None:
         """Set the BlendDistance field value."""
         member = self.get_member("BlendDistance")
         if member is not None:
@@ -165,7 +163,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
             )
 
     @property
-    def use_normalized_coordinates(self) -> bool | None:
+    def use_normalized_coordinates(self) -> primitives.Bool | None:
         """The UseNormalizedCoordinates field value."""
         member = self.get_member("UseNormalizedCoordinates")
         if member is None:
@@ -173,7 +171,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
         return getattr(member, 'value', None)
 
     @use_normalized_coordinates.setter
-    def use_normalized_coordinates(self, value: bool) -> None:
+    def use_normalized_coordinates(self, value: primitives.Bool) -> None:
         """Set the UseNormalizedCoordinates field value."""
         member = self.get_member("UseNormalizedCoordinates")
         if member is not None:

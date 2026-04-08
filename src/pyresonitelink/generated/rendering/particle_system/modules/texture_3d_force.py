@@ -1,7 +1,5 @@
 """Generated component: Texture3D_Force."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.Texture3D_Force"
 
-    def __init__(self, texture_3d: str | IAssetProvider[Texture3D] | None = None, strength: np.float32 | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, color_bias: np.float32 | None = None, color_scale: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture_3d: str | IAssetProvider[Texture3D] | None = None, strength: primitives.Float | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, color_bias: primitives.Float | None = None, color_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -82,7 +80,7 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
         self.set_member("Mode", value)
 
     @property
-    def strength(self) -> np.float32 | None:
+    def strength(self) -> primitives.Float | None:
         """The Strength field value."""
         member = self.get_member("Strength")
         if member is None:
@@ -90,7 +88,7 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
         return getattr(member, 'value', None)
 
     @strength.setter
-    def strength(self, value: np.float32) -> None:
+    def strength(self, value: primitives.Float) -> None:
         """Set the Strength field value."""
         member = self.get_member("Strength")
         if member is not None:
@@ -139,7 +137,7 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
             )
 
     @property
-    def color_bias(self) -> np.float32 | None:
+    def color_bias(self) -> primitives.Float | None:
         """The ColorBias field value."""
         member = self.get_member("ColorBias")
         if member is None:
@@ -147,7 +145,7 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
         return getattr(member, 'value', None)
 
     @color_bias.setter
-    def color_bias(self, value: np.float32) -> None:
+    def color_bias(self, value: primitives.Float) -> None:
         """Set the ColorBias field value."""
         member = self.get_member("ColorBias")
         if member is not None:
@@ -158,7 +156,7 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
             )
 
     @property
-    def color_scale(self) -> np.float32 | None:
+    def color_scale(self) -> primitives.Float | None:
         """The ColorScale field value."""
         member = self.get_member("ColorScale")
         if member is None:
@@ -166,7 +164,7 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
         return getattr(member, 'value', None)
 
     @color_scale.setter
-    def color_scale(self, value: np.float32) -> None:
+    def color_scale(self, value: primitives.Float) -> None:
         """Set the ColorScale field value."""
         member = self.get_member("ColorScale")
         if member is not None:

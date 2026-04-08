@@ -1,7 +1,5 @@
 """Generated component: KnobControl."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.KnobControl"
 
-    def __init__(self, target: str | IField[np.float32] | None = None, rotation_axis: primitives.Float3 | None = None, rate: np.float32 | None = None, min: np.float32 | None = None, max: np.float32 | None = None, last_rotation: np.float32 | None = None, last_axis: primitives.Float3 | None = None, last_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.Float] | None = None, rotation_axis: primitives.Float3 | None = None, rate: primitives.Float | None = None, min: primitives.Float | None = None, max: primitives.Float | None = None, last_rotation: primitives.Float | None = None, last_axis: primitives.Float3 | None = None, last_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -55,15 +53,15 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[np.float32])."""
+        """Target ID of the Target reference (targets IField[primitives.Float])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Target reference by target ID or IField[np.float32] instance."""
+    def target(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -94,7 +92,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def rate(self) -> np.float32 | None:
+    def rate(self) -> primitives.Float | None:
         """The Rate field value."""
         member = self.get_member("Rate")
         if member is None:
@@ -102,7 +100,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @rate.setter
-    def rate(self, value: np.float32) -> None:
+    def rate(self, value: primitives.Float) -> None:
         """Set the Rate field value."""
         member = self.get_member("Rate")
         if member is not None:
@@ -113,7 +111,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min(self) -> np.float32 | None:
+    def min(self) -> primitives.Float | None:
         """The Min field value."""
         member = self.get_member("Min")
         if member is None:
@@ -121,7 +119,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min.setter
-    def min(self, value: np.float32) -> None:
+    def min(self, value: primitives.Float) -> None:
         """Set the Min field value."""
         member = self.get_member("Min")
         if member is not None:
@@ -132,7 +130,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max(self) -> np.float32 | None:
+    def max(self) -> primitives.Float | None:
         """The Max field value."""
         member = self.get_member("Max")
         if member is None:
@@ -140,7 +138,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max.setter
-    def max(self, value: np.float32) -> None:
+    def max(self, value: primitives.Float) -> None:
         """Set the Max field value."""
         member = self.get_member("Max")
         if member is not None:
@@ -151,7 +149,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def last_rotation(self) -> np.float32 | None:
+    def last_rotation(self) -> primitives.Float | None:
         """The _lastRotation field value."""
         member = self.get_member("_lastRotation")
         if member is None:
@@ -159,7 +157,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @last_rotation.setter
-    def last_rotation(self, value: np.float32) -> None:
+    def last_rotation(self, value: primitives.Float) -> None:
         """Set the _lastRotation field value."""
         member = self.get_member("_lastRotation")
         if member is not None:

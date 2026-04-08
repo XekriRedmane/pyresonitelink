@@ -1,6 +1,7 @@
 """Generated component: DestroySlot."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -23,7 +24,7 @@ class DestroySlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.DestroySlot"
 
-    def __init__(self, next: str | INodeOperation | None = None, instance: str | INodeObjectOutput[Slot] | None = None, preserve_assets: str | INodeValueOutput[bool] | None = None, send_destroying_event: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, instance: str | INodeObjectOutput[Slot] | None = None, preserve_assets: str | INodeValueOutput[primitives.Bool] | None = None, send_destroying_event: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -87,15 +88,15 @@ class DestroySlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def preserve_assets(self) -> str | None:
-        """Target ID of the PreserveAssets reference (targets INodeValueOutput[bool])."""
+        """Target ID of the PreserveAssets reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("PreserveAssets")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @preserve_assets.setter
-    def preserve_assets(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the PreserveAssets reference by target ID or INodeValueOutput[bool] instance."""
+    def preserve_assets(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the PreserveAssets reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("PreserveAssets")
         if isinstance(member, members.Reference):
@@ -108,15 +109,15 @@ class DestroySlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def send_destroying_event(self) -> str | None:
-        """Target ID of the SendDestroyingEvent reference (targets INodeValueOutput[bool])."""
+        """Target ID of the SendDestroyingEvent reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("SendDestroyingEvent")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @send_destroying_event.setter
-    def send_destroying_event(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the SendDestroyingEvent reference by target ID or INodeValueOutput[bool] instance."""
+    def send_destroying_event(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the SendDestroyingEvent reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("SendDestroyingEvent")
         if isinstance(member, members.Reference):

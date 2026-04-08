@@ -1,8 +1,7 @@
 """Generated component: ScaleObjectCreator."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.scale_object_manager import ScaleObjectManager
@@ -23,7 +22,7 @@ class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleObjectCreator"
 
-    def __init__(self, manager: str | ScaleObjectManager | None = None, template: str | Slot | None = None, template_name_field: str | IField[str] | None = None, template_size_field: str | IField[np.float64] | None = None, size_parser: str | QuantityTextEditorParser[Distance] | None = None, material: str | FresnelMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, manager: str | ScaleObjectManager | None = None, template: str | Slot | None = None, template_name_field: str | IField[primitives.String] | None = None, template_size_field: str | IField[primitives.Double] | None = None, size_parser: str | QuantityTextEditorParser[Distance] | None = None, material: str | FresnelMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -93,15 +92,15 @@ class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def template_name_field(self) -> str | None:
-        """Target ID of the TemplateNameField reference (targets IField[str])."""
+        """Target ID of the TemplateNameField reference (targets IField[primitives.String])."""
         member = self.get_member("TemplateNameField")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @template_name_field.setter
-    def template_name_field(self, target: str | IField[str] | None) -> None:
-        """Set the TemplateNameField reference by target ID or IField[str] instance."""
+    def template_name_field(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the TemplateNameField reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TemplateNameField")
         if isinstance(member, members.Reference):
@@ -114,15 +113,15 @@ class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def template_size_field(self) -> str | None:
-        """Target ID of the TemplateSizeField reference (targets IField[np.float64])."""
+        """Target ID of the TemplateSizeField reference (targets IField[primitives.Double])."""
         member = self.get_member("TemplateSizeField")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @template_size_field.setter
-    def template_size_field(self, target: str | IField[np.float64] | None) -> None:
-        """Set the TemplateSizeField reference by target ID or IField[np.float64] instance."""
+    def template_size_field(self, target: str | IField[primitives.Double] | None) -> None:
+        """Set the TemplateSizeField reference by target ID or IField[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TemplateSizeField")
         if isinstance(member, members.Reference):

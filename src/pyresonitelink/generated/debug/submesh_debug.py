@@ -1,7 +1,5 @@
 """Generated component: SubmeshDebug."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SubmeshDebug"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, offset: np.float32 | None = None, submesh_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, offset: primitives.Float | None = None, submesh_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +43,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.submesh_count = submesh_count
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -53,7 +51,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -64,7 +62,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -72,7 +70,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -115,7 +113,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         self.set_member("Profile", value)
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -123,7 +121,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:
@@ -134,7 +132,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def submesh_count(self) -> np.int32 | None:
+    def submesh_count(self) -> primitives.Int | None:
         """The SubmeshCount field value."""
         member = self.get_member("SubmeshCount")
         if member is None:
@@ -142,7 +140,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @submesh_count.setter
-    def submesh_count(self, value: np.int32) -> None:
+    def submesh_count(self, value: primitives.Int) -> None:
         """Set the SubmeshCount field value."""
         member = self.get_member("SubmeshCount")
         if member is not None:

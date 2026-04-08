@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -17,7 +18,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyTrailsRibbonAdapter"
 
-    def __init__(self, particle_size_affects_trail_width: bool | None = None, inherit_trail_color_from_particle: bool | None = None, trail_world_space: bool | None = None, trails_module: str | IField[bool] | None = None, ribbon_module: str | IField[bool] | None = None, ribbon_use_particle_size: str | IField[bool] | None = None, ribbon_use_particle_color: str | IField[bool] | None = None, trail_size_inheritance: str | IField[TrailParticleInheritance] | None = None, trail_color_inheritance: str | IField[TrailParticleInheritance] | None = None, trails_space: str | RootSpace | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, particle_size_affects_trail_width: primitives.Bool | None = None, inherit_trail_color_from_particle: primitives.Bool | None = None, trail_world_space: primitives.Bool | None = None, trails_module: str | IField[primitives.Bool] | None = None, ribbon_module: str | IField[primitives.Bool] | None = None, ribbon_use_particle_size: str | IField[primitives.Bool] | None = None, ribbon_use_particle_color: str | IField[primitives.Bool] | None = None, trail_size_inheritance: str | IField[TrailParticleInheritance] | None = None, trail_color_inheritance: str | IField[TrailParticleInheritance] | None = None, trails_space: str | RootSpace | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,7 +70,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
         self.set_member("TrailsMode", value)
 
     @property
-    def particle_size_affects_trail_width(self) -> bool | None:
+    def particle_size_affects_trail_width(self) -> primitives.Bool | None:
         """The ParticleSizeAffectsTrailWidth field value."""
         member = self.get_member("ParticleSizeAffectsTrailWidth")
         if member is None:
@@ -77,7 +78,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @particle_size_affects_trail_width.setter
-    def particle_size_affects_trail_width(self, value: bool) -> None:
+    def particle_size_affects_trail_width(self, value: primitives.Bool) -> None:
         """Set the ParticleSizeAffectsTrailWidth field value."""
         member = self.get_member("ParticleSizeAffectsTrailWidth")
         if member is not None:
@@ -88,7 +89,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def inherit_trail_color_from_particle(self) -> bool | None:
+    def inherit_trail_color_from_particle(self) -> primitives.Bool | None:
         """The InheritTrailColorFromParticle field value."""
         member = self.get_member("InheritTrailColorFromParticle")
         if member is None:
@@ -96,7 +97,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @inherit_trail_color_from_particle.setter
-    def inherit_trail_color_from_particle(self, value: bool) -> None:
+    def inherit_trail_color_from_particle(self, value: primitives.Bool) -> None:
         """Set the InheritTrailColorFromParticle field value."""
         member = self.get_member("InheritTrailColorFromParticle")
         if member is not None:
@@ -107,7 +108,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def trail_world_space(self) -> bool | None:
+    def trail_world_space(self) -> primitives.Bool | None:
         """The TrailWorldSpace field value."""
         member = self.get_member("TrailWorldSpace")
         if member is None:
@@ -115,7 +116,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @trail_world_space.setter
-    def trail_world_space(self, value: bool) -> None:
+    def trail_world_space(self, value: primitives.Bool) -> None:
         """Set the TrailWorldSpace field value."""
         member = self.get_member("TrailWorldSpace")
         if member is not None:
@@ -127,15 +128,15 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def trails_module(self) -> str | None:
-        """Target ID of the TrailsModule reference (targets IField[bool])."""
+        """Target ID of the TrailsModule reference (targets IField[primitives.Bool])."""
         member = self.get_member("TrailsModule")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @trails_module.setter
-    def trails_module(self, target: str | IField[bool] | None) -> None:
-        """Set the TrailsModule reference by target ID or IField[bool] instance."""
+    def trails_module(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the TrailsModule reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TrailsModule")
         if isinstance(member, members.Reference):
@@ -148,15 +149,15 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def ribbon_module(self) -> str | None:
-        """Target ID of the RibbonModule reference (targets IField[bool])."""
+        """Target ID of the RibbonModule reference (targets IField[primitives.Bool])."""
         member = self.get_member("RibbonModule")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ribbon_module.setter
-    def ribbon_module(self, target: str | IField[bool] | None) -> None:
-        """Set the RibbonModule reference by target ID or IField[bool] instance."""
+    def ribbon_module(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the RibbonModule reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("RibbonModule")
         if isinstance(member, members.Reference):
@@ -169,15 +170,15 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def ribbon_use_particle_size(self) -> str | None:
-        """Target ID of the RibbonUseParticleSize reference (targets IField[bool])."""
+        """Target ID of the RibbonUseParticleSize reference (targets IField[primitives.Bool])."""
         member = self.get_member("RibbonUseParticleSize")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ribbon_use_particle_size.setter
-    def ribbon_use_particle_size(self, target: str | IField[bool] | None) -> None:
-        """Set the RibbonUseParticleSize reference by target ID or IField[bool] instance."""
+    def ribbon_use_particle_size(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the RibbonUseParticleSize reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("RibbonUseParticleSize")
         if isinstance(member, members.Reference):
@@ -190,15 +191,15 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def ribbon_use_particle_color(self) -> str | None:
-        """Target ID of the RibbonUseParticleColor reference (targets IField[bool])."""
+        """Target ID of the RibbonUseParticleColor reference (targets IField[primitives.Bool])."""
         member = self.get_member("RibbonUseParticleColor")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ribbon_use_particle_color.setter
-    def ribbon_use_particle_color(self, target: str | IField[bool] | None) -> None:
-        """Set the RibbonUseParticleColor reference by target ID or IField[bool] instance."""
+    def ribbon_use_particle_color(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the RibbonUseParticleColor reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("RibbonUseParticleColor")
         if isinstance(member, members.Reference):

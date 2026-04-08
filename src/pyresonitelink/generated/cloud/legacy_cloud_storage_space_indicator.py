@@ -1,7 +1,5 @@
 """Generated component: LegacyCloudStorageSpaceIndicator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyCloudStorageSpaceIndicator"
 
-    def __init__(self, source: str | StorageUsageStatus | None = None, container_color: primitives.ColorX | None = None, used_color: primitives.ColorX | None = None, low_space_color: primitives.ColorX | None = None, critical_space_color: primitives.ColorX | None = None, low_space_threshold: np.float32 | None = None, critical_space_threshold: np.float32 | None = None, owner_label: str | TextRenderer | None = None, usage_label: str | TextRenderer | None = None, percent_label: str | TextRenderer | None = None, progress_bar: str | LegacyProgressBar | None = None, legacy_owner_id: str | None = None, legacy_member_quota: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | StorageUsageStatus | None = None, container_color: primitives.ColorX | None = None, used_color: primitives.ColorX | None = None, low_space_color: primitives.ColorX | None = None, critical_space_color: primitives.ColorX | None = None, low_space_threshold: primitives.Float | None = None, critical_space_threshold: primitives.Float | None = None, owner_label: str | TextRenderer | None = None, usage_label: str | TextRenderer | None = None, percent_label: str | TextRenderer | None = None, progress_bar: str | LegacyProgressBar | None = None, legacy_owner_id: primitives.String | None = None, legacy_member_quota: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -167,7 +165,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
             )
 
     @property
-    def low_space_threshold(self) -> np.float32 | None:
+    def low_space_threshold(self) -> primitives.Float | None:
         """The LowSpaceThreshold field value."""
         member = self.get_member("LowSpaceThreshold")
         if member is None:
@@ -175,7 +173,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @low_space_threshold.setter
-    def low_space_threshold(self, value: np.float32) -> None:
+    def low_space_threshold(self, value: primitives.Float) -> None:
         """Set the LowSpaceThreshold field value."""
         member = self.get_member("LowSpaceThreshold")
         if member is not None:
@@ -186,7 +184,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
             )
 
     @property
-    def critical_space_threshold(self) -> np.float32 | None:
+    def critical_space_threshold(self) -> primitives.Float | None:
         """The CriticalSpaceThreshold field value."""
         member = self.get_member("CriticalSpaceThreshold")
         if member is None:
@@ -194,7 +192,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @critical_space_threshold.setter
-    def critical_space_threshold(self, value: np.float32) -> None:
+    def critical_space_threshold(self, value: primitives.Float) -> None:
         """Set the CriticalSpaceThreshold field value."""
         member = self.get_member("CriticalSpaceThreshold")
         if member is not None:
@@ -289,7 +287,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
             )
 
     @property
-    def legacy_owner_id(self) -> str | None:
+    def legacy_owner_id(self) -> primitives.String | None:
         """The __legacyOwnerId field value."""
         member = self.get_member("__legacyOwnerId")
         if member is None:
@@ -297,7 +295,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @legacy_owner_id.setter
-    def legacy_owner_id(self, value: str) -> None:
+    def legacy_owner_id(self, value: primitives.String) -> None:
         """Set the __legacyOwnerId field value."""
         member = self.get_member("__legacyOwnerId")
         if member is not None:
@@ -308,7 +306,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
             )
 
     @property
-    def legacy_member_quota(self) -> bool | None:
+    def legacy_member_quota(self) -> primitives.Bool | None:
         """The __legacyMemberQuota field value."""
         member = self.get_member("__legacyMemberQuota")
         if member is None:
@@ -316,7 +314,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @legacy_member_quota.setter
-    def legacy_member_quota(self, value: bool) -> None:
+    def legacy_member_quota(self, value: primitives.Bool) -> None:
         """Set the __legacyMemberQuota field value."""
         member = self.get_member("__legacyMemberQuota")
         if member is not None:

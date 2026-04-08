@@ -1,9 +1,8 @@
 """Generated component: DroneCamera."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -20,7 +19,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DroneCamera"
 
-    def __init__(self, simulate_on_host: bool | None = None, manual_control: bool | None = None, slow_speed: np.float32 | None = None, speed: np.float32 | None = None, fast_speed: np.float32 | None = None, mouse_sensitivity: np.float32 | None = None, field_of_view_source: str | IField[np.float32] | None = None, field_of_view: np.float32 | None = None, aspect_ratio_source: str | IField[np.float32] | None = None, aspect_ratio: np.float32 | None = None, follow_user: str | User | None = None, controller_reject_distance: np.float32 | None = None, group_search_radius: np.float32 | None = None, biggest_group_search_interval: np.float32 | None = None, ignore_other_cameras: bool | None = None, head_forward_point_distance: np.float32 | None = None, head_backward_point_distance: np.float32 | None = None, head_up_point_distance: np.float32 | None = None, head_down_point_distance: np.float32 | None = None, height_offset: np.float32 | None = None, circle_offset: np.float32 | None = None, distance_offset: np.float32 | None = None, circle_speed: np.float32 | None = None, position_speed: np.float32 | None = None, look_speed: np.float32 | None = None, distance_speed: np.float32 | None = None, user_influence_speed: np.float32 | None = None, height_amplitude: np.float32 | None = None, distance_amplitude: np.float32 | None = None, circle_amplitude: np.float32 | None = None, height_period: np.float32 | None = None, distance_period: np.float32 | None = None, circle_period: np.float32 | None = None, circle_period_noise_speed: np.float32 | None = None, circle_period_noise_influence: np.float32 | None = None, check_occlusion: bool | None = None, adjust_height_on_occlusion: bool | None = None, teleport_wait_time: np.float32 | None = None, teleport_trigger_relative_distance: np.float32 | None = None, teleport_trigger_angle: np.float32 | None = None, min_randomize_fov_interval: np.float32 | None = None, max_randomize_fov_interval: np.float32 | None = None, min_fov: np.float32 | None = None, max_fov: np.float32 | None = None, min_change_fov_time: np.float32 | None = None, max_change_fov_time: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, simulate_on_host: primitives.Bool | None = None, manual_control: primitives.Bool | None = None, slow_speed: primitives.Float | None = None, speed: primitives.Float | None = None, fast_speed: primitives.Float | None = None, mouse_sensitivity: primitives.Float | None = None, field_of_view_source: str | IField[primitives.Float] | None = None, field_of_view: primitives.Float | None = None, aspect_ratio_source: str | IField[primitives.Float] | None = None, aspect_ratio: primitives.Float | None = None, follow_user: str | User | None = None, controller_reject_distance: primitives.Float | None = None, group_search_radius: primitives.Float | None = None, biggest_group_search_interval: primitives.Float | None = None, ignore_other_cameras: primitives.Bool | None = None, head_forward_point_distance: primitives.Float | None = None, head_backward_point_distance: primitives.Float | None = None, head_up_point_distance: primitives.Float | None = None, head_down_point_distance: primitives.Float | None = None, height_offset: primitives.Float | None = None, circle_offset: primitives.Float | None = None, distance_offset: primitives.Float | None = None, circle_speed: primitives.Float | None = None, position_speed: primitives.Float | None = None, look_speed: primitives.Float | None = None, distance_speed: primitives.Float | None = None, user_influence_speed: primitives.Float | None = None, height_amplitude: primitives.Float | None = None, distance_amplitude: primitives.Float | None = None, circle_amplitude: primitives.Float | None = None, height_period: primitives.Float | None = None, distance_period: primitives.Float | None = None, circle_period: primitives.Float | None = None, circle_period_noise_speed: primitives.Float | None = None, circle_period_noise_influence: primitives.Float | None = None, check_occlusion: primitives.Bool | None = None, adjust_height_on_occlusion: primitives.Bool | None = None, teleport_wait_time: primitives.Float | None = None, teleport_trigger_relative_distance: primitives.Float | None = None, teleport_trigger_angle: primitives.Float | None = None, min_randomize_fov_interval: primitives.Float | None = None, max_randomize_fov_interval: primitives.Float | None = None, min_fov: primitives.Float | None = None, max_fov: primitives.Float | None = None, min_change_fov_time: primitives.Float | None = None, max_change_fov_time: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -180,7 +179,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("CameraUser", value)
 
     @property
-    def simulate_on_host(self) -> bool | None:
+    def simulate_on_host(self) -> primitives.Bool | None:
         """The SimulateOnHost field value."""
         member = self.get_member("SimulateOnHost")
         if member is None:
@@ -188,7 +187,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @simulate_on_host.setter
-    def simulate_on_host(self, value: bool) -> None:
+    def simulate_on_host(self, value: primitives.Bool) -> None:
         """Set the SimulateOnHost field value."""
         member = self.get_member("SimulateOnHost")
         if member is not None:
@@ -199,7 +198,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def manual_control(self) -> bool | None:
+    def manual_control(self) -> primitives.Bool | None:
         """The ManualControl field value."""
         member = self.get_member("ManualControl")
         if member is None:
@@ -207,7 +206,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @manual_control.setter
-    def manual_control(self, value: bool) -> None:
+    def manual_control(self, value: primitives.Bool) -> None:
         """Set the ManualControl field value."""
         member = self.get_member("ManualControl")
         if member is not None:
@@ -218,7 +217,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def slow_speed(self) -> np.float32 | None:
+    def slow_speed(self) -> primitives.Float | None:
         """The SlowSpeed field value."""
         member = self.get_member("SlowSpeed")
         if member is None:
@@ -226,7 +225,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @slow_speed.setter
-    def slow_speed(self, value: np.float32) -> None:
+    def slow_speed(self, value: primitives.Float) -> None:
         """Set the SlowSpeed field value."""
         member = self.get_member("SlowSpeed")
         if member is not None:
@@ -237,7 +236,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def speed(self) -> np.float32 | None:
+    def speed(self) -> primitives.Float | None:
         """The Speed field value."""
         member = self.get_member("Speed")
         if member is None:
@@ -245,7 +244,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @speed.setter
-    def speed(self, value: np.float32) -> None:
+    def speed(self, value: primitives.Float) -> None:
         """Set the Speed field value."""
         member = self.get_member("Speed")
         if member is not None:
@@ -256,7 +255,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def fast_speed(self) -> np.float32 | None:
+    def fast_speed(self) -> primitives.Float | None:
         """The FastSpeed field value."""
         member = self.get_member("FastSpeed")
         if member is None:
@@ -264,7 +263,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @fast_speed.setter
-    def fast_speed(self, value: np.float32) -> None:
+    def fast_speed(self, value: primitives.Float) -> None:
         """Set the FastSpeed field value."""
         member = self.get_member("FastSpeed")
         if member is not None:
@@ -275,7 +274,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def mouse_sensitivity(self) -> np.float32 | None:
+    def mouse_sensitivity(self) -> primitives.Float | None:
         """The MouseSensitivity field value."""
         member = self.get_member("MouseSensitivity")
         if member is None:
@@ -283,7 +282,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @mouse_sensitivity.setter
-    def mouse_sensitivity(self, value: np.float32) -> None:
+    def mouse_sensitivity(self, value: primitives.Float) -> None:
         """Set the MouseSensitivity field value."""
         member = self.get_member("MouseSensitivity")
         if member is not None:
@@ -295,15 +294,15 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def field_of_view_source(self) -> str | None:
-        """Target ID of the FieldOfViewSource reference (targets IField[np.float32])."""
+        """Target ID of the FieldOfViewSource reference (targets IField[primitives.Float])."""
         member = self.get_member("FieldOfViewSource")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @field_of_view_source.setter
-    def field_of_view_source(self, target: str | IField[np.float32] | None) -> None:
-        """Set the FieldOfViewSource reference by target ID or IField[np.float32] instance."""
+    def field_of_view_source(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the FieldOfViewSource reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("FieldOfViewSource")
         if isinstance(member, members.Reference):
@@ -315,7 +314,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def field_of_view(self) -> np.float32 | None:
+    def field_of_view(self) -> primitives.Float | None:
         """The FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is None:
@@ -323,7 +322,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @field_of_view.setter
-    def field_of_view(self, value: np.float32) -> None:
+    def field_of_view(self, value: primitives.Float) -> None:
         """Set the FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is not None:
@@ -335,15 +334,15 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def aspect_ratio_source(self) -> str | None:
-        """Target ID of the AspectRatioSource reference (targets IField[np.float32])."""
+        """Target ID of the AspectRatioSource reference (targets IField[primitives.Float])."""
         member = self.get_member("AspectRatioSource")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @aspect_ratio_source.setter
-    def aspect_ratio_source(self, target: str | IField[np.float32] | None) -> None:
-        """Set the AspectRatioSource reference by target ID or IField[np.float32] instance."""
+    def aspect_ratio_source(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the AspectRatioSource reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("AspectRatioSource")
         if isinstance(member, members.Reference):
@@ -355,7 +354,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def aspect_ratio(self) -> np.float32 | None:
+    def aspect_ratio(self) -> primitives.Float | None:
         """The AspectRatio field value."""
         member = self.get_member("AspectRatio")
         if member is None:
@@ -363,7 +362,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @aspect_ratio.setter
-    def aspect_ratio(self, value: np.float32) -> None:
+    def aspect_ratio(self, value: primitives.Float) -> None:
         """Set the AspectRatio field value."""
         member = self.get_member("AspectRatio")
         if member is not None:
@@ -395,7 +394,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def controller_reject_distance(self) -> np.float32 | None:
+    def controller_reject_distance(self) -> primitives.Float | None:
         """The ControllerRejectDistance field value."""
         member = self.get_member("ControllerRejectDistance")
         if member is None:
@@ -403,7 +402,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @controller_reject_distance.setter
-    def controller_reject_distance(self, value: np.float32) -> None:
+    def controller_reject_distance(self, value: primitives.Float) -> None:
         """Set the ControllerRejectDistance field value."""
         member = self.get_member("ControllerRejectDistance")
         if member is not None:
@@ -414,7 +413,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def group_search_radius(self) -> np.float32 | None:
+    def group_search_radius(self) -> primitives.Float | None:
         """The GroupSearchRadius field value."""
         member = self.get_member("GroupSearchRadius")
         if member is None:
@@ -422,7 +421,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @group_search_radius.setter
-    def group_search_radius(self, value: np.float32) -> None:
+    def group_search_radius(self, value: primitives.Float) -> None:
         """Set the GroupSearchRadius field value."""
         member = self.get_member("GroupSearchRadius")
         if member is not None:
@@ -433,7 +432,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def biggest_group_search_interval(self) -> np.float32 | None:
+    def biggest_group_search_interval(self) -> primitives.Float | None:
         """The BiggestGroupSearchInterval field value."""
         member = self.get_member("BiggestGroupSearchInterval")
         if member is None:
@@ -441,7 +440,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @biggest_group_search_interval.setter
-    def biggest_group_search_interval(self, value: np.float32) -> None:
+    def biggest_group_search_interval(self, value: primitives.Float) -> None:
         """Set the BiggestGroupSearchInterval field value."""
         member = self.get_member("BiggestGroupSearchInterval")
         if member is not None:
@@ -452,7 +451,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ignore_other_cameras(self) -> bool | None:
+    def ignore_other_cameras(self) -> primitives.Bool | None:
         """The IgnoreOtherCameras field value."""
         member = self.get_member("IgnoreOtherCameras")
         if member is None:
@@ -460,7 +459,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ignore_other_cameras.setter
-    def ignore_other_cameras(self, value: bool) -> None:
+    def ignore_other_cameras(self, value: primitives.Bool) -> None:
         """Set the IgnoreOtherCameras field value."""
         member = self.get_member("IgnoreOtherCameras")
         if member is not None:
@@ -471,7 +470,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def head_forward_point_distance(self) -> np.float32 | None:
+    def head_forward_point_distance(self) -> primitives.Float | None:
         """The HeadForwardPointDistance field value."""
         member = self.get_member("HeadForwardPointDistance")
         if member is None:
@@ -479,7 +478,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @head_forward_point_distance.setter
-    def head_forward_point_distance(self, value: np.float32) -> None:
+    def head_forward_point_distance(self, value: primitives.Float) -> None:
         """Set the HeadForwardPointDistance field value."""
         member = self.get_member("HeadForwardPointDistance")
         if member is not None:
@@ -490,7 +489,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def head_backward_point_distance(self) -> np.float32 | None:
+    def head_backward_point_distance(self) -> primitives.Float | None:
         """The HeadBackwardPointDistance field value."""
         member = self.get_member("HeadBackwardPointDistance")
         if member is None:
@@ -498,7 +497,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @head_backward_point_distance.setter
-    def head_backward_point_distance(self, value: np.float32) -> None:
+    def head_backward_point_distance(self, value: primitives.Float) -> None:
         """Set the HeadBackwardPointDistance field value."""
         member = self.get_member("HeadBackwardPointDistance")
         if member is not None:
@@ -509,7 +508,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def head_up_point_distance(self) -> np.float32 | None:
+    def head_up_point_distance(self) -> primitives.Float | None:
         """The HeadUpPointDistance field value."""
         member = self.get_member("HeadUpPointDistance")
         if member is None:
@@ -517,7 +516,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @head_up_point_distance.setter
-    def head_up_point_distance(self, value: np.float32) -> None:
+    def head_up_point_distance(self, value: primitives.Float) -> None:
         """Set the HeadUpPointDistance field value."""
         member = self.get_member("HeadUpPointDistance")
         if member is not None:
@@ -528,7 +527,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def head_down_point_distance(self) -> np.float32 | None:
+    def head_down_point_distance(self) -> primitives.Float | None:
         """The HeadDownPointDistance field value."""
         member = self.get_member("HeadDownPointDistance")
         if member is None:
@@ -536,7 +535,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @head_down_point_distance.setter
-    def head_down_point_distance(self, value: np.float32) -> None:
+    def head_down_point_distance(self, value: primitives.Float) -> None:
         """Set the HeadDownPointDistance field value."""
         member = self.get_member("HeadDownPointDistance")
         if member is not None:
@@ -547,7 +546,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def height_offset(self) -> np.float32 | None:
+    def height_offset(self) -> primitives.Float | None:
         """The HeightOffset field value."""
         member = self.get_member("HeightOffset")
         if member is None:
@@ -555,7 +554,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @height_offset.setter
-    def height_offset(self, value: np.float32) -> None:
+    def height_offset(self, value: primitives.Float) -> None:
         """Set the HeightOffset field value."""
         member = self.get_member("HeightOffset")
         if member is not None:
@@ -566,7 +565,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def circle_offset(self) -> np.float32 | None:
+    def circle_offset(self) -> primitives.Float | None:
         """The CircleOffset field value."""
         member = self.get_member("CircleOffset")
         if member is None:
@@ -574,7 +573,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @circle_offset.setter
-    def circle_offset(self, value: np.float32) -> None:
+    def circle_offset(self, value: primitives.Float) -> None:
         """Set the CircleOffset field value."""
         member = self.get_member("CircleOffset")
         if member is not None:
@@ -585,7 +584,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def distance_offset(self) -> np.float32 | None:
+    def distance_offset(self) -> primitives.Float | None:
         """The DistanceOffset field value."""
         member = self.get_member("DistanceOffset")
         if member is None:
@@ -593,7 +592,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @distance_offset.setter
-    def distance_offset(self, value: np.float32) -> None:
+    def distance_offset(self, value: primitives.Float) -> None:
         """Set the DistanceOffset field value."""
         member = self.get_member("DistanceOffset")
         if member is not None:
@@ -604,7 +603,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def circle_speed(self) -> np.float32 | None:
+    def circle_speed(self) -> primitives.Float | None:
         """The CircleSpeed field value."""
         member = self.get_member("CircleSpeed")
         if member is None:
@@ -612,7 +611,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @circle_speed.setter
-    def circle_speed(self, value: np.float32) -> None:
+    def circle_speed(self, value: primitives.Float) -> None:
         """Set the CircleSpeed field value."""
         member = self.get_member("CircleSpeed")
         if member is not None:
@@ -623,7 +622,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def position_speed(self) -> np.float32 | None:
+    def position_speed(self) -> primitives.Float | None:
         """The PositionSpeed field value."""
         member = self.get_member("PositionSpeed")
         if member is None:
@@ -631,7 +630,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @position_speed.setter
-    def position_speed(self, value: np.float32) -> None:
+    def position_speed(self, value: primitives.Float) -> None:
         """Set the PositionSpeed field value."""
         member = self.get_member("PositionSpeed")
         if member is not None:
@@ -642,7 +641,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def look_speed(self) -> np.float32 | None:
+    def look_speed(self) -> primitives.Float | None:
         """The LookSpeed field value."""
         member = self.get_member("LookSpeed")
         if member is None:
@@ -650,7 +649,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @look_speed.setter
-    def look_speed(self, value: np.float32) -> None:
+    def look_speed(self, value: primitives.Float) -> None:
         """Set the LookSpeed field value."""
         member = self.get_member("LookSpeed")
         if member is not None:
@@ -661,7 +660,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def distance_speed(self) -> np.float32 | None:
+    def distance_speed(self) -> primitives.Float | None:
         """The DistanceSpeed field value."""
         member = self.get_member("DistanceSpeed")
         if member is None:
@@ -669,7 +668,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @distance_speed.setter
-    def distance_speed(self, value: np.float32) -> None:
+    def distance_speed(self, value: primitives.Float) -> None:
         """Set the DistanceSpeed field value."""
         member = self.get_member("DistanceSpeed")
         if member is not None:
@@ -680,7 +679,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def user_influence_speed(self) -> np.float32 | None:
+    def user_influence_speed(self) -> primitives.Float | None:
         """The UserInfluenceSpeed field value."""
         member = self.get_member("UserInfluenceSpeed")
         if member is None:
@@ -688,7 +687,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @user_influence_speed.setter
-    def user_influence_speed(self, value: np.float32) -> None:
+    def user_influence_speed(self, value: primitives.Float) -> None:
         """Set the UserInfluenceSpeed field value."""
         member = self.get_member("UserInfluenceSpeed")
         if member is not None:
@@ -699,7 +698,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def height_amplitude(self) -> np.float32 | None:
+    def height_amplitude(self) -> primitives.Float | None:
         """The HeightAmplitude field value."""
         member = self.get_member("HeightAmplitude")
         if member is None:
@@ -707,7 +706,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @height_amplitude.setter
-    def height_amplitude(self, value: np.float32) -> None:
+    def height_amplitude(self, value: primitives.Float) -> None:
         """Set the HeightAmplitude field value."""
         member = self.get_member("HeightAmplitude")
         if member is not None:
@@ -718,7 +717,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def distance_amplitude(self) -> np.float32 | None:
+    def distance_amplitude(self) -> primitives.Float | None:
         """The DistanceAmplitude field value."""
         member = self.get_member("DistanceAmplitude")
         if member is None:
@@ -726,7 +725,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @distance_amplitude.setter
-    def distance_amplitude(self, value: np.float32) -> None:
+    def distance_amplitude(self, value: primitives.Float) -> None:
         """Set the DistanceAmplitude field value."""
         member = self.get_member("DistanceAmplitude")
         if member is not None:
@@ -737,7 +736,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def circle_amplitude(self) -> np.float32 | None:
+    def circle_amplitude(self) -> primitives.Float | None:
         """The CircleAmplitude field value."""
         member = self.get_member("CircleAmplitude")
         if member is None:
@@ -745,7 +744,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @circle_amplitude.setter
-    def circle_amplitude(self, value: np.float32) -> None:
+    def circle_amplitude(self, value: primitives.Float) -> None:
         """Set the CircleAmplitude field value."""
         member = self.get_member("CircleAmplitude")
         if member is not None:
@@ -756,7 +755,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def height_period(self) -> np.float32 | None:
+    def height_period(self) -> primitives.Float | None:
         """The HeightPeriod field value."""
         member = self.get_member("HeightPeriod")
         if member is None:
@@ -764,7 +763,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @height_period.setter
-    def height_period(self, value: np.float32) -> None:
+    def height_period(self, value: primitives.Float) -> None:
         """Set the HeightPeriod field value."""
         member = self.get_member("HeightPeriod")
         if member is not None:
@@ -775,7 +774,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def distance_period(self) -> np.float32 | None:
+    def distance_period(self) -> primitives.Float | None:
         """The DistancePeriod field value."""
         member = self.get_member("DistancePeriod")
         if member is None:
@@ -783,7 +782,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @distance_period.setter
-    def distance_period(self, value: np.float32) -> None:
+    def distance_period(self, value: primitives.Float) -> None:
         """Set the DistancePeriod field value."""
         member = self.get_member("DistancePeriod")
         if member is not None:
@@ -794,7 +793,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def circle_period(self) -> np.float32 | None:
+    def circle_period(self) -> primitives.Float | None:
         """The CirclePeriod field value."""
         member = self.get_member("CirclePeriod")
         if member is None:
@@ -802,7 +801,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @circle_period.setter
-    def circle_period(self, value: np.float32) -> None:
+    def circle_period(self, value: primitives.Float) -> None:
         """Set the CirclePeriod field value."""
         member = self.get_member("CirclePeriod")
         if member is not None:
@@ -813,7 +812,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def circle_period_noise_speed(self) -> np.float32 | None:
+    def circle_period_noise_speed(self) -> primitives.Float | None:
         """The CirclePeriodNoiseSpeed field value."""
         member = self.get_member("CirclePeriodNoiseSpeed")
         if member is None:
@@ -821,7 +820,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @circle_period_noise_speed.setter
-    def circle_period_noise_speed(self, value: np.float32) -> None:
+    def circle_period_noise_speed(self, value: primitives.Float) -> None:
         """Set the CirclePeriodNoiseSpeed field value."""
         member = self.get_member("CirclePeriodNoiseSpeed")
         if member is not None:
@@ -832,7 +831,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def circle_period_noise_influence(self) -> np.float32 | None:
+    def circle_period_noise_influence(self) -> primitives.Float | None:
         """The CirclePeriodNoiseInfluence field value."""
         member = self.get_member("CirclePeriodNoiseInfluence")
         if member is None:
@@ -840,7 +839,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @circle_period_noise_influence.setter
-    def circle_period_noise_influence(self, value: np.float32) -> None:
+    def circle_period_noise_influence(self, value: primitives.Float) -> None:
         """Set the CirclePeriodNoiseInfluence field value."""
         member = self.get_member("CirclePeriodNoiseInfluence")
         if member is not None:
@@ -851,7 +850,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def check_occlusion(self) -> bool | None:
+    def check_occlusion(self) -> primitives.Bool | None:
         """The CheckOcclusion field value."""
         member = self.get_member("CheckOcclusion")
         if member is None:
@@ -859,7 +858,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @check_occlusion.setter
-    def check_occlusion(self, value: bool) -> None:
+    def check_occlusion(self, value: primitives.Bool) -> None:
         """Set the CheckOcclusion field value."""
         member = self.get_member("CheckOcclusion")
         if member is not None:
@@ -870,7 +869,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def adjust_height_on_occlusion(self) -> bool | None:
+    def adjust_height_on_occlusion(self) -> primitives.Bool | None:
         """The AdjustHeightOnOcclusion field value."""
         member = self.get_member("AdjustHeightOnOcclusion")
         if member is None:
@@ -878,7 +877,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @adjust_height_on_occlusion.setter
-    def adjust_height_on_occlusion(self, value: bool) -> None:
+    def adjust_height_on_occlusion(self, value: primitives.Bool) -> None:
         """Set the AdjustHeightOnOcclusion field value."""
         member = self.get_member("AdjustHeightOnOcclusion")
         if member is not None:
@@ -889,7 +888,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def teleport_wait_time(self) -> np.float32 | None:
+    def teleport_wait_time(self) -> primitives.Float | None:
         """The TeleportWaitTime field value."""
         member = self.get_member("TeleportWaitTime")
         if member is None:
@@ -897,7 +896,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @teleport_wait_time.setter
-    def teleport_wait_time(self, value: np.float32) -> None:
+    def teleport_wait_time(self, value: primitives.Float) -> None:
         """Set the TeleportWaitTime field value."""
         member = self.get_member("TeleportWaitTime")
         if member is not None:
@@ -908,7 +907,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def teleport_trigger_relative_distance(self) -> np.float32 | None:
+    def teleport_trigger_relative_distance(self) -> primitives.Float | None:
         """The TeleportTriggerRelativeDistance field value."""
         member = self.get_member("TeleportTriggerRelativeDistance")
         if member is None:
@@ -916,7 +915,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @teleport_trigger_relative_distance.setter
-    def teleport_trigger_relative_distance(self, value: np.float32) -> None:
+    def teleport_trigger_relative_distance(self, value: primitives.Float) -> None:
         """Set the TeleportTriggerRelativeDistance field value."""
         member = self.get_member("TeleportTriggerRelativeDistance")
         if member is not None:
@@ -927,7 +926,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def teleport_trigger_angle(self) -> np.float32 | None:
+    def teleport_trigger_angle(self) -> primitives.Float | None:
         """The TeleportTriggerAngle field value."""
         member = self.get_member("TeleportTriggerAngle")
         if member is None:
@@ -935,7 +934,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @teleport_trigger_angle.setter
-    def teleport_trigger_angle(self, value: np.float32) -> None:
+    def teleport_trigger_angle(self, value: primitives.Float) -> None:
         """Set the TeleportTriggerAngle field value."""
         member = self.get_member("TeleportTriggerAngle")
         if member is not None:
@@ -946,7 +945,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_randomize_fov_interval(self) -> np.float32 | None:
+    def min_randomize_fov_interval(self) -> primitives.Float | None:
         """The MinRandomizeFovInterval field value."""
         member = self.get_member("MinRandomizeFovInterval")
         if member is None:
@@ -954,7 +953,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_randomize_fov_interval.setter
-    def min_randomize_fov_interval(self, value: np.float32) -> None:
+    def min_randomize_fov_interval(self, value: primitives.Float) -> None:
         """Set the MinRandomizeFovInterval field value."""
         member = self.get_member("MinRandomizeFovInterval")
         if member is not None:
@@ -965,7 +964,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_randomize_fov_interval(self) -> np.float32 | None:
+    def max_randomize_fov_interval(self) -> primitives.Float | None:
         """The MaxRandomizeFovInterval field value."""
         member = self.get_member("MaxRandomizeFovInterval")
         if member is None:
@@ -973,7 +972,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_randomize_fov_interval.setter
-    def max_randomize_fov_interval(self, value: np.float32) -> None:
+    def max_randomize_fov_interval(self, value: primitives.Float) -> None:
         """Set the MaxRandomizeFovInterval field value."""
         member = self.get_member("MaxRandomizeFovInterval")
         if member is not None:
@@ -984,7 +983,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_fov(self) -> np.float32 | None:
+    def min_fov(self) -> primitives.Float | None:
         """The MinFov field value."""
         member = self.get_member("MinFov")
         if member is None:
@@ -992,7 +991,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_fov.setter
-    def min_fov(self, value: np.float32) -> None:
+    def min_fov(self, value: primitives.Float) -> None:
         """Set the MinFov field value."""
         member = self.get_member("MinFov")
         if member is not None:
@@ -1003,7 +1002,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_fov(self) -> np.float32 | None:
+    def max_fov(self) -> primitives.Float | None:
         """The MaxFov field value."""
         member = self.get_member("MaxFov")
         if member is None:
@@ -1011,7 +1010,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_fov.setter
-    def max_fov(self, value: np.float32) -> None:
+    def max_fov(self, value: primitives.Float) -> None:
         """Set the MaxFov field value."""
         member = self.get_member("MaxFov")
         if member is not None:
@@ -1022,7 +1021,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_change_fov_time(self) -> np.float32 | None:
+    def min_change_fov_time(self) -> primitives.Float | None:
         """The MinChangeFovTime field value."""
         member = self.get_member("MinChangeFovTime")
         if member is None:
@@ -1030,7 +1029,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_change_fov_time.setter
-    def min_change_fov_time(self, value: np.float32) -> None:
+    def min_change_fov_time(self, value: primitives.Float) -> None:
         """Set the MinChangeFovTime field value."""
         member = self.get_member("MinChangeFovTime")
         if member is not None:
@@ -1041,7 +1040,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_change_fov_time(self) -> np.float32 | None:
+    def max_change_fov_time(self) -> primitives.Float | None:
         """The MaxChangeFovTime field value."""
         member = self.get_member("MaxChangeFovTime")
         if member is None:
@@ -1049,7 +1048,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_change_fov_time.setter
-    def max_change_fov_time(self, value: np.float32) -> None:
+    def max_change_fov_time(self, value: primitives.Float) -> None:
         """Set the MaxChangeFovTime field value."""
         member = self.get_member("MaxChangeFovTime")
         if member is not None:

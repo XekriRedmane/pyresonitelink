@@ -1,7 +1,5 @@
 """Generated component: CurvedPlaneMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CurvedPlaneMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: primitives.Float2 | None = None, curvature: np.float32 | None = None, tilt_angle: np.float32 | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, segments: np.int32 | None = None, flat_shading: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: primitives.Float2 | None = None, curvature: primitives.Float | None = None, tilt_angle: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, segments: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,7 +58,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.flat_shading = flat_shading
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -68,7 +66,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -79,7 +77,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -87,7 +85,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -149,7 +147,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def curvature(self) -> np.float32 | None:
+    def curvature(self) -> primitives.Float | None:
         """The Curvature field value."""
         member = self.get_member("Curvature")
         if member is None:
@@ -157,7 +155,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @curvature.setter
-    def curvature(self, value: np.float32) -> None:
+    def curvature(self, value: primitives.Float) -> None:
         """Set the Curvature field value."""
         member = self.get_member("Curvature")
         if member is not None:
@@ -168,7 +166,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def tilt_angle(self) -> np.float32 | None:
+    def tilt_angle(self) -> primitives.Float | None:
         """The TiltAngle field value."""
         member = self.get_member("TiltAngle")
         if member is None:
@@ -176,7 +174,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @tilt_angle.setter
-    def tilt_angle(self, value: np.float32) -> None:
+    def tilt_angle(self, value: primitives.Float) -> None:
         """Set the TiltAngle field value."""
         member = self.get_member("TiltAngle")
         if member is not None:
@@ -238,7 +236,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def segments(self) -> np.int32 | None:
+    def segments(self) -> primitives.Int | None:
         """The Segments field value."""
         member = self.get_member("Segments")
         if member is None:
@@ -246,7 +244,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @segments.setter
-    def segments(self, value: np.int32) -> None:
+    def segments(self, value: primitives.Int) -> None:
         """Set the Segments field value."""
         member = self.get_member("Segments")
         if member is not None:
@@ -257,7 +255,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def flat_shading(self) -> bool | None:
+    def flat_shading(self) -> primitives.Bool | None:
         """The FlatShading field value."""
         member = self.get_member("FlatShading")
         if member is None:
@@ -265,7 +263,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @flat_shading.setter
-    def flat_shading(self, value: bool) -> None:
+    def flat_shading(self, value: primitives.Bool) -> None:
         """Set the FlatShading field value."""
         member = self.get_member("FlatShading")
         if member is not None:

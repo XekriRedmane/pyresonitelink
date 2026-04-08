@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.asset_ref import AssetRef
@@ -19,7 +20,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextureRefEditor"
 
-    def __init__(self, target_ref: str | AssetRef[ITexture2D] | None = None, drive: str | AssetRef[ITexture2D] | None = None, clear_reference_button: str | Button | None = None, open_inspector_button: str | Button | None = None, copy_texture_button: str | Button | None = None, paste_texture_button: str | Button | None = None, reference_text: str | IField[str] | None = None, info_text: str | IField[str] | None = None, is_normal_map: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_ref: str | AssetRef[ITexture2D] | None = None, drive: str | AssetRef[ITexture2D] | None = None, clear_reference_button: str | Button | None = None, open_inspector_button: str | Button | None = None, copy_texture_button: str | Button | None = None, paste_texture_button: str | Button | None = None, reference_text: str | IField[primitives.String] | None = None, info_text: str | IField[primitives.String] | None = None, is_normal_map: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -182,15 +183,15 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def reference_text(self) -> str | None:
-        """Target ID of the _referenceText reference (targets IField[str])."""
+        """Target ID of the _referenceText reference (targets IField[primitives.String])."""
         member = self.get_member("_referenceText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @reference_text.setter
-    def reference_text(self, target: str | IField[str] | None) -> None:
-        """Set the _referenceText reference by target ID or IField[str] instance."""
+    def reference_text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _referenceText reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_referenceText")
         if isinstance(member, members.Reference):
@@ -203,15 +204,15 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def info_text(self) -> str | None:
-        """Target ID of the _infoText reference (targets IField[str])."""
+        """Target ID of the _infoText reference (targets IField[primitives.String])."""
         member = self.get_member("_infoText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @info_text.setter
-    def info_text(self, target: str | IField[str] | None) -> None:
-        """Set the _infoText reference by target ID or IField[str] instance."""
+    def info_text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _infoText reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_infoText")
         if isinstance(member, members.Reference):
@@ -223,7 +224,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
             )
 
     @property
-    def is_normal_map(self) -> bool | None:
+    def is_normal_map(self) -> primitives.Bool | None:
         """The _isNormalMap field value."""
         member = self.get_member("_isNormalMap")
         if member is None:
@@ -231,7 +232,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
         return getattr(member, 'value', None)
 
     @is_normal_map.setter
-    def is_normal_map(self, value: bool) -> None:
+    def is_normal_map(self, value: primitives.Bool) -> None:
         """Set the _isNormalMap field value."""
         member = self.get_member("_isNormalMap")
         if member is not None:

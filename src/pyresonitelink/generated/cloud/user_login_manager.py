@@ -19,7 +19,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserLoginManager"
 
-    def __init__(self, is_logged_in: bool | None = None, is_logging_out: bool | None = None, current_username: str | None = None, current_user_id: str | None = None, current_account_type: str | None = None, current_account_color_override: primitives.ColorX | None = None, current_profile_icon: str | None = None, login_logout_button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_logged_in: primitives.Bool | None = None, is_logging_out: primitives.Bool | None = None, current_username: primitives.String | None = None, current_user_id: primitives.String | None = None, current_account_type: primitives.String | None = None, current_account_color_override: primitives.ColorX | None = None, current_profile_icon: str | None = None, login_logout_button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -52,7 +52,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.login_logout_button = login_logout_button
 
     @property
-    def is_logged_in(self) -> bool | None:
+    def is_logged_in(self) -> primitives.Bool | None:
         """The IsLoggedIn field value."""
         member = self.get_member("IsLoggedIn")
         if member is None:
@@ -60,7 +60,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_logged_in.setter
-    def is_logged_in(self, value: bool) -> None:
+    def is_logged_in(self, value: primitives.Bool) -> None:
         """Set the IsLoggedIn field value."""
         member = self.get_member("IsLoggedIn")
         if member is not None:
@@ -71,7 +71,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_logging_out(self) -> bool | None:
+    def is_logging_out(self) -> primitives.Bool | None:
         """The IsLoggingOut field value."""
         member = self.get_member("IsLoggingOut")
         if member is None:
@@ -79,7 +79,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_logging_out.setter
-    def is_logging_out(self, value: bool) -> None:
+    def is_logging_out(self, value: primitives.Bool) -> None:
         """Set the IsLoggingOut field value."""
         member = self.get_member("IsLoggingOut")
         if member is not None:
@@ -90,7 +90,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def current_username(self) -> str | None:
+    def current_username(self) -> primitives.String | None:
         """The CurrentUsername field value."""
         member = self.get_member("CurrentUsername")
         if member is None:
@@ -98,7 +98,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @current_username.setter
-    def current_username(self, value: str) -> None:
+    def current_username(self, value: primitives.String) -> None:
         """Set the CurrentUsername field value."""
         member = self.get_member("CurrentUsername")
         if member is not None:
@@ -109,7 +109,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def current_user_id(self) -> str | None:
+    def current_user_id(self) -> primitives.String | None:
         """The CurrentUserId field value."""
         member = self.get_member("CurrentUserId")
         if member is None:
@@ -117,7 +117,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @current_user_id.setter
-    def current_user_id(self, value: str) -> None:
+    def current_user_id(self, value: primitives.String) -> None:
         """Set the CurrentUserId field value."""
         member = self.get_member("CurrentUserId")
         if member is not None:
@@ -128,7 +128,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def current_account_type(self) -> str | None:
+    def current_account_type(self) -> primitives.String | None:
         """The CurrentAccountType field value."""
         member = self.get_member("CurrentAccountType")
         if member is None:
@@ -136,7 +136,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @current_account_type.setter
-    def current_account_type(self, value: str) -> None:
+    def current_account_type(self, value: primitives.String) -> None:
         """Set the CurrentAccountType field value."""
         member = self.get_member("CurrentAccountType")
         if member is not None:

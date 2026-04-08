@@ -5,6 +5,7 @@ from typing import Any
 A = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.asset_ref import AssetRef
@@ -20,14 +21,14 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        BooleanAssetDriver[np.float32]
+        BooleanAssetDriver[primitives.Float]
         BooleanAssetDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BooleanAssetDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.BooleanAssetDriver<>"
 
-    def __init__(self, state: bool | None = None, target: str | AssetRef[A] | None = None, false_target: str | IAssetProvider[A] | None = None, true_target: str | IAssetProvider[A] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, state: primitives.Bool | None = None, target: str | AssetRef[A] | None = None, false_target: str | IAssetProvider[A] | None = None, true_target: str | IAssetProvider[A] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,7 +49,7 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
             self.true_target = true_target
 
     @property
-    def state(self) -> bool | None:
+    def state(self) -> primitives.Bool | None:
         """The State field value."""
         member = self.get_member("State")
         if member is None:
@@ -56,7 +57,7 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @state.setter
-    def state(self, value: bool) -> None:
+    def state(self, value: primitives.Bool) -> None:
         """Set the State field value."""
         member = self.get_member("State")
         if member is not None:

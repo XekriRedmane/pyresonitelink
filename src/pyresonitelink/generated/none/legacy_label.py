@@ -1,7 +1,5 @@
 """Generated component: LegacyLabel."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyLabel"
 
-    def __init__(self, text_renderer: str | TextRenderer | None = None, base_color: primitives.ColorX | None = None, base_color_element: str | ILegacyUIElement | None = None, brightness: np.float32 | None = None, lerp_ratio: np.float32 | None = None, lerp_color: primitives.ColorX | None = None, text_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, text_renderer: str | TextRenderer | None = None, base_color: primitives.ColorX | None = None, base_color_element: str | ILegacyUIElement | None = None, brightness: primitives.Float | None = None, lerp_ratio: primitives.Float | None = None, lerp_color: primitives.ColorX | None = None, text_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -111,7 +109,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def brightness(self) -> np.float32 | None:
+    def brightness(self) -> primitives.Float | None:
         """The Brightness field value."""
         member = self.get_member("Brightness")
         if member is None:
@@ -119,7 +117,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @brightness.setter
-    def brightness(self, value: np.float32) -> None:
+    def brightness(self, value: primitives.Float) -> None:
         """Set the Brightness field value."""
         member = self.get_member("Brightness")
         if member is not None:
@@ -130,7 +128,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def lerp_ratio(self) -> np.float32 | None:
+    def lerp_ratio(self) -> primitives.Float | None:
         """The LerpRatio field value."""
         member = self.get_member("LerpRatio")
         if member is None:
@@ -138,7 +136,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @lerp_ratio.setter
-    def lerp_ratio(self, value: np.float32) -> None:
+    def lerp_ratio(self, value: primitives.Float) -> None:
         """Set the LerpRatio field value."""
         member = self.get_member("LerpRatio")
         if member is not None:

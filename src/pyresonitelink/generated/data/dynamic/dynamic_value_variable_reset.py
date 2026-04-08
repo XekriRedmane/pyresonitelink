@@ -1,6 +1,7 @@
 """Generated component: DynamicValueVariableReset."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -14,14 +15,14 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
 
     Parameterize with a value type::
 
-        DynamicValueVariableReset[np.float32]
+        DynamicValueVariableReset[primitives.Float]
         DynamicValueVariableReset[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicValueVariableReset<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.DynamicValueVariableReset<>"
 
-    def __init__(self, variable_name: str | None = None, reset_on_load: bool | None = None, reset_on_duplicate: bool | None = None, reset_on_paste: bool | None = None, reset_value: T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, reset_on_load: primitives.Bool | None = None, reset_on_duplicate: primitives.Bool | None = None, reset_on_paste: primitives.Bool | None = None, reset_value: T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +46,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
             self.reset_value = reset_value
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -53,7 +54,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:
@@ -64,7 +65,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
             )
 
     @property
-    def reset_on_load(self) -> bool | None:
+    def reset_on_load(self) -> primitives.Bool | None:
         """The ResetOnLoad field value."""
         member = self.get_member("ResetOnLoad")
         if member is None:
@@ -72,7 +73,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @reset_on_load.setter
-    def reset_on_load(self, value: bool) -> None:
+    def reset_on_load(self, value: primitives.Bool) -> None:
         """Set the ResetOnLoad field value."""
         member = self.get_member("ResetOnLoad")
         if member is not None:
@@ -83,7 +84,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
             )
 
     @property
-    def reset_on_duplicate(self) -> bool | None:
+    def reset_on_duplicate(self) -> primitives.Bool | None:
         """The ResetOnDuplicate field value."""
         member = self.get_member("ResetOnDuplicate")
         if member is None:
@@ -91,7 +92,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @reset_on_duplicate.setter
-    def reset_on_duplicate(self, value: bool) -> None:
+    def reset_on_duplicate(self, value: primitives.Bool) -> None:
         """Set the ResetOnDuplicate field value."""
         member = self.get_member("ResetOnDuplicate")
         if member is not None:
@@ -102,7 +103,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
             )
 
     @property
-    def reset_on_paste(self) -> bool | None:
+    def reset_on_paste(self) -> primitives.Bool | None:
         """The ResetOnPaste field value."""
         member = self.get_member("ResetOnPaste")
         if member is None:
@@ -110,7 +111,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @reset_on_paste.setter
-    def reset_on_paste(self, value: bool) -> None:
+    def reset_on_paste(self, value: primitives.Bool) -> None:
         """Set the ResetOnPaste field value."""
         member = self.get_member("ResetOnPaste")
         if member is not None:

@@ -1,8 +1,7 @@
 """Generated component: DelayWithObjectSecondsInt."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -23,14 +22,14 @@ class DelayWithObjectSecondsInt(GenericComponent[T], IAsyncNodeOperation, IExecu
 
     Parameterize with a value type::
 
-        DelayWithObjectSecondsInt[np.float32]
+        DelayWithObjectSecondsInt[primitives.Float]
         DelayWithObjectSecondsInt[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.DelayWithObjectSecondsInt<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.DelayWithObjectSecondsInt<>"
 
-    def __init__(self, next: str | INodeOperation | None = None, on_triggered: str | INodeOperation | None = None, value: str | INodeObjectOutput[T] | None = None, duration: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, on_triggered: str | INodeOperation | None = None, value: str | INodeObjectOutput[T] | None = None, duration: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -128,15 +127,15 @@ class DelayWithObjectSecondsInt(GenericComponent[T], IAsyncNodeOperation, IExecu
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @duration.setter
-    def duration(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Duration reference by target ID or INodeValueOutput[np.int32] instance."""
+    def duration(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Duration reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):

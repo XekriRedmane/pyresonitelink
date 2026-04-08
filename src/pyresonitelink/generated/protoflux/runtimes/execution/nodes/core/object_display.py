@@ -1,6 +1,7 @@
 """Generated component: ObjectDisplay."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -20,14 +21,14 @@ class ObjectDisplay(GenericComponent[T], IProtoFluxNodePackUnpackListener, IExec
 
     Parameterize with a value type::
 
-        ObjectDisplay[np.float32]
+        ObjectDisplay[primitives.Float]
         ObjectDisplay[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectDisplay<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectDisplay<>"
 
-    def __init__(self, input_: str | INodeObjectOutput[T] | None = None, display_text: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, input_: str | INodeObjectOutput[T] | None = None, display_text: str | IField[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -64,15 +65,15 @@ class ObjectDisplay(GenericComponent[T], IProtoFluxNodePackUnpackListener, IExec
 
     @property
     def display_text(self) -> str | None:
-        """Target ID of the _displayText reference (targets IField[str])."""
+        """Target ID of the _displayText reference (targets IField[primitives.String])."""
         member = self.get_member("_displayText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @display_text.setter
-    def display_text(self, target: str | IField[str] | None) -> None:
-        """Set the _displayText reference by target ID or IField[str] instance."""
+    def display_text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _displayText reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_displayText")
         if isinstance(member, members.Reference):

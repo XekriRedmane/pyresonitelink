@@ -1,7 +1,5 @@
 """Generated component: LegacyCheckbox."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,7 +23,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyCheckbox"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, is_checked: bool | None = None, is_enabled: bool | None = None, drive_field: str | IField[bool] | None = None, allow_write_back: bool | None = None, size: np.float32 | None = None, bevel_percent: np.float32 | None = None, color: primitives.ColorX | None = None, shell_mesh: str | BevelBoxMesh | None = None, check_mesh: str | BevelBoxMesh | None = None, title_bar: str | LegacyHorizontalChoiceBar | None = None, shell_size: str | IField[primitives.Float3] | None = None, shell_bevel: str | IField[np.float32] | None = None, check_size: str | IField[primitives.Float3] | None = None, check_bevel: str | IField[np.float32] | None = None, collider_size: str | IField[primitives.Float3] | None = None, shell_material: str | PBS_RimMetallic | None = None, check_material: str | PBS_RimMetallic | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, is_checked: primitives.Bool | None = None, is_enabled: primitives.Bool | None = None, drive_field: str | IField[primitives.Bool] | None = None, allow_write_back: primitives.Bool | None = None, size: primitives.Float | None = None, bevel_percent: primitives.Float | None = None, color: primitives.ColorX | None = None, shell_mesh: str | BevelBoxMesh | None = None, check_mesh: str | BevelBoxMesh | None = None, title_bar: str | LegacyHorizontalChoiceBar | None = None, shell_size: str | IField[primitives.Float3] | None = None, shell_bevel: str | IField[primitives.Float] | None = None, check_size: str | IField[primitives.Float3] | None = None, check_bevel: str | IField[primitives.Float] | None = None, collider_size: str | IField[primitives.Float3] | None = None, shell_material: str | PBS_RimMetallic | None = None, check_material: str | PBS_RimMetallic | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -115,7 +113,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -123,7 +121,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -134,7 +132,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -142,7 +140,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -153,7 +151,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
             )
 
     @property
-    def is_checked(self) -> bool | None:
+    def is_checked(self) -> primitives.Bool | None:
         """The IsChecked field value."""
         member = self.get_member("IsChecked")
         if member is None:
@@ -161,7 +159,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @is_checked.setter
-    def is_checked(self, value: bool) -> None:
+    def is_checked(self, value: primitives.Bool) -> None:
         """Set the IsChecked field value."""
         member = self.get_member("IsChecked")
         if member is not None:
@@ -172,7 +170,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
             )
 
     @property
-    def is_enabled(self) -> bool | None:
+    def is_enabled(self) -> primitives.Bool | None:
         """The IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is None:
@@ -180,7 +178,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @is_enabled.setter
-    def is_enabled(self, value: bool) -> None:
+    def is_enabled(self, value: primitives.Bool) -> None:
         """Set the IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is not None:
@@ -192,15 +190,15 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def drive_field(self) -> str | None:
-        """Target ID of the DriveField reference (targets IField[bool])."""
+        """Target ID of the DriveField reference (targets IField[primitives.Bool])."""
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @drive_field.setter
-    def drive_field(self, target: str | IField[bool] | None) -> None:
-        """Set the DriveField reference by target ID or IField[bool] instance."""
+    def drive_field(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the DriveField reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
@@ -212,7 +210,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
             )
 
     @property
-    def allow_write_back(self) -> bool | None:
+    def allow_write_back(self) -> primitives.Bool | None:
         """The AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is None:
@@ -220,7 +218,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @allow_write_back.setter
-    def allow_write_back(self, value: bool) -> None:
+    def allow_write_back(self, value: primitives.Bool) -> None:
         """Set the AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is not None:
@@ -231,7 +229,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
             )
 
     @property
-    def size(self) -> np.float32 | None:
+    def size(self) -> primitives.Float | None:
         """The Size field value."""
         member = self.get_member("Size")
         if member is None:
@@ -239,7 +237,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @size.setter
-    def size(self, value: np.float32) -> None:
+    def size(self, value: primitives.Float) -> None:
         """Set the Size field value."""
         member = self.get_member("Size")
         if member is not None:
@@ -250,7 +248,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
             )
 
     @property
-    def bevel_percent(self) -> np.float32 | None:
+    def bevel_percent(self) -> primitives.Float | None:
         """The BevelPercent field value."""
         member = self.get_member("BevelPercent")
         if member is None:
@@ -258,7 +256,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @bevel_percent.setter
-    def bevel_percent(self, value: np.float32) -> None:
+    def bevel_percent(self, value: primitives.Float) -> None:
         """Set the BevelPercent field value."""
         member = self.get_member("BevelPercent")
         if member is not None:
@@ -373,15 +371,15 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def shell_bevel(self) -> str | None:
-        """Target ID of the _shellBevel reference (targets IField[np.float32])."""
+        """Target ID of the _shellBevel reference (targets IField[primitives.Float])."""
         member = self.get_member("_shellBevel")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @shell_bevel.setter
-    def shell_bevel(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _shellBevel reference by target ID or IField[np.float32] instance."""
+    def shell_bevel(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _shellBevel reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_shellBevel")
         if isinstance(member, members.Reference):
@@ -415,15 +413,15 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def check_bevel(self) -> str | None:
-        """Target ID of the _checkBevel reference (targets IField[np.float32])."""
+        """Target ID of the _checkBevel reference (targets IField[primitives.Float])."""
         member = self.get_member("_checkBevel")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @check_bevel.setter
-    def check_bevel(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _checkBevel reference by target ID or IField[np.float32] instance."""
+    def check_bevel(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _checkBevel reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_checkBevel")
         if isinstance(member, members.Reference):

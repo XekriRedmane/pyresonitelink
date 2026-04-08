@@ -19,7 +19,7 @@ class CopyGlobalScale(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CopyGlobalScale"
 
-    def __init__(self, source: str | Slot | None = None, non_uniform: bool | None = None, scale_drive: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | Slot | None = None, non_uniform: primitives.Bool | None = None, scale_drive: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +58,7 @@ class CopyGlobalScale(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def non_uniform(self) -> bool | None:
+    def non_uniform(self) -> primitives.Bool | None:
         """The NonUniform field value."""
         member = self.get_member("NonUniform")
         if member is None:
@@ -66,7 +66,7 @@ class CopyGlobalScale(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @non_uniform.setter
-    def non_uniform(self, value: bool) -> None:
+    def non_uniform(self, value: primitives.Bool) -> None:
         """Set the NonUniform field value."""
         member = self.get_member("NonUniform")
         if member is not None:

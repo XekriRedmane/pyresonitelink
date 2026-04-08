@@ -1,9 +1,8 @@
 """Generated component: DesktopControlDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.desktop_interaction_relay import DesktopInteractionRelay
@@ -19,7 +18,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopControlDialog"
 
-    def __init__(self, interaction_relay: str | DesktopInteractionRelay | None = None, index: np.int32 | None = None, follow_cursor: bool | None = None, brightness: np.float32 | None = None, opacity: np.float32 | None = None, legacy_input_mode: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, interaction_relay: str | DesktopInteractionRelay | None = None, index: primitives.Int | None = None, follow_cursor: primitives.Bool | None = None, brightness: primitives.Float | None = None, opacity: primitives.Float | None = None, legacy_input_mode: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,7 +66,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def index(self) -> np.int32 | None:
+    def index(self) -> primitives.Int | None:
         """The Index field value."""
         member = self.get_member("Index")
         if member is None:
@@ -75,7 +74,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @index.setter
-    def index(self, value: np.int32) -> None:
+    def index(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:
@@ -86,7 +85,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def follow_cursor(self) -> bool | None:
+    def follow_cursor(self) -> primitives.Bool | None:
         """The FollowCursor field value."""
         member = self.get_member("FollowCursor")
         if member is None:
@@ -94,7 +93,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @follow_cursor.setter
-    def follow_cursor(self, value: bool) -> None:
+    def follow_cursor(self, value: primitives.Bool) -> None:
         """Set the FollowCursor field value."""
         member = self.get_member("FollowCursor")
         if member is not None:
@@ -105,7 +104,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def brightness(self) -> np.float32 | None:
+    def brightness(self) -> primitives.Float | None:
         """The Brightness field value."""
         member = self.get_member("Brightness")
         if member is None:
@@ -113,7 +112,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @brightness.setter
-    def brightness(self, value: np.float32) -> None:
+    def brightness(self, value: primitives.Float) -> None:
         """Set the Brightness field value."""
         member = self.get_member("Brightness")
         if member is not None:
@@ -124,7 +123,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def opacity(self) -> np.float32 | None:
+    def opacity(self) -> primitives.Float | None:
         """The Opacity field value."""
         member = self.get_member("Opacity")
         if member is None:
@@ -132,7 +131,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @opacity.setter
-    def opacity(self, value: np.float32) -> None:
+    def opacity(self, value: primitives.Float) -> None:
         """Set the Opacity field value."""
         member = self.get_member("Opacity")
         if member is not None:
@@ -143,7 +142,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def legacy_input_mode(self) -> bool | None:
+    def legacy_input_mode(self) -> primitives.Bool | None:
         """The LegacyInputMode field value."""
         member = self.get_member("LegacyInputMode")
         if member is None:
@@ -151,7 +150,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @legacy_input_mode.setter
-    def legacy_input_mode(self, value: bool) -> None:
+    def legacy_input_mode(self, value: primitives.Bool) -> None:
         """Set the LegacyInputMode field value."""
         member = self.get_member("LegacyInputMode")
         if member is not None:

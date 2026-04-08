@@ -1,7 +1,5 @@
 """Generated component: DocumentPageMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DocumentPageMetadata"
 
-    def __init__(self, document: str | IAssetProvider[Document] | None = None, page_index: np.int32 | None = None, reference_size: primitives.Double2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, document: str | IAssetProvider[Document] | None = None, page_index: primitives.Int | None = None, reference_size: primitives.Double2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,7 +58,7 @@ class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def page_index(self) -> np.int32 | None:
+    def page_index(self) -> primitives.Int | None:
         """The PageIndex field value."""
         member = self.get_member("PageIndex")
         if member is None:
@@ -68,7 +66,7 @@ class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @page_index.setter
-    def page_index(self, value: np.int32) -> None:
+    def page_index(self, value: primitives.Int) -> None:
         """Set the PageIndex field value."""
         member = self.get_member("PageIndex")
         if member is not None:

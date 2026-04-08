@@ -1,6 +1,7 @@
 """Generated component: SceneInspector."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -17,7 +18,7 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SceneInspector"
 
-    def __init__(self, root: str | Slot | None = None, component_view: str | Slot | None = None, root_text: str | Sync[str] | None = None, component_text: str | Sync[str] | None = None, hierarchy_content_root: str | Slot | None = None, components_content_root: str | Slot | None = None, current_component: str | Slot | None = None, current_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, root: str | Slot | None = None, component_view: str | Slot | None = None, root_text: str | Sync[primitives.String] | None = None, component_text: str | Sync[primitives.String] | None = None, hierarchy_content_root: str | Slot | None = None, components_content_root: str | Slot | None = None, current_component: str | Slot | None = None, current_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -93,15 +94,15 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def root_text(self) -> str | None:
-        """Target ID of the _rootText reference (targets Sync[str])."""
+        """Target ID of the _rootText reference (targets Sync[primitives.String])."""
         member = self.get_member("_rootText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @root_text.setter
-    def root_text(self, target: str | Sync[str] | None) -> None:
-        """Set the _rootText reference by target ID or Sync[str] instance."""
+    def root_text(self, target: str | Sync[primitives.String] | None) -> None:
+        """Set the _rootText reference by target ID or Sync[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
         member = self.get_member("_rootText")
         if isinstance(member, members.Reference):
@@ -114,15 +115,15 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def component_text(self) -> str | None:
-        """Target ID of the _componentText reference (targets Sync[str])."""
+        """Target ID of the _componentText reference (targets Sync[primitives.String])."""
         member = self.get_member("_componentText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @component_text.setter
-    def component_text(self, target: str | Sync[str] | None) -> None:
-        """Set the _componentText reference by target ID or Sync[str] instance."""
+    def component_text(self, target: str | Sync[primitives.String] | None) -> None:
+        """Set the _componentText reference by target ID or Sync[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
         member = self.get_member("_componentText")
         if isinstance(member, members.Reference):

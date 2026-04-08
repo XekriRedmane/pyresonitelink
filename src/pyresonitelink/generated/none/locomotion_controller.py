@@ -1,9 +1,8 @@
 """Generated component: LocomotionController."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icollider import ICollider
@@ -18,7 +17,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionController"
 
-    def __init__(self, scaling_enabled: bool | None = None, active_module_index: np.int32 | None = None, find_user_preferred_module: bool | None = None, current_ground_collider: str | ICollider | None = None, last_ground_collider: str | ICollider | None = None, dummy_character_controller: str | CharacterController | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, scaling_enabled: primitives.Bool | None = None, active_module_index: primitives.Int | None = None, find_user_preferred_module: primitives.Bool | None = None, current_ground_collider: str | ICollider | None = None, last_ground_collider: str | ICollider | None = None, dummy_character_controller: str | CharacterController | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +44,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.dummy_character_controller = dummy_character_controller
 
     @property
-    def scaling_enabled(self) -> bool | None:
+    def scaling_enabled(self) -> primitives.Bool | None:
         """The ScalingEnabled field value."""
         member = self.get_member("ScalingEnabled")
         if member is None:
@@ -53,7 +52,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @scaling_enabled.setter
-    def scaling_enabled(self, value: bool) -> None:
+    def scaling_enabled(self, value: primitives.Bool) -> None:
         """Set the ScalingEnabled field value."""
         member = self.get_member("ScalingEnabled")
         if member is not None:
@@ -103,7 +102,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("LocomotionModules", value)
 
     @property
-    def active_module_index(self) -> np.int32 | None:
+    def active_module_index(self) -> primitives.Int | None:
         """The ActiveModuleIndex field value."""
         member = self.get_member("ActiveModuleIndex")
         if member is None:
@@ -111,7 +110,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @active_module_index.setter
-    def active_module_index(self, value: np.int32) -> None:
+    def active_module_index(self, value: primitives.Int) -> None:
         """Set the ActiveModuleIndex field value."""
         member = self.get_member("ActiveModuleIndex")
         if member is not None:
@@ -122,7 +121,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def find_user_preferred_module(self) -> bool | None:
+    def find_user_preferred_module(self) -> primitives.Bool | None:
         """The FindUserPreferredModule field value."""
         member = self.get_member("FindUserPreferredModule")
         if member is None:
@@ -130,7 +129,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @find_user_preferred_module.setter
-    def find_user_preferred_module(self, value: bool) -> None:
+    def find_user_preferred_module(self, value: primitives.Bool) -> None:
         """Set the FindUserPreferredModule field value."""
         member = self.get_member("FindUserPreferredModule")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: AvatarCreator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -19,7 +18,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AvatarCreator"
 
-    def __init__(self, headset_point: str | Slot | None = None, left_point: str | Slot | None = None, right_point: str | Slot | None = None, left_foot_point: str | Slot | None = None, right_foot_point: str | Slot | None = None, pelvis_point: str | Slot | None = None, headset_reference: str | Slot | None = None, pelvis_reference: str | Slot | None = None, left_reference: str | Slot | None = None, right_reference: str | Slot | None = None, left_foot_reference: str | Slot | None = None, right_foot_reference: str | Slot | None = None, initialized: bool | None = None, show_anchors: bool | None = None, use_symmetry: bool | None = None, setup_volume_meter: bool | None = None, setup_protection: bool | None = None, setup_eyes: bool | None = None, setup_face_tracking: bool | None = None, calibrate_feet: bool | None = None, calibrate_pelvis: bool | None = None, can_protect: bool | None = None, symmetry_setup: bool | None = None, scale: np.float32 | None = None, protect_avatar_enabled: str | IField[bool] | None = None, create_enabled: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, headset_point: str | Slot | None = None, left_point: str | Slot | None = None, right_point: str | Slot | None = None, left_foot_point: str | Slot | None = None, right_foot_point: str | Slot | None = None, pelvis_point: str | Slot | None = None, headset_reference: str | Slot | None = None, pelvis_reference: str | Slot | None = None, left_reference: str | Slot | None = None, right_reference: str | Slot | None = None, left_foot_reference: str | Slot | None = None, right_foot_reference: str | Slot | None = None, initialized: primitives.Bool | None = None, show_anchors: primitives.Bool | None = None, use_symmetry: primitives.Bool | None = None, setup_volume_meter: primitives.Bool | None = None, setup_protection: primitives.Bool | None = None, setup_eyes: primitives.Bool | None = None, setup_face_tracking: primitives.Bool | None = None, calibrate_feet: primitives.Bool | None = None, calibrate_pelvis: primitives.Bool | None = None, can_protect: primitives.Bool | None = None, symmetry_setup: primitives.Bool | None = None, scale: primitives.Float | None = None, protect_avatar_enabled: str | IField[primitives.Bool] | None = None, create_enabled: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -358,7 +357,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def initialized(self) -> bool | None:
+    def initialized(self) -> primitives.Bool | None:
         """The _initialized field value."""
         member = self.get_member("_initialized")
         if member is None:
@@ -366,7 +365,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @initialized.setter
-    def initialized(self, value: bool) -> None:
+    def initialized(self, value: primitives.Bool) -> None:
         """Set the _initialized field value."""
         member = self.get_member("_initialized")
         if member is not None:
@@ -377,7 +376,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def show_anchors(self) -> bool | None:
+    def show_anchors(self) -> primitives.Bool | None:
         """The _showAnchors field value."""
         member = self.get_member("_showAnchors")
         if member is None:
@@ -385,7 +384,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @show_anchors.setter
-    def show_anchors(self, value: bool) -> None:
+    def show_anchors(self, value: primitives.Bool) -> None:
         """Set the _showAnchors field value."""
         member = self.get_member("_showAnchors")
         if member is not None:
@@ -396,7 +395,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def use_symmetry(self) -> bool | None:
+    def use_symmetry(self) -> primitives.Bool | None:
         """The _useSymmetry field value."""
         member = self.get_member("_useSymmetry")
         if member is None:
@@ -404,7 +403,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @use_symmetry.setter
-    def use_symmetry(self, value: bool) -> None:
+    def use_symmetry(self, value: primitives.Bool) -> None:
         """Set the _useSymmetry field value."""
         member = self.get_member("_useSymmetry")
         if member is not None:
@@ -415,7 +414,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def setup_volume_meter(self) -> bool | None:
+    def setup_volume_meter(self) -> primitives.Bool | None:
         """The _setupVolumeMeter field value."""
         member = self.get_member("_setupVolumeMeter")
         if member is None:
@@ -423,7 +422,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @setup_volume_meter.setter
-    def setup_volume_meter(self, value: bool) -> None:
+    def setup_volume_meter(self, value: primitives.Bool) -> None:
         """Set the _setupVolumeMeter field value."""
         member = self.get_member("_setupVolumeMeter")
         if member is not None:
@@ -434,7 +433,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def setup_protection(self) -> bool | None:
+    def setup_protection(self) -> primitives.Bool | None:
         """The _setupProtection field value."""
         member = self.get_member("_setupProtection")
         if member is None:
@@ -442,7 +441,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @setup_protection.setter
-    def setup_protection(self, value: bool) -> None:
+    def setup_protection(self, value: primitives.Bool) -> None:
         """Set the _setupProtection field value."""
         member = self.get_member("_setupProtection")
         if member is not None:
@@ -453,7 +452,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def setup_eyes(self) -> bool | None:
+    def setup_eyes(self) -> primitives.Bool | None:
         """The _setupEyes field value."""
         member = self.get_member("_setupEyes")
         if member is None:
@@ -461,7 +460,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @setup_eyes.setter
-    def setup_eyes(self, value: bool) -> None:
+    def setup_eyes(self, value: primitives.Bool) -> None:
         """Set the _setupEyes field value."""
         member = self.get_member("_setupEyes")
         if member is not None:
@@ -472,7 +471,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def setup_face_tracking(self) -> bool | None:
+    def setup_face_tracking(self) -> primitives.Bool | None:
         """The _setupFaceTracking field value."""
         member = self.get_member("_setupFaceTracking")
         if member is None:
@@ -480,7 +479,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @setup_face_tracking.setter
-    def setup_face_tracking(self, value: bool) -> None:
+    def setup_face_tracking(self, value: primitives.Bool) -> None:
         """Set the _setupFaceTracking field value."""
         member = self.get_member("_setupFaceTracking")
         if member is not None:
@@ -491,7 +490,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def calibrate_feet(self) -> bool | None:
+    def calibrate_feet(self) -> primitives.Bool | None:
         """The _calibrateFeet field value."""
         member = self.get_member("_calibrateFeet")
         if member is None:
@@ -499,7 +498,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @calibrate_feet.setter
-    def calibrate_feet(self, value: bool) -> None:
+    def calibrate_feet(self, value: primitives.Bool) -> None:
         """Set the _calibrateFeet field value."""
         member = self.get_member("_calibrateFeet")
         if member is not None:
@@ -510,7 +509,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def calibrate_pelvis(self) -> bool | None:
+    def calibrate_pelvis(self) -> primitives.Bool | None:
         """The _calibratePelvis field value."""
         member = self.get_member("_calibratePelvis")
         if member is None:
@@ -518,7 +517,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @calibrate_pelvis.setter
-    def calibrate_pelvis(self, value: bool) -> None:
+    def calibrate_pelvis(self, value: primitives.Bool) -> None:
         """Set the _calibratePelvis field value."""
         member = self.get_member("_calibratePelvis")
         if member is not None:
@@ -529,7 +528,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def can_protect(self) -> bool | None:
+    def can_protect(self) -> primitives.Bool | None:
         """The _canProtect field value."""
         member = self.get_member("_canProtect")
         if member is None:
@@ -537,7 +536,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @can_protect.setter
-    def can_protect(self, value: bool) -> None:
+    def can_protect(self, value: primitives.Bool) -> None:
         """Set the _canProtect field value."""
         member = self.get_member("_canProtect")
         if member is not None:
@@ -548,7 +547,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
             )
 
     @property
-    def symmetry_setup(self) -> bool | None:
+    def symmetry_setup(self) -> primitives.Bool | None:
         """The _symmetrySetup field value."""
         member = self.get_member("_symmetrySetup")
         if member is None:
@@ -556,7 +555,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @symmetry_setup.setter
-    def symmetry_setup(self, value: bool) -> None:
+    def symmetry_setup(self, value: primitives.Bool) -> None:
         """Set the _symmetrySetup field value."""
         member = self.get_member("_symmetrySetup")
         if member is not None:
@@ -580,7 +579,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         self.set_member("_anchors", value)
 
     @property
-    def scale(self) -> np.float32 | None:
+    def scale(self) -> primitives.Float | None:
         """The _scale field value."""
         member = self.get_member("_scale")
         if member is None:
@@ -588,7 +587,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @scale.setter
-    def scale(self, value: np.float32) -> None:
+    def scale(self, value: primitives.Float) -> None:
         """Set the _scale field value."""
         member = self.get_member("_scale")
         if member is not None:
@@ -600,15 +599,15 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def protect_avatar_enabled(self) -> str | None:
-        """Target ID of the _protectAvatarEnabled reference (targets IField[bool])."""
+        """Target ID of the _protectAvatarEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_protectAvatarEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @protect_avatar_enabled.setter
-    def protect_avatar_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _protectAvatarEnabled reference by target ID or IField[bool] instance."""
+    def protect_avatar_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _protectAvatarEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_protectAvatarEnabled")
         if isinstance(member, members.Reference):
@@ -621,15 +620,15 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def create_enabled(self) -> str | None:
-        """Target ID of the _createEnabled reference (targets IField[bool])."""
+        """Target ID of the _createEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_createEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @create_enabled.setter
-    def create_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _createEnabled reference by target ID or IField[bool] instance."""
+    def create_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _createEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_createEnabled")
         if isinstance(member, members.Reference):
@@ -640,7 +639,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
             )
 
-    async def create_biped_avatar(self, resolink: protocols.ResoniteLinkClient, biped: str, head_reference: str, left_hand_reference: str, right_hand_reference: str, left_foot_reference: str, right_foot_reference: str, hips_reference: str, setup_eyes: bool, setup_protection: bool, setup_volume_meter: bool, setup_face_tracking: bool, debug: bool = False) -> dict:
+    async def create_biped_avatar(self, resolink: protocols.ResoniteLinkClient, biped: str, head_reference: str, left_hand_reference: str, right_hand_reference: str, left_foot_reference: str, right_foot_reference: str, hips_reference: str, setup_eyes: primitives.Bool, setup_protection: primitives.Bool, setup_volume_meter: primitives.Bool, setup_face_tracking: primitives.Bool, debug: bool = False) -> dict:
         """Call the CreateBipedAvatar sync method.
 
         Args:

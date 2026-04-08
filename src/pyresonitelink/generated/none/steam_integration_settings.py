@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -14,7 +15,7 @@ class SteamIntegrationSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SteamIntegrationSettings"
 
-    def __init__(self, save_screenshots: bool | None = None, force_steam_voice_on_remote_play: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, save_screenshots: primitives.Bool | None = None, force_steam_voice_on_remote_play: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +43,7 @@ class SteamIntegrationSettings(GeneratedComponent, ICustomInspector):
         self.set_member("RichPresence", value)
 
     @property
-    def save_screenshots(self) -> bool | None:
+    def save_screenshots(self) -> primitives.Bool | None:
         """The SaveScreenshots field value."""
         member = self.get_member("SaveScreenshots")
         if member is None:
@@ -50,7 +51,7 @@ class SteamIntegrationSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @save_screenshots.setter
-    def save_screenshots(self, value: bool) -> None:
+    def save_screenshots(self, value: primitives.Bool) -> None:
         """Set the SaveScreenshots field value."""
         member = self.get_member("SaveScreenshots")
         if member is not None:
@@ -61,7 +62,7 @@ class SteamIntegrationSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def force_steam_voice_on_remote_play(self) -> bool | None:
+    def force_steam_voice_on_remote_play(self) -> primitives.Bool | None:
         """The ForceSteamVoiceOnRemotePlay field value."""
         member = self.get_member("ForceSteamVoiceOnRemotePlay")
         if member is None:
@@ -69,7 +70,7 @@ class SteamIntegrationSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @force_steam_voice_on_remote_play.setter
-    def force_steam_voice_on_remote_play(self, value: bool) -> None:
+    def force_steam_voice_on_remote_play(self, value: primitives.Bool) -> None:
         """Set the ForceSteamVoiceOnRemotePlay field value."""
         member = self.get_member("ForceSteamVoiceOnRemotePlay")
         if member is not None:

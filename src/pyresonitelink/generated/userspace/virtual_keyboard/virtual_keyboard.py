@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -18,7 +19,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VirtualKeyboard"
 
-    def __init__(self, shift_active: bool | None = None, hold_shift: bool | None = None, text_preview_active: str | IField[bool] | None = None, text_preview: str | IText | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, shift_active: primitives.Bool | None = None, hold_shift: primitives.Bool | None = None, text_preview_active: str | IField[primitives.Bool] | None = None, text_preview: str | IText | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +40,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
             self.text_preview = text_preview
 
     @property
-    def shift_active(self) -> bool | None:
+    def shift_active(self) -> primitives.Bool | None:
         """The ShiftActive field value."""
         member = self.get_member("ShiftActive")
         if member is None:
@@ -47,7 +48,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @shift_active.setter
-    def shift_active(self, value: bool) -> None:
+    def shift_active(self, value: primitives.Bool) -> None:
         """Set the ShiftActive field value."""
         member = self.get_member("ShiftActive")
         if member is not None:
@@ -58,7 +59,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
             )
 
     @property
-    def hold_shift(self) -> bool | None:
+    def hold_shift(self) -> primitives.Bool | None:
         """The HoldShift field value."""
         member = self.get_member("HoldShift")
         if member is None:
@@ -66,7 +67,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @hold_shift.setter
-    def hold_shift(self, value: bool) -> None:
+    def hold_shift(self, value: primitives.Bool) -> None:
         """Set the HoldShift field value."""
         member = self.get_member("HoldShift")
         if member is not None:
@@ -78,15 +79,15 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
 
     @property
     def text_preview_active(self) -> str | None:
-        """Target ID of the TextPreviewActive reference (targets IField[bool])."""
+        """Target ID of the TextPreviewActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("TextPreviewActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text_preview_active.setter
-    def text_preview_active(self, target: str | IField[bool] | None) -> None:
-        """Set the TextPreviewActive reference by target ID or IField[bool] instance."""
+    def text_preview_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the TextPreviewActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TextPreviewActive")
         if isinstance(member, members.Reference):

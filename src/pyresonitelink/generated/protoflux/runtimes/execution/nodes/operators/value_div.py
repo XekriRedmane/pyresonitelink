@@ -18,7 +18,7 @@ class ValueDiv(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueDiv[np.float32]
+        ValueDiv[primitives.Float]
         ValueDiv[primitives.Float3]
     """
 

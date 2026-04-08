@@ -1,7 +1,5 @@
 """Generated component: LabelContentDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LabelContentDriver"
 
-    def __init__(self, auto_update: bool | None = None, padding: primitives.Float2 | None = None, base_width: np.float32 | None = None, orient_at_local_user: bool | None = None, content_root: str | Slot | None = None, target_point: str | Slot | None = None, content_rotation: primitives.FloatQ | None = None, content_rotation_drive: str | IField[primitives.FloatQ] | None = None, label_position: str | IField[primitives.Float3] | None = None, label_width: str | IField[np.float32] | None = None, line_width: str | IField[np.float32] | None = None, label_rotation: str | IField[primitives.FloatQ] | None = None, point_position: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_update: primitives.Bool | None = None, padding: primitives.Float2 | None = None, base_width: primitives.Float | None = None, orient_at_local_user: primitives.Bool | None = None, content_root: str | Slot | None = None, target_point: str | Slot | None = None, content_rotation: primitives.FloatQ | None = None, content_rotation_drive: str | IField[primitives.FloatQ] | None = None, label_position: str | IField[primitives.Float3] | None = None, label_width: str | IField[primitives.Float] | None = None, line_width: str | IField[primitives.Float] | None = None, label_rotation: str | IField[primitives.FloatQ] | None = None, point_position: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,7 +65,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.point_position = point_position
 
     @property
-    def auto_update(self) -> bool | None:
+    def auto_update(self) -> primitives.Bool | None:
         """The AutoUpdate field value."""
         member = self.get_member("AutoUpdate")
         if member is None:
@@ -75,7 +73,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_update.setter
-    def auto_update(self, value: bool) -> None:
+    def auto_update(self, value: primitives.Bool) -> None:
         """Set the AutoUpdate field value."""
         member = self.get_member("AutoUpdate")
         if member is not None:
@@ -105,7 +103,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def base_width(self) -> np.float32 | None:
+    def base_width(self) -> primitives.Float | None:
         """The BaseWidth field value."""
         member = self.get_member("BaseWidth")
         if member is None:
@@ -113,7 +111,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @base_width.setter
-    def base_width(self, value: np.float32) -> None:
+    def base_width(self, value: primitives.Float) -> None:
         """Set the BaseWidth field value."""
         member = self.get_member("BaseWidth")
         if member is not None:
@@ -137,7 +135,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("ContentOrientSpace", value)
 
     @property
-    def orient_at_local_user(self) -> bool | None:
+    def orient_at_local_user(self) -> primitives.Bool | None:
         """The OrientAtLocalUser field value."""
         member = self.get_member("OrientAtLocalUser")
         if member is None:
@@ -145,7 +143,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @orient_at_local_user.setter
-    def orient_at_local_user(self, value: bool) -> None:
+    def orient_at_local_user(self, value: primitives.Bool) -> None:
         """Set the OrientAtLocalUser field value."""
         member = self.get_member("OrientAtLocalUser")
         if member is not None:
@@ -260,15 +258,15 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label_width(self) -> str | None:
-        """Target ID of the _labelWidth reference (targets IField[np.float32])."""
+        """Target ID of the _labelWidth reference (targets IField[primitives.Float])."""
         member = self.get_member("_labelWidth")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @label_width.setter
-    def label_width(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _labelWidth reference by target ID or IField[np.float32] instance."""
+    def label_width(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _labelWidth reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_labelWidth")
         if isinstance(member, members.Reference):
@@ -281,15 +279,15 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def line_width(self) -> str | None:
-        """Target ID of the _lineWidth reference (targets IField[np.float32])."""
+        """Target ID of the _lineWidth reference (targets IField[primitives.Float])."""
         member = self.get_member("_lineWidth")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @line_width.setter
-    def line_width(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _lineWidth reference by target ID or IField[np.float32] instance."""
+    def line_width(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _lineWidth reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_lineWidth")
         if isinstance(member, members.Reference):

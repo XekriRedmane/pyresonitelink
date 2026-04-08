@@ -1,7 +1,5 @@
 """Generated component: ConeGizmo."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConeGizmo"
 
-    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_angle: str | IField[np.float32] | None = None, target_radius: str | IField[np.float32] | None = None, target_height: str | IField[np.float32] | None = None, target_direction: str | IField[primitives.Float3] | None = None, target_rotation: str | IField[primitives.FloatQ] | None = None, fixed_angle: np.float32 | None = None, fixed_height: np.float32 | None = None, fixed_direction: primitives.Float3 | None = None, line_thickness: np.float32 | None = None, min_height: np.float32 | None = None, max_height: np.float32 | None = None, min_angle: np.float32 | None = None, max_angle: np.float32 | None = None, visual_root: str | Slot | None = None, visual_rot: str | IField[primitives.FloatQ] | None = None, height_mesh: str | SegmentMesh | None = None, cone_line_mesh: str | SegmentMesh | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: primitives.Bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_angle: str | IField[primitives.Float] | None = None, target_radius: str | IField[primitives.Float] | None = None, target_height: str | IField[primitives.Float] | None = None, target_direction: str | IField[primitives.Float3] | None = None, target_rotation: str | IField[primitives.FloatQ] | None = None, fixed_angle: primitives.Float | None = None, fixed_height: primitives.Float | None = None, fixed_direction: primitives.Float3 | None = None, line_thickness: primitives.Float | None = None, min_height: primitives.Float | None = None, max_height: primitives.Float | None = None, min_angle: primitives.Float | None = None, max_angle: primitives.Float | None = None, visual_root: str | Slot | None = None, visual_rot: str | IField[primitives.FloatQ] | None = None, height_mesh: str | SegmentMesh | None = None, cone_line_mesh: str | SegmentMesh | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -130,7 +128,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
             )
 
     @property
-    def auto_position_at_target_slot(self) -> bool | None:
+    def auto_position_at_target_slot(self) -> primitives.Bool | None:
         """The AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
@@ -138,7 +136,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_position_at_target_slot.setter
-    def auto_position_at_target_slot(self, value: bool) -> None:
+    def auto_position_at_target_slot(self, value: primitives.Bool) -> None:
         """Set the AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is not None:
@@ -297,15 +295,15 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_angle(self) -> str | None:
-        """Target ID of the TargetAngle reference (targets IField[np.float32])."""
+        """Target ID of the TargetAngle reference (targets IField[primitives.Float])."""
         member = self.get_member("TargetAngle")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_angle.setter
-    def target_angle(self, target: str | IField[np.float32] | None) -> None:
-        """Set the TargetAngle reference by target ID or IField[np.float32] instance."""
+    def target_angle(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the TargetAngle reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetAngle")
         if isinstance(member, members.Reference):
@@ -318,15 +316,15 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_radius(self) -> str | None:
-        """Target ID of the TargetRadius reference (targets IField[np.float32])."""
+        """Target ID of the TargetRadius reference (targets IField[primitives.Float])."""
         member = self.get_member("TargetRadius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_radius.setter
-    def target_radius(self, target: str | IField[np.float32] | None) -> None:
-        """Set the TargetRadius reference by target ID or IField[np.float32] instance."""
+    def target_radius(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the TargetRadius reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetRadius")
         if isinstance(member, members.Reference):
@@ -339,15 +337,15 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_height(self) -> str | None:
-        """Target ID of the TargetHeight reference (targets IField[np.float32])."""
+        """Target ID of the TargetHeight reference (targets IField[primitives.Float])."""
         member = self.get_member("TargetHeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_height.setter
-    def target_height(self, target: str | IField[np.float32] | None) -> None:
-        """Set the TargetHeight reference by target ID or IField[np.float32] instance."""
+    def target_height(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the TargetHeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetHeight")
         if isinstance(member, members.Reference):
@@ -414,7 +412,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         self.set_member("DirectionSpace", value)
 
     @property
-    def fixed_angle(self) -> np.float32 | None:
+    def fixed_angle(self) -> primitives.Float | None:
         """The FixedAngle field value."""
         member = self.get_member("FixedAngle")
         if member is None:
@@ -422,7 +420,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @fixed_angle.setter
-    def fixed_angle(self, value: np.float32) -> None:
+    def fixed_angle(self, value: primitives.Float) -> None:
         """Set the FixedAngle field value."""
         member = self.get_member("FixedAngle")
         if member is not None:
@@ -433,7 +431,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
             )
 
     @property
-    def fixed_height(self) -> np.float32 | None:
+    def fixed_height(self) -> primitives.Float | None:
         """The FixedHeight field value."""
         member = self.get_member("FixedHeight")
         if member is None:
@@ -441,7 +439,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @fixed_height.setter
-    def fixed_height(self, value: np.float32) -> None:
+    def fixed_height(self, value: primitives.Float) -> None:
         """Set the FixedHeight field value."""
         member = self.get_member("FixedHeight")
         if member is not None:
@@ -471,7 +469,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
             )
 
     @property
-    def line_thickness(self) -> np.float32 | None:
+    def line_thickness(self) -> primitives.Float | None:
         """The LineThickness field value."""
         member = self.get_member("LineThickness")
         if member is None:
@@ -479,7 +477,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @line_thickness.setter
-    def line_thickness(self, value: np.float32) -> None:
+    def line_thickness(self, value: primitives.Float) -> None:
         """Set the LineThickness field value."""
         member = self.get_member("LineThickness")
         if member is not None:
@@ -490,7 +488,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
             )
 
     @property
-    def min_height(self) -> np.float32 | None:
+    def min_height(self) -> primitives.Float | None:
         """The MinHeight field value."""
         member = self.get_member("MinHeight")
         if member is None:
@@ -498,7 +496,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_height.setter
-    def min_height(self, value: np.float32) -> None:
+    def min_height(self, value: primitives.Float) -> None:
         """Set the MinHeight field value."""
         member = self.get_member("MinHeight")
         if member is not None:
@@ -509,7 +507,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
             )
 
     @property
-    def max_height(self) -> np.float32 | None:
+    def max_height(self) -> primitives.Float | None:
         """The MaxHeight field value."""
         member = self.get_member("MaxHeight")
         if member is None:
@@ -517,7 +515,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_height.setter
-    def max_height(self, value: np.float32) -> None:
+    def max_height(self, value: primitives.Float) -> None:
         """Set the MaxHeight field value."""
         member = self.get_member("MaxHeight")
         if member is not None:
@@ -528,7 +526,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
             )
 
     @property
-    def min_angle(self) -> np.float32 | None:
+    def min_angle(self) -> primitives.Float | None:
         """The MinAngle field value."""
         member = self.get_member("MinAngle")
         if member is None:
@@ -536,7 +534,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_angle.setter
-    def min_angle(self, value: np.float32) -> None:
+    def min_angle(self, value: primitives.Float) -> None:
         """Set the MinAngle field value."""
         member = self.get_member("MinAngle")
         if member is not None:
@@ -547,7 +545,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
             )
 
     @property
-    def max_angle(self) -> np.float32 | None:
+    def max_angle(self) -> primitives.Float | None:
         """The MaxAngle field value."""
         member = self.get_member("MaxAngle")
         if member is None:
@@ -555,7 +553,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_angle.setter
-    def max_angle(self, value: np.float32) -> None:
+    def max_angle(self, value: primitives.Float) -> None:
         """Set the MaxAngle field value."""
         member = self.get_member("MaxAngle")
         if member is not None:

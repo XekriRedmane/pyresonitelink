@@ -18,7 +18,7 @@ class ValueMod(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueMod[np.float32]
+        ValueMod[primitives.Float]
         ValueMod[primitives.Float3]
     """
 

@@ -1,9 +1,8 @@
 """Generated component: BrowserDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.browser_item import BrowserItem
@@ -22,7 +21,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BrowserDialog"
 
-    def __init__(self, selected_item: str | BrowserItem | None = None, previous_selected_item: str | BrowserItem | None = None, allow_select: bool | None = None, item_size: np.float32 | None = None, selected_text: str | Text | None = None, path_root: str | Slot | None = None, buttons_root: str | Slot | None = None, folder_grid: str | GridLayout | None = None, item_grid: str | GridLayout | None = None, tab_sprite: str | SpriteProvider | None = None, loading_indicator: str | Slot | None = None, swapper: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, selected_item: str | BrowserItem | None = None, previous_selected_item: str | BrowserItem | None = None, allow_select: primitives.Bool | None = None, item_size: primitives.Float | None = None, selected_text: str | Text | None = None, path_root: str | Slot | None = None, buttons_root: str | Slot | None = None, folder_grid: str | GridLayout | None = None, item_grid: str | GridLayout | None = None, tab_sprite: str | SpriteProvider | None = None, loading_indicator: str | Slot | None = None, swapper: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -109,7 +108,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def allow_select(self) -> bool | None:
+    def allow_select(self) -> primitives.Bool | None:
         """The AllowSelect field value."""
         member = self.get_member("AllowSelect")
         if member is None:
@@ -117,7 +116,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @allow_select.setter
-    def allow_select(self, value: bool) -> None:
+    def allow_select(self, value: primitives.Bool) -> None:
         """Set the AllowSelect field value."""
         member = self.get_member("AllowSelect")
         if member is not None:
@@ -128,7 +127,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def item_size(self) -> np.float32 | None:
+    def item_size(self) -> primitives.Float | None:
         """The ItemSize field value."""
         member = self.get_member("ItemSize")
         if member is None:
@@ -136,7 +135,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @item_size.setter
-    def item_size(self, value: np.float32) -> None:
+    def item_size(self, value: primitives.Float) -> None:
         """Set the ItemSize field value."""
         member = self.get_member("ItemSize")
         if member is not None:

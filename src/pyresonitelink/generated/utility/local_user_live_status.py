@@ -1,6 +1,7 @@
 """Generated component: LocalUserLiveStatus."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class LocalUserLiveStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocalUserLiveStatus"
 
-    def __init__(self, is_live: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_live: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class LocalUserLiveStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.is_live = is_live
 
     @property
-    def is_live(self) -> bool | None:
+    def is_live(self) -> primitives.Bool | None:
         """The IsLive field value."""
         member = self.get_member("IsLive")
         if member is None:
@@ -35,7 +36,7 @@ class LocalUserLiveStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_live.setter
-    def is_live(self, value: bool) -> None:
+    def is_live(self, value: primitives.Bool) -> None:
         """Set the IsLive field value."""
         member = self.get_member("IsLive")
         if member is not None:

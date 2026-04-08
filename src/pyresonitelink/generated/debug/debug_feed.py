@@ -1,9 +1,8 @@
 """Generated component: DebugFeed."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.idata_feed_component import IDataFeedComponent
@@ -19,7 +18,7 @@ class DebugFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugFeed"
 
-    def __init__(self, category_count: np.int32 | None = None, label_item_count: np.int32 | None = None, string_item_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, category_count: primitives.Int | None = None, label_item_count: primitives.Int | None = None, string_item_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +36,7 @@ class DebugFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventR
             self.string_item_count = string_item_count
 
     @property
-    def category_count(self) -> np.int32 | None:
+    def category_count(self) -> primitives.Int | None:
         """The CategoryCount field value."""
         member = self.get_member("CategoryCount")
         if member is None:
@@ -45,7 +44,7 @@ class DebugFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @category_count.setter
-    def category_count(self, value: np.int32) -> None:
+    def category_count(self, value: primitives.Int) -> None:
         """Set the CategoryCount field value."""
         member = self.get_member("CategoryCount")
         if member is not None:
@@ -56,7 +55,7 @@ class DebugFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventR
             )
 
     @property
-    def label_item_count(self) -> np.int32 | None:
+    def label_item_count(self) -> primitives.Int | None:
         """The LabelItemCount field value."""
         member = self.get_member("LabelItemCount")
         if member is None:
@@ -64,7 +63,7 @@ class DebugFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @label_item_count.setter
-    def label_item_count(self, value: np.int32) -> None:
+    def label_item_count(self, value: primitives.Int) -> None:
         """Set the LabelItemCount field value."""
         member = self.get_member("LabelItemCount")
         if member is not None:
@@ -75,7 +74,7 @@ class DebugFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventR
             )
 
     @property
-    def string_item_count(self) -> np.int32 | None:
+    def string_item_count(self) -> primitives.Int | None:
         """The StringItemCount field value."""
         member = self.get_member("StringItemCount")
         if member is None:
@@ -83,7 +82,7 @@ class DebugFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @string_item_count.setter
-    def string_item_count(self, value: np.int32) -> None:
+    def string_item_count(self, value: primitives.Int) -> None:
         """Set the StringItemCount field value."""
         member = self.get_member("StringItemCount")
         if member is not None:

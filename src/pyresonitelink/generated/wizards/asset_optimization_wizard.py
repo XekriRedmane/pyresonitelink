@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +20,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AssetOptimizationWizard"
 
-    def __init__(self, root: str | Slot | None = None, ignore_nonpersistent_users: bool | None = None, max_resolution: str | IntTextEditorParser | None = None, message: str | Text | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, root: str | Slot | None = None, ignore_nonpersistent_users: primitives.Bool | None = None, max_resolution: str | IntTextEditorParser | None = None, message: str | Text | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +62,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
             )
 
     @property
-    def ignore_nonpersistent_users(self) -> bool | None:
+    def ignore_nonpersistent_users(self) -> primitives.Bool | None:
         """The IgnoreNonpersistentUsers field value."""
         member = self.get_member("IgnoreNonpersistentUsers")
         if member is None:
@@ -69,7 +70,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
         return getattr(member, 'value', None)
 
     @ignore_nonpersistent_users.setter
-    def ignore_nonpersistent_users(self, value: bool) -> None:
+    def ignore_nonpersistent_users(self, value: primitives.Bool) -> None:
         """Set the IgnoreNonpersistentUsers field value."""
         member = self.get_member("IgnoreNonpersistentUsers")
         if member is not None:

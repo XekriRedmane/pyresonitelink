@@ -1,6 +1,7 @@
 """Generated component: Cast_char_To_ulong."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -20,7 +21,7 @@ class Cast_char_To_ulong(GeneratedComponent, ICast, INodeValueOutput, IExecution
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Casts.Cast_char_To_ulong"
 
-    def __init__(self, input_: str | INodeValueOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, input_: str | INodeValueOutput[primitives.Char] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,15 +34,15 @@ class Cast_char_To_ulong(GeneratedComponent, ICast, INodeValueOutput, IExecution
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets INodeValueOutput[str])."""
+        """Target ID of the Input reference (targets INodeValueOutput[primitives.Char])."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @input_.setter
-    def input_(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the Input reference by target ID or INodeValueOutput[str] instance."""
+    def input_(self, target: str | INodeValueOutput[primitives.Char] | None) -> None:
+        """Set the Input reference by target ID or INodeValueOutput[primitives.Char] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Input")
         if isinstance(member, members.Reference):

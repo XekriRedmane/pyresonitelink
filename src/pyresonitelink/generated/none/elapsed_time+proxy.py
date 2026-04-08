@@ -13,7 +13,7 @@ class ElapsedTime+Proxy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ElapsedTime+Proxy[np.float32]
+        ElapsedTime+Proxy[primitives.Float]
         ElapsedTime+Proxy[primitives.Float3]
     """
 

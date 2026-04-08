@@ -1,9 +1,8 @@
 """Generated component: ReflectionProbeSH2."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.reflection_probe import ReflectionProbe
@@ -20,7 +19,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbeSH2"
 
-    def __init__(self, probe: str | ReflectionProbe | None = None, order0_scale: np.float32 | None = None, order1_scale: np.float32 | None = None, order2_scale: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, probe: str | ReflectionProbe | None = None, order0_scale: primitives.Float | None = None, order1_scale: primitives.Float | None = None, order2_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -75,7 +74,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
         self.set_member("AmbientLight", value)
 
     @property
-    def order0_scale(self) -> np.float32 | None:
+    def order0_scale(self) -> primitives.Float | None:
         """The Order0Scale field value."""
         member = self.get_member("Order0Scale")
         if member is None:
@@ -83,7 +82,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
         return getattr(member, 'value', None)
 
     @order0_scale.setter
-    def order0_scale(self, value: np.float32) -> None:
+    def order0_scale(self, value: primitives.Float) -> None:
         """Set the Order0Scale field value."""
         member = self.get_member("Order0Scale")
         if member is not None:
@@ -94,7 +93,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
             )
 
     @property
-    def order1_scale(self) -> np.float32 | None:
+    def order1_scale(self) -> primitives.Float | None:
         """The Order1Scale field value."""
         member = self.get_member("Order1Scale")
         if member is None:
@@ -102,7 +101,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
         return getattr(member, 'value', None)
 
     @order1_scale.setter
-    def order1_scale(self, value: np.float32) -> None:
+    def order1_scale(self, value: primitives.Float) -> None:
         """Set the Order1Scale field value."""
         member = self.get_member("Order1Scale")
         if member is not None:
@@ -113,7 +112,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
             )
 
     @property
-    def order2_scale(self) -> np.float32 | None:
+    def order2_scale(self) -> primitives.Float | None:
         """The Order2Scale field value."""
         member = self.get_member("Order2Scale")
         if member is None:
@@ -121,7 +120,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
         return getattr(member, 'value', None)
 
     @order2_scale.setter
-    def order2_scale(self, value: np.float32) -> None:
+    def order2_scale(self, value: primitives.Float) -> None:
         """Set the Order2Scale field value."""
         member = self.get_member("Order2Scale")
         if member is not None:

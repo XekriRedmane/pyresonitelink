@@ -20,7 +20,7 @@ class ValueDisplay(GenericComponent[T], IProtoFluxNodePackUnpackListener, IExecu
 
     Parameterize with a value type::
 
-        ValueDisplay[np.float32]
+        ValueDisplay[primitives.Float]
         ValueDisplay[primitives.Float3]
     """
 

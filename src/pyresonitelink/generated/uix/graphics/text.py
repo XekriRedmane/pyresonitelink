@@ -1,7 +1,5 @@
 """Generated component: Text."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Text"
 
-    def __init__(self, font: str | IAssetProvider[FontSet] | None = None, content: str | None = None, parse_rich_text: bool | None = None, null_content: str | None = None, size: np.float32 | None = None, color: primitives.ColorX | None = None, line_height: np.float32 | None = None, mask_pattern: str | None = None, horizontal_auto_size: bool | None = None, vertical_auto_size: bool | None = None, auto_size_min: np.float32 | None = None, auto_size_max: np.float32 | None = None, caret_position: np.int32 | None = None, selection_start: np.int32 | None = None, caret_color: primitives.ColorX | None = None, selection_color: primitives.ColorX | None = None, interaction_target: bool | None = None, legacy_font_material: str | FontMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, font: str | IAssetProvider[FontSet] | None = None, content: primitives.String | None = None, parse_rich_text: primitives.Bool | None = None, null_content: primitives.String | None = None, size: primitives.Float | None = None, color: primitives.ColorX | None = None, line_height: primitives.Float | None = None, mask_pattern: primitives.String | None = None, horizontal_auto_size: primitives.Bool | None = None, vertical_auto_size: primitives.Bool | None = None, auto_size_min: primitives.Float | None = None, auto_size_max: primitives.Float | None = None, caret_position: primitives.Int | None = None, selection_start: primitives.Int | None = None, caret_color: primitives.ColorX | None = None, selection_color: primitives.ColorX | None = None, interaction_target: primitives.Bool | None = None, legacy_font_material: str | FontMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -108,7 +106,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def content(self) -> str | None:
+    def content(self) -> primitives.String | None:
         """The Content field value."""
         member = self.get_member("Content")
         if member is None:
@@ -116,7 +114,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @content.setter
-    def content(self, value: str) -> None:
+    def content(self, value: primitives.String) -> None:
         """Set the Content field value."""
         member = self.get_member("Content")
         if member is not None:
@@ -127,7 +125,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def parse_rich_text(self) -> bool | None:
+    def parse_rich_text(self) -> primitives.Bool | None:
         """The ParseRichText field value."""
         member = self.get_member("ParseRichText")
         if member is None:
@@ -135,7 +133,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @parse_rich_text.setter
-    def parse_rich_text(self, value: bool) -> None:
+    def parse_rich_text(self, value: primitives.Bool) -> None:
         """Set the ParseRichText field value."""
         member = self.get_member("ParseRichText")
         if member is not None:
@@ -146,7 +144,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def null_content(self) -> str | None:
+    def null_content(self) -> primitives.String | None:
         """The NullContent field value."""
         member = self.get_member("NullContent")
         if member is None:
@@ -154,7 +152,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @null_content.setter
-    def null_content(self, value: str) -> None:
+    def null_content(self, value: primitives.String) -> None:
         """Set the NullContent field value."""
         member = self.get_member("NullContent")
         if member is not None:
@@ -165,7 +163,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def size(self) -> np.float32 | None:
+    def size(self) -> primitives.Float | None:
         """The Size field value."""
         member = self.get_member("Size")
         if member is None:
@@ -173,7 +171,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @size.setter
-    def size(self, value: np.float32) -> None:
+    def size(self, value: primitives.Float) -> None:
         """Set the Size field value."""
         member = self.get_member("Size")
         if member is not None:
@@ -255,7 +253,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         self.set_member("Materials", value)
 
     @property
-    def line_height(self) -> np.float32 | None:
+    def line_height(self) -> primitives.Float | None:
         """The LineHeight field value."""
         member = self.get_member("LineHeight")
         if member is None:
@@ -263,7 +261,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @line_height.setter
-    def line_height(self, value: np.float32) -> None:
+    def line_height(self, value: primitives.Float) -> None:
         """Set the LineHeight field value."""
         member = self.get_member("LineHeight")
         if member is not None:
@@ -274,7 +272,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def mask_pattern(self) -> str | None:
+    def mask_pattern(self) -> primitives.String | None:
         """The MaskPattern field value."""
         member = self.get_member("MaskPattern")
         if member is None:
@@ -282,7 +280,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @mask_pattern.setter
-    def mask_pattern(self, value: str) -> None:
+    def mask_pattern(self, value: primitives.String) -> None:
         """Set the MaskPattern field value."""
         member = self.get_member("MaskPattern")
         if member is not None:
@@ -293,7 +291,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def horizontal_auto_size(self) -> bool | None:
+    def horizontal_auto_size(self) -> primitives.Bool | None:
         """The HorizontalAutoSize field value."""
         member = self.get_member("HorizontalAutoSize")
         if member is None:
@@ -301,7 +299,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @horizontal_auto_size.setter
-    def horizontal_auto_size(self, value: bool) -> None:
+    def horizontal_auto_size(self, value: primitives.Bool) -> None:
         """Set the HorizontalAutoSize field value."""
         member = self.get_member("HorizontalAutoSize")
         if member is not None:
@@ -312,7 +310,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def vertical_auto_size(self) -> bool | None:
+    def vertical_auto_size(self) -> primitives.Bool | None:
         """The VerticalAutoSize field value."""
         member = self.get_member("VerticalAutoSize")
         if member is None:
@@ -320,7 +318,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @vertical_auto_size.setter
-    def vertical_auto_size(self, value: bool) -> None:
+    def vertical_auto_size(self, value: primitives.Bool) -> None:
         """Set the VerticalAutoSize field value."""
         member = self.get_member("VerticalAutoSize")
         if member is not None:
@@ -331,7 +329,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def auto_size_min(self) -> np.float32 | None:
+    def auto_size_min(self) -> primitives.Float | None:
         """The AutoSizeMin field value."""
         member = self.get_member("AutoSizeMin")
         if member is None:
@@ -339,7 +337,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @auto_size_min.setter
-    def auto_size_min(self, value: np.float32) -> None:
+    def auto_size_min(self, value: primitives.Float) -> None:
         """Set the AutoSizeMin field value."""
         member = self.get_member("AutoSizeMin")
         if member is not None:
@@ -350,7 +348,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def auto_size_max(self) -> np.float32 | None:
+    def auto_size_max(self) -> primitives.Float | None:
         """The AutoSizeMax field value."""
         member = self.get_member("AutoSizeMax")
         if member is None:
@@ -358,7 +356,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @auto_size_max.setter
-    def auto_size_max(self, value: np.float32) -> None:
+    def auto_size_max(self, value: primitives.Float) -> None:
         """Set the AutoSizeMax field value."""
         member = self.get_member("AutoSizeMax")
         if member is not None:
@@ -369,7 +367,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def caret_position(self) -> np.int32 | None:
+    def caret_position(self) -> primitives.Int | None:
         """The CaretPosition field value."""
         member = self.get_member("CaretPosition")
         if member is None:
@@ -377,7 +375,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @caret_position.setter
-    def caret_position(self, value: np.int32) -> None:
+    def caret_position(self, value: primitives.Int) -> None:
         """Set the CaretPosition field value."""
         member = self.get_member("CaretPosition")
         if member is not None:
@@ -388,7 +386,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def selection_start(self) -> np.int32 | None:
+    def selection_start(self) -> primitives.Int | None:
         """The SelectionStart field value."""
         member = self.get_member("SelectionStart")
         if member is None:
@@ -396,7 +394,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @selection_start.setter
-    def selection_start(self, value: np.int32) -> None:
+    def selection_start(self, value: primitives.Int) -> None:
         """Set the SelectionStart field value."""
         member = self.get_member("SelectionStart")
         if member is not None:
@@ -445,7 +443,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def interaction_target(self) -> bool | None:
+    def interaction_target(self) -> primitives.Bool | None:
         """The InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is None:
@@ -453,7 +451,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @interaction_target.setter
-    def interaction_target(self, value: bool) -> None:
+    def interaction_target(self, value: primitives.Bool) -> None:
         """Set the InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is not None:

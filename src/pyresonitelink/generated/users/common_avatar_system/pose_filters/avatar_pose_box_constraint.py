@@ -18,7 +18,7 @@ class AvatarPoseBoxConstraint(GeneratedComponent, IAvatarPoseFilter, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseBoxConstraint"
 
-    def __init__(self, box_size: primitives.Float3 | None = None, default_pose_reference: str | Slot | None = None, process_simulated_poses: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, box_size: primitives.Float3 | None = None, default_pose_reference: str | Slot | None = None, process_simulated_poses: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -76,7 +76,7 @@ class AvatarPoseBoxConstraint(GeneratedComponent, IAvatarPoseFilter, IWorldEvent
             )
 
     @property
-    def process_simulated_poses(self) -> bool | None:
+    def process_simulated_poses(self) -> primitives.Bool | None:
         """The ProcessSimulatedPoses field value."""
         member = self.get_member("ProcessSimulatedPoses")
         if member is None:
@@ -84,7 +84,7 @@ class AvatarPoseBoxConstraint(GeneratedComponent, IAvatarPoseFilter, IWorldEvent
         return getattr(member, 'value', None)
 
     @process_simulated_poses.setter
-    def process_simulated_poses(self, value: bool) -> None:
+    def process_simulated_poses(self, value: primitives.Bool) -> None:
         """Set the ProcessSimulatedPoses field value."""
         member = self.get_member("ProcessSimulatedPoses")
         if member is not None:

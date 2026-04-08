@@ -21,7 +21,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TransformStreamDriver"
 
-    def __init__(self, position_stream: str | ValueStream[primitives.Float3] | None = None, rotation_stream: str | ValueStream[primitives.FloatQ] | None = None, scale_stream: str | ValueStream[primitives.Float3] | None = None, root_space_stream: str | ReferenceStream[Slot] | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, scale: str | IField[primitives.Float3] | None = None, allow_offsets: bool | None = None, reset_streams_on_destroy: bool | None = None, position_offset: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, scale_offset: primitives.Float3 | None = None, run_before_physics: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, position_stream: str | ValueStream[primitives.Float3] | None = None, rotation_stream: str | ValueStream[primitives.FloatQ] | None = None, scale_stream: str | ValueStream[primitives.Float3] | None = None, root_space_stream: str | ReferenceStream[Slot] | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, scale: str | IField[primitives.Float3] | None = None, allow_offsets: primitives.Bool | None = None, reset_streams_on_destroy: primitives.Bool | None = None, position_offset: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, scale_offset: primitives.Float3 | None = None, run_before_physics: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -216,7 +216,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def allow_offsets(self) -> bool | None:
+    def allow_offsets(self) -> primitives.Bool | None:
         """The AllowOffsets field value."""
         member = self.get_member("AllowOffsets")
         if member is None:
@@ -224,7 +224,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @allow_offsets.setter
-    def allow_offsets(self, value: bool) -> None:
+    def allow_offsets(self, value: primitives.Bool) -> None:
         """Set the AllowOffsets field value."""
         member = self.get_member("AllowOffsets")
         if member is not None:
@@ -235,7 +235,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def reset_streams_on_destroy(self) -> bool | None:
+    def reset_streams_on_destroy(self) -> primitives.Bool | None:
         """The ResetStreamsOnDestroy field value."""
         member = self.get_member("ResetStreamsOnDestroy")
         if member is None:
@@ -243,7 +243,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @reset_streams_on_destroy.setter
-    def reset_streams_on_destroy(self, value: bool) -> None:
+    def reset_streams_on_destroy(self, value: primitives.Bool) -> None:
         """Set the ResetStreamsOnDestroy field value."""
         member = self.get_member("ResetStreamsOnDestroy")
         if member is not None:
@@ -311,7 +311,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def run_before_physics(self) -> bool | None:
+    def run_before_physics(self) -> primitives.Bool | None:
         """The RunBeforePhysics field value."""
         member = self.get_member("RunBeforePhysics")
         if member is None:
@@ -319,7 +319,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @run_before_physics.setter
-    def run_before_physics(self, value: bool) -> None:
+    def run_before_physics(self, value: primitives.Bool) -> None:
         """Set the RunBeforePhysics field value."""
         member = self.get_member("RunBeforePhysics")
         if member is not None:

@@ -1,11 +1,11 @@
 """Generated component: MultiTextureFader."""
 
 from typing import Any
-import numpy as np
 
 A = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.asset_ref import AssetRef
@@ -21,14 +21,14 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        MultiTextureFader[np.float32]
+        MultiTextureFader[primitives.Float]
         MultiTextureFader[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MultiTextureFader<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.MultiTextureFader<>"
 
-    def __init__(self, first_texture: str | AssetRef[A] | None = None, second_texture: str | AssetRef[A] | None = None, lerp: str | IField[np.float32] | None = None, position: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, first_texture: str | AssetRef[A] | None = None, second_texture: str | AssetRef[A] | None = None, lerp: str | IField[primitives.Float] | None = None, position: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -92,15 +92,15 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def lerp(self) -> str | None:
-        """Target ID of the Lerp reference (targets IField[np.float32])."""
+        """Target ID of the Lerp reference (targets IField[primitives.Float])."""
         member = self.get_member("Lerp")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @lerp.setter
-    def lerp(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Lerp reference by target ID or IField[np.float32] instance."""
+    def lerp(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Lerp reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Lerp")
         if isinstance(member, members.Reference):
@@ -112,7 +112,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def position(self) -> np.float32 | None:
+    def position(self) -> primitives.Float | None:
         """The Position field value."""
         member = self.get_member("Position")
         if member is None:
@@ -120,7 +120,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @position.setter
-    def position(self, value: np.float32) -> None:
+    def position(self, value: primitives.Float) -> None:
         """Set the Position field value."""
         member = self.get_member("Position")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: IKDraggableOffset."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FinalIK.IKDraggableOffset"
 
-    def __init__(self, solver: str | IKSolver | None = None, position_target: str | Sync[primitives.Float3] | None = None, rotation_target: str | Sync[primitives.FloatQ] | None = None, weight: str | Sync[np.float32] | None = None, grabber: str | Grabber | None = None, grabbing_user: str | User | None = None, hold_slot: str | Slot | None = None, pos_offset: primitives.Float3 | None = None, rot_offset: primitives.FloatQ | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, solver: str | IKSolver | None = None, position_target: str | Sync[primitives.Float3] | None = None, rotation_target: str | Sync[primitives.FloatQ] | None = None, weight: str | Sync[primitives.Float] | None = None, grabber: str | Grabber | None = None, grabbing_user: str | User | None = None, hold_slot: str | Slot | None = None, pos_offset: primitives.Float3 | None = None, rot_offset: primitives.FloatQ | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -122,15 +120,15 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def weight(self) -> str | None:
-        """Target ID of the Weight reference (targets Sync[np.float32])."""
+        """Target ID of the Weight reference (targets Sync[primitives.Float])."""
         member = self.get_member("Weight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @weight.setter
-    def weight(self, target: str | Sync[np.float32] | None) -> None:
-        """Set the Weight reference by target ID or Sync[np.float32] instance."""
+    def weight(self, target: str | Sync[primitives.Float] | None) -> None:
+        """Set the Weight reference by target ID or Sync[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
         member = self.get_member("Weight")
         if isinstance(member, members.Reference):

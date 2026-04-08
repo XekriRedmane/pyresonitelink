@@ -13,7 +13,7 @@ class ValueProxy(GenericComponent[T], ILastValueProxy[T], IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ValueProxy[np.float32]
+        ValueProxy[primitives.Float]
         ValueProxy[primitives.Float3]
     """
 

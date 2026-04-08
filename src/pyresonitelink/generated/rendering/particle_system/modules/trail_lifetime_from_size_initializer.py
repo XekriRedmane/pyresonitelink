@@ -1,8 +1,7 @@
 """Generated component: TrailLifetimeFromSizeInitializer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -17,7 +16,7 @@ class TrailLifetimeFromSizeInitializer(GeneratedComponent, IParticleSystemModule
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TrailLifetimeFromSizeInitializer"
 
-    def __init__(self, reference_size: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reference_size: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +28,7 @@ class TrailLifetimeFromSizeInitializer(GeneratedComponent, IParticleSystemModule
             self.reference_size = reference_size
 
     @property
-    def reference_size(self) -> np.float32 | None:
+    def reference_size(self) -> primitives.Float | None:
         """The ReferenceSize field value."""
         member = self.get_member("ReferenceSize")
         if member is None:
@@ -37,7 +36,7 @@ class TrailLifetimeFromSizeInitializer(GeneratedComponent, IParticleSystemModule
         return getattr(member, 'value', None)
 
     @reference_size.setter
-    def reference_size(self, value: np.float32) -> None:
+    def reference_size(self, value: primitives.Float) -> None:
         """Set the ReferenceSize field value."""
         member = self.get_member("ReferenceSize")
         if member is not None:

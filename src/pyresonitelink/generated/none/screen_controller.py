@@ -1,9 +1,8 @@
 """Generated component: ScreenController."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.pointer_interaction_controller import PointerInteractionController
@@ -25,7 +24,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScreenController"
 
-    def __init__(self, transition_speed: np.float32 | None = None, pointer_controller: str | PointerInteractionController | None = None, active_targetting: str | IViewTargettingController | None = None, head: str | HeadSimulator | None = None, left_hand: str | HandSimulator | None = None, right_hand: str | HandSimulator | None = None, previous_targetting: str | IViewTargettingController | None = None, first_person: str | FirstPersonTargettingController | None = None, third_person: str | ThirdPersonTargettingController | None = None, ui_camera: str | UI_TargettingController | None = None, freeform_camera: str | FreeformTargettingController | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, transition_speed: primitives.Float | None = None, pointer_controller: str | PointerInteractionController | None = None, active_targetting: str | IViewTargettingController | None = None, head: str | HeadSimulator | None = None, left_hand: str | HandSimulator | None = None, right_hand: str | HandSimulator | None = None, previous_targetting: str | IViewTargettingController | None = None, first_person: str | FirstPersonTargettingController | None = None, third_person: str | ThirdPersonTargettingController | None = None, ui_camera: str | UI_TargettingController | None = None, freeform_camera: str | FreeformTargettingController | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,7 +66,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
             self.freeform_camera = freeform_camera
 
     @property
-    def transition_speed(self) -> np.float32 | None:
+    def transition_speed(self) -> primitives.Float | None:
         """The TransitionSpeed field value."""
         member = self.get_member("TransitionSpeed")
         if member is None:
@@ -75,7 +74,7 @@ class ScreenController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWo
         return getattr(member, 'value', None)
 
     @transition_speed.setter
-    def transition_speed(self, value: np.float32) -> None:
+    def transition_speed(self, value: primitives.Float) -> None:
         """Set the TransitionSpeed field value."""
         member = self.get_member("TransitionSpeed")
         if member is not None:

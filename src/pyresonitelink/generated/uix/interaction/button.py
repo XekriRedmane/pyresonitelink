@@ -20,7 +20,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Button"
 
-    def __init__(self, base_color: primitives.ColorX | None = None, legacy_normal_color: primitives.ColorX | None = None, legacy_highlight_color: primitives.ColorX | None = None, legacy_press_color: primitives.ColorX | None = None, legacy_disabled_color: primitives.ColorX | None = None, legacy_color_drive: str | IField[primitives.ColorX] | None = None, is_pressed: bool | None = None, is_hovering: bool | None = None, clear_focus_on_press: bool | None = None, pass_through_horizontal_movement: bool | None = None, pass_through_vertical_movement: bool | None = None, require_lock_in_to_press: bool | None = None, require_initial_press: bool | None = None, press_point: primitives.Float2 | None = None, send_slot_events: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, base_color: primitives.ColorX | None = None, legacy_normal_color: primitives.ColorX | None = None, legacy_highlight_color: primitives.ColorX | None = None, legacy_press_color: primitives.ColorX | None = None, legacy_disabled_color: primitives.ColorX | None = None, legacy_color_drive: str | IField[primitives.ColorX] | None = None, is_pressed: primitives.Bool | None = None, is_hovering: primitives.Bool | None = None, clear_focus_on_press: primitives.Bool | None = None, pass_through_horizontal_movement: primitives.Bool | None = None, pass_through_vertical_movement: primitives.Bool | None = None, require_lock_in_to_press: primitives.Bool | None = None, require_initial_press: primitives.Bool | None = None, press_point: primitives.Float2 | None = None, send_slot_events: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -216,7 +216,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             )
 
     @property
-    def is_pressed(self) -> bool | None:
+    def is_pressed(self) -> primitives.Bool | None:
         """The IsPressed field value."""
         member = self.get_member("IsPressed")
         if member is None:
@@ -224,7 +224,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @is_pressed.setter
-    def is_pressed(self, value: bool) -> None:
+    def is_pressed(self, value: primitives.Bool) -> None:
         """Set the IsPressed field value."""
         member = self.get_member("IsPressed")
         if member is not None:
@@ -235,7 +235,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             )
 
     @property
-    def is_hovering(self) -> bool | None:
+    def is_hovering(self) -> primitives.Bool | None:
         """The IsHovering field value."""
         member = self.get_member("IsHovering")
         if member is None:
@@ -243,7 +243,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @is_hovering.setter
-    def is_hovering(self, value: bool) -> None:
+    def is_hovering(self, value: primitives.Bool) -> None:
         """Set the IsHovering field value."""
         member = self.get_member("IsHovering")
         if member is not None:
@@ -280,7 +280,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
         self.set_member("PressVibrate", value)
 
     @property
-    def clear_focus_on_press(self) -> bool | None:
+    def clear_focus_on_press(self) -> primitives.Bool | None:
         """The ClearFocusOnPress field value."""
         member = self.get_member("ClearFocusOnPress")
         if member is None:
@@ -288,7 +288,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @clear_focus_on_press.setter
-    def clear_focus_on_press(self, value: bool) -> None:
+    def clear_focus_on_press(self, value: primitives.Bool) -> None:
         """Set the ClearFocusOnPress field value."""
         member = self.get_member("ClearFocusOnPress")
         if member is not None:
@@ -299,7 +299,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             )
 
     @property
-    def pass_through_horizontal_movement(self) -> bool | None:
+    def pass_through_horizontal_movement(self) -> primitives.Bool | None:
         """The PassThroughHorizontalMovement field value."""
         member = self.get_member("PassThroughHorizontalMovement")
         if member is None:
@@ -307,7 +307,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @pass_through_horizontal_movement.setter
-    def pass_through_horizontal_movement(self, value: bool) -> None:
+    def pass_through_horizontal_movement(self, value: primitives.Bool) -> None:
         """Set the PassThroughHorizontalMovement field value."""
         member = self.get_member("PassThroughHorizontalMovement")
         if member is not None:
@@ -318,7 +318,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             )
 
     @property
-    def pass_through_vertical_movement(self) -> bool | None:
+    def pass_through_vertical_movement(self) -> primitives.Bool | None:
         """The PassThroughVerticalMovement field value."""
         member = self.get_member("PassThroughVerticalMovement")
         if member is None:
@@ -326,7 +326,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @pass_through_vertical_movement.setter
-    def pass_through_vertical_movement(self, value: bool) -> None:
+    def pass_through_vertical_movement(self, value: primitives.Bool) -> None:
         """Set the PassThroughVerticalMovement field value."""
         member = self.get_member("PassThroughVerticalMovement")
         if member is not None:
@@ -337,7 +337,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             )
 
     @property
-    def require_lock_in_to_press(self) -> bool | None:
+    def require_lock_in_to_press(self) -> primitives.Bool | None:
         """The RequireLockInToPress field value."""
         member = self.get_member("RequireLockInToPress")
         if member is None:
@@ -345,7 +345,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @require_lock_in_to_press.setter
-    def require_lock_in_to_press(self, value: bool) -> None:
+    def require_lock_in_to_press(self, value: primitives.Bool) -> None:
         """Set the RequireLockInToPress field value."""
         member = self.get_member("RequireLockInToPress")
         if member is not None:
@@ -356,7 +356,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             )
 
     @property
-    def require_initial_press(self) -> bool | None:
+    def require_initial_press(self) -> primitives.Bool | None:
         """The RequireInitialPress field value."""
         member = self.get_member("RequireInitialPress")
         if member is None:
@@ -364,7 +364,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @require_initial_press.setter
-    def require_initial_press(self, value: bool) -> None:
+    def require_initial_press(self, value: primitives.Bool) -> None:
         """Set the RequireInitialPress field value."""
         member = self.get_member("RequireInitialPress")
         if member is not None:
@@ -394,7 +394,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             )
 
     @property
-    def send_slot_events(self) -> bool | None:
+    def send_slot_events(self) -> primitives.Bool | None:
         """The SendSlotEvents field value."""
         member = self.get_member("SendSlotEvents")
         if member is None:
@@ -402,7 +402,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @send_slot_events.setter
-    def send_slot_events(self, value: bool) -> None:
+    def send_slot_events(self, value: primitives.Bool) -> None:
         """Set the SendSlotEvents field value."""
         member = self.get_member("SendSlotEvents")
         if member is not None:

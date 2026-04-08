@@ -1,9 +1,8 @@
 """Generated component: Snapper."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.igrab_event_receiver import IGrabEventReceiver
@@ -18,7 +17,7 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Snapper"
 
-    def __init__(self, use_bounding_box_center: bool | None = None, snap_check_radius: np.float32 | None = None, check_static_colliders: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_bounding_box_center: primitives.Bool | None = None, snap_check_radius: primitives.Float | None = None, check_static_colliders: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +35,7 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
             self.check_static_colliders = check_static_colliders
 
     @property
-    def use_bounding_box_center(self) -> bool | None:
+    def use_bounding_box_center(self) -> primitives.Bool | None:
         """The UseBoundingBoxCenter field value."""
         member = self.get_member("UseBoundingBoxCenter")
         if member is None:
@@ -44,7 +43,7 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_bounding_box_center.setter
-    def use_bounding_box_center(self, value: bool) -> None:
+    def use_bounding_box_center(self, value: primitives.Bool) -> None:
         """Set the UseBoundingBoxCenter field value."""
         member = self.get_member("UseBoundingBoxCenter")
         if member is not None:
@@ -55,7 +54,7 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
             )
 
     @property
-    def snap_check_radius(self) -> np.float32 | None:
+    def snap_check_radius(self) -> primitives.Float | None:
         """The SnapCheckRadius field value."""
         member = self.get_member("SnapCheckRadius")
         if member is None:
@@ -63,7 +62,7 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @snap_check_radius.setter
-    def snap_check_radius(self, value: np.float32) -> None:
+    def snap_check_radius(self, value: primitives.Float) -> None:
         """Set the SnapCheckRadius field value."""
         member = self.get_member("SnapCheckRadius")
         if member is not None:
@@ -74,7 +73,7 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
             )
 
     @property
-    def check_static_colliders(self) -> bool | None:
+    def check_static_colliders(self) -> primitives.Bool | None:
         """The CheckStaticColliders field value."""
         member = self.get_member("CheckStaticColliders")
         if member is None:
@@ -82,7 +81,7 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @check_static_colliders.setter
-    def check_static_colliders(self, value: bool) -> None:
+    def check_static_colliders(self, value: primitives.Bool) -> None:
         """Set the CheckStaticColliders field value."""
         member = self.get_member("CheckStaticColliders")
         if member is not None:

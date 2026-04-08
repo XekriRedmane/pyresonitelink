@@ -1,6 +1,7 @@
 """Generated component: MessagingPrivacySettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class MessagingPrivacySettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MessagingPrivacySettings"
 
-    def __init__(self, do_not_send_read_status: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, do_not_send_read_status: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class MessagingPrivacySettings(GeneratedComponent, ICustomInspector):
             self.do_not_send_read_status = do_not_send_read_status
 
     @property
-    def do_not_send_read_status(self) -> bool | None:
+    def do_not_send_read_status(self) -> primitives.Bool | None:
         """The DoNotSendReadStatus field value."""
         member = self.get_member("DoNotSendReadStatus")
         if member is None:
@@ -33,7 +34,7 @@ class MessagingPrivacySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @do_not_send_read_status.setter
-    def do_not_send_read_status(self, value: bool) -> None:
+    def do_not_send_read_status(self, value: primitives.Bool) -> None:
         """Set the DoNotSendReadStatus field value."""
         member = self.get_member("DoNotSendReadStatus")
         if member is not None:

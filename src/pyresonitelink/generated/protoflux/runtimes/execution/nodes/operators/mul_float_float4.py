@@ -1,7 +1,5 @@
 """Generated component: Mul_Float_Float4."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class Mul_Float_Float4(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.Mul_Float_Float4"
 
-    def __init__(self, a: str | INodeValueOutput[np.float32] | None = None, b: str | INodeValueOutput[primitives.Float4] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, a: str | INodeValueOutput[primitives.Float] | None = None, b: str | INodeValueOutput[primitives.Float4] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,15 +36,15 @@ class Mul_Float_Float4(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the A reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @a.setter
-    def a(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the A reference by target ID or INodeValueOutput[np.float32] instance."""
+    def a(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the A reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("A")
         if isinstance(member, members.Reference):

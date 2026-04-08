@@ -1,11 +1,11 @@
 """Generated component: AudioStreamMetadata."""
 
 from typing import Any
-import numpy as np
 
 S = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.audio_stream import AudioStream
@@ -20,14 +20,14 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        AudioStreamMetadata[np.float32]
+        AudioStreamMetadata[primitives.Float]
         AudioStreamMetadata[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioStreamMetadata<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.AudioStreamMetadata<>"
 
-    def __init__(self, stream: str | AudioStream[S] | None = None, unread_samples: np.int32 | None = None, total_missed_samples: np.int32 | None = None, last_missed_samples: np.int32 | None = None, buffer_length: np.int32 | None = None, average_read_samples_per_second: np.float64 | None = None, average_write_samples_per_second: np.float64 | None = None, global_index: np.int64 | None = None, samples_available_for_encode: np.int32 | None = None, frame_size: np.int32 | None = None, max_frame_size: np.int32 | None = None, encoded_sample_rate: np.int32 | None = None, total_packet_count: np.int32 | None = None, total_lost_packets: np.int32 | None = None, last_lost_packets: np.int32 | None = None, packet_loss_ratio: np.float32 | None = None, average_codec_samples_per_second: np.float64 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, stream: str | AudioStream[S] | None = None, unread_samples: primitives.Int | None = None, total_missed_samples: primitives.Int | None = None, last_missed_samples: primitives.Int | None = None, buffer_length: primitives.Int | None = None, average_read_samples_per_second: primitives.Double | None = None, average_write_samples_per_second: primitives.Double | None = None, global_index: primitives.Long | None = None, samples_available_for_encode: primitives.Int | None = None, frame_size: primitives.Int | None = None, max_frame_size: primitives.Int | None = None, encoded_sample_rate: primitives.Int | None = None, total_packet_count: primitives.Int | None = None, total_lost_packets: primitives.Int | None = None, last_lost_packets: primitives.Int | None = None, packet_loss_ratio: primitives.Float | None = None, average_codec_samples_per_second: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -108,7 +108,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def unread_samples(self) -> np.int32 | None:
+    def unread_samples(self) -> primitives.Int | None:
         """The UnreadSamples field value."""
         member = self.get_member("UnreadSamples")
         if member is None:
@@ -116,7 +116,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @unread_samples.setter
-    def unread_samples(self, value: np.int32) -> None:
+    def unread_samples(self, value: primitives.Int) -> None:
         """Set the UnreadSamples field value."""
         member = self.get_member("UnreadSamples")
         if member is not None:
@@ -127,7 +127,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def total_missed_samples(self) -> np.int32 | None:
+    def total_missed_samples(self) -> primitives.Int | None:
         """The TotalMissedSamples field value."""
         member = self.get_member("TotalMissedSamples")
         if member is None:
@@ -135,7 +135,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @total_missed_samples.setter
-    def total_missed_samples(self, value: np.int32) -> None:
+    def total_missed_samples(self, value: primitives.Int) -> None:
         """Set the TotalMissedSamples field value."""
         member = self.get_member("TotalMissedSamples")
         if member is not None:
@@ -146,7 +146,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def last_missed_samples(self) -> np.int32 | None:
+    def last_missed_samples(self) -> primitives.Int | None:
         """The LastMissedSamples field value."""
         member = self.get_member("LastMissedSamples")
         if member is None:
@@ -154,7 +154,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @last_missed_samples.setter
-    def last_missed_samples(self, value: np.int32) -> None:
+    def last_missed_samples(self, value: primitives.Int) -> None:
         """Set the LastMissedSamples field value."""
         member = self.get_member("LastMissedSamples")
         if member is not None:
@@ -165,7 +165,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def buffer_length(self) -> np.int32 | None:
+    def buffer_length(self) -> primitives.Int | None:
         """The BufferLength field value."""
         member = self.get_member("BufferLength")
         if member is None:
@@ -173,7 +173,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @buffer_length.setter
-    def buffer_length(self, value: np.int32) -> None:
+    def buffer_length(self, value: primitives.Int) -> None:
         """Set the BufferLength field value."""
         member = self.get_member("BufferLength")
         if member is not None:
@@ -184,7 +184,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def average_read_samples_per_second(self) -> np.float64 | None:
+    def average_read_samples_per_second(self) -> primitives.Double | None:
         """The AverageReadSamplesPerSecond field value."""
         member = self.get_member("AverageReadSamplesPerSecond")
         if member is None:
@@ -192,7 +192,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @average_read_samples_per_second.setter
-    def average_read_samples_per_second(self, value: np.float64) -> None:
+    def average_read_samples_per_second(self, value: primitives.Double) -> None:
         """Set the AverageReadSamplesPerSecond field value."""
         member = self.get_member("AverageReadSamplesPerSecond")
         if member is not None:
@@ -203,7 +203,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def average_write_samples_per_second(self) -> np.float64 | None:
+    def average_write_samples_per_second(self) -> primitives.Double | None:
         """The AverageWriteSamplesPerSecond field value."""
         member = self.get_member("AverageWriteSamplesPerSecond")
         if member is None:
@@ -211,7 +211,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @average_write_samples_per_second.setter
-    def average_write_samples_per_second(self, value: np.float64) -> None:
+    def average_write_samples_per_second(self, value: primitives.Double) -> None:
         """Set the AverageWriteSamplesPerSecond field value."""
         member = self.get_member("AverageWriteSamplesPerSecond")
         if member is not None:
@@ -222,7 +222,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def global_index(self) -> np.int64 | None:
+    def global_index(self) -> primitives.Long | None:
         """The GlobalIndex field value."""
         member = self.get_member("GlobalIndex")
         if member is None:
@@ -230,7 +230,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @global_index.setter
-    def global_index(self, value: np.int64) -> None:
+    def global_index(self, value: primitives.Long) -> None:
         """Set the GlobalIndex field value."""
         member = self.get_member("GlobalIndex")
         if member is not None:
@@ -241,7 +241,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def samples_available_for_encode(self) -> np.int32 | None:
+    def samples_available_for_encode(self) -> primitives.Int | None:
         """The SamplesAvailableForEncode field value."""
         member = self.get_member("SamplesAvailableForEncode")
         if member is None:
@@ -249,7 +249,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @samples_available_for_encode.setter
-    def samples_available_for_encode(self, value: np.int32) -> None:
+    def samples_available_for_encode(self, value: primitives.Int) -> None:
         """Set the SamplesAvailableForEncode field value."""
         member = self.get_member("SamplesAvailableForEncode")
         if member is not None:
@@ -260,7 +260,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def frame_size(self) -> np.int32 | None:
+    def frame_size(self) -> primitives.Int | None:
         """The FrameSize field value."""
         member = self.get_member("FrameSize")
         if member is None:
@@ -268,7 +268,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @frame_size.setter
-    def frame_size(self, value: np.int32) -> None:
+    def frame_size(self, value: primitives.Int) -> None:
         """Set the FrameSize field value."""
         member = self.get_member("FrameSize")
         if member is not None:
@@ -279,7 +279,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_frame_size(self) -> np.int32 | None:
+    def max_frame_size(self) -> primitives.Int | None:
         """The MaxFrameSize field value."""
         member = self.get_member("MaxFrameSize")
         if member is None:
@@ -287,7 +287,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_frame_size.setter
-    def max_frame_size(self, value: np.int32) -> None:
+    def max_frame_size(self, value: primitives.Int) -> None:
         """Set the MaxFrameSize field value."""
         member = self.get_member("MaxFrameSize")
         if member is not None:
@@ -298,7 +298,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def encoded_sample_rate(self) -> np.int32 | None:
+    def encoded_sample_rate(self) -> primitives.Int | None:
         """The EncodedSampleRate field value."""
         member = self.get_member("EncodedSampleRate")
         if member is None:
@@ -306,7 +306,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @encoded_sample_rate.setter
-    def encoded_sample_rate(self, value: np.int32) -> None:
+    def encoded_sample_rate(self, value: primitives.Int) -> None:
         """Set the EncodedSampleRate field value."""
         member = self.get_member("EncodedSampleRate")
         if member is not None:
@@ -317,7 +317,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def total_packet_count(self) -> np.int32 | None:
+    def total_packet_count(self) -> primitives.Int | None:
         """The TotalPacketCount field value."""
         member = self.get_member("TotalPacketCount")
         if member is None:
@@ -325,7 +325,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @total_packet_count.setter
-    def total_packet_count(self, value: np.int32) -> None:
+    def total_packet_count(self, value: primitives.Int) -> None:
         """Set the TotalPacketCount field value."""
         member = self.get_member("TotalPacketCount")
         if member is not None:
@@ -336,7 +336,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def total_lost_packets(self) -> np.int32 | None:
+    def total_lost_packets(self) -> primitives.Int | None:
         """The TotalLostPackets field value."""
         member = self.get_member("TotalLostPackets")
         if member is None:
@@ -344,7 +344,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @total_lost_packets.setter
-    def total_lost_packets(self, value: np.int32) -> None:
+    def total_lost_packets(self, value: primitives.Int) -> None:
         """Set the TotalLostPackets field value."""
         member = self.get_member("TotalLostPackets")
         if member is not None:
@@ -355,7 +355,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def last_lost_packets(self) -> np.int32 | None:
+    def last_lost_packets(self) -> primitives.Int | None:
         """The LastLostPackets field value."""
         member = self.get_member("LastLostPackets")
         if member is None:
@@ -363,7 +363,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @last_lost_packets.setter
-    def last_lost_packets(self, value: np.int32) -> None:
+    def last_lost_packets(self, value: primitives.Int) -> None:
         """Set the LastLostPackets field value."""
         member = self.get_member("LastLostPackets")
         if member is not None:
@@ -374,7 +374,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def packet_loss_ratio(self) -> np.float32 | None:
+    def packet_loss_ratio(self) -> primitives.Float | None:
         """The PacketLossRatio field value."""
         member = self.get_member("PacketLossRatio")
         if member is None:
@@ -382,7 +382,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @packet_loss_ratio.setter
-    def packet_loss_ratio(self, value: np.float32) -> None:
+    def packet_loss_ratio(self, value: primitives.Float) -> None:
         """Set the PacketLossRatio field value."""
         member = self.get_member("PacketLossRatio")
         if member is not None:
@@ -393,7 +393,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def average_codec_samples_per_second(self) -> np.float64 | None:
+    def average_codec_samples_per_second(self) -> primitives.Double | None:
         """The AverageCodecSamplesPerSecond field value."""
         member = self.get_member("AverageCodecSamplesPerSecond")
         if member is None:
@@ -401,7 +401,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @average_codec_samples_per_second.setter
-    def average_codec_samples_per_second(self, value: np.float64) -> None:
+    def average_codec_samples_per_second(self, value: primitives.Double) -> None:
         """Set the AverageCodecSamplesPerSecond field value."""
         member = self.get_member("AverageCodecSamplesPerSecond")
         if member is not None:

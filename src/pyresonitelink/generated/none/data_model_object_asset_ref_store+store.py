@@ -14,7 +14,7 @@ class DataModelObjectAssetRefStore+Store(GenericComponent[T], IComponent, IWorld
 
     Parameterize with a value type::
 
-        DataModelObjectAssetRefStore+Store[np.float32]
+        DataModelObjectAssetRefStore+Store[primitives.Float]
         DataModelObjectAssetRefStore+Store[primitives.Float3]
     """
 

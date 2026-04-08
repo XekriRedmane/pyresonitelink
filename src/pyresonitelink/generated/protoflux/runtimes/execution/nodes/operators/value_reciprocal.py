@@ -18,7 +18,7 @@ class ValueReciprocal(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T
 
     Parameterize with a value type::
 
-        ValueReciprocal[np.float32]
+        ValueReciprocal[primitives.Float]
         ValueReciprocal[primitives.Float3]
     """
 

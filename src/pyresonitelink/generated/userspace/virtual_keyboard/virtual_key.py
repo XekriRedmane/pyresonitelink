@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.virtual_modifier_key import VirtualModifierKey
@@ -18,7 +19,7 @@ class VirtualKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VirtualKey"
 
-    def __init__(self, append_string: str | None = None, shift_append_string: str | None = None, ignore_shift: bool | None = None, modifier_key: str | VirtualModifierKey | None = None, modified_append_string: str | None = None, keyboard: str | VirtualKeyboard | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, append_string: primitives.String | None = None, shift_append_string: primitives.String | None = None, ignore_shift: primitives.Bool | None = None, modifier_key: str | VirtualModifierKey | None = None, modified_append_string: primitives.String | None = None, keyboard: str | VirtualKeyboard | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +59,7 @@ class VirtualKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
         self.set_member("TargetKey", value)
 
     @property
-    def append_string(self) -> str | None:
+    def append_string(self) -> primitives.String | None:
         """The AppendString field value."""
         member = self.get_member("AppendString")
         if member is None:
@@ -66,7 +67,7 @@ class VirtualKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @append_string.setter
-    def append_string(self, value: str) -> None:
+    def append_string(self, value: primitives.String) -> None:
         """Set the AppendString field value."""
         member = self.get_member("AppendString")
         if member is not None:
@@ -90,7 +91,7 @@ class VirtualKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
         self.set_member("ShiftTargetKey", value)
 
     @property
-    def shift_append_string(self) -> str | None:
+    def shift_append_string(self) -> primitives.String | None:
         """The ShiftAppendString field value."""
         member = self.get_member("ShiftAppendString")
         if member is None:
@@ -98,7 +99,7 @@ class VirtualKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @shift_append_string.setter
-    def shift_append_string(self, value: str) -> None:
+    def shift_append_string(self, value: primitives.String) -> None:
         """Set the ShiftAppendString field value."""
         member = self.get_member("ShiftAppendString")
         if member is not None:
@@ -109,7 +110,7 @@ class VirtualKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
             )
 
     @property
-    def ignore_shift(self) -> bool | None:
+    def ignore_shift(self) -> primitives.Bool | None:
         """The IgnoreShift field value."""
         member = self.get_member("IgnoreShift")
         if member is None:
@@ -117,7 +118,7 @@ class VirtualKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ignore_shift.setter
-    def ignore_shift(self, value: bool) -> None:
+    def ignore_shift(self, value: primitives.Bool) -> None:
         """Set the IgnoreShift field value."""
         member = self.get_member("IgnoreShift")
         if member is not None:
@@ -162,7 +163,7 @@ class VirtualKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
         self.set_member("ModifiedTargetKey", value)
 
     @property
-    def modified_append_string(self) -> str | None:
+    def modified_append_string(self) -> primitives.String | None:
         """The ModifiedAppendString field value."""
         member = self.get_member("ModifiedAppendString")
         if member is None:
@@ -170,7 +171,7 @@ class VirtualKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @modified_append_string.setter
-    def modified_append_string(self, value: str) -> None:
+    def modified_append_string(self, value: primitives.String) -> None:
         """Set the ModifiedAppendString field value."""
         member = self.get_member("ModifiedAppendString")
         if member is not None:

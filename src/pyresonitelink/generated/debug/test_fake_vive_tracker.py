@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -16,7 +17,7 @@ class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TestFakeViveTracker"
 
-    def __init__(self, id_: str | None = None, is_tracking: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, id_: primitives.String | None = None, is_tracking: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +32,7 @@ class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.is_tracking = is_tracking
 
     @property
-    def id_(self) -> str | None:
+    def id_(self) -> primitives.String | None:
         """The Id field value."""
         member = self.get_member("Id")
         if member is None:
@@ -39,7 +40,7 @@ class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @id_.setter
-    def id_(self, value: str) -> None:
+    def id_(self, value: primitives.String) -> None:
         """Set the Id field value."""
         member = self.get_member("Id")
         if member is not None:
@@ -50,7 +51,7 @@ class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_tracking(self) -> bool | None:
+    def is_tracking(self) -> primitives.Bool | None:
         """The IsTracking field value."""
         member = self.get_member("IsTracking")
         if member is None:
@@ -58,7 +59,7 @@ class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_tracking.setter
-    def is_tracking(self, value: bool) -> None:
+    def is_tracking(self, value: primitives.Bool) -> None:
         """Set the IsTracking field value."""
         member = self.get_member("IsTracking")
         if member is not None:

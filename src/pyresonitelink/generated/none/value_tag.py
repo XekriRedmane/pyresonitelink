@@ -11,7 +11,7 @@ class ValueTag(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ValueTag[np.float32]
+        ValueTag[primitives.Float]
         ValueTag[primitives.Float3]
     """
 

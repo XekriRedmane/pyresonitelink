@@ -1,6 +1,7 @@
 """Generated component: ConvertibleBoolDriver."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -13,14 +14,14 @@ class ConvertibleBoolDriver(GenericComponent[T], IComponent, IWorldEventReceiver
 
     Parameterize with a value type::
 
-        ConvertibleBoolDriver[np.float32]
+        ConvertibleBoolDriver[primitives.Float]
         ConvertibleBoolDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConvertibleBoolDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ConvertibleBoolDriver<>"
 
-    def __init__(self, source: str | IField[T] | None = None, target: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[T] | None = None, target: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,15 +58,15 @@ class ConvertibleBoolDriver(GenericComponent[T], IComponent, IWorldEventReceiver
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[bool])."""
+        """Target ID of the Target reference (targets IField[primitives.Bool])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[bool] | None) -> None:
-        """Set the Target reference by target ID or IField[bool] instance."""
+    def target(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):

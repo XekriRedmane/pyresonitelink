@@ -1,6 +1,7 @@
 """Generated component: NearestUserHead."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -23,7 +24,7 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.NearestUserHead"
 
-    def __init__(self, reference: str | INodeObjectOutput[Slot] | None = None, ignore_user: str | INodeObjectOutput[User] | None = None, ignore_afk: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reference: str | INodeObjectOutput[Slot] | None = None, ignore_user: str | INodeObjectOutput[User] | None = None, ignore_afk: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -84,15 +85,15 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def ignore_afk(self) -> str | None:
-        """Target ID of the IgnoreAFK reference (targets INodeValueOutput[bool])."""
+        """Target ID of the IgnoreAFK reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("IgnoreAFK")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ignore_afk.setter
-    def ignore_afk(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the IgnoreAFK reference by target ID or INodeValueOutput[bool] instance."""
+    def ignore_afk(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the IgnoreAFK reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("IgnoreAFK")
         if isinstance(member, members.Reference):

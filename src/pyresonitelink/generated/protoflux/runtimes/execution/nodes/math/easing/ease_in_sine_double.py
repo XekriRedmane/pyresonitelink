@@ -1,8 +1,7 @@
 """Generated component: EaseInSineDouble."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class EaseInSineDouble(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Easing.EaseInSineDouble"
 
-    def __init__(self, time: str | INodeValueOutput[np.float64] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, time: str | INodeValueOutput[primitives.Double] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,15 +33,15 @@ class EaseInSineDouble(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the Time reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @time.setter
-    def time(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the Time reference by target ID or INodeValueOutput[np.float64] instance."""
+    def time(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the Time reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Time")
         if isinstance(member, members.Reference):

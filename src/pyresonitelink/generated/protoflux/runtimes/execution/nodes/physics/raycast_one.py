@@ -1,7 +1,5 @@
 """Generated component: RaycastOne."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -26,7 +24,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.RaycastOne"
 
-    def __init__(self, origin: str | INodeValueOutput[primitives.Float3] | None = None, direction: str | INodeValueOutput[primitives.Float3] | None = None, max_distance: str | INodeValueOutput[np.float32] | None = None, hit_triggers: str | INodeValueOutput[bool] | None = None, users_only: str | INodeValueOutput[bool] | None = None, debug_duration: str | INodeValueOutput[np.float32] | None = None, root: str | INodeObjectOutput[Slot] | None = None, on_hit: str | INodeOperation | None = None, on_miss: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, origin: str | INodeValueOutput[primitives.Float3] | None = None, direction: str | INodeValueOutput[primitives.Float3] | None = None, max_distance: str | INodeValueOutput[primitives.Float] | None = None, hit_triggers: str | INodeValueOutput[primitives.Bool] | None = None, users_only: str | INodeValueOutput[primitives.Bool] | None = None, debug_duration: str | INodeValueOutput[primitives.Float] | None = None, root: str | INodeObjectOutput[Slot] | None = None, on_hit: str | INodeOperation | None = None, on_miss: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -105,15 +103,15 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def max_distance(self) -> str | None:
-        """Target ID of the MaxDistance reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the MaxDistance reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("MaxDistance")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @max_distance.setter
-    def max_distance(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the MaxDistance reference by target ID or INodeValueOutput[np.float32] instance."""
+    def max_distance(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the MaxDistance reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("MaxDistance")
         if isinstance(member, members.Reference):
@@ -126,15 +124,15 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def hit_triggers(self) -> str | None:
-        """Target ID of the HitTriggers reference (targets INodeValueOutput[bool])."""
+        """Target ID of the HitTriggers reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("HitTriggers")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @hit_triggers.setter
-    def hit_triggers(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the HitTriggers reference by target ID or INodeValueOutput[bool] instance."""
+    def hit_triggers(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the HitTriggers reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("HitTriggers")
         if isinstance(member, members.Reference):
@@ -147,15 +145,15 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def users_only(self) -> str | None:
-        """Target ID of the UsersOnly reference (targets INodeValueOutput[bool])."""
+        """Target ID of the UsersOnly reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("UsersOnly")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @users_only.setter
-    def users_only(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the UsersOnly reference by target ID or INodeValueOutput[bool] instance."""
+    def users_only(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the UsersOnly reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("UsersOnly")
         if isinstance(member, members.Reference):
@@ -168,15 +166,15 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def debug_duration(self) -> str | None:
-        """Target ID of the DebugDuration reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the DebugDuration reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("DebugDuration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @debug_duration.setter
-    def debug_duration(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the DebugDuration reference by target ID or INodeValueOutput[np.float32] instance."""
+    def debug_duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the DebugDuration reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("DebugDuration")
         if isinstance(member, members.Reference):

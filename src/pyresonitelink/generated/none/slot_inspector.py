@@ -1,9 +1,8 @@
 """Generated component: SlotInspector."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -21,7 +20,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlotInspector"
 
-    def __init__(self, selection_reference: str | SyncRef[Slot] | None = None, root_slot: str | Slot | None = None, child_container: str | Slot | None = None, depth: np.int32 | None = None, expander: str | Expander | None = None, expander_indicator: str | TextExpandIndicator | None = None, slot_name_text: str | Text | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, selection_reference: str | SyncRef[Slot] | None = None, root_slot: str | Slot | None = None, child_container: str | Slot | None = None, depth: primitives.Int | None = None, expander: str | Expander | None = None, expander_indicator: str | TextExpandIndicator | None = None, slot_name_text: str | Text | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -114,7 +113,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def depth(self) -> np.int32 | None:
+    def depth(self) -> primitives.Int | None:
         """The _depth field value."""
         member = self.get_member("_depth")
         if member is None:
@@ -122,7 +121,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @depth.setter
-    def depth(self, value: np.int32) -> None:
+    def depth(self, value: primitives.Int) -> None:
         """Set the _depth field value."""
         member = self.get_member("_depth")
         if member is not None:

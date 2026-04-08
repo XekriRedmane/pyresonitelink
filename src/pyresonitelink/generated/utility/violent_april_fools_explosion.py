@@ -1,9 +1,8 @@
 """Generated component: ViolentAprilFoolsExplosion."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,7 +19,7 @@ class ViolentAprilFoolsExplosion(GeneratedComponent, IComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ViolentAprilFoolsExplosion"
 
-    def __init__(self, bloat_magnitude: np.float32 | None = None, bloating_clip: str | IAssetProvider[AudioClip] | None = None, explosion_clip: str | IAssetProvider[AudioClip] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, bloat_magnitude: primitives.Float | None = None, bloating_clip: str | IAssetProvider[AudioClip] | None = None, explosion_clip: str | IAssetProvider[AudioClip] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,7 +37,7 @@ class ViolentAprilFoolsExplosion(GeneratedComponent, IComponent, IWorldEventRece
             self.explosion_clip = explosion_clip
 
     @property
-    def bloat_magnitude(self) -> np.float32 | None:
+    def bloat_magnitude(self) -> primitives.Float | None:
         """The BloatMagnitude field value."""
         member = self.get_member("BloatMagnitude")
         if member is None:
@@ -46,7 +45,7 @@ class ViolentAprilFoolsExplosion(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @bloat_magnitude.setter
-    def bloat_magnitude(self, value: np.float32) -> None:
+    def bloat_magnitude(self, value: primitives.Float) -> None:
         """Set the BloatMagnitude field value."""
         member = self.get_member("BloatMagnitude")
         if member is not None:

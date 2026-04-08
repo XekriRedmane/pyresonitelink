@@ -1,9 +1,8 @@
 """Generated component: VirtualShift."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.virtual_keyboard import VirtualKeyboard
@@ -19,7 +18,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VirtualShift"
 
-    def __init__(self, keyboard: str | VirtualKeyboard | None = None, hold_press_interval: np.float32 | None = None, always_hold: bool | None = None, last_press: np.float64 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, keyboard: str | VirtualKeyboard | None = None, hold_press_interval: primitives.Float | None = None, always_hold: primitives.Bool | None = None, last_press: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +60,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
             )
 
     @property
-    def hold_press_interval(self) -> np.float32 | None:
+    def hold_press_interval(self) -> primitives.Float | None:
         """The HoldPressInterval field value."""
         member = self.get_member("HoldPressInterval")
         if member is None:
@@ -69,7 +68,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @hold_press_interval.setter
-    def hold_press_interval(self, value: np.float32) -> None:
+    def hold_press_interval(self, value: primitives.Float) -> None:
         """Set the HoldPressInterval field value."""
         member = self.get_member("HoldPressInterval")
         if member is not None:
@@ -80,7 +79,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
             )
 
     @property
-    def always_hold(self) -> bool | None:
+    def always_hold(self) -> primitives.Bool | None:
         """The AlwaysHold field value."""
         member = self.get_member("AlwaysHold")
         if member is None:
@@ -88,7 +87,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @always_hold.setter
-    def always_hold(self, value: bool) -> None:
+    def always_hold(self, value: primitives.Bool) -> None:
         """Set the AlwaysHold field value."""
         member = self.get_member("AlwaysHold")
         if member is not None:
@@ -99,7 +98,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
             )
 
     @property
-    def last_press(self) -> np.float64 | None:
+    def last_press(self) -> primitives.Double | None:
         """The _lastPress field value."""
         member = self.get_member("_lastPress")
         if member is None:
@@ -107,7 +106,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @last_press.setter
-    def last_press(self, value: np.float64) -> None:
+    def last_press(self, value: primitives.Double) -> None:
         """Set the _lastPress field value."""
         member = self.get_member("_lastPress")
         if member is not None:

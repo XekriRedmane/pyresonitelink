@@ -21,7 +21,7 @@ class TextureUnpackingWizard(GeneratedComponent, IDeveloperInterface, ICustomIns
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextureUnpackingWizard"
 
-    def __init__(self, input_texture: str | IAssetProvider[ITexture2D] | None = None, channels: primitives.Bool4 | None = None, rtexture: str | IAssetProvider[ITexture2D] | None = None, gtexture: str | IAssetProvider[ITexture2D] | None = None, btexture: str | IAssetProvider[ITexture2D] | None = None, atexture: str | IAssetProvider[ITexture2D] | None = None, is_processing: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, input_texture: str | IAssetProvider[ITexture2D] | None = None, channels: primitives.Bool4 | None = None, rtexture: str | IAssetProvider[ITexture2D] | None = None, gtexture: str | IAssetProvider[ITexture2D] | None = None, btexture: str | IAssetProvider[ITexture2D] | None = None, atexture: str | IAssetProvider[ITexture2D] | None = None, is_processing: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -188,7 +188,7 @@ class TextureUnpackingWizard(GeneratedComponent, IDeveloperInterface, ICustomIns
             )
 
     @property
-    def is_processing(self) -> bool | None:
+    def is_processing(self) -> primitives.Bool | None:
         """The IsProcessing field value."""
         member = self.get_member("IsProcessing")
         if member is None:
@@ -196,7 +196,7 @@ class TextureUnpackingWizard(GeneratedComponent, IDeveloperInterface, ICustomIns
         return getattr(member, 'value', None)
 
     @is_processing.setter
-    def is_processing(self, value: bool) -> None:
+    def is_processing(self, value: primitives.Bool) -> None:
         """Set the IsProcessing field value."""
         member = self.get_member("IsProcessing")
         if member is not None:

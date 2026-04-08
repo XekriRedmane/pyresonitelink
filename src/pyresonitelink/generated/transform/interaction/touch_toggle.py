@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -16,7 +17,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TouchToggle"
 
-    def __init__(self, state: bool | None = None, accept_out_of_sight_touch: bool | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, edit_mode_only: bool | None = None, legacy_active_user_root_only: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, state: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, edit_mode_only: primitives.Bool | None = None, legacy_active_user_root_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,7 +44,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
             self.legacy_active_user_root_only = legacy_active_user_root_only
 
     @property
-    def state(self) -> bool | None:
+    def state(self) -> primitives.Bool | None:
         """The State field value."""
         member = self.get_member("State")
         if member is None:
@@ -51,7 +52,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @state.setter
-    def state(self, value: bool) -> None:
+    def state(self, value: primitives.Bool) -> None:
         """Set the State field value."""
         member = self.get_member("State")
         if member is not None:
@@ -114,7 +115,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
         self.set_member("OffEvent", value)
 
     @property
-    def accept_out_of_sight_touch(self) -> bool | None:
+    def accept_out_of_sight_touch(self) -> primitives.Bool | None:
         """The AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is None:
@@ -122,7 +123,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_out_of_sight_touch.setter
-    def accept_out_of_sight_touch(self, value: bool) -> None:
+    def accept_out_of_sight_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is not None:
@@ -133,7 +134,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -141,7 +142,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -152,7 +153,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -160,7 +161,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -184,7 +185,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
         self.set_member("Vibrate", value)
 
     @property
-    def edit_mode_only(self) -> bool | None:
+    def edit_mode_only(self) -> primitives.Bool | None:
         """The EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is None:
@@ -192,7 +193,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @edit_mode_only.setter
-    def edit_mode_only(self, value: bool) -> None:
+    def edit_mode_only(self, value: primitives.Bool) -> None:
         """Set the EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is not None:
@@ -216,7 +217,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
         self.set_member("ActiveUserFilter", value)
 
     @property
-    def legacy_active_user_root_only(self) -> bool | None:
+    def legacy_active_user_root_only(self) -> primitives.Bool | None:
         """The __legacyActiveUserRootOnly field value."""
         member = self.get_member("__legacyActiveUserRootOnly")
         if member is None:
@@ -224,7 +225,7 @@ class TouchToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @legacy_active_user_root_only.setter
-    def legacy_active_user_root_only(self, value: bool) -> None:
+    def legacy_active_user_root_only(self, value: primitives.Bool) -> None:
         """Set the __legacyActiveUserRootOnly field value."""
         member = self.get_member("__legacyActiveUserRootOnly")
         if member is not None:

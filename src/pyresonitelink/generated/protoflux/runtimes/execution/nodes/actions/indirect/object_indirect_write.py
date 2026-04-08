@@ -15,7 +15,7 @@ class ObjectIndirectWrite(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        ObjectIndirectWrite[np.float32]
+        ObjectIndirectWrite[primitives.Float]
         ObjectIndirectWrite[primitives.Float3]
     """
 

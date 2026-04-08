@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -18,7 +19,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldSwitcher"
 
-    def __init__(self, show: bool | None = None, ignore_touches_from: str | Slot | None = None, repulsion_tree: str | RepulsionTreeSimulator | None = None, lines_mesh: str | MultiSegmentMesh | None = None, slider: str | Slider | None = None, center_orb: str | Slot | None = None, visual_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, show: primitives.Bool | None = None, ignore_touches_from: str | Slot | None = None, repulsion_tree: str | RepulsionTreeSimulator | None = None, lines_mesh: str | MultiSegmentMesh | None = None, slider: str | Slider | None = None, center_orb: str | Slot | None = None, visual_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,7 +49,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.visual_root = visual_root
 
     @property
-    def show(self) -> bool | None:
+    def show(self) -> primitives.Bool | None:
         """The Show field value."""
         member = self.get_member("Show")
         if member is None:
@@ -56,7 +57,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show.setter
-    def show(self, value: bool) -> None:
+    def show(self, value: primitives.Bool) -> None:
         """Set the Show field value."""
         member = self.get_member("Show")
         if member is not None:

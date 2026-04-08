@@ -1,7 +1,5 @@
 """Generated component: TipTouchSource."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TipTouchSource"
 
-    def __init__(self, auto_update_user: str | User | None = None, out_of_sight_angle: np.float32 | None = None, max_touch_penetration_distance: np.float32 | None = None, use_user_space_for_distance: bool | None = None, touch_distance: np.float32 | None = None, max_distance: np.float32 | None = None, offset: primitives.Float3 | None = None, direction: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_update_user: str | User | None = None, out_of_sight_angle: primitives.Float | None = None, max_touch_penetration_distance: primitives.Float | None = None, use_user_space_for_distance: primitives.Bool | None = None, touch_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, offset: primitives.Float3 | None = None, direction: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -74,7 +72,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def out_of_sight_angle(self) -> np.float32 | None:
+    def out_of_sight_angle(self) -> primitives.Float | None:
         """The OutOfSightAngle field value."""
         member = self.get_member("OutOfSightAngle")
         if member is None:
@@ -82,7 +80,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @out_of_sight_angle.setter
-    def out_of_sight_angle(self, value: np.float32) -> None:
+    def out_of_sight_angle(self, value: primitives.Float) -> None:
         """Set the OutOfSightAngle field value."""
         member = self.get_member("OutOfSightAngle")
         if member is not None:
@@ -93,7 +91,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_touch_penetration_distance(self) -> np.float32 | None:
+    def max_touch_penetration_distance(self) -> primitives.Float | None:
         """The MaxTouchPenetrationDistance field value."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is None:
@@ -101,7 +99,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_touch_penetration_distance.setter
-    def max_touch_penetration_distance(self, value: np.float32) -> None:
+    def max_touch_penetration_distance(self, value: primitives.Float) -> None:
         """Set the MaxTouchPenetrationDistance field value."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is not None:
@@ -112,7 +110,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def use_user_space_for_distance(self) -> bool | None:
+    def use_user_space_for_distance(self) -> primitives.Bool | None:
         """The UseUserSpaceForDistance field value."""
         member = self.get_member("UseUserSpaceForDistance")
         if member is None:
@@ -120,7 +118,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_user_space_for_distance.setter
-    def use_user_space_for_distance(self, value: bool) -> None:
+    def use_user_space_for_distance(self, value: primitives.Bool) -> None:
         """Set the UseUserSpaceForDistance field value."""
         member = self.get_member("UseUserSpaceForDistance")
         if member is not None:
@@ -131,7 +129,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def touch_distance(self) -> np.float32 | None:
+    def touch_distance(self) -> primitives.Float | None:
         """The TouchDistance field value."""
         member = self.get_member("TouchDistance")
         if member is None:
@@ -139,7 +137,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @touch_distance.setter
-    def touch_distance(self, value: np.float32) -> None:
+    def touch_distance(self, value: primitives.Float) -> None:
         """Set the TouchDistance field value."""
         member = self.get_member("TouchDistance")
         if member is not None:
@@ -150,7 +148,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -158,7 +156,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:

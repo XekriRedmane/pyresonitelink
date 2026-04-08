@@ -1,9 +1,8 @@
 """Generated component: OnlineStatusSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OnlineStatusSettings"
 
-    def __init__(self, remember_timespan: np.float64 | None = None, invisible_remember_timespan: np.float64 | None = None, auto_away_timespan: np.float64 | None = None, enable_default_status: bool | None = None, show_remember_timespan: bool | None = None, show_invisible_remember_timespan: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, remember_timespan: primitives.Double | None = None, invisible_remember_timespan: primitives.Double | None = None, auto_away_timespan: primitives.Double | None = None, enable_default_status: primitives.Bool | None = None, show_remember_timespan: primitives.Bool | None = None, show_invisible_remember_timespan: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,7 +68,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
         self.set_member("RememberMode", value)
 
     @property
-    def remember_timespan(self) -> np.float64 | None:
+    def remember_timespan(self) -> primitives.Double | None:
         """The RememberTimespan field value."""
         member = self.get_member("RememberTimespan")
         if member is None:
@@ -77,7 +76,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @remember_timespan.setter
-    def remember_timespan(self, value: np.float64) -> None:
+    def remember_timespan(self, value: primitives.Double) -> None:
         """Set the RememberTimespan field value."""
         member = self.get_member("RememberTimespan")
         if member is not None:
@@ -101,7 +100,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
         self.set_member("InvisibleRememberMode", value)
 
     @property
-    def invisible_remember_timespan(self) -> np.float64 | None:
+    def invisible_remember_timespan(self) -> primitives.Double | None:
         """The InvisibleRememberTimespan field value."""
         member = self.get_member("InvisibleRememberTimespan")
         if member is None:
@@ -109,7 +108,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @invisible_remember_timespan.setter
-    def invisible_remember_timespan(self, value: np.float64) -> None:
+    def invisible_remember_timespan(self, value: primitives.Double) -> None:
         """Set the InvisibleRememberTimespan field value."""
         member = self.get_member("InvisibleRememberTimespan")
         if member is not None:
@@ -120,7 +119,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def auto_away_timespan(self) -> np.float64 | None:
+    def auto_away_timespan(self) -> primitives.Double | None:
         """The AutoAwayTimespan field value."""
         member = self.get_member("AutoAwayTimespan")
         if member is None:
@@ -128,7 +127,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @auto_away_timespan.setter
-    def auto_away_timespan(self, value: np.float64) -> None:
+    def auto_away_timespan(self, value: primitives.Double) -> None:
         """Set the AutoAwayTimespan field value."""
         member = self.get_member("AutoAwayTimespan")
         if member is not None:
@@ -139,7 +138,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def enable_default_status(self) -> bool | None:
+    def enable_default_status(self) -> primitives.Bool | None:
         """The EnableDefaultStatus field value."""
         member = self.get_member("EnableDefaultStatus")
         if member is None:
@@ -147,7 +146,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @enable_default_status.setter
-    def enable_default_status(self, value: bool) -> None:
+    def enable_default_status(self, value: primitives.Bool) -> None:
         """Set the EnableDefaultStatus field value."""
         member = self.get_member("EnableDefaultStatus")
         if member is not None:
@@ -158,7 +157,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def show_remember_timespan(self) -> bool | None:
+    def show_remember_timespan(self) -> primitives.Bool | None:
         """The ShowRememberTimespan field value."""
         member = self.get_member("ShowRememberTimespan")
         if member is None:
@@ -166,7 +165,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @show_remember_timespan.setter
-    def show_remember_timespan(self, value: bool) -> None:
+    def show_remember_timespan(self, value: primitives.Bool) -> None:
         """Set the ShowRememberTimespan field value."""
         member = self.get_member("ShowRememberTimespan")
         if member is not None:
@@ -177,7 +176,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def show_invisible_remember_timespan(self) -> bool | None:
+    def show_invisible_remember_timespan(self) -> primitives.Bool | None:
         """The ShowInvisibleRememberTimespan field value."""
         member = self.get_member("ShowInvisibleRememberTimespan")
         if member is None:
@@ -185,7 +184,7 @@ class OnlineStatusSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @show_invisible_remember_timespan.setter
-    def show_invisible_remember_timespan(self, value: bool) -> None:
+    def show_invisible_remember_timespan(self, value: primitives.Bool) -> None:
         """Set the ShowInvisibleRememberTimespan field value."""
         member = self.get_member("ShowInvisibleRememberTimespan")
         if member is not None:

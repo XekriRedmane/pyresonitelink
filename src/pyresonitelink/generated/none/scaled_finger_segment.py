@@ -1,7 +1,5 @@
 """Generated component: ScaledFingerSegment."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class ScaledFingerSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaledFingerSegment"
 
-    def __init__(self, scale: str | IField[primitives.Float3] | None = None, offset: str | IField[primitives.Float3] | None = None, next_joint: str | Slot | None = None, width: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, scale: str | IField[primitives.Float3] | None = None, offset: str | IField[primitives.Float3] | None = None, next_joint: str | Slot | None = None, width: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -116,7 +114,7 @@ class ScaledFingerSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("_bodyNode", value)
 
     @property
-    def width(self) -> np.float32 | None:
+    def width(self) -> primitives.Float | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -124,7 +122,7 @@ class ScaledFingerSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.float32) -> None:
+    def width(self, value: primitives.Float) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:

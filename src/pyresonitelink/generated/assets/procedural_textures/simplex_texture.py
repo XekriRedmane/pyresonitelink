@@ -1,7 +1,5 @@
 """Generated component: SimplexTexture."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SimplexTexture"
 
-    def __init__(self, high_priority_integration: bool | None = None, anisotropic_level: np.int32 | None = None, mipmap_bias: np.float32 | None = None, size: primitives.Int2 | None = None, mipmaps: bool | None = None, offset: primitives.Float2 | None = None, scale: primitives.Float2 | None = None, background: primitives.ColorX | None = None, foreground: primitives.ColorX | None = None, use_3d: bool | None = None, zoffset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, anisotropic_level: primitives.Int | None = None, mipmap_bias: primitives.Float | None = None, size: primitives.Int2 | None = None, mipmaps: primitives.Bool | None = None, offset: primitives.Float2 | None = None, scale: primitives.Float2 | None = None, background: primitives.ColorX | None = None, foreground: primitives.ColorX | None = None, use_3d: primitives.Bool | None = None, zoffset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,7 +61,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
             self.zoffset = zoffset
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -71,7 +69,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -95,7 +93,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
         self.set_member("FilterMode", value)
 
     @property
-    def anisotropic_level(self) -> np.int32 | None:
+    def anisotropic_level(self) -> primitives.Int | None:
         """The AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is None:
@@ -103,7 +101,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @anisotropic_level.setter
-    def anisotropic_level(self, value: np.int32) -> None:
+    def anisotropic_level(self, value: primitives.Int) -> None:
         """Set the AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is not None:
@@ -140,7 +138,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
         self.set_member("WrapModeV", value)
 
     @property
-    def mipmap_bias(self) -> np.float32 | None:
+    def mipmap_bias(self) -> primitives.Float | None:
         """The MipmapBias field value."""
         member = self.get_member("MipmapBias")
         if member is None:
@@ -148,7 +146,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @mipmap_bias.setter
-    def mipmap_bias(self, value: np.float32) -> None:
+    def mipmap_bias(self, value: primitives.Float) -> None:
         """Set the MipmapBias field value."""
         member = self.get_member("MipmapBias")
         if member is not None:
@@ -191,7 +189,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
             )
 
     @property
-    def mipmaps(self) -> bool | None:
+    def mipmaps(self) -> primitives.Bool | None:
         """The Mipmaps field value."""
         member = self.get_member("Mipmaps")
         if member is None:
@@ -199,7 +197,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @mipmaps.setter
-    def mipmaps(self, value: bool) -> None:
+    def mipmaps(self, value: primitives.Bool) -> None:
         """Set the Mipmaps field value."""
         member = self.get_member("Mipmaps")
         if member is not None:
@@ -299,7 +297,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
             )
 
     @property
-    def use_3d(self) -> bool | None:
+    def use_3d(self) -> primitives.Bool | None:
         """The Use3D field value."""
         member = self.get_member("Use3D")
         if member is None:
@@ -307,7 +305,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @use_3d.setter
-    def use_3d(self, value: bool) -> None:
+    def use_3d(self, value: primitives.Bool) -> None:
         """Set the Use3D field value."""
         member = self.get_member("Use3D")
         if member is not None:
@@ -318,7 +316,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
             )
 
     @property
-    def zoffset(self) -> np.float32 | None:
+    def zoffset(self) -> primitives.Float | None:
         """The ZOffset field value."""
         member = self.get_member("ZOffset")
         if member is None:
@@ -326,7 +324,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @zoffset.setter
-    def zoffset(self, value: np.float32) -> None:
+    def zoffset(self, value: primitives.Float) -> None:
         """Set the ZOffset field value."""
         member = self.get_member("ZOffset")
         if member is not None:

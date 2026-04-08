@@ -1,7 +1,5 @@
 """Generated component: SphereAligner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SphereAligner"
 
-    def __init__(self, auto_add_children: bool | None = None, radius: np.float32 | None = None, distribution_offset: np.float32 | None = None, align_to_normal: bool | None = None, rotation_offset: primitives.FloatQ | None = None, normalized_start: np.float32 | None = None, normalized_end: np.float32 | None = None, horizontal_start: np.float32 | None = None, horizontal_end: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_add_children: primitives.Bool | None = None, radius: primitives.Float | None = None, distribution_offset: primitives.Float | None = None, align_to_normal: primitives.Bool | None = None, rotation_offset: primitives.FloatQ | None = None, normalized_start: primitives.Float | None = None, normalized_end: primitives.Float | None = None, horizontal_start: primitives.Float | None = None, horizontal_end: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -55,7 +53,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.horizontal_end = horizontal_end
 
     @property
-    def auto_add_children(self) -> bool | None:
+    def auto_add_children(self) -> primitives.Bool | None:
         """The AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is None:
@@ -63,7 +61,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_add_children.setter
-    def auto_add_children(self, value: bool) -> None:
+    def auto_add_children(self, value: primitives.Bool) -> None:
         """Set the AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is not None:
@@ -87,7 +85,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("AutoAddIgnoreTags", value)
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -95,7 +93,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -106,7 +104,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def distribution_offset(self) -> np.float32 | None:
+    def distribution_offset(self) -> primitives.Float | None:
         """The DistributionOffset field value."""
         member = self.get_member("DistributionOffset")
         if member is None:
@@ -114,7 +112,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @distribution_offset.setter
-    def distribution_offset(self, value: np.float32) -> None:
+    def distribution_offset(self, value: primitives.Float) -> None:
         """Set the DistributionOffset field value."""
         member = self.get_member("DistributionOffset")
         if member is not None:
@@ -125,7 +123,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def align_to_normal(self) -> bool | None:
+    def align_to_normal(self) -> primitives.Bool | None:
         """The AlignToNormal field value."""
         member = self.get_member("AlignToNormal")
         if member is None:
@@ -133,7 +131,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @align_to_normal.setter
-    def align_to_normal(self, value: bool) -> None:
+    def align_to_normal(self, value: primitives.Bool) -> None:
         """Set the AlignToNormal field value."""
         member = self.get_member("AlignToNormal")
         if member is not None:
@@ -163,7 +161,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def normalized_start(self) -> np.float32 | None:
+    def normalized_start(self) -> primitives.Float | None:
         """The NormalizedStart field value."""
         member = self.get_member("NormalizedStart")
         if member is None:
@@ -171,7 +169,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @normalized_start.setter
-    def normalized_start(self, value: np.float32) -> None:
+    def normalized_start(self, value: primitives.Float) -> None:
         """Set the NormalizedStart field value."""
         member = self.get_member("NormalizedStart")
         if member is not None:
@@ -182,7 +180,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def normalized_end(self) -> np.float32 | None:
+    def normalized_end(self) -> primitives.Float | None:
         """The NormalizedEnd field value."""
         member = self.get_member("NormalizedEnd")
         if member is None:
@@ -190,7 +188,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @normalized_end.setter
-    def normalized_end(self, value: np.float32) -> None:
+    def normalized_end(self, value: primitives.Float) -> None:
         """Set the NormalizedEnd field value."""
         member = self.get_member("NormalizedEnd")
         if member is not None:
@@ -201,7 +199,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def horizontal_start(self) -> np.float32 | None:
+    def horizontal_start(self) -> primitives.Float | None:
         """The HorizontalStart field value."""
         member = self.get_member("HorizontalStart")
         if member is None:
@@ -209,7 +207,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @horizontal_start.setter
-    def horizontal_start(self, value: np.float32) -> None:
+    def horizontal_start(self, value: primitives.Float) -> None:
         """Set the HorizontalStart field value."""
         member = self.get_member("HorizontalStart")
         if member is not None:
@@ -220,7 +218,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def horizontal_end(self) -> np.float32 | None:
+    def horizontal_end(self) -> primitives.Float | None:
         """The HorizontalEnd field value."""
         member = self.get_member("HorizontalEnd")
         if member is None:
@@ -228,7 +226,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @horizontal_end.setter
-    def horizontal_end(self, value: np.float32) -> None:
+    def horizontal_end(self, value: primitives.Float) -> None:
         """Set the HorizontalEnd field value."""
         member = self.get_member("HorizontalEnd")
         if member is not None:

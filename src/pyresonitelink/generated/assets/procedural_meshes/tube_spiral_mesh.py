@@ -1,7 +1,5 @@
 """Generated component: TubeSpiralMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TubeSpiralMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, steps: np.int32 | None = None, maximum_distance_between_rings: np.float32 | None = None, radius_independent_step_scaling: bool | None = None, coil_count: np.float32 | None = None, scale_coil_count_by_length: bool | None = None, coil_phase: np.float32 | None = None, start_point: primitives.Float3 | None = None, start_tangent: primitives.Float3 | None = None, end_point: primitives.Float3 | None = None, end_tangent: primitives.Float3 | None = None, start_spiral_radius: np.float32 | None = None, end_spiral_radius: np.float32 | None = None, start_spiral_orientation: primitives.FloatQ | None = None, end_spiral_orientation: primitives.FloatQ | None = None, start_tube_radius: np.float32 | None = None, end_tube_radius: np.float32 | None = None, tube_points: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, steps: primitives.Int | None = None, maximum_distance_between_rings: primitives.Float | None = None, radius_independent_step_scaling: primitives.Bool | None = None, coil_count: primitives.Float | None = None, scale_coil_count_by_length: primitives.Bool | None = None, coil_phase: primitives.Float | None = None, start_point: primitives.Float3 | None = None, start_tangent: primitives.Float3 | None = None, end_point: primitives.Float3 | None = None, end_tangent: primitives.Float3 | None = None, start_spiral_radius: primitives.Float | None = None, end_spiral_radius: primitives.Float | None = None, start_spiral_orientation: primitives.FloatQ | None = None, end_spiral_orientation: primitives.FloatQ | None = None, start_tube_radius: primitives.Float | None = None, end_tube_radius: primitives.Float | None = None, tube_points: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -90,7 +88,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.tube_points = tube_points
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -98,7 +96,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -109,7 +107,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -117,7 +115,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -160,7 +158,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         self.set_member("Profile", value)
 
     @property
-    def steps(self) -> np.int32 | None:
+    def steps(self) -> primitives.Int | None:
         """The Steps field value."""
         member = self.get_member("Steps")
         if member is None:
@@ -168,7 +166,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @steps.setter
-    def steps(self, value: np.int32) -> None:
+    def steps(self, value: primitives.Int) -> None:
         """Set the Steps field value."""
         member = self.get_member("Steps")
         if member is not None:
@@ -179,7 +177,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def maximum_distance_between_rings(self) -> np.float32 | None:
+    def maximum_distance_between_rings(self) -> primitives.Float | None:
         """The MaximumDistanceBetweenRings field value."""
         member = self.get_member("MaximumDistanceBetweenRings")
         if member is None:
@@ -187,7 +185,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @maximum_distance_between_rings.setter
-    def maximum_distance_between_rings(self, value: np.float32) -> None:
+    def maximum_distance_between_rings(self, value: primitives.Float) -> None:
         """Set the MaximumDistanceBetweenRings field value."""
         member = self.get_member("MaximumDistanceBetweenRings")
         if member is not None:
@@ -198,7 +196,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def radius_independent_step_scaling(self) -> bool | None:
+    def radius_independent_step_scaling(self) -> primitives.Bool | None:
         """The RadiusIndependentStepScaling field value."""
         member = self.get_member("RadiusIndependentStepScaling")
         if member is None:
@@ -206,7 +204,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @radius_independent_step_scaling.setter
-    def radius_independent_step_scaling(self, value: bool) -> None:
+    def radius_independent_step_scaling(self, value: primitives.Bool) -> None:
         """Set the RadiusIndependentStepScaling field value."""
         member = self.get_member("RadiusIndependentStepScaling")
         if member is not None:
@@ -217,7 +215,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def coil_count(self) -> np.float32 | None:
+    def coil_count(self) -> primitives.Float | None:
         """The CoilCount field value."""
         member = self.get_member("CoilCount")
         if member is None:
@@ -225,7 +223,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @coil_count.setter
-    def coil_count(self, value: np.float32) -> None:
+    def coil_count(self, value: primitives.Float) -> None:
         """Set the CoilCount field value."""
         member = self.get_member("CoilCount")
         if member is not None:
@@ -236,7 +234,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def scale_coil_count_by_length(self) -> bool | None:
+    def scale_coil_count_by_length(self) -> primitives.Bool | None:
         """The ScaleCoilCountByLength field value."""
         member = self.get_member("ScaleCoilCountByLength")
         if member is None:
@@ -244,7 +242,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @scale_coil_count_by_length.setter
-    def scale_coil_count_by_length(self, value: bool) -> None:
+    def scale_coil_count_by_length(self, value: primitives.Bool) -> None:
         """Set the ScaleCoilCountByLength field value."""
         member = self.get_member("ScaleCoilCountByLength")
         if member is not None:
@@ -255,7 +253,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def coil_phase(self) -> np.float32 | None:
+    def coil_phase(self) -> primitives.Float | None:
         """The CoilPhase field value."""
         member = self.get_member("CoilPhase")
         if member is None:
@@ -263,7 +261,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @coil_phase.setter
-    def coil_phase(self, value: np.float32) -> None:
+    def coil_phase(self, value: primitives.Float) -> None:
         """Set the CoilPhase field value."""
         member = self.get_member("CoilPhase")
         if member is not None:
@@ -350,7 +348,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def start_spiral_radius(self) -> np.float32 | None:
+    def start_spiral_radius(self) -> primitives.Float | None:
         """The StartSpiralRadius field value."""
         member = self.get_member("StartSpiralRadius")
         if member is None:
@@ -358,7 +356,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @start_spiral_radius.setter
-    def start_spiral_radius(self, value: np.float32) -> None:
+    def start_spiral_radius(self, value: primitives.Float) -> None:
         """Set the StartSpiralRadius field value."""
         member = self.get_member("StartSpiralRadius")
         if member is not None:
@@ -369,7 +367,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def end_spiral_radius(self) -> np.float32 | None:
+    def end_spiral_radius(self) -> primitives.Float | None:
         """The EndSpiralRadius field value."""
         member = self.get_member("EndSpiralRadius")
         if member is None:
@@ -377,7 +375,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @end_spiral_radius.setter
-    def end_spiral_radius(self, value: np.float32) -> None:
+    def end_spiral_radius(self, value: primitives.Float) -> None:
         """Set the EndSpiralRadius field value."""
         member = self.get_member("EndSpiralRadius")
         if member is not None:
@@ -452,7 +450,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         self.set_member("Shading", value)
 
     @property
-    def start_tube_radius(self) -> np.float32 | None:
+    def start_tube_radius(self) -> primitives.Float | None:
         """The StartTubeRadius field value."""
         member = self.get_member("StartTubeRadius")
         if member is None:
@@ -460,7 +458,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @start_tube_radius.setter
-    def start_tube_radius(self, value: np.float32) -> None:
+    def start_tube_radius(self, value: primitives.Float) -> None:
         """Set the StartTubeRadius field value."""
         member = self.get_member("StartTubeRadius")
         if member is not None:
@@ -471,7 +469,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def end_tube_radius(self) -> np.float32 | None:
+    def end_tube_radius(self) -> primitives.Float | None:
         """The EndTubeRadius field value."""
         member = self.get_member("EndTubeRadius")
         if member is None:
@@ -479,7 +477,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @end_tube_radius.setter
-    def end_tube_radius(self, value: np.float32) -> None:
+    def end_tube_radius(self, value: primitives.Float) -> None:
         """Set the EndTubeRadius field value."""
         member = self.get_member("EndTubeRadius")
         if member is not None:
@@ -490,7 +488,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def tube_points(self) -> np.int32 | None:
+    def tube_points(self) -> primitives.Int | None:
         """The TubePoints field value."""
         member = self.get_member("TubePoints")
         if member is None:
@@ -498,7 +496,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @tube_points.setter
-    def tube_points(self, value: np.int32) -> None:
+    def tube_points(self, value: primitives.Int) -> None:
         """Set the TubePoints field value."""
         member = self.get_member("TubePoints")
         if member is not None:

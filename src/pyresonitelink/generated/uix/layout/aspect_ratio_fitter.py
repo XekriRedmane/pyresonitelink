@@ -1,8 +1,7 @@
 """Generated component: AspectRatioFitter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iui_compute_component import IUIComputeComponent
@@ -17,7 +16,7 @@ class AspectRatioFitter(GeneratedComponent, IUIComputeComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.AspectRatioFitter"
 
-    def __init__(self, aspect_ratio: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, aspect_ratio: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +28,7 @@ class AspectRatioFitter(GeneratedComponent, IUIComputeComponent, IWorldEventRece
             self.aspect_ratio = aspect_ratio
 
     @property
-    def aspect_ratio(self) -> np.float32 | None:
+    def aspect_ratio(self) -> primitives.Float | None:
         """The AspectRatio field value."""
         member = self.get_member("AspectRatio")
         if member is None:
@@ -37,7 +36,7 @@ class AspectRatioFitter(GeneratedComponent, IUIComputeComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @aspect_ratio.setter
-    def aspect_ratio(self, value: np.float32) -> None:
+    def aspect_ratio(self, value: primitives.Float) -> None:
         """Set the AspectRatio field value."""
         member = self.get_member("AspectRatio")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: BoxCollider."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxCollider"
 
-    def __init__(self, offset: primitives.Float3 | None = None, mass: np.float32 | None = None, character_collider: bool | None = None, ignore_raycasts: bool | None = None, size: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, offset: primitives.Float3 | None = None, mass: primitives.Float | None = None, character_collider: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, size: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -77,7 +75,7 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
         self.set_member("Type", value)
 
     @property
-    def mass(self) -> np.float32 | None:
+    def mass(self) -> primitives.Float | None:
         """The Mass field value."""
         member = self.get_member("Mass")
         if member is None:
@@ -85,7 +83,7 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
         return getattr(member, 'value', None)
 
     @mass.setter
-    def mass(self, value: np.float32) -> None:
+    def mass(self, value: primitives.Float) -> None:
         """Set the Mass field value."""
         member = self.get_member("Mass")
         if member is not None:
@@ -96,7 +94,7 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
             )
 
     @property
-    def character_collider(self) -> bool | None:
+    def character_collider(self) -> primitives.Bool | None:
         """The CharacterCollider field value."""
         member = self.get_member("CharacterCollider")
         if member is None:
@@ -104,7 +102,7 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
         return getattr(member, 'value', None)
 
     @character_collider.setter
-    def character_collider(self, value: bool) -> None:
+    def character_collider(self, value: primitives.Bool) -> None:
         """Set the CharacterCollider field value."""
         member = self.get_member("CharacterCollider")
         if member is not None:
@@ -115,7 +113,7 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
             )
 
     @property
-    def ignore_raycasts(self) -> bool | None:
+    def ignore_raycasts(self) -> primitives.Bool | None:
         """The IgnoreRaycasts field value."""
         member = self.get_member("IgnoreRaycasts")
         if member is None:
@@ -123,7 +121,7 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
         return getattr(member, 'value', None)
 
     @ignore_raycasts.setter
-    def ignore_raycasts(self, value: bool) -> None:
+    def ignore_raycasts(self, value: primitives.Bool) -> None:
         """Set the IgnoreRaycasts field value."""
         member = self.get_member("IgnoreRaycasts")
         if member is not None:

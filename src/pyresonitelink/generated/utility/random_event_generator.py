@@ -1,9 +1,8 @@
 """Generated component: RandomEventGenerator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ipoint_generator import IPointGenerator
@@ -19,7 +18,7 @@ class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RandomEventGenerator"
 
-    def __init__(self, min_interval: np.float32 | None = None, max_interval: np.float32 | None = None, random_point_generator: str | IPointGenerator | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_interval: primitives.Float | None = None, max_interval: primitives.Float | None = None, random_point_generator: str | IPointGenerator | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +36,7 @@ class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.random_point_generator = random_point_generator
 
     @property
-    def min_interval(self) -> np.float32 | None:
+    def min_interval(self) -> primitives.Float | None:
         """The MinInterval field value."""
         member = self.get_member("MinInterval")
         if member is None:
@@ -45,7 +44,7 @@ class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_interval.setter
-    def min_interval(self, value: np.float32) -> None:
+    def min_interval(self, value: primitives.Float) -> None:
         """Set the MinInterval field value."""
         member = self.get_member("MinInterval")
         if member is not None:
@@ -56,7 +55,7 @@ class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_interval(self) -> np.float32 | None:
+    def max_interval(self) -> primitives.Float | None:
         """The MaxInterval field value."""
         member = self.get_member("MaxInterval")
         if member is None:
@@ -64,7 +63,7 @@ class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_interval.setter
-    def max_interval(self, value: np.float32) -> None:
+    def max_interval(self, value: primitives.Float) -> None:
         """Set the MaxInterval field value."""
         member = self.get_member("MaxInterval")
         if member is not None:

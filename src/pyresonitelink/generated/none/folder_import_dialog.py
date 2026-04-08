@@ -1,6 +1,7 @@
 """Generated component: FolderImportDialog."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -13,7 +14,7 @@ class FolderImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FolderImportDialog"
 
-    def __init__(self, path: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, path: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class FolderImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.path = path
 
     @property
-    def path(self) -> str | None:
+    def path(self) -> primitives.String | None:
         """The Path field value."""
         member = self.get_member("Path")
         if member is None:
@@ -33,7 +34,7 @@ class FolderImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @path.setter
-    def path(self, value: str) -> None:
+    def path(self, value: primitives.String) -> None:
         """Set the Path field value."""
         member = self.get_member("Path")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: LegacyWorldThumbnailItem."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,7 +23,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyWorldThumbnailItem"
 
-    def __init__(self, world_or_session_id: str | None = None, visited: bool | None = None, total_active_users: np.int32 | None = None, total_contacts: np.int32 | None = None, thumbnail_graphic: str | RawGraphic | None = None, thumbnail_texture: str | StaticTexture2D | None = None, name_root: str | RectTransform | None = None, detail_root: str | RectTransform | None = None, visited_root: str | RectTransform | None = None, counter_root: str | RectTransform | None = None, icons_root: str | RectTransform | None = None, close_button: str | RectTransform | None = None, name_text: str | Text | None = None, detail_text: str | Text | None = None, counter_text: str | Text | None = None, border_overlay: str | Image | None = None, border_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_or_session_id: primitives.String | None = None, visited: primitives.Bool | None = None, total_active_users: primitives.Int | None = None, total_contacts: primitives.Int | None = None, thumbnail_graphic: str | RawGraphic | None = None, thumbnail_texture: str | StaticTexture2D | None = None, name_root: str | RectTransform | None = None, detail_root: str | RectTransform | None = None, visited_root: str | RectTransform | None = None, counter_root: str | RectTransform | None = None, icons_root: str | RectTransform | None = None, close_button: str | RectTransform | None = None, name_text: str | Text | None = None, detail_text: str | Text | None = None, counter_text: str | Text | None = None, border_overlay: str | Image | None = None, border_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -98,7 +96,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
         self.set_member("UpdatingUser", value)
 
     @property
-    def world_or_session_id(self) -> str | None:
+    def world_or_session_id(self) -> primitives.String | None:
         """The WorldOrSessionId field value."""
         member = self.get_member("WorldOrSessionId")
         if member is None:
@@ -106,7 +104,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
         return getattr(member, 'value', None)
 
     @world_or_session_id.setter
-    def world_or_session_id(self, value: str) -> None:
+    def world_or_session_id(self, value: primitives.String) -> None:
         """Set the WorldOrSessionId field value."""
         member = self.get_member("WorldOrSessionId")
         if member is not None:
@@ -117,7 +115,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
             )
 
     @property
-    def visited(self) -> bool | None:
+    def visited(self) -> primitives.Bool | None:
         """The _visited field value."""
         member = self.get_member("_visited")
         if member is None:
@@ -125,7 +123,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
         return getattr(member, 'value', None)
 
     @visited.setter
-    def visited(self, value: bool) -> None:
+    def visited(self, value: primitives.Bool) -> None:
         """Set the _visited field value."""
         member = self.get_member("_visited")
         if member is not None:
@@ -136,7 +134,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
             )
 
     @property
-    def total_active_users(self) -> np.int32 | None:
+    def total_active_users(self) -> primitives.Int | None:
         """The _totalActiveUsers field value."""
         member = self.get_member("_totalActiveUsers")
         if member is None:
@@ -144,7 +142,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
         return getattr(member, 'value', None)
 
     @total_active_users.setter
-    def total_active_users(self, value: np.int32) -> None:
+    def total_active_users(self, value: primitives.Int) -> None:
         """Set the _totalActiveUsers field value."""
         member = self.get_member("_totalActiveUsers")
         if member is not None:
@@ -155,7 +153,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
             )
 
     @property
-    def total_contacts(self) -> np.int32 | None:
+    def total_contacts(self) -> primitives.Int | None:
         """The _totalContacts field value."""
         member = self.get_member("_totalContacts")
         if member is None:
@@ -163,7 +161,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
         return getattr(member, 'value', None)
 
     @total_contacts.setter
-    def total_contacts(self, value: np.int32) -> None:
+    def total_contacts(self, value: primitives.Int) -> None:
         """Set the _totalContacts field value."""
         member = self.get_member("_totalContacts")
         if member is not None:

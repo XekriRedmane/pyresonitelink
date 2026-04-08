@@ -18,7 +18,7 @@ class ValueObjectInput(GenericComponent[T], IInput[T], INodeObjectOutput[T], IEx
 
     Parameterize with a value type::
 
-        ValueObjectInput[np.float32]
+        ValueObjectInput[primitives.Float]
         ValueObjectInput[primitives.Float3]
     """
 

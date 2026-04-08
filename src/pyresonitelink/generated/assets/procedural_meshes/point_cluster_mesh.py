@@ -1,7 +1,5 @@
 """Generated component: PointClusterMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PointClusterMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, texture_color_source: str | IAssetProvider[ITexture] | None = None, height_scale_source: str | IAssetProvider[Texture2D] | None = None, texture_intensity_clip: np.float32 | None = None, texture_alpha_clip: np.float32 | None = None, max_clip_attempts: np.int32 | None = None, heightmap_exp: np.float32 | None = None, seed: np.int32 | None = None, points: np.int32 | None = None, atlas: str | AtlasInfo | None = None, scale: primitives.Float3 | None = None, range_exp: np.float32 | None = None, jitter_range: primitives.Float3 | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, color_lerp_scale: np.float32 | None = None, color_gap: np.float32 | None = None, simplex_noise_scale: primitives.Float3 | None = None, simplex_noise_offset: primitives.Float3 | None = None, uniform_size: bool | None = None, min_size: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, min_rotation: np.float32 | None = None, max_rotation: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, texture_color_source: str | IAssetProvider[ITexture] | None = None, height_scale_source: str | IAssetProvider[Texture2D] | None = None, texture_intensity_clip: primitives.Float | None = None, texture_alpha_clip: primitives.Float | None = None, max_clip_attempts: primitives.Int | None = None, heightmap_exp: primitives.Float | None = None, seed: primitives.Int | None = None, points: primitives.Int | None = None, atlas: str | AtlasInfo | None = None, scale: primitives.Float3 | None = None, range_exp: primitives.Float | None = None, jitter_range: primitives.Float3 | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, color_lerp_scale: primitives.Float | None = None, color_gap: primitives.Float | None = None, simplex_noise_scale: primitives.Float3 | None = None, simplex_noise_offset: primitives.Float3 | None = None, uniform_size: primitives.Bool | None = None, min_size: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, min_rotation: primitives.Float | None = None, max_rotation: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -111,7 +109,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             self.max_rotation = max_rotation
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -119,7 +117,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -130,7 +128,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -138,7 +136,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -249,7 +247,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def texture_intensity_clip(self) -> np.float32 | None:
+    def texture_intensity_clip(self) -> primitives.Float | None:
         """The TextureIntensityClip field value."""
         member = self.get_member("TextureIntensityClip")
         if member is None:
@@ -257,7 +255,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @texture_intensity_clip.setter
-    def texture_intensity_clip(self, value: np.float32) -> None:
+    def texture_intensity_clip(self, value: primitives.Float) -> None:
         """Set the TextureIntensityClip field value."""
         member = self.get_member("TextureIntensityClip")
         if member is not None:
@@ -268,7 +266,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def texture_alpha_clip(self) -> np.float32 | None:
+    def texture_alpha_clip(self) -> primitives.Float | None:
         """The TextureAlphaClip field value."""
         member = self.get_member("TextureAlphaClip")
         if member is None:
@@ -276,7 +274,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @texture_alpha_clip.setter
-    def texture_alpha_clip(self, value: np.float32) -> None:
+    def texture_alpha_clip(self, value: primitives.Float) -> None:
         """Set the TextureAlphaClip field value."""
         member = self.get_member("TextureAlphaClip")
         if member is not None:
@@ -287,7 +285,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def max_clip_attempts(self) -> np.int32 | None:
+    def max_clip_attempts(self) -> primitives.Int | None:
         """The MaxClipAttempts field value."""
         member = self.get_member("MaxClipAttempts")
         if member is None:
@@ -295,7 +293,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @max_clip_attempts.setter
-    def max_clip_attempts(self, value: np.int32) -> None:
+    def max_clip_attempts(self, value: primitives.Int) -> None:
         """Set the MaxClipAttempts field value."""
         member = self.get_member("MaxClipAttempts")
         if member is not None:
@@ -306,7 +304,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def heightmap_exp(self) -> np.float32 | None:
+    def heightmap_exp(self) -> primitives.Float | None:
         """The HeightmapExp field value."""
         member = self.get_member("HeightmapExp")
         if member is None:
@@ -314,7 +312,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @heightmap_exp.setter
-    def heightmap_exp(self, value: np.float32) -> None:
+    def heightmap_exp(self, value: primitives.Float) -> None:
         """Set the HeightmapExp field value."""
         member = self.get_member("HeightmapExp")
         if member is not None:
@@ -325,7 +323,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def seed(self) -> np.int32 | None:
+    def seed(self) -> primitives.Int | None:
         """The Seed field value."""
         member = self.get_member("Seed")
         if member is None:
@@ -333,7 +331,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @seed.setter
-    def seed(self, value: np.int32) -> None:
+    def seed(self, value: primitives.Int) -> None:
         """Set the Seed field value."""
         member = self.get_member("Seed")
         if member is not None:
@@ -344,7 +342,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def points(self) -> np.int32 | None:
+    def points(self) -> primitives.Int | None:
         """The Points field value."""
         member = self.get_member("Points")
         if member is None:
@@ -352,7 +350,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @points.setter
-    def points(self, value: np.int32) -> None:
+    def points(self, value: primitives.Int) -> None:
         """Set the Points field value."""
         member = self.get_member("Points")
         if member is not None:
@@ -403,7 +401,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def range_exp(self) -> np.float32 | None:
+    def range_exp(self) -> primitives.Float | None:
         """The RangeExp field value."""
         member = self.get_member("RangeExp")
         if member is None:
@@ -411,7 +409,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @range_exp.setter
-    def range_exp(self, value: np.float32) -> None:
+    def range_exp(self, value: primitives.Float) -> None:
         """Set the RangeExp field value."""
         member = self.get_member("RangeExp")
         if member is not None:
@@ -479,7 +477,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def color_lerp_scale(self) -> np.float32 | None:
+    def color_lerp_scale(self) -> primitives.Float | None:
         """The ColorLerpScale field value."""
         member = self.get_member("ColorLerpScale")
         if member is None:
@@ -487,7 +485,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @color_lerp_scale.setter
-    def color_lerp_scale(self, value: np.float32) -> None:
+    def color_lerp_scale(self, value: primitives.Float) -> None:
         """Set the ColorLerpScale field value."""
         member = self.get_member("ColorLerpScale")
         if member is not None:
@@ -498,7 +496,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def color_gap(self) -> np.float32 | None:
+    def color_gap(self) -> primitives.Float | None:
         """The ColorGap field value."""
         member = self.get_member("ColorGap")
         if member is None:
@@ -506,7 +504,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @color_gap.setter
-    def color_gap(self, value: np.float32) -> None:
+    def color_gap(self, value: primitives.Float) -> None:
         """Set the ColorGap field value."""
         member = self.get_member("ColorGap")
         if member is not None:
@@ -555,7 +553,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def uniform_size(self) -> bool | None:
+    def uniform_size(self) -> primitives.Bool | None:
         """The UniformSize field value."""
         member = self.get_member("UniformSize")
         if member is None:
@@ -563,7 +561,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @uniform_size.setter
-    def uniform_size(self, value: bool) -> None:
+    def uniform_size(self, value: primitives.Bool) -> None:
         """Set the UniformSize field value."""
         member = self.get_member("UniformSize")
         if member is not None:
@@ -612,7 +610,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def min_rotation(self) -> np.float32 | None:
+    def min_rotation(self) -> primitives.Float | None:
         """The MinRotation field value."""
         member = self.get_member("MinRotation")
         if member is None:
@@ -620,7 +618,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @min_rotation.setter
-    def min_rotation(self, value: np.float32) -> None:
+    def min_rotation(self, value: primitives.Float) -> None:
         """Set the MinRotation field value."""
         member = self.get_member("MinRotation")
         if member is not None:
@@ -631,7 +629,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def max_rotation(self) -> np.float32 | None:
+    def max_rotation(self) -> primitives.Float | None:
         """The MaxRotation field value."""
         member = self.get_member("MaxRotation")
         if member is None:
@@ -639,7 +637,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @max_rotation.setter
-    def max_rotation(self, value: np.float32) -> None:
+    def max_rotation(self, value: primitives.Float) -> None:
         """Set the MaxRotation field value."""
         member = self.get_member("MaxRotation")
         if member is not None:

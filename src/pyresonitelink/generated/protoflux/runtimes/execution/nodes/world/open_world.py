@@ -1,6 +1,7 @@
 """Generated component: OpenWorld."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -24,7 +25,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.OpenWorld"
 
-    def __init__(self, url: str | INodeObjectOutput[str] | None = None, world_link: str | INodeObjectOutput[IWorldLink] | None = None, relation: str | INodeValueOutput[WorldRelation] | None = None, get_existing: str | INodeValueOutput[bool] | None = None, loading_indicator: str | INodeValueOutput[bool] | None = None, auto_focus: str | INodeValueOutput[bool] | None = None, make_private: str | INodeValueOutput[bool] | None = None, on_open_start: str | INodeOperation | None = None, on_open_done: str | INodeOperation | None = None, on_world_ready: str | INodeOperation | None = None, on_open_fail: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | INodeObjectOutput[str] | None = None, world_link: str | INodeObjectOutput[IWorldLink] | None = None, relation: str | INodeValueOutput[WorldRelation] | None = None, get_existing: str | INodeValueOutput[primitives.Bool] | None = None, loading_indicator: str | INodeValueOutput[primitives.Bool] | None = None, auto_focus: str | INodeValueOutput[primitives.Bool] | None = None, make_private: str | INodeValueOutput[primitives.Bool] | None = None, on_open_start: str | INodeOperation | None = None, on_open_done: str | INodeOperation | None = None, on_world_ready: str | INodeOperation | None = None, on_open_fail: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -130,15 +131,15 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def get_existing(self) -> str | None:
-        """Target ID of the GetExisting reference (targets INodeValueOutput[bool])."""
+        """Target ID of the GetExisting reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("GetExisting")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @get_existing.setter
-    def get_existing(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the GetExisting reference by target ID or INodeValueOutput[bool] instance."""
+    def get_existing(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the GetExisting reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("GetExisting")
         if isinstance(member, members.Reference):
@@ -151,15 +152,15 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def loading_indicator(self) -> str | None:
-        """Target ID of the LoadingIndicator reference (targets INodeValueOutput[bool])."""
+        """Target ID of the LoadingIndicator reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("LoadingIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @loading_indicator.setter
-    def loading_indicator(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the LoadingIndicator reference by target ID or INodeValueOutput[bool] instance."""
+    def loading_indicator(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the LoadingIndicator reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("LoadingIndicator")
         if isinstance(member, members.Reference):
@@ -172,15 +173,15 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def auto_focus(self) -> str | None:
-        """Target ID of the AutoFocus reference (targets INodeValueOutput[bool])."""
+        """Target ID of the AutoFocus reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("AutoFocus")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @auto_focus.setter
-    def auto_focus(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the AutoFocus reference by target ID or INodeValueOutput[bool] instance."""
+    def auto_focus(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the AutoFocus reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("AutoFocus")
         if isinstance(member, members.Reference):
@@ -193,15 +194,15 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def make_private(self) -> str | None:
-        """Target ID of the MakePrivate reference (targets INodeValueOutput[bool])."""
+        """Target ID of the MakePrivate reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("MakePrivate")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @make_private.setter
-    def make_private(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the MakePrivate reference by target ID or INodeValueOutput[bool] instance."""
+    def make_private(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the MakePrivate reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("MakePrivate")
         if isinstance(member, members.Reference):

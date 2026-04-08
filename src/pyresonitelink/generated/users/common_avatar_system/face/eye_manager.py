@@ -1,7 +1,5 @@
 """Generated component: EyeManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.EyeManager"
 
-    def __init__(self, target_point: primitives.Float3 | None = None, left_eye_target_point: primitives.Float3 | None = None, right_eye_target_point: primitives.Float3 | None = None, left_eye_close: np.float32 | None = None, right_eye_close: np.float32 | None = None, combined_eye_close: np.float32 | None = None, left_eye_pupil_size_millimeters: np.float32 | None = None, right_eye_pupil_size_millimeters: np.float32 | None = None, combined_eye_pupil_size_millimeters: np.float32 | None = None, left_eye_widen: np.float32 | None = None, right_eye_widen: np.float32 | None = None, combined_eye_widen: np.float32 | None = None, left_eye_squeeze: np.float32 | None = None, right_eye_squeeze: np.float32 | None = None, combined_eye_squeeze: np.float32 | None = None, left_eye_frown: np.float32 | None = None, right_eye_frown: np.float32 | None = None, combined_eye_frown: np.float32 | None = None, left_eye_inner_brow_vertical: np.float32 | None = None, right_eye_inner_brow_vertical: np.float32 | None = None, combined_eye_inner_brow_vertical: np.float32 | None = None, left_eye_outer_brow_vertical: np.float32 | None = None, right_eye_outer_brow_vertical: np.float32 | None = None, combined_eye_outer_brow_vertical: np.float32 | None = None, eye_data_source: str | IEyeDataSourceComponent | None = None, simulating_user: str | User | None = None, simulate_on_host: bool | None = None, ignore_local_user_head: bool | None = None, user_head_weight: np.float32 | None = None, user_hand_weight: np.float32 | None = None, gripping_hand_weight: np.float32 | None = None, camera_weight: np.float32 | None = None, forced_camera_weight: np.float32 | None = None, eye_reference: str | Slot | None = None, eye_separation: np.float32 | None = None, saccade_speed: np.float32 | None = None, look_target_root: str | Slot | None = None, look_target_local_point: primitives.Float3 | None = None, left_eye_target_offset: primitives.Float3 | None = None, right_eye_target_offset: primitives.Float3 | None = None, look_target_offset: primitives.Float3 | None = None, min_random_saccade_interval: np.float32 | None = None, max_random_saccade_interval: np.float32 | None = None, min_target_saccade_interval: np.float32 | None = None, max_target_saccade_interval: np.float32 | None = None, max_random_saccade_offset: np.float32 | None = None, default_accept_angle: np.float32 | None = None, default_break_angle: np.float32 | None = None, head_accept_angle: np.float32 | None = None, head_break_angle: np.float32 | None = None, camera_accept_angle: np.float32 | None = None, camera_break_angle: np.float32 | None = None, hand_accept_angle: np.float32 | None = None, hand_break_angle: np.float32 | None = None, distance_compensation_exp: np.float32 | None = None, left_eye_close_override: np.float32 | None = None, right_eye_close_override: np.float32 | None = None, min_blink_interval: np.float32 | None = None, max_blink_interval: np.float32 | None = None, blink_min_speed: np.float32 | None = None, blink_max_speed: np.float32 | None = None, blink_speed_spread: np.float32 | None = None, min_pupil_size: np.float32 | None = None, max_pupil_size: np.float32 | None = None, pupil_size_noise_speed: np.float32 | None = None, pupil_size_noise_offset: np.float32 | None = None, eye_tracking_pupil_size_smooth_speed: np.float32 | None = None, mini_expression_probability: np.float32 | None = None, mini_expression_interval: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_point: primitives.Float3 | None = None, left_eye_target_point: primitives.Float3 | None = None, right_eye_target_point: primitives.Float3 | None = None, left_eye_close: primitives.Float | None = None, right_eye_close: primitives.Float | None = None, combined_eye_close: primitives.Float | None = None, left_eye_pupil_size_millimeters: primitives.Float | None = None, right_eye_pupil_size_millimeters: primitives.Float | None = None, combined_eye_pupil_size_millimeters: primitives.Float | None = None, left_eye_widen: primitives.Float | None = None, right_eye_widen: primitives.Float | None = None, combined_eye_widen: primitives.Float | None = None, left_eye_squeeze: primitives.Float | None = None, right_eye_squeeze: primitives.Float | None = None, combined_eye_squeeze: primitives.Float | None = None, left_eye_frown: primitives.Float | None = None, right_eye_frown: primitives.Float | None = None, combined_eye_frown: primitives.Float | None = None, left_eye_inner_brow_vertical: primitives.Float | None = None, right_eye_inner_brow_vertical: primitives.Float | None = None, combined_eye_inner_brow_vertical: primitives.Float | None = None, left_eye_outer_brow_vertical: primitives.Float | None = None, right_eye_outer_brow_vertical: primitives.Float | None = None, combined_eye_outer_brow_vertical: primitives.Float | None = None, eye_data_source: str | IEyeDataSourceComponent | None = None, simulating_user: str | User | None = None, simulate_on_host: primitives.Bool | None = None, ignore_local_user_head: primitives.Bool | None = None, user_head_weight: primitives.Float | None = None, user_hand_weight: primitives.Float | None = None, gripping_hand_weight: primitives.Float | None = None, camera_weight: primitives.Float | None = None, forced_camera_weight: primitives.Float | None = None, eye_reference: str | Slot | None = None, eye_separation: primitives.Float | None = None, saccade_speed: primitives.Float | None = None, look_target_root: str | Slot | None = None, look_target_local_point: primitives.Float3 | None = None, left_eye_target_offset: primitives.Float3 | None = None, right_eye_target_offset: primitives.Float3 | None = None, look_target_offset: primitives.Float3 | None = None, min_random_saccade_interval: primitives.Float | None = None, max_random_saccade_interval: primitives.Float | None = None, min_target_saccade_interval: primitives.Float | None = None, max_target_saccade_interval: primitives.Float | None = None, max_random_saccade_offset: primitives.Float | None = None, default_accept_angle: primitives.Float | None = None, default_break_angle: primitives.Float | None = None, head_accept_angle: primitives.Float | None = None, head_break_angle: primitives.Float | None = None, camera_accept_angle: primitives.Float | None = None, camera_break_angle: primitives.Float | None = None, hand_accept_angle: primitives.Float | None = None, hand_break_angle: primitives.Float | None = None, distance_compensation_exp: primitives.Float | None = None, left_eye_close_override: primitives.Float | None = None, right_eye_close_override: primitives.Float | None = None, min_blink_interval: primitives.Float | None = None, max_blink_interval: primitives.Float | None = None, blink_min_speed: primitives.Float | None = None, blink_max_speed: primitives.Float | None = None, blink_speed_spread: primitives.Float | None = None, min_pupil_size: primitives.Float | None = None, max_pupil_size: primitives.Float | None = None, pupil_size_noise_speed: primitives.Float | None = None, pupil_size_noise_offset: primitives.Float | None = None, eye_tracking_pupil_size_smooth_speed: primitives.Float | None = None, mini_expression_probability: primitives.Float | None = None, mini_expression_interval: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -295,7 +293,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def left_eye_close(self) -> np.float32 | None:
+    def left_eye_close(self) -> primitives.Float | None:
         """The LeftEyeClose field value."""
         member = self.get_member("LeftEyeClose")
         if member is None:
@@ -303,7 +301,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @left_eye_close.setter
-    def left_eye_close(self, value: np.float32) -> None:
+    def left_eye_close(self, value: primitives.Float) -> None:
         """Set the LeftEyeClose field value."""
         member = self.get_member("LeftEyeClose")
         if member is not None:
@@ -314,7 +312,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def right_eye_close(self) -> np.float32 | None:
+    def right_eye_close(self) -> primitives.Float | None:
         """The RightEyeClose field value."""
         member = self.get_member("RightEyeClose")
         if member is None:
@@ -322,7 +320,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @right_eye_close.setter
-    def right_eye_close(self, value: np.float32) -> None:
+    def right_eye_close(self, value: primitives.Float) -> None:
         """Set the RightEyeClose field value."""
         member = self.get_member("RightEyeClose")
         if member is not None:
@@ -333,7 +331,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def combined_eye_close(self) -> np.float32 | None:
+    def combined_eye_close(self) -> primitives.Float | None:
         """The CombinedEyeClose field value."""
         member = self.get_member("CombinedEyeClose")
         if member is None:
@@ -341,7 +339,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @combined_eye_close.setter
-    def combined_eye_close(self, value: np.float32) -> None:
+    def combined_eye_close(self, value: primitives.Float) -> None:
         """Set the CombinedEyeClose field value."""
         member = self.get_member("CombinedEyeClose")
         if member is not None:
@@ -352,7 +350,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def left_eye_pupil_size_millimeters(self) -> np.float32 | None:
+    def left_eye_pupil_size_millimeters(self) -> primitives.Float | None:
         """The LeftEyePupilSizeMillimeters field value."""
         member = self.get_member("LeftEyePupilSizeMillimeters")
         if member is None:
@@ -360,7 +358,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @left_eye_pupil_size_millimeters.setter
-    def left_eye_pupil_size_millimeters(self, value: np.float32) -> None:
+    def left_eye_pupil_size_millimeters(self, value: primitives.Float) -> None:
         """Set the LeftEyePupilSizeMillimeters field value."""
         member = self.get_member("LeftEyePupilSizeMillimeters")
         if member is not None:
@@ -371,7 +369,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def right_eye_pupil_size_millimeters(self) -> np.float32 | None:
+    def right_eye_pupil_size_millimeters(self) -> primitives.Float | None:
         """The RightEyePupilSizeMillimeters field value."""
         member = self.get_member("RightEyePupilSizeMillimeters")
         if member is None:
@@ -379,7 +377,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @right_eye_pupil_size_millimeters.setter
-    def right_eye_pupil_size_millimeters(self, value: np.float32) -> None:
+    def right_eye_pupil_size_millimeters(self, value: primitives.Float) -> None:
         """Set the RightEyePupilSizeMillimeters field value."""
         member = self.get_member("RightEyePupilSizeMillimeters")
         if member is not None:
@@ -390,7 +388,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def combined_eye_pupil_size_millimeters(self) -> np.float32 | None:
+    def combined_eye_pupil_size_millimeters(self) -> primitives.Float | None:
         """The CombinedEyePupilSizeMillimeters field value."""
         member = self.get_member("CombinedEyePupilSizeMillimeters")
         if member is None:
@@ -398,7 +396,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @combined_eye_pupil_size_millimeters.setter
-    def combined_eye_pupil_size_millimeters(self, value: np.float32) -> None:
+    def combined_eye_pupil_size_millimeters(self, value: primitives.Float) -> None:
         """Set the CombinedEyePupilSizeMillimeters field value."""
         member = self.get_member("CombinedEyePupilSizeMillimeters")
         if member is not None:
@@ -409,7 +407,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def left_eye_widen(self) -> np.float32 | None:
+    def left_eye_widen(self) -> primitives.Float | None:
         """The LeftEyeWiden field value."""
         member = self.get_member("LeftEyeWiden")
         if member is None:
@@ -417,7 +415,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @left_eye_widen.setter
-    def left_eye_widen(self, value: np.float32) -> None:
+    def left_eye_widen(self, value: primitives.Float) -> None:
         """Set the LeftEyeWiden field value."""
         member = self.get_member("LeftEyeWiden")
         if member is not None:
@@ -428,7 +426,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def right_eye_widen(self) -> np.float32 | None:
+    def right_eye_widen(self) -> primitives.Float | None:
         """The RightEyeWiden field value."""
         member = self.get_member("RightEyeWiden")
         if member is None:
@@ -436,7 +434,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @right_eye_widen.setter
-    def right_eye_widen(self, value: np.float32) -> None:
+    def right_eye_widen(self, value: primitives.Float) -> None:
         """Set the RightEyeWiden field value."""
         member = self.get_member("RightEyeWiden")
         if member is not None:
@@ -447,7 +445,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def combined_eye_widen(self) -> np.float32 | None:
+    def combined_eye_widen(self) -> primitives.Float | None:
         """The CombinedEyeWiden field value."""
         member = self.get_member("CombinedEyeWiden")
         if member is None:
@@ -455,7 +453,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @combined_eye_widen.setter
-    def combined_eye_widen(self, value: np.float32) -> None:
+    def combined_eye_widen(self, value: primitives.Float) -> None:
         """Set the CombinedEyeWiden field value."""
         member = self.get_member("CombinedEyeWiden")
         if member is not None:
@@ -466,7 +464,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def left_eye_squeeze(self) -> np.float32 | None:
+    def left_eye_squeeze(self) -> primitives.Float | None:
         """The LeftEyeSqueeze field value."""
         member = self.get_member("LeftEyeSqueeze")
         if member is None:
@@ -474,7 +472,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @left_eye_squeeze.setter
-    def left_eye_squeeze(self, value: np.float32) -> None:
+    def left_eye_squeeze(self, value: primitives.Float) -> None:
         """Set the LeftEyeSqueeze field value."""
         member = self.get_member("LeftEyeSqueeze")
         if member is not None:
@@ -485,7 +483,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def right_eye_squeeze(self) -> np.float32 | None:
+    def right_eye_squeeze(self) -> primitives.Float | None:
         """The RightEyeSqueeze field value."""
         member = self.get_member("RightEyeSqueeze")
         if member is None:
@@ -493,7 +491,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @right_eye_squeeze.setter
-    def right_eye_squeeze(self, value: np.float32) -> None:
+    def right_eye_squeeze(self, value: primitives.Float) -> None:
         """Set the RightEyeSqueeze field value."""
         member = self.get_member("RightEyeSqueeze")
         if member is not None:
@@ -504,7 +502,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def combined_eye_squeeze(self) -> np.float32 | None:
+    def combined_eye_squeeze(self) -> primitives.Float | None:
         """The CombinedEyeSqueeze field value."""
         member = self.get_member("CombinedEyeSqueeze")
         if member is None:
@@ -512,7 +510,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @combined_eye_squeeze.setter
-    def combined_eye_squeeze(self, value: np.float32) -> None:
+    def combined_eye_squeeze(self, value: primitives.Float) -> None:
         """Set the CombinedEyeSqueeze field value."""
         member = self.get_member("CombinedEyeSqueeze")
         if member is not None:
@@ -523,7 +521,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def left_eye_frown(self) -> np.float32 | None:
+    def left_eye_frown(self) -> primitives.Float | None:
         """The LeftEyeFrown field value."""
         member = self.get_member("LeftEyeFrown")
         if member is None:
@@ -531,7 +529,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @left_eye_frown.setter
-    def left_eye_frown(self, value: np.float32) -> None:
+    def left_eye_frown(self, value: primitives.Float) -> None:
         """Set the LeftEyeFrown field value."""
         member = self.get_member("LeftEyeFrown")
         if member is not None:
@@ -542,7 +540,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def right_eye_frown(self) -> np.float32 | None:
+    def right_eye_frown(self) -> primitives.Float | None:
         """The RightEyeFrown field value."""
         member = self.get_member("RightEyeFrown")
         if member is None:
@@ -550,7 +548,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @right_eye_frown.setter
-    def right_eye_frown(self, value: np.float32) -> None:
+    def right_eye_frown(self, value: primitives.Float) -> None:
         """Set the RightEyeFrown field value."""
         member = self.get_member("RightEyeFrown")
         if member is not None:
@@ -561,7 +559,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def combined_eye_frown(self) -> np.float32 | None:
+    def combined_eye_frown(self) -> primitives.Float | None:
         """The CombinedEyeFrown field value."""
         member = self.get_member("CombinedEyeFrown")
         if member is None:
@@ -569,7 +567,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @combined_eye_frown.setter
-    def combined_eye_frown(self, value: np.float32) -> None:
+    def combined_eye_frown(self, value: primitives.Float) -> None:
         """Set the CombinedEyeFrown field value."""
         member = self.get_member("CombinedEyeFrown")
         if member is not None:
@@ -580,7 +578,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def left_eye_inner_brow_vertical(self) -> np.float32 | None:
+    def left_eye_inner_brow_vertical(self) -> primitives.Float | None:
         """The LeftEyeInnerBrowVertical field value."""
         member = self.get_member("LeftEyeInnerBrowVertical")
         if member is None:
@@ -588,7 +586,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @left_eye_inner_brow_vertical.setter
-    def left_eye_inner_brow_vertical(self, value: np.float32) -> None:
+    def left_eye_inner_brow_vertical(self, value: primitives.Float) -> None:
         """Set the LeftEyeInnerBrowVertical field value."""
         member = self.get_member("LeftEyeInnerBrowVertical")
         if member is not None:
@@ -599,7 +597,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def right_eye_inner_brow_vertical(self) -> np.float32 | None:
+    def right_eye_inner_brow_vertical(self) -> primitives.Float | None:
         """The RightEyeInnerBrowVertical field value."""
         member = self.get_member("RightEyeInnerBrowVertical")
         if member is None:
@@ -607,7 +605,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @right_eye_inner_brow_vertical.setter
-    def right_eye_inner_brow_vertical(self, value: np.float32) -> None:
+    def right_eye_inner_brow_vertical(self, value: primitives.Float) -> None:
         """Set the RightEyeInnerBrowVertical field value."""
         member = self.get_member("RightEyeInnerBrowVertical")
         if member is not None:
@@ -618,7 +616,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def combined_eye_inner_brow_vertical(self) -> np.float32 | None:
+    def combined_eye_inner_brow_vertical(self) -> primitives.Float | None:
         """The CombinedEyeInnerBrowVertical field value."""
         member = self.get_member("CombinedEyeInnerBrowVertical")
         if member is None:
@@ -626,7 +624,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @combined_eye_inner_brow_vertical.setter
-    def combined_eye_inner_brow_vertical(self, value: np.float32) -> None:
+    def combined_eye_inner_brow_vertical(self, value: primitives.Float) -> None:
         """Set the CombinedEyeInnerBrowVertical field value."""
         member = self.get_member("CombinedEyeInnerBrowVertical")
         if member is not None:
@@ -637,7 +635,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def left_eye_outer_brow_vertical(self) -> np.float32 | None:
+    def left_eye_outer_brow_vertical(self) -> primitives.Float | None:
         """The LeftEyeOuterBrowVertical field value."""
         member = self.get_member("LeftEyeOuterBrowVertical")
         if member is None:
@@ -645,7 +643,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @left_eye_outer_brow_vertical.setter
-    def left_eye_outer_brow_vertical(self, value: np.float32) -> None:
+    def left_eye_outer_brow_vertical(self, value: primitives.Float) -> None:
         """Set the LeftEyeOuterBrowVertical field value."""
         member = self.get_member("LeftEyeOuterBrowVertical")
         if member is not None:
@@ -656,7 +654,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def right_eye_outer_brow_vertical(self) -> np.float32 | None:
+    def right_eye_outer_brow_vertical(self) -> primitives.Float | None:
         """The RightEyeOuterBrowVertical field value."""
         member = self.get_member("RightEyeOuterBrowVertical")
         if member is None:
@@ -664,7 +662,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @right_eye_outer_brow_vertical.setter
-    def right_eye_outer_brow_vertical(self, value: np.float32) -> None:
+    def right_eye_outer_brow_vertical(self, value: primitives.Float) -> None:
         """Set the RightEyeOuterBrowVertical field value."""
         member = self.get_member("RightEyeOuterBrowVertical")
         if member is not None:
@@ -675,7 +673,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def combined_eye_outer_brow_vertical(self) -> np.float32 | None:
+    def combined_eye_outer_brow_vertical(self) -> primitives.Float | None:
         """The CombinedEyeOuterBrowVertical field value."""
         member = self.get_member("CombinedEyeOuterBrowVertical")
         if member is None:
@@ -683,7 +681,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @combined_eye_outer_brow_vertical.setter
-    def combined_eye_outer_brow_vertical(self, value: np.float32) -> None:
+    def combined_eye_outer_brow_vertical(self, value: primitives.Float) -> None:
         """Set the CombinedEyeOuterBrowVertical field value."""
         member = self.get_member("CombinedEyeOuterBrowVertical")
         if member is not None:
@@ -736,7 +734,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def simulate_on_host(self) -> bool | None:
+    def simulate_on_host(self) -> primitives.Bool | None:
         """The SimulateOnHost field value."""
         member = self.get_member("SimulateOnHost")
         if member is None:
@@ -744,7 +742,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @simulate_on_host.setter
-    def simulate_on_host(self, value: bool) -> None:
+    def simulate_on_host(self, value: primitives.Bool) -> None:
         """Set the SimulateOnHost field value."""
         member = self.get_member("SimulateOnHost")
         if member is not None:
@@ -755,7 +753,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ignore_local_user_head(self) -> bool | None:
+    def ignore_local_user_head(self) -> primitives.Bool | None:
         """The IgnoreLocalUserHead field value."""
         member = self.get_member("IgnoreLocalUserHead")
         if member is None:
@@ -763,7 +761,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ignore_local_user_head.setter
-    def ignore_local_user_head(self, value: bool) -> None:
+    def ignore_local_user_head(self, value: primitives.Bool) -> None:
         """Set the IgnoreLocalUserHead field value."""
         member = self.get_member("IgnoreLocalUserHead")
         if member is not None:
@@ -774,7 +772,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def user_head_weight(self) -> np.float32 | None:
+    def user_head_weight(self) -> primitives.Float | None:
         """The UserHeadWeight field value."""
         member = self.get_member("UserHeadWeight")
         if member is None:
@@ -782,7 +780,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @user_head_weight.setter
-    def user_head_weight(self, value: np.float32) -> None:
+    def user_head_weight(self, value: primitives.Float) -> None:
         """Set the UserHeadWeight field value."""
         member = self.get_member("UserHeadWeight")
         if member is not None:
@@ -793,7 +791,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def user_hand_weight(self) -> np.float32 | None:
+    def user_hand_weight(self) -> primitives.Float | None:
         """The UserHandWeight field value."""
         member = self.get_member("UserHandWeight")
         if member is None:
@@ -801,7 +799,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @user_hand_weight.setter
-    def user_hand_weight(self, value: np.float32) -> None:
+    def user_hand_weight(self, value: primitives.Float) -> None:
         """Set the UserHandWeight field value."""
         member = self.get_member("UserHandWeight")
         if member is not None:
@@ -812,7 +810,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def gripping_hand_weight(self) -> np.float32 | None:
+    def gripping_hand_weight(self) -> primitives.Float | None:
         """The GrippingHandWeight field value."""
         member = self.get_member("GrippingHandWeight")
         if member is None:
@@ -820,7 +818,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @gripping_hand_weight.setter
-    def gripping_hand_weight(self, value: np.float32) -> None:
+    def gripping_hand_weight(self, value: primitives.Float) -> None:
         """Set the GrippingHandWeight field value."""
         member = self.get_member("GrippingHandWeight")
         if member is not None:
@@ -831,7 +829,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def camera_weight(self) -> np.float32 | None:
+    def camera_weight(self) -> primitives.Float | None:
         """The CameraWeight field value."""
         member = self.get_member("CameraWeight")
         if member is None:
@@ -839,7 +837,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @camera_weight.setter
-    def camera_weight(self, value: np.float32) -> None:
+    def camera_weight(self, value: primitives.Float) -> None:
         """Set the CameraWeight field value."""
         member = self.get_member("CameraWeight")
         if member is not None:
@@ -850,7 +848,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def forced_camera_weight(self) -> np.float32 | None:
+    def forced_camera_weight(self) -> primitives.Float | None:
         """The ForcedCameraWeight field value."""
         member = self.get_member("ForcedCameraWeight")
         if member is None:
@@ -858,7 +856,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @forced_camera_weight.setter
-    def forced_camera_weight(self, value: np.float32) -> None:
+    def forced_camera_weight(self, value: primitives.Float) -> None:
         """Set the ForcedCameraWeight field value."""
         member = self.get_member("ForcedCameraWeight")
         if member is not None:
@@ -890,7 +888,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def eye_separation(self) -> np.float32 | None:
+    def eye_separation(self) -> primitives.Float | None:
         """The EyeSeparation field value."""
         member = self.get_member("EyeSeparation")
         if member is None:
@@ -898,7 +896,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @eye_separation.setter
-    def eye_separation(self, value: np.float32) -> None:
+    def eye_separation(self, value: primitives.Float) -> None:
         """Set the EyeSeparation field value."""
         member = self.get_member("EyeSeparation")
         if member is not None:
@@ -909,7 +907,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def saccade_speed(self) -> np.float32 | None:
+    def saccade_speed(self) -> primitives.Float | None:
         """The SaccadeSpeed field value."""
         member = self.get_member("SaccadeSpeed")
         if member is None:
@@ -917,7 +915,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @saccade_speed.setter
-    def saccade_speed(self, value: np.float32) -> None:
+    def saccade_speed(self, value: primitives.Float) -> None:
         """Set the SaccadeSpeed field value."""
         member = self.get_member("SaccadeSpeed")
         if member is not None:
@@ -1025,7 +1023,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_random_saccade_interval(self) -> np.float32 | None:
+    def min_random_saccade_interval(self) -> primitives.Float | None:
         """The MinRandomSaccadeInterval field value."""
         member = self.get_member("MinRandomSaccadeInterval")
         if member is None:
@@ -1033,7 +1031,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_random_saccade_interval.setter
-    def min_random_saccade_interval(self, value: np.float32) -> None:
+    def min_random_saccade_interval(self, value: primitives.Float) -> None:
         """Set the MinRandomSaccadeInterval field value."""
         member = self.get_member("MinRandomSaccadeInterval")
         if member is not None:
@@ -1044,7 +1042,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_random_saccade_interval(self) -> np.float32 | None:
+    def max_random_saccade_interval(self) -> primitives.Float | None:
         """The MaxRandomSaccadeInterval field value."""
         member = self.get_member("MaxRandomSaccadeInterval")
         if member is None:
@@ -1052,7 +1050,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_random_saccade_interval.setter
-    def max_random_saccade_interval(self, value: np.float32) -> None:
+    def max_random_saccade_interval(self, value: primitives.Float) -> None:
         """Set the MaxRandomSaccadeInterval field value."""
         member = self.get_member("MaxRandomSaccadeInterval")
         if member is not None:
@@ -1063,7 +1061,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_target_saccade_interval(self) -> np.float32 | None:
+    def min_target_saccade_interval(self) -> primitives.Float | None:
         """The MinTargetSaccadeInterval field value."""
         member = self.get_member("MinTargetSaccadeInterval")
         if member is None:
@@ -1071,7 +1069,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_target_saccade_interval.setter
-    def min_target_saccade_interval(self, value: np.float32) -> None:
+    def min_target_saccade_interval(self, value: primitives.Float) -> None:
         """Set the MinTargetSaccadeInterval field value."""
         member = self.get_member("MinTargetSaccadeInterval")
         if member is not None:
@@ -1082,7 +1080,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_target_saccade_interval(self) -> np.float32 | None:
+    def max_target_saccade_interval(self) -> primitives.Float | None:
         """The MaxTargetSaccadeInterval field value."""
         member = self.get_member("MaxTargetSaccadeInterval")
         if member is None:
@@ -1090,7 +1088,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_target_saccade_interval.setter
-    def max_target_saccade_interval(self, value: np.float32) -> None:
+    def max_target_saccade_interval(self, value: primitives.Float) -> None:
         """Set the MaxTargetSaccadeInterval field value."""
         member = self.get_member("MaxTargetSaccadeInterval")
         if member is not None:
@@ -1101,7 +1099,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_random_saccade_offset(self) -> np.float32 | None:
+    def max_random_saccade_offset(self) -> primitives.Float | None:
         """The MaxRandomSaccadeOffset field value."""
         member = self.get_member("MaxRandomSaccadeOffset")
         if member is None:
@@ -1109,7 +1107,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_random_saccade_offset.setter
-    def max_random_saccade_offset(self, value: np.float32) -> None:
+    def max_random_saccade_offset(self, value: primitives.Float) -> None:
         """Set the MaxRandomSaccadeOffset field value."""
         member = self.get_member("MaxRandomSaccadeOffset")
         if member is not None:
@@ -1120,7 +1118,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def default_accept_angle(self) -> np.float32 | None:
+    def default_accept_angle(self) -> primitives.Float | None:
         """The DefaultAcceptAngle field value."""
         member = self.get_member("DefaultAcceptAngle")
         if member is None:
@@ -1128,7 +1126,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @default_accept_angle.setter
-    def default_accept_angle(self, value: np.float32) -> None:
+    def default_accept_angle(self, value: primitives.Float) -> None:
         """Set the DefaultAcceptAngle field value."""
         member = self.get_member("DefaultAcceptAngle")
         if member is not None:
@@ -1139,7 +1137,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def default_break_angle(self) -> np.float32 | None:
+    def default_break_angle(self) -> primitives.Float | None:
         """The DefaultBreakAngle field value."""
         member = self.get_member("DefaultBreakAngle")
         if member is None:
@@ -1147,7 +1145,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @default_break_angle.setter
-    def default_break_angle(self, value: np.float32) -> None:
+    def default_break_angle(self, value: primitives.Float) -> None:
         """Set the DefaultBreakAngle field value."""
         member = self.get_member("DefaultBreakAngle")
         if member is not None:
@@ -1158,7 +1156,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def head_accept_angle(self) -> np.float32 | None:
+    def head_accept_angle(self) -> primitives.Float | None:
         """The HeadAcceptAngle field value."""
         member = self.get_member("HeadAcceptAngle")
         if member is None:
@@ -1166,7 +1164,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @head_accept_angle.setter
-    def head_accept_angle(self, value: np.float32) -> None:
+    def head_accept_angle(self, value: primitives.Float) -> None:
         """Set the HeadAcceptAngle field value."""
         member = self.get_member("HeadAcceptAngle")
         if member is not None:
@@ -1177,7 +1175,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def head_break_angle(self) -> np.float32 | None:
+    def head_break_angle(self) -> primitives.Float | None:
         """The HeadBreakAngle field value."""
         member = self.get_member("HeadBreakAngle")
         if member is None:
@@ -1185,7 +1183,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @head_break_angle.setter
-    def head_break_angle(self, value: np.float32) -> None:
+    def head_break_angle(self, value: primitives.Float) -> None:
         """Set the HeadBreakAngle field value."""
         member = self.get_member("HeadBreakAngle")
         if member is not None:
@@ -1196,7 +1194,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def camera_accept_angle(self) -> np.float32 | None:
+    def camera_accept_angle(self) -> primitives.Float | None:
         """The CameraAcceptAngle field value."""
         member = self.get_member("CameraAcceptAngle")
         if member is None:
@@ -1204,7 +1202,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @camera_accept_angle.setter
-    def camera_accept_angle(self, value: np.float32) -> None:
+    def camera_accept_angle(self, value: primitives.Float) -> None:
         """Set the CameraAcceptAngle field value."""
         member = self.get_member("CameraAcceptAngle")
         if member is not None:
@@ -1215,7 +1213,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def camera_break_angle(self) -> np.float32 | None:
+    def camera_break_angle(self) -> primitives.Float | None:
         """The CameraBreakAngle field value."""
         member = self.get_member("CameraBreakAngle")
         if member is None:
@@ -1223,7 +1221,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @camera_break_angle.setter
-    def camera_break_angle(self, value: np.float32) -> None:
+    def camera_break_angle(self, value: primitives.Float) -> None:
         """Set the CameraBreakAngle field value."""
         member = self.get_member("CameraBreakAngle")
         if member is not None:
@@ -1234,7 +1232,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def hand_accept_angle(self) -> np.float32 | None:
+    def hand_accept_angle(self) -> primitives.Float | None:
         """The HandAcceptAngle field value."""
         member = self.get_member("HandAcceptAngle")
         if member is None:
@@ -1242,7 +1240,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @hand_accept_angle.setter
-    def hand_accept_angle(self, value: np.float32) -> None:
+    def hand_accept_angle(self, value: primitives.Float) -> None:
         """Set the HandAcceptAngle field value."""
         member = self.get_member("HandAcceptAngle")
         if member is not None:
@@ -1253,7 +1251,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def hand_break_angle(self) -> np.float32 | None:
+    def hand_break_angle(self) -> primitives.Float | None:
         """The HandBreakAngle field value."""
         member = self.get_member("HandBreakAngle")
         if member is None:
@@ -1261,7 +1259,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @hand_break_angle.setter
-    def hand_break_angle(self, value: np.float32) -> None:
+    def hand_break_angle(self, value: primitives.Float) -> None:
         """Set the HandBreakAngle field value."""
         member = self.get_member("HandBreakAngle")
         if member is not None:
@@ -1272,7 +1270,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def distance_compensation_exp(self) -> np.float32 | None:
+    def distance_compensation_exp(self) -> primitives.Float | None:
         """The DistanceCompensationExp field value."""
         member = self.get_member("DistanceCompensationExp")
         if member is None:
@@ -1280,7 +1278,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @distance_compensation_exp.setter
-    def distance_compensation_exp(self, value: np.float32) -> None:
+    def distance_compensation_exp(self, value: primitives.Float) -> None:
         """Set the DistanceCompensationExp field value."""
         member = self.get_member("DistanceCompensationExp")
         if member is not None:
@@ -1291,7 +1289,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def left_eye_close_override(self) -> np.float32 | None:
+    def left_eye_close_override(self) -> primitives.Float | None:
         """The LeftEyeCloseOverride field value."""
         member = self.get_member("LeftEyeCloseOverride")
         if member is None:
@@ -1299,7 +1297,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @left_eye_close_override.setter
-    def left_eye_close_override(self, value: np.float32) -> None:
+    def left_eye_close_override(self, value: primitives.Float) -> None:
         """Set the LeftEyeCloseOverride field value."""
         member = self.get_member("LeftEyeCloseOverride")
         if member is not None:
@@ -1310,7 +1308,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def right_eye_close_override(self) -> np.float32 | None:
+    def right_eye_close_override(self) -> primitives.Float | None:
         """The RightEyeCloseOverride field value."""
         member = self.get_member("RightEyeCloseOverride")
         if member is None:
@@ -1318,7 +1316,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @right_eye_close_override.setter
-    def right_eye_close_override(self, value: np.float32) -> None:
+    def right_eye_close_override(self, value: primitives.Float) -> None:
         """Set the RightEyeCloseOverride field value."""
         member = self.get_member("RightEyeCloseOverride")
         if member is not None:
@@ -1329,7 +1327,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_blink_interval(self) -> np.float32 | None:
+    def min_blink_interval(self) -> primitives.Float | None:
         """The MinBlinkInterval field value."""
         member = self.get_member("MinBlinkInterval")
         if member is None:
@@ -1337,7 +1335,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_blink_interval.setter
-    def min_blink_interval(self, value: np.float32) -> None:
+    def min_blink_interval(self, value: primitives.Float) -> None:
         """Set the MinBlinkInterval field value."""
         member = self.get_member("MinBlinkInterval")
         if member is not None:
@@ -1348,7 +1346,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_blink_interval(self) -> np.float32 | None:
+    def max_blink_interval(self) -> primitives.Float | None:
         """The MaxBlinkInterval field value."""
         member = self.get_member("MaxBlinkInterval")
         if member is None:
@@ -1356,7 +1354,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_blink_interval.setter
-    def max_blink_interval(self, value: np.float32) -> None:
+    def max_blink_interval(self, value: primitives.Float) -> None:
         """Set the MaxBlinkInterval field value."""
         member = self.get_member("MaxBlinkInterval")
         if member is not None:
@@ -1367,7 +1365,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def blink_min_speed(self) -> np.float32 | None:
+    def blink_min_speed(self) -> primitives.Float | None:
         """The BlinkMinSpeed field value."""
         member = self.get_member("BlinkMinSpeed")
         if member is None:
@@ -1375,7 +1373,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @blink_min_speed.setter
-    def blink_min_speed(self, value: np.float32) -> None:
+    def blink_min_speed(self, value: primitives.Float) -> None:
         """Set the BlinkMinSpeed field value."""
         member = self.get_member("BlinkMinSpeed")
         if member is not None:
@@ -1386,7 +1384,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def blink_max_speed(self) -> np.float32 | None:
+    def blink_max_speed(self) -> primitives.Float | None:
         """The BlinkMaxSpeed field value."""
         member = self.get_member("BlinkMaxSpeed")
         if member is None:
@@ -1394,7 +1392,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @blink_max_speed.setter
-    def blink_max_speed(self, value: np.float32) -> None:
+    def blink_max_speed(self, value: primitives.Float) -> None:
         """Set the BlinkMaxSpeed field value."""
         member = self.get_member("BlinkMaxSpeed")
         if member is not None:
@@ -1405,7 +1403,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def blink_speed_spread(self) -> np.float32 | None:
+    def blink_speed_spread(self) -> primitives.Float | None:
         """The BlinkSpeedSpread field value."""
         member = self.get_member("BlinkSpeedSpread")
         if member is None:
@@ -1413,7 +1411,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @blink_speed_spread.setter
-    def blink_speed_spread(self, value: np.float32) -> None:
+    def blink_speed_spread(self, value: primitives.Float) -> None:
         """Set the BlinkSpeedSpread field value."""
         member = self.get_member("BlinkSpeedSpread")
         if member is not None:
@@ -1424,7 +1422,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_pupil_size(self) -> np.float32 | None:
+    def min_pupil_size(self) -> primitives.Float | None:
         """The MinPupilSize field value."""
         member = self.get_member("MinPupilSize")
         if member is None:
@@ -1432,7 +1430,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_pupil_size.setter
-    def min_pupil_size(self, value: np.float32) -> None:
+    def min_pupil_size(self, value: primitives.Float) -> None:
         """Set the MinPupilSize field value."""
         member = self.get_member("MinPupilSize")
         if member is not None:
@@ -1443,7 +1441,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_pupil_size(self) -> np.float32 | None:
+    def max_pupil_size(self) -> primitives.Float | None:
         """The MaxPupilSize field value."""
         member = self.get_member("MaxPupilSize")
         if member is None:
@@ -1451,7 +1449,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_pupil_size.setter
-    def max_pupil_size(self, value: np.float32) -> None:
+    def max_pupil_size(self, value: primitives.Float) -> None:
         """Set the MaxPupilSize field value."""
         member = self.get_member("MaxPupilSize")
         if member is not None:
@@ -1462,7 +1460,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def pupil_size_noise_speed(self) -> np.float32 | None:
+    def pupil_size_noise_speed(self) -> primitives.Float | None:
         """The PupilSizeNoiseSpeed field value."""
         member = self.get_member("PupilSizeNoiseSpeed")
         if member is None:
@@ -1470,7 +1468,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @pupil_size_noise_speed.setter
-    def pupil_size_noise_speed(self, value: np.float32) -> None:
+    def pupil_size_noise_speed(self, value: primitives.Float) -> None:
         """Set the PupilSizeNoiseSpeed field value."""
         member = self.get_member("PupilSizeNoiseSpeed")
         if member is not None:
@@ -1481,7 +1479,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def pupil_size_noise_offset(self) -> np.float32 | None:
+    def pupil_size_noise_offset(self) -> primitives.Float | None:
         """The PupilSizeNoiseOffset field value."""
         member = self.get_member("PupilSizeNoiseOffset")
         if member is None:
@@ -1489,7 +1487,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @pupil_size_noise_offset.setter
-    def pupil_size_noise_offset(self, value: np.float32) -> None:
+    def pupil_size_noise_offset(self, value: primitives.Float) -> None:
         """Set the PupilSizeNoiseOffset field value."""
         member = self.get_member("PupilSizeNoiseOffset")
         if member is not None:
@@ -1500,7 +1498,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def eye_tracking_pupil_size_smooth_speed(self) -> np.float32 | None:
+    def eye_tracking_pupil_size_smooth_speed(self) -> primitives.Float | None:
         """The EyeTrackingPupilSizeSmoothSpeed field value."""
         member = self.get_member("EyeTrackingPupilSizeSmoothSpeed")
         if member is None:
@@ -1508,7 +1506,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @eye_tracking_pupil_size_smooth_speed.setter
-    def eye_tracking_pupil_size_smooth_speed(self, value: np.float32) -> None:
+    def eye_tracking_pupil_size_smooth_speed(self, value: primitives.Float) -> None:
         """Set the EyeTrackingPupilSizeSmoothSpeed field value."""
         member = self.get_member("EyeTrackingPupilSizeSmoothSpeed")
         if member is not None:
@@ -1519,7 +1517,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def mini_expression_probability(self) -> np.float32 | None:
+    def mini_expression_probability(self) -> primitives.Float | None:
         """The MiniExpressionProbability field value."""
         member = self.get_member("MiniExpressionProbability")
         if member is None:
@@ -1527,7 +1525,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @mini_expression_probability.setter
-    def mini_expression_probability(self, value: np.float32) -> None:
+    def mini_expression_probability(self, value: primitives.Float) -> None:
         """Set the MiniExpressionProbability field value."""
         member = self.get_member("MiniExpressionProbability")
         if member is not None:
@@ -1538,7 +1536,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def mini_expression_interval(self) -> np.float32 | None:
+    def mini_expression_interval(self) -> primitives.Float | None:
         """The MiniExpressionInterval field value."""
         member = self.get_member("MiniExpressionInterval")
         if member is None:
@@ -1546,7 +1544,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @mini_expression_interval.setter
-    def mini_expression_interval(self, value: np.float32) -> None:
+    def mini_expression_interval(self, value: primitives.Float) -> None:
         """Set the MiniExpressionInterval field value."""
         member = self.get_member("MiniExpressionInterval")
         if member is not None:

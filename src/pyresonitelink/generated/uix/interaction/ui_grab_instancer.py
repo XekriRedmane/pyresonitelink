@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -17,7 +18,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.UIGrabInstancer"
 
-    def __init__(self, template: str | Slot | None = None, container_template: str | Slot | None = None, container_template_instance_root: str | Slot | None = None, activate_root: bool | None = None, enable_grabbable: bool | None = None, set_instance_persistent: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, template: str | Slot | None = None, container_template: str | Slot | None = None, container_template_instance_root: str | Slot | None = None, activate_root: primitives.Bool | None = None, enable_grabbable: primitives.Bool | None = None, set_instance_persistent: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -107,7 +108,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
             )
 
     @property
-    def activate_root(self) -> bool | None:
+    def activate_root(self) -> primitives.Bool | None:
         """The ActivateRoot field value."""
         member = self.get_member("ActivateRoot")
         if member is None:
@@ -115,7 +116,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @activate_root.setter
-    def activate_root(self, value: bool) -> None:
+    def activate_root(self, value: primitives.Bool) -> None:
         """Set the ActivateRoot field value."""
         member = self.get_member("ActivateRoot")
         if member is not None:
@@ -126,7 +127,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
             )
 
     @property
-    def enable_grabbable(self) -> bool | None:
+    def enable_grabbable(self) -> primitives.Bool | None:
         """The EnableGrabbable field value."""
         member = self.get_member("EnableGrabbable")
         if member is None:
@@ -134,7 +135,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @enable_grabbable.setter
-    def enable_grabbable(self, value: bool) -> None:
+    def enable_grabbable(self, value: primitives.Bool) -> None:
         """Set the EnableGrabbable field value."""
         member = self.get_member("EnableGrabbable")
         if member is not None:
@@ -145,7 +146,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
             )
 
     @property
-    def set_instance_persistent(self) -> bool | None:
+    def set_instance_persistent(self) -> primitives.Bool | None:
         """The SetInstancePersistent field value."""
         member = self.get_member("SetInstancePersistent")
         if member is None:
@@ -153,7 +154,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @set_instance_persistent.setter
-    def set_instance_persistent(self, value: bool) -> None:
+    def set_instance_persistent(self, value: primitives.Bool) -> None:
         """Set the SetInstancePersistent field value."""
         member = self.get_member("SetInstancePersistent")
         if member is not None:

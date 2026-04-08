@@ -1,6 +1,7 @@
 """Generated component: GrabTransformReset."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.igrab_event_receiver import IGrabEventReceiver
@@ -15,7 +16,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabTransformReset"
 
-    def __init__(self, reset_position_on_grab: bool | None = None, reset_rotation_on_grab: bool | None = None, reset_scale_on_grab: bool | None = None, reset_position_on_release: bool | None = None, reset_rotation_on_release: bool | None = None, reset_scale_on_release: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reset_position_on_grab: primitives.Bool | None = None, reset_rotation_on_grab: primitives.Bool | None = None, reset_scale_on_grab: primitives.Bool | None = None, reset_position_on_release: primitives.Bool | None = None, reset_rotation_on_release: primitives.Bool | None = None, reset_scale_on_release: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +43,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
             self.reset_scale_on_release = reset_scale_on_release
 
     @property
-    def reset_position_on_grab(self) -> bool | None:
+    def reset_position_on_grab(self) -> primitives.Bool | None:
         """The ResetPositionOnGrab field value."""
         member = self.get_member("ResetPositionOnGrab")
         if member is None:
@@ -50,7 +51,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @reset_position_on_grab.setter
-    def reset_position_on_grab(self, value: bool) -> None:
+    def reset_position_on_grab(self, value: primitives.Bool) -> None:
         """Set the ResetPositionOnGrab field value."""
         member = self.get_member("ResetPositionOnGrab")
         if member is not None:
@@ -61,7 +62,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
             )
 
     @property
-    def reset_rotation_on_grab(self) -> bool | None:
+    def reset_rotation_on_grab(self) -> primitives.Bool | None:
         """The ResetRotationOnGrab field value."""
         member = self.get_member("ResetRotationOnGrab")
         if member is None:
@@ -69,7 +70,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @reset_rotation_on_grab.setter
-    def reset_rotation_on_grab(self, value: bool) -> None:
+    def reset_rotation_on_grab(self, value: primitives.Bool) -> None:
         """Set the ResetRotationOnGrab field value."""
         member = self.get_member("ResetRotationOnGrab")
         if member is not None:
@@ -80,7 +81,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
             )
 
     @property
-    def reset_scale_on_grab(self) -> bool | None:
+    def reset_scale_on_grab(self) -> primitives.Bool | None:
         """The ResetScaleOnGrab field value."""
         member = self.get_member("ResetScaleOnGrab")
         if member is None:
@@ -88,7 +89,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @reset_scale_on_grab.setter
-    def reset_scale_on_grab(self, value: bool) -> None:
+    def reset_scale_on_grab(self, value: primitives.Bool) -> None:
         """Set the ResetScaleOnGrab field value."""
         member = self.get_member("ResetScaleOnGrab")
         if member is not None:
@@ -99,7 +100,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
             )
 
     @property
-    def reset_position_on_release(self) -> bool | None:
+    def reset_position_on_release(self) -> primitives.Bool | None:
         """The ResetPositionOnRelease field value."""
         member = self.get_member("ResetPositionOnRelease")
         if member is None:
@@ -107,7 +108,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @reset_position_on_release.setter
-    def reset_position_on_release(self, value: bool) -> None:
+    def reset_position_on_release(self, value: primitives.Bool) -> None:
         """Set the ResetPositionOnRelease field value."""
         member = self.get_member("ResetPositionOnRelease")
         if member is not None:
@@ -118,7 +119,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
             )
 
     @property
-    def reset_rotation_on_release(self) -> bool | None:
+    def reset_rotation_on_release(self) -> primitives.Bool | None:
         """The ResetRotationOnRelease field value."""
         member = self.get_member("ResetRotationOnRelease")
         if member is None:
@@ -126,7 +127,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @reset_rotation_on_release.setter
-    def reset_rotation_on_release(self, value: bool) -> None:
+    def reset_rotation_on_release(self, value: primitives.Bool) -> None:
         """Set the ResetRotationOnRelease field value."""
         member = self.get_member("ResetRotationOnRelease")
         if member is not None:
@@ -137,7 +138,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
             )
 
     @property
-    def reset_scale_on_release(self) -> bool | None:
+    def reset_scale_on_release(self) -> primitives.Bool | None:
         """The ResetScaleOnRelease field value."""
         member = self.get_member("ResetScaleOnRelease")
         if member is None:
@@ -145,7 +146,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @reset_scale_on_release.setter
-    def reset_scale_on_release(self, value: bool) -> None:
+    def reset_scale_on_release(self, value: primitives.Bool) -> None:
         """Set the ResetScaleOnRelease field value."""
         member = self.get_member("ResetScaleOnRelease")
         if member is not None:

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.isync_ref import ISyncRef
@@ -17,7 +18,7 @@ class ReferenceReceiver(GeneratedComponent, IUIGrabReceiver, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ReferenceReceiver"
 
-    def __init__(self, target_reference: str | ISyncRef | None = None, undoable: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_reference: str | ISyncRef | None = None, undoable: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -53,7 +54,7 @@ class ReferenceReceiver(GeneratedComponent, IUIGrabReceiver, IWorldEventReceiver
             )
 
     @property
-    def undoable(self) -> bool | None:
+    def undoable(self) -> primitives.Bool | None:
         """The Undoable field value."""
         member = self.get_member("Undoable")
         if member is None:
@@ -61,7 +62,7 @@ class ReferenceReceiver(GeneratedComponent, IUIGrabReceiver, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @undoable.setter
-    def undoable(self, value: bool) -> None:
+    def undoable(self, value: primitives.Bool) -> None:
         """Set the Undoable field value."""
         member = self.get_member("Undoable")
         if member is not None:

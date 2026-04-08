@@ -22,7 +22,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldTextRendererWizard"
 
-    def __init__(self, root: str | Slot | None = None, material: str | IAssetProvider[Material] | None = None, font: str | IAssetProvider[FontSet] | None = None, process_disabled: bool | None = None, process_standalone_renderers: bool | None = None, process_uix_renderers: bool | None = None, color: primitives.ColorX | None = None, tag: str | TextField | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, root: str | Slot | None = None, material: str | IAssetProvider[Material] | None = None, font: str | IAssetProvider[FontSet] | None = None, process_disabled: primitives.Bool | None = None, process_standalone_renderers: primitives.Bool | None = None, process_uix_renderers: primitives.Bool | None = None, color: primitives.ColorX | None = None, tag: str | TextField | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -118,7 +118,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
             )
 
     @property
-    def process_disabled(self) -> bool | None:
+    def process_disabled(self) -> primitives.Bool | None:
         """The ProcessDisabled field value."""
         member = self.get_member("ProcessDisabled")
         if member is None:
@@ -126,7 +126,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
         return getattr(member, 'value', None)
 
     @process_disabled.setter
-    def process_disabled(self, value: bool) -> None:
+    def process_disabled(self, value: primitives.Bool) -> None:
         """Set the ProcessDisabled field value."""
         member = self.get_member("ProcessDisabled")
         if member is not None:
@@ -137,7 +137,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
             )
 
     @property
-    def process_standalone_renderers(self) -> bool | None:
+    def process_standalone_renderers(self) -> primitives.Bool | None:
         """The ProcessStandaloneRenderers field value."""
         member = self.get_member("ProcessStandaloneRenderers")
         if member is None:
@@ -145,7 +145,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
         return getattr(member, 'value', None)
 
     @process_standalone_renderers.setter
-    def process_standalone_renderers(self, value: bool) -> None:
+    def process_standalone_renderers(self, value: primitives.Bool) -> None:
         """Set the ProcessStandaloneRenderers field value."""
         member = self.get_member("ProcessStandaloneRenderers")
         if member is not None:
@@ -156,7 +156,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
             )
 
     @property
-    def process_uix_renderers(self) -> bool | None:
+    def process_uix_renderers(self) -> primitives.Bool | None:
         """The ProcessUIXRenderers field value."""
         member = self.get_member("ProcessUIXRenderers")
         if member is None:
@@ -164,7 +164,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
         return getattr(member, 'value', None)
 
     @process_uix_renderers.setter
-    def process_uix_renderers(self, value: bool) -> None:
+    def process_uix_renderers(self, value: primitives.Bool) -> None:
         """Set the ProcessUIXRenderers field value."""
         member = self.get_member("ProcessUIXRenderers")
         if member is not None:

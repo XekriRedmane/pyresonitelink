@@ -1,6 +1,7 @@
 """Generated component: ContactLink."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -16,7 +17,7 @@ class ContactLink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContactLink"
 
-    def __init__(self, user_id: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user_id: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,7 +29,7 @@ class ContactLink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEv
             self.user_id = user_id
 
     @property
-    def user_id(self) -> str | None:
+    def user_id(self) -> primitives.String | None:
         """The UserId field value."""
         member = self.get_member("UserId")
         if member is None:
@@ -36,7 +37,7 @@ class ContactLink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEv
         return getattr(member, 'value', None)
 
     @user_id.setter
-    def user_id(self, value: str) -> None:
+    def user_id(self, value: primitives.String) -> None:
         """Set the UserId field value."""
         member = self.get_member("UserId")
         if member is not None:

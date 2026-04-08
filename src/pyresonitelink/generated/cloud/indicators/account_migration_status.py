@@ -1,9 +1,8 @@
 """Generated component: AccountMigrationStatus."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AccountMigrationStatus"
 
-    def __init__(self, task_id: str | None = None, exists: bool | None = None, name: str | None = None, description: str | None = None, estimated_queue_position: np.int32 | None = None, start_count: np.int32 | None = None, created_on: str | None = None, started_on: str | None = None, completed_on: str | None = None, records_per_minute: np.float64 | None = None, currently_migrating: str | None = None, current_item: str | None = None, total_record_count: np.int32 | None = None, total_migrated_record_count: np.int32 | None = None, total_failed_record_count: np.int32 | None = None, total_migrated_variable_count: np.int32 | None = None, total_migrated_variable_definition_count: np.int32 | None = None, total_contact_count: np.int32 | None = None, migrated_contact_count: np.int32 | None = None, migrated_message_count: np.int32 | None = None, total_group_count: np.int32 | None = None, migrated_group_count: np.int32 | None = None, total_migrated_member_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, task_id: primitives.String | None = None, exists: primitives.Bool | None = None, name: primitives.String | None = None, description: primitives.String | None = None, estimated_queue_position: primitives.Int | None = None, start_count: primitives.Int | None = None, created_on: str | None = None, started_on: str | None = None, completed_on: str | None = None, records_per_minute: primitives.Double | None = None, currently_migrating: primitives.String | None = None, current_item: primitives.String | None = None, total_record_count: primitives.Int | None = None, total_migrated_record_count: primitives.Int | None = None, total_failed_record_count: primitives.Int | None = None, total_migrated_variable_count: primitives.Int | None = None, total_migrated_variable_definition_count: primitives.Int | None = None, total_contact_count: primitives.Int | None = None, migrated_contact_count: primitives.Int | None = None, migrated_message_count: primitives.Int | None = None, total_group_count: primitives.Int | None = None, migrated_group_count: primitives.Int | None = None, total_migrated_member_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -96,7 +95,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             self.total_migrated_member_count = total_migrated_member_count
 
     @property
-    def task_id(self) -> str | None:
+    def task_id(self) -> primitives.String | None:
         """The TaskId field value."""
         member = self.get_member("TaskId")
         if member is None:
@@ -104,7 +103,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @task_id.setter
-    def task_id(self, value: str) -> None:
+    def task_id(self, value: primitives.String) -> None:
         """Set the TaskId field value."""
         member = self.get_member("TaskId")
         if member is not None:
@@ -115,7 +114,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def exists(self) -> bool | None:
+    def exists(self) -> primitives.Bool | None:
         """The Exists field value."""
         member = self.get_member("Exists")
         if member is None:
@@ -123,7 +122,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @exists.setter
-    def exists(self, value: bool) -> None:
+    def exists(self, value: primitives.Bool) -> None:
         """Set the Exists field value."""
         member = self.get_member("Exists")
         if member is not None:
@@ -134,7 +133,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def name(self) -> str | None:
+    def name(self) -> primitives.String | None:
         """The Name field value."""
         member = self.get_member("Name")
         if member is None:
@@ -142,7 +141,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @name.setter
-    def name(self, value: str) -> None:
+    def name(self, value: primitives.String) -> None:
         """Set the Name field value."""
         member = self.get_member("Name")
         if member is not None:
@@ -153,7 +152,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def description(self) -> str | None:
+    def description(self) -> primitives.String | None:
         """The Description field value."""
         member = self.get_member("Description")
         if member is None:
@@ -161,7 +160,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @description.setter
-    def description(self, value: str) -> None:
+    def description(self, value: primitives.String) -> None:
         """Set the Description field value."""
         member = self.get_member("Description")
         if member is not None:
@@ -185,7 +184,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         self.set_member("State", value)
 
     @property
-    def estimated_queue_position(self) -> np.int32 | None:
+    def estimated_queue_position(self) -> primitives.Int | None:
         """The EstimatedQueuePosition field value."""
         member = self.get_member("EstimatedQueuePosition")
         if member is None:
@@ -193,7 +192,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @estimated_queue_position.setter
-    def estimated_queue_position(self, value: np.int32) -> None:
+    def estimated_queue_position(self, value: primitives.Int) -> None:
         """Set the EstimatedQueuePosition field value."""
         member = self.get_member("EstimatedQueuePosition")
         if member is not None:
@@ -204,7 +203,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def start_count(self) -> np.int32 | None:
+    def start_count(self) -> primitives.Int | None:
         """The StartCount field value."""
         member = self.get_member("StartCount")
         if member is None:
@@ -212,7 +211,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @start_count.setter
-    def start_count(self, value: np.int32) -> None:
+    def start_count(self, value: primitives.Int) -> None:
         """Set the StartCount field value."""
         member = self.get_member("StartCount")
         if member is not None:
@@ -280,7 +279,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def records_per_minute(self) -> np.float64 | None:
+    def records_per_minute(self) -> primitives.Double | None:
         """The RecordsPerMinute field value."""
         member = self.get_member("RecordsPerMinute")
         if member is None:
@@ -288,7 +287,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @records_per_minute.setter
-    def records_per_minute(self, value: np.float64) -> None:
+    def records_per_minute(self, value: primitives.Double) -> None:
         """Set the RecordsPerMinute field value."""
         member = self.get_member("RecordsPerMinute")
         if member is not None:
@@ -299,7 +298,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def currently_migrating(self) -> str | None:
+    def currently_migrating(self) -> primitives.String | None:
         """The CurrentlyMigrating field value."""
         member = self.get_member("CurrentlyMigrating")
         if member is None:
@@ -307,7 +306,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @currently_migrating.setter
-    def currently_migrating(self, value: str) -> None:
+    def currently_migrating(self, value: primitives.String) -> None:
         """Set the CurrentlyMigrating field value."""
         member = self.get_member("CurrentlyMigrating")
         if member is not None:
@@ -318,7 +317,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def current_item(self) -> str | None:
+    def current_item(self) -> primitives.String | None:
         """The CurrentItem field value."""
         member = self.get_member("CurrentItem")
         if member is None:
@@ -326,7 +325,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @current_item.setter
-    def current_item(self, value: str) -> None:
+    def current_item(self, value: primitives.String) -> None:
         """Set the CurrentItem field value."""
         member = self.get_member("CurrentItem")
         if member is not None:
@@ -337,7 +336,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def total_record_count(self) -> np.int32 | None:
+    def total_record_count(self) -> primitives.Int | None:
         """The TotalRecordCount field value."""
         member = self.get_member("TotalRecordCount")
         if member is None:
@@ -345,7 +344,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @total_record_count.setter
-    def total_record_count(self, value: np.int32) -> None:
+    def total_record_count(self, value: primitives.Int) -> None:
         """Set the TotalRecordCount field value."""
         member = self.get_member("TotalRecordCount")
         if member is not None:
@@ -356,7 +355,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def total_migrated_record_count(self) -> np.int32 | None:
+    def total_migrated_record_count(self) -> primitives.Int | None:
         """The TotalMigratedRecordCount field value."""
         member = self.get_member("TotalMigratedRecordCount")
         if member is None:
@@ -364,7 +363,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @total_migrated_record_count.setter
-    def total_migrated_record_count(self, value: np.int32) -> None:
+    def total_migrated_record_count(self, value: primitives.Int) -> None:
         """Set the TotalMigratedRecordCount field value."""
         member = self.get_member("TotalMigratedRecordCount")
         if member is not None:
@@ -375,7 +374,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def total_failed_record_count(self) -> np.int32 | None:
+    def total_failed_record_count(self) -> primitives.Int | None:
         """The TotalFailedRecordCount field value."""
         member = self.get_member("TotalFailedRecordCount")
         if member is None:
@@ -383,7 +382,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @total_failed_record_count.setter
-    def total_failed_record_count(self, value: np.int32) -> None:
+    def total_failed_record_count(self, value: primitives.Int) -> None:
         """Set the TotalFailedRecordCount field value."""
         member = self.get_member("TotalFailedRecordCount")
         if member is not None:
@@ -394,7 +393,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def total_migrated_variable_count(self) -> np.int32 | None:
+    def total_migrated_variable_count(self) -> primitives.Int | None:
         """The TotalMigratedVariableCount field value."""
         member = self.get_member("TotalMigratedVariableCount")
         if member is None:
@@ -402,7 +401,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @total_migrated_variable_count.setter
-    def total_migrated_variable_count(self, value: np.int32) -> None:
+    def total_migrated_variable_count(self, value: primitives.Int) -> None:
         """Set the TotalMigratedVariableCount field value."""
         member = self.get_member("TotalMigratedVariableCount")
         if member is not None:
@@ -413,7 +412,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def total_migrated_variable_definition_count(self) -> np.int32 | None:
+    def total_migrated_variable_definition_count(self) -> primitives.Int | None:
         """The TotalMigratedVariableDefinitionCount field value."""
         member = self.get_member("TotalMigratedVariableDefinitionCount")
         if member is None:
@@ -421,7 +420,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @total_migrated_variable_definition_count.setter
-    def total_migrated_variable_definition_count(self, value: np.int32) -> None:
+    def total_migrated_variable_definition_count(self, value: primitives.Int) -> None:
         """Set the TotalMigratedVariableDefinitionCount field value."""
         member = self.get_member("TotalMigratedVariableDefinitionCount")
         if member is not None:
@@ -432,7 +431,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def total_contact_count(self) -> np.int32 | None:
+    def total_contact_count(self) -> primitives.Int | None:
         """The TotalContactCount field value."""
         member = self.get_member("TotalContactCount")
         if member is None:
@@ -440,7 +439,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @total_contact_count.setter
-    def total_contact_count(self, value: np.int32) -> None:
+    def total_contact_count(self, value: primitives.Int) -> None:
         """Set the TotalContactCount field value."""
         member = self.get_member("TotalContactCount")
         if member is not None:
@@ -451,7 +450,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def migrated_contact_count(self) -> np.int32 | None:
+    def migrated_contact_count(self) -> primitives.Int | None:
         """The MigratedContactCount field value."""
         member = self.get_member("MigratedContactCount")
         if member is None:
@@ -459,7 +458,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @migrated_contact_count.setter
-    def migrated_contact_count(self, value: np.int32) -> None:
+    def migrated_contact_count(self, value: primitives.Int) -> None:
         """Set the MigratedContactCount field value."""
         member = self.get_member("MigratedContactCount")
         if member is not None:
@@ -470,7 +469,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def migrated_message_count(self) -> np.int32 | None:
+    def migrated_message_count(self) -> primitives.Int | None:
         """The MigratedMessageCount field value."""
         member = self.get_member("MigratedMessageCount")
         if member is None:
@@ -478,7 +477,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @migrated_message_count.setter
-    def migrated_message_count(self, value: np.int32) -> None:
+    def migrated_message_count(self, value: primitives.Int) -> None:
         """Set the MigratedMessageCount field value."""
         member = self.get_member("MigratedMessageCount")
         if member is not None:
@@ -489,7 +488,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def total_group_count(self) -> np.int32 | None:
+    def total_group_count(self) -> primitives.Int | None:
         """The TotalGroupCount field value."""
         member = self.get_member("TotalGroupCount")
         if member is None:
@@ -497,7 +496,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @total_group_count.setter
-    def total_group_count(self, value: np.int32) -> None:
+    def total_group_count(self, value: primitives.Int) -> None:
         """Set the TotalGroupCount field value."""
         member = self.get_member("TotalGroupCount")
         if member is not None:
@@ -508,7 +507,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def migrated_group_count(self) -> np.int32 | None:
+    def migrated_group_count(self) -> primitives.Int | None:
         """The MigratedGroupCount field value."""
         member = self.get_member("MigratedGroupCount")
         if member is None:
@@ -516,7 +515,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @migrated_group_count.setter
-    def migrated_group_count(self, value: np.int32) -> None:
+    def migrated_group_count(self, value: primitives.Int) -> None:
         """Set the MigratedGroupCount field value."""
         member = self.get_member("MigratedGroupCount")
         if member is not None:
@@ -527,7 +526,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def total_migrated_member_count(self) -> np.int32 | None:
+    def total_migrated_member_count(self) -> primitives.Int | None:
         """The TotalMigratedMemberCount field value."""
         member = self.get_member("TotalMigratedMemberCount")
         if member is None:
@@ -535,7 +534,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @total_migrated_member_count.setter
-    def total_migrated_member_count(self, value: np.int32) -> None:
+    def total_migrated_member_count(self, value: primitives.Int) -> None:
         """Set the TotalMigratedMemberCount field value."""
         member = self.get_member("TotalMigratedMemberCount")
         if member is not None:

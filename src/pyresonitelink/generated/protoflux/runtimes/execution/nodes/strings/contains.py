@@ -1,6 +1,7 @@
 """Generated component: Contains."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -20,7 +21,7 @@ class Contains(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Contains"
 
-    def __init__(self, str_: str | INodeObjectOutput[str] | None = None, substring: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, str_: str | INodeObjectOutput[primitives.String] | None = None, substring: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,15 +37,15 @@ class Contains(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @str_.setter
-    def str_(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Str reference by target ID or INodeObjectOutput[str] instance."""
+    def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
@@ -57,15 +58,15 @@ class Contains(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def substring(self) -> str | None:
-        """Target ID of the Substring reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Substring reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Substring")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @substring.setter
-    def substring(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Substring reference by target ID or INodeObjectOutput[str] instance."""
+    def substring(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Substring reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Substring")
         if isinstance(member, members.Reference):

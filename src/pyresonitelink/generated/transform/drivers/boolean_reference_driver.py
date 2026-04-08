@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -16,14 +17,14 @@ class BooleanReferenceDriver(GenericComponent[T], IComponent, IWorldEventReceive
 
     Parameterize with a value type::
 
-        BooleanReferenceDriver[np.float32]
+        BooleanReferenceDriver[primitives.Float]
         BooleanReferenceDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BooleanReferenceDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.BooleanReferenceDriver<>"
 
-    def __init__(self, state: bool | None = None, target_reference: str | SyncRef[T] | None = None, false_target: str | T | None = None, true_target: str | T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, state: primitives.Bool | None = None, target_reference: str | SyncRef[T] | None = None, false_target: str | T | None = None, true_target: str | T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,7 +45,7 @@ class BooleanReferenceDriver(GenericComponent[T], IComponent, IWorldEventReceive
             self.true_target = true_target
 
     @property
-    def state(self) -> bool | None:
+    def state(self) -> primitives.Bool | None:
         """The State field value."""
         member = self.get_member("State")
         if member is None:
@@ -52,7 +53,7 @@ class BooleanReferenceDriver(GenericComponent[T], IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @state.setter
-    def state(self, value: bool) -> None:
+    def state(self, value: primitives.Bool) -> None:
         """Set the State field value."""
         member = self.get_member("State")
         if member is not None:

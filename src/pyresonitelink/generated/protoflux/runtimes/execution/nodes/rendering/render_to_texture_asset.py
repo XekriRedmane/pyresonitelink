@@ -1,7 +1,5 @@
 """Generated component: RenderToTextureAsset."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -26,7 +24,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering.RenderToTextureAsset"
 
-    def __init__(self, camera: str | INodeObjectOutput[Camera] | None = None, resolution: str | INodeValueOutput[primitives.Int2] | None = None, format_: str | INodeObjectOutput[str] | None = None, quality: str | INodeValueOutput[np.int32] | None = None, on_render_started: str | INodeOperation | None = None, on_rendered: str | INodeOperation | None = None, on_failed: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, camera: str | INodeObjectOutput[Camera] | None = None, resolution: str | INodeValueOutput[primitives.Int2] | None = None, format_: str | INodeObjectOutput[primitives.String] | None = None, quality: str | INodeValueOutput[primitives.Int] | None = None, on_render_started: str | INodeOperation | None = None, on_rendered: str | INodeOperation | None = None, on_failed: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -99,15 +97,15 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def format_(self) -> str | None:
-        """Target ID of the Format reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Format reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Format")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @format_.setter
-    def format_(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Format reference by target ID or INodeObjectOutput[str] instance."""
+    def format_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Format reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Format")
         if isinstance(member, members.Reference):
@@ -120,15 +118,15 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def quality(self) -> str | None:
-        """Target ID of the Quality reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Quality reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Quality")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @quality.setter
-    def quality(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Quality reference by target ID or INodeValueOutput[np.int32] instance."""
+    def quality(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Quality reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Quality")
         if isinstance(member, members.Reference):

@@ -18,7 +18,7 @@ class Panner4D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Panner4D"
 
-    def __init__(self, target: str | IField[primitives.Float4] | None = None, offset: primitives.Float4 | None = None, pre_offset: primitives.Float4 | None = None, speed: primitives.Float4 | None = None, repeat: primitives.Float4 | None = None, ping_pong: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.Float4] | None = None, offset: primitives.Float4 | None = None, pre_offset: primitives.Float4 | None = None, speed: primitives.Float4 | None = None, repeat: primitives.Float4 | None = None, ping_pong: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -142,7 +142,7 @@ class Panner4D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ping_pong(self) -> bool | None:
+    def ping_pong(self) -> primitives.Bool | None:
         """The PingPong field value."""
         member = self.get_member("PingPong")
         if member is None:
@@ -150,7 +150,7 @@ class Panner4D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ping_pong.setter
-    def ping_pong(self, value: bool) -> None:
+    def ping_pong(self, value: primitives.Bool) -> None:
         """Set the PingPong field value."""
         member = self.get_member("PingPong")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: StaticFont."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
@@ -19,7 +18,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticFont"
 
-    def __init__(self, url: str | None = None, padding: np.int32 | None = None, pixel_range: np.int32 | None = None, glyph_em_size: np.int32 | None = None, mip_maps: bool | None = None, lod_bias: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, padding: primitives.Int | None = None, pixel_range: primitives.Int | None = None, glyph_em_size: primitives.Int | None = None, mip_maps: primitives.Bool | None = None, lod_bias: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -65,7 +64,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def padding(self) -> np.int32 | None:
+    def padding(self) -> primitives.Int | None:
         """The Padding field value."""
         member = self.get_member("Padding")
         if member is None:
@@ -73,7 +72,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @padding.setter
-    def padding(self, value: np.int32) -> None:
+    def padding(self, value: primitives.Int) -> None:
         """Set the Padding field value."""
         member = self.get_member("Padding")
         if member is not None:
@@ -84,7 +83,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def pixel_range(self) -> np.int32 | None:
+    def pixel_range(self) -> primitives.Int | None:
         """The PixelRange field value."""
         member = self.get_member("PixelRange")
         if member is None:
@@ -92,7 +91,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @pixel_range.setter
-    def pixel_range(self, value: np.int32) -> None:
+    def pixel_range(self, value: primitives.Int) -> None:
         """Set the PixelRange field value."""
         member = self.get_member("PixelRange")
         if member is not None:
@@ -103,7 +102,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def glyph_em_size(self) -> np.int32 | None:
+    def glyph_em_size(self) -> primitives.Int | None:
         """The GlyphEmSize field value."""
         member = self.get_member("GlyphEmSize")
         if member is None:
@@ -111,7 +110,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @glyph_em_size.setter
-    def glyph_em_size(self, value: np.int32) -> None:
+    def glyph_em_size(self, value: primitives.Int) -> None:
         """Set the GlyphEmSize field value."""
         member = self.get_member("GlyphEmSize")
         if member is not None:
@@ -122,7 +121,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def mip_maps(self) -> bool | None:
+    def mip_maps(self) -> primitives.Bool | None:
         """The MipMaps field value."""
         member = self.get_member("MipMaps")
         if member is None:
@@ -130,7 +129,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @mip_maps.setter
-    def mip_maps(self, value: bool) -> None:
+    def mip_maps(self, value: primitives.Bool) -> None:
         """Set the MipMaps field value."""
         member = self.get_member("MipMaps")
         if member is not None:
@@ -154,7 +153,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         self.set_member("MipMapFiltering", value)
 
     @property
-    def lod_bias(self) -> np.float32 | None:
+    def lod_bias(self) -> primitives.Float | None:
         """The LODBias field value."""
         member = self.get_member("LODBias")
         if member is None:
@@ -162,7 +161,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @lod_bias.setter
-    def lod_bias(self, value: np.float32) -> None:
+    def lod_bias(self, value: primitives.Float) -> None:
         """Set the LODBias field value."""
         member = self.get_member("LODBias")
         if member is not None:

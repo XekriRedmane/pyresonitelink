@@ -1,6 +1,7 @@
 """Generated component: DeviceIDSettingSwitch."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 
@@ -11,7 +12,7 @@ class DeviceIDSettingSwitch(GeneratedComponent):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DeviceIDSettingSwitch"
 
-    def __init__(self, device_id: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, device_id: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -23,7 +24,7 @@ class DeviceIDSettingSwitch(GeneratedComponent):
             self.device_id = device_id
 
     @property
-    def device_id(self) -> str | None:
+    def device_id(self) -> primitives.String | None:
         """The DeviceID field value."""
         member = self.get_member("DeviceID")
         if member is None:
@@ -31,7 +32,7 @@ class DeviceIDSettingSwitch(GeneratedComponent):
         return getattr(member, 'value', None)
 
     @device_id.setter
-    def device_id(self, value: str) -> None:
+    def device_id(self, value: primitives.String) -> None:
         """Set the DeviceID field value."""
         member = self.get_member("DeviceID")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: UVAtlasAnimator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class UVAtlasAnimator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UVAtlasAnimator"
 
-    def __init__(self, scale_field: str | IField[primitives.Float2] | None = None, offset_field: str | IField[primitives.Float2] | None = None, atlas_info: str | AtlasInfo | None = None, frame: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, scale_field: str | IField[primitives.Float2] | None = None, offset_field: str | IField[primitives.Float2] | None = None, atlas_info: str | AtlasInfo | None = None, frame: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -105,7 +103,7 @@ class UVAtlasAnimator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def frame(self) -> np.int32 | None:
+    def frame(self) -> primitives.Int | None:
         """The Frame field value."""
         member = self.get_member("Frame")
         if member is None:
@@ -113,7 +111,7 @@ class UVAtlasAnimator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @frame.setter
-    def frame(self, value: np.int32) -> None:
+    def frame(self, value: primitives.Int) -> None:
         """Set the Frame field value."""
         member = self.get_member("Frame")
         if member is not None:

@@ -1,6 +1,7 @@
 """Generated component: ClearDynamicVariablesOfType."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -22,14 +23,14 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
 
     Parameterize with a value type::
 
-        ClearDynamicVariablesOfType[np.float32]
+        ClearDynamicVariablesOfType[primitives.Float]
         ClearDynamicVariablesOfType[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.ClearDynamicVariablesOfType<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.ClearDynamicVariablesOfType<>"
 
-    def __init__(self, target: str | INodeObjectOutput[Slot] | None = None, space_name: str | INodeObjectOutput[str] | None = None, on_not_found: str | INodeOperation | None = None, on_cleared: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | INodeObjectOutput[Slot] | None = None, space_name: str | INodeObjectOutput[primitives.String] | None = None, on_not_found: str | INodeOperation | None = None, on_cleared: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -72,15 +73,15 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
 
     @property
     def space_name(self) -> str | None:
-        """Target ID of the SpaceName reference (targets INodeObjectOutput[str])."""
+        """Target ID of the SpaceName reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("SpaceName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @space_name.setter
-    def space_name(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the SpaceName reference by target ID or INodeObjectOutput[str] instance."""
+    def space_name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the SpaceName reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("SpaceName")
         if isinstance(member, members.Reference):

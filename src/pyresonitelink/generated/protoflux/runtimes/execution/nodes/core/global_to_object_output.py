@@ -20,7 +20,7 @@ class GlobalToObjectOutput(GenericComponent[T], IVariable, INodeObjectOutput[T],
 
     Parameterize with a value type::
 
-        GlobalToObjectOutput[np.float32]
+        GlobalToObjectOutput[primitives.Float]
         GlobalToObjectOutput[primitives.Float3]
     """
 

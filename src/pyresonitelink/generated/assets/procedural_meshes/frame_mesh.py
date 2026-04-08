@@ -1,7 +1,5 @@
 """Generated component: FrameMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FrameMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, content_size: primitives.Float2 | None = None, thickness: np.float32 | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, content_size: primitives.Float2 | None = None, thickness: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,7 +46,7 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             self.uv_scale = uv_scale
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -56,7 +54,7 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -67,7 +65,7 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -75,7 +73,7 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -137,7 +135,7 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -145,7 +143,7 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:

@@ -19,7 +19,7 @@ class ObjectEquals(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], 
 
     Parameterize with a value type::
 
-        ObjectEquals[np.float32]
+        ObjectEquals[primitives.Float]
         ObjectEquals[primitives.Float3]
     """
 

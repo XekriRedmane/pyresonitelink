@@ -14,7 +14,7 @@ class ReferenceAsVariable(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        ReferenceAsVariable[np.float32]
+        ReferenceAsVariable[primitives.Float]
         ReferenceAsVariable[primitives.Float3]
     """
 

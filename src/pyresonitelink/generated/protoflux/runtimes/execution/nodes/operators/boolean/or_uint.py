@@ -1,8 +1,7 @@
 """Generated component: OR_Uint."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class OR_Uint(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICust
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.OR_Uint"
 
-    def __init__(self, a: str | INodeValueOutput[np.uint32] | None = None, b: str | INodeValueOutput[np.uint32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, a: str | INodeValueOutput[primitives.UInt] | None = None, b: str | INodeValueOutput[primitives.UInt] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +36,15 @@ class OR_Uint(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICust
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[np.uint32])."""
+        """Target ID of the A reference (targets INodeValueOutput[primitives.UInt])."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @a.setter
-    def a(self, target: str | INodeValueOutput[np.uint32] | None) -> None:
-        """Set the A reference by target ID or INodeValueOutput[np.uint32] instance."""
+    def a(self, target: str | INodeValueOutput[primitives.UInt] | None) -> None:
+        """Set the A reference by target ID or INodeValueOutput[primitives.UInt] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("A")
         if isinstance(member, members.Reference):
@@ -58,15 +57,15 @@ class OR_Uint(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICust
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[np.uint32])."""
+        """Target ID of the B reference (targets INodeValueOutput[primitives.UInt])."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @b.setter
-    def b(self, target: str | INodeValueOutput[np.uint32] | None) -> None:
-        """Set the B reference by target ID or INodeValueOutput[np.uint32] instance."""
+    def b(self, target: str | INodeValueOutput[primitives.UInt] | None) -> None:
+        """Set the B reference by target ID or INodeValueOutput[primitives.UInt] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("B")
         if isinstance(member, members.Reference):

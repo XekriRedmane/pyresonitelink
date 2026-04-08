@@ -19,7 +19,7 @@ class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RelativePositioner"
 
-    def __init__(self, reference: str | Slot | None = None, reference_anchor: primitives.Float3 | None = None, reference_offset: primitives.Float3 | None = None, destroy_after_done: bool | None = None, target: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reference: str | Slot | None = None, reference_anchor: primitives.Float3 | None = None, reference_offset: primitives.Float3 | None = None, destroy_after_done: primitives.Bool | None = None, target: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -115,7 +115,7 @@ class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def destroy_after_done(self) -> bool | None:
+    def destroy_after_done(self) -> primitives.Bool | None:
         """The DestroyAfterDone field value."""
         member = self.get_member("DestroyAfterDone")
         if member is None:
@@ -123,7 +123,7 @@ class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @destroy_after_done.setter
-    def destroy_after_done(self, value: bool) -> None:
+    def destroy_after_done(self, value: primitives.Bool) -> None:
         """Set the DestroyAfterDone field value."""
         member = self.get_member("DestroyAfterDone")
         if member is not None:

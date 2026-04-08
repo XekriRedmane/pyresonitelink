@@ -1,9 +1,8 @@
 """Generated component: UserDistanceValueDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -18,14 +17,14 @@ class UserDistanceValueDriver(GenericComponent[T], IComponent, IWorldEventReceiv
 
     Parameterize with a value type::
 
-        UserDistanceValueDriver[np.float32]
+        UserDistanceValueDriver[primitives.Float]
         UserDistanceValueDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserDistanceValueDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.UserDistanceValueDriver<>"
 
-    def __init__(self, distance: np.float32 | None = None, target_field: str | IField[T] | None = None, near_value: T | None = None, far_value: T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, distance: primitives.Float | None = None, target_field: str | IField[T] | None = None, near_value: T | None = None, far_value: T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,7 +58,7 @@ class UserDistanceValueDriver(GenericComponent[T], IComponent, IWorldEventReceiv
         self.set_member("Node", value)
 
     @property
-    def distance(self) -> np.float32 | None:
+    def distance(self) -> primitives.Float | None:
         """The Distance field value."""
         member = self.get_member("Distance")
         if member is None:
@@ -67,7 +66,7 @@ class UserDistanceValueDriver(GenericComponent[T], IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @distance.setter
-    def distance(self, value: np.float32) -> None:
+    def distance(self, value: primitives.Float) -> None:
         """Set the Distance field value."""
         member = self.get_member("Distance")
         if member is not None:

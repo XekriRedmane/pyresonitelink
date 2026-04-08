@@ -1,6 +1,7 @@
 """Generated component: GeneralVRSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class GeneralVRSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GeneralVRSettings"
 
-    def __init__(self, use_vr_hotswitching: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_vr_hotswitching: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class GeneralVRSettings(GeneratedComponent, ICustomInspector):
             self.use_vr_hotswitching = use_vr_hotswitching
 
     @property
-    def use_vr_hotswitching(self) -> bool | None:
+    def use_vr_hotswitching(self) -> primitives.Bool | None:
         """The UseVRHotswitching field value."""
         member = self.get_member("UseVRHotswitching")
         if member is None:
@@ -33,7 +34,7 @@ class GeneralVRSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_vr_hotswitching.setter
-    def use_vr_hotswitching(self, value: bool) -> None:
+    def use_vr_hotswitching(self, value: primitives.Bool) -> None:
         """Set the UseVRHotswitching field value."""
         member = self.get_member("UseVRHotswitching")
         if member is not None:

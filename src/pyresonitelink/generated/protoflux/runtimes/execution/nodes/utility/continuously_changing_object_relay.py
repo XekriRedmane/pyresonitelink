@@ -18,7 +18,7 @@ class ContinuouslyChangingObjectRelay(GenericComponent[T], INodeObjectOutput[T],
 
     Parameterize with a value type::
 
-        ContinuouslyChangingObjectRelay[np.float32]
+        ContinuouslyChangingObjectRelay[primitives.Float]
         ContinuouslyChangingObjectRelay[primitives.Float3]
     """
 

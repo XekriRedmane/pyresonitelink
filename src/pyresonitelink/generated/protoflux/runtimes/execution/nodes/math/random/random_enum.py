@@ -17,7 +17,7 @@ class RandomEnum(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], IN
 
     Parameterize with a value type::
 
-        RandomEnum[np.float32]
+        RandomEnum[primitives.Float]
         RandomEnum[primitives.Float3]
     """
 

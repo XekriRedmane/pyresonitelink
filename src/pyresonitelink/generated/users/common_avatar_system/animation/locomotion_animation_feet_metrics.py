@@ -1,9 +1,8 @@
 """Generated component: LocomotionAnimationFeetMetrics."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionAnimationFeetMetrics"
 
-    def __init__(self, feet_separation: np.float32 | None = None, feet_backwards_offset: np.float32 | None = None, foot_height: np.float32 | None = None, foot_front_offset: np.float32 | None = None, foot_back_offset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, feet_separation: primitives.Float | None = None, feet_backwards_offset: primitives.Float | None = None, foot_height: primitives.Float | None = None, foot_front_offset: primitives.Float | None = None, foot_back_offset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -55,7 +54,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
         self.set_member("Space", value)
 
     @property
-    def feet_separation(self) -> np.float32 | None:
+    def feet_separation(self) -> primitives.Float | None:
         """The FeetSeparation field value."""
         member = self.get_member("FeetSeparation")
         if member is None:
@@ -63,7 +62,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @feet_separation.setter
-    def feet_separation(self, value: np.float32) -> None:
+    def feet_separation(self, value: primitives.Float) -> None:
         """Set the FeetSeparation field value."""
         member = self.get_member("FeetSeparation")
         if member is not None:
@@ -74,7 +73,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
             )
 
     @property
-    def feet_backwards_offset(self) -> np.float32 | None:
+    def feet_backwards_offset(self) -> primitives.Float | None:
         """The FeetBackwardsOffset field value."""
         member = self.get_member("FeetBackwardsOffset")
         if member is None:
@@ -82,7 +81,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @feet_backwards_offset.setter
-    def feet_backwards_offset(self, value: np.float32) -> None:
+    def feet_backwards_offset(self, value: primitives.Float) -> None:
         """Set the FeetBackwardsOffset field value."""
         member = self.get_member("FeetBackwardsOffset")
         if member is not None:
@@ -93,7 +92,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
             )
 
     @property
-    def foot_height(self) -> np.float32 | None:
+    def foot_height(self) -> primitives.Float | None:
         """The FootHeight field value."""
         member = self.get_member("FootHeight")
         if member is None:
@@ -101,7 +100,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @foot_height.setter
-    def foot_height(self, value: np.float32) -> None:
+    def foot_height(self, value: primitives.Float) -> None:
         """Set the FootHeight field value."""
         member = self.get_member("FootHeight")
         if member is not None:
@@ -112,7 +111,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
             )
 
     @property
-    def foot_front_offset(self) -> np.float32 | None:
+    def foot_front_offset(self) -> primitives.Float | None:
         """The FootFrontOffset field value."""
         member = self.get_member("FootFrontOffset")
         if member is None:
@@ -120,7 +119,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @foot_front_offset.setter
-    def foot_front_offset(self, value: np.float32) -> None:
+    def foot_front_offset(self, value: primitives.Float) -> None:
         """Set the FootFrontOffset field value."""
         member = self.get_member("FootFrontOffset")
         if member is not None:
@@ -131,7 +130,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
             )
 
     @property
-    def foot_back_offset(self) -> np.float32 | None:
+    def foot_back_offset(self) -> primitives.Float | None:
         """The FootBackOffset field value."""
         member = self.get_member("FootBackOffset")
         if member is None:
@@ -139,7 +138,7 @@ class LocomotionAnimationFeetMetrics(GeneratedComponent, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @foot_back_offset.setter
-    def foot_back_offset(self, value: np.float32) -> None:
+    def foot_back_offset(self, value: primitives.Float) -> None:
         """Set the FootBackOffset field value."""
         member = self.get_member("FootBackOffset")
         if member is not None:

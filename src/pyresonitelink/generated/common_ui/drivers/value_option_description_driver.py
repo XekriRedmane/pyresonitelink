@@ -20,14 +20,14 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     Parameterize with a value type::
 
-        ValueOptionDescriptionDriver[np.float32]
+        ValueOptionDescriptionDriver[primitives.Float]
         ValueOptionDescriptionDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueOptionDescriptionDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ValueOptionDescriptionDriver<>"
 
-    def __init__(self, value: str | IField[T] | None = None, force_deselected: bool | None = None, label: str | IField[str] | None = None, color: str | IField[primitives.ColorX] | None = None, sprite: str | SyncRef[IAssetProvider[Sprite]] | None = None, sprite_url: str | IField[str] | None = None, sprite_tint: str | IField[primitives.ColorX] | None = None, sprite_tint_base: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | IField[T] | None = None, force_deselected: primitives.Bool | None = None, label: str | IField[primitives.String] | None = None, color: str | IField[primitives.ColorX] | None = None, sprite: str | SyncRef[IAssetProvider[Sprite]] | None = None, sprite_url: str | IField[str] | None = None, sprite_tint: str | IField[primitives.ColorX] | None = None, sprite_tint_base: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -81,7 +81,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
             )
 
     @property
-    def force_deselected(self) -> bool | None:
+    def force_deselected(self) -> primitives.Bool | None:
         """The ForceDeselected field value."""
         member = self.get_member("ForceDeselected")
         if member is None:
@@ -89,7 +89,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @force_deselected.setter
-    def force_deselected(self, value: bool) -> None:
+    def force_deselected(self, value: primitives.Bool) -> None:
         """Set the ForceDeselected field value."""
         member = self.get_member("ForceDeselected")
         if member is not None:
@@ -101,15 +101,15 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def label(self) -> str | None:
-        """Target ID of the Label reference (targets IField[str])."""
+        """Target ID of the Label reference (targets IField[primitives.String])."""
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @label.setter
-    def label(self, target: str | IField[str] | None) -> None:
-        """Set the Label reference by target ID or IField[str] instance."""
+    def label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Label reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Label")
         if isinstance(member, members.Reference):

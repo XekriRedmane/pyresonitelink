@@ -1,9 +1,8 @@
 """Generated component: WorldsDataFeed."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.idata_feed_component import IDataFeedComponent
@@ -19,7 +18,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldsDataFeed"
 
-    def __init__(self, list_opened_worlds: bool | None = None, list_sessions: bool | None = None, merge_by_world_id: bool | None = None, merge_by_session_id: bool | None = None, incompatible_sessions: bool | None = None, headless_hosts: bool | None = None, user_hosts: bool | None = None, minimum_total_users: np.int32 | None = None, minimum_total_contacts: np.int32 | None = None, min_uptime: np.float64 | None = None, max_uptime: np.float64 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, list_opened_worlds: primitives.Bool | None = None, list_sessions: primitives.Bool | None = None, merge_by_world_id: primitives.Bool | None = None, merge_by_session_id: primitives.Bool | None = None, incompatible_sessions: primitives.Bool | None = None, headless_hosts: primitives.Bool | None = None, user_hosts: primitives.Bool | None = None, minimum_total_users: primitives.Int | None = None, minimum_total_contacts: primitives.Int | None = None, min_uptime: primitives.Double | None = None, max_uptime: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +60,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             self.max_uptime = max_uptime
 
     @property
-    def list_opened_worlds(self) -> bool | None:
+    def list_opened_worlds(self) -> primitives.Bool | None:
         """The ListOpenedWorlds field value."""
         member = self.get_member("ListOpenedWorlds")
         if member is None:
@@ -69,7 +68,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @list_opened_worlds.setter
-    def list_opened_worlds(self, value: bool) -> None:
+    def list_opened_worlds(self, value: primitives.Bool) -> None:
         """Set the ListOpenedWorlds field value."""
         member = self.get_member("ListOpenedWorlds")
         if member is not None:
@@ -80,7 +79,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def list_sessions(self) -> bool | None:
+    def list_sessions(self) -> primitives.Bool | None:
         """The ListSessions field value."""
         member = self.get_member("ListSessions")
         if member is None:
@@ -88,7 +87,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @list_sessions.setter
-    def list_sessions(self, value: bool) -> None:
+    def list_sessions(self, value: primitives.Bool) -> None:
         """Set the ListSessions field value."""
         member = self.get_member("ListSessions")
         if member is not None:
@@ -99,7 +98,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def merge_by_world_id(self) -> bool | None:
+    def merge_by_world_id(self) -> primitives.Bool | None:
         """The MergeByWorldId field value."""
         member = self.get_member("MergeByWorldId")
         if member is None:
@@ -107,7 +106,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @merge_by_world_id.setter
-    def merge_by_world_id(self, value: bool) -> None:
+    def merge_by_world_id(self, value: primitives.Bool) -> None:
         """Set the MergeByWorldId field value."""
         member = self.get_member("MergeByWorldId")
         if member is not None:
@@ -118,7 +117,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def merge_by_session_id(self) -> bool | None:
+    def merge_by_session_id(self) -> primitives.Bool | None:
         """The MergeBySessionId field value."""
         member = self.get_member("MergeBySessionId")
         if member is None:
@@ -126,7 +125,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @merge_by_session_id.setter
-    def merge_by_session_id(self, value: bool) -> None:
+    def merge_by_session_id(self, value: primitives.Bool) -> None:
         """Set the MergeBySessionId field value."""
         member = self.get_member("MergeBySessionId")
         if member is not None:
@@ -137,7 +136,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def incompatible_sessions(self) -> bool | None:
+    def incompatible_sessions(self) -> primitives.Bool | None:
         """The IncompatibleSessions field value."""
         member = self.get_member("IncompatibleSessions")
         if member is None:
@@ -145,7 +144,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @incompatible_sessions.setter
-    def incompatible_sessions(self, value: bool) -> None:
+    def incompatible_sessions(self, value: primitives.Bool) -> None:
         """Set the IncompatibleSessions field value."""
         member = self.get_member("IncompatibleSessions")
         if member is not None:
@@ -156,7 +155,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def headless_hosts(self) -> bool | None:
+    def headless_hosts(self) -> primitives.Bool | None:
         """The HeadlessHosts field value."""
         member = self.get_member("HeadlessHosts")
         if member is None:
@@ -164,7 +163,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @headless_hosts.setter
-    def headless_hosts(self, value: bool) -> None:
+    def headless_hosts(self, value: primitives.Bool) -> None:
         """Set the HeadlessHosts field value."""
         member = self.get_member("HeadlessHosts")
         if member is not None:
@@ -175,7 +174,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def user_hosts(self) -> bool | None:
+    def user_hosts(self) -> primitives.Bool | None:
         """The UserHosts field value."""
         member = self.get_member("UserHosts")
         if member is None:
@@ -183,7 +182,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @user_hosts.setter
-    def user_hosts(self, value: bool) -> None:
+    def user_hosts(self, value: primitives.Bool) -> None:
         """Set the UserHosts field value."""
         member = self.get_member("UserHosts")
         if member is not None:
@@ -194,7 +193,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def minimum_total_users(self) -> np.int32 | None:
+    def minimum_total_users(self) -> primitives.Int | None:
         """The MinimumTotalUsers field value."""
         member = self.get_member("MinimumTotalUsers")
         if member is None:
@@ -202,7 +201,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @minimum_total_users.setter
-    def minimum_total_users(self, value: np.int32) -> None:
+    def minimum_total_users(self, value: primitives.Int) -> None:
         """Set the MinimumTotalUsers field value."""
         member = self.get_member("MinimumTotalUsers")
         if member is not None:
@@ -213,7 +212,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def minimum_total_contacts(self) -> np.int32 | None:
+    def minimum_total_contacts(self) -> primitives.Int | None:
         """The MinimumTotalContacts field value."""
         member = self.get_member("MinimumTotalContacts")
         if member is None:
@@ -221,7 +220,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @minimum_total_contacts.setter
-    def minimum_total_contacts(self, value: np.int32) -> None:
+    def minimum_total_contacts(self, value: primitives.Int) -> None:
         """Set the MinimumTotalContacts field value."""
         member = self.get_member("MinimumTotalContacts")
         if member is not None:
@@ -258,7 +257,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         self.set_member("MaxSessionAccessLevel", value)
 
     @property
-    def min_uptime(self) -> np.float64 | None:
+    def min_uptime(self) -> primitives.Double | None:
         """The MinUptime field value."""
         member = self.get_member("MinUptime")
         if member is None:
@@ -266,7 +265,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @min_uptime.setter
-    def min_uptime(self, value: np.float64) -> None:
+    def min_uptime(self, value: primitives.Double) -> None:
         """Set the MinUptime field value."""
         member = self.get_member("MinUptime")
         if member is not None:
@@ -277,7 +276,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def max_uptime(self) -> np.float64 | None:
+    def max_uptime(self) -> primitives.Double | None:
         """The MaxUptime field value."""
         member = self.get_member("MaxUptime")
         if member is None:
@@ -285,7 +284,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
         return getattr(member, 'value', None)
 
     @max_uptime.setter
-    def max_uptime(self, value: np.float64) -> None:
+    def max_uptime(self, value: primitives.Double) -> None:
         """Set the MaxUptime field value."""
         member = self.get_member("MaxUptime")
         if member is not None:

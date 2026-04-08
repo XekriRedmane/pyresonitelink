@@ -1,9 +1,8 @@
 """Generated component: MultiUserAvatarAnchor."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ipoint_snappable import IPointSnappable
@@ -21,7 +20,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.MultiUserAvatarAnchor"
 
-    def __init__(self, anchor_point_snap: str | IPointSnappable | None = None, max_users: np.int32 | None = None, min_distance: np.float32 | None = None, template: str | IAvatarAnchor | None = None, anchors_root: str | Slot | None = None, accept_out_of_sight_touch: bool | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, anchor_point_snap: str | IPointSnappable | None = None, max_users: primitives.Int | None = None, min_distance: primitives.Float | None = None, template: str | IAvatarAnchor | None = None, anchors_root: str | Slot | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -75,7 +74,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def max_users(self) -> np.int32 | None:
+    def max_users(self) -> primitives.Int | None:
         """The MaxUsers field value."""
         member = self.get_member("MaxUsers")
         if member is None:
@@ -83,7 +82,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @max_users.setter
-    def max_users(self, value: np.int32) -> None:
+    def max_users(self, value: primitives.Int) -> None:
         """Set the MaxUsers field value."""
         member = self.get_member("MaxUsers")
         if member is not None:
@@ -94,7 +93,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def min_distance(self) -> np.float32 | None:
+    def min_distance(self) -> primitives.Float | None:
         """The MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is None:
@@ -102,7 +101,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @min_distance.setter
-    def min_distance(self, value: np.float32) -> None:
+    def min_distance(self, value: primitives.Float) -> None:
         """Set the MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is not None:
@@ -155,7 +154,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def accept_out_of_sight_touch(self) -> bool | None:
+    def accept_out_of_sight_touch(self) -> primitives.Bool | None:
         """The AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is None:
@@ -163,7 +162,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @accept_out_of_sight_touch.setter
-    def accept_out_of_sight_touch(self, value: bool) -> None:
+    def accept_out_of_sight_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is not None:
@@ -174,7 +173,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -182,7 +181,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -193,7 +192,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -201,7 +200,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:

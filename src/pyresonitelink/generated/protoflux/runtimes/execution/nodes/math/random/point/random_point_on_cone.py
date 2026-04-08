@@ -1,8 +1,7 @@
 """Generated component: RandomPointOnCone."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class RandomPointOnCone(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Random.RandomPointOnCone"
 
-    def __init__(self, height: str | INodeValueOutput[np.float32] | None = None, base_radius: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, height: str | INodeValueOutput[primitives.Float] | None = None, base_radius: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +36,15 @@ class RandomPointOnCone(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def height(self) -> str | None:
-        """Target ID of the Height reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Height reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Height")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @height.setter
-    def height(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Height reference by target ID or INodeValueOutput[np.float32] instance."""
+    def height(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Height reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Height")
         if isinstance(member, members.Reference):
@@ -58,15 +57,15 @@ class RandomPointOnCone(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def base_radius(self) -> str | None:
-        """Target ID of the BaseRadius reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the BaseRadius reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("BaseRadius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @base_radius.setter
-    def base_radius(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the BaseRadius reference by target ID or INodeValueOutput[np.float32] instance."""
+    def base_radius(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the BaseRadius reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("BaseRadius")
         if isinstance(member, members.Reference):

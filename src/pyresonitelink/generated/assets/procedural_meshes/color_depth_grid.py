@@ -1,7 +1,5 @@
 """Generated component: ColorDepthGrid."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorDepthGrid"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, color_texture: str | IAssetProvider[Texture2D] | None = None, depth_texture: str | IAssetProvider[Texture2D] | None = None, horizontal_angle: np.float32 | None = None, vertical_angle: np.float32 | None = None, depth_offset: np.float32 | None = None, depth_scale: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, color_texture: str | IAssetProvider[Texture2D] | None = None, depth_texture: str | IAssetProvider[Texture2D] | None = None, horizontal_angle: primitives.Float | None = None, vertical_angle: primitives.Float | None = None, depth_offset: primitives.Float | None = None, depth_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +56,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.depth_scale = depth_scale
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -66,7 +64,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -77,7 +75,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -85,7 +83,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -183,7 +181,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         self.set_member("Projection", value)
 
     @property
-    def horizontal_angle(self) -> np.float32 | None:
+    def horizontal_angle(self) -> primitives.Float | None:
         """The HorizontalAngle field value."""
         member = self.get_member("HorizontalAngle")
         if member is None:
@@ -191,7 +189,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @horizontal_angle.setter
-    def horizontal_angle(self, value: np.float32) -> None:
+    def horizontal_angle(self, value: primitives.Float) -> None:
         """Set the HorizontalAngle field value."""
         member = self.get_member("HorizontalAngle")
         if member is not None:
@@ -202,7 +200,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def vertical_angle(self) -> np.float32 | None:
+    def vertical_angle(self) -> primitives.Float | None:
         """The VerticalAngle field value."""
         member = self.get_member("VerticalAngle")
         if member is None:
@@ -210,7 +208,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @vertical_angle.setter
-    def vertical_angle(self, value: np.float32) -> None:
+    def vertical_angle(self, value: primitives.Float) -> None:
         """Set the VerticalAngle field value."""
         member = self.get_member("VerticalAngle")
         if member is not None:
@@ -221,7 +219,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def depth_offset(self) -> np.float32 | None:
+    def depth_offset(self) -> primitives.Float | None:
         """The DepthOffset field value."""
         member = self.get_member("DepthOffset")
         if member is None:
@@ -229,7 +227,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @depth_offset.setter
-    def depth_offset(self, value: np.float32) -> None:
+    def depth_offset(self, value: primitives.Float) -> None:
         """Set the DepthOffset field value."""
         member = self.get_member("DepthOffset")
         if member is not None:
@@ -240,7 +238,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def depth_scale(self) -> np.float32 | None:
+    def depth_scale(self) -> primitives.Float | None:
         """The DepthScale field value."""
         member = self.get_member("DepthScale")
         if member is None:
@@ -248,7 +246,7 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @depth_scale.setter
-    def depth_scale(self, value: np.float32) -> None:
+    def depth_scale(self, value: primitives.Float) -> None:
         """Set the DepthScale field value."""
         member = self.get_member("DepthScale")
         if member is not None:

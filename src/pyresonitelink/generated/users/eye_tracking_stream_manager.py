@@ -1,8 +1,7 @@
 """Generated component: EyeTrackingStreamManager."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -19,7 +18,7 @@ class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.EyeTrackingStreamManager"
 
-    def __init__(self, user: str | User | None = None, convergence_distance: str | ValueStream[np.float32] | None = None, is_eye_tracking_active: str | ValueStream[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user: str | User | None = None, convergence_distance: str | ValueStream[primitives.Float] | None = None, is_eye_tracking_active: str | ValueStream[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +58,15 @@ class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWor
 
     @property
     def convergence_distance(self) -> str | None:
-        """Target ID of the ConvergenceDistance reference (targets ValueStream[np.float32])."""
+        """Target ID of the ConvergenceDistance reference (targets ValueStream[primitives.Float])."""
         member = self.get_member("ConvergenceDistance")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @convergence_distance.setter
-    def convergence_distance(self, target: str | ValueStream[np.float32] | None) -> None:
-        """Set the ConvergenceDistance reference by target ID or ValueStream[np.float32] instance."""
+    def convergence_distance(self, target: str | ValueStream[primitives.Float] | None) -> None:
+        """Set the ConvergenceDistance reference by target ID or ValueStream[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("ConvergenceDistance")
         if isinstance(member, members.Reference):
@@ -80,15 +79,15 @@ class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWor
 
     @property
     def is_eye_tracking_active(self) -> str | None:
-        """Target ID of the IsEyeTrackingActive reference (targets ValueStream[bool])."""
+        """Target ID of the IsEyeTrackingActive reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("IsEyeTrackingActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_eye_tracking_active.setter
-    def is_eye_tracking_active(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the IsEyeTrackingActive reference by target ID or ValueStream[bool] instance."""
+    def is_eye_tracking_active(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the IsEyeTrackingActive reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("IsEyeTrackingActive")
         if isinstance(member, members.Reference):

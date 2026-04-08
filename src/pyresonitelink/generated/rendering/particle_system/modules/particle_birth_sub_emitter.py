@@ -1,9 +1,8 @@
 """Generated component: ParticleBirthSubEmitter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -18,7 +17,7 @@ class ParticleBirthSubEmitter(GeneratedComponent, IParticleSystemModule, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleBirthSubEmitter"
 
-    def __init__(self, emit_min: np.int32 | None = None, emit_max: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, emit_min: primitives.Int | None = None, emit_max: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class ParticleBirthSubEmitter(GeneratedComponent, IParticleSystemModule, IWorldE
             self.emit_max = emit_max
 
     @property
-    def emit_min(self) -> np.int32 | None:
+    def emit_min(self) -> primitives.Int | None:
         """The EmitMin field value."""
         member = self.get_member("EmitMin")
         if member is None:
@@ -41,7 +40,7 @@ class ParticleBirthSubEmitter(GeneratedComponent, IParticleSystemModule, IWorldE
         return getattr(member, 'value', None)
 
     @emit_min.setter
-    def emit_min(self, value: np.int32) -> None:
+    def emit_min(self, value: primitives.Int) -> None:
         """Set the EmitMin field value."""
         member = self.get_member("EmitMin")
         if member is not None:
@@ -52,7 +51,7 @@ class ParticleBirthSubEmitter(GeneratedComponent, IParticleSystemModule, IWorldE
             )
 
     @property
-    def emit_max(self) -> np.int32 | None:
+    def emit_max(self) -> primitives.Int | None:
         """The EmitMax field value."""
         member = self.get_member("EmitMax")
         if member is None:
@@ -60,7 +59,7 @@ class ParticleBirthSubEmitter(GeneratedComponent, IParticleSystemModule, IWorldE
         return getattr(member, 'value', None)
 
     @emit_max.setter
-    def emit_max(self, value: np.int32) -> None:
+    def emit_max(self, value: primitives.Int) -> None:
         """Set the EmitMax field value."""
         member = self.get_member("EmitMax")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: Tween."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.user import User
@@ -18,14 +17,14 @@ class Tween(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        Tween[np.float32]
+        Tween[primitives.Float]
         Tween[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Tween<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.Tween<>"
 
-    def __init__(self, user: str | User | None = None, target: str | IField[T] | None = None, only_under_parent: str | Slot | None = None, from_: T | None = None, to: T | None = None, start_time: np.float64 | None = None, duration: np.float32 | None = None, local_callback: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user: str | User | None = None, target: str | IField[T] | None = None, only_under_parent: str | Slot | None = None, from_: T | None = None, to: T | None = None, start_time: primitives.Double | None = None, duration: primitives.Float | None = None, local_callback: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -159,7 +158,7 @@ class Tween(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def start_time(self) -> np.float64 | None:
+    def start_time(self) -> primitives.Double | None:
         """The StartTime field value."""
         member = self.get_member("StartTime")
         if member is None:
@@ -167,7 +166,7 @@ class Tween(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @start_time.setter
-    def start_time(self, value: np.float64) -> None:
+    def start_time(self, value: primitives.Double) -> None:
         """Set the StartTime field value."""
         member = self.get_member("StartTime")
         if member is not None:
@@ -178,7 +177,7 @@ class Tween(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def duration(self) -> np.float32 | None:
+    def duration(self) -> primitives.Float | None:
         """The Duration field value."""
         member = self.get_member("Duration")
         if member is None:
@@ -186,7 +185,7 @@ class Tween(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @duration.setter
-    def duration(self, value: np.float32) -> None:
+    def duration(self, value: primitives.Float) -> None:
         """Set the Duration field value."""
         member = self.get_member("Duration")
         if member is not None:
@@ -210,7 +209,7 @@ class Tween(GenericComponent[T], IComponent, IWorldEventReceiver):
         self.set_member("Curve", value)
 
     @property
-    def local_callback(self) -> bool | None:
+    def local_callback(self) -> primitives.Bool | None:
         """The LocalCallback field value."""
         member = self.get_member("LocalCallback")
         if member is None:
@@ -218,7 +217,7 @@ class Tween(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @local_callback.setter
-    def local_callback(self, value: bool) -> None:
+    def local_callback(self, value: primitives.Bool) -> None:
         """Set the LocalCallback field value."""
         member = self.get_member("LocalCallback")
         if member is not None:

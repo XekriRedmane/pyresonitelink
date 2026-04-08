@@ -1,7 +1,5 @@
 """Generated component: PBS_StencilMaterialSpecular."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_StencilMaterialSpecular"
 
-    def __init__(self, high_priority_integration: bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, stencil_id: np.uint8 | None = None, stencil_write_mask: np.uint8 | None = None, stencil_read_mask: np.uint8 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, rect_dummy: primitives.Rect | None = None, rect_clip_dummy: bool | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, rect_dummy: primitives.Rect | None = None, rect_clip_dummy: primitives.Bool | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -95,7 +93,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
             self.regular = regular
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -103,7 +101,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -253,7 +251,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -261,7 +259,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -332,7 +330,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         self.set_member("StencilOperation", value)
 
     @property
-    def stencil_id(self) -> np.uint8 | None:
+    def stencil_id(self) -> primitives.Byte | None:
         """The StencilID field value."""
         member = self.get_member("StencilID")
         if member is None:
@@ -340,7 +338,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         return getattr(member, 'value', None)
 
     @stencil_id.setter
-    def stencil_id(self, value: np.uint8) -> None:
+    def stencil_id(self, value: primitives.Byte) -> None:
         """Set the StencilID field value."""
         member = self.get_member("StencilID")
         if member is not None:
@@ -351,7 +349,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
             )
 
     @property
-    def stencil_write_mask(self) -> np.uint8 | None:
+    def stencil_write_mask(self) -> primitives.Byte | None:
         """The StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is None:
@@ -359,7 +357,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         return getattr(member, 'value', None)
 
     @stencil_write_mask.setter
-    def stencil_write_mask(self, value: np.uint8) -> None:
+    def stencil_write_mask(self, value: primitives.Byte) -> None:
         """Set the StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is not None:
@@ -370,7 +368,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
             )
 
     @property
-    def stencil_read_mask(self) -> np.uint8 | None:
+    def stencil_read_mask(self) -> primitives.Byte | None:
         """The StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is None:
@@ -378,7 +376,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         return getattr(member, 'value', None)
 
     @stencil_read_mask.setter
-    def stencil_read_mask(self, value: np.uint8) -> None:
+    def stencil_read_mask(self, value: primitives.Byte) -> None:
         """Set the StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is not None:
@@ -389,7 +387,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -397,7 +395,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -408,7 +406,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -416,7 +414,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -427,7 +425,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -435,7 +433,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -465,7 +463,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
             )
 
     @property
-    def rect_clip_dummy(self) -> bool | None:
+    def rect_clip_dummy(self) -> primitives.Bool | None:
         """The __rectClipDummy field value."""
         member = self.get_member("__rectClipDummy")
         if member is None:
@@ -473,7 +471,7 @@ class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInsp
         return getattr(member, 'value', None)
 
     @rect_clip_dummy.setter
-    def rect_clip_dummy(self, value: bool) -> None:
+    def rect_clip_dummy(self, value: primitives.Bool) -> None:
         """Set the __rectClipDummy field value."""
         member = self.get_member("__rectClipDummy")
         if member is not None:

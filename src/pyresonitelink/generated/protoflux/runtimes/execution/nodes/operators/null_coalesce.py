@@ -18,7 +18,7 @@ class NullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        NullCoalesce[np.float32]
+        NullCoalesce[primitives.Float]
         NullCoalesce[primitives.Float3]
     """
 

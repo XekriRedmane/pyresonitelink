@@ -1,9 +1,8 @@
 """Generated component: DoubleToFloatCopy."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -19,7 +18,7 @@ class DoubleToFloatCopy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DoubleToFloatCopy"
 
-    def __init__(self, source: str | IField[np.float64] | None = None, target: str | IField[np.float32] | None = None, write_back: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[primitives.Double] | None = None, target: str | IField[primitives.Float] | None = None, write_back: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,15 +37,15 @@ class DoubleToFloatCopy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[np.float64])."""
+        """Target ID of the Source reference (targets IField[primitives.Double])."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @source.setter
-    def source(self, target: str | IField[np.float64] | None) -> None:
-        """Set the Source reference by target ID or IField[np.float64] instance."""
+    def source(self, target: str | IField[primitives.Double] | None) -> None:
+        """Set the Source reference by target ID or IField[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
@@ -59,15 +58,15 @@ class DoubleToFloatCopy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[np.float32])."""
+        """Target ID of the Target reference (targets IField[primitives.Float])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Target reference by target ID or IField[np.float32] instance."""
+    def target(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -79,7 +78,7 @@ class DoubleToFloatCopy(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def write_back(self) -> bool | None:
+    def write_back(self) -> primitives.Bool | None:
         """The WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is None:
@@ -87,7 +86,7 @@ class DoubleToFloatCopy(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @write_back.setter
-    def write_back(self, value: bool) -> None:
+    def write_back(self, value: primitives.Bool) -> None:
         """Set the WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is not None:

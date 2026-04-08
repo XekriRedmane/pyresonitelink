@@ -13,7 +13,7 @@ class DynamicImpulseReceiverWithObject+Proxy(GenericComponent[T], IComponent, IW
 
     Parameterize with a value type::
 
-        DynamicImpulseReceiverWithObject+Proxy[np.float32]
+        DynamicImpulseReceiverWithObject+Proxy[primitives.Float]
         DynamicImpulseReceiverWithObject+Proxy[primitives.Float3]
     """
 

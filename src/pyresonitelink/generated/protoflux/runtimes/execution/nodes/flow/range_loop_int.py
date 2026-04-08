@@ -1,8 +1,7 @@
 """Generated component: RangeLoopInt."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -23,7 +22,7 @@ class RangeLoopInt(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.RangeLoopInt"
 
-    def __init__(self, start: str | INodeValueOutput[np.int32] | None = None, end: str | INodeValueOutput[np.int32] | None = None, step_size: str | INodeValueOutput[np.int32] | None = None, loop_start: str | ISyncNodeOperation | None = None, loop_iteration: str | ISyncNodeOperation | None = None, loop_end: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, start: str | INodeValueOutput[primitives.Int] | None = None, end: str | INodeValueOutput[primitives.Int] | None = None, step_size: str | INodeValueOutput[primitives.Int] | None = None, loop_start: str | ISyncNodeOperation | None = None, loop_iteration: str | ISyncNodeOperation | None = None, loop_end: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -51,15 +50,15 @@ class RangeLoopInt(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode
 
     @property
     def start(self) -> str | None:
-        """Target ID of the Start reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Start reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Start")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @start.setter
-    def start(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Start reference by target ID or INodeValueOutput[np.int32] instance."""
+    def start(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Start reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Start")
         if isinstance(member, members.Reference):
@@ -72,15 +71,15 @@ class RangeLoopInt(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode
 
     @property
     def end(self) -> str | None:
-        """Target ID of the End reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the End reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("End")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @end.setter
-    def end(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the End reference by target ID or INodeValueOutput[np.int32] instance."""
+    def end(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the End reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("End")
         if isinstance(member, members.Reference):
@@ -93,15 +92,15 @@ class RangeLoopInt(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode
 
     @property
     def step_size(self) -> str | None:
-        """Target ID of the StepSize reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the StepSize reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("StepSize")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @step_size.setter
-    def step_size(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the StepSize reference by target ID or INodeValueOutput[np.int32] instance."""
+    def step_size(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the StepSize reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("StepSize")
         if isinstance(member, members.Reference):

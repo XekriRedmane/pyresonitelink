@@ -1,6 +1,7 @@
 """Generated component: DebugUsers."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync import Sync
@@ -16,7 +17,7 @@ class DebugUsers(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugUsers"
 
-    def __init__(self, text: str | Sync[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, text: str | Sync[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,15 +30,15 @@ class DebugUsers(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the text reference (targets Sync[str])."""
+        """Target ID of the text reference (targets Sync[primitives.String])."""
         member = self.get_member("text")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text.setter
-    def text(self, target: str | Sync[str] | None) -> None:
-        """Set the text reference by target ID or Sync[str] instance."""
+    def text(self, target: str | Sync[primitives.String] | None) -> None:
+        """Set the text reference by target ID or Sync[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
         member = self.get_member("text")
         if isinstance(member, members.Reference):

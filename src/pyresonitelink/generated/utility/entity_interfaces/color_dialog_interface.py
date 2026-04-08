@@ -20,7 +20,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorDialogInterface"
 
-    def __init__(self, item_name: str | IField[str] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[str] | None = None, is_instance: bool | None = None, target_color: str | SyncRef[IField[primitives.ColorX]] | None = None, continuous: str | IField[bool] | None = None, allow_alpha: str | IField[bool] | None = None, allow_hdr: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, item_name: str | IField[primitives.String] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[primitives.String] | None = None, is_instance: primitives.Bool | None = None, target_color: str | SyncRef[IField[primitives.ColorX]] | None = None, continuous: str | IField[primitives.Bool] | None = None, allow_alpha: str | IField[primitives.Bool] | None = None, allow_hdr: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,15 +54,15 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[str])."""
+        """Target ID of the ItemName reference (targets IField[primitives.String])."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_name.setter
-    def item_name(self, target: str | IField[str] | None) -> None:
-        """Set the ItemName reference by target ID or IField[str] instance."""
+    def item_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
@@ -96,15 +96,15 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[str])."""
+        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spawning_user_id.setter
-    def spawning_user_id(self, target: str | IField[str] | None) -> None:
-        """Set the SpawningUserID reference by target ID or IField[str] instance."""
+    def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
@@ -116,7 +116,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
             )
 
     @property
-    def is_instance(self) -> bool | None:
+    def is_instance(self) -> primitives.Bool | None:
         """The IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is None:
@@ -124,7 +124,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
         return getattr(member, 'value', None)
 
     @is_instance.setter
-    def is_instance(self, value: bool) -> None:
+    def is_instance(self, value: primitives.Bool) -> None:
         """Set the IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is not None:
@@ -157,15 +157,15 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def continuous(self) -> str | None:
-        """Target ID of the Continuous reference (targets IField[bool])."""
+        """Target ID of the Continuous reference (targets IField[primitives.Bool])."""
         member = self.get_member("Continuous")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @continuous.setter
-    def continuous(self, target: str | IField[bool] | None) -> None:
-        """Set the Continuous reference by target ID or IField[bool] instance."""
+    def continuous(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the Continuous reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Continuous")
         if isinstance(member, members.Reference):
@@ -178,15 +178,15 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def allow_alpha(self) -> str | None:
-        """Target ID of the AllowAlpha reference (targets IField[bool])."""
+        """Target ID of the AllowAlpha reference (targets IField[primitives.Bool])."""
         member = self.get_member("AllowAlpha")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @allow_alpha.setter
-    def allow_alpha(self, target: str | IField[bool] | None) -> None:
-        """Set the AllowAlpha reference by target ID or IField[bool] instance."""
+    def allow_alpha(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the AllowAlpha reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("AllowAlpha")
         if isinstance(member, members.Reference):
@@ -199,15 +199,15 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def allow_hdr(self) -> str | None:
-        """Target ID of the AllowHDR reference (targets IField[bool])."""
+        """Target ID of the AllowHDR reference (targets IField[primitives.Bool])."""
         member = self.get_member("AllowHDR")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @allow_hdr.setter
-    def allow_hdr(self, target: str | IField[bool] | None) -> None:
-        """Set the AllowHDR reference by target ID or IField[bool] instance."""
+    def allow_hdr(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the AllowHDR reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("AllowHDR")
         if isinstance(member, members.Reference):

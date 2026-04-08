@@ -18,7 +18,7 @@ class ObjectRelay(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], 
 
     Parameterize with a value type::
 
-        ObjectRelay[np.float32]
+        ObjectRelay[primitives.Float]
         ObjectRelay[primitives.Float3]
     """
 

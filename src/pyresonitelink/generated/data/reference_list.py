@@ -14,7 +14,7 @@ class ReferenceList(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ReferenceList[np.float32]
+        ReferenceList[primitives.Float]
         ReferenceList[primitives.Float3]
     """
 

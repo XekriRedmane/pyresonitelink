@@ -1,7 +1,5 @@
 """Generated component: Grabber."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class Grabber(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Grabber"
 
-    def __init__(self, auto_update_user: str | User | None = None, release_check_radius: np.float32 | None = None, scale_reference: str | Grabber | None = None, base_scale: primitives.Float3 | None = None, base_distance: np.float32 | None = None, holder_slot: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_update_user: str | User | None = None, release_check_radius: primitives.Float | None = None, scale_reference: str | Grabber | None = None, base_scale: primitives.Float3 | None = None, base_distance: primitives.Float | None = None, holder_slot: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -68,7 +66,7 @@ class Grabber(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def release_check_radius(self) -> np.float32 | None:
+    def release_check_radius(self) -> primitives.Float | None:
         """The ReleaseCheckRadius field value."""
         member = self.get_member("ReleaseCheckRadius")
         if member is None:
@@ -76,7 +74,7 @@ class Grabber(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @release_check_radius.setter
-    def release_check_radius(self, value: np.float32) -> None:
+    def release_check_radius(self, value: primitives.Float) -> None:
         """Set the ReleaseCheckRadius field value."""
         member = self.get_member("ReleaseCheckRadius")
         if member is not None:
@@ -140,7 +138,7 @@ class Grabber(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def base_distance(self) -> np.float32 | None:
+    def base_distance(self) -> primitives.Float | None:
         """The _baseDistance field value."""
         member = self.get_member("_baseDistance")
         if member is None:
@@ -148,7 +146,7 @@ class Grabber(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @base_distance.setter
-    def base_distance(self, value: np.float32) -> None:
+    def base_distance(self, value: primitives.Float) -> None:
         """Set the _baseDistance field value."""
         member = self.get_member("_baseDistance")
         if member is not None:

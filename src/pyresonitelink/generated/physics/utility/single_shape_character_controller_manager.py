@@ -1,7 +1,5 @@
 """Generated component: SingleShapeCharacterControllerManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SingleShapeCharacterControllerManager"
 
-    def __init__(self, use_user_head_height_when_available: bool | None = None, head_height_offset: np.float32 | None = None, crouch_target_width: np.float32 | None = None, crouch_start: np.float32 | None = None, crouch_end: np.float32 | None = None, default_height: np.float32 | None = None, default_width: np.float32 | None = None, root_at_bottom: bool | None = None, target_height: str | IField[np.float32] | None = None, target_width: str | IField[np.float32] | None = None, target_offset: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_user_head_height_when_available: primitives.Bool | None = None, head_height_offset: primitives.Float | None = None, crouch_target_width: primitives.Float | None = None, crouch_start: primitives.Float | None = None, crouch_end: primitives.Float | None = None, default_height: primitives.Float | None = None, default_width: primitives.Float | None = None, root_at_bottom: primitives.Bool | None = None, target_height: str | IField[primitives.Float] | None = None, target_width: str | IField[primitives.Float] | None = None, target_offset: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +60,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
             self.target_offset = target_offset
 
     @property
-    def use_user_head_height_when_available(self) -> bool | None:
+    def use_user_head_height_when_available(self) -> primitives.Bool | None:
         """The UseUserHeadHeightWhenAvailable field value."""
         member = self.get_member("UseUserHeadHeightWhenAvailable")
         if member is None:
@@ -70,7 +68,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @use_user_head_height_when_available.setter
-    def use_user_head_height_when_available(self, value: bool) -> None:
+    def use_user_head_height_when_available(self, value: primitives.Bool) -> None:
         """Set the UseUserHeadHeightWhenAvailable field value."""
         member = self.get_member("UseUserHeadHeightWhenAvailable")
         if member is not None:
@@ -81,7 +79,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
             )
 
     @property
-    def head_height_offset(self) -> np.float32 | None:
+    def head_height_offset(self) -> primitives.Float | None:
         """The HeadHeightOffset field value."""
         member = self.get_member("HeadHeightOffset")
         if member is None:
@@ -89,7 +87,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @head_height_offset.setter
-    def head_height_offset(self, value: np.float32) -> None:
+    def head_height_offset(self, value: primitives.Float) -> None:
         """Set the HeadHeightOffset field value."""
         member = self.get_member("HeadHeightOffset")
         if member is not None:
@@ -100,7 +98,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
             )
 
     @property
-    def crouch_target_width(self) -> np.float32 | None:
+    def crouch_target_width(self) -> primitives.Float | None:
         """The CrouchTargetWidth field value."""
         member = self.get_member("CrouchTargetWidth")
         if member is None:
@@ -108,7 +106,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @crouch_target_width.setter
-    def crouch_target_width(self, value: np.float32) -> None:
+    def crouch_target_width(self, value: primitives.Float) -> None:
         """Set the CrouchTargetWidth field value."""
         member = self.get_member("CrouchTargetWidth")
         if member is not None:
@@ -119,7 +117,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
             )
 
     @property
-    def crouch_start(self) -> np.float32 | None:
+    def crouch_start(self) -> primitives.Float | None:
         """The CrouchStart field value."""
         member = self.get_member("CrouchStart")
         if member is None:
@@ -127,7 +125,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @crouch_start.setter
-    def crouch_start(self, value: np.float32) -> None:
+    def crouch_start(self, value: primitives.Float) -> None:
         """Set the CrouchStart field value."""
         member = self.get_member("CrouchStart")
         if member is not None:
@@ -138,7 +136,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
             )
 
     @property
-    def crouch_end(self) -> np.float32 | None:
+    def crouch_end(self) -> primitives.Float | None:
         """The CrouchEnd field value."""
         member = self.get_member("CrouchEnd")
         if member is None:
@@ -146,7 +144,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @crouch_end.setter
-    def crouch_end(self, value: np.float32) -> None:
+    def crouch_end(self, value: primitives.Float) -> None:
         """Set the CrouchEnd field value."""
         member = self.get_member("CrouchEnd")
         if member is not None:
@@ -157,7 +155,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
             )
 
     @property
-    def default_height(self) -> np.float32 | None:
+    def default_height(self) -> primitives.Float | None:
         """The DefaultHeight field value."""
         member = self.get_member("DefaultHeight")
         if member is None:
@@ -165,7 +163,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @default_height.setter
-    def default_height(self, value: np.float32) -> None:
+    def default_height(self, value: primitives.Float) -> None:
         """Set the DefaultHeight field value."""
         member = self.get_member("DefaultHeight")
         if member is not None:
@@ -176,7 +174,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
             )
 
     @property
-    def default_width(self) -> np.float32 | None:
+    def default_width(self) -> primitives.Float | None:
         """The DefaultWidth field value."""
         member = self.get_member("DefaultWidth")
         if member is None:
@@ -184,7 +182,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @default_width.setter
-    def default_width(self, value: np.float32) -> None:
+    def default_width(self, value: primitives.Float) -> None:
         """Set the DefaultWidth field value."""
         member = self.get_member("DefaultWidth")
         if member is not None:
@@ -195,7 +193,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
             )
 
     @property
-    def root_at_bottom(self) -> bool | None:
+    def root_at_bottom(self) -> primitives.Bool | None:
         """The RootAtBottom field value."""
         member = self.get_member("RootAtBottom")
         if member is None:
@@ -203,7 +201,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
         return getattr(member, 'value', None)
 
     @root_at_bottom.setter
-    def root_at_bottom(self, value: bool) -> None:
+    def root_at_bottom(self, value: primitives.Bool) -> None:
         """Set the RootAtBottom field value."""
         member = self.get_member("RootAtBottom")
         if member is not None:
@@ -215,15 +213,15 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def target_height(self) -> str | None:
-        """Target ID of the TargetHeight reference (targets IField[np.float32])."""
+        """Target ID of the TargetHeight reference (targets IField[primitives.Float])."""
         member = self.get_member("TargetHeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_height.setter
-    def target_height(self, target: str | IField[np.float32] | None) -> None:
-        """Set the TargetHeight reference by target ID or IField[np.float32] instance."""
+    def target_height(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the TargetHeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetHeight")
         if isinstance(member, members.Reference):
@@ -236,15 +234,15 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def target_width(self) -> str | None:
-        """Target ID of the TargetWidth reference (targets IField[np.float32])."""
+        """Target ID of the TargetWidth reference (targets IField[primitives.Float])."""
         member = self.get_member("TargetWidth")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_width.setter
-    def target_width(self, target: str | IField[np.float32] | None) -> None:
-        """Set the TargetWidth reference by target ID or IField[np.float32] instance."""
+    def target_width(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the TargetWidth reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetWidth")
         if isinstance(member, members.Reference):

@@ -1,9 +1,8 @@
 """Generated component: LegacyAudioOutputDopplerAdapter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -17,7 +16,7 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyAudioOutputDopplerAdapter"
 
-    def __init__(self, target: str | IField[np.float32] | None = None, value: np.float32 | None = None, spatial_blend: str | IField[np.float32] | None = None, spatialize: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.Float] | None = None, value: primitives.Float | None = None, spatial_blend: str | IField[primitives.Float] | None = None, spatialize: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,15 +38,15 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[np.float32])."""
+        """Target ID of the Target reference (targets IField[primitives.Float])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Target reference by target ID or IField[np.float32] instance."""
+    def target(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -59,7 +58,7 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def value(self) -> np.float32 | None:
+    def value(self) -> primitives.Float | None:
         """The Value field value."""
         member = self.get_member("Value")
         if member is None:
@@ -67,7 +66,7 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @value.setter
-    def value(self, value: np.float32) -> None:
+    def value(self, value: primitives.Float) -> None:
         """Set the Value field value."""
         member = self.get_member("Value")
         if member is not None:
@@ -79,15 +78,15 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def spatial_blend(self) -> str | None:
-        """Target ID of the SpatialBlend reference (targets IField[np.float32])."""
+        """Target ID of the SpatialBlend reference (targets IField[primitives.Float])."""
         member = self.get_member("SpatialBlend")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spatial_blend.setter
-    def spatial_blend(self, target: str | IField[np.float32] | None) -> None:
-        """Set the SpatialBlend reference by target ID or IField[np.float32] instance."""
+    def spatial_blend(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the SpatialBlend reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SpatialBlend")
         if isinstance(member, members.Reference):
@@ -100,15 +99,15 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def spatialize(self) -> str | None:
-        """Target ID of the Spatialize reference (targets IField[bool])."""
+        """Target ID of the Spatialize reference (targets IField[primitives.Bool])."""
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spatialize.setter
-    def spatialize(self, target: str | IField[bool] | None) -> None:
-        """Set the Spatialize reference by target ID or IField[bool] instance."""
+    def spatialize(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the Spatialize reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):

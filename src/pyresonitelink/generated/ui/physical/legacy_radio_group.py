@@ -22,7 +22,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyRadioGroup"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, is_enabled: bool | None = None, selected_option: str | LegacyRadio | None = None, choice_visual: str | Slot | None = None, choice_position: str | IField[primitives.Float3] | None = None, choice_rotation: str | IField[primitives.FloatQ] | None = None, choice_scale: str | IField[primitives.Float3] | None = None, choice_material: str | PBS_RimMetallic | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, is_enabled: primitives.Bool | None = None, selected_option: str | LegacyRadio | None = None, choice_visual: str | Slot | None = None, choice_position: str | IField[primitives.Float3] | None = None, choice_rotation: str | IField[primitives.FloatQ] | None = None, choice_scale: str | IField[primitives.Float3] | None = None, choice_material: str | PBS_RimMetallic | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -82,7 +82,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -90,7 +90,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -101,7 +101,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -109,7 +109,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -120,7 +120,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
             )
 
     @property
-    def is_enabled(self) -> bool | None:
+    def is_enabled(self) -> primitives.Bool | None:
         """The IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is None:
@@ -128,7 +128,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_enabled.setter
-    def is_enabled(self, value: bool) -> None:
+    def is_enabled(self, value: primitives.Bool) -> None:
         """Set the IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is not None:

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
@@ -16,7 +17,7 @@ class WorldCloseAction(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldCloseAction"
 
-    def __init__(self, waiting_confirm: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, waiting_confirm: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +42,7 @@ class WorldCloseAction(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
         self.set_member("Action", value)
 
     @property
-    def waiting_confirm(self) -> bool | None:
+    def waiting_confirm(self) -> primitives.Bool | None:
         """The WaitingConfirm field value."""
         member = self.get_member("WaitingConfirm")
         if member is None:
@@ -49,7 +50,7 @@ class WorldCloseAction(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @waiting_confirm.setter
-    def waiting_confirm(self, value: bool) -> None:
+    def waiting_confirm(self, value: primitives.Bool) -> None:
         """Set the WaitingConfirm field value."""
         member = self.get_member("WaitingConfirm")
         if member is not None:

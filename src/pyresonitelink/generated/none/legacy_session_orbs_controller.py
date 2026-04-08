@@ -1,7 +1,5 @@
 """Generated component: LegacySessionOrbsController."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -18,7 +16,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacySessionOrbsController"
 
-    def __init__(self, spawn_radius: np.float32 | None = None, spawn_height: np.float32 | None = None, spawn_offset: primitives.Float3 | None = None, root: str | Slot | None = None, max_orbs: np.int32 | None = None, show_headless: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, spawn_radius: primitives.Float | None = None, spawn_height: primitives.Float | None = None, spawn_offset: primitives.Float3 | None = None, root: str | Slot | None = None, max_orbs: primitives.Int | None = None, show_headless: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +43,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
             self.show_headless = show_headless
 
     @property
-    def spawn_radius(self) -> np.float32 | None:
+    def spawn_radius(self) -> primitives.Float | None:
         """The SpawnRadius field value."""
         member = self.get_member("SpawnRadius")
         if member is None:
@@ -53,7 +51,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @spawn_radius.setter
-    def spawn_radius(self, value: np.float32) -> None:
+    def spawn_radius(self, value: primitives.Float) -> None:
         """Set the SpawnRadius field value."""
         member = self.get_member("SpawnRadius")
         if member is not None:
@@ -64,7 +62,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
             )
 
     @property
-    def spawn_height(self) -> np.float32 | None:
+    def spawn_height(self) -> primitives.Float | None:
         """The SpawnHeight field value."""
         member = self.get_member("SpawnHeight")
         if member is None:
@@ -72,7 +70,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @spawn_height.setter
-    def spawn_height(self, value: np.float32) -> None:
+    def spawn_height(self, value: primitives.Float) -> None:
         """Set the SpawnHeight field value."""
         member = self.get_member("SpawnHeight")
         if member is not None:
@@ -123,7 +121,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
             )
 
     @property
-    def max_orbs(self) -> np.int32 | None:
+    def max_orbs(self) -> primitives.Int | None:
         """The MaxOrbs field value."""
         member = self.get_member("MaxOrbs")
         if member is None:
@@ -131,7 +129,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @max_orbs.setter
-    def max_orbs(self, value: np.int32) -> None:
+    def max_orbs(self, value: primitives.Int) -> None:
         """Set the MaxOrbs field value."""
         member = self.get_member("MaxOrbs")
         if member is not None:
@@ -142,7 +140,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
             )
 
     @property
-    def show_headless(self) -> bool | None:
+    def show_headless(self) -> primitives.Bool | None:
         """The ShowHeadless field value."""
         member = self.get_member("ShowHeadless")
         if member is None:
@@ -150,7 +148,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @show_headless.setter
-    def show_headless(self, value: bool) -> None:
+    def show_headless(self, value: primitives.Bool) -> None:
         """Set the ShowHeadless field value."""
         member = self.get_member("ShowHeadless")
         if member is not None:

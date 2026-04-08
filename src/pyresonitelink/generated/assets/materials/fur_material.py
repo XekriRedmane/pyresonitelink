@@ -1,7 +1,5 @@
 """Generated component: FurMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FurMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, color: primitives.ColorX | None = None, specular_color: primitives.ColorX | None = None, shininess: np.float32 | None = None, gloss: np.float32 | None = None, rim_color: primitives.ColorX | None = None, rim_power: np.float32 | None = None, fur_length: np.float32 | None = None, fur_hardness: np.float32 | None = None, fur_thinness: np.float32 | None = None, fur_shading: np.float32 | None = None, fur_coloring: np.float32 | None = None, base: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, noise: str | IAssetProvider[ITexture2D] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, alpha_cutoff: np.float32 | None = None, force_global: primitives.Float4 | None = None, force_local: primitives.Float4 | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, color: primitives.ColorX | None = None, specular_color: primitives.ColorX | None = None, shininess: primitives.Float | None = None, gloss: primitives.Float | None = None, rim_color: primitives.ColorX | None = None, rim_power: primitives.Float | None = None, fur_length: primitives.Float | None = None, fur_hardness: primitives.Float | None = None, fur_thinness: primitives.Float | None = None, fur_shading: primitives.Float | None = None, fur_coloring: primitives.Float | None = None, base: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, noise: str | IAssetProvider[ITexture2D] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, alpha_cutoff: primitives.Float | None = None, force_global: primitives.Float4 | None = None, force_local: primitives.Float4 | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -97,7 +95,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             self.render_queue = render_queue
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -105,7 +103,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -175,7 +173,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def shininess(self) -> np.float32 | None:
+    def shininess(self) -> primitives.Float | None:
         """The Shininess field value."""
         member = self.get_member("Shininess")
         if member is None:
@@ -183,7 +181,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @shininess.setter
-    def shininess(self, value: np.float32) -> None:
+    def shininess(self, value: primitives.Float) -> None:
         """Set the Shininess field value."""
         member = self.get_member("Shininess")
         if member is not None:
@@ -194,7 +192,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def gloss(self) -> np.float32 | None:
+    def gloss(self) -> primitives.Float | None:
         """The Gloss field value."""
         member = self.get_member("Gloss")
         if member is None:
@@ -202,7 +200,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @gloss.setter
-    def gloss(self, value: np.float32) -> None:
+    def gloss(self, value: primitives.Float) -> None:
         """Set the Gloss field value."""
         member = self.get_member("Gloss")
         if member is not None:
@@ -232,7 +230,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def rim_power(self) -> np.float32 | None:
+    def rim_power(self) -> primitives.Float | None:
         """The RimPower field value."""
         member = self.get_member("RimPower")
         if member is None:
@@ -240,7 +238,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @rim_power.setter
-    def rim_power(self, value: np.float32) -> None:
+    def rim_power(self, value: primitives.Float) -> None:
         """Set the RimPower field value."""
         member = self.get_member("RimPower")
         if member is not None:
@@ -251,7 +249,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def fur_length(self) -> np.float32 | None:
+    def fur_length(self) -> primitives.Float | None:
         """The FurLength field value."""
         member = self.get_member("FurLength")
         if member is None:
@@ -259,7 +257,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @fur_length.setter
-    def fur_length(self, value: np.float32) -> None:
+    def fur_length(self, value: primitives.Float) -> None:
         """Set the FurLength field value."""
         member = self.get_member("FurLength")
         if member is not None:
@@ -270,7 +268,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def fur_hardness(self) -> np.float32 | None:
+    def fur_hardness(self) -> primitives.Float | None:
         """The FurHardness field value."""
         member = self.get_member("FurHardness")
         if member is None:
@@ -278,7 +276,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @fur_hardness.setter
-    def fur_hardness(self, value: np.float32) -> None:
+    def fur_hardness(self, value: primitives.Float) -> None:
         """Set the FurHardness field value."""
         member = self.get_member("FurHardness")
         if member is not None:
@@ -289,7 +287,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def fur_thinness(self) -> np.float32 | None:
+    def fur_thinness(self) -> primitives.Float | None:
         """The FurThinness field value."""
         member = self.get_member("FurThinness")
         if member is None:
@@ -297,7 +295,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @fur_thinness.setter
-    def fur_thinness(self, value: np.float32) -> None:
+    def fur_thinness(self, value: primitives.Float) -> None:
         """Set the FurThinness field value."""
         member = self.get_member("FurThinness")
         if member is not None:
@@ -308,7 +306,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def fur_shading(self) -> np.float32 | None:
+    def fur_shading(self) -> primitives.Float | None:
         """The FurShading field value."""
         member = self.get_member("FurShading")
         if member is None:
@@ -316,7 +314,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @fur_shading.setter
-    def fur_shading(self, value: np.float32) -> None:
+    def fur_shading(self, value: primitives.Float) -> None:
         """Set the FurShading field value."""
         member = self.get_member("FurShading")
         if member is not None:
@@ -327,7 +325,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def fur_coloring(self) -> np.float32 | None:
+    def fur_coloring(self) -> primitives.Float | None:
         """The FurColoring field value."""
         member = self.get_member("FurColoring")
         if member is None:
@@ -335,7 +333,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @fur_coloring.setter
-    def fur_coloring(self, value: np.float32) -> None:
+    def fur_coloring(self, value: primitives.Float) -> None:
         """Set the FurColoring field value."""
         member = self.get_member("FurColoring")
         if member is not None:
@@ -447,7 +445,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def alpha_cutoff(self) -> np.float32 | None:
+    def alpha_cutoff(self) -> primitives.Float | None:
         """The AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is None:
@@ -455,7 +453,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @alpha_cutoff.setter
-    def alpha_cutoff(self, value: np.float32) -> None:
+    def alpha_cutoff(self, value: primitives.Float) -> None:
         """Set the AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is not None:
@@ -504,7 +502,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -512,7 +510,7 @@ class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

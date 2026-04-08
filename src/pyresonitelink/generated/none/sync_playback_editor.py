@@ -1,8 +1,7 @@
 """Generated component: SyncPlaybackEditor."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_playback import SyncPlayback
@@ -19,7 +18,7 @@ class SyncPlaybackEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SyncPlaybackEditor"
 
-    def __init__(self, playback: str | SyncPlayback | None = None, slider_value: str | IField[np.float32] | None = None, loop_toggle_sprite: str | IField[str] | None = None, speed_field: str | FloatTextEditorParser | None = None, slider: str | Slider[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, playback: str | SyncPlayback | None = None, slider_value: str | IField[primitives.Float] | None = None, loop_toggle_sprite: str | IField[str] | None = None, speed_field: str | FloatTextEditorParser | None = None, slider: str | Slider[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -65,15 +64,15 @@ class SyncPlaybackEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider_value(self) -> str | None:
-        """Target ID of the _sliderValue reference (targets IField[np.float32])."""
+        """Target ID of the _sliderValue reference (targets IField[primitives.Float])."""
         member = self.get_member("_sliderValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @slider_value.setter
-    def slider_value(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _sliderValue reference by target ID or IField[np.float32] instance."""
+    def slider_value(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _sliderValue reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_sliderValue")
         if isinstance(member, members.Reference):
@@ -128,15 +127,15 @@ class SyncPlaybackEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider(self) -> str | None:
-        """Target ID of the _slider reference (targets Slider[np.float32])."""
+        """Target ID of the _slider reference (targets Slider[primitives.Float])."""
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @slider.setter
-    def slider(self, target: str | Slider[np.float32] | None) -> None:
-        """Set the _slider reference by target ID or Slider[np.float32] instance."""
+    def slider(self, target: str | Slider[primitives.Float] | None) -> None:
+        """Set the _slider reference by target ID or Slider[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, Slider) else target  # type: ignore[assignment]
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):

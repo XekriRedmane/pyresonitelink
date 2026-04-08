@@ -1,9 +1,8 @@
 """Generated component: ValueGradientDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -18,14 +17,14 @@ class ValueGradientDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ValueGradientDriver[np.float32]
+        ValueGradientDriver[primitives.Float]
         ValueGradientDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueGradientDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ValueGradientDriver<>"
 
-    def __init__(self, progress: np.float32 | None = None, target: str | IField[T] | None = None, interpolate: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, progress: primitives.Float | None = None, target: str | IField[T] | None = None, interpolate: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,7 +42,7 @@ class ValueGradientDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
             self.interpolate = interpolate
 
     @property
-    def progress(self) -> np.float32 | None:
+    def progress(self) -> primitives.Float | None:
         """The Progress field value."""
         member = self.get_member("Progress")
         if member is None:
@@ -51,7 +50,7 @@ class ValueGradientDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @progress.setter
-    def progress(self, value: np.float32) -> None:
+    def progress(self, value: primitives.Float) -> None:
         """Set the Progress field value."""
         member = self.get_member("Progress")
         if member is not None:
@@ -83,7 +82,7 @@ class ValueGradientDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def interpolate(self) -> bool | None:
+    def interpolate(self) -> primitives.Bool | None:
         """The Interpolate field value."""
         member = self.get_member("Interpolate")
         if member is None:
@@ -91,7 +90,7 @@ class ValueGradientDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @interpolate.setter
-    def interpolate(self, value: bool) -> None:
+    def interpolate(self, value: primitives.Bool) -> None:
         """Set the Interpolate field value."""
         member = self.get_member("Interpolate")
         if member is not None:

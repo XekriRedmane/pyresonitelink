@@ -1,8 +1,7 @@
 """Generated component: AudioVolumeSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioVolumeSettings"
 
-    def __init__(self, master_volume: np.float32 | None = None, sound_effect_volume: np.float32 | None = None, multimedia_volume: np.float32 | None = None, voice_volume: np.float32 | None = None, user_interface_volume: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, master_volume: primitives.Float | None = None, sound_effect_volume: primitives.Float | None = None, multimedia_volume: primitives.Float | None = None, voice_volume: primitives.Float | None = None, user_interface_volume: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +38,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
             self.user_interface_volume = user_interface_volume
 
     @property
-    def master_volume(self) -> np.float32 | None:
+    def master_volume(self) -> primitives.Float | None:
         """The MasterVolume field value."""
         member = self.get_member("MasterVolume")
         if member is None:
@@ -47,7 +46,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @master_volume.setter
-    def master_volume(self, value: np.float32) -> None:
+    def master_volume(self, value: primitives.Float) -> None:
         """Set the MasterVolume field value."""
         member = self.get_member("MasterVolume")
         if member is not None:
@@ -58,7 +57,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def sound_effect_volume(self) -> np.float32 | None:
+    def sound_effect_volume(self) -> primitives.Float | None:
         """The SoundEffectVolume field value."""
         member = self.get_member("SoundEffectVolume")
         if member is None:
@@ -66,7 +65,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @sound_effect_volume.setter
-    def sound_effect_volume(self, value: np.float32) -> None:
+    def sound_effect_volume(self, value: primitives.Float) -> None:
         """Set the SoundEffectVolume field value."""
         member = self.get_member("SoundEffectVolume")
         if member is not None:
@@ -77,7 +76,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def multimedia_volume(self) -> np.float32 | None:
+    def multimedia_volume(self) -> primitives.Float | None:
         """The MultimediaVolume field value."""
         member = self.get_member("MultimediaVolume")
         if member is None:
@@ -85,7 +84,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @multimedia_volume.setter
-    def multimedia_volume(self, value: np.float32) -> None:
+    def multimedia_volume(self, value: primitives.Float) -> None:
         """Set the MultimediaVolume field value."""
         member = self.get_member("MultimediaVolume")
         if member is not None:
@@ -96,7 +95,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def voice_volume(self) -> np.float32 | None:
+    def voice_volume(self) -> primitives.Float | None:
         """The VoiceVolume field value."""
         member = self.get_member("VoiceVolume")
         if member is None:
@@ -104,7 +103,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @voice_volume.setter
-    def voice_volume(self, value: np.float32) -> None:
+    def voice_volume(self, value: primitives.Float) -> None:
         """Set the VoiceVolume field value."""
         member = self.get_member("VoiceVolume")
         if member is not None:
@@ -115,7 +114,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def user_interface_volume(self) -> np.float32 | None:
+    def user_interface_volume(self) -> primitives.Float | None:
         """The UserInterfaceVolume field value."""
         member = self.get_member("UserInterfaceVolume")
         if member is None:
@@ -123,7 +122,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @user_interface_volume.setter
-    def user_interface_volume(self, value: np.float32) -> None:
+    def user_interface_volume(self, value: primitives.Float) -> None:
         """Set the UserInterfaceVolume field value."""
         member = self.get_member("UserInterfaceVolume")
         if member is not None:

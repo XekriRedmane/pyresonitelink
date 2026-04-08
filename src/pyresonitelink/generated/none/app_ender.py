@@ -17,7 +17,7 @@ class AppEnder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AppEnder"
 
-    def __init__(self, changes_saved: bool | None = None, text: str | TextRenderer | None = None, text_color: str | IField[primitives.ColorX] | None = None, outline_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, changes_saved: primitives.Bool | None = None, text: str | TextRenderer | None = None, text_color: str | IField[primitives.ColorX] | None = None, outline_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -51,7 +51,7 @@ class AppEnder(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("Mode", value)
 
     @property
-    def changes_saved(self) -> bool | None:
+    def changes_saved(self) -> primitives.Bool | None:
         """The ChangesSaved field value."""
         member = self.get_member("ChangesSaved")
         if member is None:
@@ -59,7 +59,7 @@ class AppEnder(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @changes_saved.setter
-    def changes_saved(self, value: bool) -> None:
+    def changes_saved(self, value: primitives.Bool) -> None:
         """Set the ChangesSaved field value."""
         member = self.get_member("ChangesSaved")
         if member is not None:

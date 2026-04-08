@@ -1,9 +1,8 @@
 """Generated component: OSC_Receiver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OSC_Receiver"
 
-    def __init__(self, access_reason: str | None = None, port: np.int32 | None = None, is_listening: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, access_reason: primitives.String | None = None, port: primitives.Int | None = None, is_listening: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -49,7 +48,7 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("HandlingUser", value)
 
     @property
-    def access_reason(self) -> str | None:
+    def access_reason(self) -> primitives.String | None:
         """The AccessReason field value."""
         member = self.get_member("AccessReason")
         if member is None:
@@ -57,7 +56,7 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @access_reason.setter
-    def access_reason(self, value: str) -> None:
+    def access_reason(self, value: primitives.String) -> None:
         """Set the AccessReason field value."""
         member = self.get_member("AccessReason")
         if member is not None:
@@ -68,7 +67,7 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def port(self) -> np.int32 | None:
+    def port(self) -> primitives.Int | None:
         """The Port field value."""
         member = self.get_member("Port")
         if member is None:
@@ -76,7 +75,7 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @port.setter
-    def port(self, value: np.int32) -> None:
+    def port(self, value: primitives.Int) -> None:
         """Set the Port field value."""
         member = self.get_member("Port")
         if member is not None:
@@ -87,7 +86,7 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_listening(self) -> bool | None:
+    def is_listening(self) -> primitives.Bool | None:
         """The IsListening field value."""
         member = self.get_member("IsListening")
         if member is None:
@@ -95,7 +94,7 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_listening.setter
-    def is_listening(self, value: bool) -> None:
+    def is_listening(self, value: primitives.Bool) -> None:
         """Set the IsListening field value."""
         member = self.get_member("IsListening")
         if member is not None:

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -14,14 +15,14 @@ class LocalVariableSync(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        LocalVariableSync[np.float32]
+        LocalVariableSync[primitives.Float]
         LocalVariableSync[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocalVariableSync<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.LocalVariableSync<>"
 
-    def __init__(self, value: str | IField[T] | None = None, variable: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | IField[T] | None = None, variable: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -70,7 +71,7 @@ class LocalVariableSync(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def variable(self) -> str | None:
+    def variable(self) -> primitives.String | None:
         """The Variable field value."""
         member = self.get_member("Variable")
         if member is None:
@@ -78,7 +79,7 @@ class LocalVariableSync(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @variable.setter
-    def variable(self, value: str) -> None:
+    def variable(self, value: primitives.String) -> None:
         """Set the Variable field value."""
         member = self.get_member("Variable")
         if member is not None:

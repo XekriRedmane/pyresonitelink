@@ -1,7 +1,5 @@
 """Generated component: PBS_VertexColorSpecular."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_VertexColorSpecular"
 
-    def __init__(self, high_priority_integration: bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, alpha_clip: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, transparent_front: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, transparent_front: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -90,7 +88,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             self.transparent_front = transparent_front
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -98,7 +96,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -248,7 +246,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -256,7 +254,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -327,7 +325,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
         self.set_member("AlphaHandling", value)
 
     @property
-    def alpha_clip(self) -> np.float32 | None:
+    def alpha_clip(self) -> primitives.Float | None:
         """The AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is None:
@@ -335,7 +333,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
         return getattr(member, 'value', None)
 
     @alpha_clip.setter
-    def alpha_clip(self, value: np.float32) -> None:
+    def alpha_clip(self, value: primitives.Float) -> None:
         """Set the AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is not None:
@@ -346,7 +344,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -354,7 +352,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -365,7 +363,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -373,7 +371,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -384,7 +382,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -392,7 +390,7 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

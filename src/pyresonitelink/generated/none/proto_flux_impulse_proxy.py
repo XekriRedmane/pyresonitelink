@@ -1,9 +1,8 @@
 """Generated component: ProtoFluxImpulseProxy."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode
@@ -18,7 +17,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxImpulseProxy"
 
-    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: str | None = None, is_dynamic: bool | None = None, index: np.int32 | None = None, connect_point: str | Slot | None = None, wire: str | ProtoFluxWireManager | None = None, node_impulse: str | ISyncRef | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, is_dynamic: primitives.Bool | None = None, index: primitives.Int | None = None, connect_point: str | Slot | None = None, wire: str | ProtoFluxWireManager | None = None, node_impulse: str | ISyncRef | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,7 +68,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
             )
 
     @property
-    def element_name(self) -> str | None:
+    def element_name(self) -> primitives.String | None:
         """The ElementName field value."""
         member = self.get_member("ElementName")
         if member is None:
@@ -77,7 +76,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
         return getattr(member, 'value', None)
 
     @element_name.setter
-    def element_name(self, value: str) -> None:
+    def element_name(self, value: primitives.String) -> None:
         """Set the ElementName field value."""
         member = self.get_member("ElementName")
         if member is not None:
@@ -88,7 +87,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
             )
 
     @property
-    def is_dynamic(self) -> bool | None:
+    def is_dynamic(self) -> primitives.Bool | None:
         """The IsDynamic field value."""
         member = self.get_member("IsDynamic")
         if member is None:
@@ -96,7 +95,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
         return getattr(member, 'value', None)
 
     @is_dynamic.setter
-    def is_dynamic(self, value: bool) -> None:
+    def is_dynamic(self, value: primitives.Bool) -> None:
         """Set the IsDynamic field value."""
         member = self.get_member("IsDynamic")
         if member is not None:
@@ -107,7 +106,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
             )
 
     @property
-    def index(self) -> np.int32 | None:
+    def index(self) -> primitives.Int | None:
         """The Index field value."""
         member = self.get_member("Index")
         if member is None:
@@ -115,7 +114,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
         return getattr(member, 'value', None)
 
     @index.setter
-    def index(self, value: np.int32) -> None:
+    def index(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:

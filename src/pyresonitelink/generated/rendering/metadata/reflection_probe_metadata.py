@@ -1,9 +1,8 @@
 """Generated component: ReflectionProbeMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.reflection_probe import ReflectionProbe
@@ -19,7 +18,7 @@ class ReflectionProbeMetadata(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbeMetadata"
 
-    def __init__(self, probe: str | ReflectionProbe | None = None, on_changes_render_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, probe: str | ReflectionProbe | None = None, on_changes_render_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -55,7 +54,7 @@ class ReflectionProbeMetadata(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def on_changes_render_count(self) -> np.int32 | None:
+    def on_changes_render_count(self) -> primitives.Int | None:
         """The OnChangesRenderCount field value."""
         member = self.get_member("OnChangesRenderCount")
         if member is None:
@@ -63,7 +62,7 @@ class ReflectionProbeMetadata(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @on_changes_render_count.setter
-    def on_changes_render_count(self, value: np.int32) -> None:
+    def on_changes_render_count(self, value: primitives.Int) -> None:
         """Set the OnChangesRenderCount field value."""
         member = self.get_member("OnChangesRenderCount")
         if member is not None:

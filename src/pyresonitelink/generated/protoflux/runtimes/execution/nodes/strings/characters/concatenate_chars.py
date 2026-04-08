@@ -1,6 +1,7 @@
 """Generated component: ConcatenateChars."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -20,7 +21,7 @@ class ConcatenateChars(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.ConcatenateChars"
 
-    def __init__(self, a: str | INodeValueOutput[str] | None = None, b: str | INodeValueOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, a: str | INodeValueOutput[primitives.Char] | None = None, b: str | INodeValueOutput[primitives.Char] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,15 +37,15 @@ class ConcatenateChars(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[str])."""
+        """Target ID of the A reference (targets INodeValueOutput[primitives.Char])."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @a.setter
-    def a(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the A reference by target ID or INodeValueOutput[str] instance."""
+    def a(self, target: str | INodeValueOutput[primitives.Char] | None) -> None:
+        """Set the A reference by target ID or INodeValueOutput[primitives.Char] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("A")
         if isinstance(member, members.Reference):
@@ -57,15 +58,15 @@ class ConcatenateChars(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[str])."""
+        """Target ID of the B reference (targets INodeValueOutput[primitives.Char])."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @b.setter
-    def b(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the B reference by target ID or INodeValueOutput[str] instance."""
+    def b(self, target: str | INodeValueOutput[primitives.Char] | None) -> None:
+        """Set the B reference by target ID or INodeValueOutput[primitives.Char] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("B")
         if isinstance(member, members.Reference):

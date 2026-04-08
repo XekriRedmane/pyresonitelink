@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -15,7 +16,7 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarUserPositioner"
 
-    def __init__(self, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up: bool | None = None, on_manual_equip_only: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up: primitives.Bool | None = None, on_manual_equip_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -104,7 +105,7 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
             )
 
     @property
-    def preserve_up(self) -> bool | None:
+    def preserve_up(self) -> primitives.Bool | None:
         """The PreserveUp field value."""
         member = self.get_member("PreserveUp")
         if member is None:
@@ -112,7 +113,7 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @preserve_up.setter
-    def preserve_up(self, value: bool) -> None:
+    def preserve_up(self, value: primitives.Bool) -> None:
         """Set the PreserveUp field value."""
         member = self.get_member("PreserveUp")
         if member is not None:
@@ -123,7 +124,7 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
             )
 
     @property
-    def on_manual_equip_only(self) -> bool | None:
+    def on_manual_equip_only(self) -> primitives.Bool | None:
         """The OnManualEquipOnly field value."""
         member = self.get_member("OnManualEquipOnly")
         if member is None:
@@ -131,7 +132,7 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
         return getattr(member, 'value', None)
 
     @on_manual_equip_only.setter
-    def on_manual_equip_only(self, value: bool) -> None:
+    def on_manual_equip_only(self, value: primitives.Bool) -> None:
         """Set the OnManualEquipOnly field value."""
         member = self.get_member("OnManualEquipOnly")
         if member is not None:

@@ -1,6 +1,7 @@
 """Generated component: AI_GeneratedContent."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iitem_metadata_source import IItemMetadataSource
@@ -15,7 +16,7 @@ class AI_GeneratedContent(GeneratedComponent, IItemMetadataSource, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AI_GeneratedContent"
 
-    def __init__(self, source: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class AI_GeneratedContent(GeneratedComponent, IItemMetadataSource, IWorldEventRe
             self.source = source
 
     @property
-    def source(self) -> str | None:
+    def source(self) -> primitives.String | None:
         """The Source field value."""
         member = self.get_member("Source")
         if member is None:
@@ -35,7 +36,7 @@ class AI_GeneratedContent(GeneratedComponent, IItemMetadataSource, IWorldEventRe
         return getattr(member, 'value', None)
 
     @source.setter
-    def source(self, value: str) -> None:
+    def source(self, value: primitives.String) -> None:
         """Set the Source field value."""
         member = self.get_member("Source")
         if member is not None:

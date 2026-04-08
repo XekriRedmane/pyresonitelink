@@ -19,7 +19,7 @@ class Projection360PropertyBlock(GeneratedComponent, IAssetProvider, ICustomInsp
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Projection360PropertyBlock"
 
-    def __init__(self, high_priority_integration: bool | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, perspective_field_of_view: primitives.Float2 | None = None, perspective_angle_offset: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, perspective_field_of_view: primitives.Float2 | None = None, perspective_angle_offset: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +40,7 @@ class Projection360PropertyBlock(GeneratedComponent, IAssetProvider, ICustomInsp
             self.perspective_angle_offset = perspective_angle_offset
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -48,7 +48,7 @@ class Projection360PropertyBlock(GeneratedComponent, IAssetProvider, ICustomInsp
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:

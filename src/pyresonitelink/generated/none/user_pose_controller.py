@@ -1,7 +1,5 @@
 """Generated component: UserPoseController."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserPoseController"
 
-    def __init__(self, screen_controller: str | ScreenController | None = None, body_horizontal_angle: np.float32 | None = None, render_debug_visuals: bool | None = None, pause_locomotion_animation: bool | None = None, override_locomotion_velocity: primitives.Float3 | None = None, override_locomotion_angular_velocity: np.float32 | None = None, simulation_speed_ratio: np.float32 | None = None, default_config: str | LocomotionAnimationConfiguration | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, screen_controller: str | ScreenController | None = None, body_horizontal_angle: primitives.Float | None = None, render_debug_visuals: primitives.Bool | None = None, pause_locomotion_animation: primitives.Bool | None = None, override_locomotion_velocity: primitives.Float3 | None = None, override_locomotion_angular_velocity: primitives.Float | None = None, simulation_speed_ratio: primitives.Float | None = None, default_config: str | LocomotionAnimationConfiguration | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -73,7 +71,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def body_horizontal_angle(self) -> np.float32 | None:
+    def body_horizontal_angle(self) -> primitives.Float | None:
         """The BodyHorizontalAngle field value."""
         member = self.get_member("BodyHorizontalAngle")
         if member is None:
@@ -81,7 +79,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @body_horizontal_angle.setter
-    def body_horizontal_angle(self, value: np.float32) -> None:
+    def body_horizontal_angle(self, value: primitives.Float) -> None:
         """Set the BodyHorizontalAngle field value."""
         member = self.get_member("BodyHorizontalAngle")
         if member is not None:
@@ -92,7 +90,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def render_debug_visuals(self) -> bool | None:
+    def render_debug_visuals(self) -> primitives.Bool | None:
         """The RenderDebugVisuals field value."""
         member = self.get_member("RenderDebugVisuals")
         if member is None:
@@ -100,7 +98,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @render_debug_visuals.setter
-    def render_debug_visuals(self, value: bool) -> None:
+    def render_debug_visuals(self, value: primitives.Bool) -> None:
         """Set the RenderDebugVisuals field value."""
         member = self.get_member("RenderDebugVisuals")
         if member is not None:
@@ -111,7 +109,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def pause_locomotion_animation(self) -> bool | None:
+    def pause_locomotion_animation(self) -> primitives.Bool | None:
         """The PauseLocomotionAnimation field value."""
         member = self.get_member("PauseLocomotionAnimation")
         if member is None:
@@ -119,7 +117,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @pause_locomotion_animation.setter
-    def pause_locomotion_animation(self, value: bool) -> None:
+    def pause_locomotion_animation(self, value: primitives.Bool) -> None:
         """Set the PauseLocomotionAnimation field value."""
         member = self.get_member("PauseLocomotionAnimation")
         if member is not None:
@@ -149,7 +147,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def override_locomotion_angular_velocity(self) -> np.float32 | None:
+    def override_locomotion_angular_velocity(self) -> primitives.Float | None:
         """The OverrideLocomotionAngularVelocity field value."""
         member = self.get_member("OverrideLocomotionAngularVelocity")
         if member is None:
@@ -157,7 +155,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @override_locomotion_angular_velocity.setter
-    def override_locomotion_angular_velocity(self, value: np.float32) -> None:
+    def override_locomotion_angular_velocity(self, value: primitives.Float) -> None:
         """Set the OverrideLocomotionAngularVelocity field value."""
         member = self.get_member("OverrideLocomotionAngularVelocity")
         if member is not None:
@@ -168,7 +166,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def simulation_speed_ratio(self) -> np.float32 | None:
+    def simulation_speed_ratio(self) -> primitives.Float | None:
         """The SimulationSpeedRatio field value."""
         member = self.get_member("SimulationSpeedRatio")
         if member is None:
@@ -176,7 +174,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @simulation_speed_ratio.setter
-    def simulation_speed_ratio(self, value: np.float32) -> None:
+    def simulation_speed_ratio(self, value: primitives.Float) -> None:
         """Set the SimulationSpeedRatio field value."""
         member = self.get_member("SimulationSpeedRatio")
         if member is not None:

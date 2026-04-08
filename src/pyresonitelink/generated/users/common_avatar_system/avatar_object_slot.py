@@ -1,9 +1,8 @@
 """Generated component: AvatarObjectSlot."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iavatar_object import IAvatarObject
@@ -20,7 +19,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarObjectSlot"
 
-    def __init__(self, priority: np.int32 | None = None, equipped: str | IAvatarObject | None = None, is_tracking: bool | None = None, is_active: bool | None = None, is_simulated: bool | None = None, drive_active: bool | None = None, drive_scale: bool | None = None, do_not_simulate: bool | None = None, auto_smoothing: str | AvatarPoseSmoothLerp | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, priority: primitives.Int | None = None, equipped: str | IAvatarObject | None = None, is_tracking: primitives.Bool | None = None, is_active: primitives.Bool | None = None, is_simulated: primitives.Bool | None = None, drive_active: primitives.Bool | None = None, drive_scale: primitives.Bool | None = None, do_not_simulate: primitives.Bool | None = None, auto_smoothing: str | AvatarPoseSmoothLerp | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -56,7 +55,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.auto_smoothing = auto_smoothing
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -64,7 +63,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:
@@ -109,7 +108,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("Node", value)
 
     @property
-    def is_tracking(self) -> bool | None:
+    def is_tracking(self) -> primitives.Bool | None:
         """The IsTracking field value."""
         member = self.get_member("IsTracking")
         if member is None:
@@ -117,7 +116,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_tracking.setter
-    def is_tracking(self, value: bool) -> None:
+    def is_tracking(self, value: primitives.Bool) -> None:
         """Set the IsTracking field value."""
         member = self.get_member("IsTracking")
         if member is not None:
@@ -128,7 +127,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_active(self) -> bool | None:
+    def is_active(self) -> primitives.Bool | None:
         """The IsActive field value."""
         member = self.get_member("IsActive")
         if member is None:
@@ -136,7 +135,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_active.setter
-    def is_active(self, value: bool) -> None:
+    def is_active(self, value: primitives.Bool) -> None:
         """Set the IsActive field value."""
         member = self.get_member("IsActive")
         if member is not None:
@@ -147,7 +146,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_simulated(self) -> bool | None:
+    def is_simulated(self) -> primitives.Bool | None:
         """The IsSimulated field value."""
         member = self.get_member("IsSimulated")
         if member is None:
@@ -155,7 +154,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_simulated.setter
-    def is_simulated(self, value: bool) -> None:
+    def is_simulated(self, value: primitives.Bool) -> None:
         """Set the IsSimulated field value."""
         member = self.get_member("IsSimulated")
         if member is not None:
@@ -166,7 +165,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def drive_active(self) -> bool | None:
+    def drive_active(self) -> primitives.Bool | None:
         """The DriveActive field value."""
         member = self.get_member("DriveActive")
         if member is None:
@@ -174,7 +173,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @drive_active.setter
-    def drive_active(self, value: bool) -> None:
+    def drive_active(self, value: primitives.Bool) -> None:
         """Set the DriveActive field value."""
         member = self.get_member("DriveActive")
         if member is not None:
@@ -185,7 +184,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def drive_scale(self) -> bool | None:
+    def drive_scale(self) -> primitives.Bool | None:
         """The DriveScale field value."""
         member = self.get_member("DriveScale")
         if member is None:
@@ -193,7 +192,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @drive_scale.setter
-    def drive_scale(self, value: bool) -> None:
+    def drive_scale(self, value: primitives.Bool) -> None:
         """Set the DriveScale field value."""
         member = self.get_member("DriveScale")
         if member is not None:
@@ -204,7 +203,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def do_not_simulate(self) -> bool | None:
+    def do_not_simulate(self) -> primitives.Bool | None:
         """The DoNotSimulate field value."""
         member = self.get_member("DoNotSimulate")
         if member is None:
@@ -212,7 +211,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @do_not_simulate.setter
-    def do_not_simulate(self, value: bool) -> None:
+    def do_not_simulate(self, value: primitives.Bool) -> None:
         """Set the DoNotSimulate field value."""
         member = self.get_member("DoNotSimulate")
         if member is not None:

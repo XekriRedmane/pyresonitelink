@@ -1,7 +1,5 @@
 """Generated component: SineHapticFilter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -18,7 +16,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SineHapticFilter"
 
-    def __init__(self, use_global_time: bool | None = None, distance_scale: np.float32 | None = None, axis_scale: primitives.Float3 | None = None, min_intensity: np.float32 | None = None, max_intensity: np.float32 | None = None, frequency: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_global_time: primitives.Bool | None = None, distance_scale: primitives.Float | None = None, axis_scale: primitives.Float3 | None = None, min_intensity: primitives.Float | None = None, max_intensity: primitives.Float | None = None, frequency: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +43,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.frequency = frequency
 
     @property
-    def use_global_time(self) -> bool | None:
+    def use_global_time(self) -> primitives.Bool | None:
         """The UseGlobalTime field value."""
         member = self.get_member("UseGlobalTime")
         if member is None:
@@ -53,7 +51,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_global_time.setter
-    def use_global_time(self, value: bool) -> None:
+    def use_global_time(self, value: primitives.Bool) -> None:
         """Set the UseGlobalTime field value."""
         member = self.get_member("UseGlobalTime")
         if member is not None:
@@ -64,7 +62,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def distance_scale(self) -> np.float32 | None:
+    def distance_scale(self) -> primitives.Float | None:
         """The DistanceScale field value."""
         member = self.get_member("DistanceScale")
         if member is None:
@@ -72,7 +70,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @distance_scale.setter
-    def distance_scale(self, value: np.float32) -> None:
+    def distance_scale(self, value: primitives.Float) -> None:
         """Set the DistanceScale field value."""
         member = self.get_member("DistanceScale")
         if member is not None:
@@ -102,7 +100,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_intensity(self) -> np.float32 | None:
+    def min_intensity(self) -> primitives.Float | None:
         """The MinIntensity field value."""
         member = self.get_member("MinIntensity")
         if member is None:
@@ -110,7 +108,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_intensity.setter
-    def min_intensity(self, value: np.float32) -> None:
+    def min_intensity(self, value: primitives.Float) -> None:
         """Set the MinIntensity field value."""
         member = self.get_member("MinIntensity")
         if member is not None:
@@ -121,7 +119,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_intensity(self) -> np.float32 | None:
+    def max_intensity(self) -> primitives.Float | None:
         """The MaxIntensity field value."""
         member = self.get_member("MaxIntensity")
         if member is None:
@@ -129,7 +127,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_intensity.setter
-    def max_intensity(self, value: np.float32) -> None:
+    def max_intensity(self, value: primitives.Float) -> None:
         """Set the MaxIntensity field value."""
         member = self.get_member("MaxIntensity")
         if member is not None:
@@ -140,7 +138,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def frequency(self) -> np.float32 | None:
+    def frequency(self) -> primitives.Float | None:
         """The Frequency field value."""
         member = self.get_member("Frequency")
         if member is None:
@@ -148,7 +146,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @frequency.setter
-    def frequency(self, value: np.float32) -> None:
+    def frequency(self, value: primitives.Float) -> None:
         """Set the Frequency field value."""
         member = self.get_member("Frequency")
         if member is not None:

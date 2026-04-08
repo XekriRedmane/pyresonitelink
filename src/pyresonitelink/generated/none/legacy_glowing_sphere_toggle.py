@@ -1,7 +1,5 @@
 """Generated component: LegacyGlowingSphereToggle."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -18,7 +16,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyGlowingSphereToggle"
 
-    def __init__(self, target_field: str | IField[bool] | None = None, fade_speed: np.float32 | None = None, cooldown_time: np.float32 | None = None, radius: np.float32 | None = None, glow_color: primitives.ColorX | None = None, emissive_color: str | IField[primitives.ColorX] | None = None, rim_color: str | IField[primitives.ColorX] | None = None, sphere_radius: str | IField[np.float32] | None = None, sphere_extrude: str | IField[np.float32] | None = None, collider_radius: str | IField[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_field: str | IField[primitives.Bool] | None = None, fade_speed: primitives.Float | None = None, cooldown_time: primitives.Float | None = None, radius: primitives.Float | None = None, glow_color: primitives.ColorX | None = None, emissive_color: str | IField[primitives.ColorX] | None = None, rim_color: str | IField[primitives.ColorX] | None = None, sphere_radius: str | IField[primitives.Float] | None = None, sphere_extrude: str | IField[primitives.Float] | None = None, collider_radius: str | IField[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,15 +56,15 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the TargetField reference (targets IField[bool])."""
+        """Target ID of the TargetField reference (targets IField[primitives.Bool])."""
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_field.setter
-    def target_field(self, target: str | IField[bool] | None) -> None:
-        """Set the TargetField reference by target ID or IField[bool] instance."""
+    def target_field(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the TargetField reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
@@ -78,7 +76,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
             )
 
     @property
-    def fade_speed(self) -> np.float32 | None:
+    def fade_speed(self) -> primitives.Float | None:
         """The FadeSpeed field value."""
         member = self.get_member("FadeSpeed")
         if member is None:
@@ -86,7 +84,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @fade_speed.setter
-    def fade_speed(self, value: np.float32) -> None:
+    def fade_speed(self, value: primitives.Float) -> None:
         """Set the FadeSpeed field value."""
         member = self.get_member("FadeSpeed")
         if member is not None:
@@ -97,7 +95,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
             )
 
     @property
-    def cooldown_time(self) -> np.float32 | None:
+    def cooldown_time(self) -> primitives.Float | None:
         """The CooldownTime field value."""
         member = self.get_member("CooldownTime")
         if member is None:
@@ -105,7 +103,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @cooldown_time.setter
-    def cooldown_time(self, value: np.float32) -> None:
+    def cooldown_time(self, value: primitives.Float) -> None:
         """Set the CooldownTime field value."""
         member = self.get_member("CooldownTime")
         if member is not None:
@@ -116,7 +114,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -124,7 +122,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -197,15 +195,15 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def sphere_radius(self) -> str | None:
-        """Target ID of the _sphereRadius reference (targets IField[np.float32])."""
+        """Target ID of the _sphereRadius reference (targets IField[primitives.Float])."""
         member = self.get_member("_sphereRadius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @sphere_radius.setter
-    def sphere_radius(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _sphereRadius reference by target ID or IField[np.float32] instance."""
+    def sphere_radius(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _sphereRadius reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_sphereRadius")
         if isinstance(member, members.Reference):
@@ -218,15 +216,15 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def sphere_extrude(self) -> str | None:
-        """Target ID of the _sphereExtrude reference (targets IField[np.float32])."""
+        """Target ID of the _sphereExtrude reference (targets IField[primitives.Float])."""
         member = self.get_member("_sphereExtrude")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @sphere_extrude.setter
-    def sphere_extrude(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _sphereExtrude reference by target ID or IField[np.float32] instance."""
+    def sphere_extrude(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _sphereExtrude reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_sphereExtrude")
         if isinstance(member, members.Reference):
@@ -239,15 +237,15 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def collider_radius(self) -> str | None:
-        """Target ID of the _colliderRadius reference (targets IField[np.float32])."""
+        """Target ID of the _colliderRadius reference (targets IField[primitives.Float])."""
         member = self.get_member("_colliderRadius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @collider_radius.setter
-    def collider_radius(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _colliderRadius reference by target ID or IField[np.float32] instance."""
+    def collider_radius(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _colliderRadius reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_colliderRadius")
         if isinstance(member, members.Reference):

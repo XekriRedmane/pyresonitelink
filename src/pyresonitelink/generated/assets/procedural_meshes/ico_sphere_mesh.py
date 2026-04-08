@@ -1,7 +1,5 @@
 """Generated component: IcoSphereMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.IcoSphereMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: np.float32 | None = None, subdivisions: np.int32 | None = None, flat_shading: bool | None = None, flat_face_extrude: np.float32 | None = None, flat_face_scale: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: primitives.Float | None = None, subdivisions: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, flat_face_extrude: primitives.Float | None = None, flat_face_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +52,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             self.flat_face_scale = flat_face_scale
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -62,7 +60,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -73,7 +71,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -81,7 +79,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -124,7 +122,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         self.set_member("Profile", value)
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -132,7 +130,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -143,7 +141,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def subdivisions(self) -> np.int32 | None:
+    def subdivisions(self) -> primitives.Int | None:
         """The Subdivisions field value."""
         member = self.get_member("Subdivisions")
         if member is None:
@@ -151,7 +149,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @subdivisions.setter
-    def subdivisions(self, value: np.int32) -> None:
+    def subdivisions(self, value: primitives.Int) -> None:
         """Set the Subdivisions field value."""
         member = self.get_member("Subdivisions")
         if member is not None:
@@ -162,7 +160,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def flat_shading(self) -> bool | None:
+    def flat_shading(self) -> primitives.Bool | None:
         """The FlatShading field value."""
         member = self.get_member("FlatShading")
         if member is None:
@@ -170,7 +168,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @flat_shading.setter
-    def flat_shading(self, value: bool) -> None:
+    def flat_shading(self, value: primitives.Bool) -> None:
         """Set the FlatShading field value."""
         member = self.get_member("FlatShading")
         if member is not None:
@@ -181,7 +179,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def flat_face_extrude(self) -> np.float32 | None:
+    def flat_face_extrude(self) -> primitives.Float | None:
         """The FlatFaceExtrude field value."""
         member = self.get_member("FlatFaceExtrude")
         if member is None:
@@ -189,7 +187,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @flat_face_extrude.setter
-    def flat_face_extrude(self, value: np.float32) -> None:
+    def flat_face_extrude(self, value: primitives.Float) -> None:
         """Set the FlatFaceExtrude field value."""
         member = self.get_member("FlatFaceExtrude")
         if member is not None:
@@ -200,7 +198,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def flat_face_scale(self) -> np.float32 | None:
+    def flat_face_scale(self) -> primitives.Float | None:
         """The FlatFaceScale field value."""
         member = self.get_member("FlatFaceScale")
         if member is None:
@@ -208,7 +206,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
         return getattr(member, 'value', None)
 
     @flat_face_scale.setter
-    def flat_face_scale(self, value: np.float32) -> None:
+    def flat_face_scale(self, value: primitives.Float) -> None:
         """Set the FlatFaceScale field value."""
         member = self.get_member("FlatFaceScale")
         if member is not None:

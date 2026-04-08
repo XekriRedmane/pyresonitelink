@@ -16,7 +16,7 @@ class ValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ValueDriver[np.float32]
+        ValueDriver[primitives.Float]
         ValueDriver[primitives.Float3]
     """
 

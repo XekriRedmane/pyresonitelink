@@ -18,7 +18,7 @@ class ValueNegate(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     Parameterize with a value type::
 
-        ValueNegate[np.float32]
+        ValueNegate[primitives.Float]
         ValueNegate[primitives.Float3]
     """
 

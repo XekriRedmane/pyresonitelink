@@ -1,8 +1,7 @@
 """Generated component: RepulsionTreeItem."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.irepulsion_tree_node import IRepulsionTreeNode
@@ -15,7 +14,7 @@ class RepulsionTreeItem(GeneratedComponent, IRepulsionTreeNode, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RepulsionTreeItem"
 
-    def __init__(self, force: np.float32 | None = None, radius: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, force: primitives.Float | None = None, radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +29,7 @@ class RepulsionTreeItem(GeneratedComponent, IRepulsionTreeNode, IWorldEventRecei
             self.radius = radius
 
     @property
-    def force(self) -> np.float32 | None:
+    def force(self) -> primitives.Float | None:
         """The Force field value."""
         member = self.get_member("Force")
         if member is None:
@@ -38,7 +37,7 @@ class RepulsionTreeItem(GeneratedComponent, IRepulsionTreeNode, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @force.setter
-    def force(self, value: np.float32) -> None:
+    def force(self, value: primitives.Float) -> None:
         """Set the Force field value."""
         member = self.get_member("Force")
         if member is not None:
@@ -49,7 +48,7 @@ class RepulsionTreeItem(GeneratedComponent, IRepulsionTreeNode, IWorldEventRecei
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -57,7 +56,7 @@ class RepulsionTreeItem(GeneratedComponent, IRepulsionTreeNode, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:

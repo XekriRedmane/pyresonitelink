@@ -1,7 +1,5 @@
 """Generated component: VolumePlaneSlicer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class VolumePlaneSlicer(GeneratedComponent, ITouchable, IGrabEventReceiver, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VolumePlaneSlicer"
 
-    def __init__(self, highlight_color: primitives.ColorX | None = None, highlight_range: np.float32 | None = None, color_dialog: str | ColorDialogInterface | None = None, grab_grid: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, highlight_color: primitives.ColorX | None = None, highlight_range: primitives.Float | None = None, color_dialog: str | ColorDialogInterface | None = None, grab_grid: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -73,7 +71,7 @@ class VolumePlaneSlicer(GeneratedComponent, ITouchable, IGrabEventReceiver, IWor
             )
 
     @property
-    def highlight_range(self) -> np.float32 | None:
+    def highlight_range(self) -> primitives.Float | None:
         """The HighlightRange field value."""
         member = self.get_member("HighlightRange")
         if member is None:
@@ -81,7 +79,7 @@ class VolumePlaneSlicer(GeneratedComponent, ITouchable, IGrabEventReceiver, IWor
         return getattr(member, 'value', None)
 
     @highlight_range.setter
-    def highlight_range(self, value: np.float32) -> None:
+    def highlight_range(self, value: primitives.Float) -> None:
         """Set the HighlightRange field value."""
         member = self.get_member("HighlightRange")
         if member is not None:

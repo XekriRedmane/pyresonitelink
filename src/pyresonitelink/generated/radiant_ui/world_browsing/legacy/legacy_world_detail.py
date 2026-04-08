@@ -1,7 +1,5 @@
 """Generated component: LegacyWorldDetail."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -31,7 +29,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyWorldDetail"
 
-    def __init__(self, world_or_session_id: str | None = None, visited: bool | None = None, total_active_users: np.int32 | None = None, total_contacts: np.int32 | None = None, expanded: bool | None = None, compact_detail_expanded: bool | None = None, modal_compact_size: primitives.Float2 | None = None, modal_expanded_size: primitives.Float2 | None = None, host_text: str | Text | None = None, session_items_root: str | Slot | None = None, thumbnail_graphic: str | RawGraphic | None = None, thumbnail_texture: str | StaticTexture2D | None = None, detail_image_root: str | Slot | None = None, compact_root: str | Slot | None = None, compact_header_root: str | Slot | None = None, detail_header_root: str | Slot | None = None, compact_mask_enabled: str | IField[bool] | None = None, compact_mask_root_enabled: str | IField[bool] | None = None, open_button: str | Button | None = None, scroll_rect: str | ScrollRect | None = None, expand_button: str | Button | None = None, expand_icon: str | Image | None = None, expand_sprite: str | IAssetProvider[Sprite] | None = None, compact_sprite: str | IAssetProvider[Sprite] | None = None, description: str | Text | None = None, left_details_root: str | Slot | None = None, right_details_root: str | Slot | None = None, details_text: str | Text | None = None, cycle_left_button: str | Button | None = None, cycle_right_button: str | Button | None = None, compact_parent: str | SyncRef[Slot] | None = None, compact_header_parent: str | SyncRef[Slot] | None = None, sidebar_active: str | IField[bool] | None = None, sidebar_anchor_min: str | IField[primitives.Float2] | None = None, sidebar_anchor_max: str | IField[primitives.Float2] | None = None, content_anchor_min: str | IField[primitives.Float2] | None = None, content_anchor_max: str | IField[primitives.Float2] | None = None, rect_transform_lerp: str | IField[np.float32] | None = None, modal_anchor_min: str | IField[primitives.Float2] | None = None, modal_anchor_max: str | IField[primitives.Float2] | None = None, compact_buttons_active: str | IField[bool] | None = None, compact_buttons_anchor_min: str | IField[primitives.Float2] | None = None, compact_buttons_anchor_max: str | IField[primitives.Float2] | None = None, compact_detail_rect: str | IField[primitives.Rect] | None = None, compact_detail_button_rect: str | IField[primitives.Rect] | None = None, compact_detail_text: str | Text | None = None, compact_detail_expand_button: str | Button | None = None, new_session_item_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_or_session_id: primitives.String | None = None, visited: primitives.Bool | None = None, total_active_users: primitives.Int | None = None, total_contacts: primitives.Int | None = None, expanded: primitives.Bool | None = None, compact_detail_expanded: primitives.Bool | None = None, modal_compact_size: primitives.Float2 | None = None, modal_expanded_size: primitives.Float2 | None = None, host_text: str | Text | None = None, session_items_root: str | Slot | None = None, thumbnail_graphic: str | RawGraphic | None = None, thumbnail_texture: str | StaticTexture2D | None = None, detail_image_root: str | Slot | None = None, compact_root: str | Slot | None = None, compact_header_root: str | Slot | None = None, detail_header_root: str | Slot | None = None, compact_mask_enabled: str | IField[primitives.Bool] | None = None, compact_mask_root_enabled: str | IField[primitives.Bool] | None = None, open_button: str | Button | None = None, scroll_rect: str | ScrollRect | None = None, expand_button: str | Button | None = None, expand_icon: str | Image | None = None, expand_sprite: str | IAssetProvider[Sprite] | None = None, compact_sprite: str | IAssetProvider[Sprite] | None = None, description: str | Text | None = None, left_details_root: str | Slot | None = None, right_details_root: str | Slot | None = None, details_text: str | Text | None = None, cycle_left_button: str | Button | None = None, cycle_right_button: str | Button | None = None, compact_parent: str | SyncRef[Slot] | None = None, compact_header_parent: str | SyncRef[Slot] | None = None, sidebar_active: str | IField[primitives.Bool] | None = None, sidebar_anchor_min: str | IField[primitives.Float2] | None = None, sidebar_anchor_max: str | IField[primitives.Float2] | None = None, content_anchor_min: str | IField[primitives.Float2] | None = None, content_anchor_max: str | IField[primitives.Float2] | None = None, rect_transform_lerp: str | IField[primitives.Float] | None = None, modal_anchor_min: str | IField[primitives.Float2] | None = None, modal_anchor_max: str | IField[primitives.Float2] | None = None, compact_buttons_active: str | IField[primitives.Bool] | None = None, compact_buttons_anchor_min: str | IField[primitives.Float2] | None = None, compact_buttons_anchor_max: str | IField[primitives.Float2] | None = None, compact_detail_rect: str | IField[primitives.Rect] | None = None, compact_detail_button_rect: str | IField[primitives.Rect] | None = None, compact_detail_text: str | Text | None = None, compact_detail_expand_button: str | Button | None = None, new_session_item_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -197,7 +195,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("UpdatingUser", value)
 
     @property
-    def world_or_session_id(self) -> str | None:
+    def world_or_session_id(self) -> primitives.String | None:
         """The WorldOrSessionId field value."""
         member = self.get_member("WorldOrSessionId")
         if member is None:
@@ -205,7 +203,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @world_or_session_id.setter
-    def world_or_session_id(self, value: str) -> None:
+    def world_or_session_id(self, value: primitives.String) -> None:
         """Set the WorldOrSessionId field value."""
         member = self.get_member("WorldOrSessionId")
         if member is not None:
@@ -216,7 +214,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def visited(self) -> bool | None:
+    def visited(self) -> primitives.Bool | None:
         """The _visited field value."""
         member = self.get_member("_visited")
         if member is None:
@@ -224,7 +222,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @visited.setter
-    def visited(self, value: bool) -> None:
+    def visited(self, value: primitives.Bool) -> None:
         """Set the _visited field value."""
         member = self.get_member("_visited")
         if member is not None:
@@ -235,7 +233,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def total_active_users(self) -> np.int32 | None:
+    def total_active_users(self) -> primitives.Int | None:
         """The _totalActiveUsers field value."""
         member = self.get_member("_totalActiveUsers")
         if member is None:
@@ -243,7 +241,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @total_active_users.setter
-    def total_active_users(self, value: np.int32) -> None:
+    def total_active_users(self, value: primitives.Int) -> None:
         """Set the _totalActiveUsers field value."""
         member = self.get_member("_totalActiveUsers")
         if member is not None:
@@ -254,7 +252,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def total_contacts(self) -> np.int32 | None:
+    def total_contacts(self) -> primitives.Int | None:
         """The _totalContacts field value."""
         member = self.get_member("_totalContacts")
         if member is None:
@@ -262,7 +260,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @total_contacts.setter
-    def total_contacts(self, value: np.int32) -> None:
+    def total_contacts(self, value: primitives.Int) -> None:
         """Set the _totalContacts field value."""
         member = self.get_member("_totalContacts")
         if member is not None:
@@ -273,7 +271,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def expanded(self) -> bool | None:
+    def expanded(self) -> primitives.Bool | None:
         """The Expanded field value."""
         member = self.get_member("Expanded")
         if member is None:
@@ -281,7 +279,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @expanded.setter
-    def expanded(self, value: bool) -> None:
+    def expanded(self, value: primitives.Bool) -> None:
         """Set the Expanded field value."""
         member = self.get_member("Expanded")
         if member is not None:
@@ -292,7 +290,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def compact_detail_expanded(self) -> bool | None:
+    def compact_detail_expanded(self) -> primitives.Bool | None:
         """The CompactDetailExpanded field value."""
         member = self.get_member("CompactDetailExpanded")
         if member is None:
@@ -300,7 +298,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @compact_detail_expanded.setter
-    def compact_detail_expanded(self, value: bool) -> None:
+    def compact_detail_expanded(self, value: primitives.Bool) -> None:
         """Set the CompactDetailExpanded field value."""
         member = self.get_member("CompactDetailExpanded")
         if member is not None:
@@ -531,15 +529,15 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_mask_enabled(self) -> str | None:
-        """Target ID of the _compactMaskEnabled reference (targets IField[bool])."""
+        """Target ID of the _compactMaskEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_compactMaskEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @compact_mask_enabled.setter
-    def compact_mask_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _compactMaskEnabled reference by target ID or IField[bool] instance."""
+    def compact_mask_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _compactMaskEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_compactMaskEnabled")
         if isinstance(member, members.Reference):
@@ -552,15 +550,15 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_mask_root_enabled(self) -> str | None:
-        """Target ID of the _compactMaskRootEnabled reference (targets IField[bool])."""
+        """Target ID of the _compactMaskRootEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_compactMaskRootEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @compact_mask_root_enabled.setter
-    def compact_mask_root_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _compactMaskRootEnabled reference by target ID or IField[bool] instance."""
+    def compact_mask_root_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _compactMaskRootEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_compactMaskRootEnabled")
         if isinstance(member, members.Reference):
@@ -867,15 +865,15 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sidebar_active(self) -> str | None:
-        """Target ID of the _sidebarActive reference (targets IField[bool])."""
+        """Target ID of the _sidebarActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_sidebarActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @sidebar_active.setter
-    def sidebar_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _sidebarActive reference by target ID or IField[bool] instance."""
+    def sidebar_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _sidebarActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_sidebarActive")
         if isinstance(member, members.Reference):
@@ -972,15 +970,15 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rect_transform_lerp(self) -> str | None:
-        """Target ID of the _rectTransformLerp reference (targets IField[np.float32])."""
+        """Target ID of the _rectTransformLerp reference (targets IField[primitives.Float])."""
         member = self.get_member("_rectTransformLerp")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @rect_transform_lerp.setter
-    def rect_transform_lerp(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _rectTransformLerp reference by target ID or IField[np.float32] instance."""
+    def rect_transform_lerp(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _rectTransformLerp reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_rectTransformLerp")
         if isinstance(member, members.Reference):
@@ -1035,15 +1033,15 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_buttons_active(self) -> str | None:
-        """Target ID of the _compactButtonsActive reference (targets IField[bool])."""
+        """Target ID of the _compactButtonsActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_compactButtonsActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @compact_buttons_active.setter
-    def compact_buttons_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _compactButtonsActive reference by target ID or IField[bool] instance."""
+    def compact_buttons_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _compactButtonsActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_compactButtonsActive")
         if isinstance(member, members.Reference):

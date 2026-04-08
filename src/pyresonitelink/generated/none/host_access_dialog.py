@@ -1,9 +1,8 @@
 """Generated component: HostAccessDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text import Text
@@ -18,7 +17,7 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HostAccessDialog"
 
-    def __init__(self, host: str | None = None, port: np.int32 | None = None, host_text: str | Text | None = None, reason_text: str | Text | None = None, allow_button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, host: primitives.String | None = None, port: primitives.Int | None = None, host_text: str | Text | None = None, reason_text: str | Text | None = None, allow_button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +41,7 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.allow_button = allow_button
 
     @property
-    def host(self) -> str | None:
+    def host(self) -> primitives.String | None:
         """The Host field value."""
         member = self.get_member("Host")
         if member is None:
@@ -50,7 +49,7 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @host.setter
-    def host(self, value: str) -> None:
+    def host(self, value: primitives.String) -> None:
         """Set the Host field value."""
         member = self.get_member("Host")
         if member is not None:
@@ -61,7 +60,7 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def port(self) -> np.int32 | None:
+    def port(self) -> primitives.Int | None:
         """The Port field value."""
         member = self.get_member("Port")
         if member is None:
@@ -69,7 +68,7 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @port.setter
-    def port(self, value: np.int32) -> None:
+    def port(self, value: primitives.Int) -> None:
         """Set the Port field value."""
         member = self.get_member("Port")
         if member is not None:

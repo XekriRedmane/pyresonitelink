@@ -18,7 +18,7 @@ class ValueAdd(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueAdd[np.float32]
+        ValueAdd[primitives.Float]
         ValueAdd[primitives.Float3]
     """
 

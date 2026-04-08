@@ -1,6 +1,7 @@
 """Generated component: StaticSavedObjectProvider."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
@@ -16,7 +17,7 @@ class StaticSavedObjectProvider(GeneratedComponent, IStaticAssetProvider, ICusto
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticSavedObjectProvider"
 
-    def __init__(self, url: str | None = None, pre_gather: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, pre_gather: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -50,7 +51,7 @@ class StaticSavedObjectProvider(GeneratedComponent, IStaticAssetProvider, ICusto
             )
 
     @property
-    def pre_gather(self) -> bool | None:
+    def pre_gather(self) -> primitives.Bool | None:
         """The PreGather field value."""
         member = self.get_member("PreGather")
         if member is None:
@@ -58,7 +59,7 @@ class StaticSavedObjectProvider(GeneratedComponent, IStaticAssetProvider, ICusto
         return getattr(member, 'value', None)
 
     @pre_gather.setter
-    def pre_gather(self, value: bool) -> None:
+    def pre_gather(self, value: primitives.Bool) -> None:
         """Set the PreGather field value."""
         member = self.get_member("PreGather")
         if member is not None:

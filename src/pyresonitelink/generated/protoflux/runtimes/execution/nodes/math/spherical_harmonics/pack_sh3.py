@@ -18,7 +18,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
 
     Parameterize with a value type::
 
-        PackSH3[np.float32]
+        PackSH3[primitives.Float]
         PackSH3[primitives.Float3]
     """
 

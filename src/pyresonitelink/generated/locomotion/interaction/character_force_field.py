@@ -1,7 +1,5 @@
 """Generated component: CharacterForceField."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterForceField"
 
-    def __init__(self, triggers_only: bool | None = None, force: primitives.Float3 | None = None, radial_force_radius: np.float32 | None = None, min_activation_velocity: np.float32 | None = None, max_force_velocity: np.float32 | None = None, hold_jump_max_force_velocity: np.float32 | None = None, preseve_direction_across_plane: bool | None = None, ignore_parent_user: bool | None = None, no_jump_multiplier: np.float32 | None = None, hold_jump_multiplier: np.float32 | None = None, max_character_velocity: np.float32 | None = None, min_character_velocity: np.float32 | None = None, character_velocity_dampening_speed: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, triggers_only: primitives.Bool | None = None, force: primitives.Float3 | None = None, radial_force_radius: primitives.Float | None = None, min_activation_velocity: primitives.Float | None = None, max_force_velocity: primitives.Float | None = None, hold_jump_max_force_velocity: primitives.Float | None = None, preseve_direction_across_plane: primitives.Bool | None = None, ignore_parent_user: primitives.Bool | None = None, no_jump_multiplier: primitives.Float | None = None, hold_jump_multiplier: primitives.Float | None = None, max_character_velocity: primitives.Float | None = None, min_character_velocity: primitives.Float | None = None, character_velocity_dampening_speed: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,7 +65,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.character_velocity_dampening_speed = character_velocity_dampening_speed
 
     @property
-    def triggers_only(self) -> bool | None:
+    def triggers_only(self) -> primitives.Bool | None:
         """The TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is None:
@@ -75,7 +73,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @triggers_only.setter
-    def triggers_only(self, value: bool) -> None:
+    def triggers_only(self, value: primitives.Bool) -> None:
         """Set the TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is not None:
@@ -131,7 +129,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("ForceSpace", value)
 
     @property
-    def radial_force_radius(self) -> np.float32 | None:
+    def radial_force_radius(self) -> primitives.Float | None:
         """The RadialForceRadius field value."""
         member = self.get_member("RadialForceRadius")
         if member is None:
@@ -139,7 +137,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radial_force_radius.setter
-    def radial_force_radius(self, value: np.float32) -> None:
+    def radial_force_radius(self, value: primitives.Float) -> None:
         """Set the RadialForceRadius field value."""
         member = self.get_member("RadialForceRadius")
         if member is not None:
@@ -163,7 +161,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("ForceSlotSpace", value)
 
     @property
-    def min_activation_velocity(self) -> np.float32 | None:
+    def min_activation_velocity(self) -> primitives.Float | None:
         """The MinActivationVelocity field value."""
         member = self.get_member("MinActivationVelocity")
         if member is None:
@@ -171,7 +169,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_activation_velocity.setter
-    def min_activation_velocity(self, value: np.float32) -> None:
+    def min_activation_velocity(self, value: primitives.Float) -> None:
         """Set the MinActivationVelocity field value."""
         member = self.get_member("MinActivationVelocity")
         if member is not None:
@@ -182,7 +180,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_force_velocity(self) -> np.float32 | None:
+    def max_force_velocity(self) -> primitives.Float | None:
         """The MaxForceVelocity field value."""
         member = self.get_member("MaxForceVelocity")
         if member is None:
@@ -190,7 +188,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_force_velocity.setter
-    def max_force_velocity(self, value: np.float32) -> None:
+    def max_force_velocity(self, value: primitives.Float) -> None:
         """Set the MaxForceVelocity field value."""
         member = self.get_member("MaxForceVelocity")
         if member is not None:
@@ -201,7 +199,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def hold_jump_max_force_velocity(self) -> np.float32 | None:
+    def hold_jump_max_force_velocity(self) -> primitives.Float | None:
         """The HoldJumpMaxForceVelocity field value."""
         member = self.get_member("HoldJumpMaxForceVelocity")
         if member is None:
@@ -209,7 +207,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @hold_jump_max_force_velocity.setter
-    def hold_jump_max_force_velocity(self, value: np.float32) -> None:
+    def hold_jump_max_force_velocity(self, value: primitives.Float) -> None:
         """Set the HoldJumpMaxForceVelocity field value."""
         member = self.get_member("HoldJumpMaxForceVelocity")
         if member is not None:
@@ -220,7 +218,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def preseve_direction_across_plane(self) -> bool | None:
+    def preseve_direction_across_plane(self) -> primitives.Bool | None:
         """The PreseveDirectionAcrossPlane field value."""
         member = self.get_member("PreseveDirectionAcrossPlane")
         if member is None:
@@ -228,7 +226,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @preseve_direction_across_plane.setter
-    def preseve_direction_across_plane(self, value: bool) -> None:
+    def preseve_direction_across_plane(self, value: primitives.Bool) -> None:
         """Set the PreseveDirectionAcrossPlane field value."""
         member = self.get_member("PreseveDirectionAcrossPlane")
         if member is not None:
@@ -239,7 +237,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ignore_parent_user(self) -> bool | None:
+    def ignore_parent_user(self) -> primitives.Bool | None:
         """The IgnoreParentUser field value."""
         member = self.get_member("IgnoreParentUser")
         if member is None:
@@ -247,7 +245,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ignore_parent_user.setter
-    def ignore_parent_user(self, value: bool) -> None:
+    def ignore_parent_user(self, value: primitives.Bool) -> None:
         """Set the IgnoreParentUser field value."""
         member = self.get_member("IgnoreParentUser")
         if member is not None:
@@ -258,7 +256,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def no_jump_multiplier(self) -> np.float32 | None:
+    def no_jump_multiplier(self) -> primitives.Float | None:
         """The NoJumpMultiplier field value."""
         member = self.get_member("NoJumpMultiplier")
         if member is None:
@@ -266,7 +264,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @no_jump_multiplier.setter
-    def no_jump_multiplier(self, value: np.float32) -> None:
+    def no_jump_multiplier(self, value: primitives.Float) -> None:
         """Set the NoJumpMultiplier field value."""
         member = self.get_member("NoJumpMultiplier")
         if member is not None:
@@ -277,7 +275,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def hold_jump_multiplier(self) -> np.float32 | None:
+    def hold_jump_multiplier(self) -> primitives.Float | None:
         """The HoldJumpMultiplier field value."""
         member = self.get_member("HoldJumpMultiplier")
         if member is None:
@@ -285,7 +283,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @hold_jump_multiplier.setter
-    def hold_jump_multiplier(self, value: np.float32) -> None:
+    def hold_jump_multiplier(self, value: primitives.Float) -> None:
         """Set the HoldJumpMultiplier field value."""
         member = self.get_member("HoldJumpMultiplier")
         if member is not None:
@@ -296,7 +294,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_character_velocity(self) -> np.float32 | None:
+    def max_character_velocity(self) -> primitives.Float | None:
         """The MaxCharacterVelocity field value."""
         member = self.get_member("MaxCharacterVelocity")
         if member is None:
@@ -304,7 +302,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_character_velocity.setter
-    def max_character_velocity(self, value: np.float32) -> None:
+    def max_character_velocity(self, value: primitives.Float) -> None:
         """Set the MaxCharacterVelocity field value."""
         member = self.get_member("MaxCharacterVelocity")
         if member is not None:
@@ -315,7 +313,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def min_character_velocity(self) -> np.float32 | None:
+    def min_character_velocity(self) -> primitives.Float | None:
         """The MinCharacterVelocity field value."""
         member = self.get_member("MinCharacterVelocity")
         if member is None:
@@ -323,7 +321,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_character_velocity.setter
-    def min_character_velocity(self, value: np.float32) -> None:
+    def min_character_velocity(self, value: primitives.Float) -> None:
         """Set the MinCharacterVelocity field value."""
         member = self.get_member("MinCharacterVelocity")
         if member is not None:
@@ -334,7 +332,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def character_velocity_dampening_speed(self) -> np.float32 | None:
+    def character_velocity_dampening_speed(self) -> primitives.Float | None:
         """The CharacterVelocityDampeningSpeed field value."""
         member = self.get_member("CharacterVelocityDampeningSpeed")
         if member is None:
@@ -342,7 +340,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @character_velocity_dampening_speed.setter
-    def character_velocity_dampening_speed(self, value: np.float32) -> None:
+    def character_velocity_dampening_speed(self, value: primitives.Float) -> None:
         """Set the CharacterVelocityDampeningSpeed field value."""
         member = self.get_member("CharacterVelocityDampeningSpeed")
         if member is not None:

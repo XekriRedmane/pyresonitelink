@@ -1,11 +1,11 @@
 """Generated component: ButtonEnumShift."""
 
 from typing import Any
-import numpy as np
 
 E = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -20,14 +20,14 @@ class ButtonEnumShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRece
 
     Parameterize with a value type::
 
-        ButtonEnumShift[np.float32]
+        ButtonEnumShift[primitives.Float]
         ButtonEnumShift[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonEnumShift<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ButtonEnumShift<>"
 
-    def __init__(self, target_value: str | IField[E] | None = None, shift_delta: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_value: str | IField[E] | None = None, shift_delta: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,7 +63,7 @@ class ButtonEnumShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRece
             )
 
     @property
-    def shift_delta(self) -> np.int32 | None:
+    def shift_delta(self) -> primitives.Int | None:
         """The ShiftDelta field value."""
         member = self.get_member("ShiftDelta")
         if member is None:
@@ -71,7 +71,7 @@ class ButtonEnumShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRece
         return getattr(member, 'value', None)
 
     @shift_delta.setter
-    def shift_delta(self, value: np.int32) -> None:
+    def shift_delta(self, value: primitives.Int) -> None:
         """Set the ShiftDelta field value."""
         member = self.get_member("ShiftDelta")
         if member is not None:

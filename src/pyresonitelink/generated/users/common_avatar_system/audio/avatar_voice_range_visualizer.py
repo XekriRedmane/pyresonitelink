@@ -1,7 +1,5 @@
 """Generated component: AvatarVoiceRangeVisualizer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarVoiceRangeVisualizer"
 
-    def __init__(self, volume_source: str | IField[np.float32] | None = None, audio_output: str | AudioOutput | None = None, whisper_color_min: primitives.ColorX | None = None, whisper_color_max: primitives.ColorX | None = None, whisper_color_recording_message: primitives.ColorX | None = None, visual_root: str | Slot | None = None, active_user: str | User | None = None, visual_size: str | IField[primitives.Float3] | None = None, visual_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, volume_source: str | IField[primitives.Float] | None = None, audio_output: str | AudioOutput | None = None, whisper_color_min: primitives.ColorX | None = None, whisper_color_max: primitives.ColorX | None = None, whisper_color_recording_message: primitives.ColorX | None = None, visual_root: str | Slot | None = None, active_user: str | User | None = None, visual_size: str | IField[primitives.Float3] | None = None, visual_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,15 +58,15 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def volume_source(self) -> str | None:
-        """Target ID of the VolumeSource reference (targets IField[np.float32])."""
+        """Target ID of the VolumeSource reference (targets IField[primitives.Float])."""
         member = self.get_member("VolumeSource")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @volume_source.setter
-    def volume_source(self, target: str | IField[np.float32] | None) -> None:
-        """Set the VolumeSource reference by target ID or IField[np.float32] instance."""
+    def volume_source(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the VolumeSource reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("VolumeSource")
         if isinstance(member, members.Reference):

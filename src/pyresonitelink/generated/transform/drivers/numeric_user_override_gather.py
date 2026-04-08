@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
 
     Parameterize with a value type::
 
-        NumericUserOverrideGather[np.float32]
+        NumericUserOverrideGather[primitives.Float]
         NumericUserOverrideGather[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NumericUserOverrideGather<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.NumericUserOverrideGather<>"
 
-    def __init__(self, default: T | None = None, create_override_on_write: bool | None = None, persistent_overrides: bool | None = None, clear_on_user_leave: bool | None = None, target: str | IField[T] | None = None, min: T | None = None, max: T | None = None, sum: T | None = None, average: T | None = None, exclude_headless: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, default: T | None = None, create_override_on_write: primitives.Bool | None = None, persistent_overrides: primitives.Bool | None = None, clear_on_user_leave: primitives.Bool | None = None, target: str | IField[T] | None = None, min: T | None = None, max: T | None = None, sum: T | None = None, average: T | None = None, exclude_headless: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -81,7 +82,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
             )
 
     @property
-    def create_override_on_write(self) -> bool | None:
+    def create_override_on_write(self) -> primitives.Bool | None:
         """The CreateOverrideOnWrite field value."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is None:
@@ -89,7 +90,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @create_override_on_write.setter
-    def create_override_on_write(self, value: bool) -> None:
+    def create_override_on_write(self, value: primitives.Bool) -> None:
         """Set the CreateOverrideOnWrite field value."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is not None:
@@ -100,7 +101,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
             )
 
     @property
-    def persistent_overrides(self) -> bool | None:
+    def persistent_overrides(self) -> primitives.Bool | None:
         """The PersistentOverrides field value."""
         member = self.get_member("PersistentOverrides")
         if member is None:
@@ -108,7 +109,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @persistent_overrides.setter
-    def persistent_overrides(self, value: bool) -> None:
+    def persistent_overrides(self, value: primitives.Bool) -> None:
         """Set the PersistentOverrides field value."""
         member = self.get_member("PersistentOverrides")
         if member is not None:
@@ -119,7 +120,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
             )
 
     @property
-    def clear_on_user_leave(self) -> bool | None:
+    def clear_on_user_leave(self) -> primitives.Bool | None:
         """The ClearOnUserLeave field value."""
         member = self.get_member("ClearOnUserLeave")
         if member is None:
@@ -127,7 +128,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @clear_on_user_leave.setter
-    def clear_on_user_leave(self, value: bool) -> None:
+    def clear_on_user_leave(self, value: primitives.Bool) -> None:
         """Set the ClearOnUserLeave field value."""
         member = self.get_member("ClearOnUserLeave")
         if member is not None:
@@ -235,7 +236,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
             )
 
     @property
-    def exclude_headless(self) -> bool | None:
+    def exclude_headless(self) -> primitives.Bool | None:
         """The ExcludeHeadless field value."""
         member = self.get_member("ExcludeHeadless")
         if member is None:
@@ -243,7 +244,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @exclude_headless.setter
-    def exclude_headless(self, value: bool) -> None:
+    def exclude_headless(self, value: primitives.Bool) -> None:
         """Set the ExcludeHeadless field value."""
         member = self.get_member("ExcludeHeadless")
         if member is not None:

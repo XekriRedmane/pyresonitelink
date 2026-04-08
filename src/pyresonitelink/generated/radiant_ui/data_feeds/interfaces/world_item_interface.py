@@ -1,9 +1,8 @@
 """Generated component: WorldItemInterface."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -23,7 +22,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldItemInterface"
 
-    def __init__(self, has_data: bool | None = None, item_name: str | IField[str] | None = None, item_key: str | IField[str] | None = None, item_description: str | IField[str] | None = None, has_description: str | IField[bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[bool] | None = None, world_name: str | IField[str] | None = None, description: str | IField[str] | None = None, thumbnail_url: str | IField[str] | None = None, joined_users: str | IField[np.int32] | None = None, active_users: str | IField[np.int32] | None = None, is_host: str | IField[bool] | None = None, away_kick_enabled: str | IField[bool] | None = None, away_kick_interval: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, has_data: primitives.Bool | None = None, item_name: str | IField[primitives.String] | None = None, item_key: str | IField[primitives.String] | None = None, item_description: str | IField[primitives.String] | None = None, has_description: str | IField[primitives.Bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[primitives.Bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[primitives.Bool] | None = None, world_name: str | IField[primitives.String] | None = None, description: str | IField[primitives.String] | None = None, thumbnail_url: str | IField[str] | None = None, joined_users: str | IField[primitives.Int] | None = None, active_users: str | IField[primitives.Int] | None = None, is_host: str | IField[primitives.Bool] | None = None, away_kick_enabled: str | IField[primitives.Bool] | None = None, away_kick_interval: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -95,7 +94,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.away_kick_interval = away_kick_interval
 
     @property
-    def has_data(self) -> bool | None:
+    def has_data(self) -> primitives.Bool | None:
         """The HasData field value."""
         member = self.get_member("HasData")
         if member is None:
@@ -103,7 +102,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @has_data.setter
-    def has_data(self, value: bool) -> None:
+    def has_data(self, value: primitives.Bool) -> None:
         """Set the HasData field value."""
         member = self.get_member("HasData")
         if member is not None:
@@ -115,15 +114,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[str])."""
+        """Target ID of the ItemName reference (targets IField[primitives.String])."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_name.setter
-    def item_name(self, target: str | IField[str] | None) -> None:
-        """Set the ItemName reference by target ID or IField[str] instance."""
+    def item_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
@@ -136,15 +135,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_key(self) -> str | None:
-        """Target ID of the ItemKey reference (targets IField[str])."""
+        """Target ID of the ItemKey reference (targets IField[primitives.String])."""
         member = self.get_member("ItemKey")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_key.setter
-    def item_key(self, target: str | IField[str] | None) -> None:
-        """Set the ItemKey reference by target ID or IField[str] instance."""
+    def item_key(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemKey reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemKey")
         if isinstance(member, members.Reference):
@@ -157,15 +156,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_description(self) -> str | None:
-        """Target ID of the ItemDescription reference (targets IField[str])."""
+        """Target ID of the ItemDescription reference (targets IField[primitives.String])."""
         member = self.get_member("ItemDescription")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_description.setter
-    def item_description(self, target: str | IField[str] | None) -> None:
-        """Set the ItemDescription reference by target ID or IField[str] instance."""
+    def item_description(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemDescription reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemDescription")
         if isinstance(member, members.Reference):
@@ -178,15 +177,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_description(self) -> str | None:
-        """Target ID of the HasDescription reference (targets IField[bool])."""
+        """Target ID of the HasDescription reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasDescription")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_description.setter
-    def has_description(self, target: str | IField[bool] | None) -> None:
-        """Set the HasDescription reference by target ID or IField[bool] instance."""
+    def has_description(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasDescription reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasDescription")
         if isinstance(member, members.Reference):
@@ -241,15 +240,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_icon(self) -> str | None:
-        """Target ID of the HasIcon reference (targets IField[bool])."""
+        """Target ID of the HasIcon reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasIcon")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_icon.setter
-    def has_icon(self, target: str | IField[bool] | None) -> None:
-        """Set the HasIcon reference by target ID or IField[bool] instance."""
+    def has_icon(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasIcon reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasIcon")
         if isinstance(member, members.Reference):
@@ -359,15 +358,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def enabled_state(self) -> str | None:
-        """Target ID of the EnabledState reference (targets IField[bool])."""
+        """Target ID of the EnabledState reference (targets IField[primitives.Bool])."""
         member = self.get_member("EnabledState")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @enabled_state.setter
-    def enabled_state(self, target: str | IField[bool] | None) -> None:
-        """Set the EnabledState reference by target ID or IField[bool] instance."""
+    def enabled_state(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the EnabledState reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("EnabledState")
         if isinstance(member, members.Reference):
@@ -380,15 +379,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def world_name(self) -> str | None:
-        """Target ID of the WorldName reference (targets IField[str])."""
+        """Target ID of the WorldName reference (targets IField[primitives.String])."""
         member = self.get_member("WorldName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @world_name.setter
-    def world_name(self, target: str | IField[str] | None) -> None:
-        """Set the WorldName reference by target ID or IField[str] instance."""
+    def world_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the WorldName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("WorldName")
         if isinstance(member, members.Reference):
@@ -401,15 +400,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def description(self) -> str | None:
-        """Target ID of the Description reference (targets IField[str])."""
+        """Target ID of the Description reference (targets IField[primitives.String])."""
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @description.setter
-    def description(self, target: str | IField[str] | None) -> None:
-        """Set the Description reference by target ID or IField[str] instance."""
+    def description(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Description reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
@@ -443,15 +442,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def joined_users(self) -> str | None:
-        """Target ID of the JoinedUsers reference (targets IField[np.int32])."""
+        """Target ID of the JoinedUsers reference (targets IField[primitives.Int])."""
         member = self.get_member("JoinedUsers")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @joined_users.setter
-    def joined_users(self, target: str | IField[np.int32] | None) -> None:
-        """Set the JoinedUsers reference by target ID or IField[np.int32] instance."""
+    def joined_users(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the JoinedUsers reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("JoinedUsers")
         if isinstance(member, members.Reference):
@@ -464,15 +463,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active_users(self) -> str | None:
-        """Target ID of the ActiveUsers reference (targets IField[np.int32])."""
+        """Target ID of the ActiveUsers reference (targets IField[primitives.Int])."""
         member = self.get_member("ActiveUsers")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @active_users.setter
-    def active_users(self, target: str | IField[np.int32] | None) -> None:
-        """Set the ActiveUsers reference by target ID or IField[np.int32] instance."""
+    def active_users(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the ActiveUsers reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ActiveUsers")
         if isinstance(member, members.Reference):
@@ -485,15 +484,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_host(self) -> str | None:
-        """Target ID of the IsHost reference (targets IField[bool])."""
+        """Target ID of the IsHost reference (targets IField[primitives.Bool])."""
         member = self.get_member("IsHost")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_host.setter
-    def is_host(self, target: str | IField[bool] | None) -> None:
-        """Set the IsHost reference by target ID or IField[bool] instance."""
+    def is_host(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the IsHost reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("IsHost")
         if isinstance(member, members.Reference):
@@ -506,15 +505,15 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_enabled(self) -> str | None:
-        """Target ID of the AwayKickEnabled reference (targets IField[bool])."""
+        """Target ID of the AwayKickEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("AwayKickEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @away_kick_enabled.setter
-    def away_kick_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the AwayKickEnabled reference by target ID or IField[bool] instance."""
+    def away_kick_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the AwayKickEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("AwayKickEnabled")
         if isinstance(member, members.Reference):

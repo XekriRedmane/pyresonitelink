@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     Parameterize with a value type::
 
-        ActiveUserCloudField[np.float32]
+        ActiveUserCloudField[primitives.Float]
         ActiveUserCloudField[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ActiveUserCloudField<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ActiveUserCloudField<>"
 
-    def __init__(self, path: str | None = None, is_linked_to_cloud: bool | None = None, update_cloud_variable: bool | None = None, fallback_value: T | None = None, target: str | IField[T] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, path: primitives.String | None = None, is_linked_to_cloud: primitives.Bool | None = None, update_cloud_variable: primitives.Bool | None = None, fallback_value: T | None = None, target: str | IField[T] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -47,7 +48,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
             self.target = target
 
     @property
-    def path(self) -> str | None:
+    def path(self) -> primitives.String | None:
         """The Path field value."""
         member = self.get_member("Path")
         if member is None:
@@ -55,7 +56,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @path.setter
-    def path(self, value: str) -> None:
+    def path(self, value: primitives.String) -> None:
         """Set the Path field value."""
         member = self.get_member("Path")
         if member is not None:
@@ -66,7 +67,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
             )
 
     @property
-    def is_linked_to_cloud(self) -> bool | None:
+    def is_linked_to_cloud(self) -> primitives.Bool | None:
         """The IsLinkedToCloud field value."""
         member = self.get_member("IsLinkedToCloud")
         if member is None:
@@ -74,7 +75,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @is_linked_to_cloud.setter
-    def is_linked_to_cloud(self, value: bool) -> None:
+    def is_linked_to_cloud(self, value: primitives.Bool) -> None:
         """Set the IsLinkedToCloud field value."""
         member = self.get_member("IsLinkedToCloud")
         if member is not None:
@@ -85,7 +86,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
             )
 
     @property
-    def update_cloud_variable(self) -> bool | None:
+    def update_cloud_variable(self) -> primitives.Bool | None:
         """The UpdateCloudVariable field value."""
         member = self.get_member("UpdateCloudVariable")
         if member is None:
@@ -93,7 +94,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @update_cloud_variable.setter
-    def update_cloud_variable(self, value: bool) -> None:
+    def update_cloud_variable(self, value: primitives.Bool) -> None:
         """Set the UpdateCloudVariable field value."""
         member = self.get_member("UpdateCloudVariable")
         if member is not None:

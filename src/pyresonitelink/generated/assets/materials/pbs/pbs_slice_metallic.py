@@ -1,7 +1,5 @@
 """Generated component: PBS_SliceMetallic."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_SliceMetallic"
 
-    def __init__(self, high_priority_integration: bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, edge_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, edge_emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, detail_texture_scale: primitives.Float2 | None = None, detail_texture_offset: primitives.Float2 | None = None, detail_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, detail_normal_map: str | IAssetProvider[ITexture2D] | None = None, detail_normal_scale: np.float32 | None = None, hide_slicers: bool | None = None, local_space: bool | None = None, edge_transition_start: np.float32 | None = None, edge_transition_end: np.float32 | None = None, use_alpha_clip: bool | None = None, alpha_clip: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, metallic: np.float32 | None = None, smoothness: np.float32 | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, edge_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, edge_emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, detail_texture_scale: primitives.Float2 | None = None, detail_texture_offset: primitives.Float2 | None = None, detail_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, detail_normal_map: str | IAssetProvider[ITexture2D] | None = None, detail_normal_scale: primitives.Float | None = None, hide_slicers: primitives.Bool | None = None, local_space: primitives.Bool | None = None, edge_transition_start: primitives.Float | None = None, edge_transition_end: primitives.Float | None = None, use_alpha_clip: primitives.Bool | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -126,7 +124,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             self.transparent = transparent
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -134,7 +132,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -322,7 +320,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -330,7 +328,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -442,7 +440,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def detail_normal_scale(self) -> np.float32 | None:
+    def detail_normal_scale(self) -> primitives.Float | None:
         """The DetailNormalScale field value."""
         member = self.get_member("DetailNormalScale")
         if member is None:
@@ -450,7 +448,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @detail_normal_scale.setter
-    def detail_normal_scale(self, value: np.float32) -> None:
+    def detail_normal_scale(self, value: primitives.Float) -> None:
         """Set the DetailNormalScale field value."""
         member = self.get_member("DetailNormalScale")
         if member is not None:
@@ -474,7 +472,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         self.set_member("Culling", value)
 
     @property
-    def hide_slicers(self) -> bool | None:
+    def hide_slicers(self) -> primitives.Bool | None:
         """The HideSlicers field value."""
         member = self.get_member("HideSlicers")
         if member is None:
@@ -482,7 +480,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @hide_slicers.setter
-    def hide_slicers(self, value: bool) -> None:
+    def hide_slicers(self, value: primitives.Bool) -> None:
         """Set the HideSlicers field value."""
         member = self.get_member("HideSlicers")
         if member is not None:
@@ -506,7 +504,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         self.set_member("Slicers", value)
 
     @property
-    def local_space(self) -> bool | None:
+    def local_space(self) -> primitives.Bool | None:
         """The LocalSpace field value."""
         member = self.get_member("LocalSpace")
         if member is None:
@@ -514,7 +512,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @local_space.setter
-    def local_space(self, value: bool) -> None:
+    def local_space(self, value: primitives.Bool) -> None:
         """Set the LocalSpace field value."""
         member = self.get_member("LocalSpace")
         if member is not None:
@@ -525,7 +523,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def edge_transition_start(self) -> np.float32 | None:
+    def edge_transition_start(self) -> primitives.Float | None:
         """The EdgeTransitionStart field value."""
         member = self.get_member("EdgeTransitionStart")
         if member is None:
@@ -533,7 +531,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @edge_transition_start.setter
-    def edge_transition_start(self, value: np.float32) -> None:
+    def edge_transition_start(self, value: primitives.Float) -> None:
         """Set the EdgeTransitionStart field value."""
         member = self.get_member("EdgeTransitionStart")
         if member is not None:
@@ -544,7 +542,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def edge_transition_end(self) -> np.float32 | None:
+    def edge_transition_end(self) -> primitives.Float | None:
         """The EdgeTransitionEnd field value."""
         member = self.get_member("EdgeTransitionEnd")
         if member is None:
@@ -552,7 +550,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @edge_transition_end.setter
-    def edge_transition_end(self, value: np.float32) -> None:
+    def edge_transition_end(self, value: primitives.Float) -> None:
         """Set the EdgeTransitionEnd field value."""
         member = self.get_member("EdgeTransitionEnd")
         if member is not None:
@@ -576,7 +574,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         self.set_member("AlphaHandling", value)
 
     @property
-    def use_alpha_clip(self) -> bool | None:
+    def use_alpha_clip(self) -> primitives.Bool | None:
         """The _useAlphaClip field value."""
         member = self.get_member("_useAlphaClip")
         if member is None:
@@ -584,7 +582,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @use_alpha_clip.setter
-    def use_alpha_clip(self, value: bool) -> None:
+    def use_alpha_clip(self, value: primitives.Bool) -> None:
         """Set the _useAlphaClip field value."""
         member = self.get_member("_useAlphaClip")
         if member is not None:
@@ -595,7 +593,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def alpha_clip(self) -> np.float32 | None:
+    def alpha_clip(self) -> primitives.Float | None:
         """The AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is None:
@@ -603,7 +601,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @alpha_clip.setter
-    def alpha_clip(self, value: np.float32) -> None:
+    def alpha_clip(self, value: primitives.Float) -> None:
         """Set the AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is not None:
@@ -614,7 +612,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -622,7 +620,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -633,7 +631,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -641,7 +639,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -652,7 +650,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -660,7 +658,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -671,7 +669,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def metallic(self) -> np.float32 | None:
+    def metallic(self) -> primitives.Float | None:
         """The Metallic field value."""
         member = self.get_member("Metallic")
         if member is None:
@@ -679,7 +677,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @metallic.setter
-    def metallic(self, value: np.float32) -> None:
+    def metallic(self, value: primitives.Float) -> None:
         """Set the Metallic field value."""
         member = self.get_member("Metallic")
         if member is not None:
@@ -690,7 +688,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
             )
 
     @property
-    def smoothness(self) -> np.float32 | None:
+    def smoothness(self) -> primitives.Float | None:
         """The Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is None:
@@ -698,7 +696,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
         return getattr(member, 'value', None)
 
     @smoothness.setter
-    def smoothness(self, value: np.float32) -> None:
+    def smoothness(self, value: primitives.Float) -> None:
         """Set the Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is not None:

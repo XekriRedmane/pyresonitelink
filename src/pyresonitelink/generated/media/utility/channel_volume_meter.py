@@ -1,9 +1,8 @@
 """Generated component: ChannelVolumeMeter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_audio_data_source import IWorldAudioDataSource
@@ -19,7 +18,7 @@ class ChannelVolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ChannelVolumeMeter"
 
-    def __init__(self, smoothing: np.float32 | None = None, power: np.float32 | None = None, source: str | IWorldAudioDataSource | None = None, current_channels: np.int32 | None = None, do_not_remove_excess_fields: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, smoothing: primitives.Float | None = None, power: primitives.Float | None = None, source: str | IWorldAudioDataSource | None = None, current_channels: primitives.Int | None = None, do_not_remove_excess_fields: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,7 +42,7 @@ class ChannelVolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.do_not_remove_excess_fields = do_not_remove_excess_fields
 
     @property
-    def smoothing(self) -> np.float32 | None:
+    def smoothing(self) -> primitives.Float | None:
         """The Smoothing field value."""
         member = self.get_member("Smoothing")
         if member is None:
@@ -51,7 +50,7 @@ class ChannelVolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @smoothing.setter
-    def smoothing(self, value: np.float32) -> None:
+    def smoothing(self, value: primitives.Float) -> None:
         """Set the Smoothing field value."""
         member = self.get_member("Smoothing")
         if member is not None:
@@ -62,7 +61,7 @@ class ChannelVolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def power(self) -> np.float32 | None:
+    def power(self) -> primitives.Float | None:
         """The Power field value."""
         member = self.get_member("Power")
         if member is None:
@@ -70,7 +69,7 @@ class ChannelVolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @power.setter
-    def power(self, value: np.float32) -> None:
+    def power(self, value: primitives.Float) -> None:
         """Set the Power field value."""
         member = self.get_member("Power")
         if member is not None:
@@ -115,7 +114,7 @@ class ChannelVolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def current_channels(self) -> np.int32 | None:
+    def current_channels(self) -> primitives.Int | None:
         """The CurrentChannels field value."""
         member = self.get_member("CurrentChannels")
         if member is None:
@@ -123,7 +122,7 @@ class ChannelVolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @current_channels.setter
-    def current_channels(self, value: np.int32) -> None:
+    def current_channels(self, value: primitives.Int) -> None:
         """Set the CurrentChannels field value."""
         member = self.get_member("CurrentChannels")
         if member is not None:
@@ -147,7 +146,7 @@ class ChannelVolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("ChannelVolumes", value)
 
     @property
-    def do_not_remove_excess_fields(self) -> bool | None:
+    def do_not_remove_excess_fields(self) -> primitives.Bool | None:
         """The DoNotRemoveExcessFields field value."""
         member = self.get_member("DoNotRemoveExcessFields")
         if member is None:
@@ -155,7 +154,7 @@ class ChannelVolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @do_not_remove_excess_fields.setter
-    def do_not_remove_excess_fields(self, value: bool) -> None:
+    def do_not_remove_excess_fields(self, value: primitives.Bool) -> None:
         """Set the DoNotRemoveExcessFields field value."""
         member = self.get_member("DoNotRemoveExcessFields")
         if member is not None:

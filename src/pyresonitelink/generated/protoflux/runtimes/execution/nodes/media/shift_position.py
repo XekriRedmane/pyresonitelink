@@ -1,8 +1,7 @@
 """Generated component: ShiftPosition."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -25,7 +24,7 @@ class ShiftPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.ShiftPosition"
 
-    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[IPlayable] | None = None, delta: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[IPlayable] | None = None, delta: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -86,15 +85,15 @@ class ShiftPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def delta(self) -> str | None:
-        """Target ID of the Delta reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Delta reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Delta")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @delta.setter
-    def delta(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Delta reference by target ID or INodeValueOutput[np.float32] instance."""
+    def delta(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Delta reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Delta")
         if isinstance(member, members.Reference):

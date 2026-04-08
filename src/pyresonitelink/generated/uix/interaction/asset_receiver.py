@@ -5,6 +5,7 @@ from typing import Any
 A = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.asset_ref import AssetRef
@@ -19,14 +20,14 @@ class AssetReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        AssetReceiver[np.float32]
+        AssetReceiver[primitives.Float]
         AssetReceiver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.AssetReceiver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.UIX.AssetReceiver<>"
 
-    def __init__(self, reference: str | AssetRef[A] | None = None, undoable: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reference: str | AssetRef[A] | None = None, undoable: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +63,7 @@ class AssetReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiver):
             )
 
     @property
-    def undoable(self) -> bool | None:
+    def undoable(self) -> primitives.Bool | None:
         """The Undoable field value."""
         member = self.get_member("Undoable")
         if member is None:
@@ -70,7 +71,7 @@ class AssetReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @undoable.setter
-    def undoable(self, value: bool) -> None:
+    def undoable(self, value: primitives.Bool) -> None:
         """Set the Undoable field value."""
         member = self.get_member("Undoable")
         if member is not None:

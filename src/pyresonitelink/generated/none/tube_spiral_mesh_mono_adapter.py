@@ -1,9 +1,8 @@
 """Generated component: TubeSpiralMeshMonoAdapter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -18,7 +17,7 @@ class TubeSpiralMeshMonoAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TubeSpiralMeshMonoAdapter"
 
-    def __init__(self, target: str | IField[Nullable[np.float32]] | None = None, value: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[Nullable[primitives.Float]] | None = None, value: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,15 +33,15 @@ class TubeSpiralMeshMonoAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[Nullable[np.float32]])."""
+        """Target ID of the Target reference (targets IField[Nullable[primitives.Float]])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[Nullable[np.float32]] | None) -> None:
-        """Set the Target reference by target ID or IField[Nullable[np.float32]] instance."""
+    def target(self, target: str | IField[Nullable[primitives.Float]] | None) -> None:
+        """Set the Target reference by target ID or IField[Nullable[primitives.Float]] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -54,7 +53,7 @@ class TubeSpiralMeshMonoAdapter(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def value(self) -> np.float32 | None:
+    def value(self) -> primitives.Float | None:
         """The Value field value."""
         member = self.get_member("Value")
         if member is None:
@@ -62,7 +61,7 @@ class TubeSpiralMeshMonoAdapter(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @value.setter
-    def value(self, value: np.float32) -> None:
+    def value(self, value: primitives.Float) -> None:
         """Set the Value field value."""
         member = self.get_member("Value")
         if member is not None:

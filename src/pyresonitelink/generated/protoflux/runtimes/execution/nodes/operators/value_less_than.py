@@ -18,7 +18,7 @@ class ValueLessThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        ValueLessThan[np.float32]
+        ValueLessThan[primitives.Float]
         ValueLessThan[primitives.Float3]
     """
 

@@ -18,7 +18,7 @@ class ValueOneMinus(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        ValueOneMinus[np.float32]
+        ValueOneMinus[primitives.Float]
         ValueOneMinus[primitives.Float3]
     """
 

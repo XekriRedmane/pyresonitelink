@@ -1,9 +1,8 @@
 """Generated component: InteractiveCameraAnchor."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +18,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraAnchor"
 
-    def __init__(self, override_root: str | Slot | None = None, field_of_view: np.float32 | None = None, highlighted: bool | None = None, in_use: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, override_root: str | Slot | None = None, field_of_view: primitives.Float | None = None, highlighted: primitives.Bool | None = None, in_use: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +60,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
             )
 
     @property
-    def field_of_view(self) -> np.float32 | None:
+    def field_of_view(self) -> primitives.Float | None:
         """The FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is None:
@@ -69,7 +68,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @field_of_view.setter
-    def field_of_view(self, value: np.float32) -> None:
+    def field_of_view(self, value: primitives.Float) -> None:
         """Set the FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is not None:
@@ -80,7 +79,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
             )
 
     @property
-    def highlighted(self) -> bool | None:
+    def highlighted(self) -> primitives.Bool | None:
         """The Highlighted field value."""
         member = self.get_member("Highlighted")
         if member is None:
@@ -88,7 +87,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @highlighted.setter
-    def highlighted(self, value: bool) -> None:
+    def highlighted(self, value: primitives.Bool) -> None:
         """Set the Highlighted field value."""
         member = self.get_member("Highlighted")
         if member is not None:
@@ -99,7 +98,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
             )
 
     @property
-    def in_use(self) -> bool | None:
+    def in_use(self) -> primitives.Bool | None:
         """The InUse field value."""
         member = self.get_member("InUse")
         if member is None:
@@ -107,7 +106,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @in_use.setter
-    def in_use(self, value: bool) -> None:
+    def in_use(self, value: primitives.Bool) -> None:
         """Set the InUse field value."""
         member = self.get_member("InUse")
         if member is not None:

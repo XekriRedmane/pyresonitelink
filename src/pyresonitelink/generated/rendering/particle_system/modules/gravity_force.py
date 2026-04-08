@@ -1,9 +1,8 @@
 """Generated component: GravityForce."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -18,7 +17,7 @@ class GravityForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.GravityForce"
 
-    def __init__(self, gravity: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, gravity: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +29,7 @@ class GravityForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
             self.gravity = gravity
 
     @property
-    def gravity(self) -> np.float32 | None:
+    def gravity(self) -> primitives.Float | None:
         """The Gravity field value."""
         member = self.get_member("Gravity")
         if member is None:
@@ -38,7 +37,7 @@ class GravityForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @gravity.setter
-    def gravity(self, value: np.float32) -> None:
+    def gravity(self, value: primitives.Float) -> None:
         """Set the Gravity field value."""
         member = self.get_member("Gravity")
         if member is not None:

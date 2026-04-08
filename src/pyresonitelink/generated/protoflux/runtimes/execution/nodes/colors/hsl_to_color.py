@@ -1,8 +1,7 @@
 """Generated component: HSL_ToColor."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class HSL_ToColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.HSL_ToColor"
 
-    def __init__(self, h: str | INodeValueOutput[np.float32] | None = None, s: str | INodeValueOutput[np.float32] | None = None, l: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, h: str | INodeValueOutput[primitives.Float] | None = None, s: str | INodeValueOutput[primitives.Float] | None = None, l: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,15 +39,15 @@ class HSL_ToColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def h(self) -> str | None:
-        """Target ID of the H reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the H reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("H")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @h.setter
-    def h(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the H reference by target ID or INodeValueOutput[np.float32] instance."""
+    def h(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the H reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("H")
         if isinstance(member, members.Reference):
@@ -61,15 +60,15 @@ class HSL_ToColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def s(self) -> str | None:
-        """Target ID of the S reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the S reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("S")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @s.setter
-    def s(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the S reference by target ID or INodeValueOutput[np.float32] instance."""
+    def s(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the S reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("S")
         if isinstance(member, members.Reference):
@@ -82,15 +81,15 @@ class HSL_ToColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def l(self) -> str | None:
-        """Target ID of the L reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the L reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("L")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @l.setter
-    def l(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the L reference by target ID or INodeValueOutput[np.float32] instance."""
+    def l(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the L reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("L")
         if isinstance(member, members.Reference):

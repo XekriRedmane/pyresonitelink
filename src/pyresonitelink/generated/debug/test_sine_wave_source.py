@@ -1,8 +1,7 @@
 """Generated component: TestSineWaveSource."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_audio_data_source import IWorldAudioDataSource
@@ -18,7 +17,7 @@ class TestSineWaveSource(GeneratedComponent, IWorldAudioDataSource, IComponent, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TestSineWaveSource"
 
-    def __init__(self, frequency: np.float32 | None = None, amplitude: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, frequency: primitives.Float | None = None, amplitude: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class TestSineWaveSource(GeneratedComponent, IWorldAudioDataSource, IComponent, 
             self.amplitude = amplitude
 
     @property
-    def frequency(self) -> np.float32 | None:
+    def frequency(self) -> primitives.Float | None:
         """The Frequency field value."""
         member = self.get_member("Frequency")
         if member is None:
@@ -41,7 +40,7 @@ class TestSineWaveSource(GeneratedComponent, IWorldAudioDataSource, IComponent, 
         return getattr(member, 'value', None)
 
     @frequency.setter
-    def frequency(self, value: np.float32) -> None:
+    def frequency(self, value: primitives.Float) -> None:
         """Set the Frequency field value."""
         member = self.get_member("Frequency")
         if member is not None:
@@ -52,7 +51,7 @@ class TestSineWaveSource(GeneratedComponent, IWorldAudioDataSource, IComponent, 
             )
 
     @property
-    def amplitude(self) -> np.float32 | None:
+    def amplitude(self) -> primitives.Float | None:
         """The Amplitude field value."""
         member = self.get_member("Amplitude")
         if member is None:
@@ -60,7 +59,7 @@ class TestSineWaveSource(GeneratedComponent, IWorldAudioDataSource, IComponent, 
         return getattr(member, 'value', None)
 
     @amplitude.setter
-    def amplitude(self, value: np.float32) -> None:
+    def amplitude(self, value: primitives.Float) -> None:
         """Set the Amplitude field value."""
         member = self.get_member("Amplitude")
         if member is not None:

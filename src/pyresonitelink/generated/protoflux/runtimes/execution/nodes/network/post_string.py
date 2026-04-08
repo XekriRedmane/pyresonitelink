@@ -1,6 +1,7 @@
 """Generated component: POST_String."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -21,7 +22,7 @@ class POST_String(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network.POST_String"
 
-    def __init__(self, url: str | INodeObjectOutput[str] | None = None, on_sent: str | INodeOperation | None = None, on_response: str | INodeOperation | None = None, on_error: str | INodeOperation | None = None, on_denied: str | INodeOperation | None = None, string: str | INodeObjectOutput[str] | None = None, media_type: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | INodeObjectOutput[str] | None = None, on_sent: str | INodeOperation | None = None, on_response: str | INodeOperation | None = None, on_error: str | INodeOperation | None = None, on_denied: str | INodeOperation | None = None, string: str | INodeObjectOutput[primitives.String] | None = None, media_type: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -183,15 +184,15 @@ class POST_String(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode
 
     @property
     def string(self) -> str | None:
-        """Target ID of the String reference (targets INodeObjectOutput[str])."""
+        """Target ID of the String reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("String")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @string.setter
-    def string(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the String reference by target ID or INodeObjectOutput[str] instance."""
+    def string(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the String reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("String")
         if isinstance(member, members.Reference):
@@ -204,15 +205,15 @@ class POST_String(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode
 
     @property
     def media_type(self) -> str | None:
-        """Target ID of the MediaType reference (targets INodeObjectOutput[str])."""
+        """Target ID of the MediaType reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("MediaType")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @media_type.setter
-    def media_type(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the MediaType reference by target ID or INodeObjectOutput[str] instance."""
+    def media_type(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the MediaType reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("MediaType")
         if isinstance(member, members.Reference):

@@ -1,9 +1,8 @@
 """Generated component: FingerSplayModifier."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifinger_pose_source_component import IFingerPoseSourceComponent
@@ -18,7 +17,7 @@ class FingerSplayModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FingerSplayModifier"
 
-    def __init__(self, source: str | IFingerPoseSourceComponent | None = None, left_splay_magnitude: np.float32 | None = None, right_splay_magnitude: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IFingerPoseSourceComponent | None = None, left_splay_magnitude: primitives.Float | None = None, right_splay_magnitude: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,7 +56,7 @@ class FingerSplayModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorld
             )
 
     @property
-    def left_splay_magnitude(self) -> np.float32 | None:
+    def left_splay_magnitude(self) -> primitives.Float | None:
         """The LeftSplayMagnitude field value."""
         member = self.get_member("LeftSplayMagnitude")
         if member is None:
@@ -65,7 +64,7 @@ class FingerSplayModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorld
         return getattr(member, 'value', None)
 
     @left_splay_magnitude.setter
-    def left_splay_magnitude(self, value: np.float32) -> None:
+    def left_splay_magnitude(self, value: primitives.Float) -> None:
         """Set the LeftSplayMagnitude field value."""
         member = self.get_member("LeftSplayMagnitude")
         if member is not None:
@@ -76,7 +75,7 @@ class FingerSplayModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorld
             )
 
     @property
-    def right_splay_magnitude(self) -> np.float32 | None:
+    def right_splay_magnitude(self) -> primitives.Float | None:
         """The RightSplayMagnitude field value."""
         member = self.get_member("RightSplayMagnitude")
         if member is None:
@@ -84,7 +83,7 @@ class FingerSplayModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorld
         return getattr(member, 'value', None)
 
     @right_splay_magnitude.setter
-    def right_splay_magnitude(self, value: np.float32) -> None:
+    def right_splay_magnitude(self, value: primitives.Float) -> None:
         """Set the RightSplayMagnitude field value."""
         member = self.get_member("RightSplayMagnitude")
         if member is not None:

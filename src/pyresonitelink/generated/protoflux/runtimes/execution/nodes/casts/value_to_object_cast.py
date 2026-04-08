@@ -23,7 +23,7 @@ class ValueToObjectCast(GenericComponent[T], ICast, INodeObjectOutput[T], IExecu
 
     Parameterize with a value type::
 
-        ValueToObjectCast[np.float32]
+        ValueToObjectCast[primitives.Float]
         ValueToObjectCast[primitives.Float3]
     """
 

@@ -1,7 +1,5 @@
 """Generated component: RecordSyncStatus."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -18,7 +16,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RecordSyncStatus"
 
-    def __init__(self, record_queue_count: np.int32 | None = None, asset_variant_queue_count: np.int32 | None = None, current_task_progress: np.float32 | None = None, last_error: str | None = None, status_message: str | None = None, fully_synced_color: primitives.ColorX | None = None, error_color: primitives.ColorX | None = None, syncing_records_color: primitives.ColorX | None = None, uploading_asset_variants_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, record_queue_count: primitives.Int | None = None, asset_variant_queue_count: primitives.Int | None = None, current_task_progress: primitives.Float | None = None, last_error: primitives.String | None = None, status_message: primitives.String | None = None, fully_synced_color: primitives.ColorX | None = None, error_color: primitives.ColorX | None = None, syncing_records_color: primitives.ColorX | None = None, uploading_asset_variants_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +52,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.uploading_asset_variants_color = uploading_asset_variants_color
 
     @property
-    def record_queue_count(self) -> np.int32 | None:
+    def record_queue_count(self) -> primitives.Int | None:
         """The RecordQueueCount field value."""
         member = self.get_member("RecordQueueCount")
         if member is None:
@@ -62,7 +60,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @record_queue_count.setter
-    def record_queue_count(self, value: np.int32) -> None:
+    def record_queue_count(self, value: primitives.Int) -> None:
         """Set the RecordQueueCount field value."""
         member = self.get_member("RecordQueueCount")
         if member is not None:
@@ -73,7 +71,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def asset_variant_queue_count(self) -> np.int32 | None:
+    def asset_variant_queue_count(self) -> primitives.Int | None:
         """The AssetVariantQueueCount field value."""
         member = self.get_member("AssetVariantQueueCount")
         if member is None:
@@ -81,7 +79,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @asset_variant_queue_count.setter
-    def asset_variant_queue_count(self, value: np.int32) -> None:
+    def asset_variant_queue_count(self, value: primitives.Int) -> None:
         """Set the AssetVariantQueueCount field value."""
         member = self.get_member("AssetVariantQueueCount")
         if member is not None:
@@ -92,7 +90,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def current_task_progress(self) -> np.float32 | None:
+    def current_task_progress(self) -> primitives.Float | None:
         """The CurrentTaskProgress field value."""
         member = self.get_member("CurrentTaskProgress")
         if member is None:
@@ -100,7 +98,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @current_task_progress.setter
-    def current_task_progress(self, value: np.float32) -> None:
+    def current_task_progress(self, value: primitives.Float) -> None:
         """Set the CurrentTaskProgress field value."""
         member = self.get_member("CurrentTaskProgress")
         if member is not None:
@@ -111,7 +109,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def last_error(self) -> str | None:
+    def last_error(self) -> primitives.String | None:
         """The LastError field value."""
         member = self.get_member("LastError")
         if member is None:
@@ -119,7 +117,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @last_error.setter
-    def last_error(self, value: str) -> None:
+    def last_error(self, value: primitives.String) -> None:
         """Set the LastError field value."""
         member = self.get_member("LastError")
         if member is not None:
@@ -130,7 +128,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def status_message(self) -> str | None:
+    def status_message(self) -> primitives.String | None:
         """The StatusMessage field value."""
         member = self.get_member("StatusMessage")
         if member is None:
@@ -138,7 +136,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @status_message.setter
-    def status_message(self, value: str) -> None:
+    def status_message(self, value: primitives.String) -> None:
         """Set the StatusMessage field value."""
         member = self.get_member("StatusMessage")
         if member is not None:

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -17,7 +18,7 @@ class AvatarLiveIndicator(GeneratedComponent, IAvatarObjectComponent, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarLiveIndicator"
 
-    def __init__(self, is_live: bool | None = None, active_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_live: primitives.Bool | None = None, active_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +33,7 @@ class AvatarLiveIndicator(GeneratedComponent, IAvatarObjectComponent, IWorldEven
             self.active_user = active_user
 
     @property
-    def is_live(self) -> bool | None:
+    def is_live(self) -> primitives.Bool | None:
         """The IsLive field value."""
         member = self.get_member("IsLive")
         if member is None:
@@ -40,7 +41,7 @@ class AvatarLiveIndicator(GeneratedComponent, IAvatarObjectComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @is_live.setter
-    def is_live(self, value: bool) -> None:
+    def is_live(self, value: primitives.Bool) -> None:
         """Set the IsLive field value."""
         member = self.get_member("IsLive")
         if member is not None:

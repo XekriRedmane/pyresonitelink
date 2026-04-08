@@ -1,9 +1,8 @@
 """Generated component: ParticleRibbonsModule."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -21,7 +20,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleRibbonsModule"
 
-    def __init__(self, material: str | IAssetProvider[Material] | None = None, generate_lighting_data: bool | None = None, ribbon_point_ratio: np.float32 | None = None, max_ribbon_points: np.int32 | None = None, interweaved_ribbon_count: np.int32 | None = None, use_particle_color: bool | None = None, use_particle_size: bool | None = None, shuffle_interweaved_ribbons: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, material: str | IAssetProvider[Material] | None = None, generate_lighting_data: primitives.Bool | None = None, ribbon_point_ratio: primitives.Float | None = None, max_ribbon_points: primitives.Int | None = None, interweaved_ribbon_count: primitives.Int | None = None, use_particle_color: primitives.Bool | None = None, use_particle_size: primitives.Bool | None = None, shuffle_interweaved_ribbons: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -101,7 +100,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
         self.set_member("MotionVectorMode", value)
 
     @property
-    def generate_lighting_data(self) -> bool | None:
+    def generate_lighting_data(self) -> primitives.Bool | None:
         """The GenerateLightingData field value."""
         member = self.get_member("GenerateLightingData")
         if member is None:
@@ -109,7 +108,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
         return getattr(member, 'value', None)
 
     @generate_lighting_data.setter
-    def generate_lighting_data(self, value: bool) -> None:
+    def generate_lighting_data(self, value: primitives.Bool) -> None:
         """Set the GenerateLightingData field value."""
         member = self.get_member("GenerateLightingData")
         if member is not None:
@@ -120,7 +119,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
             )
 
     @property
-    def ribbon_point_ratio(self) -> np.float32 | None:
+    def ribbon_point_ratio(self) -> primitives.Float | None:
         """The RibbonPointRatio field value."""
         member = self.get_member("RibbonPointRatio")
         if member is None:
@@ -128,7 +127,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
         return getattr(member, 'value', None)
 
     @ribbon_point_ratio.setter
-    def ribbon_point_ratio(self, value: np.float32) -> None:
+    def ribbon_point_ratio(self, value: primitives.Float) -> None:
         """Set the RibbonPointRatio field value."""
         member = self.get_member("RibbonPointRatio")
         if member is not None:
@@ -152,7 +151,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
         self.set_member("Distribution", value)
 
     @property
-    def max_ribbon_points(self) -> np.int32 | None:
+    def max_ribbon_points(self) -> primitives.Int | None:
         """The MaxRibbonPoints field value."""
         member = self.get_member("MaxRibbonPoints")
         if member is None:
@@ -160,7 +159,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
         return getattr(member, 'value', None)
 
     @max_ribbon_points.setter
-    def max_ribbon_points(self, value: np.int32) -> None:
+    def max_ribbon_points(self, value: primitives.Int) -> None:
         """Set the MaxRibbonPoints field value."""
         member = self.get_member("MaxRibbonPoints")
         if member is not None:
@@ -171,7 +170,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
             )
 
     @property
-    def interweaved_ribbon_count(self) -> np.int32 | None:
+    def interweaved_ribbon_count(self) -> primitives.Int | None:
         """The InterweavedRibbonCount field value."""
         member = self.get_member("InterweavedRibbonCount")
         if member is None:
@@ -179,7 +178,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
         return getattr(member, 'value', None)
 
     @interweaved_ribbon_count.setter
-    def interweaved_ribbon_count(self, value: np.int32) -> None:
+    def interweaved_ribbon_count(self, value: primitives.Int) -> None:
         """Set the InterweavedRibbonCount field value."""
         member = self.get_member("InterweavedRibbonCount")
         if member is not None:
@@ -190,7 +189,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
             )
 
     @property
-    def use_particle_color(self) -> bool | None:
+    def use_particle_color(self) -> primitives.Bool | None:
         """The UseParticleColor field value."""
         member = self.get_member("UseParticleColor")
         if member is None:
@@ -198,7 +197,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
         return getattr(member, 'value', None)
 
     @use_particle_color.setter
-    def use_particle_color(self, value: bool) -> None:
+    def use_particle_color(self, value: primitives.Bool) -> None:
         """Set the UseParticleColor field value."""
         member = self.get_member("UseParticleColor")
         if member is not None:
@@ -209,7 +208,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
             )
 
     @property
-    def use_particle_size(self) -> bool | None:
+    def use_particle_size(self) -> primitives.Bool | None:
         """The UseParticleSize field value."""
         member = self.get_member("UseParticleSize")
         if member is None:
@@ -217,7 +216,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
         return getattr(member, 'value', None)
 
     @use_particle_size.setter
-    def use_particle_size(self, value: bool) -> None:
+    def use_particle_size(self, value: primitives.Bool) -> None:
         """Set the UseParticleSize field value."""
         member = self.get_member("UseParticleSize")
         if member is not None:
@@ -228,7 +227,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
             )
 
     @property
-    def shuffle_interweaved_ribbons(self) -> bool | None:
+    def shuffle_interweaved_ribbons(self) -> primitives.Bool | None:
         """The ShuffleInterweavedRibbons field value."""
         member = self.get_member("ShuffleInterweavedRibbons")
         if member is None:
@@ -236,7 +235,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
         return getattr(member, 'value', None)
 
     @shuffle_interweaved_ribbons.setter
-    def shuffle_interweaved_ribbons(self, value: bool) -> None:
+    def shuffle_interweaved_ribbons(self, value: primitives.Bool) -> None:
         """Set the ShuffleInterweavedRibbons field value."""
         member = self.get_member("ShuffleInterweavedRibbons")
         if member is not None:

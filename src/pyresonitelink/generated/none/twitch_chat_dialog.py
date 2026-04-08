@@ -1,9 +1,8 @@
 """Generated component: TwitchChatDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.canvas import Canvas
@@ -26,7 +25,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TwitchChatDialog"
 
-    def __init__(self, canvas: str | Canvas | None = None, panel: str | LegacyPanel | None = None, max_messages: np.int32 | None = None, interface: str | TwitchInterface | None = None, channel_name: str | TextField | None = None, viewer_count: str | Text | None = None, messages_root: str | Slot | None = None, messages_scroll_rect: str | ScrollRect | None = None, highlight_panel: str | Image | None = None, highlight_text: str | Text | None = None, sprite_sheet: str | DynamicSpriteFont | None = None, font_collection: str | FontCollection | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, canvas: str | Canvas | None = None, panel: str | LegacyPanel | None = None, max_messages: primitives.Int | None = None, interface: str | TwitchInterface | None = None, channel_name: str | TextField | None = None, viewer_count: str | Text | None = None, messages_root: str | Slot | None = None, messages_scroll_rect: str | ScrollRect | None = None, highlight_panel: str | Image | None = None, highlight_text: str | Text | None = None, sprite_sheet: str | DynamicSpriteFont | None = None, font_collection: str | FontCollection | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -113,7 +112,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_messages(self) -> np.int32 | None:
+    def max_messages(self) -> primitives.Int | None:
         """The MaxMessages field value."""
         member = self.get_member("MaxMessages")
         if member is None:
@@ -121,7 +120,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_messages.setter
-    def max_messages(self, value: np.int32) -> None:
+    def max_messages(self, value: primitives.Int) -> None:
         """Set the MaxMessages field value."""
         member = self.get_member("MaxMessages")
         if member is not None:

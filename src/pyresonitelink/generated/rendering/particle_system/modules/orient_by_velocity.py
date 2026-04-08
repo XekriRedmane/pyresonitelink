@@ -1,7 +1,5 @@
 """Generated component: OrientByVelocity."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -18,7 +16,7 @@ class OrientByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.OrientByVelocity"
 
-    def __init__(self, up: primitives.Float3 | None = None, minimum_velocity: np.float32 | None = None, velocity_transition_range: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, up: primitives.Float3 | None = None, minimum_velocity: primitives.Float | None = None, velocity_transition_range: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -55,7 +53,7 @@ class OrientByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEventRec
             )
 
     @property
-    def minimum_velocity(self) -> np.float32 | None:
+    def minimum_velocity(self) -> primitives.Float | None:
         """The MinimumVelocity field value."""
         member = self.get_member("MinimumVelocity")
         if member is None:
@@ -63,7 +61,7 @@ class OrientByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEventRec
         return getattr(member, 'value', None)
 
     @minimum_velocity.setter
-    def minimum_velocity(self, value: np.float32) -> None:
+    def minimum_velocity(self, value: primitives.Float) -> None:
         """Set the MinimumVelocity field value."""
         member = self.get_member("MinimumVelocity")
         if member is not None:
@@ -74,7 +72,7 @@ class OrientByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEventRec
             )
 
     @property
-    def velocity_transition_range(self) -> np.float32 | None:
+    def velocity_transition_range(self) -> primitives.Float | None:
         """The VelocityTransitionRange field value."""
         member = self.get_member("VelocityTransitionRange")
         if member is None:
@@ -82,7 +80,7 @@ class OrientByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEventRec
         return getattr(member, 'value', None)
 
     @velocity_transition_range.setter
-    def velocity_transition_range(self, value: np.float32) -> None:
+    def velocity_transition_range(self, value: primitives.Float) -> None:
         """Set the VelocityTransitionRange field value."""
         member = self.get_member("VelocityTransitionRange")
         if member is not None:

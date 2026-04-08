@@ -1,7 +1,5 @@
 """Generated component: LegacyVideoPlayer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -34,7 +32,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyVideoPlayer"
 
-    def __init__(self, size_compensation: primitives.Float2 | None = None, video_provider: str | IAssetProvider[VideoTexture] | None = None, style: str | LegacyUIStyle | None = None, indicator_texture_url: str | IField[str] | None = None, indicator_tint: str | IField[primitives.ColorX] | None = None, collider_size: str | IField[primitives.Float3] | None = None, frame_width: str | IField[np.float32] | None = None, frame_height: str | IField[np.float32] | None = None, frame_material: str | PBS_RimMetallic | None = None, display_material: str | UnlitMaterial | None = None, display_material_texture: str | AssetRef[ITexture2D] | None = None, display_size: str | IField[primitives.Float2] | None = None, main_audio_output: str | AudioOutput | None = None, timeline_slider: str | LegacySlider | None = None, timeline_position: str | IField[primitives.Float3] | None = None, timeline_width: str | IField[np.float32] | None = None, position_drive: str | IField[np.float32] | None = None, volume_slider: str | LegacySlider | None = None, volume_position: str | IField[primitives.Float3] | None = None, volume_width: str | IField[np.float32] | None = None, volume_drive: str | IField[np.float32] | None = None, buttons_width: str | IField[np.float32] | None = None, buttons_height: str | IField[np.float32] | None = None, buttons_position: str | IField[primitives.Float3] | None = None, play_button_color: str | IField[primitives.ColorX] | None = None, pause_button_color: str | IField[primitives.ColorX] | None = None, stop_button_color: str | IField[primitives.ColorX] | None = None, loop_button_color: str | IField[primitives.ColorX] | None = None, audio_3d_button_color: str | IField[primitives.ColorX] | None = None, exportable: str | VideoExportable | None = None, asset_proxy: str | AssetProxy[VideoTexture] | None = None, reference_proxy: str | ReferenceProxy | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, size_compensation: primitives.Float2 | None = None, video_provider: str | IAssetProvider[VideoTexture] | None = None, style: str | LegacyUIStyle | None = None, indicator_texture_url: str | IField[str] | None = None, indicator_tint: str | IField[primitives.ColorX] | None = None, collider_size: str | IField[primitives.Float3] | None = None, frame_width: str | IField[primitives.Float] | None = None, frame_height: str | IField[primitives.Float] | None = None, frame_material: str | PBS_RimMetallic | None = None, display_material: str | UnlitMaterial | None = None, display_material_texture: str | AssetRef[ITexture2D] | None = None, display_size: str | IField[primitives.Float2] | None = None, main_audio_output: str | AudioOutput | None = None, timeline_slider: str | LegacySlider | None = None, timeline_position: str | IField[primitives.Float3] | None = None, timeline_width: str | IField[primitives.Float] | None = None, position_drive: str | IField[primitives.Float] | None = None, volume_slider: str | LegacySlider | None = None, volume_position: str | IField[primitives.Float3] | None = None, volume_width: str | IField[primitives.Float] | None = None, volume_drive: str | IField[primitives.Float] | None = None, buttons_width: str | IField[primitives.Float] | None = None, buttons_height: str | IField[primitives.Float] | None = None, buttons_position: str | IField[primitives.Float3] | None = None, play_button_color: str | IField[primitives.ColorX] | None = None, pause_button_color: str | IField[primitives.ColorX] | None = None, stop_button_color: str | IField[primitives.ColorX] | None = None, loop_button_color: str | IField[primitives.ColorX] | None = None, audio_3d_button_color: str | IField[primitives.ColorX] | None = None, exportable: str | VideoExportable | None = None, asset_proxy: str | AssetProxy[VideoTexture] | None = None, reference_proxy: str | ReferenceProxy | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -277,15 +275,15 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def frame_width(self) -> str | None:
-        """Target ID of the _frameWidth reference (targets IField[np.float32])."""
+        """Target ID of the _frameWidth reference (targets IField[primitives.Float])."""
         member = self.get_member("_frameWidth")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @frame_width.setter
-    def frame_width(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _frameWidth reference by target ID or IField[np.float32] instance."""
+    def frame_width(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _frameWidth reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_frameWidth")
         if isinstance(member, members.Reference):
@@ -298,15 +296,15 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def frame_height(self) -> str | None:
-        """Target ID of the _frameHeight reference (targets IField[np.float32])."""
+        """Target ID of the _frameHeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_frameHeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @frame_height.setter
-    def frame_height(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _frameHeight reference by target ID or IField[np.float32] instance."""
+    def frame_height(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _frameHeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_frameHeight")
         if isinstance(member, members.Reference):
@@ -466,15 +464,15 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def timeline_width(self) -> str | None:
-        """Target ID of the _timelineWidth reference (targets IField[np.float32])."""
+        """Target ID of the _timelineWidth reference (targets IField[primitives.Float])."""
         member = self.get_member("_timelineWidth")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @timeline_width.setter
-    def timeline_width(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _timelineWidth reference by target ID or IField[np.float32] instance."""
+    def timeline_width(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _timelineWidth reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_timelineWidth")
         if isinstance(member, members.Reference):
@@ -487,15 +485,15 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def position_drive(self) -> str | None:
-        """Target ID of the _positionDrive reference (targets IField[np.float32])."""
+        """Target ID of the _positionDrive reference (targets IField[primitives.Float])."""
         member = self.get_member("_positionDrive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @position_drive.setter
-    def position_drive(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _positionDrive reference by target ID or IField[np.float32] instance."""
+    def position_drive(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _positionDrive reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_positionDrive")
         if isinstance(member, members.Reference):
@@ -550,15 +548,15 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def volume_width(self) -> str | None:
-        """Target ID of the _volumeWidth reference (targets IField[np.float32])."""
+        """Target ID of the _volumeWidth reference (targets IField[primitives.Float])."""
         member = self.get_member("_volumeWidth")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @volume_width.setter
-    def volume_width(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _volumeWidth reference by target ID or IField[np.float32] instance."""
+    def volume_width(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _volumeWidth reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_volumeWidth")
         if isinstance(member, members.Reference):
@@ -571,15 +569,15 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def volume_drive(self) -> str | None:
-        """Target ID of the _volumeDrive reference (targets IField[np.float32])."""
+        """Target ID of the _volumeDrive reference (targets IField[primitives.Float])."""
         member = self.get_member("_volumeDrive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @volume_drive.setter
-    def volume_drive(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _volumeDrive reference by target ID or IField[np.float32] instance."""
+    def volume_drive(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _volumeDrive reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_volumeDrive")
         if isinstance(member, members.Reference):
@@ -592,15 +590,15 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def buttons_width(self) -> str | None:
-        """Target ID of the _buttonsWidth reference (targets IField[np.float32])."""
+        """Target ID of the _buttonsWidth reference (targets IField[primitives.Float])."""
         member = self.get_member("_buttonsWidth")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @buttons_width.setter
-    def buttons_width(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _buttonsWidth reference by target ID or IField[np.float32] instance."""
+    def buttons_width(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _buttonsWidth reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_buttonsWidth")
         if isinstance(member, members.Reference):
@@ -613,15 +611,15 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def buttons_height(self) -> str | None:
-        """Target ID of the _buttonsHeight reference (targets IField[np.float32])."""
+        """Target ID of the _buttonsHeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_buttonsHeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @buttons_height.setter
-    def buttons_height(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _buttonsHeight reference by target ID or IField[np.float32] instance."""
+    def buttons_height(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _buttonsHeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_buttonsHeight")
         if isinstance(member, members.Reference):

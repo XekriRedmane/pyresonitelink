@@ -18,7 +18,7 @@ class ValueGreaterOrEqual(GenericComponent[T], INodeValueOutput[T], IExecutionNo
 
     Parameterize with a value type::
 
-        ValueGreaterOrEqual[np.float32]
+        ValueGreaterOrEqual[primitives.Float]
         ValueGreaterOrEqual[primitives.Float3]
     """
 

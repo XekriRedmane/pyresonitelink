@@ -11,7 +11,7 @@ class DelegateTag(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        DelegateTag[np.float32]
+        DelegateTag[primitives.Float]
         DelegateTag[primitives.Float3]
     """
 

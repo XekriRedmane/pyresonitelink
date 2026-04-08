@@ -1,7 +1,5 @@
 """Generated component: PingPong_Float2_Float."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class PingPong_Float2_Float(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.PingPong_Float2_Float"
 
-    def __init__(self, n: str | INodeValueOutput[primitives.Float2] | None = None, length: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, n: str | INodeValueOutput[primitives.Float2] | None = None, length: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +57,15 @@ class PingPong_Float2_Float(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     @property
     def length(self) -> str | None:
-        """Target ID of the Length reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Length reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @length.setter
-    def length(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Length reference by target ID or INodeValueOutput[np.float32] instance."""
+    def length(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Length reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Length")
         if isinstance(member, members.Reference):

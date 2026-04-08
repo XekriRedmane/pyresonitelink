@@ -19,7 +19,7 @@ class ReferenceTarget(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[
 
     Parameterize with a value type::
 
-        ReferenceTarget[np.float32]
+        ReferenceTarget[primitives.Float]
         ReferenceTarget[primitives.Float3]
     """
 

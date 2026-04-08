@@ -1,9 +1,8 @@
 """Generated component: GrabbableReceiverSurface."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -20,7 +19,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabbableReceiverSurface"
 
-    def __init__(self, parent_placed: bool | None = None, override_parent: str | Slot | None = None, tween_time: np.float32 | None = None, max_distance: np.float32 | None = None, offset: np.float32 | None = None, check_offset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, parent_placed: primitives.Bool | None = None, override_parent: str | Slot | None = None, tween_time: primitives.Float | None = None, max_distance: primitives.Float | None = None, offset: primitives.Float | None = None, check_offset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -47,7 +46,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
             self.check_offset = check_offset
 
     @property
-    def parent_placed(self) -> bool | None:
+    def parent_placed(self) -> primitives.Bool | None:
         """The ParentPlaced field value."""
         member = self.get_member("ParentPlaced")
         if member is None:
@@ -55,7 +54,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
         return getattr(member, 'value', None)
 
     @parent_placed.setter
-    def parent_placed(self, value: bool) -> None:
+    def parent_placed(self, value: primitives.Bool) -> None:
         """Set the ParentPlaced field value."""
         member = self.get_member("ParentPlaced")
         if member is not None:
@@ -87,7 +86,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
             )
 
     @property
-    def tween_time(self) -> np.float32 | None:
+    def tween_time(self) -> primitives.Float | None:
         """The TweenTime field value."""
         member = self.get_member("TweenTime")
         if member is None:
@@ -95,7 +94,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
         return getattr(member, 'value', None)
 
     @tween_time.setter
-    def tween_time(self, value: np.float32) -> None:
+    def tween_time(self, value: primitives.Float) -> None:
         """Set the TweenTime field value."""
         member = self.get_member("TweenTime")
         if member is not None:
@@ -106,7 +105,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
             )
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -114,7 +113,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:
@@ -125,7 +124,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
             )
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -133,7 +132,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:
@@ -144,7 +143,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
             )
 
     @property
-    def check_offset(self) -> np.float32 | None:
+    def check_offset(self) -> primitives.Float | None:
         """The CheckOffset field value."""
         member = self.get_member("CheckOffset")
         if member is None:
@@ -152,7 +151,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
         return getattr(member, 'value', None)
 
     @check_offset.setter
-    def check_offset(self, value: np.float32) -> None:
+    def check_offset(self, value: primitives.Float) -> None:
         """Set the CheckOffset field value."""
         member = self.get_member("CheckOffset")
         if member is not None:

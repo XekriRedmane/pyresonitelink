@@ -1,9 +1,8 @@
 """Generated component: DynamicSpriteFont."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -19,7 +18,7 @@ class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicSpriteFont"
 
-    def __init__(self, high_priority_integration: bool | None = None, max_size: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, max_size: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,7 +33,7 @@ class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             self.max_size = max_size
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -42,7 +41,7 @@ class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -53,7 +52,7 @@ class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def max_size(self) -> np.int32 | None:
+    def max_size(self) -> primitives.Int | None:
         """The MaxSize field value."""
         member = self.get_member("MaxSize")
         if member is None:
@@ -61,7 +60,7 @@ class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @max_size.setter
-    def max_size(self, value: np.int32) -> None:
+    def max_size(self, value: primitives.Int) -> None:
         """Set the MaxSize field value."""
         member = self.get_member("MaxSize")
         if member is not None:

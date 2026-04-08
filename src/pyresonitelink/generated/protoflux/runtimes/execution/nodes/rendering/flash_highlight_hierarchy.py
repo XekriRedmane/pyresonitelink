@@ -1,7 +1,5 @@
 """Generated component: FlashHighlightHierarchy."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -26,7 +24,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering.FlashHighlightHierarchy"
 
-    def __init__(self, next: str | INodeOperation | None = None, hierarchy_root: str | INodeObjectOutput[Slot] | None = None, exclude_colliders: str | INodeValueOutput[bool] | None = None, exclude_meshes: str | INodeValueOutput[bool] | None = None, exclude_disabled: str | INodeValueOutput[bool] | None = None, track_position: str | INodeValueOutput[bool] | None = None, duration: str | INodeValueOutput[np.float32] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, hierarchy_root: str | INodeObjectOutput[Slot] | None = None, exclude_colliders: str | INodeValueOutput[primitives.Bool] | None = None, exclude_meshes: str | INodeValueOutput[primitives.Bool] | None = None, exclude_disabled: str | INodeValueOutput[primitives.Bool] | None = None, track_position: str | INodeValueOutput[primitives.Bool] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -102,15 +100,15 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def exclude_colliders(self) -> str | None:
-        """Target ID of the ExcludeColliders reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ExcludeColliders reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ExcludeColliders")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @exclude_colliders.setter
-    def exclude_colliders(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ExcludeColliders reference by target ID or INodeValueOutput[bool] instance."""
+    def exclude_colliders(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ExcludeColliders reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ExcludeColliders")
         if isinstance(member, members.Reference):
@@ -123,15 +121,15 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def exclude_meshes(self) -> str | None:
-        """Target ID of the ExcludeMeshes reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ExcludeMeshes reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ExcludeMeshes")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @exclude_meshes.setter
-    def exclude_meshes(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ExcludeMeshes reference by target ID or INodeValueOutput[bool] instance."""
+    def exclude_meshes(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ExcludeMeshes reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ExcludeMeshes")
         if isinstance(member, members.Reference):
@@ -144,15 +142,15 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def exclude_disabled(self) -> str | None:
-        """Target ID of the ExcludeDisabled reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ExcludeDisabled reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ExcludeDisabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @exclude_disabled.setter
-    def exclude_disabled(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ExcludeDisabled reference by target ID or INodeValueOutput[bool] instance."""
+    def exclude_disabled(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ExcludeDisabled reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ExcludeDisabled")
         if isinstance(member, members.Reference):
@@ -165,15 +163,15 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def track_position(self) -> str | None:
-        """Target ID of the TrackPosition reference (targets INodeValueOutput[bool])."""
+        """Target ID of the TrackPosition reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("TrackPosition")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @track_position.setter
-    def track_position(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the TrackPosition reference by target ID or INodeValueOutput[bool] instance."""
+    def track_position(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the TrackPosition reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("TrackPosition")
         if isinstance(member, members.Reference):
@@ -186,15 +184,15 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @duration.setter
-    def duration(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Duration reference by target ID or INodeValueOutput[np.float32] instance."""
+    def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):

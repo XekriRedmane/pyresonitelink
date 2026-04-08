@@ -1,9 +1,8 @@
 """Generated component: AccountMigrationsList."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AccountMigrationsList"
 
-    def __init__(self, total_migrations: np.int32 | None = None, waiting_migrations: np.int32 | None = None, running_migrations: np.int32 | None = None, completed_migrations: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, total_migrations: primitives.Int | None = None, waiting_migrations: primitives.Int | None = None, running_migrations: primitives.Int | None = None, completed_migrations: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +38,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
             self.completed_migrations = completed_migrations
 
     @property
-    def total_migrations(self) -> np.int32 | None:
+    def total_migrations(self) -> primitives.Int | None:
         """The TotalMigrations field value."""
         member = self.get_member("TotalMigrations")
         if member is None:
@@ -47,7 +46,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @total_migrations.setter
-    def total_migrations(self, value: np.int32) -> None:
+    def total_migrations(self, value: primitives.Int) -> None:
         """Set the TotalMigrations field value."""
         member = self.get_member("TotalMigrations")
         if member is not None:
@@ -58,7 +57,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def waiting_migrations(self) -> np.int32 | None:
+    def waiting_migrations(self) -> primitives.Int | None:
         """The WaitingMigrations field value."""
         member = self.get_member("WaitingMigrations")
         if member is None:
@@ -66,7 +65,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @waiting_migrations.setter
-    def waiting_migrations(self, value: np.int32) -> None:
+    def waiting_migrations(self, value: primitives.Int) -> None:
         """Set the WaitingMigrations field value."""
         member = self.get_member("WaitingMigrations")
         if member is not None:
@@ -77,7 +76,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def running_migrations(self) -> np.int32 | None:
+    def running_migrations(self) -> primitives.Int | None:
         """The RunningMigrations field value."""
         member = self.get_member("RunningMigrations")
         if member is None:
@@ -85,7 +84,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @running_migrations.setter
-    def running_migrations(self, value: np.int32) -> None:
+    def running_migrations(self, value: primitives.Int) -> None:
         """Set the RunningMigrations field value."""
         member = self.get_member("RunningMigrations")
         if member is not None:
@@ -96,7 +95,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def completed_migrations(self) -> np.int32 | None:
+    def completed_migrations(self) -> primitives.Int | None:
         """The CompletedMigrations field value."""
         member = self.get_member("CompletedMigrations")
         if member is None:
@@ -104,7 +103,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @completed_migrations.setter
-    def completed_migrations(self, value: np.int32) -> None:
+    def completed_migrations(self, value: primitives.Int) -> None:
         """Set the CompletedMigrations field value."""
         member = self.get_member("CompletedMigrations")
         if member is not None:

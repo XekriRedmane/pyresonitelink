@@ -1,7 +1,5 @@
 """Generated component: BlitToDisplay."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BlitToDisplay"
 
-    def __init__(self, texture: str | IAssetProvider[ITexture] | None = None, display_index: np.int32 | None = None, background_color: primitives.ColorX | None = None, flip_horizontally: bool | None = None, flip_vertically: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[ITexture] | None = None, display_index: primitives.Int | None = None, background_color: primitives.ColorX | None = None, flip_horizontally: primitives.Bool | None = None, flip_vertically: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -80,7 +78,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def display_index(self) -> np.int32 | None:
+    def display_index(self) -> primitives.Int | None:
         """The DisplayIndex field value."""
         member = self.get_member("DisplayIndex")
         if member is None:
@@ -88,7 +86,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @display_index.setter
-    def display_index(self, value: np.int32) -> None:
+    def display_index(self, value: primitives.Int) -> None:
         """Set the DisplayIndex field value."""
         member = self.get_member("DisplayIndex")
         if member is not None:
@@ -118,7 +116,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def flip_horizontally(self) -> bool | None:
+    def flip_horizontally(self) -> primitives.Bool | None:
         """The FlipHorizontally field value."""
         member = self.get_member("FlipHorizontally")
         if member is None:
@@ -126,7 +124,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @flip_horizontally.setter
-    def flip_horizontally(self, value: bool) -> None:
+    def flip_horizontally(self, value: primitives.Bool) -> None:
         """Set the FlipHorizontally field value."""
         member = self.get_member("FlipHorizontally")
         if member is not None:
@@ -137,7 +135,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def flip_vertically(self) -> bool | None:
+    def flip_vertically(self) -> primitives.Bool | None:
         """The FlipVertically field value."""
         member = self.get_member("FlipVertically")
         if member is None:
@@ -145,7 +143,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @flip_vertically.setter
-    def flip_vertically(self, value: bool) -> None:
+    def flip_vertically(self, value: primitives.Bool) -> None:
         """Set the FlipVertically field value."""
         member = self.get_member("FlipVertically")
         if member is not None:

@@ -15,7 +15,7 @@ class ValueIndirectIncrement(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        ValueIndirectIncrement[np.float32]
+        ValueIndirectIncrement[primitives.Float]
         ValueIndirectIncrement[primitives.Float3]
     """
 

@@ -1,7 +1,5 @@
 """Generated component: WorldGrabMover."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldGrabMover"
 
-    def __init__(self, show_lerp: np.float32 | None = None, activating_user: str | User | None = None, cross_mesh: str | CrossMesh | None = None, visual_visible: str | IField[bool] | None = None, visual_rotation: str | IField[primitives.FloatQ] | None = None, material: str | PBS_RimMetallic | None = None, reference_position: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, show_lerp: primitives.Float | None = None, activating_user: str | User | None = None, cross_mesh: str | CrossMesh | None = None, visual_visible: str | IField[primitives.Bool] | None = None, visual_rotation: str | IField[primitives.FloatQ] | None = None, material: str | PBS_RimMetallic | None = None, reference_position: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -51,7 +49,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.reference_position = reference_position
 
     @property
-    def show_lerp(self) -> np.float32 | None:
+    def show_lerp(self) -> primitives.Float | None:
         """The ShowLerp field value."""
         member = self.get_member("ShowLerp")
         if member is None:
@@ -59,7 +57,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_lerp.setter
-    def show_lerp(self, value: np.float32) -> None:
+    def show_lerp(self, value: primitives.Float) -> None:
         """Set the ShowLerp field value."""
         member = self.get_member("ShowLerp")
         if member is not None:
@@ -113,15 +111,15 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visual_visible(self) -> str | None:
-        """Target ID of the _visualVisible reference (targets IField[bool])."""
+        """Target ID of the _visualVisible reference (targets IField[primitives.Bool])."""
         member = self.get_member("_visualVisible")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @visual_visible.setter
-    def visual_visible(self, target: str | IField[bool] | None) -> None:
-        """Set the _visualVisible reference by target ID or IField[bool] instance."""
+    def visual_visible(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _visualVisible reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_visualVisible")
         if isinstance(member, members.Reference):

@@ -1,9 +1,8 @@
 """Generated component: EyeRotationDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.eye_manager import EyeManager
@@ -19,7 +18,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.EyeRotationDriver"
 
-    def __init__(self, eye_manager: str | EyeManager | None = None, eye_motion_scale: np.float32 | None = None, eye_motion_exp: np.float32 | None = None, max_swing: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, eye_manager: str | EyeManager | None = None, eye_motion_scale: primitives.Float | None = None, eye_motion_exp: primitives.Float | None = None, max_swing: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +60,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def eye_motion_scale(self) -> np.float32 | None:
+    def eye_motion_scale(self) -> primitives.Float | None:
         """The EyeMotionScale field value."""
         member = self.get_member("EyeMotionScale")
         if member is None:
@@ -69,7 +68,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @eye_motion_scale.setter
-    def eye_motion_scale(self, value: np.float32) -> None:
+    def eye_motion_scale(self, value: primitives.Float) -> None:
         """Set the EyeMotionScale field value."""
         member = self.get_member("EyeMotionScale")
         if member is not None:
@@ -80,7 +79,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def eye_motion_exp(self) -> np.float32 | None:
+    def eye_motion_exp(self) -> primitives.Float | None:
         """The EyeMotionExp field value."""
         member = self.get_member("EyeMotionExp")
         if member is None:
@@ -88,7 +87,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @eye_motion_exp.setter
-    def eye_motion_exp(self, value: np.float32) -> None:
+    def eye_motion_exp(self, value: primitives.Float) -> None:
         """Set the EyeMotionExp field value."""
         member = self.get_member("EyeMotionExp")
         if member is not None:
@@ -99,7 +98,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_swing(self) -> np.float32 | None:
+    def max_swing(self) -> primitives.Float | None:
         """The MaxSwing field value."""
         member = self.get_member("MaxSwing")
         if member is None:
@@ -107,7 +106,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_swing.setter
-    def max_swing(self, value: np.float32) -> None:
+    def max_swing(self, value: primitives.Float) -> None:
         """Set the MaxSwing field value."""
         member = self.get_member("MaxSwing")
         if member is not None:

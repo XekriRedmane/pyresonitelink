@@ -1,9 +1,8 @@
 """Generated component: ParticleSpray."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -26,7 +25,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ParticleSpray"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, rate: np.float32 | None = None, rate_exp: np.float32 | None = None, min_speed: np.float32 | None = None, max_speed: np.float32 | None = None, part_style: str | ParticleStyle | None = None, part_speed: str | SpeedRangeInitializer | None = None, part_emitter: str | ParticleEmitter | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, rate: primitives.Float | None = None, rate_exp: primitives.Float | None = None, min_speed: primitives.Float | None = None, max_speed: primitives.Float | None = None, part_style: str | ParticleStyle | None = None, part_speed: str | SpeedRangeInitializer | None = None, part_emitter: str | ParticleEmitter | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -108,7 +107,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -116,7 +115,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -127,7 +126,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -135,7 +134,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -146,7 +145,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -154,7 +153,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -186,7 +185,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -194,7 +193,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -205,7 +204,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def rate(self) -> np.float32 | None:
+    def rate(self) -> primitives.Float | None:
         """The Rate field value."""
         member = self.get_member("Rate")
         if member is None:
@@ -213,7 +212,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @rate.setter
-    def rate(self, value: np.float32) -> None:
+    def rate(self, value: primitives.Float) -> None:
         """Set the Rate field value."""
         member = self.get_member("Rate")
         if member is not None:
@@ -224,7 +223,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def rate_exp(self) -> np.float32 | None:
+    def rate_exp(self) -> primitives.Float | None:
         """The RateExp field value."""
         member = self.get_member("RateExp")
         if member is None:
@@ -232,7 +231,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @rate_exp.setter
-    def rate_exp(self, value: np.float32) -> None:
+    def rate_exp(self, value: primitives.Float) -> None:
         """Set the RateExp field value."""
         member = self.get_member("RateExp")
         if member is not None:
@@ -243,7 +242,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def min_speed(self) -> np.float32 | None:
+    def min_speed(self) -> primitives.Float | None:
         """The MinSpeed field value."""
         member = self.get_member("MinSpeed")
         if member is None:
@@ -251,7 +250,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @min_speed.setter
-    def min_speed(self, value: np.float32) -> None:
+    def min_speed(self, value: primitives.Float) -> None:
         """Set the MinSpeed field value."""
         member = self.get_member("MinSpeed")
         if member is not None:
@@ -262,7 +261,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def max_speed(self) -> np.float32 | None:
+    def max_speed(self) -> primitives.Float | None:
         """The MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is None:
@@ -270,7 +269,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
         return getattr(member, 'value', None)
 
     @max_speed.setter
-    def max_speed(self, value: np.float32) -> None:
+    def max_speed(self, value: primitives.Float) -> None:
         """Set the MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is not None:

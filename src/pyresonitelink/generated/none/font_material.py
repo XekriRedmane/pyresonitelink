@@ -1,7 +1,5 @@
 """Generated component: FontMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -18,7 +16,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FontMaterial"
 
-    def __init__(self, outline_thickness: np.float32 | None = None, outline_color: primitives.ColorX | None = None, face_softness: np.float32 | None = None, face_dilate: np.float32 | None = None, render_queue: np.int32 | None = None, converted_material: str | TextUnlitMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, outline_thickness: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, face_softness: primitives.Float | None = None, face_dilate: primitives.Float | None = None, render_queue: primitives.Int | None = None, converted_material: str | TextUnlitMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +43,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.converted_material = converted_material
 
     @property
-    def outline_thickness(self) -> np.float32 | None:
+    def outline_thickness(self) -> primitives.Float | None:
         """The OutlineThickness field value."""
         member = self.get_member("OutlineThickness")
         if member is None:
@@ -53,7 +51,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @outline_thickness.setter
-    def outline_thickness(self, value: np.float32) -> None:
+    def outline_thickness(self, value: primitives.Float) -> None:
         """Set the OutlineThickness field value."""
         member = self.get_member("OutlineThickness")
         if member is not None:
@@ -83,7 +81,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def face_softness(self) -> np.float32 | None:
+    def face_softness(self) -> primitives.Float | None:
         """The FaceSoftness field value."""
         member = self.get_member("FaceSoftness")
         if member is None:
@@ -91,7 +89,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @face_softness.setter
-    def face_softness(self, value: np.float32) -> None:
+    def face_softness(self, value: primitives.Float) -> None:
         """Set the FaceSoftness field value."""
         member = self.get_member("FaceSoftness")
         if member is not None:
@@ -102,7 +100,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def face_dilate(self) -> np.float32 | None:
+    def face_dilate(self) -> primitives.Float | None:
         """The FaceDilate field value."""
         member = self.get_member("FaceDilate")
         if member is None:
@@ -110,7 +108,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @face_dilate.setter
-    def face_dilate(self, value: np.float32) -> None:
+    def face_dilate(self, value: primitives.Float) -> None:
         """Set the FaceDilate field value."""
         member = self.get_member("FaceDilate")
         if member is not None:
@@ -147,7 +145,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("ZTest", value)
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -155,7 +153,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

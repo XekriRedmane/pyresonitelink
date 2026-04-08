@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        TouchValueOption[np.float32]
+        TouchValueOption[primitives.Float]
         TouchValueOption[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TouchValueOption<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.TouchValueOption<>"
 
-    def __init__(self, target: str | IField[T] | None = None, value: T | None = None, active_indicator: str | IField[bool] | None = None, hover_indicator: str | IField[bool] | None = None, set_on_touch_begin: bool | None = None, set_on_touch_stay: bool | None = None, set_on_touch_end: bool | None = None, accept_out_of_sight_touch: bool | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, edit_mode_only: bool | None = None, active_user_root_only: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[T] | None = None, value: T | None = None, active_indicator: str | IField[primitives.Bool] | None = None, hover_indicator: str | IField[primitives.Bool] | None = None, set_on_touch_begin: primitives.Bool | None = None, set_on_touch_stay: primitives.Bool | None = None, set_on_touch_end: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, edit_mode_only: primitives.Bool | None = None, active_user_root_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -109,15 +110,15 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def active_indicator(self) -> str | None:
-        """Target ID of the ActiveIndicator reference (targets IField[bool])."""
+        """Target ID of the ActiveIndicator reference (targets IField[primitives.Bool])."""
         member = self.get_member("ActiveIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @active_indicator.setter
-    def active_indicator(self, target: str | IField[bool] | None) -> None:
-        """Set the ActiveIndicator reference by target ID or IField[bool] instance."""
+    def active_indicator(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the ActiveIndicator reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ActiveIndicator")
         if isinstance(member, members.Reference):
@@ -130,15 +131,15 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def hover_indicator(self) -> str | None:
-        """Target ID of the HoverIndicator reference (targets IField[bool])."""
+        """Target ID of the HoverIndicator reference (targets IField[primitives.Bool])."""
         member = self.get_member("HoverIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @hover_indicator.setter
-    def hover_indicator(self, target: str | IField[bool] | None) -> None:
-        """Set the HoverIndicator reference by target ID or IField[bool] instance."""
+    def hover_indicator(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HoverIndicator reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HoverIndicator")
         if isinstance(member, members.Reference):
@@ -176,7 +177,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
         self.set_member("Vibrate", value)
 
     @property
-    def set_on_touch_begin(self) -> bool | None:
+    def set_on_touch_begin(self) -> primitives.Bool | None:
         """The SetOnTouchBegin field value."""
         member = self.get_member("SetOnTouchBegin")
         if member is None:
@@ -184,7 +185,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @set_on_touch_begin.setter
-    def set_on_touch_begin(self, value: bool) -> None:
+    def set_on_touch_begin(self, value: primitives.Bool) -> None:
         """Set the SetOnTouchBegin field value."""
         member = self.get_member("SetOnTouchBegin")
         if member is not None:
@@ -195,7 +196,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def set_on_touch_stay(self) -> bool | None:
+    def set_on_touch_stay(self) -> primitives.Bool | None:
         """The SetOnTouchStay field value."""
         member = self.get_member("SetOnTouchStay")
         if member is None:
@@ -203,7 +204,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @set_on_touch_stay.setter
-    def set_on_touch_stay(self, value: bool) -> None:
+    def set_on_touch_stay(self, value: primitives.Bool) -> None:
         """Set the SetOnTouchStay field value."""
         member = self.get_member("SetOnTouchStay")
         if member is not None:
@@ -214,7 +215,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def set_on_touch_end(self) -> bool | None:
+    def set_on_touch_end(self) -> primitives.Bool | None:
         """The SetOnTouchEnd field value."""
         member = self.get_member("SetOnTouchEnd")
         if member is None:
@@ -222,7 +223,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @set_on_touch_end.setter
-    def set_on_touch_end(self, value: bool) -> None:
+    def set_on_touch_end(self, value: primitives.Bool) -> None:
         """Set the SetOnTouchEnd field value."""
         member = self.get_member("SetOnTouchEnd")
         if member is not None:
@@ -233,7 +234,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_out_of_sight_touch(self) -> bool | None:
+    def accept_out_of_sight_touch(self) -> primitives.Bool | None:
         """The AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is None:
@@ -241,7 +242,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_out_of_sight_touch.setter
-    def accept_out_of_sight_touch(self, value: bool) -> None:
+    def accept_out_of_sight_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is not None:
@@ -252,7 +253,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -260,7 +261,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -271,7 +272,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -279,7 +280,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -290,7 +291,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def edit_mode_only(self) -> bool | None:
+    def edit_mode_only(self) -> primitives.Bool | None:
         """The EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is None:
@@ -298,7 +299,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @edit_mode_only.setter
-    def edit_mode_only(self, value: bool) -> None:
+    def edit_mode_only(self, value: primitives.Bool) -> None:
         """Set the EditModeOnly field value."""
         member = self.get_member("EditModeOnly")
         if member is not None:
@@ -309,7 +310,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def active_user_root_only(self) -> bool | None:
+    def active_user_root_only(self) -> primitives.Bool | None:
         """The ActiveUserRootOnly field value."""
         member = self.get_member("ActiveUserRootOnly")
         if member is None:
@@ -317,7 +318,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @active_user_root_only.setter
-    def active_user_root_only(self, value: bool) -> None:
+    def active_user_root_only(self, value: primitives.Bool) -> None:
         """Set the ActiveUserRootOnly field value."""
         member = self.get_member("ActiveUserRootOnly")
         if member is not None:

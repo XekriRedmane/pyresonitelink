@@ -1,7 +1,5 @@
 """Generated component: StaticTexture3D."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticTexture3D"
 
-    def __init__(self, url: str | None = None, anisotropic_level: np.int32 | None = None, uncompressed: bool | None = None, direct_load: bool | None = None, force_exact_variant: bool | None = None, mip_map_bias: np.float32 | None = None, readable: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, anisotropic_level: primitives.Int | None = None, uncompressed: primitives.Bool | None = None, direct_load: primitives.Bool | None = None, force_exact_variant: primitives.Bool | None = None, mip_map_bias: primitives.Float | None = None, readable: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -84,7 +82,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
         self.set_member("FilterMode", value)
 
     @property
-    def anisotropic_level(self) -> np.int32 | None:
+    def anisotropic_level(self) -> primitives.Int | None:
         """The AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is None:
@@ -92,7 +90,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @anisotropic_level.setter
-    def anisotropic_level(self, value: np.int32) -> None:
+    def anisotropic_level(self, value: primitives.Int) -> None:
         """Set the AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is not None:
@@ -103,7 +101,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             )
 
     @property
-    def uncompressed(self) -> bool | None:
+    def uncompressed(self) -> primitives.Bool | None:
         """The Uncompressed field value."""
         member = self.get_member("Uncompressed")
         if member is None:
@@ -111,7 +109,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @uncompressed.setter
-    def uncompressed(self, value: bool) -> None:
+    def uncompressed(self, value: primitives.Bool) -> None:
         """Set the Uncompressed field value."""
         member = self.get_member("Uncompressed")
         if member is not None:
@@ -122,7 +120,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             )
 
     @property
-    def direct_load(self) -> bool | None:
+    def direct_load(self) -> primitives.Bool | None:
         """The DirectLoad field value."""
         member = self.get_member("DirectLoad")
         if member is None:
@@ -130,7 +128,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @direct_load.setter
-    def direct_load(self, value: bool) -> None:
+    def direct_load(self, value: primitives.Bool) -> None:
         """Set the DirectLoad field value."""
         member = self.get_member("DirectLoad")
         if member is not None:
@@ -141,7 +139,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             )
 
     @property
-    def force_exact_variant(self) -> bool | None:
+    def force_exact_variant(self) -> primitives.Bool | None:
         """The ForceExactVariant field value."""
         member = self.get_member("ForceExactVariant")
         if member is None:
@@ -149,7 +147,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @force_exact_variant.setter
-    def force_exact_variant(self, value: bool) -> None:
+    def force_exact_variant(self, value: primitives.Bool) -> None:
         """Set the ForceExactVariant field value."""
         member = self.get_member("ForceExactVariant")
         if member is not None:
@@ -186,7 +184,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
         self.set_member("PreferredProfile", value)
 
     @property
-    def mip_map_bias(self) -> np.float32 | None:
+    def mip_map_bias(self) -> primitives.Float | None:
         """The MipMapBias field value."""
         member = self.get_member("MipMapBias")
         if member is None:
@@ -194,7 +192,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @mip_map_bias.setter
-    def mip_map_bias(self, value: np.float32) -> None:
+    def mip_map_bias(self, value: primitives.Float) -> None:
         """Set the MipMapBias field value."""
         member = self.get_member("MipMapBias")
         if member is not None:
@@ -244,7 +242,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
         self.set_member("WrapModeW", value)
 
     @property
-    def readable(self) -> bool | None:
+    def readable(self) -> primitives.Bool | None:
         """The Readable field value."""
         member = self.get_member("Readable")
         if member is None:
@@ -252,7 +250,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
         return getattr(member, 'value', None)
 
     @readable.setter
-    def readable(self, value: bool) -> None:
+    def readable(self, value: primitives.Bool) -> None:
         """Set the Readable field value."""
         member = self.get_member("Readable")
         if member is not None:
@@ -492,7 +490,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "AddBackground", {"color": color}, debug,
         )
 
-    async def adjust_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: np.float32, debug: bool = False) -> dict:
+    async def adjust_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: primitives.Float, debug: bool = False) -> dict:
         """Call the AdjustGamma sync method.
 
         Args:
@@ -507,7 +505,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "AdjustGamma", {"gamma": gamma}, debug,
         )
 
-    async def adjust_alpha_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: np.float32, debug: bool = False) -> dict:
+    async def adjust_alpha_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: primitives.Float, debug: bool = False) -> dict:
         """Call the AdjustAlphaGamma sync method.
 
         Args:
@@ -522,7 +520,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "AdjustAlphaGamma", {"gamma": gamma}, debug,
         )
 
-    async def shift_hue(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+    async def shift_hue(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
         """Call the ShiftHue sync method.
 
         Args:
@@ -537,7 +535,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "ShiftHue", {"offset": offset}, debug,
         )
 
-    async def set_hue(self, resolink: protocols.ResoniteLinkClient, hue: np.float32, debug: bool = False) -> dict:
+    async def set_hue(self, resolink: protocols.ResoniteLinkClient, hue: primitives.Float, debug: bool = False) -> dict:
         """Call the SetHue sync method.
 
         Args:
@@ -552,7 +550,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "SetHue", {"hue": hue}, debug,
         )
 
-    async def set_saturation(self, resolink: protocols.ResoniteLinkClient, saturation: np.float32, debug: bool = False) -> dict:
+    async def set_saturation(self, resolink: protocols.ResoniteLinkClient, saturation: primitives.Float, debug: bool = False) -> dict:
         """Call the SetSaturation sync method.
 
         Args:
@@ -567,7 +565,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "SetSaturation", {"saturation": saturation}, debug,
         )
 
-    async def offset_saturation(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+    async def offset_saturation(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
         """Call the OffsetSaturation sync method.
 
         Args:
@@ -582,7 +580,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "OffsetSaturation", {"offset": offset}, debug,
         )
 
-    async def mul_saturation(self, resolink: protocols.ResoniteLinkClient, ratio: np.float32, debug: bool = False) -> dict:
+    async def mul_saturation(self, resolink: protocols.ResoniteLinkClient, ratio: primitives.Float, debug: bool = False) -> dict:
         """Call the MulSaturation sync method.
 
         Args:
@@ -597,7 +595,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "MulSaturation", {"ratio": ratio}, debug,
         )
 
-    async def set_value(self, resolink: protocols.ResoniteLinkClient, value: np.float32, debug: bool = False) -> dict:
+    async def set_value(self, resolink: protocols.ResoniteLinkClient, value: primitives.Float, debug: bool = False) -> dict:
         """Call the SetValue sync method.
 
         Args:
@@ -612,7 +610,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "SetValue", {"value": value}, debug,
         )
 
-    async def mul_value(self, resolink: protocols.ResoniteLinkClient, ratio: np.float32, debug: bool = False) -> dict:
+    async def mul_value(self, resolink: protocols.ResoniteLinkClient, ratio: primitives.Float, debug: bool = False) -> dict:
         """Call the MulValue sync method.
 
         Args:
@@ -627,7 +625,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "MulValue", {"ratio": ratio}, debug,
         )
 
-    async def offset_value(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+    async def offset_value(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
         """Call the OffsetValue sync method.
 
         Args:
@@ -642,7 +640,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "OffsetValue", {"offset": offset}, debug,
         )
 
-    async def offset_alpha(self, resolink: protocols.ResoniteLinkClient, offset: np.float32, debug: bool = False) -> dict:
+    async def offset_alpha(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
         """Call the OffsetAlpha sync method.
 
         Args:
@@ -657,7 +655,7 @@ class StaticTexture3D(GeneratedComponent, ITexture3DProvider, IStaticAssetProvid
             resolink, "OffsetAlpha", {"offset": offset}, debug,
         )
 
-    async def normalize(self, resolink: protocols.ResoniteLinkClient, rgb_independently: bool, normalize_alpha: bool, normalize_min_value: bool, debug: bool = False) -> dict:
+    async def normalize(self, resolink: protocols.ResoniteLinkClient, rgb_independently: primitives.Bool, normalize_alpha: primitives.Bool, normalize_min_value: primitives.Bool, debug: bool = False) -> dict:
         """Call the Normalize sync method.
 
         Args:

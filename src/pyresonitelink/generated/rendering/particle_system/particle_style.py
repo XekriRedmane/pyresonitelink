@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_renderer import IParticleRenderer
@@ -17,7 +18,7 @@ class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleStyle"
 
-    def __init__(self, renderer: str | IParticleRenderer | None = None, use_system_local_scale: bool | None = None, use_system_local_rotation: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, renderer: str | IParticleRenderer | None = None, use_system_local_scale: primitives.Bool | None = None, use_system_local_rotation: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,7 +70,7 @@ class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("Modules", value)
 
     @property
-    def use_system_local_scale(self) -> bool | None:
+    def use_system_local_scale(self) -> primitives.Bool | None:
         """The UseSystemLocalScale field value."""
         member = self.get_member("UseSystemLocalScale")
         if member is None:
@@ -77,7 +78,7 @@ class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_system_local_scale.setter
-    def use_system_local_scale(self, value: bool) -> None:
+    def use_system_local_scale(self, value: primitives.Bool) -> None:
         """Set the UseSystemLocalScale field value."""
         member = self.get_member("UseSystemLocalScale")
         if member is not None:
@@ -101,7 +102,7 @@ class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("ParticleScaleMode", value)
 
     @property
-    def use_system_local_rotation(self) -> bool | None:
+    def use_system_local_rotation(self) -> primitives.Bool | None:
         """The UseSystemLocalRotation field value."""
         member = self.get_member("UseSystemLocalRotation")
         if member is None:
@@ -109,7 +110,7 @@ class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_system_local_rotation.setter
-    def use_system_local_rotation(self, value: bool) -> None:
+    def use_system_local_rotation(self, value: primitives.Bool) -> None:
         """Set the UseSystemLocalRotation field value."""
         member = self.get_member("UseSystemLocalRotation")
         if member is not None:

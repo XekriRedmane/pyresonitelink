@@ -1,7 +1,5 @@
 """Generated component: AvatarManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarManager"
 
-    def __init__(self, current_anchor: str | AvatarAnchor | None = None, auto_add_name_badge: bool | None = None, auto_add_icon_badge: bool | None = None, auto_add_live_indicator: bool | None = None, empty_slot_handler: str | IEmptyAvatarSlotHandler | None = None, default_scale: np.float32 | None = None, name_tag_text: str | None = None, name_tag_color: primitives.ColorX | None = None, name_tag_outline: primitives.ColorX | None = None, name_tag_background: primitives.ColorX | None = None, badge_templates: str | Slot | None = None, auto_name_badge: str | Slot | None = None, auto_icon_badge: str | Slot | None = None, auto_live_indicator: str | Slot | None = None, update_version: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, current_anchor: str | AvatarAnchor | None = None, auto_add_name_badge: primitives.Bool | None = None, auto_add_icon_badge: primitives.Bool | None = None, auto_add_live_indicator: primitives.Bool | None = None, empty_slot_handler: str | IEmptyAvatarSlotHandler | None = None, default_scale: primitives.Float | None = None, name_tag_text: primitives.String | None = None, name_tag_color: primitives.ColorX | None = None, name_tag_outline: primitives.ColorX | None = None, name_tag_background: primitives.ColorX | None = None, badge_templates: str | Slot | None = None, auto_name_badge: str | Slot | None = None, auto_icon_badge: str | Slot | None = None, auto_live_indicator: str | Slot | None = None, update_version: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -110,7 +108,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def auto_add_name_badge(self) -> bool | None:
+    def auto_add_name_badge(self) -> primitives.Bool | None:
         """The AutoAddNameBadge field value."""
         member = self.get_member("AutoAddNameBadge")
         if member is None:
@@ -118,7 +116,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_add_name_badge.setter
-    def auto_add_name_badge(self, value: bool) -> None:
+    def auto_add_name_badge(self, value: primitives.Bool) -> None:
         """Set the AutoAddNameBadge field value."""
         member = self.get_member("AutoAddNameBadge")
         if member is not None:
@@ -129,7 +127,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def auto_add_icon_badge(self) -> bool | None:
+    def auto_add_icon_badge(self) -> primitives.Bool | None:
         """The AutoAddIconBadge field value."""
         member = self.get_member("AutoAddIconBadge")
         if member is None:
@@ -137,7 +135,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_add_icon_badge.setter
-    def auto_add_icon_badge(self, value: bool) -> None:
+    def auto_add_icon_badge(self, value: primitives.Bool) -> None:
         """Set the AutoAddIconBadge field value."""
         member = self.get_member("AutoAddIconBadge")
         if member is not None:
@@ -148,7 +146,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def auto_add_live_indicator(self) -> bool | None:
+    def auto_add_live_indicator(self) -> primitives.Bool | None:
         """The AutoAddLiveIndicator field value."""
         member = self.get_member("AutoAddLiveIndicator")
         if member is None:
@@ -156,7 +154,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_add_live_indicator.setter
-    def auto_add_live_indicator(self, value: bool) -> None:
+    def auto_add_live_indicator(self, value: primitives.Bool) -> None:
         """Set the AutoAddLiveIndicator field value."""
         member = self.get_member("AutoAddLiveIndicator")
         if member is not None:
@@ -188,7 +186,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def default_scale(self) -> np.float32 | None:
+    def default_scale(self) -> primitives.Float | None:
         """The DefaultScale field value."""
         member = self.get_member("DefaultScale")
         if member is None:
@@ -196,7 +194,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @default_scale.setter
-    def default_scale(self, value: np.float32) -> None:
+    def default_scale(self, value: primitives.Float) -> None:
         """Set the DefaultScale field value."""
         member = self.get_member("DefaultScale")
         if member is not None:
@@ -207,7 +205,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def name_tag_text(self) -> str | None:
+    def name_tag_text(self) -> primitives.String | None:
         """The NameTagText field value."""
         member = self.get_member("NameTagText")
         if member is None:
@@ -215,7 +213,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @name_tag_text.setter
-    def name_tag_text(self, value: str) -> None:
+    def name_tag_text(self, value: primitives.String) -> None:
         """Set the NameTagText field value."""
         member = self.get_member("NameTagText")
         if member is not None:
@@ -367,7 +365,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def update_version(self) -> np.int32 | None:
+    def update_version(self) -> primitives.Int | None:
         """The _updateVersion field value."""
         member = self.get_member("_updateVersion")
         if member is None:
@@ -375,7 +373,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @update_version.setter
-    def update_version(self, value: np.int32) -> None:
+    def update_version(self, value: primitives.Int) -> None:
         """Set the _updateVersion field value."""
         member = self.get_member("_updateVersion")
         if member is not None:

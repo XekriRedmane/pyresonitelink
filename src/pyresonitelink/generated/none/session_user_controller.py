@@ -1,8 +1,7 @@
 """Generated component: SessionUserController."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text import Text
@@ -18,7 +17,7 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionUserController"
 
-    def __init__(self, name: str | Text | None = None, slider: str | Slider[np.float32] | None = None, mute: str | Button | None = None, jump: str | Button | None = None, respawn: str | Button | None = None, silence: str | Button | None = None, kick: str | Button | None = None, ban: str | Button | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, name: str | Text | None = None, slider: str | Slider[primitives.Float] | None = None, mute: str | Button | None = None, jump: str | Button | None = None, respawn: str | Button | None = None, silence: str | Button | None = None, kick: str | Button | None = None, ban: str | Button | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -73,15 +72,15 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def slider(self) -> str | None:
-        """Target ID of the _slider reference (targets Slider[np.float32])."""
+        """Target ID of the _slider reference (targets Slider[primitives.Float])."""
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @slider.setter
-    def slider(self, target: str | Slider[np.float32] | None) -> None:
-        """Set the _slider reference by target ID or Slider[np.float32] instance."""
+    def slider(self, target: str | Slider[primitives.Float] | None) -> None:
+        """Set the _slider reference by target ID or Slider[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, Slider) else target  # type: ignore[assignment]
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):

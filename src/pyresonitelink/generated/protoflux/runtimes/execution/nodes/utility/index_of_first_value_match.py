@@ -18,7 +18,7 @@ class IndexOfFirstValueMatch(GenericComponent[T], IExecutionNode[T], INode, ICus
 
     Parameterize with a value type::
 
-        IndexOfFirstValueMatch[np.float32]
+        IndexOfFirstValueMatch[primitives.Float]
         IndexOfFirstValueMatch[primitives.Float3]
     """
 

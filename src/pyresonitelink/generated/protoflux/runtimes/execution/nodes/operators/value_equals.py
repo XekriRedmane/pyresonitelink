@@ -18,7 +18,7 @@ class ValueEquals(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     Parameterize with a value type::
 
-        ValueEquals[np.float32]
+        ValueEquals[primitives.Float]
         ValueEquals[primitives.Float3]
     """
 

@@ -19,7 +19,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LookAtUser"
 
-    def __init__(self, target_user: str | User | None = None, target_at_local_user: bool | None = None, source_position_offset: primitives.Float3 | None = None, invert: bool | None = None, rotation_offset: primitives.FloatQ | None = None, around_axis: bool | None = None, axis: primitives.Float3 | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_user: str | User | None = None, target_at_local_user: primitives.Bool | None = None, source_position_offset: primitives.Float3 | None = None, invert: primitives.Bool | None = None, rotation_offset: primitives.FloatQ | None = None, around_axis: primitives.Bool | None = None, axis: primitives.Float3 | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -73,7 +73,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def target_at_local_user(self) -> bool | None:
+    def target_at_local_user(self) -> primitives.Bool | None:
         """The TargetAtLocalUser field value."""
         member = self.get_member("TargetAtLocalUser")
         if member is None:
@@ -81,7 +81,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @target_at_local_user.setter
-    def target_at_local_user(self, value: bool) -> None:
+    def target_at_local_user(self, value: primitives.Bool) -> None:
         """Set the TargetAtLocalUser field value."""
         member = self.get_member("TargetAtLocalUser")
         if member is not None:
@@ -111,7 +111,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def invert(self) -> bool | None:
+    def invert(self) -> primitives.Bool | None:
         """The Invert field value."""
         member = self.get_member("Invert")
         if member is None:
@@ -119,7 +119,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @invert.setter
-    def invert(self, value: bool) -> None:
+    def invert(self, value: primitives.Bool) -> None:
         """Set the Invert field value."""
         member = self.get_member("Invert")
         if member is not None:
@@ -162,7 +162,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("PositionSource", value)
 
     @property
-    def around_axis(self) -> bool | None:
+    def around_axis(self) -> primitives.Bool | None:
         """The AroundAxis field value."""
         member = self.get_member("AroundAxis")
         if member is None:
@@ -170,7 +170,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @around_axis.setter
-    def around_axis(self, value: bool) -> None:
+    def around_axis(self, value: primitives.Bool) -> None:
         """Set the AroundAxis field value."""
         member = self.get_member("AroundAxis")
         if member is not None:

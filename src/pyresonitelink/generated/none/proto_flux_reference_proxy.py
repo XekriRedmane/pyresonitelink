@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode
@@ -22,7 +23,7 @@ class ProtoFluxReferenceProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxReferenceProxy"
 
-    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: str | None = None, label: str | IField[str] | None = None, proxy_visual: str | Button | None = None, ref_proxy_source: str | ReferenceProxySource | None = None, node_reference: str | ISyncRef | None = None, arrow: str | ProtofluxArrowManager | None = None, connect_point: str | Slot | None = None, current_name: str | IValue[str] | None = None, self_hovering: str | IValue[bool] | None = None, target_hovering: str | IValue[bool] | None = None, arrow_manager_enabled: str | IField[bool] | None = None, arrow_renderer_enabled: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, label: str | IField[primitives.String] | None = None, proxy_visual: str | Button | None = None, ref_proxy_source: str | ReferenceProxySource | None = None, node_reference: str | ISyncRef | None = None, arrow: str | ProtofluxArrowManager | None = None, connect_point: str | Slot | None = None, current_name: str | IValue[primitives.String] | None = None, self_hovering: str | IValue[primitives.Bool] | None = None, target_hovering: str | IValue[primitives.Bool] | None = None, arrow_manager_enabled: str | IField[primitives.Bool] | None = None, arrow_renderer_enabled: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -91,7 +92,7 @@ class ProtoFluxReferenceProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
             )
 
     @property
-    def element_name(self) -> str | None:
+    def element_name(self) -> primitives.String | None:
         """The ElementName field value."""
         member = self.get_member("ElementName")
         if member is None:
@@ -99,7 +100,7 @@ class ProtoFluxReferenceProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @element_name.setter
-    def element_name(self, value: str) -> None:
+    def element_name(self, value: primitives.String) -> None:
         """Set the ElementName field value."""
         member = self.get_member("ElementName")
         if member is not None:
@@ -124,15 +125,15 @@ class ProtoFluxReferenceProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
 
     @property
     def label(self) -> str | None:
-        """Target ID of the _label reference (targets IField[str])."""
+        """Target ID of the _label reference (targets IField[primitives.String])."""
         member = self.get_member("_label")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @label.setter
-    def label(self, target: str | IField[str] | None) -> None:
-        """Set the _label reference by target ID or IField[str] instance."""
+    def label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _label reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_label")
         if isinstance(member, members.Reference):
@@ -250,15 +251,15 @@ class ProtoFluxReferenceProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
 
     @property
     def current_name(self) -> str | None:
-        """Target ID of the _currentName reference (targets IValue[str])."""
+        """Target ID of the _currentName reference (targets IValue[primitives.String])."""
         member = self.get_member("_currentName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @current_name.setter
-    def current_name(self, target: str | IValue[str] | None) -> None:
-        """Set the _currentName reference by target ID or IValue[str] instance."""
+    def current_name(self, target: str | IValue[primitives.String] | None) -> None:
+        """Set the _currentName reference by target ID or IValue[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
         member = self.get_member("_currentName")
         if isinstance(member, members.Reference):
@@ -271,15 +272,15 @@ class ProtoFluxReferenceProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
 
     @property
     def self_hovering(self) -> str | None:
-        """Target ID of the _selfHovering reference (targets IValue[bool])."""
+        """Target ID of the _selfHovering reference (targets IValue[primitives.Bool])."""
         member = self.get_member("_selfHovering")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @self_hovering.setter
-    def self_hovering(self, target: str | IValue[bool] | None) -> None:
-        """Set the _selfHovering reference by target ID or IValue[bool] instance."""
+    def self_hovering(self, target: str | IValue[primitives.Bool] | None) -> None:
+        """Set the _selfHovering reference by target ID or IValue[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
         member = self.get_member("_selfHovering")
         if isinstance(member, members.Reference):
@@ -292,15 +293,15 @@ class ProtoFluxReferenceProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
 
     @property
     def target_hovering(self) -> str | None:
-        """Target ID of the _targetHovering reference (targets IValue[bool])."""
+        """Target ID of the _targetHovering reference (targets IValue[primitives.Bool])."""
         member = self.get_member("_targetHovering")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_hovering.setter
-    def target_hovering(self, target: str | IValue[bool] | None) -> None:
-        """Set the _targetHovering reference by target ID or IValue[bool] instance."""
+    def target_hovering(self, target: str | IValue[primitives.Bool] | None) -> None:
+        """Set the _targetHovering reference by target ID or IValue[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
         member = self.get_member("_targetHovering")
         if isinstance(member, members.Reference):
@@ -313,15 +314,15 @@ class ProtoFluxReferenceProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
 
     @property
     def arrow_manager_enabled(self) -> str | None:
-        """Target ID of the _arrowManagerEnabled reference (targets IField[bool])."""
+        """Target ID of the _arrowManagerEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_arrowManagerEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @arrow_manager_enabled.setter
-    def arrow_manager_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _arrowManagerEnabled reference by target ID or IField[bool] instance."""
+    def arrow_manager_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _arrowManagerEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_arrowManagerEnabled")
         if isinstance(member, members.Reference):
@@ -334,15 +335,15 @@ class ProtoFluxReferenceProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
 
     @property
     def arrow_renderer_enabled(self) -> str | None:
-        """Target ID of the _arrowRendererEnabled reference (targets IField[bool])."""
+        """Target ID of the _arrowRendererEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_arrowRendererEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @arrow_renderer_enabled.setter
-    def arrow_renderer_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _arrowRendererEnabled reference by target ID or IField[bool] instance."""
+    def arrow_renderer_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _arrowRendererEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_arrowRendererEnabled")
         if isinstance(member, members.Reference):

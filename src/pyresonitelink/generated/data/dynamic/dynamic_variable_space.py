@@ -1,6 +1,7 @@
 """Generated component: DynamicVariableSpace."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class DynamicVariableSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicVariableSpace"
 
-    def __init__(self, space_name: str | None = None, only_direct_binding: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, space_name: primitives.String | None = None, only_direct_binding: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class DynamicVariableSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.only_direct_binding = only_direct_binding
 
     @property
-    def space_name(self) -> str | None:
+    def space_name(self) -> primitives.String | None:
         """The SpaceName field value."""
         member = self.get_member("SpaceName")
         if member is None:
@@ -38,7 +39,7 @@ class DynamicVariableSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @space_name.setter
-    def space_name(self, value: str) -> None:
+    def space_name(self, value: primitives.String) -> None:
         """Set the SpaceName field value."""
         member = self.get_member("SpaceName")
         if member is not None:
@@ -49,7 +50,7 @@ class DynamicVariableSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def only_direct_binding(self) -> bool | None:
+    def only_direct_binding(self) -> primitives.Bool | None:
         """The OnlyDirectBinding field value."""
         member = self.get_member("OnlyDirectBinding")
         if member is None:
@@ -57,7 +58,7 @@ class DynamicVariableSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @only_direct_binding.setter
-    def only_direct_binding(self, value: bool) -> None:
+    def only_direct_binding(self, value: primitives.Bool) -> None:
         """Set the OnlyDirectBinding field value."""
         member = self.get_member("OnlyDirectBinding")
         if member is not None:

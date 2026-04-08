@@ -1,7 +1,5 @@
 """Generated component: LegacyNumericUpDown."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -27,7 +25,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyNumericUpDown"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, color: primitives.ColorX | None = None, width: np.float32 | None = None, height: np.float32 | None = None, thickness: np.float32 | None = None, slant: np.float32 | None = None, text_slot: str | Slot | None = None, text_renderer: str | TextRenderer | None = None, text_editor: str | TextEditor | None = None, material: str | PBS_RimMetallic | None = None, mesh: str | BevelStripeMesh | None = None, text_bounds: str | IField[primitives.Float2] | None = None, collider_size: str | IField[primitives.Float3] | None = None, mesh_left: str | BevelStripeMesh | None = None, mesh_right: str | BevelStripeMesh | None = None, text_left_bounds: str | IField[primitives.Float2] | None = None, text_right_bounds: str | IField[primitives.Float2] | None = None, left_text_renderer: str | TextRenderer | None = None, right_text_renderer: str | TextRenderer | None = None, collider_left_size: str | IField[primitives.Float3] | None = None, collider_right_size: str | IField[primitives.Float3] | None = None, left_offset: str | IField[primitives.Float3] | None = None, right_offset: str | IField[primitives.Float3] | None = None, left_text_position: str | IField[primitives.Float3] | None = None, right_text_position: str | IField[primitives.Float3] | None = None, drive_field: str | IField[np.float32] | None = None, allow_write_back: bool | None = None, value: np.float32 | None = None, decimal_points: np.int32 | None = None, min_value: np.float32 | None = None, max_value: np.float32 | None = None, increment_value: np.float32 | None = None, is_enabled: bool | None = None, text_drive: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, color: primitives.ColorX | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, slant: primitives.Float | None = None, text_slot: str | Slot | None = None, text_renderer: str | TextRenderer | None = None, text_editor: str | TextEditor | None = None, material: str | PBS_RimMetallic | None = None, mesh: str | BevelStripeMesh | None = None, text_bounds: str | IField[primitives.Float2] | None = None, collider_size: str | IField[primitives.Float3] | None = None, mesh_left: str | BevelStripeMesh | None = None, mesh_right: str | BevelStripeMesh | None = None, text_left_bounds: str | IField[primitives.Float2] | None = None, text_right_bounds: str | IField[primitives.Float2] | None = None, left_text_renderer: str | TextRenderer | None = None, right_text_renderer: str | TextRenderer | None = None, collider_left_size: str | IField[primitives.Float3] | None = None, collider_right_size: str | IField[primitives.Float3] | None = None, left_offset: str | IField[primitives.Float3] | None = None, right_offset: str | IField[primitives.Float3] | None = None, left_text_position: str | IField[primitives.Float3] | None = None, right_text_position: str | IField[primitives.Float3] | None = None, drive_field: str | IField[primitives.Float] | None = None, allow_write_back: primitives.Bool | None = None, value: primitives.Float | None = None, decimal_points: primitives.Int | None = None, min_value: primitives.Float | None = None, max_value: primitives.Float | None = None, increment_value: primitives.Float | None = None, is_enabled: primitives.Bool | None = None, text_drive: str | IField[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -165,7 +163,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -173,7 +171,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -184,7 +182,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -192,7 +190,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -222,7 +220,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def width(self) -> np.float32 | None:
+    def width(self) -> primitives.Float | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -230,7 +228,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.float32) -> None:
+    def width(self, value: primitives.Float) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -241,7 +239,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -249,7 +247,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -260,7 +258,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -268,7 +266,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -279,7 +277,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def slant(self) -> np.float32 | None:
+    def slant(self) -> primitives.Float | None:
         """The Slant field value."""
         member = self.get_member("Slant")
         if member is None:
@@ -287,7 +285,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @slant.setter
-    def slant(self, value: np.float32) -> None:
+    def slant(self, value: primitives.Float) -> None:
         """Set the Slant field value."""
         member = self.get_member("Slant")
         if member is not None:
@@ -698,15 +696,15 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def drive_field(self) -> str | None:
-        """Target ID of the DriveField reference (targets IField[np.float32])."""
+        """Target ID of the DriveField reference (targets IField[primitives.Float])."""
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @drive_field.setter
-    def drive_field(self, target: str | IField[np.float32] | None) -> None:
-        """Set the DriveField reference by target ID or IField[np.float32] instance."""
+    def drive_field(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the DriveField reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
@@ -718,7 +716,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def allow_write_back(self) -> bool | None:
+    def allow_write_back(self) -> primitives.Bool | None:
         """The AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is None:
@@ -726,7 +724,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @allow_write_back.setter
-    def allow_write_back(self, value: bool) -> None:
+    def allow_write_back(self, value: primitives.Bool) -> None:
         """Set the AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is not None:
@@ -737,7 +735,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def value(self) -> np.float32 | None:
+    def value(self) -> primitives.Float | None:
         """The Value field value."""
         member = self.get_member("Value")
         if member is None:
@@ -745,7 +743,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @value.setter
-    def value(self, value: np.float32) -> None:
+    def value(self, value: primitives.Float) -> None:
         """Set the Value field value."""
         member = self.get_member("Value")
         if member is not None:
@@ -756,7 +754,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def decimal_points(self) -> np.int32 | None:
+    def decimal_points(self) -> primitives.Int | None:
         """The DecimalPoints field value."""
         member = self.get_member("DecimalPoints")
         if member is None:
@@ -764,7 +762,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @decimal_points.setter
-    def decimal_points(self, value: np.int32) -> None:
+    def decimal_points(self, value: primitives.Int) -> None:
         """Set the DecimalPoints field value."""
         member = self.get_member("DecimalPoints")
         if member is not None:
@@ -775,7 +773,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def min_value(self) -> np.float32 | None:
+    def min_value(self) -> primitives.Float | None:
         """The MinValue field value."""
         member = self.get_member("MinValue")
         if member is None:
@@ -783,7 +781,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @min_value.setter
-    def min_value(self, value: np.float32) -> None:
+    def min_value(self, value: primitives.Float) -> None:
         """Set the MinValue field value."""
         member = self.get_member("MinValue")
         if member is not None:
@@ -794,7 +792,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def max_value(self) -> np.float32 | None:
+    def max_value(self) -> primitives.Float | None:
         """The MaxValue field value."""
         member = self.get_member("MaxValue")
         if member is None:
@@ -802,7 +800,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @max_value.setter
-    def max_value(self, value: np.float32) -> None:
+    def max_value(self, value: primitives.Float) -> None:
         """Set the MaxValue field value."""
         member = self.get_member("MaxValue")
         if member is not None:
@@ -813,7 +811,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def increment_value(self) -> np.float32 | None:
+    def increment_value(self) -> primitives.Float | None:
         """The IncrementValue field value."""
         member = self.get_member("IncrementValue")
         if member is None:
@@ -821,7 +819,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @increment_value.setter
-    def increment_value(self, value: np.float32) -> None:
+    def increment_value(self, value: primitives.Float) -> None:
         """Set the IncrementValue field value."""
         member = self.get_member("IncrementValue")
         if member is not None:
@@ -832,7 +830,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
             )
 
     @property
-    def is_enabled(self) -> bool | None:
+    def is_enabled(self) -> primitives.Bool | None:
         """The IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is None:
@@ -840,7 +838,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
         return getattr(member, 'value', None)
 
     @is_enabled.setter
-    def is_enabled(self, value: bool) -> None:
+    def is_enabled(self, value: primitives.Bool) -> None:
         """Set the IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is not None:
@@ -852,15 +850,15 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def text_drive(self) -> str | None:
-        """Target ID of the _textDrive reference (targets IField[str])."""
+        """Target ID of the _textDrive reference (targets IField[primitives.String])."""
         member = self.get_member("_textDrive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text_drive.setter
-    def text_drive(self, target: str | IField[str] | None) -> None:
-        """Set the _textDrive reference by target ID or IField[str] instance."""
+    def text_drive(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _textDrive reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_textDrive")
         if isinstance(member, members.Reference):

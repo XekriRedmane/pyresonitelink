@@ -1,9 +1,8 @@
 """Generated component: FocusedWorldStatus."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FocusedWorldStatus"
 
-    def __init__(self, world_name: str | None = None, raw_world_name: str | None = None, session_id: str | None = None, is_host: bool | None = None, can_save: bool | None = None, should_save: bool | None = None, can_close: bool | None = None, role_name: str | None = None, user_count: np.int32 | None = None, active_user_count: np.int32 | None = None, max_user_count: np.int32 | None = None, hide_from_listing: bool | None = None, away_kick_enabled: bool | None = None, away_kick_minutes: np.float32 | None = None, unsafe_mode: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_name: primitives.String | None = None, raw_world_name: primitives.String | None = None, session_id: primitives.String | None = None, is_host: primitives.Bool | None = None, can_save: primitives.Bool | None = None, should_save: primitives.Bool | None = None, can_close: primitives.Bool | None = None, role_name: primitives.String | None = None, user_count: primitives.Int | None = None, active_user_count: primitives.Int | None = None, max_user_count: primitives.Int | None = None, hide_from_listing: primitives.Bool | None = None, away_kick_enabled: primitives.Bool | None = None, away_kick_minutes: primitives.Float | None = None, unsafe_mode: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -72,7 +71,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.unsafe_mode = unsafe_mode
 
     @property
-    def world_name(self) -> str | None:
+    def world_name(self) -> primitives.String | None:
         """The WorldName field value."""
         member = self.get_member("WorldName")
         if member is None:
@@ -80,7 +79,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @world_name.setter
-    def world_name(self, value: str) -> None:
+    def world_name(self, value: primitives.String) -> None:
         """Set the WorldName field value."""
         member = self.get_member("WorldName")
         if member is not None:
@@ -91,7 +90,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def raw_world_name(self) -> str | None:
+    def raw_world_name(self) -> primitives.String | None:
         """The RawWorldName field value."""
         member = self.get_member("RawWorldName")
         if member is None:
@@ -99,7 +98,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @raw_world_name.setter
-    def raw_world_name(self, value: str) -> None:
+    def raw_world_name(self, value: primitives.String) -> None:
         """Set the RawWorldName field value."""
         member = self.get_member("RawWorldName")
         if member is not None:
@@ -110,7 +109,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def session_id(self) -> str | None:
+    def session_id(self) -> primitives.String | None:
         """The SessionId field value."""
         member = self.get_member("SessionId")
         if member is None:
@@ -118,7 +117,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @session_id.setter
-    def session_id(self, value: str) -> None:
+    def session_id(self, value: primitives.String) -> None:
         """Set the SessionId field value."""
         member = self.get_member("SessionId")
         if member is not None:
@@ -129,7 +128,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_host(self) -> bool | None:
+    def is_host(self) -> primitives.Bool | None:
         """The IsHost field value."""
         member = self.get_member("IsHost")
         if member is None:
@@ -137,7 +136,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_host.setter
-    def is_host(self, value: bool) -> None:
+    def is_host(self, value: primitives.Bool) -> None:
         """Set the IsHost field value."""
         member = self.get_member("IsHost")
         if member is not None:
@@ -148,7 +147,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def can_save(self) -> bool | None:
+    def can_save(self) -> primitives.Bool | None:
         """The CanSave field value."""
         member = self.get_member("CanSave")
         if member is None:
@@ -156,7 +155,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @can_save.setter
-    def can_save(self, value: bool) -> None:
+    def can_save(self, value: primitives.Bool) -> None:
         """Set the CanSave field value."""
         member = self.get_member("CanSave")
         if member is not None:
@@ -167,7 +166,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def should_save(self) -> bool | None:
+    def should_save(self) -> primitives.Bool | None:
         """The ShouldSave field value."""
         member = self.get_member("ShouldSave")
         if member is None:
@@ -175,7 +174,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @should_save.setter
-    def should_save(self, value: bool) -> None:
+    def should_save(self, value: primitives.Bool) -> None:
         """Set the ShouldSave field value."""
         member = self.get_member("ShouldSave")
         if member is not None:
@@ -186,7 +185,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def can_close(self) -> bool | None:
+    def can_close(self) -> primitives.Bool | None:
         """The CanClose field value."""
         member = self.get_member("CanClose")
         if member is None:
@@ -194,7 +193,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @can_close.setter
-    def can_close(self, value: bool) -> None:
+    def can_close(self, value: primitives.Bool) -> None:
         """Set the CanClose field value."""
         member = self.get_member("CanClose")
         if member is not None:
@@ -205,7 +204,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def role_name(self) -> str | None:
+    def role_name(self) -> primitives.String | None:
         """The RoleName field value."""
         member = self.get_member("RoleName")
         if member is None:
@@ -213,7 +212,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @role_name.setter
-    def role_name(self, value: str) -> None:
+    def role_name(self, value: primitives.String) -> None:
         """Set the RoleName field value."""
         member = self.get_member("RoleName")
         if member is not None:
@@ -224,7 +223,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def user_count(self) -> np.int32 | None:
+    def user_count(self) -> primitives.Int | None:
         """The UserCount field value."""
         member = self.get_member("UserCount")
         if member is None:
@@ -232,7 +231,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @user_count.setter
-    def user_count(self, value: np.int32) -> None:
+    def user_count(self, value: primitives.Int) -> None:
         """Set the UserCount field value."""
         member = self.get_member("UserCount")
         if member is not None:
@@ -243,7 +242,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def active_user_count(self) -> np.int32 | None:
+    def active_user_count(self) -> primitives.Int | None:
         """The ActiveUserCount field value."""
         member = self.get_member("ActiveUserCount")
         if member is None:
@@ -251,7 +250,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @active_user_count.setter
-    def active_user_count(self, value: np.int32) -> None:
+    def active_user_count(self, value: primitives.Int) -> None:
         """Set the ActiveUserCount field value."""
         member = self.get_member("ActiveUserCount")
         if member is not None:
@@ -262,7 +261,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_user_count(self) -> np.int32 | None:
+    def max_user_count(self) -> primitives.Int | None:
         """The MaxUserCount field value."""
         member = self.get_member("MaxUserCount")
         if member is None:
@@ -270,7 +269,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_user_count.setter
-    def max_user_count(self, value: np.int32) -> None:
+    def max_user_count(self, value: primitives.Int) -> None:
         """Set the MaxUserCount field value."""
         member = self.get_member("MaxUserCount")
         if member is not None:
@@ -294,7 +293,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("AccessLevel", value)
 
     @property
-    def hide_from_listing(self) -> bool | None:
+    def hide_from_listing(self) -> primitives.Bool | None:
         """The HideFromListing field value."""
         member = self.get_member("HideFromListing")
         if member is None:
@@ -302,7 +301,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @hide_from_listing.setter
-    def hide_from_listing(self, value: bool) -> None:
+    def hide_from_listing(self, value: primitives.Bool) -> None:
         """Set the HideFromListing field value."""
         member = self.get_member("HideFromListing")
         if member is not None:
@@ -313,7 +312,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def away_kick_enabled(self) -> bool | None:
+    def away_kick_enabled(self) -> primitives.Bool | None:
         """The AwayKickEnabled field value."""
         member = self.get_member("AwayKickEnabled")
         if member is None:
@@ -321,7 +320,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @away_kick_enabled.setter
-    def away_kick_enabled(self, value: bool) -> None:
+    def away_kick_enabled(self, value: primitives.Bool) -> None:
         """Set the AwayKickEnabled field value."""
         member = self.get_member("AwayKickEnabled")
         if member is not None:
@@ -332,7 +331,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def away_kick_minutes(self) -> np.float32 | None:
+    def away_kick_minutes(self) -> primitives.Float | None:
         """The AwayKickMinutes field value."""
         member = self.get_member("AwayKickMinutes")
         if member is None:
@@ -340,7 +339,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @away_kick_minutes.setter
-    def away_kick_minutes(self, value: np.float32) -> None:
+    def away_kick_minutes(self, value: primitives.Float) -> None:
         """Set the AwayKickMinutes field value."""
         member = self.get_member("AwayKickMinutes")
         if member is not None:
@@ -351,7 +350,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def unsafe_mode(self) -> bool | None:
+    def unsafe_mode(self) -> primitives.Bool | None:
         """The UnsafeMode field value."""
         member = self.get_member("UnsafeMode")
         if member is None:
@@ -359,7 +358,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @unsafe_mode.setter
-    def unsafe_mode(self, value: bool) -> None:
+    def unsafe_mode(self, value: primitives.Bool) -> None:
         """Set the UnsafeMode field value."""
         member = self.get_member("UnsafeMode")
         if member is not None:

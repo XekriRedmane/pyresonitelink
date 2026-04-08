@@ -1,6 +1,7 @@
 """Generated component: SetComponentEnabled."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -23,7 +24,7 @@ class SetComponentEnabled(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Components.SetComponentEnabled"
 
-    def __init__(self, next: str | INodeOperation | None = None, component_: str | INodeObjectOutput[IComponent] | None = None, state: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, component_: str | INodeObjectOutput[IComponent] | None = None, state: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -84,15 +85,15 @@ class SetComponentEnabled(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def state(self) -> str | None:
-        """Target ID of the State reference (targets INodeValueOutput[bool])."""
+        """Target ID of the State reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("State")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @state.setter
-    def state(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the State reference by target ID or INodeValueOutput[bool] instance."""
+    def state(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the State reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("State")
         if isinstance(member, members.Reference):

@@ -1,7 +1,5 @@
 """Generated component: LabelPointerMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LabelPointerMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, label_point: primitives.Float3 | None = None, target_point: primitives.Float3 | None = None, label_rotation: primitives.FloatQ | None = None, label_width: np.float32 | None = None, width: np.float32 | None = None, expand_lerp: np.float32 | None = None, dual_sided: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, label_point: primitives.Float3 | None = None, target_point: primitives.Float3 | None = None, label_rotation: primitives.FloatQ | None = None, label_width: primitives.Float | None = None, width: primitives.Float | None = None, expand_lerp: primitives.Float | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,7 +58,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             self.dual_sided = dual_sided
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -68,7 +66,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -79,7 +77,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -87,7 +85,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -187,7 +185,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def label_width(self) -> np.float32 | None:
+    def label_width(self) -> primitives.Float | None:
         """The LabelWidth field value."""
         member = self.get_member("LabelWidth")
         if member is None:
@@ -195,7 +193,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @label_width.setter
-    def label_width(self, value: np.float32) -> None:
+    def label_width(self, value: primitives.Float) -> None:
         """Set the LabelWidth field value."""
         member = self.get_member("LabelWidth")
         if member is not None:
@@ -206,7 +204,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def width(self) -> np.float32 | None:
+    def width(self) -> primitives.Float | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -214,7 +212,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.float32) -> None:
+    def width(self, value: primitives.Float) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -225,7 +223,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def expand_lerp(self) -> np.float32 | None:
+    def expand_lerp(self) -> primitives.Float | None:
         """The ExpandLerp field value."""
         member = self.get_member("ExpandLerp")
         if member is None:
@@ -233,7 +231,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @expand_lerp.setter
-    def expand_lerp(self, value: np.float32) -> None:
+    def expand_lerp(self, value: primitives.Float) -> None:
         """Set the ExpandLerp field value."""
         member = self.get_member("ExpandLerp")
         if member is not None:
@@ -244,7 +242,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def dual_sided(self) -> bool | None:
+    def dual_sided(self) -> primitives.Bool | None:
         """The DualSided field value."""
         member = self.get_member("DualSided")
         if member is None:
@@ -252,7 +250,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @dual_sided.setter
-    def dual_sided(self, value: bool) -> None:
+    def dual_sided(self, value: primitives.Bool) -> None:
         """Set the DualSided field value."""
         member = self.get_member("DualSided")
         if member is not None:

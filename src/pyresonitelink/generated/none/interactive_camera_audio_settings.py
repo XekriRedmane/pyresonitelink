@@ -1,6 +1,7 @@
 """Generated component: InteractiveCameraAudioSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class InteractiveCameraAudioSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraAudioSettings"
 
-    def __init__(self, render_own_voice_on_camera: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, render_own_voice_on_camera: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class InteractiveCameraAudioSettings(GeneratedComponent, ICustomInspector):
             self.render_own_voice_on_camera = render_own_voice_on_camera
 
     @property
-    def render_own_voice_on_camera(self) -> bool | None:
+    def render_own_voice_on_camera(self) -> primitives.Bool | None:
         """The RenderOwnVoiceOnCamera field value."""
         member = self.get_member("RenderOwnVoiceOnCamera")
         if member is None:
@@ -33,7 +34,7 @@ class InteractiveCameraAudioSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @render_own_voice_on_camera.setter
-    def render_own_voice_on_camera(self, value: bool) -> None:
+    def render_own_voice_on_camera(self, value: primitives.Bool) -> None:
         """Set the RenderOwnVoiceOnCamera field value."""
         member = self.get_member("RenderOwnVoiceOnCamera")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: MeshRendererLoadStatus."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshRendererLoadStatus"
 
-    def __init__(self, is_loaded: bool | None = None, load_progress: np.float32 | None = None, progress_weight: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_loaded: primitives.Bool | None = None, load_progress: primitives.Float | None = None, progress_weight: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -49,7 +48,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         self.set_member("Renderers", value)
 
     @property
-    def is_loaded(self) -> bool | None:
+    def is_loaded(self) -> primitives.Bool | None:
         """The IsLoaded field value."""
         member = self.get_member("IsLoaded")
         if member is None:
@@ -57,7 +56,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @is_loaded.setter
-    def is_loaded(self, value: bool) -> None:
+    def is_loaded(self, value: primitives.Bool) -> None:
         """Set the IsLoaded field value."""
         member = self.get_member("IsLoaded")
         if member is not None:
@@ -68,7 +67,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def load_progress(self) -> np.float32 | None:
+    def load_progress(self) -> primitives.Float | None:
         """The LoadProgress field value."""
         member = self.get_member("LoadProgress")
         if member is None:
@@ -76,7 +75,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @load_progress.setter
-    def load_progress(self, value: np.float32) -> None:
+    def load_progress(self, value: primitives.Float) -> None:
         """Set the LoadProgress field value."""
         member = self.get_member("LoadProgress")
         if member is not None:
@@ -87,7 +86,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def progress_weight(self) -> np.float32 | None:
+    def progress_weight(self) -> primitives.Float | None:
         """The ProgressWeight field value."""
         member = self.get_member("ProgressWeight")
         if member is None:
@@ -95,7 +94,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @progress_weight.setter
-    def progress_weight(self, value: np.float32) -> None:
+    def progress_weight(self, value: primitives.Float) -> None:
         """Set the ProgressWeight field value."""
         member = self.get_member("ProgressWeight")
         if member is not None:

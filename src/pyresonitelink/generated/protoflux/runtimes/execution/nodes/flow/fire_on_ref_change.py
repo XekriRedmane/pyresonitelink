@@ -22,7 +22,7 @@ class FireOnRefChange(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     Parameterize with a value type::
 
-        FireOnRefChange[np.float32]
+        FireOnRefChange[primitives.Float]
         FireOnRefChange[primitives.Float3]
     """
 

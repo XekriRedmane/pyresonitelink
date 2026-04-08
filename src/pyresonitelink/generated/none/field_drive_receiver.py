@@ -13,7 +13,7 @@ class FieldDriveReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiv
 
     Parameterize with a value type::
 
-        FieldDriveReceiver[np.float32]
+        FieldDriveReceiver[primitives.Float]
         FieldDriveReceiver[primitives.Float3]
     """
 

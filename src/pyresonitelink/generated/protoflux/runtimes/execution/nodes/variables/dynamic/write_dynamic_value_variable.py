@@ -1,6 +1,7 @@
 """Generated component: WriteDynamicValueVariable."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -23,14 +24,14 @@ class WriteDynamicValueVariable(GenericComponent[T], IMappableNode, ISyncNodeOpe
 
     Parameterize with a value type::
 
-        WriteDynamicValueVariable[np.float32]
+        WriteDynamicValueVariable[primitives.Float]
         WriteDynamicValueVariable[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.WriteDynamicValueVariable<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.WriteDynamicValueVariable<>"
 
-    def __init__(self, target: str | INodeObjectOutput[Slot] | None = None, path: str | INodeObjectOutput[str] | None = None, on_not_found: str | INodeOperation | None = None, on_success: str | INodeOperation | None = None, on_failed: str | INodeOperation | None = None, value: str | INodeValueOutput[T] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | INodeObjectOutput[Slot] | None = None, path: str | INodeObjectOutput[primitives.String] | None = None, on_not_found: str | INodeOperation | None = None, on_success: str | INodeOperation | None = None, on_failed: str | INodeOperation | None = None, value: str | INodeValueOutput[T] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -79,15 +80,15 @@ class WriteDynamicValueVariable(GenericComponent[T], IMappableNode, ISyncNodeOpe
 
     @property
     def path(self) -> str | None:
-        """Target ID of the Path reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Path reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @path.setter
-    def path(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Path reference by target ID or INodeObjectOutput[str] instance."""
+    def path(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Path reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Path")
         if isinstance(member, members.Reference):

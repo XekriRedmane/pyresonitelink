@@ -1,9 +1,8 @@
 """Generated component: NewWorldDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text_field import TextField
@@ -18,7 +17,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NewWorldDialog"
 
-    def __init__(self, world_name: str | TextField | None = None, mobile_friendly: str | Checkbox | None = None, unsafe_mode: str | Checkbox | None = None, auto_port: str | Checkbox | None = None, port: str | TextField | None = None, preset_index: np.int32 | None = None, ui_built: bool | None = None, initialized: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_name: str | TextField | None = None, mobile_friendly: str | Checkbox | None = None, unsafe_mode: str | Checkbox | None = None, auto_port: str | Checkbox | None = None, port: str | TextField | None = None, preset_index: primitives.Int | None = None, ui_built: primitives.Bool | None = None, initialized: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -169,7 +168,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("_accessLevel", value)
 
     @property
-    def preset_index(self) -> np.int32 | None:
+    def preset_index(self) -> primitives.Int | None:
         """The _presetIndex field value."""
         member = self.get_member("_presetIndex")
         if member is None:
@@ -177,7 +176,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @preset_index.setter
-    def preset_index(self, value: np.int32) -> None:
+    def preset_index(self, value: primitives.Int) -> None:
         """Set the _presetIndex field value."""
         member = self.get_member("_presetIndex")
         if member is not None:
@@ -188,7 +187,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ui_built(self) -> bool | None:
+    def ui_built(self) -> primitives.Bool | None:
         """The _uiBuilt field value."""
         member = self.get_member("_uiBuilt")
         if member is None:
@@ -196,7 +195,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ui_built.setter
-    def ui_built(self, value: bool) -> None:
+    def ui_built(self, value: primitives.Bool) -> None:
         """Set the _uiBuilt field value."""
         member = self.get_member("_uiBuilt")
         if member is not None:
@@ -220,7 +219,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("_accessLevelRadios", value)
 
     @property
-    def initialized(self) -> bool | None:
+    def initialized(self) -> primitives.Bool | None:
         """The _initialized field value."""
         member = self.get_member("_initialized")
         if member is None:
@@ -228,7 +227,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @initialized.setter
-    def initialized(self, value: bool) -> None:
+    def initialized(self, value: primitives.Bool) -> None:
         """Set the _initialized field value."""
         member = self.get_member("_initialized")
         if member is not None:

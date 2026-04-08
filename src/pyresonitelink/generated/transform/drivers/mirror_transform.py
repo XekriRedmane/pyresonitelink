@@ -19,7 +19,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MirrorTransform"
 
-    def __init__(self, mirror_source: str | Slot | None = None, mirror_plane: str | Slot | None = None, mirror_offset: primitives.Float3 | None = None, mirror_normal: primitives.Float3 | None = None, allow_write_back: bool | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mirror_source: str | Slot | None = None, mirror_plane: str | Slot | None = None, mirror_offset: primitives.Float3 | None = None, mirror_normal: primitives.Float3 | None = None, allow_write_back: primitives.Bool | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -129,7 +129,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def allow_write_back(self) -> bool | None:
+    def allow_write_back(self) -> primitives.Bool | None:
         """The AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is None:
@@ -137,7 +137,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @allow_write_back.setter
-    def allow_write_back(self, value: bool) -> None:
+    def allow_write_back(self, value: primitives.Bool) -> None:
         """Set the AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is not None:

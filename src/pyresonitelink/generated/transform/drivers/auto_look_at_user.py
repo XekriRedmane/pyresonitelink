@@ -1,7 +1,5 @@
 """Generated component: AutoLookAtUser."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AutoLookAtUser"
 
-    def __init__(self, retarget_distance: np.float32 | None = None, lerp_speed: np.float32 | None = None, targeted_user: str | User | None = None, auto_target: bool | None = None, exclude_active_user: bool | None = None, swing_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, max_swing: np.float32 | None = None, max_twist: np.float32 | None = None, rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, retarget_distance: primitives.Float | None = None, lerp_speed: primitives.Float | None = None, targeted_user: str | User | None = None, auto_target: primitives.Bool | None = None, exclude_active_user: primitives.Bool | None = None, swing_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,7 +58,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.rotation = rotation
 
     @property
-    def retarget_distance(self) -> np.float32 | None:
+    def retarget_distance(self) -> primitives.Float | None:
         """The RetargetDistance field value."""
         member = self.get_member("RetargetDistance")
         if member is None:
@@ -68,7 +66,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @retarget_distance.setter
-    def retarget_distance(self, value: np.float32) -> None:
+    def retarget_distance(self, value: primitives.Float) -> None:
         """Set the RetargetDistance field value."""
         member = self.get_member("RetargetDistance")
         if member is not None:
@@ -79,7 +77,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def lerp_speed(self) -> np.float32 | None:
+    def lerp_speed(self) -> primitives.Float | None:
         """The LerpSpeed field value."""
         member = self.get_member("LerpSpeed")
         if member is None:
@@ -87,7 +85,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @lerp_speed.setter
-    def lerp_speed(self, value: np.float32) -> None:
+    def lerp_speed(self, value: primitives.Float) -> None:
         """Set the LerpSpeed field value."""
         member = self.get_member("LerpSpeed")
         if member is not None:
@@ -119,7 +117,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def auto_target(self) -> bool | None:
+    def auto_target(self) -> primitives.Bool | None:
         """The AutoTarget field value."""
         member = self.get_member("AutoTarget")
         if member is None:
@@ -127,7 +125,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_target.setter
-    def auto_target(self, value: bool) -> None:
+    def auto_target(self, value: primitives.Bool) -> None:
         """Set the AutoTarget field value."""
         member = self.get_member("AutoTarget")
         if member is not None:
@@ -138,7 +136,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def exclude_active_user(self) -> bool | None:
+    def exclude_active_user(self) -> primitives.Bool | None:
         """The ExcludeActiveUser field value."""
         member = self.get_member("ExcludeActiveUser")
         if member is None:
@@ -146,7 +144,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @exclude_active_user.setter
-    def exclude_active_user(self, value: bool) -> None:
+    def exclude_active_user(self, value: primitives.Bool) -> None:
         """Set the ExcludeActiveUser field value."""
         member = self.get_member("ExcludeActiveUser")
         if member is not None:
@@ -195,7 +193,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_swing(self) -> np.float32 | None:
+    def max_swing(self) -> primitives.Float | None:
         """The MaxSwing field value."""
         member = self.get_member("MaxSwing")
         if member is None:
@@ -203,7 +201,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_swing.setter
-    def max_swing(self, value: np.float32) -> None:
+    def max_swing(self, value: primitives.Float) -> None:
         """Set the MaxSwing field value."""
         member = self.get_member("MaxSwing")
         if member is not None:
@@ -214,7 +212,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_twist(self) -> np.float32 | None:
+    def max_twist(self) -> primitives.Float | None:
         """The MaxTwist field value."""
         member = self.get_member("MaxTwist")
         if member is None:
@@ -222,7 +220,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_twist.setter
-    def max_twist(self, value: np.float32) -> None:
+    def max_twist(self, value: primitives.Float) -> None:
         """Set the MaxTwist field value."""
         member = self.get_member("MaxTwist")
         if member is not None:

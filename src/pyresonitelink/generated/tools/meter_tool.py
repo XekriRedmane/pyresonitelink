@@ -26,7 +26,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeterTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, indication_color: str | IField[primitives.ColorX] | None = None, measure_in_object_space: bool | None = None, raycast_ignores_users: bool | None = None, multi_point: bool | None = None, last_point: str | Slot | None = None, current_meter: str | DistanceMeter | None = None, current_line_transform: str | LineTransform | None = None, format_number: str | None = None, format_unit: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, indication_color: str | IField[primitives.ColorX] | None = None, measure_in_object_space: primitives.Bool | None = None, raycast_ignores_users: primitives.Bool | None = None, multi_point: primitives.Bool | None = None, last_point: str | Slot | None = None, current_meter: str | DistanceMeter | None = None, current_line_transform: str | LineTransform | None = None, format_number: primitives.String | None = None, format_unit: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -114,7 +114,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -122,7 +122,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -133,7 +133,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -141,7 +141,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -152,7 +152,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -160,7 +160,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -192,7 +192,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -200,7 +200,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -245,7 +245,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         self.set_member("MeterMode", value)
 
     @property
-    def measure_in_object_space(self) -> bool | None:
+    def measure_in_object_space(self) -> primitives.Bool | None:
         """The MeasureInObjectSpace field value."""
         member = self.get_member("MeasureInObjectSpace")
         if member is None:
@@ -253,7 +253,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @measure_in_object_space.setter
-    def measure_in_object_space(self, value: bool) -> None:
+    def measure_in_object_space(self, value: primitives.Bool) -> None:
         """Set the MeasureInObjectSpace field value."""
         member = self.get_member("MeasureInObjectSpace")
         if member is not None:
@@ -264,7 +264,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def raycast_ignores_users(self) -> bool | None:
+    def raycast_ignores_users(self) -> primitives.Bool | None:
         """The RaycastIgnoresUsers field value."""
         member = self.get_member("RaycastIgnoresUsers")
         if member is None:
@@ -272,7 +272,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @raycast_ignores_users.setter
-    def raycast_ignores_users(self, value: bool) -> None:
+    def raycast_ignores_users(self, value: primitives.Bool) -> None:
         """Set the RaycastIgnoresUsers field value."""
         member = self.get_member("RaycastIgnoresUsers")
         if member is not None:
@@ -283,7 +283,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def multi_point(self) -> bool | None:
+    def multi_point(self) -> primitives.Bool | None:
         """The MultiPoint field value."""
         member = self.get_member("MultiPoint")
         if member is None:
@@ -291,7 +291,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @multi_point.setter
-    def multi_point(self, value: bool) -> None:
+    def multi_point(self, value: primitives.Bool) -> None:
         """Set the MultiPoint field value."""
         member = self.get_member("MultiPoint")
         if member is not None:
@@ -365,7 +365,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def format_number(self) -> str | None:
+    def format_number(self) -> primitives.String | None:
         """The FormatNumber field value."""
         member = self.get_member("FormatNumber")
         if member is None:
@@ -373,7 +373,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @format_number.setter
-    def format_number(self, value: str) -> None:
+    def format_number(self, value: primitives.String) -> None:
         """Set the FormatNumber field value."""
         member = self.get_member("FormatNumber")
         if member is not None:
@@ -384,7 +384,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def format_unit(self) -> str | None:
+    def format_unit(self) -> primitives.String | None:
         """The FormatUnit field value."""
         member = self.get_member("FormatUnit")
         if member is None:
@@ -392,7 +392,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
         return getattr(member, 'value', None)
 
     @format_unit.setter
-    def format_unit(self, value: str) -> None:
+    def format_unit(self, value: primitives.String) -> None:
         """Set the FormatUnit field value."""
         member = self.get_member("FormatUnit")
         if member is not None:

@@ -1,8 +1,7 @@
 """Generated component: RealtimeNetworkingSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RealtimeNetworkingSettings"
 
-    def __init__(self, disable_lan: bool | None = None, prefer_steam_networking: bool | None = None, prefer_tcp: bool | None = None, lnl_window_size: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, disable_lan: primitives.Bool | None = None, prefer_steam_networking: primitives.Bool | None = None, prefer_tcp: primitives.Bool | None = None, lnl_window_size: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +35,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
             self.lnl_window_size = lnl_window_size
 
     @property
-    def disable_lan(self) -> bool | None:
+    def disable_lan(self) -> primitives.Bool | None:
         """The DisableLAN field value."""
         member = self.get_member("DisableLAN")
         if member is None:
@@ -44,7 +43,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @disable_lan.setter
-    def disable_lan(self, value: bool) -> None:
+    def disable_lan(self, value: primitives.Bool) -> None:
         """Set the DisableLAN field value."""
         member = self.get_member("DisableLAN")
         if member is not None:
@@ -55,7 +54,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def prefer_steam_networking(self) -> bool | None:
+    def prefer_steam_networking(self) -> primitives.Bool | None:
         """The PreferSteamNetworking field value."""
         member = self.get_member("PreferSteamNetworking")
         if member is None:
@@ -63,7 +62,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @prefer_steam_networking.setter
-    def prefer_steam_networking(self, value: bool) -> None:
+    def prefer_steam_networking(self, value: primitives.Bool) -> None:
         """Set the PreferSteamNetworking field value."""
         member = self.get_member("PreferSteamNetworking")
         if member is not None:
@@ -74,7 +73,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def prefer_tcp(self) -> bool | None:
+    def prefer_tcp(self) -> primitives.Bool | None:
         """The PreferTCP field value."""
         member = self.get_member("PreferTCP")
         if member is None:
@@ -82,7 +81,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @prefer_tcp.setter
-    def prefer_tcp(self, value: bool) -> None:
+    def prefer_tcp(self, value: primitives.Bool) -> None:
         """Set the PreferTCP field value."""
         member = self.get_member("PreferTCP")
         if member is not None:
@@ -93,7 +92,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def lnl_window_size(self) -> np.int32 | None:
+    def lnl_window_size(self) -> primitives.Int | None:
         """The LNL_WindowSize field value."""
         member = self.get_member("LNL_WindowSize")
         if member is None:
@@ -101,7 +100,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @lnl_window_size.setter
-    def lnl_window_size(self, value: np.int32) -> None:
+    def lnl_window_size(self, value: primitives.Int) -> None:
         """Set the LNL_WindowSize field value."""
         member = self.get_member("LNL_WindowSize")
         if member is not None:

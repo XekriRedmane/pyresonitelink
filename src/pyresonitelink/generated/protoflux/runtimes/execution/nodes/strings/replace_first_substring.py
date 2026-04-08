@@ -1,8 +1,7 @@
 """Generated component: ReplaceFirstSubstring."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -23,7 +22,7 @@ class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.ReplaceFirstSubstring"
 
-    def __init__(self, str_: str | INodeObjectOutput[str] | None = None, search_for: str | INodeObjectOutput[str] | None = None, replace_with: str | INodeObjectOutput[str] | None = None, start_index: str | INodeValueOutput[np.int32] | None = None, comparison_mode: str | INodeValueOutput[StringComparison] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, str_: str | INodeObjectOutput[primitives.String] | None = None, search_for: str | INodeObjectOutput[primitives.String] | None = None, replace_with: str | INodeObjectOutput[primitives.String] | None = None, start_index: str | INodeValueOutput[primitives.Int] | None = None, comparison_mode: str | INodeValueOutput[StringComparison] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,15 +47,15 @@ class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @str_.setter
-    def str_(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Str reference by target ID or INodeObjectOutput[str] instance."""
+    def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
@@ -69,15 +68,15 @@ class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     @property
     def search_for(self) -> str | None:
-        """Target ID of the SearchFor reference (targets INodeObjectOutput[str])."""
+        """Target ID of the SearchFor reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("SearchFor")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @search_for.setter
-    def search_for(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the SearchFor reference by target ID or INodeObjectOutput[str] instance."""
+    def search_for(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the SearchFor reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("SearchFor")
         if isinstance(member, members.Reference):
@@ -90,15 +89,15 @@ class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     @property
     def replace_with(self) -> str | None:
-        """Target ID of the ReplaceWith reference (targets INodeObjectOutput[str])."""
+        """Target ID of the ReplaceWith reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("ReplaceWith")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @replace_with.setter
-    def replace_with(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the ReplaceWith reference by target ID or INodeObjectOutput[str] instance."""
+    def replace_with(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the ReplaceWith reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("ReplaceWith")
         if isinstance(member, members.Reference):
@@ -111,15 +110,15 @@ class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     @property
     def start_index(self) -> str | None:
-        """Target ID of the StartIndex reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the StartIndex reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @start_index.setter
-    def start_index(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the StartIndex reference by target ID or INodeValueOutput[np.int32] instance."""
+    def start_index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the StartIndex reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):

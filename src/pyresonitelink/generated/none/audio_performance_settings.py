@@ -1,9 +1,8 @@
 """Generated component: AudioPerformanceSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class AudioPerformanceSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioPerformanceSettings"
 
-    def __init__(self, max_voices: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, max_voices: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,7 +27,7 @@ class AudioPerformanceSettings(GeneratedComponent, ICustomInspector):
             self.max_voices = max_voices
 
     @property
-    def max_voices(self) -> np.int32 | None:
+    def max_voices(self) -> primitives.Int | None:
         """The MaxVoices field value."""
         member = self.get_member("MaxVoices")
         if member is None:
@@ -36,7 +35,7 @@ class AudioPerformanceSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @max_voices.setter
-    def max_voices(self, value: np.int32) -> None:
+    def max_voices(self, value: primitives.Int) -> None:
         """Set the MaxVoices field value."""
         member = self.get_member("MaxVoices")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: TextureQualitySettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class TextureQualitySettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextureQualitySettings"
 
-    def __init__(self, minimum_texture_size: np.int32 | None = None, anisotropic_level: np.int32 | None = None, use_anisotropic_level: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, minimum_texture_size: primitives.Int | None = None, anisotropic_level: primitives.Int | None = None, use_anisotropic_level: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,7 +59,7 @@ class TextureQualitySettings(GeneratedComponent, ICustomInspector):
         self.set_member("TextureSizeLimit", value)
 
     @property
-    def minimum_texture_size(self) -> np.int32 | None:
+    def minimum_texture_size(self) -> primitives.Int | None:
         """The MinimumTextureSize field value."""
         member = self.get_member("MinimumTextureSize")
         if member is None:
@@ -68,7 +67,7 @@ class TextureQualitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @minimum_texture_size.setter
-    def minimum_texture_size(self, value: np.int32) -> None:
+    def minimum_texture_size(self, value: primitives.Int) -> None:
         """Set the MinimumTextureSize field value."""
         member = self.get_member("MinimumTextureSize")
         if member is not None:
@@ -92,7 +91,7 @@ class TextureQualitySettings(GeneratedComponent, ICustomInspector):
         self.set_member("DefaultFilterMode", value)
 
     @property
-    def anisotropic_level(self) -> np.int32 | None:
+    def anisotropic_level(self) -> primitives.Int | None:
         """The AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is None:
@@ -100,7 +99,7 @@ class TextureQualitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @anisotropic_level.setter
-    def anisotropic_level(self, value: np.int32) -> None:
+    def anisotropic_level(self, value: primitives.Int) -> None:
         """Set the AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is not None:
@@ -111,7 +110,7 @@ class TextureQualitySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def use_anisotropic_level(self) -> bool | None:
+    def use_anisotropic_level(self) -> primitives.Bool | None:
         """The UseAnisotropicLevel field value."""
         member = self.get_member("UseAnisotropicLevel")
         if member is None:
@@ -119,7 +118,7 @@ class TextureQualitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_anisotropic_level.setter
-    def use_anisotropic_level(self, value: bool) -> None:
+    def use_anisotropic_level(self, value: primitives.Bool) -> None:
         """Set the UseAnisotropicLevel field value."""
         member = self.get_member("UseAnisotropicLevel")
         if member is not None:

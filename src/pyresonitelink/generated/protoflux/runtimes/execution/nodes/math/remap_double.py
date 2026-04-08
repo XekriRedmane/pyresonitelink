@@ -1,8 +1,7 @@
 """Generated component: Remap_Double."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Remap_Double"
 
-    def __init__(self, in_min: str | INodeValueOutput[np.float64] | None = None, in_max: str | INodeValueOutput[np.float64] | None = None, out_min: str | INodeValueOutput[np.float64] | None = None, out_max: str | INodeValueOutput[np.float64] | None = None, value: str | INodeValueOutput[np.float64] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, in_min: str | INodeValueOutput[primitives.Double] | None = None, in_max: str | INodeValueOutput[primitives.Double] | None = None, out_min: str | INodeValueOutput[primitives.Double] | None = None, out_max: str | INodeValueOutput[primitives.Double] | None = None, value: str | INodeValueOutput[primitives.Double] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,15 +45,15 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def in_min(self) -> str | None:
-        """Target ID of the InMin reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the InMin reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("InMin")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @in_min.setter
-    def in_min(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the InMin reference by target ID or INodeValueOutput[np.float64] instance."""
+    def in_min(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the InMin reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("InMin")
         if isinstance(member, members.Reference):
@@ -67,15 +66,15 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def in_max(self) -> str | None:
-        """Target ID of the InMax reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the InMax reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("InMax")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @in_max.setter
-    def in_max(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the InMax reference by target ID or INodeValueOutput[np.float64] instance."""
+    def in_max(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the InMax reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("InMax")
         if isinstance(member, members.Reference):
@@ -88,15 +87,15 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def out_min(self) -> str | None:
-        """Target ID of the OutMin reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the OutMin reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("OutMin")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @out_min.setter
-    def out_min(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the OutMin reference by target ID or INodeValueOutput[np.float64] instance."""
+    def out_min(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the OutMin reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("OutMin")
         if isinstance(member, members.Reference):
@@ -109,15 +108,15 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def out_max(self) -> str | None:
-        """Target ID of the OutMax reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the OutMax reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("OutMax")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @out_max.setter
-    def out_max(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the OutMax reference by target ID or INodeValueOutput[np.float64] instance."""
+    def out_max(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the OutMax reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("OutMax")
         if isinstance(member, members.Reference):
@@ -130,15 +129,15 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[np.float64])."""
+        """Target ID of the Value reference (targets INodeValueOutput[primitives.Double])."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @value.setter
-    def value(self, target: str | INodeValueOutput[np.float64] | None) -> None:
-        """Set the Value reference by target ID or INodeValueOutput[np.float64] instance."""
+    def value(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
+        """Set the Value reference by target ID or INodeValueOutput[primitives.Double] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Value")
         if isinstance(member, members.Reference):

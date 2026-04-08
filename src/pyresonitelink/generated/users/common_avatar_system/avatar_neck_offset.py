@@ -1,7 +1,5 @@
 """Generated component: AvatarNeckOffset."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class AvatarNeckOffset(GeneratedComponent, IAvatarObjectComponent, INeckOffsetSo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarNeckOffset"
 
-    def __init__(self, priority: np.int32 | None = None, offset: primitives.Float3 | None = None, active_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, priority: primitives.Int | None = None, offset: primitives.Float3 | None = None, active_user: str | User | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +37,7 @@ class AvatarNeckOffset(GeneratedComponent, IAvatarObjectComponent, INeckOffsetSo
             self.active_user = active_user
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -47,7 +45,7 @@ class AvatarNeckOffset(GeneratedComponent, IAvatarObjectComponent, INeckOffsetSo
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:

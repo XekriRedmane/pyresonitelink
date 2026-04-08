@@ -13,7 +13,7 @@ class ValueFieldProxy(GenericComponent[T], IValueSource[T], IWorldEventReceiver)
 
     Parameterize with a value type::
 
-        ValueFieldProxy[np.float32]
+        ValueFieldProxy[primitives.Float]
         ValueFieldProxy[primitives.Float3]
     """
 

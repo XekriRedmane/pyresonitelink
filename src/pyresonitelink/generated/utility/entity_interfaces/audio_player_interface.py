@@ -1,9 +1,8 @@
 """Generated component: AudioPlayerInterface."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -24,7 +23,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioPlayerInterface"
 
-    def __init__(self, item_name: str | IField[str] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[str] | None = None, is_instance: bool | None = None, url: str | IField[str] | None = None, clip: str | AssetRef[AudioClip] | None = None, group: str | IField[AudioTypeGroup] | None = None, volume: str | IField[np.float32] | None = None, spatialize: str | IField[bool] | None = None, doppler: str | IField[np.float32] | None = None, default_audio_clip: str | IAssetProvider[AudioClip] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, item_name: str | IField[primitives.String] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[primitives.String] | None = None, is_instance: primitives.Bool | None = None, url: str | IField[str] | None = None, clip: str | AssetRef[AudioClip] | None = None, group: str | IField[AudioTypeGroup] | None = None, volume: str | IField[primitives.Float] | None = None, spatialize: str | IField[primitives.Bool] | None = None, doppler: str | IField[primitives.Float] | None = None, default_audio_clip: str | IAssetProvider[AudioClip] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,15 +66,15 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[str])."""
+        """Target ID of the ItemName reference (targets IField[primitives.String])."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_name.setter
-    def item_name(self, target: str | IField[str] | None) -> None:
-        """Set the ItemName reference by target ID or IField[str] instance."""
+    def item_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
@@ -109,15 +108,15 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[str])."""
+        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spawning_user_id.setter
-    def spawning_user_id(self, target: str | IField[str] | None) -> None:
-        """Set the SpawningUserID reference by target ID or IField[str] instance."""
+    def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
@@ -129,7 +128,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
             )
 
     @property
-    def is_instance(self) -> bool | None:
+    def is_instance(self) -> primitives.Bool | None:
         """The IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is None:
@@ -137,7 +136,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
         return getattr(member, 'value', None)
 
     @is_instance.setter
-    def is_instance(self, value: bool) -> None:
+    def is_instance(self, value: primitives.Bool) -> None:
         """Set the IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is not None:
@@ -212,15 +211,15 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def volume(self) -> str | None:
-        """Target ID of the Volume reference (targets IField[np.float32])."""
+        """Target ID of the Volume reference (targets IField[primitives.Float])."""
         member = self.get_member("Volume")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @volume.setter
-    def volume(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Volume reference by target ID or IField[np.float32] instance."""
+    def volume(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Volume reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Volume")
         if isinstance(member, members.Reference):
@@ -233,15 +232,15 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spatialize(self) -> str | None:
-        """Target ID of the Spatialize reference (targets IField[bool])."""
+        """Target ID of the Spatialize reference (targets IField[primitives.Bool])."""
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spatialize.setter
-    def spatialize(self, target: str | IField[bool] | None) -> None:
-        """Set the Spatialize reference by target ID or IField[bool] instance."""
+    def spatialize(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the Spatialize reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
@@ -254,15 +253,15 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def doppler(self) -> str | None:
-        """Target ID of the Doppler reference (targets IField[np.float32])."""
+        """Target ID of the Doppler reference (targets IField[primitives.Float])."""
         member = self.get_member("Doppler")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @doppler.setter
-    def doppler(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Doppler reference by target ID or IField[np.float32] instance."""
+    def doppler(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Doppler reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Doppler")
         if isinstance(member, members.Reference):

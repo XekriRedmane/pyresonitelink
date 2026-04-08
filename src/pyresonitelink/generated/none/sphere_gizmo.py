@@ -1,9 +1,8 @@
 """Generated component: SphereGizmo."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -21,7 +20,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SphereGizmo"
 
-    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_radius: str | IField[np.float32] | None = None, rim_radius: np.float32 | None = None, rim_radius_distance_scale: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: primitives.Bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_radius: str | IField[primitives.Float] | None = None, rim_radius: primitives.Float | None = None, rim_radius_distance_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -87,7 +86,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
             )
 
     @property
-    def auto_position_at_target_slot(self) -> bool | None:
+    def auto_position_at_target_slot(self) -> primitives.Bool | None:
         """The AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
@@ -95,7 +94,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @auto_position_at_target_slot.setter
-    def auto_position_at_target_slot(self, value: bool) -> None:
+    def auto_position_at_target_slot(self, value: primitives.Bool) -> None:
         """Set the AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is not None:
@@ -254,15 +253,15 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def target_radius(self) -> str | None:
-        """Target ID of the TargetRadius reference (targets IField[np.float32])."""
+        """Target ID of the TargetRadius reference (targets IField[primitives.Float])."""
         member = self.get_member("TargetRadius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_radius.setter
-    def target_radius(self, target: str | IField[np.float32] | None) -> None:
-        """Set the TargetRadius reference by target ID or IField[np.float32] instance."""
+    def target_radius(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the TargetRadius reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetRadius")
         if isinstance(member, members.Reference):
@@ -287,7 +286,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
         self.set_member("RadiusSpace", value)
 
     @property
-    def rim_radius(self) -> np.float32 | None:
+    def rim_radius(self) -> primitives.Float | None:
         """The RimRadius field value."""
         member = self.get_member("RimRadius")
         if member is None:
@@ -295,7 +294,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @rim_radius.setter
-    def rim_radius(self, value: np.float32) -> None:
+    def rim_radius(self, value: primitives.Float) -> None:
         """Set the RimRadius field value."""
         member = self.get_member("RimRadius")
         if member is not None:
@@ -306,7 +305,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
             )
 
     @property
-    def rim_radius_distance_scale(self) -> np.float32 | None:
+    def rim_radius_distance_scale(self) -> primitives.Float | None:
         """The RimRadiusDistanceScale field value."""
         member = self.get_member("RimRadiusDistanceScale")
         if member is None:
@@ -314,7 +313,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @rim_radius_distance_scale.setter
-    def rim_radius_distance_scale(self, value: np.float32) -> None:
+    def rim_radius_distance_scale(self, value: primitives.Float) -> None:
         """Set the RimRadiusDistanceScale field value."""
         member = self.get_member("RimRadiusDistanceScale")
         if member is not None:

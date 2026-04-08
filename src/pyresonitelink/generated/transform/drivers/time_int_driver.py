@@ -1,9 +1,8 @@
 """Generated component: TimeIntDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -19,7 +18,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TimeIntDriver"
 
-    def __init__(self, scale: np.float32 | None = None, repeat: np.int32 | None = None, ping_pong: bool | None = None, target: str | IField[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, scale: primitives.Float | None = None, repeat: primitives.Int | None = None, ping_pong: primitives.Bool | None = None, target: str | IField[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +39,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.target = target
 
     @property
-    def scale(self) -> np.float32 | None:
+    def scale(self) -> primitives.Float | None:
         """The Scale field value."""
         member = self.get_member("Scale")
         if member is None:
@@ -48,7 +47,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @scale.setter
-    def scale(self, value: np.float32) -> None:
+    def scale(self, value: primitives.Float) -> None:
         """Set the Scale field value."""
         member = self.get_member("Scale")
         if member is not None:
@@ -59,7 +58,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def repeat(self) -> np.int32 | None:
+    def repeat(self) -> primitives.Int | None:
         """The Repeat field value."""
         member = self.get_member("Repeat")
         if member is None:
@@ -67,7 +66,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @repeat.setter
-    def repeat(self, value: np.int32) -> None:
+    def repeat(self, value: primitives.Int) -> None:
         """Set the Repeat field value."""
         member = self.get_member("Repeat")
         if member is not None:
@@ -78,7 +77,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ping_pong(self) -> bool | None:
+    def ping_pong(self) -> primitives.Bool | None:
         """The PingPong field value."""
         member = self.get_member("PingPong")
         if member is None:
@@ -86,7 +85,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ping_pong.setter
-    def ping_pong(self, value: bool) -> None:
+    def ping_pong(self, value: primitives.Bool) -> None:
         """Set the PingPong field value."""
         member = self.get_member("PingPong")
         if member is not None:
@@ -98,15 +97,15 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[np.int32])."""
+        """Target ID of the Target reference (targets IField[primitives.Int])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[np.int32] | None) -> None:
-        """Set the Target reference by target ID or IField[np.int32] instance."""
+    def target(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):

@@ -1,8 +1,7 @@
 """Generated component: IntTextEditorParser."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itext_editor_event_receiver import ITextEditorEventReceiver
@@ -17,7 +16,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.IntTextEditorParser"
 
-    def __init__(self, parse_continuously: bool | None = None, update_string_from_value: bool | None = None, parsed_value: np.int32 | None = None, min: np.int32 | None = None, max: np.int32 | None = None, increments: np.int32 | None = None, string_format: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, parse_continuously: primitives.Bool | None = None, update_string_from_value: primitives.Bool | None = None, parsed_value: primitives.Int | None = None, min: primitives.Int | None = None, max: primitives.Int | None = None, increments: primitives.Int | None = None, string_format: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -47,7 +46,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
             self.string_format = string_format
 
     @property
-    def parse_continuously(self) -> bool | None:
+    def parse_continuously(self) -> primitives.Bool | None:
         """The ParseContinuously field value."""
         member = self.get_member("ParseContinuously")
         if member is None:
@@ -55,7 +54,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
         return getattr(member, 'value', None)
 
     @parse_continuously.setter
-    def parse_continuously(self, value: bool) -> None:
+    def parse_continuously(self, value: primitives.Bool) -> None:
         """Set the ParseContinuously field value."""
         member = self.get_member("ParseContinuously")
         if member is not None:
@@ -66,7 +65,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
             )
 
     @property
-    def update_string_from_value(self) -> bool | None:
+    def update_string_from_value(self) -> primitives.Bool | None:
         """The UpdateStringFromValue field value."""
         member = self.get_member("UpdateStringFromValue")
         if member is None:
@@ -74,7 +73,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
         return getattr(member, 'value', None)
 
     @update_string_from_value.setter
-    def update_string_from_value(self, value: bool) -> None:
+    def update_string_from_value(self, value: primitives.Bool) -> None:
         """Set the UpdateStringFromValue field value."""
         member = self.get_member("UpdateStringFromValue")
         if member is not None:
@@ -85,7 +84,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
             )
 
     @property
-    def parsed_value(self) -> np.int32 | None:
+    def parsed_value(self) -> primitives.Int | None:
         """The ParsedValue field value."""
         member = self.get_member("ParsedValue")
         if member is None:
@@ -93,7 +92,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
         return getattr(member, 'value', None)
 
     @parsed_value.setter
-    def parsed_value(self, value: np.int32) -> None:
+    def parsed_value(self, value: primitives.Int) -> None:
         """Set the ParsedValue field value."""
         member = self.get_member("ParsedValue")
         if member is not None:
@@ -104,7 +103,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
             )
 
     @property
-    def min(self) -> np.int32 | None:
+    def min(self) -> primitives.Int | None:
         """The Min field value."""
         member = self.get_member("Min")
         if member is None:
@@ -112,7 +111,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
         return getattr(member, 'value', None)
 
     @min.setter
-    def min(self, value: np.int32) -> None:
+    def min(self, value: primitives.Int) -> None:
         """Set the Min field value."""
         member = self.get_member("Min")
         if member is not None:
@@ -123,7 +122,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
             )
 
     @property
-    def max(self) -> np.int32 | None:
+    def max(self) -> primitives.Int | None:
         """The Max field value."""
         member = self.get_member("Max")
         if member is None:
@@ -131,7 +130,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
         return getattr(member, 'value', None)
 
     @max.setter
-    def max(self, value: np.int32) -> None:
+    def max(self, value: primitives.Int) -> None:
         """Set the Max field value."""
         member = self.get_member("Max")
         if member is not None:
@@ -142,7 +141,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
             )
 
     @property
-    def increments(self) -> np.int32 | None:
+    def increments(self) -> primitives.Int | None:
         """The Increments field value."""
         member = self.get_member("Increments")
         if member is None:
@@ -150,7 +149,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
         return getattr(member, 'value', None)
 
     @increments.setter
-    def increments(self, value: np.int32) -> None:
+    def increments(self, value: primitives.Int) -> None:
         """Set the Increments field value."""
         member = self.get_member("Increments")
         if member is not None:
@@ -161,7 +160,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
             )
 
     @property
-    def string_format(self) -> str | None:
+    def string_format(self) -> primitives.String | None:
         """The StringFormat field value."""
         member = self.get_member("StringFormat")
         if member is None:
@@ -169,7 +168,7 @@ class IntTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEv
         return getattr(member, 'value', None)
 
     @string_format.setter
-    def string_format(self, value: str) -> None:
+    def string_format(self, value: primitives.String) -> None:
         """Set the StringFormat field value."""
         member = self.get_member("StringFormat")
         if member is not None:

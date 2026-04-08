@@ -1,7 +1,5 @@
 """Generated component: CosineLerp_Float3."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class CosineLerp_Float3(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.CosineLerp_Float3"
 
-    def __init__(self, a: str | INodeValueOutput[primitives.Float3] | None = None, b: str | INodeValueOutput[primitives.Float3] | None = None, lerp: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, a: str | INodeValueOutput[primitives.Float3] | None = None, b: str | INodeValueOutput[primitives.Float3] | None = None, lerp: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -83,15 +81,15 @@ class CosineLerp_Float3(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def lerp(self) -> str | None:
-        """Target ID of the Lerp reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Lerp reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Lerp")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @lerp.setter
-    def lerp(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Lerp reference by target ID or INodeValueOutput[np.float32] instance."""
+    def lerp(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Lerp reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Lerp")
         if isinstance(member, members.Reference):

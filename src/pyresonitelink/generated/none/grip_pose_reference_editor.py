@@ -18,7 +18,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GripPoseReferenceEditor"
 
-    def __init__(self, reference_root: str | Slot | None = None, item: str | Slot | None = None, slider: str | Slider | None = None, pose_reference: str | GripPoseReference | None = None, hide_visual_on_end: bool | None = None, root_position: primitives.Float3 | None = None, root_rotation: primitives.FloatQ | None = None, root_scale: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reference_root: str | Slot | None = None, item: str | Slot | None = None, slider: str | Slider | None = None, pose_reference: str | GripPoseReference | None = None, hide_visual_on_end: primitives.Bool | None = None, root_position: primitives.Float3 | None = None, root_rotation: primitives.FloatQ | None = None, root_scale: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -135,7 +135,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def hide_visual_on_end(self) -> bool | None:
+    def hide_visual_on_end(self) -> primitives.Bool | None:
         """The HideVisualOnEnd field value."""
         member = self.get_member("HideVisualOnEnd")
         if member is None:
@@ -143,7 +143,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @hide_visual_on_end.setter
-    def hide_visual_on_end(self, value: bool) -> None:
+    def hide_visual_on_end(self, value: primitives.Bool) -> None:
         """Set the HideVisualOnEnd field value."""
         member = self.get_member("HideVisualOnEnd")
         if member is not None:

@@ -1,8 +1,7 @@
 """Generated component: SbyteToEnum."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -20,14 +19,14 @@ class SbyteToEnum(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     Parameterize with a value type::
 
-        SbyteToEnum[np.float32]
+        SbyteToEnum[primitives.Float]
         SbyteToEnum[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Enums.SbyteToEnum<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Enums.SbyteToEnum<>"
 
-    def __init__(self, value: str | INodeValueOutput[np.int8] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | INodeValueOutput[primitives.SByte] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,15 +39,15 @@ class SbyteToEnum(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[np.int8])."""
+        """Target ID of the Value reference (targets INodeValueOutput[primitives.SByte])."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @value.setter
-    def value(self, target: str | INodeValueOutput[np.int8] | None) -> None:
-        """Set the Value reference by target ID or INodeValueOutput[np.int8] instance."""
+    def value(self, target: str | INodeValueOutput[primitives.SByte] | None) -> None:
+        """Set the Value reference by target ID or INodeValueOutput[primitives.SByte] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Value")
         if isinstance(member, members.Reference):

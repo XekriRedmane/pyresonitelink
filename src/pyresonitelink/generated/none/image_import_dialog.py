@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -15,7 +16,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ImageImportDialog"
 
-    def __init__(self, content_root: str | Slot | None = None, screenshot: bool | None = None, point_filtering: bool | None = None, uncompressed: bool | None = None, alpha_bleed: bool | None = None, lut: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, content_root: str | Slot | None = None, screenshot: primitives.Bool | None = None, point_filtering: primitives.Bool | None = None, uncompressed: primitives.Bool | None = None, alpha_bleed: primitives.Bool | None = None, lut: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -89,7 +90,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("_layout", value)
 
     @property
-    def screenshot(self) -> bool | None:
+    def screenshot(self) -> primitives.Bool | None:
         """The _screenshot field value."""
         member = self.get_member("_screenshot")
         if member is None:
@@ -97,7 +98,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @screenshot.setter
-    def screenshot(self, value: bool) -> None:
+    def screenshot(self, value: primitives.Bool) -> None:
         """Set the _screenshot field value."""
         member = self.get_member("_screenshot")
         if member is not None:
@@ -108,7 +109,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def point_filtering(self) -> bool | None:
+    def point_filtering(self) -> primitives.Bool | None:
         """The _pointFiltering field value."""
         member = self.get_member("_pointFiltering")
         if member is None:
@@ -116,7 +117,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @point_filtering.setter
-    def point_filtering(self, value: bool) -> None:
+    def point_filtering(self, value: primitives.Bool) -> None:
         """Set the _pointFiltering field value."""
         member = self.get_member("_pointFiltering")
         if member is not None:
@@ -127,7 +128,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def uncompressed(self) -> bool | None:
+    def uncompressed(self) -> primitives.Bool | None:
         """The _uncompressed field value."""
         member = self.get_member("_uncompressed")
         if member is None:
@@ -135,7 +136,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @uncompressed.setter
-    def uncompressed(self, value: bool) -> None:
+    def uncompressed(self, value: primitives.Bool) -> None:
         """Set the _uncompressed field value."""
         member = self.get_member("_uncompressed")
         if member is not None:
@@ -146,7 +147,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def alpha_bleed(self) -> bool | None:
+    def alpha_bleed(self) -> primitives.Bool | None:
         """The _alphaBleed field value."""
         member = self.get_member("_alphaBleed")
         if member is None:
@@ -154,7 +155,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @alpha_bleed.setter
-    def alpha_bleed(self, value: bool) -> None:
+    def alpha_bleed(self, value: primitives.Bool) -> None:
         """Set the _alphaBleed field value."""
         member = self.get_member("_alphaBleed")
         if member is not None:
@@ -165,7 +166,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def lut(self) -> bool | None:
+    def lut(self) -> primitives.Bool | None:
         """The _lut field value."""
         member = self.get_member("_lut")
         if member is None:
@@ -173,7 +174,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @lut.setter
-    def lut(self, value: bool) -> None:
+    def lut(self, value: primitives.Bool) -> None:
         """Set the _lut field value."""
         member = self.get_member("_lut")
         if member is not None:

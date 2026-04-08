@@ -1,6 +1,7 @@
 """Generated component: LegacyFeatureSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyFeatureSettings"
 
-    def __init__(self, use_legacy_grip_equip: bool | None = None, use_legacy_world_switcher: bool | None = None, use_legacy_inventory_session_shortcuts: bool | None = None, suppress_feet_simulation: bool | None = None, preserve_legacy_reverb_zone_handling: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_legacy_grip_equip: primitives.Bool | None = None, use_legacy_world_switcher: primitives.Bool | None = None, use_legacy_inventory_session_shortcuts: primitives.Bool | None = None, suppress_feet_simulation: primitives.Bool | None = None, preserve_legacy_reverb_zone_handling: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +38,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
             self.preserve_legacy_reverb_zone_handling = preserve_legacy_reverb_zone_handling
 
     @property
-    def use_legacy_grip_equip(self) -> bool | None:
+    def use_legacy_grip_equip(self) -> primitives.Bool | None:
         """The UseLegacyGripEquip field value."""
         member = self.get_member("UseLegacyGripEquip")
         if member is None:
@@ -45,7 +46,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_legacy_grip_equip.setter
-    def use_legacy_grip_equip(self, value: bool) -> None:
+    def use_legacy_grip_equip(self, value: primitives.Bool) -> None:
         """Set the UseLegacyGripEquip field value."""
         member = self.get_member("UseLegacyGripEquip")
         if member is not None:
@@ -56,7 +57,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def use_legacy_world_switcher(self) -> bool | None:
+    def use_legacy_world_switcher(self) -> primitives.Bool | None:
         """The UseLegacyWorldSwitcher field value."""
         member = self.get_member("UseLegacyWorldSwitcher")
         if member is None:
@@ -64,7 +65,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_legacy_world_switcher.setter
-    def use_legacy_world_switcher(self, value: bool) -> None:
+    def use_legacy_world_switcher(self, value: primitives.Bool) -> None:
         """Set the UseLegacyWorldSwitcher field value."""
         member = self.get_member("UseLegacyWorldSwitcher")
         if member is not None:
@@ -75,7 +76,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def use_legacy_inventory_session_shortcuts(self) -> bool | None:
+    def use_legacy_inventory_session_shortcuts(self) -> primitives.Bool | None:
         """The UseLegacyInventorySessionShortcuts field value."""
         member = self.get_member("UseLegacyInventorySessionShortcuts")
         if member is None:
@@ -83,7 +84,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_legacy_inventory_session_shortcuts.setter
-    def use_legacy_inventory_session_shortcuts(self, value: bool) -> None:
+    def use_legacy_inventory_session_shortcuts(self, value: primitives.Bool) -> None:
         """Set the UseLegacyInventorySessionShortcuts field value."""
         member = self.get_member("UseLegacyInventorySessionShortcuts")
         if member is not None:
@@ -94,7 +95,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def suppress_feet_simulation(self) -> bool | None:
+    def suppress_feet_simulation(self) -> primitives.Bool | None:
         """The SuppressFeetSimulation field value."""
         member = self.get_member("SuppressFeetSimulation")
         if member is None:
@@ -102,7 +103,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @suppress_feet_simulation.setter
-    def suppress_feet_simulation(self, value: bool) -> None:
+    def suppress_feet_simulation(self, value: primitives.Bool) -> None:
         """Set the SuppressFeetSimulation field value."""
         member = self.get_member("SuppressFeetSimulation")
         if member is not None:
@@ -113,7 +114,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def preserve_legacy_reverb_zone_handling(self) -> bool | None:
+    def preserve_legacy_reverb_zone_handling(self) -> primitives.Bool | None:
         """The PreserveLegacyReverbZoneHandling field value."""
         member = self.get_member("PreserveLegacyReverbZoneHandling")
         if member is None:
@@ -121,7 +122,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @preserve_legacy_reverb_zone_handling.setter
-    def preserve_legacy_reverb_zone_handling(self, value: bool) -> None:
+    def preserve_legacy_reverb_zone_handling(self, value: primitives.Bool) -> None:
         """Set the PreserveLegacyReverbZoneHandling field value."""
         member = self.get_member("PreserveLegacyReverbZoneHandling")
         if member is not None:

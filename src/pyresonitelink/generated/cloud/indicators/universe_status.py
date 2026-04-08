@@ -1,6 +1,7 @@
 """Generated component: UniverseStatus."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UniverseStatus"
 
-    def __init__(self, universe_id: str | None = None, universe_name: str | None = None, primary_group_id: str | None = None, in_universe: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, universe_id: primitives.String | None = None, universe_name: primitives.String | None = None, primary_group_id: primitives.String | None = None, in_universe: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +37,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.in_universe = in_universe
 
     @property
-    def universe_id(self) -> str | None:
+    def universe_id(self) -> primitives.String | None:
         """The UniverseId field value."""
         member = self.get_member("UniverseId")
         if member is None:
@@ -44,7 +45,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @universe_id.setter
-    def universe_id(self, value: str) -> None:
+    def universe_id(self, value: primitives.String) -> None:
         """Set the UniverseId field value."""
         member = self.get_member("UniverseId")
         if member is not None:
@@ -55,7 +56,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def universe_name(self) -> str | None:
+    def universe_name(self) -> primitives.String | None:
         """The UniverseName field value."""
         member = self.get_member("UniverseName")
         if member is None:
@@ -63,7 +64,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @universe_name.setter
-    def universe_name(self, value: str) -> None:
+    def universe_name(self, value: primitives.String) -> None:
         """Set the UniverseName field value."""
         member = self.get_member("UniverseName")
         if member is not None:
@@ -74,7 +75,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def primary_group_id(self) -> str | None:
+    def primary_group_id(self) -> primitives.String | None:
         """The PrimaryGroupId field value."""
         member = self.get_member("PrimaryGroupId")
         if member is None:
@@ -82,7 +83,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @primary_group_id.setter
-    def primary_group_id(self, value: str) -> None:
+    def primary_group_id(self, value: primitives.String) -> None:
         """Set the PrimaryGroupId field value."""
         member = self.get_member("PrimaryGroupId")
         if member is not None:
@@ -93,7 +94,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def in_universe(self) -> bool | None:
+    def in_universe(self) -> primitives.Bool | None:
         """The InUniverse field value."""
         member = self.get_member("InUniverse")
         if member is None:
@@ -101,7 +102,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @in_universe.setter
-    def in_universe(self, value: bool) -> None:
+    def in_universe(self, value: primitives.Bool) -> None:
         """Set the InUniverse field value."""
         member = self.get_member("InUniverse")
         if member is not None:

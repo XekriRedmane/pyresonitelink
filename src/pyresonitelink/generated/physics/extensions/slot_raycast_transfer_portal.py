@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -17,7 +18,7 @@ class SlotRaycastTransferPortal(GeneratedComponent, IRaycastPortal, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlotRaycastTransferPortal"
 
-    def __init__(self, exit: str | Slot | None = None, override_hit_triggers: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, exit: str | Slot | None = None, override_hit_triggers: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -53,7 +54,7 @@ class SlotRaycastTransferPortal(GeneratedComponent, IRaycastPortal, IWorldEventR
             )
 
     @property
-    def override_hit_triggers(self) -> bool | None:
+    def override_hit_triggers(self) -> primitives.Bool | None:
         """The OverrideHitTriggers field value."""
         member = self.get_member("OverrideHitTriggers")
         if member is None:
@@ -61,7 +62,7 @@ class SlotRaycastTransferPortal(GeneratedComponent, IRaycastPortal, IWorldEventR
         return getattr(member, 'value', None)
 
     @override_hit_triggers.setter
-    def override_hit_triggers(self, value: bool) -> None:
+    def override_hit_triggers(self, value: primitives.Bool) -> None:
         """Set the OverrideHitTriggers field value."""
         member = self.get_member("OverrideHitTriggers")
         if member is not None:

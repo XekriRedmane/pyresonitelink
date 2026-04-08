@@ -1,8 +1,7 @@
 """Generated component: DesktopRenderSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopRenderSettings"
 
-    def __init__(self, field_of_view: np.float32 | None = None, sprint_field_of_view_zoom: bool | None = None, vsync: bool | None = None, limit_framerate_when_unfocused: bool | None = None, maximum_background_framerate: np.int32 | None = None, frame_pacing_options_enabled: bool | None = None, background_framerate_enabled: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, field_of_view: primitives.Float | None = None, sprint_field_of_view_zoom: primitives.Bool | None = None, vsync: primitives.Bool | None = None, limit_framerate_when_unfocused: primitives.Bool | None = None, maximum_background_framerate: primitives.Int | None = None, frame_pacing_options_enabled: primitives.Bool | None = None, background_framerate_enabled: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +44,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
             self.background_framerate_enabled = background_framerate_enabled
 
     @property
-    def field_of_view(self) -> np.float32 | None:
+    def field_of_view(self) -> primitives.Float | None:
         """The FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is None:
@@ -53,7 +52,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @field_of_view.setter
-    def field_of_view(self, value: np.float32) -> None:
+    def field_of_view(self, value: primitives.Float) -> None:
         """Set the FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is not None:
@@ -64,7 +63,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def sprint_field_of_view_zoom(self) -> bool | None:
+    def sprint_field_of_view_zoom(self) -> primitives.Bool | None:
         """The SprintFieldOfViewZoom field value."""
         member = self.get_member("SprintFieldOfViewZoom")
         if member is None:
@@ -72,7 +71,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @sprint_field_of_view_zoom.setter
-    def sprint_field_of_view_zoom(self, value: bool) -> None:
+    def sprint_field_of_view_zoom(self, value: primitives.Bool) -> None:
         """Set the SprintFieldOfViewZoom field value."""
         member = self.get_member("SprintFieldOfViewZoom")
         if member is not None:
@@ -83,7 +82,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def vsync(self) -> bool | None:
+    def vsync(self) -> primitives.Bool | None:
         """The VSync field value."""
         member = self.get_member("VSync")
         if member is None:
@@ -91,7 +90,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @vsync.setter
-    def vsync(self, value: bool) -> None:
+    def vsync(self, value: primitives.Bool) -> None:
         """Set the VSync field value."""
         member = self.get_member("VSync")
         if member is not None:
@@ -102,7 +101,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def limit_framerate_when_unfocused(self) -> bool | None:
+    def limit_framerate_when_unfocused(self) -> primitives.Bool | None:
         """The LimitFramerateWhenUnfocused field value."""
         member = self.get_member("LimitFramerateWhenUnfocused")
         if member is None:
@@ -110,7 +109,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @limit_framerate_when_unfocused.setter
-    def limit_framerate_when_unfocused(self, value: bool) -> None:
+    def limit_framerate_when_unfocused(self, value: primitives.Bool) -> None:
         """Set the LimitFramerateWhenUnfocused field value."""
         member = self.get_member("LimitFramerateWhenUnfocused")
         if member is not None:
@@ -121,7 +120,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def maximum_background_framerate(self) -> np.int32 | None:
+    def maximum_background_framerate(self) -> primitives.Int | None:
         """The MaximumBackgroundFramerate field value."""
         member = self.get_member("MaximumBackgroundFramerate")
         if member is None:
@@ -129,7 +128,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @maximum_background_framerate.setter
-    def maximum_background_framerate(self, value: np.int32) -> None:
+    def maximum_background_framerate(self, value: primitives.Int) -> None:
         """Set the MaximumBackgroundFramerate field value."""
         member = self.get_member("MaximumBackgroundFramerate")
         if member is not None:
@@ -140,7 +139,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def frame_pacing_options_enabled(self) -> bool | None:
+    def frame_pacing_options_enabled(self) -> primitives.Bool | None:
         """The FramePacingOptionsEnabled field value."""
         member = self.get_member("FramePacingOptionsEnabled")
         if member is None:
@@ -148,7 +147,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @frame_pacing_options_enabled.setter
-    def frame_pacing_options_enabled(self, value: bool) -> None:
+    def frame_pacing_options_enabled(self, value: primitives.Bool) -> None:
         """Set the FramePacingOptionsEnabled field value."""
         member = self.get_member("FramePacingOptionsEnabled")
         if member is not None:
@@ -159,7 +158,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def background_framerate_enabled(self) -> bool | None:
+    def background_framerate_enabled(self) -> primitives.Bool | None:
         """The BackgroundFramerateEnabled field value."""
         member = self.get_member("BackgroundFramerateEnabled")
         if member is None:
@@ -167,7 +166,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @background_framerate_enabled.setter
-    def background_framerate_enabled(self, value: bool) -> None:
+    def background_framerate_enabled(self, value: primitives.Bool) -> None:
         """Set the BackgroundFramerateEnabled field value."""
         member = self.get_member("BackgroundFramerateEnabled")
         if member is not None:

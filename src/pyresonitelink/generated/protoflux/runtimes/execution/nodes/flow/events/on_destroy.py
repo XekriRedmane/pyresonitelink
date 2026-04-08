@@ -1,6 +1,7 @@
 """Generated component: OnDestroy."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
@@ -22,7 +23,7 @@ class OnDestroy(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnDestroy"
 
-    def __init__(self, trigger: str | ISyncNodeOperation | None = None, only_host: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, trigger: str | ISyncNodeOperation | None = None, only_host: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +60,15 @@ class OnDestroy(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @property
     def only_host(self) -> str | None:
-        """Target ID of the OnlyHost reference (targets INodeValueOutput[bool])."""
+        """Target ID of the OnlyHost reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @only_host.setter
-    def only_host(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the OnlyHost reference by target ID or INodeValueOutput[bool] instance."""
+    def only_host(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the OnlyHost reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):

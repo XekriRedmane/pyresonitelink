@@ -1,6 +1,7 @@
 """Generated component: LocaleSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocaleSettings"
 
-    def __init__(self, primary_interface_locale_code: str | None = None, culture_locale_code: str | None = None, use_imperial_units: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, primary_interface_locale_code: primitives.String | None = None, culture_locale_code: primitives.String | None = None, use_imperial_units: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +32,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
             self.use_imperial_units = use_imperial_units
 
     @property
-    def primary_interface_locale_code(self) -> str | None:
+    def primary_interface_locale_code(self) -> primitives.String | None:
         """The PrimaryInterfaceLocaleCode field value."""
         member = self.get_member("PrimaryInterfaceLocaleCode")
         if member is None:
@@ -39,7 +40,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @primary_interface_locale_code.setter
-    def primary_interface_locale_code(self, value: str) -> None:
+    def primary_interface_locale_code(self, value: primitives.String) -> None:
         """Set the PrimaryInterfaceLocaleCode field value."""
         member = self.get_member("PrimaryInterfaceLocaleCode")
         if member is not None:
@@ -50,7 +51,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def culture_locale_code(self) -> str | None:
+    def culture_locale_code(self) -> primitives.String | None:
         """The CultureLocaleCode field value."""
         member = self.get_member("CultureLocaleCode")
         if member is None:
@@ -58,7 +59,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @culture_locale_code.setter
-    def culture_locale_code(self, value: str) -> None:
+    def culture_locale_code(self, value: primitives.String) -> None:
         """Set the CultureLocaleCode field value."""
         member = self.get_member("CultureLocaleCode")
         if member is not None:
@@ -69,7 +70,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def use_imperial_units(self) -> bool | None:
+    def use_imperial_units(self) -> primitives.Bool | None:
         """The UseImperialUnits field value."""
         member = self.get_member("UseImperialUnits")
         if member is None:
@@ -77,7 +78,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_imperial_units.setter
-    def use_imperial_units(self, value: bool) -> None:
+    def use_imperial_units(self, value: primitives.Bool) -> None:
         """Set the UseImperialUnits field value."""
         member = self.get_member("UseImperialUnits")
         if member is not None:
@@ -87,7 +88,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
                 "UseImperialUnits", fields.FieldBool(value=value)
             )
 
-    async def set_current_locale(self, resolink: protocols.ResoniteLinkClient, locale_code: str, debug: bool = False) -> dict:
+    async def set_current_locale(self, resolink: protocols.ResoniteLinkClient, locale_code: primitives.String, debug: bool = False) -> dict:
         """Call the SetCurrentLocale sync method.
 
         Args:

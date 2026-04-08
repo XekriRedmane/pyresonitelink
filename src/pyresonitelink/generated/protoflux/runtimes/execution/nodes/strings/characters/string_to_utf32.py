@@ -1,8 +1,7 @@
 """Generated component: StringToUTF32."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -22,7 +21,7 @@ class StringToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.StringToUTF32"
 
-    def __init__(self, string: str | INodeObjectOutput[str] | None = None, index: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, string: str | INodeObjectOutput[primitives.String] | None = None, index: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,15 +37,15 @@ class StringToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def string(self) -> str | None:
-        """Target ID of the String reference (targets INodeObjectOutput[str])."""
+        """Target ID of the String reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("String")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @string.setter
-    def string(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the String reference by target ID or INodeObjectOutput[str] instance."""
+    def string(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the String reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("String")
         if isinstance(member, members.Reference):
@@ -59,15 +58,15 @@ class StringToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def index(self) -> str | None:
-        """Target ID of the Index reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Index reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @index.setter
-    def index(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Index reference by target ID or INodeValueOutput[np.int32] instance."""
+    def index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Index reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Index")
         if isinstance(member, members.Reference):

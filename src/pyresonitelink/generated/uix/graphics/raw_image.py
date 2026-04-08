@@ -20,7 +20,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.RawImage"
 
-    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, material: str | IAssetProvider[Material] | None = None, tint: primitives.ColorX | None = None, uv_rect: primitives.Rect | None = None, preserve_aspect: bool | None = None, interaction_target: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, material: str | IAssetProvider[Material] | None = None, tint: primitives.ColorX | None = None, uv_rect: primitives.Rect | None = None, preserve_aspect: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -140,7 +140,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
         self.set_member("Orientation", value)
 
     @property
-    def preserve_aspect(self) -> bool | None:
+    def preserve_aspect(self) -> primitives.Bool | None:
         """The PreserveAspect field value."""
         member = self.get_member("PreserveAspect")
         if member is None:
@@ -148,7 +148,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @preserve_aspect.setter
-    def preserve_aspect(self, value: bool) -> None:
+    def preserve_aspect(self, value: primitives.Bool) -> None:
         """Set the PreserveAspect field value."""
         member = self.get_member("PreserveAspect")
         if member is not None:
@@ -159,7 +159,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             )
 
     @property
-    def interaction_target(self) -> bool | None:
+    def interaction_target(self) -> primitives.Bool | None:
         """The InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is None:
@@ -167,7 +167,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @interaction_target.setter
-    def interaction_target(self, value: bool) -> None:
+    def interaction_target(self, value: primitives.Bool) -> None:
         """Set the InteractionTarget field value."""
         member = self.get_member("InteractionTarget")
         if member is not None:

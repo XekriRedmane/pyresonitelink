@@ -23,7 +23,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GridContainer"
 
-    def __init__(self, edit_mode: bool | None = None, facets_root: str | Slot | None = None, background: str | RectTransform | None = None, content: str | RectTransform | None = None, overlay: str | RectTransform | None = None, recalculate_on_size_change: bool | None = None, cell_size: primitives.Float2 | None = None, padding: primitives.Float2 | None = None, last_calculated_centering_offset: primitives.Float2 | None = None, last_calculated_cell_size: primitives.Float2 | None = None, last_calculated_padding: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, edit_mode: primitives.Bool | None = None, facets_root: str | Slot | None = None, background: str | RectTransform | None = None, content: str | RectTransform | None = None, overlay: str | RectTransform | None = None, recalculate_on_size_change: primitives.Bool | None = None, cell_size: primitives.Float2 | None = None, padding: primitives.Float2 | None = None, last_calculated_centering_offset: primitives.Float2 | None = None, last_calculated_cell_size: primitives.Float2 | None = None, last_calculated_padding: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -65,7 +65,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
             self.last_calculated_padding = last_calculated_padding
 
     @property
-    def edit_mode(self) -> bool | None:
+    def edit_mode(self) -> primitives.Bool | None:
         """The EditMode field value."""
         member = self.get_member("EditMode")
         if member is None:
@@ -73,7 +73,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
         return getattr(member, 'value', None)
 
     @edit_mode.setter
-    def edit_mode(self, value: bool) -> None:
+    def edit_mode(self, value: primitives.Bool) -> None:
         """Set the EditMode field value."""
         member = self.get_member("EditMode")
         if member is not None:
@@ -168,7 +168,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
             )
 
     @property
-    def recalculate_on_size_change(self) -> bool | None:
+    def recalculate_on_size_change(self) -> primitives.Bool | None:
         """The RecalculateOnSizeChange field value."""
         member = self.get_member("RecalculateOnSizeChange")
         if member is None:
@@ -176,7 +176,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
         return getattr(member, 'value', None)
 
     @recalculate_on_size_change.setter
-    def recalculate_on_size_change(self, value: bool) -> None:
+    def recalculate_on_size_change(self, value: primitives.Bool) -> None:
         """Set the RecalculateOnSizeChange field value."""
         member = self.get_member("RecalculateOnSizeChange")
         if member is not None:

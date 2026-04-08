@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.light import Light
@@ -20,7 +21,7 @@ class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LightGizmo"
 
-    def __init__(self, active: bool | None = None, target: str | Light | None = None, point_icon_active: str | IField[bool] | None = None, spot_icon_active: str | IField[bool] | None = None, directional_icon_active: str | IField[bool] | None = None, point_active: str | IField[bool] | None = None, spot_active: str | IField[bool] | None = None, directional_active: str | IField[bool] | None = None, point_gizmo: str | SphereGizmo | None = None, spot_gizmo: str | ConeGizmo | None = None, dir_gizmo: str | VectorGizmo | None = None, icon_material: str | OverlayFresnelMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, active: primitives.Bool | None = None, target: str | Light | None = None, point_icon_active: str | IField[primitives.Bool] | None = None, spot_icon_active: str | IField[primitives.Bool] | None = None, directional_icon_active: str | IField[primitives.Bool] | None = None, point_active: str | IField[primitives.Bool] | None = None, spot_active: str | IField[primitives.Bool] | None = None, directional_active: str | IField[primitives.Bool] | None = None, point_gizmo: str | SphereGizmo | None = None, spot_gizmo: str | ConeGizmo | None = None, dir_gizmo: str | VectorGizmo | None = None, icon_material: str | OverlayFresnelMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -65,7 +66,7 @@ class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
             self.icon_material = icon_material
 
     @property
-    def active(self) -> bool | None:
+    def active(self) -> primitives.Bool | None:
         """The Active field value."""
         member = self.get_member("Active")
         if member is None:
@@ -73,7 +74,7 @@ class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @active.setter
-    def active(self, value: bool) -> None:
+    def active(self, value: primitives.Bool) -> None:
         """Set the Active field value."""
         member = self.get_member("Active")
         if member is not None:
@@ -106,15 +107,15 @@ class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def point_icon_active(self) -> str | None:
-        """Target ID of the _pointIconActive reference (targets IField[bool])."""
+        """Target ID of the _pointIconActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_pointIconActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @point_icon_active.setter
-    def point_icon_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _pointIconActive reference by target ID or IField[bool] instance."""
+    def point_icon_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _pointIconActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_pointIconActive")
         if isinstance(member, members.Reference):
@@ -127,15 +128,15 @@ class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def spot_icon_active(self) -> str | None:
-        """Target ID of the _spotIconActive reference (targets IField[bool])."""
+        """Target ID of the _spotIconActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_spotIconActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spot_icon_active.setter
-    def spot_icon_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _spotIconActive reference by target ID or IField[bool] instance."""
+    def spot_icon_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _spotIconActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_spotIconActive")
         if isinstance(member, members.Reference):
@@ -148,15 +149,15 @@ class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def directional_icon_active(self) -> str | None:
-        """Target ID of the _directionalIconActive reference (targets IField[bool])."""
+        """Target ID of the _directionalIconActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_directionalIconActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @directional_icon_active.setter
-    def directional_icon_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _directionalIconActive reference by target ID or IField[bool] instance."""
+    def directional_icon_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _directionalIconActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_directionalIconActive")
         if isinstance(member, members.Reference):
@@ -169,15 +170,15 @@ class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def point_active(self) -> str | None:
-        """Target ID of the _pointActive reference (targets IField[bool])."""
+        """Target ID of the _pointActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_pointActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @point_active.setter
-    def point_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _pointActive reference by target ID or IField[bool] instance."""
+    def point_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _pointActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_pointActive")
         if isinstance(member, members.Reference):
@@ -190,15 +191,15 @@ class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def spot_active(self) -> str | None:
-        """Target ID of the _spotActive reference (targets IField[bool])."""
+        """Target ID of the _spotActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_spotActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spot_active.setter
-    def spot_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _spotActive reference by target ID or IField[bool] instance."""
+    def spot_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _spotActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_spotActive")
         if isinstance(member, members.Reference):
@@ -211,15 +212,15 @@ class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def directional_active(self) -> str | None:
-        """Target ID of the _directionalActive reference (targets IField[bool])."""
+        """Target ID of the _directionalActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_directionalActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @directional_active.setter
-    def directional_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _directionalActive reference by target ID or IField[bool] instance."""
+    def directional_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _directionalActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_directionalActive")
         if isinstance(member, members.Reference):

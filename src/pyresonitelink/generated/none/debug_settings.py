@@ -1,6 +1,7 @@
 """Generated component: DebugSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class DebugSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugSettings"
 
-    def __init__(self, debug_input_bindings: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, debug_input_bindings: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class DebugSettings(GeneratedComponent, ICustomInspector):
             self.debug_input_bindings = debug_input_bindings
 
     @property
-    def debug_input_bindings(self) -> bool | None:
+    def debug_input_bindings(self) -> primitives.Bool | None:
         """The DebugInputBindings field value."""
         member = self.get_member("DebugInputBindings")
         if member is None:
@@ -33,7 +34,7 @@ class DebugSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @debug_input_bindings.setter
-    def debug_input_bindings(self, value: bool) -> None:
+    def debug_input_bindings(self, value: primitives.Bool) -> None:
         """Set the DebugInputBindings field value."""
         member = self.get_member("DebugInputBindings")
         if member is not None:

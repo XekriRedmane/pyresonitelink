@@ -1,9 +1,8 @@
 """Generated component: Consumable."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -20,7 +19,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Consumable"
 
-    def __init__(self, must_be_holding: bool | None = None, can_feed_to_others: bool | None = None, override_reference_point: str | Slot | None = None, radius: np.float32 | None = None, start_hysteresis: np.float32 | None = None, current_stage_index: np.int32 | None = None, is_being_consumed: bool | None = None, has_been_fully_consumed: bool | None = None, destroy_on_consumed: bool | None = None, waiting_for_reset: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, must_be_holding: primitives.Bool | None = None, can_feed_to_others: primitives.Bool | None = None, override_reference_point: str | Slot | None = None, radius: primitives.Float | None = None, start_hysteresis: primitives.Float | None = None, current_stage_index: primitives.Int | None = None, is_being_consumed: primitives.Bool | None = None, has_been_fully_consumed: primitives.Bool | None = None, destroy_on_consumed: primitives.Bool | None = None, waiting_for_reset: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,7 +58,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             self.waiting_for_reset = waiting_for_reset
 
     @property
-    def must_be_holding(self) -> bool | None:
+    def must_be_holding(self) -> primitives.Bool | None:
         """The MustBeHolding field value."""
         member = self.get_member("MustBeHolding")
         if member is None:
@@ -67,7 +66,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @must_be_holding.setter
-    def must_be_holding(self, value: bool) -> None:
+    def must_be_holding(self, value: primitives.Bool) -> None:
         """Set the MustBeHolding field value."""
         member = self.get_member("MustBeHolding")
         if member is not None:
@@ -78,7 +77,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             )
 
     @property
-    def can_feed_to_others(self) -> bool | None:
+    def can_feed_to_others(self) -> primitives.Bool | None:
         """The CanFeedToOthers field value."""
         member = self.get_member("CanFeedToOthers")
         if member is None:
@@ -86,7 +85,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @can_feed_to_others.setter
-    def can_feed_to_others(self, value: bool) -> None:
+    def can_feed_to_others(self, value: primitives.Bool) -> None:
         """Set the CanFeedToOthers field value."""
         member = self.get_member("CanFeedToOthers")
         if member is not None:
@@ -118,7 +117,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -126,7 +125,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -137,7 +136,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             )
 
     @property
-    def start_hysteresis(self) -> np.float32 | None:
+    def start_hysteresis(self) -> primitives.Float | None:
         """The StartHysteresis field value."""
         member = self.get_member("StartHysteresis")
         if member is None:
@@ -145,7 +144,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @start_hysteresis.setter
-    def start_hysteresis(self, value: np.float32) -> None:
+    def start_hysteresis(self, value: primitives.Float) -> None:
         """Set the StartHysteresis field value."""
         member = self.get_member("StartHysteresis")
         if member is not None:
@@ -156,7 +155,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             )
 
     @property
-    def current_stage_index(self) -> np.int32 | None:
+    def current_stage_index(self) -> primitives.Int | None:
         """The CurrentStageIndex field value."""
         member = self.get_member("CurrentStageIndex")
         if member is None:
@@ -164,7 +163,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @current_stage_index.setter
-    def current_stage_index(self, value: np.int32) -> None:
+    def current_stage_index(self, value: primitives.Int) -> None:
         """Set the CurrentStageIndex field value."""
         member = self.get_member("CurrentStageIndex")
         if member is not None:
@@ -175,7 +174,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             )
 
     @property
-    def is_being_consumed(self) -> bool | None:
+    def is_being_consumed(self) -> primitives.Bool | None:
         """The IsBeingConsumed field value."""
         member = self.get_member("IsBeingConsumed")
         if member is None:
@@ -183,7 +182,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @is_being_consumed.setter
-    def is_being_consumed(self, value: bool) -> None:
+    def is_being_consumed(self, value: primitives.Bool) -> None:
         """Set the IsBeingConsumed field value."""
         member = self.get_member("IsBeingConsumed")
         if member is not None:
@@ -194,7 +193,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             )
 
     @property
-    def has_been_fully_consumed(self) -> bool | None:
+    def has_been_fully_consumed(self) -> primitives.Bool | None:
         """The HasBeenFullyConsumed field value."""
         member = self.get_member("HasBeenFullyConsumed")
         if member is None:
@@ -202,7 +201,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @has_been_fully_consumed.setter
-    def has_been_fully_consumed(self, value: bool) -> None:
+    def has_been_fully_consumed(self, value: primitives.Bool) -> None:
         """Set the HasBeenFullyConsumed field value."""
         member = self.get_member("HasBeenFullyConsumed")
         if member is not None:
@@ -226,7 +225,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         self.set_member("CurrentlyConsumingUser", value)
 
     @property
-    def destroy_on_consumed(self) -> bool | None:
+    def destroy_on_consumed(self) -> primitives.Bool | None:
         """The DestroyOnConsumed field value."""
         member = self.get_member("DestroyOnConsumed")
         if member is None:
@@ -234,7 +233,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @destroy_on_consumed.setter
-    def destroy_on_consumed(self, value: bool) -> None:
+    def destroy_on_consumed(self, value: primitives.Bool) -> None:
         """Set the DestroyOnConsumed field value."""
         member = self.get_member("DestroyOnConsumed")
         if member is not None:
@@ -258,7 +257,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         self.set_member("Stages", value)
 
     @property
-    def waiting_for_reset(self) -> bool | None:
+    def waiting_for_reset(self) -> primitives.Bool | None:
         """The _waitingForReset field value."""
         member = self.get_member("_waitingForReset")
         if member is None:
@@ -266,7 +265,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @waiting_for_reset.setter
-    def waiting_for_reset(self, value: bool) -> None:
+    def waiting_for_reset(self, value: primitives.Bool) -> None:
         """Set the _waitingForReset field value."""
         member = self.get_member("_waitingForReset")
         if member is not None:

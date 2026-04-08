@@ -1,7 +1,5 @@
 """Generated component: MeshUVRaycastPortal."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class MeshUVRaycastPortal(GeneratedComponent, IRaycastPortal, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshUVRaycastPortal"
 
-    def __init__(self, offset: np.float32 | None = None, ray_exit: str | IUVToRayConverter | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, repeat_uv: bool | None = None, override_hit_triggers: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, offset: primitives.Float | None = None, ray_exit: str | IUVToRayConverter | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, repeat_uv: primitives.Bool | None = None, override_hit_triggers: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -47,7 +45,7 @@ class MeshUVRaycastPortal(GeneratedComponent, IRaycastPortal, IWorldEventReceive
             self.override_hit_triggers = override_hit_triggers
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -55,7 +53,7 @@ class MeshUVRaycastPortal(GeneratedComponent, IRaycastPortal, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:
@@ -125,7 +123,7 @@ class MeshUVRaycastPortal(GeneratedComponent, IRaycastPortal, IWorldEventReceive
             )
 
     @property
-    def repeat_uv(self) -> bool | None:
+    def repeat_uv(self) -> primitives.Bool | None:
         """The RepeatUV field value."""
         member = self.get_member("RepeatUV")
         if member is None:
@@ -133,7 +131,7 @@ class MeshUVRaycastPortal(GeneratedComponent, IRaycastPortal, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @repeat_uv.setter
-    def repeat_uv(self, value: bool) -> None:
+    def repeat_uv(self, value: primitives.Bool) -> None:
         """Set the RepeatUV field value."""
         member = self.get_member("RepeatUV")
         if member is not None:
@@ -144,7 +142,7 @@ class MeshUVRaycastPortal(GeneratedComponent, IRaycastPortal, IWorldEventReceive
             )
 
     @property
-    def override_hit_triggers(self) -> bool | None:
+    def override_hit_triggers(self) -> primitives.Bool | None:
         """The OverrideHitTriggers field value."""
         member = self.get_member("OverrideHitTriggers")
         if member is None:
@@ -152,7 +150,7 @@ class MeshUVRaycastPortal(GeneratedComponent, IRaycastPortal, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @override_hit_triggers.setter
-    def override_hit_triggers(self, value: bool) -> None:
+    def override_hit_triggers(self, value: primitives.Bool) -> None:
         """Set the OverrideHitTriggers field value."""
         member = self.get_member("OverrideHitTriggers")
         if member is not None:

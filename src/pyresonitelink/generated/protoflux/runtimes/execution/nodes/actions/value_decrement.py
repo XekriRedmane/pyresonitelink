@@ -14,7 +14,7 @@ class ValueDecrement(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        ValueDecrement[np.float32]
+        ValueDecrement[primitives.Float]
         ValueDecrement[primitives.Float3]
     """
 

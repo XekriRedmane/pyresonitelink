@@ -18,7 +18,7 @@ class ValueMaxMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        ValueMaxMulti[np.float32]
+        ValueMaxMulti[primitives.Float]
         ValueMaxMulti[primitives.Float3]
     """
 

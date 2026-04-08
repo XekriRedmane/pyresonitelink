@@ -1,8 +1,7 @@
 """Generated component: SetSlotOrderOffset."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -25,7 +24,7 @@ class SetSlotOrderOffset(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetSlotOrderOffset"
 
-    def __init__(self, next: str | INodeOperation | None = None, instance: str | INodeObjectOutput[Slot] | None = None, order_offset: str | INodeValueOutput[np.int64] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, instance: str | INodeObjectOutput[Slot] | None = None, order_offset: str | INodeValueOutput[primitives.Long] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -86,15 +85,15 @@ class SetSlotOrderOffset(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @property
     def order_offset(self) -> str | None:
-        """Target ID of the OrderOffset reference (targets INodeValueOutput[np.int64])."""
+        """Target ID of the OrderOffset reference (targets INodeValueOutput[primitives.Long])."""
         member = self.get_member("OrderOffset")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @order_offset.setter
-    def order_offset(self, target: str | INodeValueOutput[np.int64] | None) -> None:
-        """Set the OrderOffset reference by target ID or INodeValueOutput[np.int64] instance."""
+    def order_offset(self, target: str | INodeValueOutput[primitives.Long] | None) -> None:
+        """Set the OrderOffset reference by target ID or INodeValueOutput[primitives.Long] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("OrderOffset")
         if isinstance(member, members.Reference):

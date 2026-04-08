@@ -1,8 +1,7 @@
 """Generated component: ColorBySpeedMinMaxHSV."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -17,7 +16,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorBySpeedMinMaxHSV"
 
-    def __init__(self, min_speed: np.float32 | None = None, max_speed: np.float32 | None = None, min_hue: np.float32 | None = None, max_hue: np.float32 | None = None, min_saturation: np.float32 | None = None, max_saturation: np.float32 | None = None, min_value: np.float32 | None = None, max_value: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_speed: primitives.Float | None = None, max_speed: primitives.Float | None = None, min_hue: primitives.Float | None = None, max_hue: primitives.Float | None = None, min_saturation: primitives.Float | None = None, max_saturation: primitives.Float | None = None, min_value: primitives.Float | None = None, max_value: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -50,7 +49,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
             self.max_value = max_value
 
     @property
-    def min_speed(self) -> np.float32 | None:
+    def min_speed(self) -> primitives.Float | None:
         """The MinSpeed field value."""
         member = self.get_member("MinSpeed")
         if member is None:
@@ -58,7 +57,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @min_speed.setter
-    def min_speed(self, value: np.float32) -> None:
+    def min_speed(self, value: primitives.Float) -> None:
         """Set the MinSpeed field value."""
         member = self.get_member("MinSpeed")
         if member is not None:
@@ -69,7 +68,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def max_speed(self) -> np.float32 | None:
+    def max_speed(self) -> primitives.Float | None:
         """The MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is None:
@@ -77,7 +76,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @max_speed.setter
-    def max_speed(self, value: np.float32) -> None:
+    def max_speed(self, value: primitives.Float) -> None:
         """Set the MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is not None:
@@ -88,7 +87,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def min_hue(self) -> np.float32 | None:
+    def min_hue(self) -> primitives.Float | None:
         """The MinHue field value."""
         member = self.get_member("MinHue")
         if member is None:
@@ -96,7 +95,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @min_hue.setter
-    def min_hue(self, value: np.float32) -> None:
+    def min_hue(self, value: primitives.Float) -> None:
         """Set the MinHue field value."""
         member = self.get_member("MinHue")
         if member is not None:
@@ -107,7 +106,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def max_hue(self) -> np.float32 | None:
+    def max_hue(self) -> primitives.Float | None:
         """The MaxHue field value."""
         member = self.get_member("MaxHue")
         if member is None:
@@ -115,7 +114,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @max_hue.setter
-    def max_hue(self, value: np.float32) -> None:
+    def max_hue(self, value: primitives.Float) -> None:
         """Set the MaxHue field value."""
         member = self.get_member("MaxHue")
         if member is not None:
@@ -126,7 +125,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def min_saturation(self) -> np.float32 | None:
+    def min_saturation(self) -> primitives.Float | None:
         """The MinSaturation field value."""
         member = self.get_member("MinSaturation")
         if member is None:
@@ -134,7 +133,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @min_saturation.setter
-    def min_saturation(self, value: np.float32) -> None:
+    def min_saturation(self, value: primitives.Float) -> None:
         """Set the MinSaturation field value."""
         member = self.get_member("MinSaturation")
         if member is not None:
@@ -145,7 +144,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def max_saturation(self) -> np.float32 | None:
+    def max_saturation(self) -> primitives.Float | None:
         """The MaxSaturation field value."""
         member = self.get_member("MaxSaturation")
         if member is None:
@@ -153,7 +152,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @max_saturation.setter
-    def max_saturation(self, value: np.float32) -> None:
+    def max_saturation(self, value: primitives.Float) -> None:
         """Set the MaxSaturation field value."""
         member = self.get_member("MaxSaturation")
         if member is not None:
@@ -164,7 +163,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def min_value(self) -> np.float32 | None:
+    def min_value(self) -> primitives.Float | None:
         """The MinValue field value."""
         member = self.get_member("MinValue")
         if member is None:
@@ -172,7 +171,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @min_value.setter
-    def min_value(self, value: np.float32) -> None:
+    def min_value(self, value: primitives.Float) -> None:
         """Set the MinValue field value."""
         member = self.get_member("MinValue")
         if member is not None:
@@ -183,7 +182,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def max_value(self) -> np.float32 | None:
+    def max_value(self) -> primitives.Float | None:
         """The MaxValue field value."""
         member = self.get_member("MaxValue")
         if member is None:
@@ -191,7 +190,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @max_value.setter
-    def max_value(self, value: np.float32) -> None:
+    def max_value(self, value: primitives.Float) -> None:
         """Set the MaxValue field value."""
         member = self.get_member("MaxValue")
         if member is not None:

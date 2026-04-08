@@ -1,9 +1,8 @@
 """Generated component: DynamicVisemeDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.viseme_analyzer import VisemeAnalyzer
@@ -20,7 +19,7 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicVisemeDriver"
 
-    def __init__(self, source: str | VisemeAnalyzer | None = None, mouth_tracking_source: str | IMouthTrackingSourceComponent | None = None, strength_multiplier: np.float32 | None = None, voice_mouth_supress_weight: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | VisemeAnalyzer | None = None, mouth_tracking_source: str | IMouthTrackingSourceComponent | None = None, strength_multiplier: primitives.Float | None = None, voice_mouth_supress_weight: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -83,7 +82,7 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def strength_multiplier(self) -> np.float32 | None:
+    def strength_multiplier(self) -> primitives.Float | None:
         """The StrengthMultiplier field value."""
         member = self.get_member("StrengthMultiplier")
         if member is None:
@@ -91,7 +90,7 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @strength_multiplier.setter
-    def strength_multiplier(self, value: np.float32) -> None:
+    def strength_multiplier(self, value: primitives.Float) -> None:
         """Set the StrengthMultiplier field value."""
         member = self.get_member("StrengthMultiplier")
         if member is not None:
@@ -102,7 +101,7 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def voice_mouth_supress_weight(self) -> np.float32 | None:
+    def voice_mouth_supress_weight(self) -> primitives.Float | None:
         """The VoiceMouthSupressWeight field value."""
         member = self.get_member("VoiceMouthSupressWeight")
         if member is None:
@@ -110,7 +109,7 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @voice_mouth_supress_weight.setter
-    def voice_mouth_supress_weight(self, value: np.float32) -> None:
+    def voice_mouth_supress_weight(self, value: primitives.Float) -> None:
         """Set the VoiceMouthSupressWeight field value."""
         member = self.get_member("VoiceMouthSupressWeight")
         if member is not None:

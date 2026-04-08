@@ -18,7 +18,7 @@ class LocalValue(GenericComponent[T], IVariable, INodeValueOutput[T], IExecution
 
     Parameterize with a value type::
 
-        LocalValue[np.float32]
+        LocalValue[primitives.Float]
         LocalValue[primitives.Float3]
     """
 

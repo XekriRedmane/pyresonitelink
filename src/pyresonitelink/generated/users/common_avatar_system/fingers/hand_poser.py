@@ -20,7 +20,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HandPoser"
 
-    def __init__(self, pose_source: str | IFingerPoseSourceComponent | None = None, pose_metacarpals: bool | None = None, hand_root: str | Slot | None = None, hand_forward: primitives.Float3 | None = None, hand_up: primitives.Float3 | None = None, hand_right: primitives.Float3 | None = None, debug_fingers: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, pose_source: str | IFingerPoseSourceComponent | None = None, pose_metacarpals: primitives.Bool | None = None, hand_root: str | Slot | None = None, hand_forward: primitives.Float3 | None = None, hand_up: primitives.Float3 | None = None, hand_right: primitives.Float3 | None = None, debug_fingers: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -84,7 +84,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
         self.set_member("Side", value)
 
     @property
-    def pose_metacarpals(self) -> bool | None:
+    def pose_metacarpals(self) -> primitives.Bool | None:
         """The PoseMetacarpals field value."""
         member = self.get_member("PoseMetacarpals")
         if member is None:
@@ -92,7 +92,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @pose_metacarpals.setter
-    def pose_metacarpals(self, value: bool) -> None:
+    def pose_metacarpals(self, value: primitives.Bool) -> None:
         """Set the PoseMetacarpals field value."""
         member = self.get_member("PoseMetacarpals")
         if member is not None:
@@ -246,7 +246,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
         self.set_member("Pinky", value)
 
     @property
-    def debug_fingers(self) -> bool | None:
+    def debug_fingers(self) -> primitives.Bool | None:
         """The DebugFingers field value."""
         member = self.get_member("DebugFingers")
         if member is None:
@@ -254,7 +254,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @debug_fingers.setter
-    def debug_fingers(self, value: bool) -> None:
+    def debug_fingers(self, value: primitives.Bool) -> None:
         """Set the DebugFingers field value."""
         member = self.get_member("DebugFingers")
         if member is not None:

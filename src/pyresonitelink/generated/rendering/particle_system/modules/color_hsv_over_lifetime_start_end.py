@@ -1,8 +1,7 @@
 """Generated component: ColorHSV_OverLifetimeStartEnd."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -17,7 +16,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorHSV_OverLifetimeStartEnd"
 
-    def __init__(self, start_hue: np.float32 | None = None, start_saturation: np.float32 | None = None, start_value: np.float32 | None = None, end_hue: np.float32 | None = None, end_saturation: np.float32 | None = None, end_value: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, start_hue: primitives.Float | None = None, start_saturation: primitives.Float | None = None, start_value: primitives.Float | None = None, end_hue: primitives.Float | None = None, end_saturation: primitives.Float | None = None, end_value: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,7 +43,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
             self.end_value = end_value
 
     @property
-    def start_hue(self) -> np.float32 | None:
+    def start_hue(self) -> primitives.Float | None:
         """The StartHue field value."""
         member = self.get_member("StartHue")
         if member is None:
@@ -52,7 +51,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
         return getattr(member, 'value', None)
 
     @start_hue.setter
-    def start_hue(self, value: np.float32) -> None:
+    def start_hue(self, value: primitives.Float) -> None:
         """Set the StartHue field value."""
         member = self.get_member("StartHue")
         if member is not None:
@@ -63,7 +62,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
             )
 
     @property
-    def start_saturation(self) -> np.float32 | None:
+    def start_saturation(self) -> primitives.Float | None:
         """The StartSaturation field value."""
         member = self.get_member("StartSaturation")
         if member is None:
@@ -71,7 +70,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
         return getattr(member, 'value', None)
 
     @start_saturation.setter
-    def start_saturation(self, value: np.float32) -> None:
+    def start_saturation(self, value: primitives.Float) -> None:
         """Set the StartSaturation field value."""
         member = self.get_member("StartSaturation")
         if member is not None:
@@ -82,7 +81,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
             )
 
     @property
-    def start_value(self) -> np.float32 | None:
+    def start_value(self) -> primitives.Float | None:
         """The StartValue field value."""
         member = self.get_member("StartValue")
         if member is None:
@@ -90,7 +89,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
         return getattr(member, 'value', None)
 
     @start_value.setter
-    def start_value(self, value: np.float32) -> None:
+    def start_value(self, value: primitives.Float) -> None:
         """Set the StartValue field value."""
         member = self.get_member("StartValue")
         if member is not None:
@@ -101,7 +100,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
             )
 
     @property
-    def end_hue(self) -> np.float32 | None:
+    def end_hue(self) -> primitives.Float | None:
         """The EndHue field value."""
         member = self.get_member("EndHue")
         if member is None:
@@ -109,7 +108,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
         return getattr(member, 'value', None)
 
     @end_hue.setter
-    def end_hue(self, value: np.float32) -> None:
+    def end_hue(self, value: primitives.Float) -> None:
         """Set the EndHue field value."""
         member = self.get_member("EndHue")
         if member is not None:
@@ -120,7 +119,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
             )
 
     @property
-    def end_saturation(self) -> np.float32 | None:
+    def end_saturation(self) -> primitives.Float | None:
         """The EndSaturation field value."""
         member = self.get_member("EndSaturation")
         if member is None:
@@ -128,7 +127,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
         return getattr(member, 'value', None)
 
     @end_saturation.setter
-    def end_saturation(self, value: np.float32) -> None:
+    def end_saturation(self, value: primitives.Float) -> None:
         """Set the EndSaturation field value."""
         member = self.get_member("EndSaturation")
         if member is not None:
@@ -139,7 +138,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
             )
 
     @property
-    def end_value(self) -> np.float32 | None:
+    def end_value(self) -> primitives.Float | None:
         """The EndValue field value."""
         member = self.get_member("EndValue")
         if member is None:
@@ -147,7 +146,7 @@ class ColorHSV_OverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, I
         return getattr(member, 'value', None)
 
     @end_value.setter
-    def end_value(self, value: np.float32) -> None:
+    def end_value(self, value: primitives.Float) -> None:
         """Set the EndValue field value."""
         member = self.get_member("EndValue")
         if member is not None:

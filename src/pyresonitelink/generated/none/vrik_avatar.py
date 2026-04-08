@@ -1,7 +1,5 @@
 """Generated component: VRIKAvatar."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -27,7 +25,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FinalIK.VRIKAvatar"
 
-    def __init__(self, ik: str | VRIK | None = None, height_compensation: np.float32 | None = None, avatar_height: np.float32 | None = None, user_resize_threshold: np.float32 | None = None, feet_ignore_other_players: bool | None = None, head_max_fix_distance: np.float32 | None = None, force_use_feet_proxies: bool | None = None, force_use_pelvis_proxy: bool | None = None, force_use_chest_proxy: bool | None = None, force_use_elbow_proxies: bool | None = None, force_use_knee_proxies: bool | None = None, feet_calibrated: bool | None = None, pelvis_calibrated: bool | None = None, ground_check_height_ratio: np.float32 | None = None, feet_hover_height: np.float32 | None = None, feet_hover_smooth_speed: np.float32 | None = None, min_feet_transition_speed: np.float32 | None = None, max_feet_transition_speed: np.float32 | None = None, gait_feet_transition_speed_multiplier: np.float32 | None = None, feet_hover_tilt: np.float32 | None = None, left_foot_float_offset: primitives.Float3 | None = None, right_foot_float_offset: primitives.Float3 | None = None, left_foot_root_height: np.float32 | None = None, right_foot_root_height: np.float32 | None = None, foot_float_speed: np.float32 | None = None, foot_float_angle_magnitude: np.float32 | None = None, foot_float_offset_magnitude: np.float32 | None = None, feet_float_velocity_force: np.float32 | None = None, feet_float_velocity_dampening_speed: np.float32 | None = None, max_feet_velocity_offset: np.float32 | None = None, velocity_average_rate: np.float32 | None = None, hover_velocity_threshold: np.float32 | None = None, horizontal_body_angle: np.float32 | None = None, supress_walk_animation_when_horizontal: bool | None = None, always_use_trackers_when_horizontal: bool | None = None, gait_transition_speed: np.float32 | None = None, gait_movement_direction_smooth_speed: np.float32 | None = None, rig_colliders_radius_ratio: np.float32 | None = None, left_hand_rotation_offset: primitives.FloatQ | None = None, right_hand_rotation_offset: primitives.FloatQ | None = None, current_average_velocity: np.float32 | None = None, current_on_ground: bool | None = None, current_gait_index: np.int32 | None = None, locomotion_controller: str | LocomotionController | None = None, left_hand_node: str | AvatarPoseNode | None = None, right_hand_node: str | AvatarPoseNode | None = None, left_elbow_node: str | AvatarPoseNode | None = None, right_elbow_node: str | AvatarPoseNode | None = None, left_foot_node: str | AvatarPoseNode | None = None, right_foot_node: str | AvatarPoseNode | None = None, left_knee_node: str | AvatarPoseNode | None = None, right_knee_node: str | AvatarPoseNode | None = None, head_node: str | AvatarPoseNode | None = None, pelvis_node: str | AvatarPoseNode | None = None, chest_node: str | AvatarPoseNode | None = None, head_proxy: str | Slot | None = None, pelvis_proxy: str | Slot | None = None, chest_proxy: str | Slot | None = None, left_hand_proxy: str | Slot | None = None, right_hand_proxy: str | Slot | None = None, left_elbow_proxy: str | Slot | None = None, right_elbow_proxy: str | Slot | None = None, left_foot_proxy: str | Slot | None = None, right_foot_proxy: str | Slot | None = None, left_knee_proxy: str | Slot | None = None, right_knee_proxy: str | Slot | None = None, left_knee_default_proxy: str | Slot | None = None, right_knee_default_proxy: str | Slot | None = None, head_target_pos: str | IField[primitives.Float3] | None = None, head_target_rot: str | IField[primitives.FloatQ] | None = None, pelvis_target_pos: str | IField[primitives.Float3] | None = None, pelvis_target_rot: str | IField[primitives.FloatQ] | None = None, chest_target_pos: str | IField[primitives.Float3] | None = None, left_hand_target_pos: str | IField[primitives.Float3] | None = None, left_hand_target_rot: str | IField[primitives.FloatQ] | None = None, right_hand_target_pos: str | IField[primitives.Float3] | None = None, right_hand_target_rot: str | IField[primitives.FloatQ] | None = None, left_elbow_target_pos: str | IField[primitives.Float3] | None = None, right_elbow_target_pos: str | IField[primitives.Float3] | None = None, left_foot_target_pos: str | IField[primitives.Float3] | None = None, left_foot_target_rot: str | IField[primitives.FloatQ] | None = None, right_foot_target_pos: str | IField[primitives.Float3] | None = None, right_foot_target_rot: str | IField[primitives.FloatQ] | None = None, left_knee_target_pos: str | IField[primitives.Float3] | None = None, right_knee_target_pos: str | IField[primitives.Float3] | None = None, pelvis_position_weight: str | IField[np.float32] | None = None, pelvis_rotation_weight: str | IField[np.float32] | None = None, chest_weight: str | IField[np.float32] | None = None, locomotion_weight: str | IField[np.float32] | None = None, left_leg_position_weight: str | IField[np.float32] | None = None, left_leg_rotation_weight: str | IField[np.float32] | None = None, right_leg_position_weight: str | IField[np.float32] | None = None, right_leg_rotation_weight: str | IField[np.float32] | None = None, left_knee_bend_weight: str | IField[np.float32] | None = None, right_knee_bend_weight: str | IField[np.float32] | None = None, left_elbow_bend_weight: str | IField[np.float32] | None = None, right_elbow_bend_weight: str | IField[np.float32] | None = None, left_foot_offset: str | IField[primitives.Float3] | None = None, right_foot_offset: str | IField[primitives.Float3] | None = None, left_foot_relative_to_root: primitives.FloatQ | None = None, right_foot_relative_to_root: primitives.FloatQ | None = None, locomotion_offset: str | IField[primitives.Float3] | None = None, simplified_collider_enabled: str | IField[bool] | None = None, horizontal_tracking_locked: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, ik: str | VRIK | None = None, height_compensation: primitives.Float | None = None, avatar_height: primitives.Float | None = None, user_resize_threshold: primitives.Float | None = None, feet_ignore_other_players: primitives.Bool | None = None, head_max_fix_distance: primitives.Float | None = None, force_use_feet_proxies: primitives.Bool | None = None, force_use_pelvis_proxy: primitives.Bool | None = None, force_use_chest_proxy: primitives.Bool | None = None, force_use_elbow_proxies: primitives.Bool | None = None, force_use_knee_proxies: primitives.Bool | None = None, feet_calibrated: primitives.Bool | None = None, pelvis_calibrated: primitives.Bool | None = None, ground_check_height_ratio: primitives.Float | None = None, feet_hover_height: primitives.Float | None = None, feet_hover_smooth_speed: primitives.Float | None = None, min_feet_transition_speed: primitives.Float | None = None, max_feet_transition_speed: primitives.Float | None = None, gait_feet_transition_speed_multiplier: primitives.Float | None = None, feet_hover_tilt: primitives.Float | None = None, left_foot_float_offset: primitives.Float3 | None = None, right_foot_float_offset: primitives.Float3 | None = None, left_foot_root_height: primitives.Float | None = None, right_foot_root_height: primitives.Float | None = None, foot_float_speed: primitives.Float | None = None, foot_float_angle_magnitude: primitives.Float | None = None, foot_float_offset_magnitude: primitives.Float | None = None, feet_float_velocity_force: primitives.Float | None = None, feet_float_velocity_dampening_speed: primitives.Float | None = None, max_feet_velocity_offset: primitives.Float | None = None, velocity_average_rate: primitives.Float | None = None, hover_velocity_threshold: primitives.Float | None = None, horizontal_body_angle: primitives.Float | None = None, supress_walk_animation_when_horizontal: primitives.Bool | None = None, always_use_trackers_when_horizontal: primitives.Bool | None = None, gait_transition_speed: primitives.Float | None = None, gait_movement_direction_smooth_speed: primitives.Float | None = None, rig_colliders_radius_ratio: primitives.Float | None = None, left_hand_rotation_offset: primitives.FloatQ | None = None, right_hand_rotation_offset: primitives.FloatQ | None = None, current_average_velocity: primitives.Float | None = None, current_on_ground: primitives.Bool | None = None, current_gait_index: primitives.Int | None = None, locomotion_controller: str | LocomotionController | None = None, left_hand_node: str | AvatarPoseNode | None = None, right_hand_node: str | AvatarPoseNode | None = None, left_elbow_node: str | AvatarPoseNode | None = None, right_elbow_node: str | AvatarPoseNode | None = None, left_foot_node: str | AvatarPoseNode | None = None, right_foot_node: str | AvatarPoseNode | None = None, left_knee_node: str | AvatarPoseNode | None = None, right_knee_node: str | AvatarPoseNode | None = None, head_node: str | AvatarPoseNode | None = None, pelvis_node: str | AvatarPoseNode | None = None, chest_node: str | AvatarPoseNode | None = None, head_proxy: str | Slot | None = None, pelvis_proxy: str | Slot | None = None, chest_proxy: str | Slot | None = None, left_hand_proxy: str | Slot | None = None, right_hand_proxy: str | Slot | None = None, left_elbow_proxy: str | Slot | None = None, right_elbow_proxy: str | Slot | None = None, left_foot_proxy: str | Slot | None = None, right_foot_proxy: str | Slot | None = None, left_knee_proxy: str | Slot | None = None, right_knee_proxy: str | Slot | None = None, left_knee_default_proxy: str | Slot | None = None, right_knee_default_proxy: str | Slot | None = None, head_target_pos: str | IField[primitives.Float3] | None = None, head_target_rot: str | IField[primitives.FloatQ] | None = None, pelvis_target_pos: str | IField[primitives.Float3] | None = None, pelvis_target_rot: str | IField[primitives.FloatQ] | None = None, chest_target_pos: str | IField[primitives.Float3] | None = None, left_hand_target_pos: str | IField[primitives.Float3] | None = None, left_hand_target_rot: str | IField[primitives.FloatQ] | None = None, right_hand_target_pos: str | IField[primitives.Float3] | None = None, right_hand_target_rot: str | IField[primitives.FloatQ] | None = None, left_elbow_target_pos: str | IField[primitives.Float3] | None = None, right_elbow_target_pos: str | IField[primitives.Float3] | None = None, left_foot_target_pos: str | IField[primitives.Float3] | None = None, left_foot_target_rot: str | IField[primitives.FloatQ] | None = None, right_foot_target_pos: str | IField[primitives.Float3] | None = None, right_foot_target_rot: str | IField[primitives.FloatQ] | None = None, left_knee_target_pos: str | IField[primitives.Float3] | None = None, right_knee_target_pos: str | IField[primitives.Float3] | None = None, pelvis_position_weight: str | IField[primitives.Float] | None = None, pelvis_rotation_weight: str | IField[primitives.Float] | None = None, chest_weight: str | IField[primitives.Float] | None = None, locomotion_weight: str | IField[primitives.Float] | None = None, left_leg_position_weight: str | IField[primitives.Float] | None = None, left_leg_rotation_weight: str | IField[primitives.Float] | None = None, right_leg_position_weight: str | IField[primitives.Float] | None = None, right_leg_rotation_weight: str | IField[primitives.Float] | None = None, left_knee_bend_weight: str | IField[primitives.Float] | None = None, right_knee_bend_weight: str | IField[primitives.Float] | None = None, left_elbow_bend_weight: str | IField[primitives.Float] | None = None, right_elbow_bend_weight: str | IField[primitives.Float] | None = None, left_foot_offset: str | IField[primitives.Float3] | None = None, right_foot_offset: str | IField[primitives.Float3] | None = None, left_foot_relative_to_root: primitives.FloatQ | None = None, right_foot_relative_to_root: primitives.FloatQ | None = None, locomotion_offset: str | IField[primitives.Float3] | None = None, simplified_collider_enabled: str | IField[primitives.Bool] | None = None, horizontal_tracking_locked: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -369,7 +367,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def height_compensation(self) -> np.float32 | None:
+    def height_compensation(self) -> primitives.Float | None:
         """The HeightCompensation field value."""
         member = self.get_member("HeightCompensation")
         if member is None:
@@ -377,7 +375,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @height_compensation.setter
-    def height_compensation(self, value: np.float32) -> None:
+    def height_compensation(self, value: primitives.Float) -> None:
         """Set the HeightCompensation field value."""
         member = self.get_member("HeightCompensation")
         if member is not None:
@@ -388,7 +386,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def avatar_height(self) -> np.float32 | None:
+    def avatar_height(self) -> primitives.Float | None:
         """The AvatarHeight field value."""
         member = self.get_member("AvatarHeight")
         if member is None:
@@ -396,7 +394,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @avatar_height.setter
-    def avatar_height(self, value: np.float32) -> None:
+    def avatar_height(self, value: primitives.Float) -> None:
         """Set the AvatarHeight field value."""
         member = self.get_member("AvatarHeight")
         if member is not None:
@@ -407,7 +405,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def user_resize_threshold(self) -> np.float32 | None:
+    def user_resize_threshold(self) -> primitives.Float | None:
         """The UserResizeThreshold field value."""
         member = self.get_member("UserResizeThreshold")
         if member is None:
@@ -415,7 +413,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @user_resize_threshold.setter
-    def user_resize_threshold(self, value: np.float32) -> None:
+    def user_resize_threshold(self, value: primitives.Float) -> None:
         """Set the UserResizeThreshold field value."""
         member = self.get_member("UserResizeThreshold")
         if member is not None:
@@ -426,7 +424,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def feet_ignore_other_players(self) -> bool | None:
+    def feet_ignore_other_players(self) -> primitives.Bool | None:
         """The FeetIgnoreOtherPlayers field value."""
         member = self.get_member("FeetIgnoreOtherPlayers")
         if member is None:
@@ -434,7 +432,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @feet_ignore_other_players.setter
-    def feet_ignore_other_players(self, value: bool) -> None:
+    def feet_ignore_other_players(self, value: primitives.Bool) -> None:
         """Set the FeetIgnoreOtherPlayers field value."""
         member = self.get_member("FeetIgnoreOtherPlayers")
         if member is not None:
@@ -471,7 +469,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         self.set_member("FeetCollisionList", value)
 
     @property
-    def head_max_fix_distance(self) -> np.float32 | None:
+    def head_max_fix_distance(self) -> primitives.Float | None:
         """The HeadMaxFixDistance field value."""
         member = self.get_member("HeadMaxFixDistance")
         if member is None:
@@ -479,7 +477,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @head_max_fix_distance.setter
-    def head_max_fix_distance(self, value: np.float32) -> None:
+    def head_max_fix_distance(self, value: primitives.Float) -> None:
         """Set the HeadMaxFixDistance field value."""
         member = self.get_member("HeadMaxFixDistance")
         if member is not None:
@@ -490,7 +488,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def force_use_feet_proxies(self) -> bool | None:
+    def force_use_feet_proxies(self) -> primitives.Bool | None:
         """The ForceUseFeetProxies field value."""
         member = self.get_member("ForceUseFeetProxies")
         if member is None:
@@ -498,7 +496,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @force_use_feet_proxies.setter
-    def force_use_feet_proxies(self, value: bool) -> None:
+    def force_use_feet_proxies(self, value: primitives.Bool) -> None:
         """Set the ForceUseFeetProxies field value."""
         member = self.get_member("ForceUseFeetProxies")
         if member is not None:
@@ -509,7 +507,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def force_use_pelvis_proxy(self) -> bool | None:
+    def force_use_pelvis_proxy(self) -> primitives.Bool | None:
         """The ForceUsePelvisProxy field value."""
         member = self.get_member("ForceUsePelvisProxy")
         if member is None:
@@ -517,7 +515,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @force_use_pelvis_proxy.setter
-    def force_use_pelvis_proxy(self, value: bool) -> None:
+    def force_use_pelvis_proxy(self, value: primitives.Bool) -> None:
         """Set the ForceUsePelvisProxy field value."""
         member = self.get_member("ForceUsePelvisProxy")
         if member is not None:
@@ -528,7 +526,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def force_use_chest_proxy(self) -> bool | None:
+    def force_use_chest_proxy(self) -> primitives.Bool | None:
         """The ForceUseChestProxy field value."""
         member = self.get_member("ForceUseChestProxy")
         if member is None:
@@ -536,7 +534,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @force_use_chest_proxy.setter
-    def force_use_chest_proxy(self, value: bool) -> None:
+    def force_use_chest_proxy(self, value: primitives.Bool) -> None:
         """Set the ForceUseChestProxy field value."""
         member = self.get_member("ForceUseChestProxy")
         if member is not None:
@@ -547,7 +545,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def force_use_elbow_proxies(self) -> bool | None:
+    def force_use_elbow_proxies(self) -> primitives.Bool | None:
         """The ForceUseElbowProxies field value."""
         member = self.get_member("ForceUseElbowProxies")
         if member is None:
@@ -555,7 +553,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @force_use_elbow_proxies.setter
-    def force_use_elbow_proxies(self, value: bool) -> None:
+    def force_use_elbow_proxies(self, value: primitives.Bool) -> None:
         """Set the ForceUseElbowProxies field value."""
         member = self.get_member("ForceUseElbowProxies")
         if member is not None:
@@ -566,7 +564,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def force_use_knee_proxies(self) -> bool | None:
+    def force_use_knee_proxies(self) -> primitives.Bool | None:
         """The ForceUseKneeProxies field value."""
         member = self.get_member("ForceUseKneeProxies")
         if member is None:
@@ -574,7 +572,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @force_use_knee_proxies.setter
-    def force_use_knee_proxies(self, value: bool) -> None:
+    def force_use_knee_proxies(self, value: primitives.Bool) -> None:
         """Set the ForceUseKneeProxies field value."""
         member = self.get_member("ForceUseKneeProxies")
         if member is not None:
@@ -585,7 +583,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def feet_calibrated(self) -> bool | None:
+    def feet_calibrated(self) -> primitives.Bool | None:
         """The FeetCalibrated field value."""
         member = self.get_member("FeetCalibrated")
         if member is None:
@@ -593,7 +591,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @feet_calibrated.setter
-    def feet_calibrated(self, value: bool) -> None:
+    def feet_calibrated(self, value: primitives.Bool) -> None:
         """Set the FeetCalibrated field value."""
         member = self.get_member("FeetCalibrated")
         if member is not None:
@@ -604,7 +602,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def pelvis_calibrated(self) -> bool | None:
+    def pelvis_calibrated(self) -> primitives.Bool | None:
         """The PelvisCalibrated field value."""
         member = self.get_member("PelvisCalibrated")
         if member is None:
@@ -612,7 +610,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @pelvis_calibrated.setter
-    def pelvis_calibrated(self, value: bool) -> None:
+    def pelvis_calibrated(self, value: primitives.Bool) -> None:
         """Set the PelvisCalibrated field value."""
         member = self.get_member("PelvisCalibrated")
         if member is not None:
@@ -623,7 +621,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def ground_check_height_ratio(self) -> np.float32 | None:
+    def ground_check_height_ratio(self) -> primitives.Float | None:
         """The GroundCheckHeightRatio field value."""
         member = self.get_member("GroundCheckHeightRatio")
         if member is None:
@@ -631,7 +629,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @ground_check_height_ratio.setter
-    def ground_check_height_ratio(self, value: np.float32) -> None:
+    def ground_check_height_ratio(self, value: primitives.Float) -> None:
         """Set the GroundCheckHeightRatio field value."""
         member = self.get_member("GroundCheckHeightRatio")
         if member is not None:
@@ -642,7 +640,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def feet_hover_height(self) -> np.float32 | None:
+    def feet_hover_height(self) -> primitives.Float | None:
         """The FeetHoverHeight field value."""
         member = self.get_member("FeetHoverHeight")
         if member is None:
@@ -650,7 +648,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @feet_hover_height.setter
-    def feet_hover_height(self, value: np.float32) -> None:
+    def feet_hover_height(self, value: primitives.Float) -> None:
         """Set the FeetHoverHeight field value."""
         member = self.get_member("FeetHoverHeight")
         if member is not None:
@@ -661,7 +659,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def feet_hover_smooth_speed(self) -> np.float32 | None:
+    def feet_hover_smooth_speed(self) -> primitives.Float | None:
         """The FeetHoverSmoothSpeed field value."""
         member = self.get_member("FeetHoverSmoothSpeed")
         if member is None:
@@ -669,7 +667,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @feet_hover_smooth_speed.setter
-    def feet_hover_smooth_speed(self, value: np.float32) -> None:
+    def feet_hover_smooth_speed(self, value: primitives.Float) -> None:
         """Set the FeetHoverSmoothSpeed field value."""
         member = self.get_member("FeetHoverSmoothSpeed")
         if member is not None:
@@ -680,7 +678,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def min_feet_transition_speed(self) -> np.float32 | None:
+    def min_feet_transition_speed(self) -> primitives.Float | None:
         """The MinFeetTransitionSpeed field value."""
         member = self.get_member("MinFeetTransitionSpeed")
         if member is None:
@@ -688,7 +686,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @min_feet_transition_speed.setter
-    def min_feet_transition_speed(self, value: np.float32) -> None:
+    def min_feet_transition_speed(self, value: primitives.Float) -> None:
         """Set the MinFeetTransitionSpeed field value."""
         member = self.get_member("MinFeetTransitionSpeed")
         if member is not None:
@@ -699,7 +697,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def max_feet_transition_speed(self) -> np.float32 | None:
+    def max_feet_transition_speed(self) -> primitives.Float | None:
         """The MaxFeetTransitionSpeed field value."""
         member = self.get_member("MaxFeetTransitionSpeed")
         if member is None:
@@ -707,7 +705,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @max_feet_transition_speed.setter
-    def max_feet_transition_speed(self, value: np.float32) -> None:
+    def max_feet_transition_speed(self, value: primitives.Float) -> None:
         """Set the MaxFeetTransitionSpeed field value."""
         member = self.get_member("MaxFeetTransitionSpeed")
         if member is not None:
@@ -718,7 +716,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def gait_feet_transition_speed_multiplier(self) -> np.float32 | None:
+    def gait_feet_transition_speed_multiplier(self) -> primitives.Float | None:
         """The GaitFeetTransitionSpeedMultiplier field value."""
         member = self.get_member("GaitFeetTransitionSpeedMultiplier")
         if member is None:
@@ -726,7 +724,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @gait_feet_transition_speed_multiplier.setter
-    def gait_feet_transition_speed_multiplier(self, value: np.float32) -> None:
+    def gait_feet_transition_speed_multiplier(self, value: primitives.Float) -> None:
         """Set the GaitFeetTransitionSpeedMultiplier field value."""
         member = self.get_member("GaitFeetTransitionSpeedMultiplier")
         if member is not None:
@@ -737,7 +735,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def feet_hover_tilt(self) -> np.float32 | None:
+    def feet_hover_tilt(self) -> primitives.Float | None:
         """The FeetHoverTilt field value."""
         member = self.get_member("FeetHoverTilt")
         if member is None:
@@ -745,7 +743,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @feet_hover_tilt.setter
-    def feet_hover_tilt(self, value: np.float32) -> None:
+    def feet_hover_tilt(self, value: primitives.Float) -> None:
         """Set the FeetHoverTilt field value."""
         member = self.get_member("FeetHoverTilt")
         if member is not None:
@@ -794,7 +792,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def left_foot_root_height(self) -> np.float32 | None:
+    def left_foot_root_height(self) -> primitives.Float | None:
         """The LeftFootRootHeight field value."""
         member = self.get_member("LeftFootRootHeight")
         if member is None:
@@ -802,7 +800,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @left_foot_root_height.setter
-    def left_foot_root_height(self, value: np.float32) -> None:
+    def left_foot_root_height(self, value: primitives.Float) -> None:
         """Set the LeftFootRootHeight field value."""
         member = self.get_member("LeftFootRootHeight")
         if member is not None:
@@ -813,7 +811,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def right_foot_root_height(self) -> np.float32 | None:
+    def right_foot_root_height(self) -> primitives.Float | None:
         """The RightFootRootHeight field value."""
         member = self.get_member("RightFootRootHeight")
         if member is None:
@@ -821,7 +819,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @right_foot_root_height.setter
-    def right_foot_root_height(self, value: np.float32) -> None:
+    def right_foot_root_height(self, value: primitives.Float) -> None:
         """Set the RightFootRootHeight field value."""
         member = self.get_member("RightFootRootHeight")
         if member is not None:
@@ -832,7 +830,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def foot_float_speed(self) -> np.float32 | None:
+    def foot_float_speed(self) -> primitives.Float | None:
         """The FootFloatSpeed field value."""
         member = self.get_member("FootFloatSpeed")
         if member is None:
@@ -840,7 +838,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @foot_float_speed.setter
-    def foot_float_speed(self, value: np.float32) -> None:
+    def foot_float_speed(self, value: primitives.Float) -> None:
         """Set the FootFloatSpeed field value."""
         member = self.get_member("FootFloatSpeed")
         if member is not None:
@@ -851,7 +849,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def foot_float_angle_magnitude(self) -> np.float32 | None:
+    def foot_float_angle_magnitude(self) -> primitives.Float | None:
         """The FootFloatAngleMagnitude field value."""
         member = self.get_member("FootFloatAngleMagnitude")
         if member is None:
@@ -859,7 +857,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @foot_float_angle_magnitude.setter
-    def foot_float_angle_magnitude(self, value: np.float32) -> None:
+    def foot_float_angle_magnitude(self, value: primitives.Float) -> None:
         """Set the FootFloatAngleMagnitude field value."""
         member = self.get_member("FootFloatAngleMagnitude")
         if member is not None:
@@ -870,7 +868,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def foot_float_offset_magnitude(self) -> np.float32 | None:
+    def foot_float_offset_magnitude(self) -> primitives.Float | None:
         """The FootFloatOffsetMagnitude field value."""
         member = self.get_member("FootFloatOffsetMagnitude")
         if member is None:
@@ -878,7 +876,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @foot_float_offset_magnitude.setter
-    def foot_float_offset_magnitude(self, value: np.float32) -> None:
+    def foot_float_offset_magnitude(self, value: primitives.Float) -> None:
         """Set the FootFloatOffsetMagnitude field value."""
         member = self.get_member("FootFloatOffsetMagnitude")
         if member is not None:
@@ -889,7 +887,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def feet_float_velocity_force(self) -> np.float32 | None:
+    def feet_float_velocity_force(self) -> primitives.Float | None:
         """The FeetFloatVelocityForce field value."""
         member = self.get_member("FeetFloatVelocityForce")
         if member is None:
@@ -897,7 +895,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @feet_float_velocity_force.setter
-    def feet_float_velocity_force(self, value: np.float32) -> None:
+    def feet_float_velocity_force(self, value: primitives.Float) -> None:
         """Set the FeetFloatVelocityForce field value."""
         member = self.get_member("FeetFloatVelocityForce")
         if member is not None:
@@ -908,7 +906,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def feet_float_velocity_dampening_speed(self) -> np.float32 | None:
+    def feet_float_velocity_dampening_speed(self) -> primitives.Float | None:
         """The FeetFloatVelocityDampeningSpeed field value."""
         member = self.get_member("FeetFloatVelocityDampeningSpeed")
         if member is None:
@@ -916,7 +914,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @feet_float_velocity_dampening_speed.setter
-    def feet_float_velocity_dampening_speed(self, value: np.float32) -> None:
+    def feet_float_velocity_dampening_speed(self, value: primitives.Float) -> None:
         """Set the FeetFloatVelocityDampeningSpeed field value."""
         member = self.get_member("FeetFloatVelocityDampeningSpeed")
         if member is not None:
@@ -927,7 +925,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def max_feet_velocity_offset(self) -> np.float32 | None:
+    def max_feet_velocity_offset(self) -> primitives.Float | None:
         """The MaxFeetVelocityOffset field value."""
         member = self.get_member("MaxFeetVelocityOffset")
         if member is None:
@@ -935,7 +933,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @max_feet_velocity_offset.setter
-    def max_feet_velocity_offset(self, value: np.float32) -> None:
+    def max_feet_velocity_offset(self, value: primitives.Float) -> None:
         """Set the MaxFeetVelocityOffset field value."""
         member = self.get_member("MaxFeetVelocityOffset")
         if member is not None:
@@ -946,7 +944,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def velocity_average_rate(self) -> np.float32 | None:
+    def velocity_average_rate(self) -> primitives.Float | None:
         """The VelocityAverageRate field value."""
         member = self.get_member("VelocityAverageRate")
         if member is None:
@@ -954,7 +952,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @velocity_average_rate.setter
-    def velocity_average_rate(self, value: np.float32) -> None:
+    def velocity_average_rate(self, value: primitives.Float) -> None:
         """Set the VelocityAverageRate field value."""
         member = self.get_member("VelocityAverageRate")
         if member is not None:
@@ -965,7 +963,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def hover_velocity_threshold(self) -> np.float32 | None:
+    def hover_velocity_threshold(self) -> primitives.Float | None:
         """The HoverVelocityThreshold field value."""
         member = self.get_member("HoverVelocityThreshold")
         if member is None:
@@ -973,7 +971,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @hover_velocity_threshold.setter
-    def hover_velocity_threshold(self, value: np.float32) -> None:
+    def hover_velocity_threshold(self, value: primitives.Float) -> None:
         """Set the HoverVelocityThreshold field value."""
         member = self.get_member("HoverVelocityThreshold")
         if member is not None:
@@ -984,7 +982,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def horizontal_body_angle(self) -> np.float32 | None:
+    def horizontal_body_angle(self) -> primitives.Float | None:
         """The HorizontalBodyAngle field value."""
         member = self.get_member("HorizontalBodyAngle")
         if member is None:
@@ -992,7 +990,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @horizontal_body_angle.setter
-    def horizontal_body_angle(self, value: np.float32) -> None:
+    def horizontal_body_angle(self, value: primitives.Float) -> None:
         """Set the HorizontalBodyAngle field value."""
         member = self.get_member("HorizontalBodyAngle")
         if member is not None:
@@ -1003,7 +1001,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def supress_walk_animation_when_horizontal(self) -> bool | None:
+    def supress_walk_animation_when_horizontal(self) -> primitives.Bool | None:
         """The SupressWalkAnimationWhenHorizontal field value."""
         member = self.get_member("SupressWalkAnimationWhenHorizontal")
         if member is None:
@@ -1011,7 +1009,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @supress_walk_animation_when_horizontal.setter
-    def supress_walk_animation_when_horizontal(self, value: bool) -> None:
+    def supress_walk_animation_when_horizontal(self, value: primitives.Bool) -> None:
         """Set the SupressWalkAnimationWhenHorizontal field value."""
         member = self.get_member("SupressWalkAnimationWhenHorizontal")
         if member is not None:
@@ -1022,7 +1020,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def always_use_trackers_when_horizontal(self) -> bool | None:
+    def always_use_trackers_when_horizontal(self) -> primitives.Bool | None:
         """The AlwaysUseTrackersWhenHorizontal field value."""
         member = self.get_member("AlwaysUseTrackersWhenHorizontal")
         if member is None:
@@ -1030,7 +1028,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @always_use_trackers_when_horizontal.setter
-    def always_use_trackers_when_horizontal(self, value: bool) -> None:
+    def always_use_trackers_when_horizontal(self, value: primitives.Bool) -> None:
         """Set the AlwaysUseTrackersWhenHorizontal field value."""
         member = self.get_member("AlwaysUseTrackersWhenHorizontal")
         if member is not None:
@@ -1054,7 +1052,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         self.set_member("Gaits", value)
 
     @property
-    def gait_transition_speed(self) -> np.float32 | None:
+    def gait_transition_speed(self) -> primitives.Float | None:
         """The GaitTransitionSpeed field value."""
         member = self.get_member("GaitTransitionSpeed")
         if member is None:
@@ -1062,7 +1060,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @gait_transition_speed.setter
-    def gait_transition_speed(self, value: np.float32) -> None:
+    def gait_transition_speed(self, value: primitives.Float) -> None:
         """Set the GaitTransitionSpeed field value."""
         member = self.get_member("GaitTransitionSpeed")
         if member is not None:
@@ -1073,7 +1071,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def gait_movement_direction_smooth_speed(self) -> np.float32 | None:
+    def gait_movement_direction_smooth_speed(self) -> primitives.Float | None:
         """The GaitMovementDirectionSmoothSpeed field value."""
         member = self.get_member("GaitMovementDirectionSmoothSpeed")
         if member is None:
@@ -1081,7 +1079,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @gait_movement_direction_smooth_speed.setter
-    def gait_movement_direction_smooth_speed(self, value: np.float32) -> None:
+    def gait_movement_direction_smooth_speed(self, value: primitives.Float) -> None:
         """Set the GaitMovementDirectionSmoothSpeed field value."""
         member = self.get_member("GaitMovementDirectionSmoothSpeed")
         if member is not None:
@@ -1092,7 +1090,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def rig_colliders_radius_ratio(self) -> np.float32 | None:
+    def rig_colliders_radius_ratio(self) -> primitives.Float | None:
         """The RigCollidersRadiusRatio field value."""
         member = self.get_member("RigCollidersRadiusRatio")
         if member is None:
@@ -1100,7 +1098,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @rig_colliders_radius_ratio.setter
-    def rig_colliders_radius_ratio(self, value: np.float32) -> None:
+    def rig_colliders_radius_ratio(self, value: primitives.Float) -> None:
         """Set the RigCollidersRadiusRatio field value."""
         member = self.get_member("RigCollidersRadiusRatio")
         if member is not None:
@@ -1149,7 +1147,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def current_average_velocity(self) -> np.float32 | None:
+    def current_average_velocity(self) -> primitives.Float | None:
         """The CurrentAverageVelocity field value."""
         member = self.get_member("CurrentAverageVelocity")
         if member is None:
@@ -1157,7 +1155,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @current_average_velocity.setter
-    def current_average_velocity(self, value: np.float32) -> None:
+    def current_average_velocity(self, value: primitives.Float) -> None:
         """Set the CurrentAverageVelocity field value."""
         member = self.get_member("CurrentAverageVelocity")
         if member is not None:
@@ -1168,7 +1166,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def current_on_ground(self) -> bool | None:
+    def current_on_ground(self) -> primitives.Bool | None:
         """The CurrentOnGround field value."""
         member = self.get_member("CurrentOnGround")
         if member is None:
@@ -1176,7 +1174,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @current_on_ground.setter
-    def current_on_ground(self, value: bool) -> None:
+    def current_on_ground(self, value: primitives.Bool) -> None:
         """Set the CurrentOnGround field value."""
         member = self.get_member("CurrentOnGround")
         if member is not None:
@@ -1187,7 +1185,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
             )
 
     @property
-    def current_gait_index(self) -> np.int32 | None:
+    def current_gait_index(self) -> primitives.Int | None:
         """The CurrentGaitIndex field value."""
         member = self.get_member("CurrentGaitIndex")
         if member is None:
@@ -1195,7 +1193,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @current_gait_index.setter
-    def current_gait_index(self, value: np.int32) -> None:
+    def current_gait_index(self, value: primitives.Int) -> None:
         """Set the CurrentGaitIndex field value."""
         member = self.get_member("CurrentGaitIndex")
         if member is not None:
@@ -2089,15 +2087,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def pelvis_position_weight(self) -> str | None:
-        """Target ID of the _pelvisPositionWeight reference (targets IField[np.float32])."""
+        """Target ID of the _pelvisPositionWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_pelvisPositionWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @pelvis_position_weight.setter
-    def pelvis_position_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _pelvisPositionWeight reference by target ID or IField[np.float32] instance."""
+    def pelvis_position_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _pelvisPositionWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_pelvisPositionWeight")
         if isinstance(member, members.Reference):
@@ -2110,15 +2108,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def pelvis_rotation_weight(self) -> str | None:
-        """Target ID of the _pelvisRotationWeight reference (targets IField[np.float32])."""
+        """Target ID of the _pelvisRotationWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_pelvisRotationWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @pelvis_rotation_weight.setter
-    def pelvis_rotation_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _pelvisRotationWeight reference by target ID or IField[np.float32] instance."""
+    def pelvis_rotation_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _pelvisRotationWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_pelvisRotationWeight")
         if isinstance(member, members.Reference):
@@ -2131,15 +2129,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def chest_weight(self) -> str | None:
-        """Target ID of the _chestWeight reference (targets IField[np.float32])."""
+        """Target ID of the _chestWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_chestWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @chest_weight.setter
-    def chest_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _chestWeight reference by target ID or IField[np.float32] instance."""
+    def chest_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _chestWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_chestWeight")
         if isinstance(member, members.Reference):
@@ -2152,15 +2150,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def locomotion_weight(self) -> str | None:
-        """Target ID of the _locomotionWeight reference (targets IField[np.float32])."""
+        """Target ID of the _locomotionWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_locomotionWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @locomotion_weight.setter
-    def locomotion_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _locomotionWeight reference by target ID or IField[np.float32] instance."""
+    def locomotion_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _locomotionWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_locomotionWeight")
         if isinstance(member, members.Reference):
@@ -2173,15 +2171,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def left_leg_position_weight(self) -> str | None:
-        """Target ID of the _leftLegPositionWeight reference (targets IField[np.float32])."""
+        """Target ID of the _leftLegPositionWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_leftLegPositionWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @left_leg_position_weight.setter
-    def left_leg_position_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _leftLegPositionWeight reference by target ID or IField[np.float32] instance."""
+    def left_leg_position_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _leftLegPositionWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_leftLegPositionWeight")
         if isinstance(member, members.Reference):
@@ -2194,15 +2192,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def left_leg_rotation_weight(self) -> str | None:
-        """Target ID of the _leftLegRotationWeight reference (targets IField[np.float32])."""
+        """Target ID of the _leftLegRotationWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_leftLegRotationWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @left_leg_rotation_weight.setter
-    def left_leg_rotation_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _leftLegRotationWeight reference by target ID or IField[np.float32] instance."""
+    def left_leg_rotation_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _leftLegRotationWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_leftLegRotationWeight")
         if isinstance(member, members.Reference):
@@ -2215,15 +2213,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def right_leg_position_weight(self) -> str | None:
-        """Target ID of the _rightLegPositionWeight reference (targets IField[np.float32])."""
+        """Target ID of the _rightLegPositionWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_rightLegPositionWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @right_leg_position_weight.setter
-    def right_leg_position_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _rightLegPositionWeight reference by target ID or IField[np.float32] instance."""
+    def right_leg_position_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _rightLegPositionWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_rightLegPositionWeight")
         if isinstance(member, members.Reference):
@@ -2236,15 +2234,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def right_leg_rotation_weight(self) -> str | None:
-        """Target ID of the _rightLegRotationWeight reference (targets IField[np.float32])."""
+        """Target ID of the _rightLegRotationWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_rightLegRotationWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @right_leg_rotation_weight.setter
-    def right_leg_rotation_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _rightLegRotationWeight reference by target ID or IField[np.float32] instance."""
+    def right_leg_rotation_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _rightLegRotationWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_rightLegRotationWeight")
         if isinstance(member, members.Reference):
@@ -2257,15 +2255,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def left_knee_bend_weight(self) -> str | None:
-        """Target ID of the _leftKneeBendWeight reference (targets IField[np.float32])."""
+        """Target ID of the _leftKneeBendWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_leftKneeBendWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @left_knee_bend_weight.setter
-    def left_knee_bend_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _leftKneeBendWeight reference by target ID or IField[np.float32] instance."""
+    def left_knee_bend_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _leftKneeBendWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_leftKneeBendWeight")
         if isinstance(member, members.Reference):
@@ -2278,15 +2276,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def right_knee_bend_weight(self) -> str | None:
-        """Target ID of the _rightKneeBendWeight reference (targets IField[np.float32])."""
+        """Target ID of the _rightKneeBendWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_rightKneeBendWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @right_knee_bend_weight.setter
-    def right_knee_bend_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _rightKneeBendWeight reference by target ID or IField[np.float32] instance."""
+    def right_knee_bend_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _rightKneeBendWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_rightKneeBendWeight")
         if isinstance(member, members.Reference):
@@ -2299,15 +2297,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def left_elbow_bend_weight(self) -> str | None:
-        """Target ID of the _leftElbowBendWeight reference (targets IField[np.float32])."""
+        """Target ID of the _leftElbowBendWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_leftElbowBendWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @left_elbow_bend_weight.setter
-    def left_elbow_bend_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _leftElbowBendWeight reference by target ID or IField[np.float32] instance."""
+    def left_elbow_bend_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _leftElbowBendWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_leftElbowBendWeight")
         if isinstance(member, members.Reference):
@@ -2320,15 +2318,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def right_elbow_bend_weight(self) -> str | None:
-        """Target ID of the _rightElbowBendWeight reference (targets IField[np.float32])."""
+        """Target ID of the _rightElbowBendWeight reference (targets IField[primitives.Float])."""
         member = self.get_member("_rightElbowBendWeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @right_elbow_bend_weight.setter
-    def right_elbow_bend_weight(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _rightElbowBendWeight reference by target ID or IField[np.float32] instance."""
+    def right_elbow_bend_weight(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _rightElbowBendWeight reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_rightElbowBendWeight")
         if isinstance(member, members.Reference):
@@ -2442,15 +2440,15 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
 
     @property
     def simplified_collider_enabled(self) -> str | None:
-        """Target ID of the _simplifiedColliderEnabled reference (targets IField[bool])."""
+        """Target ID of the _simplifiedColliderEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_simplifiedColliderEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @simplified_collider_enabled.setter
-    def simplified_collider_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _simplifiedColliderEnabled reference by target ID or IField[bool] instance."""
+    def simplified_collider_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _simplifiedColliderEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_simplifiedColliderEnabled")
         if isinstance(member, members.Reference):
@@ -2475,7 +2473,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         self.set_member("_rigCollidersEnabledStates", value)
 
     @property
-    def horizontal_tracking_locked(self) -> bool | None:
+    def horizontal_tracking_locked(self) -> primitives.Bool | None:
         """The _horizontalTrackingLocked field value."""
         member = self.get_member("_horizontalTrackingLocked")
         if member is None:
@@ -2483,7 +2481,7 @@ class VRIKAvatar(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @horizontal_tracking_locked.setter
-    def horizontal_tracking_locked(self, value: bool) -> None:
+    def horizontal_tracking_locked(self, value: primitives.Bool) -> None:
         """Set the _horizontalTrackingLocked field value."""
         member = self.get_member("_horizontalTrackingLocked")
         if member is not None:

@@ -16,7 +16,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.UpdateTransform"
 
-    def __init__(self, target: str | Slot | None = None, restore_parent: bool | None = None, restore_position: bool | None = None, restore_rotation: bool | None = None, restore_scale: bool | None = None, parent_before: str | Slot | None = None, parent_after: str | Slot | None = None, local_position_before: primitives.Float3 | None = None, local_rotation_before: primitives.FloatQ | None = None, local_scale_before: primitives.Float3 | None = None, global_position_before: primitives.Float3 | None = None, global_rotation_before: primitives.FloatQ | None = None, global_scale_before: primitives.Float3 | None = None, local_position_after: primitives.Float3 | None = None, local_rotation_after: primitives.FloatQ | None = None, local_scale_after: primitives.Float3 | None = None, global_position_after: primitives.Float3 | None = None, global_rotation_after: primitives.FloatQ | None = None, global_scale_after: primitives.Float3 | None = None, performed: bool | None = None, description: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | Slot | None = None, restore_parent: primitives.Bool | None = None, restore_position: primitives.Bool | None = None, restore_rotation: primitives.Bool | None = None, restore_scale: primitives.Bool | None = None, parent_before: str | Slot | None = None, parent_after: str | Slot | None = None, local_position_before: primitives.Float3 | None = None, local_rotation_before: primitives.FloatQ | None = None, local_scale_before: primitives.Float3 | None = None, global_position_before: primitives.Float3 | None = None, global_rotation_before: primitives.FloatQ | None = None, global_scale_before: primitives.Float3 | None = None, local_position_after: primitives.Float3 | None = None, local_rotation_after: primitives.FloatQ | None = None, local_scale_after: primitives.Float3 | None = None, global_position_after: primitives.Float3 | None = None, global_rotation_after: primitives.FloatQ | None = None, global_scale_after: primitives.Float3 | None = None, performed: primitives.Bool | None = None, description: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -109,7 +109,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def restore_parent(self) -> bool | None:
+    def restore_parent(self) -> primitives.Bool | None:
         """The RestoreParent field value."""
         member = self.get_member("RestoreParent")
         if member is None:
@@ -117,7 +117,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @restore_parent.setter
-    def restore_parent(self, value: bool) -> None:
+    def restore_parent(self, value: primitives.Bool) -> None:
         """Set the RestoreParent field value."""
         member = self.get_member("RestoreParent")
         if member is not None:
@@ -128,7 +128,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def restore_position(self) -> bool | None:
+    def restore_position(self) -> primitives.Bool | None:
         """The RestorePosition field value."""
         member = self.get_member("RestorePosition")
         if member is None:
@@ -136,7 +136,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @restore_position.setter
-    def restore_position(self, value: bool) -> None:
+    def restore_position(self, value: primitives.Bool) -> None:
         """Set the RestorePosition field value."""
         member = self.get_member("RestorePosition")
         if member is not None:
@@ -147,7 +147,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def restore_rotation(self) -> bool | None:
+    def restore_rotation(self) -> primitives.Bool | None:
         """The RestoreRotation field value."""
         member = self.get_member("RestoreRotation")
         if member is None:
@@ -155,7 +155,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @restore_rotation.setter
-    def restore_rotation(self, value: bool) -> None:
+    def restore_rotation(self, value: primitives.Bool) -> None:
         """Set the RestoreRotation field value."""
         member = self.get_member("RestoreRotation")
         if member is not None:
@@ -166,7 +166,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def restore_scale(self) -> bool | None:
+    def restore_scale(self) -> primitives.Bool | None:
         """The RestoreScale field value."""
         member = self.get_member("RestoreScale")
         if member is None:
@@ -174,7 +174,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @restore_scale.setter
-    def restore_scale(self, value: bool) -> None:
+    def restore_scale(self, value: primitives.Bool) -> None:
         """Set the RestoreScale field value."""
         member = self.get_member("RestoreScale")
         if member is not None:
@@ -455,7 +455,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def performed(self) -> bool | None:
+    def performed(self) -> primitives.Bool | None:
         """The _performed field value."""
         member = self.get_member("_performed")
         if member is None:
@@ -463,7 +463,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @performed.setter
-    def performed(self, value: bool) -> None:
+    def performed(self, value: primitives.Bool) -> None:
         """Set the _performed field value."""
         member = self.get_member("_performed")
         if member is not None:
@@ -474,7 +474,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def description(self) -> str | None:
+    def description(self) -> primitives.String | None:
         """The _description field value."""
         member = self.get_member("_description")
         if member is None:
@@ -482,7 +482,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @description.setter
-    def description(self, value: str) -> None:
+    def description(self, value: primitives.String) -> None:
         """Set the _description field value."""
         member = self.get_member("_description")
         if member is not None:

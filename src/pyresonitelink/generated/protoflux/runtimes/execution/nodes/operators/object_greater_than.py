@@ -19,7 +19,7 @@ class ObjectGreaterThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode
 
     Parameterize with a value type::
 
-        ObjectGreaterThan[np.float32]
+        ObjectGreaterThan[primitives.Float]
         ObjectGreaterThan[primitives.Float3]
     """
 

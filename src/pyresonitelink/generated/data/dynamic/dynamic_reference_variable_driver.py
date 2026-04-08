@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -17,14 +18,14 @@ class DynamicReferenceVariableDriver(GenericComponent[T], IDynamicVariable[T], I
 
     Parameterize with a value type::
 
-        DynamicReferenceVariableDriver[np.float32]
+        DynamicReferenceVariableDriver[primitives.Float]
         DynamicReferenceVariableDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicReferenceVariableDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.DynamicReferenceVariableDriver<>"
 
-    def __init__(self, variable_name: str | None = None, target: str | SyncRef[T] | None = None, default_target: str | T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, target: str | SyncRef[T] | None = None, default_target: str | T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +43,7 @@ class DynamicReferenceVariableDriver(GenericComponent[T], IDynamicVariable[T], I
             self.default_target = default_target
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -50,7 +51,7 @@ class DynamicReferenceVariableDriver(GenericComponent[T], IDynamicVariable[T], I
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:

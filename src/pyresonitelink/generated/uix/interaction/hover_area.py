@@ -1,6 +1,7 @@
 """Generated component: HoverArea."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iui_hoverable import IUIHoverable
@@ -15,7 +16,7 @@ class HoverArea(GeneratedComponent, IUIHoverable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.HoverArea"
 
-    def __init__(self, is_hovering: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_hovering: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class HoverArea(GeneratedComponent, IUIHoverable, IWorldEventReceiver):
             self.is_hovering = is_hovering
 
     @property
-    def is_hovering(self) -> bool | None:
+    def is_hovering(self) -> primitives.Bool | None:
         """The IsHovering field value."""
         member = self.get_member("IsHovering")
         if member is None:
@@ -35,7 +36,7 @@ class HoverArea(GeneratedComponent, IUIHoverable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_hovering.setter
-    def is_hovering(self, value: bool) -> None:
+    def is_hovering(self, value: primitives.Bool) -> None:
         """Set the IsHovering field value."""
         member = self.get_member("IsHovering")
         if member is not None:

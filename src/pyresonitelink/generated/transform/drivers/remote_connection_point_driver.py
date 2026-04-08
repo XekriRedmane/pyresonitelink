@@ -1,7 +1,5 @@
 """Generated component: RemoteConnectionPointDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RemoteConnectionPointDriver"
 
-    def __init__(self, filter_threshold: np.float32 | None = None, target_point: str | Slot | None = None, target_vector: primitives.Float3 | None = None, target_size: np.float32 | None = None, target_orientation: primitives.FloatQ | None = None, local_point: str | IField[primitives.Float3] | None = None, local_vector: str | IField[primitives.Float3] | None = None, local_orientation: str | IField[primitives.FloatQ] | None = None, local_size: str | IField[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, filter_threshold: primitives.Float | None = None, target_point: str | Slot | None = None, target_vector: primitives.Float3 | None = None, target_size: primitives.Float | None = None, target_orientation: primitives.FloatQ | None = None, local_point: str | IField[primitives.Float3] | None = None, local_vector: str | IField[primitives.Float3] | None = None, local_orientation: str | IField[primitives.FloatQ] | None = None, local_size: str | IField[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,7 +55,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
             self.local_size = local_size
 
     @property
-    def filter_threshold(self) -> np.float32 | None:
+    def filter_threshold(self) -> primitives.Float | None:
         """The FilterThreshold field value."""
         member = self.get_member("FilterThreshold")
         if member is None:
@@ -65,7 +63,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @filter_threshold.setter
-    def filter_threshold(self, value: np.float32) -> None:
+    def filter_threshold(self, value: primitives.Float) -> None:
         """Set the FilterThreshold field value."""
         member = self.get_member("FilterThreshold")
         if member is not None:
@@ -116,7 +114,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
             )
 
     @property
-    def target_size(self) -> np.float32 | None:
+    def target_size(self) -> primitives.Float | None:
         """The TargetSize field value."""
         member = self.get_member("TargetSize")
         if member is None:
@@ -124,7 +122,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
         return getattr(member, 'value', None)
 
     @target_size.setter
-    def target_size(self, value: np.float32) -> None:
+    def target_size(self, value: primitives.Float) -> None:
         """Set the TargetSize field value."""
         member = self.get_member("TargetSize")
         if member is not None:
@@ -218,15 +216,15 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def local_size(self) -> str | None:
-        """Target ID of the LocalSize reference (targets IField[np.float32])."""
+        """Target ID of the LocalSize reference (targets IField[primitives.Float])."""
         member = self.get_member("LocalSize")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @local_size.setter
-    def local_size(self, target: str | IField[np.float32] | None) -> None:
-        """Set the LocalSize reference by target ID or IField[np.float32] instance."""
+    def local_size(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the LocalSize reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("LocalSize")
         if isinstance(member, members.Reference):

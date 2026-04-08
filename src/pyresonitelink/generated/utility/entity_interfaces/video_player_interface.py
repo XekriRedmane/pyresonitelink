@@ -1,7 +1,5 @@
 """Generated component: VideoPlayerInterface."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -27,7 +25,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VideoPlayerInterface"
 
-    def __init__(self, item_name: str | IField[str] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[str] | None = None, is_instance: bool | None = None, url: str | IField[str] | None = None, stream: str | IField[bool] | None = None, video_clip: str | AssetRef[VideoTexture] | None = None, video_clip_texture: str | AssetRef[ITexture2D] | None = None, aspect_ratio: str | IField[np.float32] | None = None, default_video_clip: str | IAssetProvider[VideoTexture] | None = None, stereo_rendering_enabled: str | IField[bool] | None = None, stereo_layout: str | IField[StereoLayout] | None = None, stereo_transform_left: str | IField[primitives.Float4] | None = None, stereo_transform_right: str | IField[primitives.Float4] | None = None, stereo_transform_scale_left: str | IField[primitives.Float2] | None = None, stereo_transform_offset_left: str | IField[primitives.Float2] | None = None, stereo_transform_scale_right: str | IField[primitives.Float2] | None = None, stereo_transform_offset_right: str | IField[primitives.Float2] | None = None, panoramic_rendering_enabled: str | IField[bool] | None = None, panoramic_horizontal_fov: str | IField[np.float32] | None = None, panoramic_vertical_fov: str | IField[np.float32] | None = None, panoramic_projection: str | IField[PanoramicProjection] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, item_name: str | IField[primitives.String] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[primitives.String] | None = None, is_instance: primitives.Bool | None = None, url: str | IField[str] | None = None, stream: str | IField[primitives.Bool] | None = None, video_clip: str | AssetRef[VideoTexture] | None = None, video_clip_texture: str | AssetRef[ITexture2D] | None = None, aspect_ratio: str | IField[primitives.Float] | None = None, default_video_clip: str | IAssetProvider[VideoTexture] | None = None, stereo_rendering_enabled: str | IField[primitives.Bool] | None = None, stereo_layout: str | IField[StereoLayout] | None = None, stereo_transform_left: str | IField[primitives.Float4] | None = None, stereo_transform_right: str | IField[primitives.Float4] | None = None, stereo_transform_scale_left: str | IField[primitives.Float2] | None = None, stereo_transform_offset_left: str | IField[primitives.Float2] | None = None, stereo_transform_scale_right: str | IField[primitives.Float2] | None = None, stereo_transform_offset_right: str | IField[primitives.Float2] | None = None, panoramic_rendering_enabled: str | IField[primitives.Bool] | None = None, panoramic_horizontal_fov: str | IField[primitives.Float] | None = None, panoramic_vertical_fov: str | IField[primitives.Float] | None = None, panoramic_projection: str | IField[PanoramicProjection] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -103,15 +101,15 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[str])."""
+        """Target ID of the ItemName reference (targets IField[primitives.String])."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_name.setter
-    def item_name(self, target: str | IField[str] | None) -> None:
-        """Set the ItemName reference by target ID or IField[str] instance."""
+    def item_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
@@ -145,15 +143,15 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[str])."""
+        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spawning_user_id.setter
-    def spawning_user_id(self, target: str | IField[str] | None) -> None:
-        """Set the SpawningUserID reference by target ID or IField[str] instance."""
+    def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
@@ -165,7 +163,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
             )
 
     @property
-    def is_instance(self) -> bool | None:
+    def is_instance(self) -> primitives.Bool | None:
         """The IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is None:
@@ -173,7 +171,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
         return getattr(member, 'value', None)
 
     @is_instance.setter
-    def is_instance(self, value: bool) -> None:
+    def is_instance(self, value: primitives.Bool) -> None:
         """Set the IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is not None:
@@ -206,15 +204,15 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stream(self) -> str | None:
-        """Target ID of the Stream reference (targets IField[bool])."""
+        """Target ID of the Stream reference (targets IField[primitives.Bool])."""
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @stream.setter
-    def stream(self, target: str | IField[bool] | None) -> None:
-        """Set the Stream reference by target ID or IField[bool] instance."""
+    def stream(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the Stream reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
@@ -269,15 +267,15 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def aspect_ratio(self) -> str | None:
-        """Target ID of the AspectRatio reference (targets IField[np.float32])."""
+        """Target ID of the AspectRatio reference (targets IField[primitives.Float])."""
         member = self.get_member("AspectRatio")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @aspect_ratio.setter
-    def aspect_ratio(self, target: str | IField[np.float32] | None) -> None:
-        """Set the AspectRatio reference by target ID or IField[np.float32] instance."""
+    def aspect_ratio(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the AspectRatio reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("AspectRatio")
         if isinstance(member, members.Reference):
@@ -311,15 +309,15 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stereo_rendering_enabled(self) -> str | None:
-        """Target ID of the StereoRenderingEnabled reference (targets IField[bool])."""
+        """Target ID of the StereoRenderingEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("StereoRenderingEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @stereo_rendering_enabled.setter
-    def stereo_rendering_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the StereoRenderingEnabled reference by target ID or IField[bool] instance."""
+    def stereo_rendering_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the StereoRenderingEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("StereoRenderingEnabled")
         if isinstance(member, members.Reference):
@@ -479,15 +477,15 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def panoramic_rendering_enabled(self) -> str | None:
-        """Target ID of the PanoramicRenderingEnabled reference (targets IField[bool])."""
+        """Target ID of the PanoramicRenderingEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("PanoramicRenderingEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @panoramic_rendering_enabled.setter
-    def panoramic_rendering_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the PanoramicRenderingEnabled reference by target ID or IField[bool] instance."""
+    def panoramic_rendering_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the PanoramicRenderingEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("PanoramicRenderingEnabled")
         if isinstance(member, members.Reference):
@@ -500,15 +498,15 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def panoramic_horizontal_fov(self) -> str | None:
-        """Target ID of the PanoramicHorizontalFOV reference (targets IField[np.float32])."""
+        """Target ID of the PanoramicHorizontalFOV reference (targets IField[primitives.Float])."""
         member = self.get_member("PanoramicHorizontalFOV")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @panoramic_horizontal_fov.setter
-    def panoramic_horizontal_fov(self, target: str | IField[np.float32] | None) -> None:
-        """Set the PanoramicHorizontalFOV reference by target ID or IField[np.float32] instance."""
+    def panoramic_horizontal_fov(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the PanoramicHorizontalFOV reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("PanoramicHorizontalFOV")
         if isinstance(member, members.Reference):
@@ -521,15 +519,15 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def panoramic_vertical_fov(self) -> str | None:
-        """Target ID of the PanoramicVerticalFOV reference (targets IField[np.float32])."""
+        """Target ID of the PanoramicVerticalFOV reference (targets IField[primitives.Float])."""
         member = self.get_member("PanoramicVerticalFOV")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @panoramic_vertical_fov.setter
-    def panoramic_vertical_fov(self, target: str | IField[np.float32] | None) -> None:
-        """Set the PanoramicVerticalFOV reference by target ID or IField[np.float32] instance."""
+    def panoramic_vertical_fov(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the PanoramicVerticalFOV reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("PanoramicVerticalFOV")
         if isinstance(member, members.Reference):

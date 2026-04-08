@@ -1,8 +1,7 @@
 """Generated component: FormatAsTime."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -23,7 +22,7 @@ class FormatAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.FormatAsTime"
 
-    def __init__(self, time: str | INodeValueOutput[np.float32] | None = None, decimal_places: str | INodeValueOutput[np.int32] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, time: str | INodeValueOutput[primitives.Float] | None = None, decimal_places: str | INodeValueOutput[primitives.Int] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,15 +41,15 @@ class FormatAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Time reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @time.setter
-    def time(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Time reference by target ID or INodeValueOutput[np.float32] instance."""
+    def time(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Time reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
@@ -63,15 +62,15 @@ class FormatAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def decimal_places(self) -> str | None:
-        """Target ID of the DecimalPlaces reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the DecimalPlaces reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("DecimalPlaces")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @decimal_places.setter
-    def decimal_places(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the DecimalPlaces reference by target ID or INodeValueOutput[np.int32] instance."""
+    def decimal_places(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the DecimalPlaces reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("DecimalPlaces")
         if isinstance(member, members.Reference):

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class GrabValueSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver)
 
     Parameterize with a value type::
 
-        GrabValueSet[np.float32]
+        GrabValueSet[primitives.Float]
         GrabValueSet[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabValueSet<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.GrabValueSet<>"
 
-    def __init__(self, target: str | IField[T] | None = None, grabbed_value: T | None = None, released_value: T | None = None, set_on_grabbed: bool | None = None, set_on_released: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[T] | None = None, grabbed_value: T | None = None, released_value: T | None = None, set_on_grabbed: primitives.Bool | None = None, set_on_released: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -106,7 +107,7 @@ class GrabValueSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver)
             )
 
     @property
-    def set_on_grabbed(self) -> bool | None:
+    def set_on_grabbed(self) -> primitives.Bool | None:
         """The SetOnGrabbed field value."""
         member = self.get_member("SetOnGrabbed")
         if member is None:
@@ -114,7 +115,7 @@ class GrabValueSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @set_on_grabbed.setter
-    def set_on_grabbed(self, value: bool) -> None:
+    def set_on_grabbed(self, value: primitives.Bool) -> None:
         """Set the SetOnGrabbed field value."""
         member = self.get_member("SetOnGrabbed")
         if member is not None:
@@ -125,7 +126,7 @@ class GrabValueSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver)
             )
 
     @property
-    def set_on_released(self) -> bool | None:
+    def set_on_released(self) -> primitives.Bool | None:
         """The SetOnReleased field value."""
         member = self.get_member("SetOnReleased")
         if member is None:
@@ -133,7 +134,7 @@ class GrabValueSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @set_on_released.setter
-    def set_on_released(self, value: bool) -> None:
+    def set_on_released(self, value: primitives.Bool) -> None:
         """Set the SetOnReleased field value."""
         member = self.get_member("SetOnReleased")
         if member is not None:

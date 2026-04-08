@@ -1,6 +1,7 @@
 """Generated component: StringToAbsoluteURI."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -19,7 +20,7 @@ class StringToAbsoluteURI(GeneratedComponent, INodeObjectOutput, IExecutionNode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.Uris.StringToAbsoluteURI"
 
-    def __init__(self, input_: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, input_: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,15 +33,15 @@ class StringToAbsoluteURI(GeneratedComponent, INodeObjectOutput, IExecutionNode,
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Input reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @input_.setter
-    def input_(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Input reference by target ID or INodeObjectOutput[str] instance."""
+    def input_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Input reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Input")
         if isinstance(member, members.Reference):

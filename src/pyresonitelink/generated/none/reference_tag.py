@@ -12,7 +12,7 @@ class ReferenceTag(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ReferenceTag[np.float32]
+        ReferenceTag[primitives.Float]
         ReferenceTag[primitives.Float3]
     """
 

@@ -1,7 +1,5 @@
 """Generated component: HollowConeMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HollowConeMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, height: np.float32 | None = None, outer_radius_base: np.float32 | None = None, inner_radius_base: np.float32 | None = None, outer_radius_top: np.float32 | None = None, inner_radius_top: np.float32 | None = None, segments: np.int32 | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, height: primitives.Float | None = None, outer_radius_base: primitives.Float | None = None, inner_radius_base: primitives.Float | None = None, outer_radius_top: primitives.Float | None = None, inner_radius_top: primitives.Float | None = None, segments: primitives.Int | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,7 +58,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.uv_scale = uv_scale
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -68,7 +66,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -79,7 +77,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -87,7 +85,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -130,7 +128,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         self.set_member("Profile", value)
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -138,7 +136,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -149,7 +147,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def outer_radius_base(self) -> np.float32 | None:
+    def outer_radius_base(self) -> primitives.Float | None:
         """The OuterRadiusBase field value."""
         member = self.get_member("OuterRadiusBase")
         if member is None:
@@ -157,7 +155,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @outer_radius_base.setter
-    def outer_radius_base(self, value: np.float32) -> None:
+    def outer_radius_base(self, value: primitives.Float) -> None:
         """Set the OuterRadiusBase field value."""
         member = self.get_member("OuterRadiusBase")
         if member is not None:
@@ -168,7 +166,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def inner_radius_base(self) -> np.float32 | None:
+    def inner_radius_base(self) -> primitives.Float | None:
         """The InnerRadiusBase field value."""
         member = self.get_member("InnerRadiusBase")
         if member is None:
@@ -176,7 +174,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @inner_radius_base.setter
-    def inner_radius_base(self, value: np.float32) -> None:
+    def inner_radius_base(self, value: primitives.Float) -> None:
         """Set the InnerRadiusBase field value."""
         member = self.get_member("InnerRadiusBase")
         if member is not None:
@@ -187,7 +185,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def outer_radius_top(self) -> np.float32 | None:
+    def outer_radius_top(self) -> primitives.Float | None:
         """The OuterRadiusTop field value."""
         member = self.get_member("OuterRadiusTop")
         if member is None:
@@ -195,7 +193,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @outer_radius_top.setter
-    def outer_radius_top(self, value: np.float32) -> None:
+    def outer_radius_top(self, value: primitives.Float) -> None:
         """Set the OuterRadiusTop field value."""
         member = self.get_member("OuterRadiusTop")
         if member is not None:
@@ -206,7 +204,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def inner_radius_top(self) -> np.float32 | None:
+    def inner_radius_top(self) -> primitives.Float | None:
         """The InnerRadiusTop field value."""
         member = self.get_member("InnerRadiusTop")
         if member is None:
@@ -214,7 +212,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @inner_radius_top.setter
-    def inner_radius_top(self, value: np.float32) -> None:
+    def inner_radius_top(self, value: primitives.Float) -> None:
         """Set the InnerRadiusTop field value."""
         member = self.get_member("InnerRadiusTop")
         if member is not None:
@@ -225,7 +223,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def segments(self) -> np.int32 | None:
+    def segments(self) -> primitives.Int | None:
         """The Segments field value."""
         member = self.get_member("Segments")
         if member is None:
@@ -233,7 +231,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @segments.setter
-    def segments(self, value: np.int32) -> None:
+    def segments(self, value: primitives.Int) -> None:
         """Set the Segments field value."""
         member = self.get_member("Segments")
         if member is not None:

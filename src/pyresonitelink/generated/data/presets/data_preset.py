@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -18,7 +19,7 @@ class DataPreset(GeneratedComponent, ICustomInspector, IButtonPressReceiver, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DataPreset"
 
-    def __init__(self, is_active: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, is_active: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class DataPreset(GeneratedComponent, ICustomInspector, IButtonPressReceiver, IWo
             self.is_active = is_active
 
     @property
-    def is_active(self) -> bool | None:
+    def is_active(self) -> primitives.Bool | None:
         """The IsActive field value."""
         member = self.get_member("IsActive")
         if member is None:
@@ -38,7 +39,7 @@ class DataPreset(GeneratedComponent, ICustomInspector, IButtonPressReceiver, IWo
         return getattr(member, 'value', None)
 
     @is_active.setter
-    def is_active(self, value: bool) -> None:
+    def is_active(self, value: primitives.Bool) -> None:
         """Set the IsActive field value."""
         member = self.get_member("IsActive")
         if member is not None:

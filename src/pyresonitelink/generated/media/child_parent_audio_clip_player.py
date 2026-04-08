@@ -1,9 +1,8 @@
 """Generated component: ChildParentAudioClipPlayer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +18,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ChildParentAudioClipPlayer"
 
-    def __init__(self, parent_under: str | Slot | None = None, min_distance: np.float32 | None = None, max_distance: np.float32 | None = None, ignore_audio_effects: bool | None = None, child_limit: np.int32 | None = None, filter_tag: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, parent_under: str | Slot | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, ignore_audio_effects: primitives.Bool | None = None, child_limit: primitives.Int | None = None, filter_tag: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,7 +66,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
             )
 
     @property
-    def min_distance(self) -> np.float32 | None:
+    def min_distance(self) -> primitives.Float | None:
         """The MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is None:
@@ -75,7 +74,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @min_distance.setter
-    def min_distance(self, value: np.float32) -> None:
+    def min_distance(self, value: primitives.Float) -> None:
         """Set the MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is not None:
@@ -86,7 +85,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
             )
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -94,7 +93,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:
@@ -118,7 +117,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
         self.set_member("RolloffMode", value)
 
     @property
-    def ignore_audio_effects(self) -> bool | None:
+    def ignore_audio_effects(self) -> primitives.Bool | None:
         """The IgnoreAudioEffects field value."""
         member = self.get_member("IgnoreAudioEffects")
         if member is None:
@@ -126,7 +125,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @ignore_audio_effects.setter
-    def ignore_audio_effects(self, value: bool) -> None:
+    def ignore_audio_effects(self, value: primitives.Bool) -> None:
         """Set the IgnoreAudioEffects field value."""
         member = self.get_member("IgnoreAudioEffects")
         if member is not None:
@@ -150,7 +149,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
         self.set_member("PlayPointMode", value)
 
     @property
-    def child_limit(self) -> np.int32 | None:
+    def child_limit(self) -> primitives.Int | None:
         """The ChildLimit field value."""
         member = self.get_member("ChildLimit")
         if member is None:
@@ -158,7 +157,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @child_limit.setter
-    def child_limit(self, value: np.int32) -> None:
+    def child_limit(self, value: primitives.Int) -> None:
         """Set the ChildLimit field value."""
         member = self.get_member("ChildLimit")
         if member is not None:
@@ -169,7 +168,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
             )
 
     @property
-    def filter_tag(self) -> str | None:
+    def filter_tag(self) -> primitives.String | None:
         """The FilterTag field value."""
         member = self.get_member("FilterTag")
         if member is None:
@@ -177,7 +176,7 @@ class ChildParentAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @filter_tag.setter
-    def filter_tag(self, value: str) -> None:
+    def filter_tag(self, value: primitives.String) -> None:
         """Set the FilterTag field value."""
         member = self.get_member("FilterTag")
         if member is not None:

@@ -1,6 +1,7 @@
 """Generated component: ReleaseAllGrabbed."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -22,7 +23,7 @@ class ReleaseAllGrabbed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.ReleaseAllGrabbed"
 
-    def __init__(self, next: str | INodeOperation | None = None, node: str | INodeValueOutput[BodyNode] | None = None, supress_events: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, node: str | INodeValueOutput[BodyNode] | None = None, supress_events: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -83,15 +84,15 @@ class ReleaseAllGrabbed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def supress_events(self) -> str | None:
-        """Target ID of the SupressEvents reference (targets INodeValueOutput[bool])."""
+        """Target ID of the SupressEvents reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("SupressEvents")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @supress_events.setter
-    def supress_events(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the SupressEvents reference by target ID or INodeValueOutput[bool] instance."""
+    def supress_events(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the SupressEvents reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("SupressEvents")
         if isinstance(member, members.Reference):

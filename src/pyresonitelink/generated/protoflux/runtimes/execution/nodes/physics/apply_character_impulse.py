@@ -24,7 +24,7 @@ class ApplyCharacterImpulse(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.ApplyCharacterImpulse"
 
-    def __init__(self, next: str | INodeOperation | None = None, impulse: str | INodeValueOutput[primitives.Float3] | None = None, character: str | INodeObjectOutput[CharacterController] | None = None, ignore_mass: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, impulse: str | INodeValueOutput[primitives.Float3] | None = None, character: str | INodeObjectOutput[CharacterController] | None = None, ignore_mass: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -109,15 +109,15 @@ class ApplyCharacterImpulse(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def ignore_mass(self) -> str | None:
-        """Target ID of the IgnoreMass reference (targets INodeValueOutput[bool])."""
+        """Target ID of the IgnoreMass reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("IgnoreMass")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ignore_mass.setter
-    def ignore_mass(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the IgnoreMass reference by target ID or INodeValueOutput[bool] instance."""
+    def ignore_mass(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the IgnoreMass reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("IgnoreMass")
         if isinstance(member, members.Reference):

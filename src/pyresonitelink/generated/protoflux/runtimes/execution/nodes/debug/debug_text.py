@@ -1,7 +1,5 @@
 """Generated component: DebugText."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -26,7 +24,7 @@ class DebugText(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugText"
 
-    def __init__(self, next: str | INodeOperation | None = None, position: str | INodeValueOutput[primitives.Float3] | None = None, text: str | INodeObjectOutput[str] | None = None, size: str | INodeValueOutput[np.float32] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, duration: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, position: str | INodeValueOutput[primitives.Float3] | None = None, text: str | INodeObjectOutput[primitives.String] | None = None, size: str | INodeValueOutput[primitives.Float] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -96,15 +94,15 @@ class DebugText(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Text reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text.setter
-    def text(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Text reference by target ID or INodeObjectOutput[str] instance."""
+    def text(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Text reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
@@ -117,15 +115,15 @@ class DebugText(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def size(self) -> str | None:
-        """Target ID of the Size reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Size reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Size")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @size.setter
-    def size(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Size reference by target ID or INodeValueOutput[np.float32] instance."""
+    def size(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Size reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Size")
         if isinstance(member, members.Reference):
@@ -159,15 +157,15 @@ class DebugText(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @duration.setter
-    def duration(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Duration reference by target ID or INodeValueOutput[np.float32] instance."""
+    def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):

@@ -1,6 +1,7 @@
 """Generated component: SettingActionProxy."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
@@ -13,14 +14,14 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        SettingActionProxy[np.float32]
+        SettingActionProxy[primitives.Float]
         SettingActionProxy[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SettingActionProxy<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.SettingActionProxy<>"
 
-    def __init__(self, action_name: str | None = None, subsetting_getter: str | None = None, subsetting_key: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, action_name: primitives.String | None = None, subsetting_getter: primitives.String | None = None, subsetting_key: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,7 +39,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
             self.subsetting_key = subsetting_key
 
     @property
-    def action_name(self) -> str | None:
+    def action_name(self) -> primitives.String | None:
         """The ActionName field value."""
         member = self.get_member("ActionName")
         if member is None:
@@ -46,7 +47,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @action_name.setter
-    def action_name(self, value: str) -> None:
+    def action_name(self, value: primitives.String) -> None:
         """Set the ActionName field value."""
         member = self.get_member("ActionName")
         if member is not None:
@@ -57,7 +58,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def subsetting_getter(self) -> str | None:
+    def subsetting_getter(self) -> primitives.String | None:
         """The SubsettingGetter field value."""
         member = self.get_member("SubsettingGetter")
         if member is None:
@@ -65,7 +66,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @subsetting_getter.setter
-    def subsetting_getter(self, value: str) -> None:
+    def subsetting_getter(self, value: primitives.String) -> None:
         """Set the SubsettingGetter field value."""
         member = self.get_member("SubsettingGetter")
         if member is not None:
@@ -76,7 +77,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def subsetting_key(self) -> str | None:
+    def subsetting_key(self) -> primitives.String | None:
         """The SubsettingKey field value."""
         member = self.get_member("SubsettingKey")
         if member is None:
@@ -84,7 +85,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @subsetting_key.setter
-    def subsetting_key(self, value: str) -> None:
+    def subsetting_key(self, value: primitives.String) -> None:
         """Set the SubsettingKey field value."""
         member = self.get_member("SubsettingKey")
         if member is not None:

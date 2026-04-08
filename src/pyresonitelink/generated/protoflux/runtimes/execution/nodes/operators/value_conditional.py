@@ -1,6 +1,7 @@
 """Generated component: ValueConditional."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -18,14 +19,14 @@ class ValueConditional(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     Parameterize with a value type::
 
-        ValueConditional[np.float32]
+        ValueConditional[primitives.Float]
         ValueConditional[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueConditional<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueConditional<>"
 
-    def __init__(self, on_true: str | INodeValueOutput[T] | None = None, on_false: str | INodeValueOutput[T] | None = None, condition: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, on_true: str | INodeValueOutput[T] | None = None, on_false: str | INodeValueOutput[T] | None = None, condition: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -86,15 +87,15 @@ class ValueConditional(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     @property
     def condition(self) -> str | None:
-        """Target ID of the Condition reference (targets INodeValueOutput[bool])."""
+        """Target ID of the Condition reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @condition.setter
-    def condition(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the Condition reference by target ID or INodeValueOutput[bool] instance."""
+    def condition(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the Condition reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):

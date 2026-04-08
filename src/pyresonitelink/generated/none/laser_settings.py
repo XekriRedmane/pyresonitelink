@@ -1,8 +1,7 @@
 """Generated component: LaserSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LaserSettings"
 
-    def __init__(self, smooth_speed: np.float32 | None = None, modulate_start_angle: np.float32 | None = None, modulate_end_angle: np.float32 | None = None, modulate_exponent: np.float32 | None = None, modulate_speed_multiplier: np.float32 | None = None, stick_threshold: np.float32 | None = None, show_in_desktop: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, smooth_speed: primitives.Float | None = None, modulate_start_angle: primitives.Float | None = None, modulate_end_angle: primitives.Float | None = None, modulate_exponent: primitives.Float | None = None, modulate_speed_multiplier: primitives.Float | None = None, stick_threshold: primitives.Float | None = None, show_in_desktop: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +44,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
             self.show_in_desktop = show_in_desktop
 
     @property
-    def smooth_speed(self) -> np.float32 | None:
+    def smooth_speed(self) -> primitives.Float | None:
         """The SmoothSpeed field value."""
         member = self.get_member("SmoothSpeed")
         if member is None:
@@ -53,7 +52,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @smooth_speed.setter
-    def smooth_speed(self, value: np.float32) -> None:
+    def smooth_speed(self, value: primitives.Float) -> None:
         """Set the SmoothSpeed field value."""
         member = self.get_member("SmoothSpeed")
         if member is not None:
@@ -64,7 +63,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def modulate_start_angle(self) -> np.float32 | None:
+    def modulate_start_angle(self) -> primitives.Float | None:
         """The ModulateStartAngle field value."""
         member = self.get_member("ModulateStartAngle")
         if member is None:
@@ -72,7 +71,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @modulate_start_angle.setter
-    def modulate_start_angle(self, value: np.float32) -> None:
+    def modulate_start_angle(self, value: primitives.Float) -> None:
         """Set the ModulateStartAngle field value."""
         member = self.get_member("ModulateStartAngle")
         if member is not None:
@@ -83,7 +82,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def modulate_end_angle(self) -> np.float32 | None:
+    def modulate_end_angle(self) -> primitives.Float | None:
         """The ModulateEndAngle field value."""
         member = self.get_member("ModulateEndAngle")
         if member is None:
@@ -91,7 +90,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @modulate_end_angle.setter
-    def modulate_end_angle(self, value: np.float32) -> None:
+    def modulate_end_angle(self, value: primitives.Float) -> None:
         """Set the ModulateEndAngle field value."""
         member = self.get_member("ModulateEndAngle")
         if member is not None:
@@ -102,7 +101,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def modulate_exponent(self) -> np.float32 | None:
+    def modulate_exponent(self) -> primitives.Float | None:
         """The ModulateExponent field value."""
         member = self.get_member("ModulateExponent")
         if member is None:
@@ -110,7 +109,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @modulate_exponent.setter
-    def modulate_exponent(self, value: np.float32) -> None:
+    def modulate_exponent(self, value: primitives.Float) -> None:
         """Set the ModulateExponent field value."""
         member = self.get_member("ModulateExponent")
         if member is not None:
@@ -121,7 +120,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def modulate_speed_multiplier(self) -> np.float32 | None:
+    def modulate_speed_multiplier(self) -> primitives.Float | None:
         """The ModulateSpeedMultiplier field value."""
         member = self.get_member("ModulateSpeedMultiplier")
         if member is None:
@@ -129,7 +128,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @modulate_speed_multiplier.setter
-    def modulate_speed_multiplier(self, value: np.float32) -> None:
+    def modulate_speed_multiplier(self, value: primitives.Float) -> None:
         """Set the ModulateSpeedMultiplier field value."""
         member = self.get_member("ModulateSpeedMultiplier")
         if member is not None:
@@ -140,7 +139,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def stick_threshold(self) -> np.float32 | None:
+    def stick_threshold(self) -> primitives.Float | None:
         """The StickThreshold field value."""
         member = self.get_member("StickThreshold")
         if member is None:
@@ -148,7 +147,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @stick_threshold.setter
-    def stick_threshold(self, value: np.float32) -> None:
+    def stick_threshold(self, value: primitives.Float) -> None:
         """Set the StickThreshold field value."""
         member = self.get_member("StickThreshold")
         if member is not None:
@@ -159,7 +158,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def show_in_desktop(self) -> bool | None:
+    def show_in_desktop(self) -> primitives.Bool | None:
         """The ShowInDesktop field value."""
         member = self.get_member("ShowInDesktop")
         if member is None:
@@ -167,7 +166,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @show_in_desktop.setter
-    def show_in_desktop(self, value: bool) -> None:
+    def show_in_desktop(self, value: primitives.Bool) -> None:
         """Set the ShowInDesktop field value."""
         member = self.get_member("ShowInDesktop")
         if member is not None:

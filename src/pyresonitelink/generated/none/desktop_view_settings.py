@@ -1,8 +1,7 @@
 """Generated component: DesktopViewSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopViewSettings"
 
-    def __init__(self, follow_cursor: bool | None = None, brightness: np.float32 | None = None, opacity: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, follow_cursor: primitives.Bool | None = None, brightness: primitives.Float | None = None, opacity: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
             self.opacity = opacity
 
     @property
-    def follow_cursor(self) -> bool | None:
+    def follow_cursor(self) -> primitives.Bool | None:
         """The FollowCursor field value."""
         member = self.get_member("FollowCursor")
         if member is None:
@@ -41,7 +40,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @follow_cursor.setter
-    def follow_cursor(self, value: bool) -> None:
+    def follow_cursor(self, value: primitives.Bool) -> None:
         """Set the FollowCursor field value."""
         member = self.get_member("FollowCursor")
         if member is not None:
@@ -52,7 +51,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def brightness(self) -> np.float32 | None:
+    def brightness(self) -> primitives.Float | None:
         """The Brightness field value."""
         member = self.get_member("Brightness")
         if member is None:
@@ -60,7 +59,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @brightness.setter
-    def brightness(self, value: np.float32) -> None:
+    def brightness(self, value: primitives.Float) -> None:
         """Set the Brightness field value."""
         member = self.get_member("Brightness")
         if member is not None:
@@ -71,7 +70,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def opacity(self) -> np.float32 | None:
+    def opacity(self) -> primitives.Float | None:
         """The Opacity field value."""
         member = self.get_member("Opacity")
         if member is None:
@@ -79,7 +78,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @opacity.setter
-    def opacity(self, value: np.float32) -> None:
+    def opacity(self, value: primitives.Float) -> None:
         """Set the Opacity field value."""
         member = self.get_member("Opacity")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: FingerPoseLerp."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifinger_pose_source_component import IFingerPoseSourceComponent
@@ -18,7 +17,7 @@ class FingerPoseLerp(GeneratedComponent, IFingerPoseSourceComponent, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FingerPoseLerp"
 
-    def __init__(self, a: str | IFingerPoseSourceComponent | None = None, b: str | IFingerPoseSourceComponent | None = None, lerp: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, a: str | IFingerPoseSourceComponent | None = None, b: str | IFingerPoseSourceComponent | None = None, lerp: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -78,7 +77,7 @@ class FingerPoseLerp(GeneratedComponent, IFingerPoseSourceComponent, IWorldEvent
             )
 
     @property
-    def lerp(self) -> np.float32 | None:
+    def lerp(self) -> primitives.Float | None:
         """The Lerp field value."""
         member = self.get_member("Lerp")
         if member is None:
@@ -86,7 +85,7 @@ class FingerPoseLerp(GeneratedComponent, IFingerPoseSourceComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @lerp.setter
-    def lerp(self, value: np.float32) -> None:
+    def lerp(self, value: primitives.Float) -> None:
         """Set the Lerp field value."""
         member = self.get_member("Lerp")
         if member is not None:

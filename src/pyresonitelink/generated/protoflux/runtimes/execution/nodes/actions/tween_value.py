@@ -1,8 +1,7 @@
 """Generated component: TweenValue."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -25,14 +24,14 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     Parameterize with a value type::
 
-        TweenValue[np.float32]
+        TweenValue[primitives.Float]
         TweenValue[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Animation.TweenValue<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Animation.TweenValue<>"
 
-    def __init__(self, to: str | INodeValueOutput[T] | None = None, from_: str | INodeValueOutput[T] | None = None, duration: str | INodeValueOutput[np.float32] | None = None, curve: str | INodeValueOutput[CurvePreset] | None = None, proportional_duration: str | INodeValueOutput[bool] | None = None, target: str | INodeObjectOutput[IField[T]] | None = None, on_started: str | INodeOperation | None = None, on_done: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, to: str | INodeValueOutput[T] | None = None, from_: str | INodeValueOutput[T] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, curve: str | INodeValueOutput[CurvePreset] | None = None, proportional_duration: str | INodeValueOutput[primitives.Bool] | None = None, target: str | INodeObjectOutput[IField[T]] | None = None, on_started: str | INodeOperation | None = None, on_done: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -108,15 +107,15 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @duration.setter
-    def duration(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Duration reference by target ID or INodeValueOutput[np.float32] instance."""
+    def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
@@ -150,15 +149,15 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def proportional_duration(self) -> str | None:
-        """Target ID of the ProportionalDuration reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ProportionalDuration reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ProportionalDuration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @proportional_duration.setter
-    def proportional_duration(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ProportionalDuration reference by target ID or INodeValueOutput[bool] instance."""
+    def proportional_duration(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ProportionalDuration reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ProportionalDuration")
         if isinstance(member, members.Reference):

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.idata_feed_view import IDataFeedView
@@ -17,7 +18,7 @@ class SetDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SetDataFeedCategory"
 
-    def __init__(self, view: str | IDataFeedView | None = None, is_inside_category_path: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, view: str | IDataFeedView | None = None, is_inside_category_path: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,7 +67,7 @@ class SetDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEventR
         self.set_member("CategoryPath", value)
 
     @property
-    def is_inside_category_path(self) -> bool | None:
+    def is_inside_category_path(self) -> primitives.Bool | None:
         """The IsInsideCategoryPath field value."""
         member = self.get_member("IsInsideCategoryPath")
         if member is None:
@@ -74,7 +75,7 @@ class SetDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEventR
         return getattr(member, 'value', None)
 
     @is_inside_category_path.setter
-    def is_inside_category_path(self, value: bool) -> None:
+    def is_inside_category_path(self, value: primitives.Bool) -> None:
         """Set the IsInsideCategoryPath field value."""
         member = self.get_member("IsInsideCategoryPath")
         if member is not None:

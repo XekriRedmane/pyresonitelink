@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -17,7 +18,7 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StringConcatenationDriver"
 
-    def __init__(self, target_string: str | IField[str] | None = None, separator: str | None = None, null_output_when_all_are_null: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_string: str | IField[primitives.String] | None = None, separator: primitives.String | None = None, null_output_when_all_are_null: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,15 +37,15 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def target_string(self) -> str | None:
-        """Target ID of the TargetString reference (targets IField[str])."""
+        """Target ID of the TargetString reference (targets IField[primitives.String])."""
         member = self.get_member("TargetString")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_string.setter
-    def target_string(self, target: str | IField[str] | None) -> None:
-        """Set the TargetString reference by target ID or IField[str] instance."""
+    def target_string(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the TargetString reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetString")
         if isinstance(member, members.Reference):
@@ -56,7 +57,7 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def separator(self) -> str | None:
+    def separator(self) -> primitives.String | None:
         """The Separator field value."""
         member = self.get_member("Separator")
         if member is None:
@@ -64,7 +65,7 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @separator.setter
-    def separator(self, value: str) -> None:
+    def separator(self, value: primitives.String) -> None:
         """Set the Separator field value."""
         member = self.get_member("Separator")
         if member is not None:
@@ -88,7 +89,7 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
         self.set_member("Strings", value)
 
     @property
-    def null_output_when_all_are_null(self) -> bool | None:
+    def null_output_when_all_are_null(self) -> primitives.Bool | None:
         """The NullOutputWhenAllAreNull field value."""
         member = self.get_member("NullOutputWhenAllAreNull")
         if member is None:
@@ -96,7 +97,7 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @null_output_when_all_are_null.setter
-    def null_output_when_all_are_null(self, value: bool) -> None:
+    def null_output_when_all_are_null(self, value: primitives.Bool) -> None:
         """Set the NullOutputWhenAllAreNull field value."""
         member = self.get_member("NullOutputWhenAllAreNull")
         if member is not None:

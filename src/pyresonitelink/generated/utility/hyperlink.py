@@ -1,6 +1,7 @@
 """Generated component: Hyperlink."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -17,7 +18,7 @@ class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Hyperlink"
 
-    def __init__(self, url: str | None = None, open_once: bool | None = None, reason: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, open_once: primitives.Bool | None = None, reason: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +55,7 @@ class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEven
             )
 
     @property
-    def open_once(self) -> bool | None:
+    def open_once(self) -> primitives.Bool | None:
         """The OpenOnce field value."""
         member = self.get_member("OpenOnce")
         if member is None:
@@ -62,7 +63,7 @@ class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEven
         return getattr(member, 'value', None)
 
     @open_once.setter
-    def open_once(self, value: bool) -> None:
+    def open_once(self, value: primitives.Bool) -> None:
         """Set the OpenOnce field value."""
         member = self.get_member("OpenOnce")
         if member is not None:
@@ -73,7 +74,7 @@ class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEven
             )
 
     @property
-    def reason(self) -> str | None:
+    def reason(self) -> primitives.String | None:
         """The Reason field value."""
         member = self.get_member("Reason")
         if member is None:
@@ -81,7 +82,7 @@ class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEven
         return getattr(member, 'value', None)
 
     @reason.setter
-    def reason(self, value: str) -> None:
+    def reason(self, value: primitives.String) -> None:
         """Set the Reason field value."""
         member = self.get_member("Reason")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: NoiseTexture."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NoiseTexture"
 
-    def __init__(self, high_priority_integration: bool | None = None, anisotropic_level: np.int32 | None = None, mipmap_bias: np.float32 | None = None, size: primitives.Int2 | None = None, mipmaps: bool | None = None, seed: np.int32 | None = None, monochrome: bool | None = None, monochrome_max: primitives.ColorX | None = None, monochrome_min: primitives.ColorX | None = None, bias: np.float32 | None = None, gain: np.float32 | None = None, clamp: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, anisotropic_level: primitives.Int | None = None, mipmap_bias: primitives.Float | None = None, size: primitives.Int2 | None = None, mipmaps: primitives.Bool | None = None, seed: primitives.Int | None = None, monochrome: primitives.Bool | None = None, monochrome_max: primitives.ColorX | None = None, monochrome_min: primitives.ColorX | None = None, bias: primitives.Float | None = None, gain: primitives.Float | None = None, clamp: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,7 +64,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
             self.clamp = clamp
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -74,7 +72,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -98,7 +96,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         self.set_member("FilterMode", value)
 
     @property
-    def anisotropic_level(self) -> np.int32 | None:
+    def anisotropic_level(self) -> primitives.Int | None:
         """The AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is None:
@@ -106,7 +104,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @anisotropic_level.setter
-    def anisotropic_level(self, value: np.int32) -> None:
+    def anisotropic_level(self, value: primitives.Int) -> None:
         """Set the AnisotropicLevel field value."""
         member = self.get_member("AnisotropicLevel")
         if member is not None:
@@ -143,7 +141,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         self.set_member("WrapModeV", value)
 
     @property
-    def mipmap_bias(self) -> np.float32 | None:
+    def mipmap_bias(self) -> primitives.Float | None:
         """The MipmapBias field value."""
         member = self.get_member("MipmapBias")
         if member is None:
@@ -151,7 +149,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @mipmap_bias.setter
-    def mipmap_bias(self, value: np.float32) -> None:
+    def mipmap_bias(self, value: primitives.Float) -> None:
         """Set the MipmapBias field value."""
         member = self.get_member("MipmapBias")
         if member is not None:
@@ -194,7 +192,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
             )
 
     @property
-    def mipmaps(self) -> bool | None:
+    def mipmaps(self) -> primitives.Bool | None:
         """The Mipmaps field value."""
         member = self.get_member("Mipmaps")
         if member is None:
@@ -202,7 +200,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @mipmaps.setter
-    def mipmaps(self, value: bool) -> None:
+    def mipmaps(self, value: primitives.Bool) -> None:
         """Set the Mipmaps field value."""
         member = self.get_member("Mipmaps")
         if member is not None:
@@ -226,7 +224,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         self.set_member("Format", value)
 
     @property
-    def seed(self) -> np.int32 | None:
+    def seed(self) -> primitives.Int | None:
         """The Seed field value."""
         member = self.get_member("Seed")
         if member is None:
@@ -234,7 +232,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @seed.setter
-    def seed(self, value: np.int32) -> None:
+    def seed(self, value: primitives.Int) -> None:
         """Set the Seed field value."""
         member = self.get_member("Seed")
         if member is not None:
@@ -245,7 +243,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
             )
 
     @property
-    def monochrome(self) -> bool | None:
+    def monochrome(self) -> primitives.Bool | None:
         """The Monochrome field value."""
         member = self.get_member("Monochrome")
         if member is None:
@@ -253,7 +251,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @monochrome.setter
-    def monochrome(self, value: bool) -> None:
+    def monochrome(self, value: primitives.Bool) -> None:
         """Set the Monochrome field value."""
         member = self.get_member("Monochrome")
         if member is not None:
@@ -302,7 +300,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
             )
 
     @property
-    def bias(self) -> np.float32 | None:
+    def bias(self) -> primitives.Float | None:
         """The Bias field value."""
         member = self.get_member("Bias")
         if member is None:
@@ -310,7 +308,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @bias.setter
-    def bias(self, value: np.float32) -> None:
+    def bias(self, value: primitives.Float) -> None:
         """Set the Bias field value."""
         member = self.get_member("Bias")
         if member is not None:
@@ -321,7 +319,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
             )
 
     @property
-    def gain(self) -> np.float32 | None:
+    def gain(self) -> primitives.Float | None:
         """The Gain field value."""
         member = self.get_member("Gain")
         if member is None:
@@ -329,7 +327,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @gain.setter
-    def gain(self, value: np.float32) -> None:
+    def gain(self, value: primitives.Float) -> None:
         """Set the Gain field value."""
         member = self.get_member("Gain")
         if member is not None:
@@ -340,7 +338,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
             )
 
     @property
-    def clamp(self) -> bool | None:
+    def clamp(self) -> primitives.Bool | None:
         """The Clamp field value."""
         member = self.get_member("Clamp")
         if member is None:
@@ -348,7 +346,7 @@ class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @clamp.setter
-    def clamp(self, value: bool) -> None:
+    def clamp(self, value: primitives.Bool) -> None:
         """Set the Clamp field value."""
         member = self.get_member("Clamp")
         if member is not None:

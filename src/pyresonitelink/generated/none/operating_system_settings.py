@@ -1,6 +1,7 @@
 """Generated component: OperatingSystemSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class OperatingSystemSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OperatingSystemSettings"
 
-    def __init__(self, keep_original_screenshot_format: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, keep_original_screenshot_format: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class OperatingSystemSettings(GeneratedComponent, ICustomInspector):
             self.keep_original_screenshot_format = keep_original_screenshot_format
 
     @property
-    def keep_original_screenshot_format(self) -> bool | None:
+    def keep_original_screenshot_format(self) -> primitives.Bool | None:
         """The KeepOriginalScreenshotFormat field value."""
         member = self.get_member("KeepOriginalScreenshotFormat")
         if member is None:
@@ -33,7 +34,7 @@ class OperatingSystemSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @keep_original_screenshot_format.setter
-    def keep_original_screenshot_format(self, value: bool) -> None:
+    def keep_original_screenshot_format(self, value: primitives.Bool) -> None:
         """Set the KeepOriginalScreenshotFormat field value."""
         member = self.get_member("KeepOriginalScreenshotFormat")
         if member is not None:

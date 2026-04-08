@@ -1,6 +1,7 @@
 """Generated component: CloudUserInfo."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CloudUserInfo"
 
-    def __init__(self, user_id: str | None = None, is_loaded: bool | None = None, username: str | None = None, registration_date: str | None = None, original_registration_date: str | None = None, icon_url: str | None = None, is_contact: bool | None = None, loaded_user_id: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user_id: primitives.String | None = None, is_loaded: primitives.Bool | None = None, username: primitives.String | None = None, registration_date: str | None = None, original_registration_date: str | None = None, icon_url: str | None = None, is_contact: primitives.Bool | None = None, loaded_user_id: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,7 +49,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.loaded_user_id = loaded_user_id
 
     @property
-    def user_id(self) -> str | None:
+    def user_id(self) -> primitives.String | None:
         """The UserId field value."""
         member = self.get_member("UserId")
         if member is None:
@@ -56,7 +57,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @user_id.setter
-    def user_id(self, value: str) -> None:
+    def user_id(self, value: primitives.String) -> None:
         """Set the UserId field value."""
         member = self.get_member("UserId")
         if member is not None:
@@ -67,7 +68,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_loaded(self) -> bool | None:
+    def is_loaded(self) -> primitives.Bool | None:
         """The IsLoaded field value."""
         member = self.get_member("IsLoaded")
         if member is None:
@@ -75,7 +76,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_loaded.setter
-    def is_loaded(self, value: bool) -> None:
+    def is_loaded(self, value: primitives.Bool) -> None:
         """Set the IsLoaded field value."""
         member = self.get_member("IsLoaded")
         if member is not None:
@@ -86,7 +87,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def username(self) -> str | None:
+    def username(self) -> primitives.String | None:
         """The Username field value."""
         member = self.get_member("Username")
         if member is None:
@@ -94,7 +95,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @username.setter
-    def username(self, value: str) -> None:
+    def username(self, value: primitives.String) -> None:
         """Set the Username field value."""
         member = self.get_member("Username")
         if member is not None:
@@ -162,7 +163,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_contact(self) -> bool | None:
+    def is_contact(self) -> primitives.Bool | None:
         """The IsContact field value."""
         member = self.get_member("IsContact")
         if member is None:
@@ -170,7 +171,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_contact.setter
-    def is_contact(self, value: bool) -> None:
+    def is_contact(self, value: primitives.Bool) -> None:
         """Set the IsContact field value."""
         member = self.get_member("IsContact")
         if member is not None:
@@ -181,7 +182,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def loaded_user_id(self) -> str | None:
+    def loaded_user_id(self) -> primitives.String | None:
         """The _loadedUserId field value."""
         member = self.get_member("_loadedUserId")
         if member is None:
@@ -189,7 +190,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @loaded_user_id.setter
-    def loaded_user_id(self, value: str) -> None:
+    def loaded_user_id(self, value: primitives.String) -> None:
         """Set the _loadedUserId field value."""
         member = self.get_member("_loadedUserId")
         if member is not None:

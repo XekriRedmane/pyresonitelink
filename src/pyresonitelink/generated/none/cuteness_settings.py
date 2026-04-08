@@ -1,6 +1,7 @@
 """Generated component: CutenessSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class CutenessSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CutenessSettings"
 
-    def __init__(self, am_cute: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, am_cute: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class CutenessSettings(GeneratedComponent, ICustomInspector):
             self.am_cute = am_cute
 
     @property
-    def am_cute(self) -> bool | None:
+    def am_cute(self) -> primitives.Bool | None:
         """The AmCute field value."""
         member = self.get_member("AmCute")
         if member is None:
@@ -33,7 +34,7 @@ class CutenessSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @am_cute.setter
-    def am_cute(self, value: bool) -> None:
+    def am_cute(self, value: primitives.Bool) -> None:
         """Set the AmCute field value."""
         member = self.get_member("AmCute")
         if member is not None:

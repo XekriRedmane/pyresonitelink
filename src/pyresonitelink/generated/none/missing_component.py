@@ -1,6 +1,7 @@
 """Generated component: MissingComponent."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -13,7 +14,7 @@ class MissingComponent(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MissingComponent"
 
-    def __init__(self, type_: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, type_: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class MissingComponent(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.type_ = type_
 
     @property
-    def type_(self) -> str | None:
+    def type_(self) -> primitives.String | None:
         """The Type field value."""
         member = self.get_member("Type")
         if member is None:
@@ -33,7 +34,7 @@ class MissingComponent(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @type_.setter
-    def type_(self, value: str) -> None:
+    def type_(self, value: primitives.String) -> None:
         """Set the Type field value."""
         member = self.get_member("Type")
         if member is not None:

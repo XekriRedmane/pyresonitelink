@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ianimation_track import IAnimationTrack
@@ -15,14 +16,14 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        AnimationTrack[np.float32]
+        AnimationTrack[primitives.Float]
         AnimationTrack[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AnimationTrack<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.AnimationTrack<>"
 
-    def __init__(self, node: str | None = None, component_: str | None = None, property: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: primitives.String | None = None, component_: primitives.String | None = None, property: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +41,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
             self.property = property
 
     @property
-    def node(self) -> str | None:
+    def node(self) -> primitives.String | None:
         """The _node field value."""
         member = self.get_member("_node")
         if member is None:
@@ -48,7 +49,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @node.setter
-    def node(self, value: str) -> None:
+    def node(self, value: primitives.String) -> None:
         """Set the _node field value."""
         member = self.get_member("_node")
         if member is not None:
@@ -59,7 +60,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
             )
 
     @property
-    def component_(self) -> str | None:
+    def component_(self) -> primitives.String | None:
         """The _component field value."""
         member = self.get_member("_component")
         if member is None:
@@ -67,7 +68,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @component_.setter
-    def component_(self, value: str) -> None:
+    def component_(self, value: primitives.String) -> None:
         """Set the _component field value."""
         member = self.get_member("_component")
         if member is not None:
@@ -78,7 +79,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
             )
 
     @property
-    def property(self) -> str | None:
+    def property(self) -> primitives.String | None:
         """The _property field value."""
         member = self.get_member("_property")
         if member is None:
@@ -86,7 +87,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @property.setter
-    def property(self, value: str) -> None:
+    def property(self, value: primitives.String) -> None:
         """Set the _property field value."""
         member = self.get_member("_property")
         if member is not None:

@@ -15,7 +15,7 @@ class ObjectWrite(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        ObjectWrite[np.float32]
+        ObjectWrite[primitives.Float]
         ObjectWrite[primitives.Float3]
     """
 

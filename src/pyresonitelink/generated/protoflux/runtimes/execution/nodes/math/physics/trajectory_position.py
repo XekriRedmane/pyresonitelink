@@ -1,7 +1,5 @@
 """Generated component: TrajectoryPosition."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Physics.TrajectoryPosition"
 
-    def __init__(self, initial_velocity: str | INodeValueOutput[primitives.Float3] | None = None, gravity: str | INodeValueOutput[primitives.Float3] | None = None, drag: str | INodeValueOutput[np.float32] | None = None, time: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, initial_velocity: str | INodeValueOutput[primitives.Float3] | None = None, gravity: str | INodeValueOutput[primitives.Float3] | None = None, drag: str | INodeValueOutput[primitives.Float] | None = None, time: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -86,15 +84,15 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def drag(self) -> str | None:
-        """Target ID of the Drag reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Drag reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Drag")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @drag.setter
-    def drag(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Drag reference by target ID or INodeValueOutput[np.float32] instance."""
+    def drag(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Drag reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Drag")
         if isinstance(member, members.Reference):
@@ -107,15 +105,15 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Time reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @time.setter
-    def time(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Time reference by target ID or INodeValueOutput[np.float32] instance."""
+    def time(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Time reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Time")
         if isinstance(member, members.Reference):

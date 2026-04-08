@@ -1,6 +1,7 @@
 """Generated component: ColorXFromHexCode."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -19,7 +20,7 @@ class ColorXFromHexCode(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorXFromHexCode"
 
-    def __init__(self, hex_code: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, hex_code: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,15 +33,15 @@ class ColorXFromHexCode(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def hex_code(self) -> str | None:
-        """Target ID of the HexCode reference (targets INodeObjectOutput[str])."""
+        """Target ID of the HexCode reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("HexCode")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @hex_code.setter
-    def hex_code(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the HexCode reference by target ID or INodeObjectOutput[str] instance."""
+    def hex_code(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the HexCode reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("HexCode")
         if isinstance(member, members.Reference):

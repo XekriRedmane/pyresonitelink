@@ -1,8 +1,7 @@
 """Generated component: Pack_Float3."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class Pack_Float3(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.Pack_Float3"
 
-    def __init__(self, x: str | INodeValueOutput[np.float32] | None = None, y: str | INodeValueOutput[np.float32] | None = None, z: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, x: str | INodeValueOutput[primitives.Float] | None = None, y: str | INodeValueOutput[primitives.Float] | None = None, z: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,15 +39,15 @@ class Pack_Float3(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def x(self) -> str | None:
-        """Target ID of the X reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the X reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @x.setter
-    def x(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the X reference by target ID or INodeValueOutput[np.float32] instance."""
+    def x(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the X reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("X")
         if isinstance(member, members.Reference):
@@ -61,15 +60,15 @@ class Pack_Float3(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def y(self) -> str | None:
-        """Target ID of the Y reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Y reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Y")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @y.setter
-    def y(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Y reference by target ID or INodeValueOutput[np.float32] instance."""
+    def y(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Y reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Y")
         if isinstance(member, members.Reference):
@@ -82,15 +81,15 @@ class Pack_Float3(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def z(self) -> str | None:
-        """Target ID of the Z reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Z reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Z")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @z.setter
-    def z(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Z reference by target ID or INodeValueOutput[np.float32] instance."""
+    def z(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Z reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Z")
         if isinstance(member, members.Reference):

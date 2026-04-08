@@ -1,7 +1,5 @@
 """Generated component: OutlinedArc."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.OutlinedArc"
 
-    def __init__(self, arc: np.float32 | None = None, offset: np.float32 | None = None, outer_radius_ratio: np.float32 | None = None, inner_radius_ratio: np.float32 | None = None, rounded_corner_radius: np.float32 | None = None, fill_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, outline_thickness: np.float32 | None = None, material: str | IAssetProvider[Material] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, arc: primitives.Float | None = None, offset: primitives.Float | None = None, outer_radius_ratio: primitives.Float | None = None, inner_radius_ratio: primitives.Float | None = None, rounded_corner_radius: primitives.Float | None = None, fill_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, outline_thickness: primitives.Float | None = None, material: str | IAssetProvider[Material] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +56,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
             self.material = material
 
     @property
-    def arc(self) -> np.float32 | None:
+    def arc(self) -> primitives.Float | None:
         """The Arc field value."""
         member = self.get_member("Arc")
         if member is None:
@@ -66,7 +64,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @arc.setter
-    def arc(self, value: np.float32) -> None:
+    def arc(self, value: primitives.Float) -> None:
         """Set the Arc field value."""
         member = self.get_member("Arc")
         if member is not None:
@@ -77,7 +75,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
             )
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -85,7 +83,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:
@@ -96,7 +94,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
             )
 
     @property
-    def outer_radius_ratio(self) -> np.float32 | None:
+    def outer_radius_ratio(self) -> primitives.Float | None:
         """The OuterRadiusRatio field value."""
         member = self.get_member("OuterRadiusRatio")
         if member is None:
@@ -104,7 +102,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @outer_radius_ratio.setter
-    def outer_radius_ratio(self, value: np.float32) -> None:
+    def outer_radius_ratio(self, value: primitives.Float) -> None:
         """Set the OuterRadiusRatio field value."""
         member = self.get_member("OuterRadiusRatio")
         if member is not None:
@@ -115,7 +113,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
             )
 
     @property
-    def inner_radius_ratio(self) -> np.float32 | None:
+    def inner_radius_ratio(self) -> primitives.Float | None:
         """The InnerRadiusRatio field value."""
         member = self.get_member("InnerRadiusRatio")
         if member is None:
@@ -123,7 +121,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @inner_radius_ratio.setter
-    def inner_radius_ratio(self, value: np.float32) -> None:
+    def inner_radius_ratio(self, value: primitives.Float) -> None:
         """Set the InnerRadiusRatio field value."""
         member = self.get_member("InnerRadiusRatio")
         if member is not None:
@@ -134,7 +132,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
             )
 
     @property
-    def rounded_corner_radius(self) -> np.float32 | None:
+    def rounded_corner_radius(self) -> primitives.Float | None:
         """The RoundedCornerRadius field value."""
         member = self.get_member("RoundedCornerRadius")
         if member is None:
@@ -142,7 +140,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @rounded_corner_radius.setter
-    def rounded_corner_radius(self, value: np.float32) -> None:
+    def rounded_corner_radius(self, value: primitives.Float) -> None:
         """Set the RoundedCornerRadius field value."""
         member = self.get_member("RoundedCornerRadius")
         if member is not None:
@@ -191,7 +189,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
             )
 
     @property
-    def outline_thickness(self) -> np.float32 | None:
+    def outline_thickness(self) -> primitives.Float | None:
         """The OutlineThickness field value."""
         member = self.get_member("OutlineThickness")
         if member is None:
@@ -199,7 +197,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
         return getattr(member, 'value', None)
 
     @outline_thickness.setter
-    def outline_thickness(self, value: np.float32) -> None:
+    def outline_thickness(self, value: primitives.Float) -> None:
         """Set the OutlineThickness field value."""
         member = self.get_member("OutlineThickness")
         if member is not None:

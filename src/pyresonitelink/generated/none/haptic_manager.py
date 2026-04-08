@@ -1,8 +1,7 @@
 """Generated component: HapticManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -16,7 +15,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HapticManager"
 
-    def __init__(self, injected_body_part_intensity: np.float32 | None = None, injected_hand_intensity: np.float32 | None = None, injected_head_intensity: np.float32 | None = None, injected_radius_start_ratio: np.float32 | None = None, injected_radius_end_ratio: np.float32 | None = None, injected_radius_power: np.float32 | None = None, show_debug_visuals: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, injected_body_part_intensity: primitives.Float | None = None, injected_hand_intensity: primitives.Float | None = None, injected_head_intensity: primitives.Float | None = None, injected_radius_start_ratio: primitives.Float | None = None, injected_radius_end_ratio: primitives.Float | None = None, injected_radius_power: primitives.Float | None = None, show_debug_visuals: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,7 +45,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             self.show_debug_visuals = show_debug_visuals
 
     @property
-    def injected_body_part_intensity(self) -> np.float32 | None:
+    def injected_body_part_intensity(self) -> primitives.Float | None:
         """The InjectedBodyPartIntensity field value."""
         member = self.get_member("InjectedBodyPartIntensity")
         if member is None:
@@ -54,7 +53,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @injected_body_part_intensity.setter
-    def injected_body_part_intensity(self, value: np.float32) -> None:
+    def injected_body_part_intensity(self, value: primitives.Float) -> None:
         """Set the InjectedBodyPartIntensity field value."""
         member = self.get_member("InjectedBodyPartIntensity")
         if member is not None:
@@ -65,7 +64,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def injected_hand_intensity(self) -> np.float32 | None:
+    def injected_hand_intensity(self) -> primitives.Float | None:
         """The InjectedHandIntensity field value."""
         member = self.get_member("InjectedHandIntensity")
         if member is None:
@@ -73,7 +72,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @injected_hand_intensity.setter
-    def injected_hand_intensity(self, value: np.float32) -> None:
+    def injected_hand_intensity(self, value: primitives.Float) -> None:
         """Set the InjectedHandIntensity field value."""
         member = self.get_member("InjectedHandIntensity")
         if member is not None:
@@ -84,7 +83,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def injected_head_intensity(self) -> np.float32 | None:
+    def injected_head_intensity(self) -> primitives.Float | None:
         """The InjectedHeadIntensity field value."""
         member = self.get_member("InjectedHeadIntensity")
         if member is None:
@@ -92,7 +91,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @injected_head_intensity.setter
-    def injected_head_intensity(self, value: np.float32) -> None:
+    def injected_head_intensity(self, value: primitives.Float) -> None:
         """Set the InjectedHeadIntensity field value."""
         member = self.get_member("InjectedHeadIntensity")
         if member is not None:
@@ -103,7 +102,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def injected_radius_start_ratio(self) -> np.float32 | None:
+    def injected_radius_start_ratio(self) -> primitives.Float | None:
         """The InjectedRadiusStartRatio field value."""
         member = self.get_member("InjectedRadiusStartRatio")
         if member is None:
@@ -111,7 +110,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @injected_radius_start_ratio.setter
-    def injected_radius_start_ratio(self, value: np.float32) -> None:
+    def injected_radius_start_ratio(self, value: primitives.Float) -> None:
         """Set the InjectedRadiusStartRatio field value."""
         member = self.get_member("InjectedRadiusStartRatio")
         if member is not None:
@@ -122,7 +121,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def injected_radius_end_ratio(self) -> np.float32 | None:
+    def injected_radius_end_ratio(self) -> primitives.Float | None:
         """The InjectedRadiusEndRatio field value."""
         member = self.get_member("InjectedRadiusEndRatio")
         if member is None:
@@ -130,7 +129,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @injected_radius_end_ratio.setter
-    def injected_radius_end_ratio(self, value: np.float32) -> None:
+    def injected_radius_end_ratio(self, value: primitives.Float) -> None:
         """Set the InjectedRadiusEndRatio field value."""
         member = self.get_member("InjectedRadiusEndRatio")
         if member is not None:
@@ -141,7 +140,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def injected_radius_power(self) -> np.float32 | None:
+    def injected_radius_power(self) -> primitives.Float | None:
         """The InjectedRadiusPower field value."""
         member = self.get_member("InjectedRadiusPower")
         if member is None:
@@ -149,7 +148,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @injected_radius_power.setter
-    def injected_radius_power(self, value: np.float32) -> None:
+    def injected_radius_power(self, value: primitives.Float) -> None:
         """Set the InjectedRadiusPower field value."""
         member = self.get_member("InjectedRadiusPower")
         if member is not None:
@@ -160,7 +159,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def show_debug_visuals(self) -> bool | None:
+    def show_debug_visuals(self) -> primitives.Bool | None:
         """The ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
@@ -168,7 +167,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @show_debug_visuals.setter
-    def show_debug_visuals(self, value: bool) -> None:
+    def show_debug_visuals(self, value: primitives.Bool) -> None:
         """Set the ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is not None:

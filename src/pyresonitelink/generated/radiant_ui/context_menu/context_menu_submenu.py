@@ -1,9 +1,8 @@
 """Generated component: ContextMenuSubmenu."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +18,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenuSubmenu"
 
-    def __init__(self, items_root: str | Slot | None = None, search_whole_hierarchy: bool | None = None, disable_flick: bool | None = None, speed_override: np.float32 | None = None, counter_clockwise: bool | None = None, keep_position: bool | None = None, hidden: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, items_root: str | Slot | None = None, search_whole_hierarchy: primitives.Bool | None = None, disable_flick: primitives.Bool | None = None, speed_override: primitives.Float | None = None, counter_clockwise: primitives.Bool | None = None, keep_position: primitives.Bool | None = None, hidden: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -70,7 +69,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def search_whole_hierarchy(self) -> bool | None:
+    def search_whole_hierarchy(self) -> primitives.Bool | None:
         """The SearchWholeHierarchy field value."""
         member = self.get_member("SearchWholeHierarchy")
         if member is None:
@@ -78,7 +77,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @search_whole_hierarchy.setter
-    def search_whole_hierarchy(self, value: bool) -> None:
+    def search_whole_hierarchy(self, value: primitives.Bool) -> None:
         """Set the SearchWholeHierarchy field value."""
         member = self.get_member("SearchWholeHierarchy")
         if member is not None:
@@ -89,7 +88,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def disable_flick(self) -> bool | None:
+    def disable_flick(self) -> primitives.Bool | None:
         """The DisableFlick field value."""
         member = self.get_member("DisableFlick")
         if member is None:
@@ -97,7 +96,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @disable_flick.setter
-    def disable_flick(self, value: bool) -> None:
+    def disable_flick(self, value: primitives.Bool) -> None:
         """Set the DisableFlick field value."""
         member = self.get_member("DisableFlick")
         if member is not None:
@@ -108,7 +107,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def speed_override(self) -> np.float32 | None:
+    def speed_override(self) -> primitives.Float | None:
         """The SpeedOverride field value."""
         member = self.get_member("SpeedOverride")
         if member is None:
@@ -116,7 +115,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @speed_override.setter
-    def speed_override(self, value: np.float32) -> None:
+    def speed_override(self, value: primitives.Float) -> None:
         """Set the SpeedOverride field value."""
         member = self.get_member("SpeedOverride")
         if member is not None:
@@ -127,7 +126,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def counter_clockwise(self) -> bool | None:
+    def counter_clockwise(self) -> primitives.Bool | None:
         """The CounterClockwise field value."""
         member = self.get_member("CounterClockwise")
         if member is None:
@@ -135,7 +134,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @counter_clockwise.setter
-    def counter_clockwise(self, value: bool) -> None:
+    def counter_clockwise(self, value: primitives.Bool) -> None:
         """Set the CounterClockwise field value."""
         member = self.get_member("CounterClockwise")
         if member is not None:
@@ -146,7 +145,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def keep_position(self) -> bool | None:
+    def keep_position(self) -> primitives.Bool | None:
         """The KeepPosition field value."""
         member = self.get_member("KeepPosition")
         if member is None:
@@ -154,7 +153,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @keep_position.setter
-    def keep_position(self, value: bool) -> None:
+    def keep_position(self, value: primitives.Bool) -> None:
         """Set the KeepPosition field value."""
         member = self.get_member("KeepPosition")
         if member is not None:
@@ -165,7 +164,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     @property
-    def hidden(self) -> bool | None:
+    def hidden(self) -> primitives.Bool | None:
         """The Hidden field value."""
         member = self.get_member("Hidden")
         if member is None:
@@ -173,7 +172,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @hidden.setter
-    def hidden(self, value: bool) -> None:
+    def hidden(self, value: primitives.Bool) -> None:
         """Set the Hidden field value."""
         member = self.get_member("Hidden")
         if member is not None:

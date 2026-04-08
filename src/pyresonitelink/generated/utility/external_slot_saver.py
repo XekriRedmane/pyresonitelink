@@ -18,7 +18,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ExternalSlotSaver"
 
-    def __init__(self, target_slot: str | Slot | None = None, save_active_self_override: bool | None = None, save_local_position_override: primitives.Float3 | None = None, save_local_rotation_override: primitives.FloatQ | None = None, save_local_scale_override: primitives.Float3 | None = None, ignore_when_non_persistent_self: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, save_active_self_override: primitives.Bool | None = None, save_local_position_override: primitives.Float3 | None = None, save_local_rotation_override: primitives.FloatQ | None = None, save_local_scale_override: primitives.Float3 | None = None, ignore_when_non_persistent_self: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,7 +66,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
             )
 
     @property
-    def save_active_self_override(self) -> bool | None:
+    def save_active_self_override(self) -> primitives.Bool | None:
         """The SaveActiveSelfOverride field value."""
         member = self.get_member("SaveActiveSelfOverride")
         if member is None:
@@ -74,7 +74,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @save_active_self_override.setter
-    def save_active_self_override(self, value: bool) -> None:
+    def save_active_self_override(self, value: primitives.Bool) -> None:
         """Set the SaveActiveSelfOverride field value."""
         member = self.get_member("SaveActiveSelfOverride")
         if member is not None:
@@ -142,7 +142,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
             )
 
     @property
-    def ignore_when_non_persistent_self(self) -> bool | None:
+    def ignore_when_non_persistent_self(self) -> primitives.Bool | None:
         """The IgnoreWhenNonPersistentSelf field value."""
         member = self.get_member("IgnoreWhenNonPersistentSelf")
         if member is None:
@@ -150,7 +150,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @ignore_when_non_persistent_self.setter
-    def ignore_when_non_persistent_self(self, value: bool) -> None:
+    def ignore_when_non_persistent_self(self, value: primitives.Bool) -> None:
         """Set the IgnoreWhenNonPersistentSelf field value."""
         member = self.get_member("IgnoreWhenNonPersistentSelf")
         if member is not None:

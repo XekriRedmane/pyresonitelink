@@ -1,9 +1,8 @@
 """Generated component: AudioOutput."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -20,7 +19,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioOutput"
 
-    def __init__(self, volume: np.float32 | None = None, source: str | IWorldAudioDataSource | None = None, spatial_blend: np.float32 | None = None, spatialize: bool | None = None, spatialization_start_distance: np.float32 | None = None, spatialization_transition_range: np.float32 | None = None, doppler_level: np.float32 | None = None, pitch: np.float32 | None = None, global_: bool | None = None, min_distance: np.float32 | None = None, max_distance: np.float32 | None = None, priority: np.int32 | None = None, min_scale: np.float32 | None = None, max_scale: np.float32 | None = None, ignore_audio_effects: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, volume: primitives.Float | None = None, source: str | IWorldAudioDataSource | None = None, spatial_blend: primitives.Float | None = None, spatialize: primitives.Bool | None = None, spatialization_start_distance: primitives.Float | None = None, spatialization_transition_range: primitives.Float | None = None, doppler_level: primitives.Float | None = None, pitch: primitives.Float | None = None, global_: primitives.Bool | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, priority: primitives.Int | None = None, min_scale: primitives.Float | None = None, max_scale: primitives.Float | None = None, ignore_audio_effects: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -74,7 +73,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.ignore_audio_effects = ignore_audio_effects
 
     @property
-    def volume(self) -> np.float32 | None:
+    def volume(self) -> primitives.Float | None:
         """The Volume field value."""
         member = self.get_member("Volume")
         if member is None:
@@ -82,7 +81,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @volume.setter
-    def volume(self, value: np.float32) -> None:
+    def volume(self, value: primitives.Float) -> None:
         """Set the Volume field value."""
         member = self.get_member("Volume")
         if member is not None:
@@ -114,7 +113,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def spatial_blend(self) -> np.float32 | None:
+    def spatial_blend(self) -> primitives.Float | None:
         """The SpatialBlend field value."""
         member = self.get_member("SpatialBlend")
         if member is None:
@@ -122,7 +121,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @spatial_blend.setter
-    def spatial_blend(self, value: np.float32) -> None:
+    def spatial_blend(self, value: primitives.Float) -> None:
         """Set the SpatialBlend field value."""
         member = self.get_member("SpatialBlend")
         if member is not None:
@@ -133,7 +132,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def spatialize(self) -> bool | None:
+    def spatialize(self) -> primitives.Bool | None:
         """The Spatialize field value."""
         member = self.get_member("Spatialize")
         if member is None:
@@ -141,7 +140,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @spatialize.setter
-    def spatialize(self, value: bool) -> None:
+    def spatialize(self, value: primitives.Bool) -> None:
         """Set the Spatialize field value."""
         member = self.get_member("Spatialize")
         if member is not None:
@@ -152,7 +151,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def spatialization_start_distance(self) -> np.float32 | None:
+    def spatialization_start_distance(self) -> primitives.Float | None:
         """The SpatializationStartDistance field value."""
         member = self.get_member("SpatializationStartDistance")
         if member is None:
@@ -160,7 +159,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @spatialization_start_distance.setter
-    def spatialization_start_distance(self, value: np.float32) -> None:
+    def spatialization_start_distance(self, value: primitives.Float) -> None:
         """Set the SpatializationStartDistance field value."""
         member = self.get_member("SpatializationStartDistance")
         if member is not None:
@@ -171,7 +170,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def spatialization_transition_range(self) -> np.float32 | None:
+    def spatialization_transition_range(self) -> primitives.Float | None:
         """The SpatializationTransitionRange field value."""
         member = self.get_member("SpatializationTransitionRange")
         if member is None:
@@ -179,7 +178,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @spatialization_transition_range.setter
-    def spatialization_transition_range(self, value: np.float32) -> None:
+    def spatialization_transition_range(self, value: primitives.Float) -> None:
         """Set the SpatializationTransitionRange field value."""
         member = self.get_member("SpatializationTransitionRange")
         if member is not None:
@@ -190,7 +189,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def doppler_level(self) -> np.float32 | None:
+    def doppler_level(self) -> primitives.Float | None:
         """The DopplerLevel field value."""
         member = self.get_member("DopplerLevel")
         if member is None:
@@ -198,7 +197,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @doppler_level.setter
-    def doppler_level(self, value: np.float32) -> None:
+    def doppler_level(self, value: primitives.Float) -> None:
         """Set the DopplerLevel field value."""
         member = self.get_member("DopplerLevel")
         if member is not None:
@@ -209,7 +208,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def pitch(self) -> np.float32 | None:
+    def pitch(self) -> primitives.Float | None:
         """The Pitch field value."""
         member = self.get_member("Pitch")
         if member is None:
@@ -217,7 +216,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @pitch.setter
-    def pitch(self, value: np.float32) -> None:
+    def pitch(self, value: primitives.Float) -> None:
         """Set the Pitch field value."""
         member = self.get_member("Pitch")
         if member is not None:
@@ -228,7 +227,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def global_(self) -> bool | None:
+    def global_(self) -> primitives.Bool | None:
         """The Global field value."""
         member = self.get_member("Global")
         if member is None:
@@ -236,7 +235,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @global_.setter
-    def global_(self, value: bool) -> None:
+    def global_(self, value: primitives.Bool) -> None:
         """Set the Global field value."""
         member = self.get_member("Global")
         if member is not None:
@@ -260,7 +259,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("RolloffMode", value)
 
     @property
-    def min_distance(self) -> np.float32 | None:
+    def min_distance(self) -> primitives.Float | None:
         """The MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is None:
@@ -268,7 +267,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_distance.setter
-    def min_distance(self, value: np.float32) -> None:
+    def min_distance(self, value: primitives.Float) -> None:
         """Set the MinDistance field value."""
         member = self.get_member("MinDistance")
         if member is not None:
@@ -279,7 +278,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -287,7 +286,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:
@@ -298,7 +297,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -306,7 +305,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:
@@ -343,7 +342,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("DistanceSpace", value)
 
     @property
-    def min_scale(self) -> np.float32 | None:
+    def min_scale(self) -> primitives.Float | None:
         """The MinScale field value."""
         member = self.get_member("MinScale")
         if member is None:
@@ -351,7 +350,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @min_scale.setter
-    def min_scale(self, value: np.float32) -> None:
+    def min_scale(self, value: primitives.Float) -> None:
         """Set the MinScale field value."""
         member = self.get_member("MinScale")
         if member is not None:
@@ -362,7 +361,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_scale(self) -> np.float32 | None:
+    def max_scale(self) -> primitives.Float | None:
         """The MaxScale field value."""
         member = self.get_member("MaxScale")
         if member is None:
@@ -370,7 +369,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_scale.setter
-    def max_scale(self, value: np.float32) -> None:
+    def max_scale(self, value: primitives.Float) -> None:
         """Set the MaxScale field value."""
         member = self.get_member("MaxScale")
         if member is not None:
@@ -381,7 +380,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ignore_audio_effects(self) -> bool | None:
+    def ignore_audio_effects(self) -> primitives.Bool | None:
         """The IgnoreAudioEffects field value."""
         member = self.get_member("IgnoreAudioEffects")
         if member is None:
@@ -389,7 +388,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ignore_audio_effects.setter
-    def ignore_audio_effects(self, value: bool) -> None:
+    def ignore_audio_effects(self, value: primitives.Bool) -> None:
         """Set the IgnoreAudioEffects field value."""
         member = self.get_member("IgnoreAudioEffects")
         if member is not None:

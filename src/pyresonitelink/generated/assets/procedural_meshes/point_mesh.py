@@ -1,7 +1,5 @@
 """Generated component: PointMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PointMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, sort: bool | None = None, sort_point: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, sort: primitives.Bool | None = None, sort_point: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +43,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             self.sort_point = sort_point
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -53,7 +51,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -64,7 +62,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -72,7 +70,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -153,7 +151,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def rotations(self) -> list[np.float32] | None:
+    def rotations(self) -> list[primitives.Float] | None:
         """The Rotations array values."""
         member = self.get_member("Rotations")
         if member is None:
@@ -161,7 +159,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'values', None)
 
     @rotations.setter
-    def rotations(self, value: list[np.float32]) -> None:
+    def rotations(self, value: list[primitives.Float]) -> None:
         """Set the Rotations array values."""
         member = self.get_member("Rotations")
         if member is not None:
@@ -223,7 +221,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def sort(self) -> bool | None:
+    def sort(self) -> primitives.Bool | None:
         """The Sort field value."""
         member = self.get_member("Sort")
         if member is None:
@@ -231,7 +229,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @sort.setter
-    def sort(self, value: bool) -> None:
+    def sort(self, value: primitives.Bool) -> None:
         """Set the Sort field value."""
         member = self.get_member("Sort")
         if member is not None:

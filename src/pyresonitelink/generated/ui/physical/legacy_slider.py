@@ -1,7 +1,5 @@
 """Generated component: LegacySlider."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,7 +23,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacySlider"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, is_enabled_field: bool | None = None, drive_field: str | IField[np.float32] | None = None, allow_write_back: bool | None = None, create_undo_step: bool | None = None, value: np.float32 | None = None, min: np.float32 | None = None, max: np.float32 | None = None, increment: np.float32 | None = None, integer_only: bool | None = None, color_field: primitives.ColorX | None = None, symmetrical_field: bool | None = None, width_field: np.float32 | None = None, height_field: np.float32 | None = None, cursor_ratio_field: np.float32 | None = None, thickness_field: np.float32 | None = None, slant_field: np.float32 | None = None, spacing_ratio_field: np.float32 | None = None, track_ratio_field: np.float32 | None = None, button_ratio_field: np.float32 | None = None, track_mesh: str | MultiBevelStripeMesh | None = None, left_mesh: str | BevelStripeMesh | None = None, right_mesh: str | BevelStripeMesh | None = None, cursor_mesh: str | BevelStripeMesh | None = None, track_material: str | PBS_RimMetallic | None = None, left_material: str | PBS_RimMetallic | None = None, right_material: str | PBS_RimMetallic | None = None, cursor_material: str | PBS_RimMetallic | None = None, left_position: str | IField[primitives.Float3] | None = None, right_position: str | IField[primitives.Float3] | None = None, cursor_position: str | IField[primitives.Float3] | None = None, left_collider_size: str | IField[primitives.Float3] | None = None, right_collider_size: str | IField[primitives.Float3] | None = None, track_collider_size: str | IField[primitives.Float3] | None = None, cursor_collider_size: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, is_enabled_field: primitives.Bool | None = None, drive_field: str | IField[primitives.Float] | None = None, allow_write_back: primitives.Bool | None = None, create_undo_step: primitives.Bool | None = None, value: primitives.Float | None = None, min: primitives.Float | None = None, max: primitives.Float | None = None, increment: primitives.Float | None = None, integer_only: primitives.Bool | None = None, color_field: primitives.ColorX | None = None, symmetrical_field: primitives.Bool | None = None, width_field: primitives.Float | None = None, height_field: primitives.Float | None = None, cursor_ratio_field: primitives.Float | None = None, thickness_field: primitives.Float | None = None, slant_field: primitives.Float | None = None, spacing_ratio_field: primitives.Float | None = None, track_ratio_field: primitives.Float | None = None, button_ratio_field: primitives.Float | None = None, track_mesh: str | MultiBevelStripeMesh | None = None, left_mesh: str | BevelStripeMesh | None = None, right_mesh: str | BevelStripeMesh | None = None, cursor_mesh: str | BevelStripeMesh | None = None, track_material: str | PBS_RimMetallic | None = None, left_material: str | PBS_RimMetallic | None = None, right_material: str | PBS_RimMetallic | None = None, cursor_material: str | PBS_RimMetallic | None = None, left_position: str | IField[primitives.Float3] | None = None, right_position: str | IField[primitives.Float3] | None = None, cursor_position: str | IField[primitives.Float3] | None = None, left_collider_size: str | IField[primitives.Float3] | None = None, right_collider_size: str | IField[primitives.Float3] | None = None, track_collider_size: str | IField[primitives.Float3] | None = None, cursor_collider_size: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -166,7 +164,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -174,7 +172,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -185,7 +183,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -193,7 +191,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -204,7 +202,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def is_enabled_field(self) -> bool | None:
+    def is_enabled_field(self) -> primitives.Bool | None:
         """The IsEnabledField field value."""
         member = self.get_member("IsEnabledField")
         if member is None:
@@ -212,7 +210,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @is_enabled_field.setter
-    def is_enabled_field(self, value: bool) -> None:
+    def is_enabled_field(self, value: primitives.Bool) -> None:
         """Set the IsEnabledField field value."""
         member = self.get_member("IsEnabledField")
         if member is not None:
@@ -224,15 +222,15 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def drive_field(self) -> str | None:
-        """Target ID of the DriveField reference (targets IField[np.float32])."""
+        """Target ID of the DriveField reference (targets IField[primitives.Float])."""
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @drive_field.setter
-    def drive_field(self, target: str | IField[np.float32] | None) -> None:
-        """Set the DriveField reference by target ID or IField[np.float32] instance."""
+    def drive_field(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the DriveField reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
@@ -244,7 +242,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def allow_write_back(self) -> bool | None:
+    def allow_write_back(self) -> primitives.Bool | None:
         """The AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is None:
@@ -252,7 +250,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @allow_write_back.setter
-    def allow_write_back(self, value: bool) -> None:
+    def allow_write_back(self, value: primitives.Bool) -> None:
         """Set the AllowWriteBack field value."""
         member = self.get_member("AllowWriteBack")
         if member is not None:
@@ -263,7 +261,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def create_undo_step(self) -> bool | None:
+    def create_undo_step(self) -> primitives.Bool | None:
         """The CreateUndoStep field value."""
         member = self.get_member("CreateUndoStep")
         if member is None:
@@ -271,7 +269,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @create_undo_step.setter
-    def create_undo_step(self, value: bool) -> None:
+    def create_undo_step(self, value: primitives.Bool) -> None:
         """Set the CreateUndoStep field value."""
         member = self.get_member("CreateUndoStep")
         if member is not None:
@@ -282,7 +280,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def value(self) -> np.float32 | None:
+    def value(self) -> primitives.Float | None:
         """The Value field value."""
         member = self.get_member("Value")
         if member is None:
@@ -290,7 +288,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @value.setter
-    def value(self, value: np.float32) -> None:
+    def value(self, value: primitives.Float) -> None:
         """Set the Value field value."""
         member = self.get_member("Value")
         if member is not None:
@@ -301,7 +299,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def min(self) -> np.float32 | None:
+    def min(self) -> primitives.Float | None:
         """The Min field value."""
         member = self.get_member("Min")
         if member is None:
@@ -309,7 +307,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @min.setter
-    def min(self, value: np.float32) -> None:
+    def min(self, value: primitives.Float) -> None:
         """Set the Min field value."""
         member = self.get_member("Min")
         if member is not None:
@@ -320,7 +318,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def max(self) -> np.float32 | None:
+    def max(self) -> primitives.Float | None:
         """The Max field value."""
         member = self.get_member("Max")
         if member is None:
@@ -328,7 +326,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @max.setter
-    def max(self, value: np.float32) -> None:
+    def max(self, value: primitives.Float) -> None:
         """Set the Max field value."""
         member = self.get_member("Max")
         if member is not None:
@@ -339,7 +337,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def increment(self) -> np.float32 | None:
+    def increment(self) -> primitives.Float | None:
         """The Increment field value."""
         member = self.get_member("Increment")
         if member is None:
@@ -347,7 +345,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @increment.setter
-    def increment(self, value: np.float32) -> None:
+    def increment(self, value: primitives.Float) -> None:
         """Set the Increment field value."""
         member = self.get_member("Increment")
         if member is not None:
@@ -358,7 +356,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def integer_only(self) -> bool | None:
+    def integer_only(self) -> primitives.Bool | None:
         """The IntegerOnly field value."""
         member = self.get_member("IntegerOnly")
         if member is None:
@@ -366,7 +364,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @integer_only.setter
-    def integer_only(self, value: bool) -> None:
+    def integer_only(self, value: primitives.Bool) -> None:
         """Set the IntegerOnly field value."""
         member = self.get_member("IntegerOnly")
         if member is not None:
@@ -396,7 +394,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def symmetrical_field(self) -> bool | None:
+    def symmetrical_field(self) -> primitives.Bool | None:
         """The SymmetricalField field value."""
         member = self.get_member("SymmetricalField")
         if member is None:
@@ -404,7 +402,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @symmetrical_field.setter
-    def symmetrical_field(self, value: bool) -> None:
+    def symmetrical_field(self, value: primitives.Bool) -> None:
         """Set the SymmetricalField field value."""
         member = self.get_member("SymmetricalField")
         if member is not None:
@@ -415,7 +413,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def width_field(self) -> np.float32 | None:
+    def width_field(self) -> primitives.Float | None:
         """The WidthField field value."""
         member = self.get_member("WidthField")
         if member is None:
@@ -423,7 +421,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @width_field.setter
-    def width_field(self, value: np.float32) -> None:
+    def width_field(self, value: primitives.Float) -> None:
         """Set the WidthField field value."""
         member = self.get_member("WidthField")
         if member is not None:
@@ -434,7 +432,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def height_field(self) -> np.float32 | None:
+    def height_field(self) -> primitives.Float | None:
         """The HeightField field value."""
         member = self.get_member("HeightField")
         if member is None:
@@ -442,7 +440,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @height_field.setter
-    def height_field(self, value: np.float32) -> None:
+    def height_field(self, value: primitives.Float) -> None:
         """Set the HeightField field value."""
         member = self.get_member("HeightField")
         if member is not None:
@@ -453,7 +451,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def cursor_ratio_field(self) -> np.float32 | None:
+    def cursor_ratio_field(self) -> primitives.Float | None:
         """The CursorRatioField field value."""
         member = self.get_member("CursorRatioField")
         if member is None:
@@ -461,7 +459,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @cursor_ratio_field.setter
-    def cursor_ratio_field(self, value: np.float32) -> None:
+    def cursor_ratio_field(self, value: primitives.Float) -> None:
         """Set the CursorRatioField field value."""
         member = self.get_member("CursorRatioField")
         if member is not None:
@@ -472,7 +470,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def thickness_field(self) -> np.float32 | None:
+    def thickness_field(self) -> primitives.Float | None:
         """The ThicknessField field value."""
         member = self.get_member("ThicknessField")
         if member is None:
@@ -480,7 +478,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @thickness_field.setter
-    def thickness_field(self, value: np.float32) -> None:
+    def thickness_field(self, value: primitives.Float) -> None:
         """Set the ThicknessField field value."""
         member = self.get_member("ThicknessField")
         if member is not None:
@@ -491,7 +489,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def slant_field(self) -> np.float32 | None:
+    def slant_field(self) -> primitives.Float | None:
         """The SlantField field value."""
         member = self.get_member("SlantField")
         if member is None:
@@ -499,7 +497,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @slant_field.setter
-    def slant_field(self, value: np.float32) -> None:
+    def slant_field(self, value: primitives.Float) -> None:
         """Set the SlantField field value."""
         member = self.get_member("SlantField")
         if member is not None:
@@ -510,7 +508,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def spacing_ratio_field(self) -> np.float32 | None:
+    def spacing_ratio_field(self) -> primitives.Float | None:
         """The SpacingRatioField field value."""
         member = self.get_member("SpacingRatioField")
         if member is None:
@@ -518,7 +516,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @spacing_ratio_field.setter
-    def spacing_ratio_field(self, value: np.float32) -> None:
+    def spacing_ratio_field(self, value: primitives.Float) -> None:
         """Set the SpacingRatioField field value."""
         member = self.get_member("SpacingRatioField")
         if member is not None:
@@ -529,7 +527,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def track_ratio_field(self) -> np.float32 | None:
+    def track_ratio_field(self) -> primitives.Float | None:
         """The TrackRatioField field value."""
         member = self.get_member("TrackRatioField")
         if member is None:
@@ -537,7 +535,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @track_ratio_field.setter
-    def track_ratio_field(self, value: np.float32) -> None:
+    def track_ratio_field(self, value: primitives.Float) -> None:
         """Set the TrackRatioField field value."""
         member = self.get_member("TrackRatioField")
         if member is not None:
@@ -548,7 +546,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def button_ratio_field(self) -> np.float32 | None:
+    def button_ratio_field(self) -> primitives.Float | None:
         """The ButtonRatioField field value."""
         member = self.get_member("ButtonRatioField")
         if member is None:
@@ -556,7 +554,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @button_ratio_field.setter
-    def button_ratio_field(self, value: np.float32) -> None:
+    def button_ratio_field(self, value: primitives.Float) -> None:
         """Set the ButtonRatioField field value."""
         member = self.get_member("ButtonRatioField")
         if member is not None:

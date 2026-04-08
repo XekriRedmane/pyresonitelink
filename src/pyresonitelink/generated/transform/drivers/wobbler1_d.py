@@ -1,9 +1,8 @@
 """Generated component: Wobbler1D."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -19,7 +18,7 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Wobbler1D"
 
-    def __init__(self, target: str | IField[np.float32] | None = None, offset: np.float32 | None = None, speed: np.float32 | None = None, magnitude: np.float32 | None = None, seed: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.Float] | None = None, offset: primitives.Float | None = None, speed: primitives.Float | None = None, magnitude: primitives.Float | None = None, seed: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,15 +43,15 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[np.float32])."""
+        """Target ID of the Target reference (targets IField[primitives.Float])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Target reference by target ID or IField[np.float32] instance."""
+    def target(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -64,7 +63,7 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -72,7 +71,7 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:
@@ -83,7 +82,7 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def speed(self) -> np.float32 | None:
+    def speed(self) -> primitives.Float | None:
         """The Speed field value."""
         member = self.get_member("Speed")
         if member is None:
@@ -91,7 +90,7 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @speed.setter
-    def speed(self, value: np.float32) -> None:
+    def speed(self, value: primitives.Float) -> None:
         """Set the Speed field value."""
         member = self.get_member("Speed")
         if member is not None:
@@ -102,7 +101,7 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def magnitude(self) -> np.float32 | None:
+    def magnitude(self) -> primitives.Float | None:
         """The Magnitude field value."""
         member = self.get_member("Magnitude")
         if member is None:
@@ -110,7 +109,7 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @magnitude.setter
-    def magnitude(self, value: np.float32) -> None:
+    def magnitude(self, value: primitives.Float) -> None:
         """Set the Magnitude field value."""
         member = self.get_member("Magnitude")
         if member is not None:
@@ -121,7 +120,7 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def seed(self) -> np.float32 | None:
+    def seed(self) -> primitives.Float | None:
         """The Seed field value."""
         member = self.get_member("Seed")
         if member is None:
@@ -129,7 +128,7 @@ class Wobbler1D(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @seed.setter
-    def seed(self, value: np.float32) -> None:
+    def seed(self, value: primitives.Float) -> None:
         """Set the Seed field value."""
         member = self.get_member("Seed")
         if member is not None:

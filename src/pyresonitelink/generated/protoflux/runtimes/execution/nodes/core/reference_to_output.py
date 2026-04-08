@@ -19,7 +19,7 @@ class ReferenceToOutput(GenericComponent[T], INodeObjectOutput[T], IExecutionNod
 
     Parameterize with a value type::
 
-        ReferenceToOutput[np.float32]
+        ReferenceToOutput[primitives.Float]
         ReferenceToOutput[primitives.Float3]
     """
 

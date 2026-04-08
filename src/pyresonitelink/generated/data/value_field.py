@@ -13,7 +13,7 @@ class ValueField(GenericComponent[T], IValueSource[T], IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ValueField[np.float32]
+        ValueField[primitives.Float]
         ValueField[primitives.Float3]
     """
 

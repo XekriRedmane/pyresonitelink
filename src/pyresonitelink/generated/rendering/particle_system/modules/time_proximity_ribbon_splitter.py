@@ -1,9 +1,8 @@
 """Generated component: TimeProximityRibbonSplitter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -18,7 +17,7 @@ class TimeProximityRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TimeProximityRibbonSplitter"
 
-    def __init__(self, interval: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, interval: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +29,7 @@ class TimeProximityRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWo
             self.interval = interval
 
     @property
-    def interval(self) -> np.float32 | None:
+    def interval(self) -> primitives.Float | None:
         """The Interval field value."""
         member = self.get_member("Interval")
         if member is None:
@@ -38,7 +37,7 @@ class TimeProximityRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWo
         return getattr(member, 'value', None)
 
     @interval.setter
-    def interval(self, value: np.float32) -> None:
+    def interval(self, value: primitives.Float) -> None:
         """Set the Interval field value."""
         member = self.get_member("Interval")
         if member is not None:

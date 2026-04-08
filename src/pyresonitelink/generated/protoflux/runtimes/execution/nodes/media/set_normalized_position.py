@@ -1,8 +1,7 @@
 """Generated component: SetNormalizedPosition."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -25,7 +24,7 @@ class SetNormalizedPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.SetNormalizedPosition"
 
-    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[IPlayable] | None = None, normalized_position: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, target: str | INodeObjectOutput[IPlayable] | None = None, normalized_position: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -86,15 +85,15 @@ class SetNormalizedPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def normalized_position(self) -> str | None:
-        """Target ID of the NormalizedPosition reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the NormalizedPosition reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("NormalizedPosition")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @normalized_position.setter
-    def normalized_position(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the NormalizedPosition reference by target ID or INodeValueOutput[np.float32] instance."""
+    def normalized_position(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the NormalizedPosition reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("NormalizedPosition")
         if isinstance(member, members.Reference):

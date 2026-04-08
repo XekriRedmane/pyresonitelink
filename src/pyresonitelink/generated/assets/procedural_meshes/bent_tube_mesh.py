@@ -1,7 +1,5 @@
 """Generated component: BentTubeMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BentTubeMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: np.float32 | None = None, sides: np.int32 | None = None, segments: np.int32 | None = None, start_point: primitives.Float3 | None = None, direct_target_point: primitives.Float3 | None = None, actual_target_point: primitives.Float3 | None = None, start_point_color: primitives.ColorX | None = None, end_point_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: primitives.Float | None = None, sides: primitives.Int | None = None, segments: primitives.Int | None = None, start_point: primitives.Float3 | None = None, direct_target_point: primitives.Float3 | None = None, actual_target_point: primitives.Float3 | None = None, start_point_color: primitives.ColorX | None = None, end_point_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,7 +61,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.end_point_color = end_point_color
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -71,7 +69,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -82,7 +80,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -90,7 +88,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -133,7 +131,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         self.set_member("Profile", value)
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -141,7 +139,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -152,7 +150,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def sides(self) -> np.int32 | None:
+    def sides(self) -> primitives.Int | None:
         """The Sides field value."""
         member = self.get_member("Sides")
         if member is None:
@@ -160,7 +158,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @sides.setter
-    def sides(self, value: np.int32) -> None:
+    def sides(self, value: primitives.Int) -> None:
         """Set the Sides field value."""
         member = self.get_member("Sides")
         if member is not None:
@@ -171,7 +169,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def segments(self) -> np.int32 | None:
+    def segments(self) -> primitives.Int | None:
         """The Segments field value."""
         member = self.get_member("Segments")
         if member is None:
@@ -179,7 +177,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @segments.setter
-    def segments(self, value: np.int32) -> None:
+    def segments(self, value: primitives.Int) -> None:
         """Set the Segments field value."""
         member = self.get_member("Segments")
         if member is not None:

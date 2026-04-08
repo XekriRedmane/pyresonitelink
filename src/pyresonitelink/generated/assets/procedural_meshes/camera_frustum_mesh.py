@@ -1,7 +1,5 @@
 """Generated component: CameraFrustumMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CameraFrustumMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, orientation: primitives.FloatQ | None = None, near: np.float32 | None = None, far: np.float32 | None = None, horizontal_angle: np.float32 | None = None, vertical_angle: np.float32 | None = None, dual_sided: bool | None = None, near_cap: bool | None = None, far_cap: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, orientation: primitives.FloatQ | None = None, near: primitives.Float | None = None, far: primitives.Float | None = None, horizontal_angle: primitives.Float | None = None, vertical_angle: primitives.Float | None = None, dual_sided: primitives.Bool | None = None, near_cap: primitives.Bool | None = None, far_cap: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,7 +61,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             self.far_cap = far_cap
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -71,7 +69,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -82,7 +80,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -90,7 +88,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -152,7 +150,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def near(self) -> np.float32 | None:
+    def near(self) -> primitives.Float | None:
         """The Near field value."""
         member = self.get_member("Near")
         if member is None:
@@ -160,7 +158,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @near.setter
-    def near(self, value: np.float32) -> None:
+    def near(self, value: primitives.Float) -> None:
         """Set the Near field value."""
         member = self.get_member("Near")
         if member is not None:
@@ -171,7 +169,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def far(self) -> np.float32 | None:
+    def far(self) -> primitives.Float | None:
         """The Far field value."""
         member = self.get_member("Far")
         if member is None:
@@ -179,7 +177,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @far.setter
-    def far(self, value: np.float32) -> None:
+    def far(self, value: primitives.Float) -> None:
         """Set the Far field value."""
         member = self.get_member("Far")
         if member is not None:
@@ -190,7 +188,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def horizontal_angle(self) -> np.float32 | None:
+    def horizontal_angle(self) -> primitives.Float | None:
         """The HorizontalAngle field value."""
         member = self.get_member("HorizontalAngle")
         if member is None:
@@ -198,7 +196,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @horizontal_angle.setter
-    def horizontal_angle(self, value: np.float32) -> None:
+    def horizontal_angle(self, value: primitives.Float) -> None:
         """Set the HorizontalAngle field value."""
         member = self.get_member("HorizontalAngle")
         if member is not None:
@@ -209,7 +207,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def vertical_angle(self) -> np.float32 | None:
+    def vertical_angle(self) -> primitives.Float | None:
         """The VerticalAngle field value."""
         member = self.get_member("VerticalAngle")
         if member is None:
@@ -217,7 +215,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @vertical_angle.setter
-    def vertical_angle(self, value: np.float32) -> None:
+    def vertical_angle(self, value: primitives.Float) -> None:
         """Set the VerticalAngle field value."""
         member = self.get_member("VerticalAngle")
         if member is not None:
@@ -228,7 +226,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def dual_sided(self) -> bool | None:
+    def dual_sided(self) -> primitives.Bool | None:
         """The DualSided field value."""
         member = self.get_member("DualSided")
         if member is None:
@@ -236,7 +234,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @dual_sided.setter
-    def dual_sided(self, value: bool) -> None:
+    def dual_sided(self, value: primitives.Bool) -> None:
         """Set the DualSided field value."""
         member = self.get_member("DualSided")
         if member is not None:
@@ -247,7 +245,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def near_cap(self) -> bool | None:
+    def near_cap(self) -> primitives.Bool | None:
         """The NearCap field value."""
         member = self.get_member("NearCap")
         if member is None:
@@ -255,7 +253,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @near_cap.setter
-    def near_cap(self, value: bool) -> None:
+    def near_cap(self, value: primitives.Bool) -> None:
         """Set the NearCap field value."""
         member = self.get_member("NearCap")
         if member is not None:
@@ -266,7 +264,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def far_cap(self) -> bool | None:
+    def far_cap(self) -> primitives.Bool | None:
         """The FarCap field value."""
         member = self.get_member("FarCap")
         if member is None:
@@ -274,7 +272,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @far_cap.setter
-    def far_cap(self, value: bool) -> None:
+    def far_cap(self, value: primitives.Bool) -> None:
         """Set the FarCap field value."""
         member = self.get_member("FarCap")
         if member is not None:

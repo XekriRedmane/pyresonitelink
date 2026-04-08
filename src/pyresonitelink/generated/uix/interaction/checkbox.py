@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -17,7 +18,7 @@ class Checkbox(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Checkbox"
 
-    def __init__(self, state: bool | None = None, target_state: str | IField[bool] | None = None, check_visual: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, state: primitives.Bool | None = None, target_state: str | IField[primitives.Bool] | None = None, check_visual: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,7 +36,7 @@ class Checkbox(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
             self.check_visual = check_visual
 
     @property
-    def state(self) -> bool | None:
+    def state(self) -> primitives.Bool | None:
         """The State field value."""
         member = self.get_member("State")
         if member is None:
@@ -43,7 +44,7 @@ class Checkbox(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @state.setter
-    def state(self, value: bool) -> None:
+    def state(self, value: primitives.Bool) -> None:
         """Set the State field value."""
         member = self.get_member("State")
         if member is not None:
@@ -55,15 +56,15 @@ class Checkbox(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
 
     @property
     def target_state(self) -> str | None:
-        """Target ID of the TargetState reference (targets IField[bool])."""
+        """Target ID of the TargetState reference (targets IField[primitives.Bool])."""
         member = self.get_member("TargetState")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target_state.setter
-    def target_state(self, target: str | IField[bool] | None) -> None:
-        """Set the TargetState reference by target ID or IField[bool] instance."""
+    def target_state(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the TargetState reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TargetState")
         if isinstance(member, members.Reference):
@@ -76,15 +77,15 @@ class Checkbox(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
 
     @property
     def check_visual(self) -> str | None:
-        """Target ID of the CheckVisual reference (targets IField[bool])."""
+        """Target ID of the CheckVisual reference (targets IField[primitives.Bool])."""
         member = self.get_member("CheckVisual")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @check_visual.setter
-    def check_visual(self, target: str | IField[bool] | None) -> None:
-        """Set the CheckVisual reference by target ID or IField[bool] instance."""
+    def check_visual(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the CheckVisual reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("CheckVisual")
         if isinstance(member, members.Reference):

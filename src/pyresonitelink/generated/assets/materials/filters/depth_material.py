@@ -1,7 +1,5 @@
 """Generated component: DepthMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DepthMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, rect: primitives.Rect | None = None, rect_clip: bool | None = None, stencil_id: np.uint8 | None = None, stencil_write_mask: np.uint8 | None = None, stencil_read_mask: np.uint8 | None = None, render_queue: np.int32 | None = None, shader: str | IAssetProvider[Shader] | None = None, multiply: np.float32 | None = None, offset: np.float32 | None = None, clip: bool | None = None, clip_start: np.float32 | None = None, clip_end: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, shader: str | IAssetProvider[Shader] | None = None, multiply: primitives.Float | None = None, offset: primitives.Float | None = None, clip: primitives.Bool | None = None, clip_start: primitives.Float | None = None, clip_end: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -70,7 +68,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             self.clip_end = clip_end
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -78,7 +76,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -108,7 +106,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             )
 
     @property
-    def rect_clip(self) -> bool | None:
+    def rect_clip(self) -> primitives.Bool | None:
         """The RectClip field value."""
         member = self.get_member("RectClip")
         if member is None:
@@ -116,7 +114,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @rect_clip.setter
-    def rect_clip(self, value: bool) -> None:
+    def rect_clip(self, value: primitives.Bool) -> None:
         """Set the RectClip field value."""
         member = self.get_member("RectClip")
         if member is not None:
@@ -166,7 +164,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         self.set_member("StencilOperation", value)
 
     @property
-    def stencil_id(self) -> np.uint8 | None:
+    def stencil_id(self) -> primitives.Byte | None:
         """The StencilID field value."""
         member = self.get_member("StencilID")
         if member is None:
@@ -174,7 +172,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @stencil_id.setter
-    def stencil_id(self, value: np.uint8) -> None:
+    def stencil_id(self, value: primitives.Byte) -> None:
         """Set the StencilID field value."""
         member = self.get_member("StencilID")
         if member is not None:
@@ -185,7 +183,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             )
 
     @property
-    def stencil_write_mask(self) -> np.uint8 | None:
+    def stencil_write_mask(self) -> primitives.Byte | None:
         """The StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is None:
@@ -193,7 +191,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @stencil_write_mask.setter
-    def stencil_write_mask(self, value: np.uint8) -> None:
+    def stencil_write_mask(self, value: primitives.Byte) -> None:
         """Set the StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is not None:
@@ -204,7 +202,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             )
 
     @property
-    def stencil_read_mask(self) -> np.uint8 | None:
+    def stencil_read_mask(self) -> primitives.Byte | None:
         """The StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is None:
@@ -212,7 +210,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @stencil_read_mask.setter
-    def stencil_read_mask(self, value: np.uint8) -> None:
+    def stencil_read_mask(self, value: primitives.Byte) -> None:
         """Set the StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is not None:
@@ -223,7 +221,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -231,7 +229,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -263,7 +261,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             )
 
     @property
-    def multiply(self) -> np.float32 | None:
+    def multiply(self) -> primitives.Float | None:
         """The Multiply field value."""
         member = self.get_member("Multiply")
         if member is None:
@@ -271,7 +269,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @multiply.setter
-    def multiply(self, value: np.float32) -> None:
+    def multiply(self, value: primitives.Float) -> None:
         """Set the Multiply field value."""
         member = self.get_member("Multiply")
         if member is not None:
@@ -282,7 +280,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             )
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -290,7 +288,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:
@@ -301,7 +299,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             )
 
     @property
-    def clip(self) -> bool | None:
+    def clip(self) -> primitives.Bool | None:
         """The Clip field value."""
         member = self.get_member("Clip")
         if member is None:
@@ -309,7 +307,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @clip.setter
-    def clip(self, value: bool) -> None:
+    def clip(self, value: primitives.Bool) -> None:
         """Set the Clip field value."""
         member = self.get_member("Clip")
         if member is not None:
@@ -320,7 +318,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             )
 
     @property
-    def clip_start(self) -> np.float32 | None:
+    def clip_start(self) -> primitives.Float | None:
         """The ClipStart field value."""
         member = self.get_member("ClipStart")
         if member is None:
@@ -328,7 +326,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @clip_start.setter
-    def clip_start(self, value: np.float32) -> None:
+    def clip_start(self, value: primitives.Float) -> None:
         """Set the ClipStart field value."""
         member = self.get_member("ClipStart")
         if member is not None:
@@ -339,7 +337,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
             )
 
     @property
-    def clip_end(self) -> np.float32 | None:
+    def clip_end(self) -> primitives.Float | None:
         """The ClipEnd field value."""
         member = self.get_member("ClipEnd")
         if member is None:
@@ -347,7 +345,7 @@ class DepthMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldE
         return getattr(member, 'value', None)
 
     @clip_end.setter
-    def clip_end(self, value: np.float32) -> None:
+    def clip_end(self, value: primitives.Float) -> None:
         """Set the ClipEnd field value."""
         member = self.get_member("ClipEnd")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: ScaleTransition."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleTransition"
 
-    def __init__(self, show_field: bool | None = None, transition_time_field: np.float32 | None = None, show_scale_field: primitives.Float3 | None = None, hidden_scale_field: primitives.Float3 | None = None, scale_drive: str | IField[primitives.Float3] | None = None, enabled_drive: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, show_field: primitives.Bool | None = None, transition_time_field: primitives.Float | None = None, show_scale_field: primitives.Float3 | None = None, hidden_scale_field: primitives.Float3 | None = None, scale_drive: str | IField[primitives.Float3] | None = None, enabled_drive: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -47,7 +45,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.enabled_drive = enabled_drive
 
     @property
-    def show_field(self) -> bool | None:
+    def show_field(self) -> primitives.Bool | None:
         """The ShowField field value."""
         member = self.get_member("ShowField")
         if member is None:
@@ -55,7 +53,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_field.setter
-    def show_field(self, value: bool) -> None:
+    def show_field(self, value: primitives.Bool) -> None:
         """Set the ShowField field value."""
         member = self.get_member("ShowField")
         if member is not None:
@@ -66,7 +64,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def transition_time_field(self) -> np.float32 | None:
+    def transition_time_field(self) -> primitives.Float | None:
         """The TransitionTimeField field value."""
         member = self.get_member("TransitionTimeField")
         if member is None:
@@ -74,7 +72,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @transition_time_field.setter
-    def transition_time_field(self, value: np.float32) -> None:
+    def transition_time_field(self, value: primitives.Float) -> None:
         """Set the TransitionTimeField field value."""
         member = self.get_member("TransitionTimeField")
         if member is not None:
@@ -158,15 +156,15 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def enabled_drive(self) -> str | None:
-        """Target ID of the _enabledDrive reference (targets IField[bool])."""
+        """Target ID of the _enabledDrive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_enabledDrive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @enabled_drive.setter
-    def enabled_drive(self, target: str | IField[bool] | None) -> None:
-        """Set the _enabledDrive reference by target ID or IField[bool] instance."""
+    def enabled_drive(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _enabledDrive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_enabledDrive")
         if isinstance(member, members.Reference):

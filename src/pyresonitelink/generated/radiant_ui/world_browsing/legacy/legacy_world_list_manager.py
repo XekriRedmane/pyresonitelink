@@ -1,9 +1,8 @@
 """Generated component: LegacyWorldListManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.legacy_world_item import LegacyWorldItem
@@ -19,7 +18,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyWorldListManager"
 
-    def __init__(self, world_item_template: str | LegacyWorldItem | None = None, show_opened_worlds: bool | None = None, show_sessions: bool | None = None, show_published_worlds: bool | None = None, show_locally_saved_worlds: bool | None = None, merge_sessions_by_world_id: bool | None = None, idle_sort_delay: np.float32 | None = None, interacting_sort_delay: np.float32 | None = None, search_term: str | None = None, submitted_to: str | None = None, only_featured: bool | None = None, own_worlds: bool | None = None, by_owner: str | None = None, min_date: str | None = None, max_date: str | None = None, max_items: np.int32 | None = None, skip_items: np.int32 | None = None, incompatible_sessions: bool | None = None, only_headless_hosts: bool | None = None, minimum_total_users: np.int32 | None = None, minimum_total_contacts: np.int32 | None = None, min_uptime: np.float64 | None = None, max_uptime: np.float64 | None = None, parent_session_id: str | None = None, visited: bool | None = None, is_searching: bool | None = None, has_more_results: bool | None = None, total_results: np.int32 | None = None, filtered_results: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_item_template: str | LegacyWorldItem | None = None, show_opened_worlds: primitives.Bool | None = None, show_sessions: primitives.Bool | None = None, show_published_worlds: primitives.Bool | None = None, show_locally_saved_worlds: primitives.Bool | None = None, merge_sessions_by_world_id: primitives.Bool | None = None, idle_sort_delay: primitives.Float | None = None, interacting_sort_delay: primitives.Float | None = None, search_term: primitives.String | None = None, submitted_to: primitives.String | None = None, only_featured: primitives.Bool | None = None, own_worlds: primitives.Bool | None = None, by_owner: primitives.String | None = None, min_date: str | None = None, max_date: str | None = None, max_items: primitives.Int | None = None, skip_items: primitives.Int | None = None, incompatible_sessions: primitives.Bool | None = None, only_headless_hosts: primitives.Bool | None = None, minimum_total_users: primitives.Int | None = None, minimum_total_contacts: primitives.Int | None = None, min_uptime: primitives.Double | None = None, max_uptime: primitives.Double | None = None, parent_session_id: primitives.String | None = None, visited: primitives.Bool | None = None, is_searching: primitives.Bool | None = None, has_more_results: primitives.Bool | None = None, total_results: primitives.Int | None = None, filtered_results: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -162,7 +161,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         self.set_member("WorldItemType", value)
 
     @property
-    def show_opened_worlds(self) -> bool | None:
+    def show_opened_worlds(self) -> primitives.Bool | None:
         """The ShowOpenedWorlds field value."""
         member = self.get_member("ShowOpenedWorlds")
         if member is None:
@@ -170,7 +169,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @show_opened_worlds.setter
-    def show_opened_worlds(self, value: bool) -> None:
+    def show_opened_worlds(self, value: primitives.Bool) -> None:
         """Set the ShowOpenedWorlds field value."""
         member = self.get_member("ShowOpenedWorlds")
         if member is not None:
@@ -181,7 +180,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def show_sessions(self) -> bool | None:
+    def show_sessions(self) -> primitives.Bool | None:
         """The ShowSessions field value."""
         member = self.get_member("ShowSessions")
         if member is None:
@@ -189,7 +188,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @show_sessions.setter
-    def show_sessions(self, value: bool) -> None:
+    def show_sessions(self, value: primitives.Bool) -> None:
         """Set the ShowSessions field value."""
         member = self.get_member("ShowSessions")
         if member is not None:
@@ -200,7 +199,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def show_published_worlds(self) -> bool | None:
+    def show_published_worlds(self) -> primitives.Bool | None:
         """The ShowPublishedWorlds field value."""
         member = self.get_member("ShowPublishedWorlds")
         if member is None:
@@ -208,7 +207,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @show_published_worlds.setter
-    def show_published_worlds(self, value: bool) -> None:
+    def show_published_worlds(self, value: primitives.Bool) -> None:
         """Set the ShowPublishedWorlds field value."""
         member = self.get_member("ShowPublishedWorlds")
         if member is not None:
@@ -219,7 +218,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def show_locally_saved_worlds(self) -> bool | None:
+    def show_locally_saved_worlds(self) -> primitives.Bool | None:
         """The ShowLocallySavedWorlds field value."""
         member = self.get_member("ShowLocallySavedWorlds")
         if member is None:
@@ -227,7 +226,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @show_locally_saved_worlds.setter
-    def show_locally_saved_worlds(self, value: bool) -> None:
+    def show_locally_saved_worlds(self, value: primitives.Bool) -> None:
         """Set the ShowLocallySavedWorlds field value."""
         member = self.get_member("ShowLocallySavedWorlds")
         if member is not None:
@@ -238,7 +237,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def merge_sessions_by_world_id(self) -> bool | None:
+    def merge_sessions_by_world_id(self) -> primitives.Bool | None:
         """The MergeSessionsByWorldId field value."""
         member = self.get_member("MergeSessionsByWorldId")
         if member is None:
@@ -246,7 +245,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @merge_sessions_by_world_id.setter
-    def merge_sessions_by_world_id(self, value: bool) -> None:
+    def merge_sessions_by_world_id(self, value: primitives.Bool) -> None:
         """Set the MergeSessionsByWorldId field value."""
         member = self.get_member("MergeSessionsByWorldId")
         if member is not None:
@@ -257,7 +256,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def idle_sort_delay(self) -> np.float32 | None:
+    def idle_sort_delay(self) -> primitives.Float | None:
         """The IdleSortDelay field value."""
         member = self.get_member("IdleSortDelay")
         if member is None:
@@ -265,7 +264,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @idle_sort_delay.setter
-    def idle_sort_delay(self, value: np.float32) -> None:
+    def idle_sort_delay(self, value: primitives.Float) -> None:
         """Set the IdleSortDelay field value."""
         member = self.get_member("IdleSortDelay")
         if member is not None:
@@ -276,7 +275,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def interacting_sort_delay(self) -> np.float32 | None:
+    def interacting_sort_delay(self) -> primitives.Float | None:
         """The InteractingSortDelay field value."""
         member = self.get_member("InteractingSortDelay")
         if member is None:
@@ -284,7 +283,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @interacting_sort_delay.setter
-    def interacting_sort_delay(self, value: np.float32) -> None:
+    def interacting_sort_delay(self, value: primitives.Float) -> None:
         """Set the InteractingSortDelay field value."""
         member = self.get_member("InteractingSortDelay")
         if member is not None:
@@ -295,7 +294,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def search_term(self) -> str | None:
+    def search_term(self) -> primitives.String | None:
         """The SearchTerm field value."""
         member = self.get_member("SearchTerm")
         if member is None:
@@ -303,7 +302,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @search_term.setter
-    def search_term(self, value: str) -> None:
+    def search_term(self, value: primitives.String) -> None:
         """Set the SearchTerm field value."""
         member = self.get_member("SearchTerm")
         if member is not None:
@@ -314,7 +313,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def submitted_to(self) -> str | None:
+    def submitted_to(self) -> primitives.String | None:
         """The SubmittedTo field value."""
         member = self.get_member("SubmittedTo")
         if member is None:
@@ -322,7 +321,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @submitted_to.setter
-    def submitted_to(self, value: str) -> None:
+    def submitted_to(self, value: primitives.String) -> None:
         """Set the SubmittedTo field value."""
         member = self.get_member("SubmittedTo")
         if member is not None:
@@ -333,7 +332,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def only_featured(self) -> bool | None:
+    def only_featured(self) -> primitives.Bool | None:
         """The OnlyFeatured field value."""
         member = self.get_member("OnlyFeatured")
         if member is None:
@@ -341,7 +340,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @only_featured.setter
-    def only_featured(self, value: bool) -> None:
+    def only_featured(self, value: primitives.Bool) -> None:
         """Set the OnlyFeatured field value."""
         member = self.get_member("OnlyFeatured")
         if member is not None:
@@ -352,7 +351,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def own_worlds(self) -> bool | None:
+    def own_worlds(self) -> primitives.Bool | None:
         """The OwnWorlds field value."""
         member = self.get_member("OwnWorlds")
         if member is None:
@@ -360,7 +359,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @own_worlds.setter
-    def own_worlds(self, value: bool) -> None:
+    def own_worlds(self, value: primitives.Bool) -> None:
         """Set the OwnWorlds field value."""
         member = self.get_member("OwnWorlds")
         if member is not None:
@@ -371,7 +370,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def by_owner(self) -> str | None:
+    def by_owner(self) -> primitives.String | None:
         """The ByOwner field value."""
         member = self.get_member("ByOwner")
         if member is None:
@@ -379,7 +378,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @by_owner.setter
-    def by_owner(self, value: str) -> None:
+    def by_owner(self, value: primitives.String) -> None:
         """Set the ByOwner field value."""
         member = self.get_member("ByOwner")
         if member is not None:
@@ -441,7 +440,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def max_items(self) -> np.int32 | None:
+    def max_items(self) -> primitives.Int | None:
         """The MaxItems field value."""
         member = self.get_member("MaxItems")
         if member is None:
@@ -449,7 +448,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @max_items.setter
-    def max_items(self, value: np.int32) -> None:
+    def max_items(self, value: primitives.Int) -> None:
         """Set the MaxItems field value."""
         member = self.get_member("MaxItems")
         if member is not None:
@@ -460,7 +459,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def skip_items(self) -> np.int32 | None:
+    def skip_items(self) -> primitives.Int | None:
         """The SkipItems field value."""
         member = self.get_member("SkipItems")
         if member is None:
@@ -468,7 +467,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @skip_items.setter
-    def skip_items(self, value: np.int32) -> None:
+    def skip_items(self, value: primitives.Int) -> None:
         """Set the SkipItems field value."""
         member = self.get_member("SkipItems")
         if member is not None:
@@ -492,7 +491,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         self.set_member("EmptySessions", value)
 
     @property
-    def incompatible_sessions(self) -> bool | None:
+    def incompatible_sessions(self) -> primitives.Bool | None:
         """The IncompatibleSessions field value."""
         member = self.get_member("IncompatibleSessions")
         if member is None:
@@ -500,7 +499,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @incompatible_sessions.setter
-    def incompatible_sessions(self, value: bool) -> None:
+    def incompatible_sessions(self, value: primitives.Bool) -> None:
         """Set the IncompatibleSessions field value."""
         member = self.get_member("IncompatibleSessions")
         if member is not None:
@@ -511,7 +510,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def only_headless_hosts(self) -> bool | None:
+    def only_headless_hosts(self) -> primitives.Bool | None:
         """The OnlyHeadlessHosts field value."""
         member = self.get_member("OnlyHeadlessHosts")
         if member is None:
@@ -519,7 +518,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @only_headless_hosts.setter
-    def only_headless_hosts(self, value: bool) -> None:
+    def only_headless_hosts(self, value: primitives.Bool) -> None:
         """Set the OnlyHeadlessHosts field value."""
         member = self.get_member("OnlyHeadlessHosts")
         if member is not None:
@@ -530,7 +529,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def minimum_total_users(self) -> np.int32 | None:
+    def minimum_total_users(self) -> primitives.Int | None:
         """The MinimumTotalUsers field value."""
         member = self.get_member("MinimumTotalUsers")
         if member is None:
@@ -538,7 +537,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @minimum_total_users.setter
-    def minimum_total_users(self, value: np.int32) -> None:
+    def minimum_total_users(self, value: primitives.Int) -> None:
         """Set the MinimumTotalUsers field value."""
         member = self.get_member("MinimumTotalUsers")
         if member is not None:
@@ -549,7 +548,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def minimum_total_contacts(self) -> np.int32 | None:
+    def minimum_total_contacts(self) -> primitives.Int | None:
         """The MinimumTotalContacts field value."""
         member = self.get_member("MinimumTotalContacts")
         if member is None:
@@ -557,7 +556,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @minimum_total_contacts.setter
-    def minimum_total_contacts(self, value: np.int32) -> None:
+    def minimum_total_contacts(self, value: primitives.Int) -> None:
         """Set the MinimumTotalContacts field value."""
         member = self.get_member("MinimumTotalContacts")
         if member is not None:
@@ -594,7 +593,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         self.set_member("MaxSessionAccessLevel", value)
 
     @property
-    def min_uptime(self) -> np.float64 | None:
+    def min_uptime(self) -> primitives.Double | None:
         """The MinUptime field value."""
         member = self.get_member("MinUptime")
         if member is None:
@@ -602,7 +601,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @min_uptime.setter
-    def min_uptime(self, value: np.float64) -> None:
+    def min_uptime(self, value: primitives.Double) -> None:
         """Set the MinUptime field value."""
         member = self.get_member("MinUptime")
         if member is not None:
@@ -613,7 +612,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def max_uptime(self) -> np.float64 | None:
+    def max_uptime(self) -> primitives.Double | None:
         """The MaxUptime field value."""
         member = self.get_member("MaxUptime")
         if member is None:
@@ -621,7 +620,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @max_uptime.setter
-    def max_uptime(self, value: np.float64) -> None:
+    def max_uptime(self, value: primitives.Double) -> None:
         """Set the MaxUptime field value."""
         member = self.get_member("MaxUptime")
         if member is not None:
@@ -632,7 +631,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def parent_session_id(self) -> str | None:
+    def parent_session_id(self) -> primitives.String | None:
         """The ParentSessionId field value."""
         member = self.get_member("ParentSessionId")
         if member is None:
@@ -640,7 +639,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @parent_session_id.setter
-    def parent_session_id(self, value: str) -> None:
+    def parent_session_id(self, value: primitives.String) -> None:
         """Set the ParentSessionId field value."""
         member = self.get_member("ParentSessionId")
         if member is not None:
@@ -651,7 +650,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def visited(self) -> bool | None:
+    def visited(self) -> primitives.Bool | None:
         """The Visited field value."""
         member = self.get_member("Visited")
         if member is None:
@@ -659,7 +658,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @visited.setter
-    def visited(self, value: bool) -> None:
+    def visited(self, value: primitives.Bool) -> None:
         """Set the Visited field value."""
         member = self.get_member("Visited")
         if member is not None:
@@ -683,7 +682,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         self.set_member("SortProperties", value)
 
     @property
-    def is_searching(self) -> bool | None:
+    def is_searching(self) -> primitives.Bool | None:
         """The IsSearching field value."""
         member = self.get_member("IsSearching")
         if member is None:
@@ -691,7 +690,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @is_searching.setter
-    def is_searching(self, value: bool) -> None:
+    def is_searching(self, value: primitives.Bool) -> None:
         """Set the IsSearching field value."""
         member = self.get_member("IsSearching")
         if member is not None:
@@ -702,7 +701,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def has_more_results(self) -> bool | None:
+    def has_more_results(self) -> primitives.Bool | None:
         """The HasMoreResults field value."""
         member = self.get_member("HasMoreResults")
         if member is None:
@@ -710,7 +709,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @has_more_results.setter
-    def has_more_results(self, value: bool) -> None:
+    def has_more_results(self, value: primitives.Bool) -> None:
         """Set the HasMoreResults field value."""
         member = self.get_member("HasMoreResults")
         if member is not None:
@@ -721,7 +720,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def total_results(self) -> np.int32 | None:
+    def total_results(self) -> primitives.Int | None:
         """The TotalResults field value."""
         member = self.get_member("TotalResults")
         if member is None:
@@ -729,7 +728,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @total_results.setter
-    def total_results(self, value: np.int32) -> None:
+    def total_results(self, value: primitives.Int) -> None:
         """Set the TotalResults field value."""
         member = self.get_member("TotalResults")
         if member is not None:
@@ -740,7 +739,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def filtered_results(self) -> np.int32 | None:
+    def filtered_results(self) -> primitives.Int | None:
         """The FilteredResults field value."""
         member = self.get_member("FilteredResults")
         if member is None:
@@ -748,7 +747,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @filtered_results.setter
-    def filtered_results(self, value: np.int32) -> None:
+    def filtered_results(self, value: primitives.Int) -> None:
         """Set the FilteredResults field value."""
         member = self.get_member("FilteredResults")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: LocalLightsBufferRenderer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -19,7 +18,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocalLightsBufferRenderer"
 
-    def __init__(self, shadow_strength: np.float32 | None = None, shadow_near_plane: np.float32 | None = None, shadow_map_resolution: np.int32 | None = None, shadow_bias: np.float32 | None = None, shadow_normal_bias: np.float32 | None = None, cookie: str | IAssetProvider[ITexture] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, shadow_strength: primitives.Float | None = None, shadow_near_plane: primitives.Float | None = None, shadow_map_resolution: primitives.Int | None = None, shadow_bias: primitives.Float | None = None, shadow_normal_bias: primitives.Float | None = None, cookie: str | IAssetProvider[ITexture] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -72,7 +71,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
         self.set_member("ShadowType", value)
 
     @property
-    def shadow_strength(self) -> np.float32 | None:
+    def shadow_strength(self) -> primitives.Float | None:
         """The ShadowStrength field value."""
         member = self.get_member("ShadowStrength")
         if member is None:
@@ -80,7 +79,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
         return getattr(member, 'value', None)
 
     @shadow_strength.setter
-    def shadow_strength(self, value: np.float32) -> None:
+    def shadow_strength(self, value: primitives.Float) -> None:
         """Set the ShadowStrength field value."""
         member = self.get_member("ShadowStrength")
         if member is not None:
@@ -91,7 +90,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
             )
 
     @property
-    def shadow_near_plane(self) -> np.float32 | None:
+    def shadow_near_plane(self) -> primitives.Float | None:
         """The ShadowNearPlane field value."""
         member = self.get_member("ShadowNearPlane")
         if member is None:
@@ -99,7 +98,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
         return getattr(member, 'value', None)
 
     @shadow_near_plane.setter
-    def shadow_near_plane(self, value: np.float32) -> None:
+    def shadow_near_plane(self, value: primitives.Float) -> None:
         """Set the ShadowNearPlane field value."""
         member = self.get_member("ShadowNearPlane")
         if member is not None:
@@ -110,7 +109,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
             )
 
     @property
-    def shadow_map_resolution(self) -> np.int32 | None:
+    def shadow_map_resolution(self) -> primitives.Int | None:
         """The ShadowMapResolution field value."""
         member = self.get_member("ShadowMapResolution")
         if member is None:
@@ -118,7 +117,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
         return getattr(member, 'value', None)
 
     @shadow_map_resolution.setter
-    def shadow_map_resolution(self, value: np.int32) -> None:
+    def shadow_map_resolution(self, value: primitives.Int) -> None:
         """Set the ShadowMapResolution field value."""
         member = self.get_member("ShadowMapResolution")
         if member is not None:
@@ -129,7 +128,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
             )
 
     @property
-    def shadow_bias(self) -> np.float32 | None:
+    def shadow_bias(self) -> primitives.Float | None:
         """The ShadowBias field value."""
         member = self.get_member("ShadowBias")
         if member is None:
@@ -137,7 +136,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
         return getattr(member, 'value', None)
 
     @shadow_bias.setter
-    def shadow_bias(self, value: np.float32) -> None:
+    def shadow_bias(self, value: primitives.Float) -> None:
         """Set the ShadowBias field value."""
         member = self.get_member("ShadowBias")
         if member is not None:
@@ -148,7 +147,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
             )
 
     @property
-    def shadow_normal_bias(self) -> np.float32 | None:
+    def shadow_normal_bias(self) -> primitives.Float | None:
         """The ShadowNormalBias field value."""
         member = self.get_member("ShadowNormalBias")
         if member is None:
@@ -156,7 +155,7 @@ class LocalLightsBufferRenderer(GeneratedComponent, ICustomInspector, IComponent
         return getattr(member, 'value', None)
 
     @shadow_normal_bias.setter
-    def shadow_normal_bias(self, value: np.float32) -> None:
+    def shadow_normal_bias(self, value: primitives.Float) -> None:
         """Set the ShadowNormalBias field value."""
         member = self.get_member("ShadowNormalBias")
         if member is not None:

@@ -1,11 +1,7 @@
 """Generated variables components."""
 
-from .data_model_object_asset_ref_store import DataModelObjectAssetRefStore
-from .data_model_object_field_store import DataModelObjectFieldStore
-from .data_model_object_ref_store import DataModelObjectRefStore
 from .data_model_type_store import DataModelTypeStore
 from .data_model_user_ref_store import DataModelUserRefStore
-from .data_model_value_field_store import DataModelValueFieldStore
 from .local_object import LocalObject
 from .local_value import LocalValue
 from .stored_object import StoredObject

@@ -1,7 +1,5 @@
 """Generated component: AtlasInfo."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -18,7 +16,7 @@ class AtlasInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AtlasInfo"
 
-    def __init__(self, grid_size: primitives.Int2 | None = None, grid_frames: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, grid_size: primitives.Int2 | None = None, grid_frames: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -52,7 +50,7 @@ class AtlasInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def grid_frames(self) -> np.int32 | None:
+    def grid_frames(self) -> primitives.Int | None:
         """The GridFrames field value."""
         member = self.get_member("GridFrames")
         if member is None:
@@ -60,7 +58,7 @@ class AtlasInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @grid_frames.setter
-    def grid_frames(self, value: np.int32) -> None:
+    def grid_frames(self, value: primitives.Int) -> None:
         """Set the GridFrames field value."""
         member = self.get_member("GridFrames")
         if member is not None:

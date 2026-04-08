@@ -1,8 +1,7 @@
 """Generated component: LocalImpulseTimeoutSeconds."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -22,7 +21,7 @@ class LocalImpulseTimeoutSeconds(GeneratedComponent, IExecutionNode, INode, ICus
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.LocalImpulseTimeoutSeconds"
 
-    def __init__(self, next: str | INodeOperation | None = None, timeout: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, timeout: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -85,15 +84,15 @@ class LocalImpulseTimeoutSeconds(GeneratedComponent, IExecutionNode, INode, ICus
 
     @property
     def timeout(self) -> str | None:
-        """Target ID of the Timeout reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Timeout reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Timeout")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @timeout.setter
-    def timeout(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Timeout reference by target ID or INodeValueOutput[np.float32] instance."""
+    def timeout(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Timeout reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Timeout")
         if isinstance(member, members.Reference):

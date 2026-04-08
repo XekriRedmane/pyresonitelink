@@ -19,7 +19,7 @@ class RefObjectInput(GenericComponent[T], IInput[T], INodeObjectOutput[T], IExec
 
     Parameterize with a value type::
 
-        RefObjectInput[np.float32]
+        RefObjectInput[primitives.Float]
         RefObjectInput[primitives.Float3]
     """
 

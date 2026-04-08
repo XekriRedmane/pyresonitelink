@@ -1,7 +1,5 @@
 """Generated component: OverlayUnlitMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OverlayUnlitMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, behind_tint_color: primitives.ColorX | None = None, front_tint_color: primitives.ColorX | None = None, behind_texture: str | IAssetProvider[ITexture2D] | None = None, behind_texture_scale: primitives.Float2 | None = None, behind_texture_offset: primitives.Float2 | None = None, front_texture: str | IAssetProvider[ITexture2D] | None = None, front_texture_scale: primitives.Float2 | None = None, front_texture_offset: primitives.Float2 | None = None, alpha_cutoff: np.float32 | None = None, use_vertex_colors: bool | None = None, polar_uvmapping: bool | None = None, polar_power: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, behind_tint_color: primitives.ColorX | None = None, front_tint_color: primitives.ColorX | None = None, behind_texture: str | IAssetProvider[ITexture2D] | None = None, behind_texture_scale: primitives.Float2 | None = None, behind_texture_offset: primitives.Float2 | None = None, front_texture: str | IAssetProvider[ITexture2D] | None = None, front_texture_scale: primitives.Float2 | None = None, front_texture_offset: primitives.Float2 | None = None, alpha_cutoff: primitives.Float | None = None, use_vertex_colors: primitives.Bool | None = None, polar_uvmapping: primitives.Bool | None = None, polar_power: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -82,7 +80,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             self.render_queue = render_queue
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -90,7 +88,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -291,7 +289,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         self.set_member("BlendMode", value)
 
     @property
-    def alpha_cutoff(self) -> np.float32 | None:
+    def alpha_cutoff(self) -> primitives.Float | None:
         """The AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is None:
@@ -299,7 +297,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @alpha_cutoff.setter
-    def alpha_cutoff(self, value: np.float32) -> None:
+    def alpha_cutoff(self, value: primitives.Float) -> None:
         """Set the AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is not None:
@@ -310,7 +308,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def use_vertex_colors(self) -> bool | None:
+    def use_vertex_colors(self) -> primitives.Bool | None:
         """The UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is None:
@@ -318,7 +316,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @use_vertex_colors.setter
-    def use_vertex_colors(self, value: bool) -> None:
+    def use_vertex_colors(self, value: primitives.Bool) -> None:
         """Set the UseVertexColors field value."""
         member = self.get_member("UseVertexColors")
         if member is not None:
@@ -368,7 +366,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         self.set_member("ZWrite", value)
 
     @property
-    def polar_uvmapping(self) -> bool | None:
+    def polar_uvmapping(self) -> primitives.Bool | None:
         """The PolarUVmapping field value."""
         member = self.get_member("PolarUVmapping")
         if member is None:
@@ -376,7 +374,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @polar_uvmapping.setter
-    def polar_uvmapping(self, value: bool) -> None:
+    def polar_uvmapping(self, value: primitives.Bool) -> None:
         """Set the PolarUVmapping field value."""
         member = self.get_member("PolarUVmapping")
         if member is not None:
@@ -387,7 +385,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def polar_power(self) -> np.float32 | None:
+    def polar_power(self) -> primitives.Float | None:
         """The PolarPower field value."""
         member = self.get_member("PolarPower")
         if member is None:
@@ -395,7 +393,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @polar_power.setter
-    def polar_power(self, value: np.float32) -> None:
+    def polar_power(self, value: primitives.Float) -> None:
         """Set the PolarPower field value."""
         member = self.get_member("PolarPower")
         if member is not None:
@@ -406,7 +404,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -414,7 +412,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -425,7 +423,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -433,7 +431,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -444,7 +442,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -452,7 +450,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

@@ -1,6 +1,7 @@
 """Generated component: CountOccurrences."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -21,7 +22,7 @@ class CountOccurrences(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.CountOccurrences"
 
-    def __init__(self, str_: str | INodeObjectOutput[str] | None = None, search: str | INodeObjectOutput[str] | None = None, comparison_mode: str | INodeValueOutput[StringComparison] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, str_: str | INodeObjectOutput[primitives.String] | None = None, search: str | INodeObjectOutput[primitives.String] | None = None, comparison_mode: str | INodeValueOutput[StringComparison] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,15 +41,15 @@ class CountOccurrences(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @str_.setter
-    def str_(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Str reference by target ID or INodeObjectOutput[str] instance."""
+    def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
@@ -61,15 +62,15 @@ class CountOccurrences(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def search(self) -> str | None:
-        """Target ID of the Search reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Search reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Search")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @search.setter
-    def search(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Search reference by target ID or INodeObjectOutput[str] instance."""
+    def search(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Search reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Search")
         if isinstance(member, members.Reference):

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.avatar_anchor import AvatarAnchor
@@ -17,7 +18,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorTouchTrigger"
 
-    def __init__(self, anchor: str | AvatarAnchor | None = None, enter_text: str | None = None, exit_text: str | None = None, enter: bool | None = None, exit: bool | None = None, accept_out_of_sight_touch: bool | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, anchor: str | AvatarAnchor | None = None, enter_text: primitives.String | None = None, exit_text: primitives.String | None = None, enter: primitives.Bool | None = None, exit: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -71,7 +72,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             )
 
     @property
-    def enter_text(self) -> str | None:
+    def enter_text(self) -> primitives.String | None:
         """The EnterText field value."""
         member = self.get_member("EnterText")
         if member is None:
@@ -79,7 +80,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @enter_text.setter
-    def enter_text(self, value: str) -> None:
+    def enter_text(self, value: primitives.String) -> None:
         """Set the EnterText field value."""
         member = self.get_member("EnterText")
         if member is not None:
@@ -90,7 +91,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             )
 
     @property
-    def exit_text(self) -> str | None:
+    def exit_text(self) -> primitives.String | None:
         """The ExitText field value."""
         member = self.get_member("ExitText")
         if member is None:
@@ -98,7 +99,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @exit_text.setter
-    def exit_text(self, value: str) -> None:
+    def exit_text(self, value: primitives.String) -> None:
         """Set the ExitText field value."""
         member = self.get_member("ExitText")
         if member is not None:
@@ -109,7 +110,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             )
 
     @property
-    def enter(self) -> bool | None:
+    def enter(self) -> primitives.Bool | None:
         """The Enter field value."""
         member = self.get_member("Enter")
         if member is None:
@@ -117,7 +118,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @enter.setter
-    def enter(self, value: bool) -> None:
+    def enter(self, value: primitives.Bool) -> None:
         """Set the Enter field value."""
         member = self.get_member("Enter")
         if member is not None:
@@ -128,7 +129,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             )
 
     @property
-    def exit(self) -> bool | None:
+    def exit(self) -> primitives.Bool | None:
         """The Exit field value."""
         member = self.get_member("Exit")
         if member is None:
@@ -136,7 +137,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @exit.setter
-    def exit(self, value: bool) -> None:
+    def exit(self, value: primitives.Bool) -> None:
         """Set the Exit field value."""
         member = self.get_member("Exit")
         if member is not None:
@@ -147,7 +148,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             )
 
     @property
-    def accept_out_of_sight_touch(self) -> bool | None:
+    def accept_out_of_sight_touch(self) -> primitives.Bool | None:
         """The AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is None:
@@ -155,7 +156,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @accept_out_of_sight_touch.setter
-    def accept_out_of_sight_touch(self, value: bool) -> None:
+    def accept_out_of_sight_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is not None:
@@ -166,7 +167,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -174,7 +175,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -185,7 +186,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -193,7 +194,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:

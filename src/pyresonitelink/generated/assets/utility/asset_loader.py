@@ -18,7 +18,7 @@ class AssetLoader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        AssetLoader[np.float32]
+        AssetLoader[primitives.Float]
         AssetLoader[primitives.Float3]
     """
 

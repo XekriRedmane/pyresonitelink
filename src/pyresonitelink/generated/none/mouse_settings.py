@@ -1,8 +1,7 @@
 """Generated component: MouseSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MouseSettings"
 
-    def __init__(self, mouse_sensitivity: np.float32 | None = None, scroll_wheel_grab_move_speed: np.float32 | None = None, mouse_look_speed: np.float32 | None = None, mouse_pan_speed: np.float32 | None = None, mouse_rotate_speed: np.float32 | None = None, mouse_freeform_rotate_speed: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mouse_sensitivity: primitives.Float | None = None, scroll_wheel_grab_move_speed: primitives.Float | None = None, mouse_look_speed: primitives.Float | None = None, mouse_pan_speed: primitives.Float | None = None, mouse_rotate_speed: primitives.Float | None = None, mouse_freeform_rotate_speed: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +41,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
             self.mouse_freeform_rotate_speed = mouse_freeform_rotate_speed
 
     @property
-    def mouse_sensitivity(self) -> np.float32 | None:
+    def mouse_sensitivity(self) -> primitives.Float | None:
         """The MouseSensitivity field value."""
         member = self.get_member("MouseSensitivity")
         if member is None:
@@ -50,7 +49,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @mouse_sensitivity.setter
-    def mouse_sensitivity(self, value: np.float32) -> None:
+    def mouse_sensitivity(self, value: primitives.Float) -> None:
         """Set the MouseSensitivity field value."""
         member = self.get_member("MouseSensitivity")
         if member is not None:
@@ -61,7 +60,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def scroll_wheel_grab_move_speed(self) -> np.float32 | None:
+    def scroll_wheel_grab_move_speed(self) -> primitives.Float | None:
         """The ScrollWheelGrabMoveSpeed field value."""
         member = self.get_member("ScrollWheelGrabMoveSpeed")
         if member is None:
@@ -69,7 +68,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @scroll_wheel_grab_move_speed.setter
-    def scroll_wheel_grab_move_speed(self, value: np.float32) -> None:
+    def scroll_wheel_grab_move_speed(self, value: primitives.Float) -> None:
         """Set the ScrollWheelGrabMoveSpeed field value."""
         member = self.get_member("ScrollWheelGrabMoveSpeed")
         if member is not None:
@@ -80,7 +79,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def mouse_look_speed(self) -> np.float32 | None:
+    def mouse_look_speed(self) -> primitives.Float | None:
         """The MouseLookSpeed field value."""
         member = self.get_member("MouseLookSpeed")
         if member is None:
@@ -88,7 +87,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @mouse_look_speed.setter
-    def mouse_look_speed(self, value: np.float32) -> None:
+    def mouse_look_speed(self, value: primitives.Float) -> None:
         """Set the MouseLookSpeed field value."""
         member = self.get_member("MouseLookSpeed")
         if member is not None:
@@ -99,7 +98,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def mouse_pan_speed(self) -> np.float32 | None:
+    def mouse_pan_speed(self) -> primitives.Float | None:
         """The MousePanSpeed field value."""
         member = self.get_member("MousePanSpeed")
         if member is None:
@@ -107,7 +106,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @mouse_pan_speed.setter
-    def mouse_pan_speed(self, value: np.float32) -> None:
+    def mouse_pan_speed(self, value: primitives.Float) -> None:
         """Set the MousePanSpeed field value."""
         member = self.get_member("MousePanSpeed")
         if member is not None:
@@ -118,7 +117,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def mouse_rotate_speed(self) -> np.float32 | None:
+    def mouse_rotate_speed(self) -> primitives.Float | None:
         """The MouseRotateSpeed field value."""
         member = self.get_member("MouseRotateSpeed")
         if member is None:
@@ -126,7 +125,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @mouse_rotate_speed.setter
-    def mouse_rotate_speed(self, value: np.float32) -> None:
+    def mouse_rotate_speed(self, value: primitives.Float) -> None:
         """Set the MouseRotateSpeed field value."""
         member = self.get_member("MouseRotateSpeed")
         if member is not None:
@@ -137,7 +136,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def mouse_freeform_rotate_speed(self) -> np.float32 | None:
+    def mouse_freeform_rotate_speed(self) -> primitives.Float | None:
         """The MouseFreeformRotateSpeed field value."""
         member = self.get_member("MouseFreeformRotateSpeed")
         if member is None:
@@ -145,7 +144,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @mouse_freeform_rotate_speed.setter
-    def mouse_freeform_rotate_speed(self, value: np.float32) -> None:
+    def mouse_freeform_rotate_speed(self, value: primitives.Float) -> None:
         """Set the MouseFreeformRotateSpeed field value."""
         member = self.get_member("MouseFreeformRotateSpeed")
         if member is not None:

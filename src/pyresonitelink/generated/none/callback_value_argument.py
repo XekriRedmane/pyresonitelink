@@ -12,7 +12,7 @@ class CallbackValueArgument(GenericComponent[T], IComponent, IWorldEventReceiver
 
     Parameterize with a value type::
 
-        CallbackValueArgument[np.float32]
+        CallbackValueArgument[primitives.Float]
         CallbackValueArgument[primitives.Float3]
     """
 

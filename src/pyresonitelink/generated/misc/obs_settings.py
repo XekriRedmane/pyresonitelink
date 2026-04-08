@@ -1,6 +1,7 @@
 """Generated component: OBSSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +16,7 @@ class OBSSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OBSSettings"
 
-    def __init__(self, auto_mirror: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_mirror: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +28,7 @@ class OBSSettings(GeneratedComponent, ICustomInspector):
             self.auto_mirror = auto_mirror
 
     @property
-    def auto_mirror(self) -> bool | None:
+    def auto_mirror(self) -> primitives.Bool | None:
         """The AutoMirror field value."""
         member = self.get_member("AutoMirror")
         if member is None:
@@ -35,7 +36,7 @@ class OBSSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @auto_mirror.setter
-    def auto_mirror(self, value: bool) -> None:
+    def auto_mirror(self, value: primitives.Bool) -> None:
         """Set the AutoMirror field value."""
         member = self.get_member("AutoMirror")
         if member is not None:

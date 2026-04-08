@@ -23,7 +23,7 @@ class NullableToObjectCast(GenericComponent[T], ICast, INodeObjectOutput[T], IEx
 
     Parameterize with a value type::
 
-        NullableToObjectCast[np.float32]
+        NullableToObjectCast[primitives.Float]
         NullableToObjectCast[primitives.Float3]
     """
 

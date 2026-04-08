@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -16,7 +17,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterParenter"
 
-    def __init__(self, triggers_only: bool | None = None, nest_into_space: bool | None = None, must_be_on_ground: bool | None = None, ignore_parent_user: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, triggers_only: primitives.Bool | None = None, nest_into_space: primitives.Bool | None = None, must_be_on_ground: primitives.Bool | None = None, ignore_parent_user: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +38,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.ignore_parent_user = ignore_parent_user
 
     @property
-    def triggers_only(self) -> bool | None:
+    def triggers_only(self) -> primitives.Bool | None:
         """The TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is None:
@@ -45,7 +46,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @triggers_only.setter
-    def triggers_only(self, value: bool) -> None:
+    def triggers_only(self, value: primitives.Bool) -> None:
         """Set the TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is not None:
@@ -56,7 +57,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def nest_into_space(self) -> bool | None:
+    def nest_into_space(self) -> primitives.Bool | None:
         """The NestIntoSpace field value."""
         member = self.get_member("NestIntoSpace")
         if member is None:
@@ -64,7 +65,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @nest_into_space.setter
-    def nest_into_space(self, value: bool) -> None:
+    def nest_into_space(self, value: primitives.Bool) -> None:
         """Set the NestIntoSpace field value."""
         member = self.get_member("NestIntoSpace")
         if member is not None:
@@ -75,7 +76,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def must_be_on_ground(self) -> bool | None:
+    def must_be_on_ground(self) -> primitives.Bool | None:
         """The MustBeOnGround field value."""
         member = self.get_member("MustBeOnGround")
         if member is None:
@@ -83,7 +84,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @must_be_on_ground.setter
-    def must_be_on_ground(self, value: bool) -> None:
+    def must_be_on_ground(self, value: primitives.Bool) -> None:
         """Set the MustBeOnGround field value."""
         member = self.get_member("MustBeOnGround")
         if member is not None:
@@ -107,7 +108,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("Filters", value)
 
     @property
-    def ignore_parent_user(self) -> bool | None:
+    def ignore_parent_user(self) -> primitives.Bool | None:
         """The IgnoreParentUser field value."""
         member = self.get_member("IgnoreParentUser")
         if member is None:
@@ -115,7 +116,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ignore_parent_user.setter
-    def ignore_parent_user(self, value: bool) -> None:
+    def ignore_parent_user(self, value: primitives.Bool) -> None:
         """Set the IgnoreParentUser field value."""
         member = self.get_member("IgnoreParentUser")
         if member is not None:

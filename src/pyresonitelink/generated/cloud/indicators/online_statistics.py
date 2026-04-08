@@ -1,9 +1,8 @@
 """Generated component: OnlineStatistics."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OnlineStatistics"
 
-    def __init__(self, timestamp: str | None = None, registered_online_users: np.int32 | None = None, total_online_users: np.int32 | None = None, present_users: np.int32 | None = None, away_users: np.int32 | None = None, users_in_vr: np.int32 | None = None, users_in_screen: np.int32 | None = None, users_on_desktop: np.int32 | None = None, users_on_mobile: np.int32 | None = None, users_in_visible_public_sessions: np.int32 | None = None, users_in_visible_semi_accessible_sessions: np.int32 | None = None, users_in_hidden_sessions: np.int32 | None = None, users_in_private_sessions: np.int32 | None = None, users_in_private: np.int32 | None = None, users_in_lan: np.int32 | None = None, users_in_contacts: np.int32 | None = None, users_in_contacts_plus: np.int32 | None = None, users_in_registered: np.int32 | None = None, users_in_public: np.int32 | None = None, graphical_client_users: np.int32 | None = None, chat_client_users: np.int32 | None = None, headless_users: np.int32 | None = None, bot_users: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, timestamp: str | None = None, registered_online_users: primitives.Int | None = None, total_online_users: primitives.Int | None = None, present_users: primitives.Int | None = None, away_users: primitives.Int | None = None, users_in_vr: primitives.Int | None = None, users_in_screen: primitives.Int | None = None, users_on_desktop: primitives.Int | None = None, users_on_mobile: primitives.Int | None = None, users_in_visible_public_sessions: primitives.Int | None = None, users_in_visible_semi_accessible_sessions: primitives.Int | None = None, users_in_hidden_sessions: primitives.Int | None = None, users_in_private_sessions: primitives.Int | None = None, users_in_private: primitives.Int | None = None, users_in_lan: primitives.Int | None = None, users_in_contacts: primitives.Int | None = None, users_in_contacts_plus: primitives.Int | None = None, users_in_registered: primitives.Int | None = None, users_in_public: primitives.Int | None = None, graphical_client_users: primitives.Int | None = None, chat_client_users: primitives.Int | None = None, headless_users: primitives.Int | None = None, bot_users: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -167,7 +166,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("ActiveHiddenSessions", value)
 
     @property
-    def registered_online_users(self) -> np.int32 | None:
+    def registered_online_users(self) -> primitives.Int | None:
         """The RegisteredOnlineUsers field value."""
         member = self.get_member("RegisteredOnlineUsers")
         if member is None:
@@ -175,7 +174,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @registered_online_users.setter
-    def registered_online_users(self, value: np.int32) -> None:
+    def registered_online_users(self, value: primitives.Int) -> None:
         """Set the RegisteredOnlineUsers field value."""
         member = self.get_member("RegisteredOnlineUsers")
         if member is not None:
@@ -186,7 +185,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def total_online_users(self) -> np.int32 | None:
+    def total_online_users(self) -> primitives.Int | None:
         """The TotalOnlineUsers field value."""
         member = self.get_member("TotalOnlineUsers")
         if member is None:
@@ -194,7 +193,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @total_online_users.setter
-    def total_online_users(self, value: np.int32) -> None:
+    def total_online_users(self, value: primitives.Int) -> None:
         """Set the TotalOnlineUsers field value."""
         member = self.get_member("TotalOnlineUsers")
         if member is not None:
@@ -205,7 +204,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def present_users(self) -> np.int32 | None:
+    def present_users(self) -> primitives.Int | None:
         """The PresentUsers field value."""
         member = self.get_member("PresentUsers")
         if member is None:
@@ -213,7 +212,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @present_users.setter
-    def present_users(self, value: np.int32) -> None:
+    def present_users(self, value: primitives.Int) -> None:
         """Set the PresentUsers field value."""
         member = self.get_member("PresentUsers")
         if member is not None:
@@ -224,7 +223,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def away_users(self) -> np.int32 | None:
+    def away_users(self) -> primitives.Int | None:
         """The AwayUsers field value."""
         member = self.get_member("AwayUsers")
         if member is None:
@@ -232,7 +231,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @away_users.setter
-    def away_users(self, value: np.int32) -> None:
+    def away_users(self, value: primitives.Int) -> None:
         """Set the AwayUsers field value."""
         member = self.get_member("AwayUsers")
         if member is not None:
@@ -243,7 +242,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_vr(self) -> np.int32 | None:
+    def users_in_vr(self) -> primitives.Int | None:
         """The UsersInVR field value."""
         member = self.get_member("UsersInVR")
         if member is None:
@@ -251,7 +250,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_vr.setter
-    def users_in_vr(self, value: np.int32) -> None:
+    def users_in_vr(self, value: primitives.Int) -> None:
         """Set the UsersInVR field value."""
         member = self.get_member("UsersInVR")
         if member is not None:
@@ -262,7 +261,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_screen(self) -> np.int32 | None:
+    def users_in_screen(self) -> primitives.Int | None:
         """The UsersInScreen field value."""
         member = self.get_member("UsersInScreen")
         if member is None:
@@ -270,7 +269,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_screen.setter
-    def users_in_screen(self, value: np.int32) -> None:
+    def users_in_screen(self, value: primitives.Int) -> None:
         """Set the UsersInScreen field value."""
         member = self.get_member("UsersInScreen")
         if member is not None:
@@ -281,7 +280,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_on_desktop(self) -> np.int32 | None:
+    def users_on_desktop(self) -> primitives.Int | None:
         """The UsersOnDesktop field value."""
         member = self.get_member("UsersOnDesktop")
         if member is None:
@@ -289,7 +288,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_on_desktop.setter
-    def users_on_desktop(self, value: np.int32) -> None:
+    def users_on_desktop(self, value: primitives.Int) -> None:
         """Set the UsersOnDesktop field value."""
         member = self.get_member("UsersOnDesktop")
         if member is not None:
@@ -300,7 +299,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_on_mobile(self) -> np.int32 | None:
+    def users_on_mobile(self) -> primitives.Int | None:
         """The UsersOnMobile field value."""
         member = self.get_member("UsersOnMobile")
         if member is None:
@@ -308,7 +307,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_on_mobile.setter
-    def users_on_mobile(self, value: np.int32) -> None:
+    def users_on_mobile(self, value: primitives.Int) -> None:
         """Set the UsersOnMobile field value."""
         member = self.get_member("UsersOnMobile")
         if member is not None:
@@ -319,7 +318,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_visible_public_sessions(self) -> np.int32 | None:
+    def users_in_visible_public_sessions(self) -> primitives.Int | None:
         """The UsersInVisiblePublicSessions field value."""
         member = self.get_member("UsersInVisiblePublicSessions")
         if member is None:
@@ -327,7 +326,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_visible_public_sessions.setter
-    def users_in_visible_public_sessions(self, value: np.int32) -> None:
+    def users_in_visible_public_sessions(self, value: primitives.Int) -> None:
         """Set the UsersInVisiblePublicSessions field value."""
         member = self.get_member("UsersInVisiblePublicSessions")
         if member is not None:
@@ -338,7 +337,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_visible_semi_accessible_sessions(self) -> np.int32 | None:
+    def users_in_visible_semi_accessible_sessions(self) -> primitives.Int | None:
         """The UsersInVisibleSemiAccessibleSessions field value."""
         member = self.get_member("UsersInVisibleSemiAccessibleSessions")
         if member is None:
@@ -346,7 +345,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_visible_semi_accessible_sessions.setter
-    def users_in_visible_semi_accessible_sessions(self, value: np.int32) -> None:
+    def users_in_visible_semi_accessible_sessions(self, value: primitives.Int) -> None:
         """Set the UsersInVisibleSemiAccessibleSessions field value."""
         member = self.get_member("UsersInVisibleSemiAccessibleSessions")
         if member is not None:
@@ -357,7 +356,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_hidden_sessions(self) -> np.int32 | None:
+    def users_in_hidden_sessions(self) -> primitives.Int | None:
         """The UsersInHiddenSessions field value."""
         member = self.get_member("UsersInHiddenSessions")
         if member is None:
@@ -365,7 +364,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_hidden_sessions.setter
-    def users_in_hidden_sessions(self, value: np.int32) -> None:
+    def users_in_hidden_sessions(self, value: primitives.Int) -> None:
         """Set the UsersInHiddenSessions field value."""
         member = self.get_member("UsersInHiddenSessions")
         if member is not None:
@@ -376,7 +375,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_private_sessions(self) -> np.int32 | None:
+    def users_in_private_sessions(self) -> primitives.Int | None:
         """The UsersInPrivateSessions field value."""
         member = self.get_member("UsersInPrivateSessions")
         if member is None:
@@ -384,7 +383,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_private_sessions.setter
-    def users_in_private_sessions(self, value: np.int32) -> None:
+    def users_in_private_sessions(self, value: primitives.Int) -> None:
         """Set the UsersInPrivateSessions field value."""
         member = self.get_member("UsersInPrivateSessions")
         if member is not None:
@@ -395,7 +394,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_private(self) -> np.int32 | None:
+    def users_in_private(self) -> primitives.Int | None:
         """The UsersInPrivate field value."""
         member = self.get_member("UsersInPrivate")
         if member is None:
@@ -403,7 +402,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_private.setter
-    def users_in_private(self, value: np.int32) -> None:
+    def users_in_private(self, value: primitives.Int) -> None:
         """Set the UsersInPrivate field value."""
         member = self.get_member("UsersInPrivate")
         if member is not None:
@@ -414,7 +413,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_lan(self) -> np.int32 | None:
+    def users_in_lan(self) -> primitives.Int | None:
         """The UsersInLAN field value."""
         member = self.get_member("UsersInLAN")
         if member is None:
@@ -422,7 +421,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_lan.setter
-    def users_in_lan(self, value: np.int32) -> None:
+    def users_in_lan(self, value: primitives.Int) -> None:
         """Set the UsersInLAN field value."""
         member = self.get_member("UsersInLAN")
         if member is not None:
@@ -433,7 +432,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_contacts(self) -> np.int32 | None:
+    def users_in_contacts(self) -> primitives.Int | None:
         """The UsersInContacts field value."""
         member = self.get_member("UsersInContacts")
         if member is None:
@@ -441,7 +440,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_contacts.setter
-    def users_in_contacts(self, value: np.int32) -> None:
+    def users_in_contacts(self, value: primitives.Int) -> None:
         """Set the UsersInContacts field value."""
         member = self.get_member("UsersInContacts")
         if member is not None:
@@ -452,7 +451,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_contacts_plus(self) -> np.int32 | None:
+    def users_in_contacts_plus(self) -> primitives.Int | None:
         """The UsersInContactsPlus field value."""
         member = self.get_member("UsersInContactsPlus")
         if member is None:
@@ -460,7 +459,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_contacts_plus.setter
-    def users_in_contacts_plus(self, value: np.int32) -> None:
+    def users_in_contacts_plus(self, value: primitives.Int) -> None:
         """Set the UsersInContactsPlus field value."""
         member = self.get_member("UsersInContactsPlus")
         if member is not None:
@@ -471,7 +470,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_registered(self) -> np.int32 | None:
+    def users_in_registered(self) -> primitives.Int | None:
         """The UsersInRegistered field value."""
         member = self.get_member("UsersInRegistered")
         if member is None:
@@ -479,7 +478,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_registered.setter
-    def users_in_registered(self, value: np.int32) -> None:
+    def users_in_registered(self, value: primitives.Int) -> None:
         """Set the UsersInRegistered field value."""
         member = self.get_member("UsersInRegistered")
         if member is not None:
@@ -490,7 +489,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def users_in_public(self) -> np.int32 | None:
+    def users_in_public(self) -> primitives.Int | None:
         """The UsersInPublic field value."""
         member = self.get_member("UsersInPublic")
         if member is None:
@@ -498,7 +497,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @users_in_public.setter
-    def users_in_public(self, value: np.int32) -> None:
+    def users_in_public(self, value: primitives.Int) -> None:
         """Set the UsersInPublic field value."""
         member = self.get_member("UsersInPublic")
         if member is not None:
@@ -509,7 +508,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def graphical_client_users(self) -> np.int32 | None:
+    def graphical_client_users(self) -> primitives.Int | None:
         """The GraphicalClientUsers field value."""
         member = self.get_member("GraphicalClientUsers")
         if member is None:
@@ -517,7 +516,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @graphical_client_users.setter
-    def graphical_client_users(self, value: np.int32) -> None:
+    def graphical_client_users(self, value: primitives.Int) -> None:
         """Set the GraphicalClientUsers field value."""
         member = self.get_member("GraphicalClientUsers")
         if member is not None:
@@ -528,7 +527,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def chat_client_users(self) -> np.int32 | None:
+    def chat_client_users(self) -> primitives.Int | None:
         """The ChatClientUsers field value."""
         member = self.get_member("ChatClientUsers")
         if member is None:
@@ -536,7 +535,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @chat_client_users.setter
-    def chat_client_users(self, value: np.int32) -> None:
+    def chat_client_users(self, value: primitives.Int) -> None:
         """Set the ChatClientUsers field value."""
         member = self.get_member("ChatClientUsers")
         if member is not None:
@@ -547,7 +546,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def headless_users(self) -> np.int32 | None:
+    def headless_users(self) -> primitives.Int | None:
         """The HeadlessUsers field value."""
         member = self.get_member("HeadlessUsers")
         if member is None:
@@ -555,7 +554,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @headless_users.setter
-    def headless_users(self, value: np.int32) -> None:
+    def headless_users(self, value: primitives.Int) -> None:
         """Set the HeadlessUsers field value."""
         member = self.get_member("HeadlessUsers")
         if member is not None:
@@ -566,7 +565,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def bot_users(self) -> np.int32 | None:
+    def bot_users(self) -> primitives.Int | None:
         """The BotUsers field value."""
         member = self.get_member("BotUsers")
         if member is None:
@@ -574,7 +573,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @bot_users.setter
-    def bot_users(self, value: np.int32) -> None:
+    def bot_users(self, value: primitives.Int) -> None:
         """Set the BotUsers field value."""
         member = self.get_member("BotUsers")
         if member is not None:

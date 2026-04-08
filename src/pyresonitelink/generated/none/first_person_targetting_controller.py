@@ -1,8 +1,7 @@
 """Generated component: FirstPersonTargettingController."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 
@@ -13,7 +12,7 @@ class FirstPersonTargettingController(GeneratedComponent):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FirstPersonTargettingController"
 
-    def __init__(self, min_vertical_angle: np.float32 | None = None, max_vertical_angle: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_vertical_angle: primitives.Float | None = None, max_vertical_angle: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,7 +27,7 @@ class FirstPersonTargettingController(GeneratedComponent):
             self.max_vertical_angle = max_vertical_angle
 
     @property
-    def min_vertical_angle(self) -> np.float32 | None:
+    def min_vertical_angle(self) -> primitives.Float | None:
         """The MinVerticalAngle field value."""
         member = self.get_member("MinVerticalAngle")
         if member is None:
@@ -36,7 +35,7 @@ class FirstPersonTargettingController(GeneratedComponent):
         return getattr(member, 'value', None)
 
     @min_vertical_angle.setter
-    def min_vertical_angle(self, value: np.float32) -> None:
+    def min_vertical_angle(self, value: primitives.Float) -> None:
         """Set the MinVerticalAngle field value."""
         member = self.get_member("MinVerticalAngle")
         if member is not None:
@@ -47,7 +46,7 @@ class FirstPersonTargettingController(GeneratedComponent):
             )
 
     @property
-    def max_vertical_angle(self) -> np.float32 | None:
+    def max_vertical_angle(self) -> primitives.Float | None:
         """The MaxVerticalAngle field value."""
         member = self.get_member("MaxVerticalAngle")
         if member is None:
@@ -55,7 +54,7 @@ class FirstPersonTargettingController(GeneratedComponent):
         return getattr(member, 'value', None)
 
     @max_vertical_angle.setter
-    def max_vertical_angle(self, value: np.float32) -> None:
+    def max_vertical_angle(self, value: primitives.Float) -> None:
         """Set the MaxVerticalAngle field value."""
         member = self.get_member("MaxVerticalAngle")
         if member is not None:

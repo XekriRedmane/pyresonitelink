@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -14,7 +15,7 @@ class NamePlateSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NamePlateSettings"
 
-    def __init__(self, use_custom_nameplates: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_custom_nameplates: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +40,7 @@ class NamePlateSettings(GeneratedComponent, ICustomInspector):
         self.set_member("NameplateVisibility", value)
 
     @property
-    def use_custom_nameplates(self) -> bool | None:
+    def use_custom_nameplates(self) -> primitives.Bool | None:
         """The UseCustomNameplates field value."""
         member = self.get_member("UseCustomNameplates")
         if member is None:
@@ -47,7 +48,7 @@ class NamePlateSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_custom_nameplates.setter
-    def use_custom_nameplates(self, value: bool) -> None:
+    def use_custom_nameplates(self, value: primitives.Bool) -> None:
         """Set the UseCustomNameplates field value."""
         member = self.get_member("UseCustomNameplates")
         if member is not None:

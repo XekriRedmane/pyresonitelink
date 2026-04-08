@@ -1,7 +1,5 @@
 """Generated component: RadiantSearchBar."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantSearchBar"
 
-    def __init__(self, search_term: str | None = None, is_searching: bool | None = None, search_anim_tile_speed: np.float32 | None = None, search_anim_color: primitives.ColorX | None = None, text_field: str | TextField | None = None, search_text: str | Text | None = None, default_text: str | Text | None = None, searching_visual: str | TiledRawImage | None = None, cancel_button: str | Button | None = None, default_visible: str | IField[bool] | None = None, searching_animation_color: str | IField[primitives.ColorX] | None = None, searching_texture_offset: str | IField[primitives.Float2] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, search_term: primitives.String | None = None, is_searching: primitives.Bool | None = None, search_anim_tile_speed: primitives.Float | None = None, search_anim_color: primitives.ColorX | None = None, text_field: str | TextField | None = None, search_text: str | Text | None = None, default_text: str | Text | None = None, searching_visual: str | TiledRawImage | None = None, cancel_button: str | Button | None = None, default_visible: str | IField[primitives.Bool] | None = None, searching_animation_color: str | IField[primitives.ColorX] | None = None, searching_texture_offset: str | IField[primitives.Float2] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,7 +67,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.searching_texture_offset = searching_texture_offset
 
     @property
-    def search_term(self) -> str | None:
+    def search_term(self) -> primitives.String | None:
         """The SearchTerm field value."""
         member = self.get_member("SearchTerm")
         if member is None:
@@ -77,7 +75,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @search_term.setter
-    def search_term(self, value: str) -> None:
+    def search_term(self, value: primitives.String) -> None:
         """Set the SearchTerm field value."""
         member = self.get_member("SearchTerm")
         if member is not None:
@@ -88,7 +86,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_searching(self) -> bool | None:
+    def is_searching(self) -> primitives.Bool | None:
         """The IsSearching field value."""
         member = self.get_member("IsSearching")
         if member is None:
@@ -96,7 +94,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_searching.setter
-    def is_searching(self, value: bool) -> None:
+    def is_searching(self, value: primitives.Bool) -> None:
         """Set the IsSearching field value."""
         member = self.get_member("IsSearching")
         if member is not None:
@@ -107,7 +105,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def search_anim_tile_speed(self) -> np.float32 | None:
+    def search_anim_tile_speed(self) -> primitives.Float | None:
         """The SearchAnimTileSpeed field value."""
         member = self.get_member("SearchAnimTileSpeed")
         if member is None:
@@ -115,7 +113,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @search_anim_tile_speed.setter
-    def search_anim_tile_speed(self, value: np.float32) -> None:
+    def search_anim_tile_speed(self, value: primitives.Float) -> None:
         """Set the SearchAnimTileSpeed field value."""
         member = self.get_member("SearchAnimTileSpeed")
         if member is not None:
@@ -251,15 +249,15 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_visible(self) -> str | None:
-        """Target ID of the _defaultVisible reference (targets IField[bool])."""
+        """Target ID of the _defaultVisible reference (targets IField[primitives.Bool])."""
         member = self.get_member("_defaultVisible")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @default_visible.setter
-    def default_visible(self, target: str | IField[bool] | None) -> None:
-        """Set the _defaultVisible reference by target ID or IField[bool] instance."""
+    def default_visible(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _defaultVisible reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_defaultVisible")
         if isinstance(member, members.Reference):

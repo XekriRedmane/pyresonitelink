@@ -1,9 +1,8 @@
 """Generated component: PagingControl."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -21,7 +20,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PagingControl"
 
-    def __init__(self, items_per_page: np.int32 | None = None, total_items: np.int32 | None = None, has_more_items: bool | None = None, skip_items: np.int32 | None = None, no_items_label: str | None = None, paging_info_label: str | None = None, total_pages: np.int32 | None = None, remaining_items: np.int32 | None = None, label: str | IField[str] | None = None, previous_enabled: str | IField[bool] | None = None, next_enabled: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, items_per_page: primitives.Int | None = None, total_items: primitives.Int | None = None, has_more_items: primitives.Bool | None = None, skip_items: primitives.Int | None = None, no_items_label: primitives.String | None = None, paging_info_label: primitives.String | None = None, total_pages: primitives.Int | None = None, remaining_items: primitives.Int | None = None, label: str | IField[primitives.String] | None = None, previous_enabled: str | IField[primitives.Bool] | None = None, next_enabled: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,7 +62,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             self.next_enabled = next_enabled
 
     @property
-    def items_per_page(self) -> np.int32 | None:
+    def items_per_page(self) -> primitives.Int | None:
         """The ItemsPerPage field value."""
         member = self.get_member("ItemsPerPage")
         if member is None:
@@ -71,7 +70,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @items_per_page.setter
-    def items_per_page(self, value: np.int32) -> None:
+    def items_per_page(self, value: primitives.Int) -> None:
         """Set the ItemsPerPage field value."""
         member = self.get_member("ItemsPerPage")
         if member is not None:
@@ -82,7 +81,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def total_items(self) -> np.int32 | None:
+    def total_items(self) -> primitives.Int | None:
         """The TotalItems field value."""
         member = self.get_member("TotalItems")
         if member is None:
@@ -90,7 +89,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @total_items.setter
-    def total_items(self, value: np.int32) -> None:
+    def total_items(self, value: primitives.Int) -> None:
         """Set the TotalItems field value."""
         member = self.get_member("TotalItems")
         if member is not None:
@@ -101,7 +100,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def has_more_items(self) -> bool | None:
+    def has_more_items(self) -> primitives.Bool | None:
         """The HasMoreItems field value."""
         member = self.get_member("HasMoreItems")
         if member is None:
@@ -109,7 +108,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @has_more_items.setter
-    def has_more_items(self, value: bool) -> None:
+    def has_more_items(self, value: primitives.Bool) -> None:
         """Set the HasMoreItems field value."""
         member = self.get_member("HasMoreItems")
         if member is not None:
@@ -120,7 +119,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def skip_items(self) -> np.int32 | None:
+    def skip_items(self) -> primitives.Int | None:
         """The SkipItems field value."""
         member = self.get_member("SkipItems")
         if member is None:
@@ -128,7 +127,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @skip_items.setter
-    def skip_items(self, value: np.int32) -> None:
+    def skip_items(self, value: primitives.Int) -> None:
         """Set the SkipItems field value."""
         member = self.get_member("SkipItems")
         if member is not None:
@@ -139,7 +138,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def no_items_label(self) -> str | None:
+    def no_items_label(self) -> primitives.String | None:
         """The NoItemsLabel field value."""
         member = self.get_member("NoItemsLabel")
         if member is None:
@@ -147,7 +146,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @no_items_label.setter
-    def no_items_label(self, value: str) -> None:
+    def no_items_label(self, value: primitives.String) -> None:
         """Set the NoItemsLabel field value."""
         member = self.get_member("NoItemsLabel")
         if member is not None:
@@ -158,7 +157,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def paging_info_label(self) -> str | None:
+    def paging_info_label(self) -> primitives.String | None:
         """The PagingInfoLabel field value."""
         member = self.get_member("PagingInfoLabel")
         if member is None:
@@ -166,7 +165,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @paging_info_label.setter
-    def paging_info_label(self, value: str) -> None:
+    def paging_info_label(self, value: primitives.String) -> None:
         """Set the PagingInfoLabel field value."""
         member = self.get_member("PagingInfoLabel")
         if member is not None:
@@ -177,7 +176,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def total_pages(self) -> np.int32 | None:
+    def total_pages(self) -> primitives.Int | None:
         """The TotalPages field value."""
         member = self.get_member("TotalPages")
         if member is None:
@@ -185,7 +184,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @total_pages.setter
-    def total_pages(self, value: np.int32) -> None:
+    def total_pages(self, value: primitives.Int) -> None:
         """Set the TotalPages field value."""
         member = self.get_member("TotalPages")
         if member is not None:
@@ -196,7 +195,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     @property
-    def remaining_items(self) -> np.int32 | None:
+    def remaining_items(self) -> primitives.Int | None:
         """The RemainingItems field value."""
         member = self.get_member("RemainingItems")
         if member is None:
@@ -204,7 +203,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @remaining_items.setter
-    def remaining_items(self, value: np.int32) -> None:
+    def remaining_items(self, value: primitives.Int) -> None:
         """Set the RemainingItems field value."""
         member = self.get_member("RemainingItems")
         if member is not None:
@@ -216,15 +215,15 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def label(self) -> str | None:
-        """Target ID of the _label reference (targets IField[str])."""
+        """Target ID of the _label reference (targets IField[primitives.String])."""
         member = self.get_member("_label")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @label.setter
-    def label(self, target: str | IField[str] | None) -> None:
-        """Set the _label reference by target ID or IField[str] instance."""
+    def label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _label reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_label")
         if isinstance(member, members.Reference):
@@ -237,15 +236,15 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def previous_enabled(self) -> str | None:
-        """Target ID of the _previousEnabled reference (targets IField[bool])."""
+        """Target ID of the _previousEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_previousEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @previous_enabled.setter
-    def previous_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _previousEnabled reference by target ID or IField[bool] instance."""
+    def previous_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _previousEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_previousEnabled")
         if isinstance(member, members.Reference):
@@ -258,15 +257,15 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def next_enabled(self) -> str | None:
-        """Target ID of the _nextEnabled reference (targets IField[bool])."""
+        """Target ID of the _nextEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_nextEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @next_enabled.setter
-    def next_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _nextEnabled reference by target ID or IField[bool] instance."""
+    def next_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _nextEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_nextEnabled")
         if isinstance(member, members.Reference):

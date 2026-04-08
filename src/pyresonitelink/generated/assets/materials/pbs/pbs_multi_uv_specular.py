@@ -1,7 +1,5 @@
 """Generated component: PBS_MultiUV_Specular."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_MultiUV_Specular"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, albedo_scale: primitives.Float2 | None = None, albedo_offset: primitives.Float2 | None = None, albedo_uv: np.int32 | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, emission_map_uv: np.int32 | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_map_uv: np.int32 | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_map_uv: np.int32 | None = None, secondary_albedo_scale: primitives.Float2 | None = None, secondary_albedo_offset: primitives.Float2 | None = None, secondary_albedo_uv: np.int32 | None = None, secondary_emission_map_scale: primitives.Float2 | None = None, secondary_emission_map_offset: primitives.Float2 | None = None, secondary_emission_map_uv: np.int32 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, secondary_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, secondary_emissive_color: primitives.ColorX | None = None, secondary_emissive_map: str | IAssetProvider[ITexture2D] | None = None, alpha_clip: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, specular_map_scale: primitives.Float2 | None = None, specular_map_offset: primitives.Float2 | None = None, specular_map_uv: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, albedo_scale: primitives.Float2 | None = None, albedo_offset: primitives.Float2 | None = None, albedo_uv: primitives.Int | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, emission_map_uv: primitives.Int | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_map_uv: primitives.Int | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_map_uv: primitives.Int | None = None, secondary_albedo_scale: primitives.Float2 | None = None, secondary_albedo_offset: primitives.Float2 | None = None, secondary_albedo_uv: primitives.Int | None = None, secondary_emission_map_scale: primitives.Float2 | None = None, secondary_emission_map_offset: primitives.Float2 | None = None, secondary_emission_map_uv: primitives.Int | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, secondary_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, secondary_emissive_color: primitives.ColorX | None = None, secondary_emissive_map: str | IAssetProvider[ITexture2D] | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, specular_map_scale: primitives.Float2 | None = None, specular_map_offset: primitives.Float2 | None = None, specular_map_uv: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -150,7 +148,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             self.specular_map_uv = specular_map_uv
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -158,7 +156,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -228,7 +226,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def albedo_uv(self) -> np.int32 | None:
+    def albedo_uv(self) -> primitives.Int | None:
         """The AlbedoUV field value."""
         member = self.get_member("AlbedoUV")
         if member is None:
@@ -236,7 +234,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @albedo_uv.setter
-    def albedo_uv(self, value: np.int32) -> None:
+    def albedo_uv(self, value: primitives.Int) -> None:
         """Set the AlbedoUV field value."""
         member = self.get_member("AlbedoUV")
         if member is not None:
@@ -285,7 +283,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def emission_map_uv(self) -> np.int32 | None:
+    def emission_map_uv(self) -> primitives.Int | None:
         """The EmissionMapUV field value."""
         member = self.get_member("EmissionMapUV")
         if member is None:
@@ -293,7 +291,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @emission_map_uv.setter
-    def emission_map_uv(self, value: np.int32) -> None:
+    def emission_map_uv(self, value: primitives.Int) -> None:
         """Set the EmissionMapUV field value."""
         member = self.get_member("EmissionMapUV")
         if member is not None:
@@ -342,7 +340,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def normal_map_uv(self) -> np.int32 | None:
+    def normal_map_uv(self) -> primitives.Int | None:
         """The NormalMapUV field value."""
         member = self.get_member("NormalMapUV")
         if member is None:
@@ -350,7 +348,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @normal_map_uv.setter
-    def normal_map_uv(self, value: np.int32) -> None:
+    def normal_map_uv(self, value: primitives.Int) -> None:
         """Set the NormalMapUV field value."""
         member = self.get_member("NormalMapUV")
         if member is not None:
@@ -399,7 +397,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def occlusion_map_uv(self) -> np.int32 | None:
+    def occlusion_map_uv(self) -> primitives.Int | None:
         """The OcclusionMapUV field value."""
         member = self.get_member("OcclusionMapUV")
         if member is None:
@@ -407,7 +405,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @occlusion_map_uv.setter
-    def occlusion_map_uv(self, value: np.int32) -> None:
+    def occlusion_map_uv(self, value: primitives.Int) -> None:
         """Set the OcclusionMapUV field value."""
         member = self.get_member("OcclusionMapUV")
         if member is not None:
@@ -456,7 +454,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def secondary_albedo_uv(self) -> np.int32 | None:
+    def secondary_albedo_uv(self) -> primitives.Int | None:
         """The SecondaryAlbedoUV field value."""
         member = self.get_member("SecondaryAlbedoUV")
         if member is None:
@@ -464,7 +462,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @secondary_albedo_uv.setter
-    def secondary_albedo_uv(self, value: np.int32) -> None:
+    def secondary_albedo_uv(self, value: primitives.Int) -> None:
         """Set the SecondaryAlbedoUV field value."""
         member = self.get_member("SecondaryAlbedoUV")
         if member is not None:
@@ -513,7 +511,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def secondary_emission_map_uv(self) -> np.int32 | None:
+    def secondary_emission_map_uv(self) -> primitives.Int | None:
         """The SecondaryEmissionMapUV field value."""
         member = self.get_member("SecondaryEmissionMapUV")
         if member is None:
@@ -521,7 +519,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @secondary_emission_map_uv.setter
-    def secondary_emission_map_uv(self, value: np.int32) -> None:
+    def secondary_emission_map_uv(self, value: primitives.Int) -> None:
         """Set the SecondaryEmissionMapUV field value."""
         member = self.get_member("SecondaryEmissionMapUV")
         if member is not None:
@@ -633,7 +631,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -641,7 +639,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -760,7 +758,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         self.set_member("AlphaHandling", value)
 
     @property
-    def alpha_clip(self) -> np.float32 | None:
+    def alpha_clip(self) -> primitives.Float | None:
         """The AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is None:
@@ -768,7 +766,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @alpha_clip.setter
-    def alpha_clip(self, value: np.float32) -> None:
+    def alpha_clip(self, value: primitives.Float) -> None:
         """Set the AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is not None:
@@ -779,7 +777,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -787,7 +785,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -798,7 +796,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -806,7 +804,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -817,7 +815,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -825,7 +823,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -914,7 +912,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
             )
 
     @property
-    def specular_map_uv(self) -> np.int32 | None:
+    def specular_map_uv(self) -> primitives.Int | None:
         """The SpecularMapUV field value."""
         member = self.get_member("SpecularMapUV")
         if member is None:
@@ -922,7 +920,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @specular_map_uv.setter
-    def specular_map_uv(self, value: np.int32) -> None:
+    def specular_map_uv(self, value: primitives.Int) -> None:
         """Set the SpecularMapUV field value."""
         member = self.get_member("SpecularMapUV")
         if member is not None:

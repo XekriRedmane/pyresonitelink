@@ -1,7 +1,5 @@
 """Generated component: ThresholdMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ThresholdMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, rect: primitives.Rect | None = None, rect_clip: bool | None = None, stencil_id: np.uint8 | None = None, stencil_write_mask: np.uint8 | None = None, stencil_read_mask: np.uint8 | None = None, render_queue: np.int32 | None = None, shader: str | IAssetProvider[Shader] | None = None, threshold: np.float32 | None = None, transition: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, shader: str | IAssetProvider[Shader] | None = None, threshold: primitives.Float | None = None, transition: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,7 +59,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
             self.transition = transition
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -69,7 +67,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -99,7 +97,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
             )
 
     @property
-    def rect_clip(self) -> bool | None:
+    def rect_clip(self) -> primitives.Bool | None:
         """The RectClip field value."""
         member = self.get_member("RectClip")
         if member is None:
@@ -107,7 +105,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @rect_clip.setter
-    def rect_clip(self, value: bool) -> None:
+    def rect_clip(self, value: primitives.Bool) -> None:
         """Set the RectClip field value."""
         member = self.get_member("RectClip")
         if member is not None:
@@ -157,7 +155,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
         self.set_member("StencilOperation", value)
 
     @property
-    def stencil_id(self) -> np.uint8 | None:
+    def stencil_id(self) -> primitives.Byte | None:
         """The StencilID field value."""
         member = self.get_member("StencilID")
         if member is None:
@@ -165,7 +163,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @stencil_id.setter
-    def stencil_id(self, value: np.uint8) -> None:
+    def stencil_id(self, value: primitives.Byte) -> None:
         """Set the StencilID field value."""
         member = self.get_member("StencilID")
         if member is not None:
@@ -176,7 +174,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
             )
 
     @property
-    def stencil_write_mask(self) -> np.uint8 | None:
+    def stencil_write_mask(self) -> primitives.Byte | None:
         """The StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is None:
@@ -184,7 +182,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @stencil_write_mask.setter
-    def stencil_write_mask(self, value: np.uint8) -> None:
+    def stencil_write_mask(self, value: primitives.Byte) -> None:
         """Set the StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is not None:
@@ -195,7 +193,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
             )
 
     @property
-    def stencil_read_mask(self) -> np.uint8 | None:
+    def stencil_read_mask(self) -> primitives.Byte | None:
         """The StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is None:
@@ -203,7 +201,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @stencil_read_mask.setter
-    def stencil_read_mask(self, value: np.uint8) -> None:
+    def stencil_read_mask(self, value: primitives.Byte) -> None:
         """Set the StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is not None:
@@ -214,7 +212,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -222,7 +220,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -254,7 +252,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
             )
 
     @property
-    def threshold(self) -> np.float32 | None:
+    def threshold(self) -> primitives.Float | None:
         """The Threshold field value."""
         member = self.get_member("Threshold")
         if member is None:
@@ -262,7 +260,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @threshold.setter
-    def threshold(self, value: np.float32) -> None:
+    def threshold(self, value: primitives.Float) -> None:
         """Set the Threshold field value."""
         member = self.get_member("Threshold")
         if member is not None:
@@ -273,7 +271,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
             )
 
     @property
-    def transition(self) -> np.float32 | None:
+    def transition(self) -> primitives.Float | None:
         """The Transition field value."""
         member = self.get_member("Transition")
         if member is None:
@@ -281,7 +279,7 @@ class ThresholdMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @transition.setter
-    def transition(self, value: np.float32) -> None:
+    def transition(self, value: primitives.Float) -> None:
         """Set the Transition field value."""
         member = self.get_member("Transition")
         if member is not None:

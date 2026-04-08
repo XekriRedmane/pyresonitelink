@@ -21,7 +21,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenuItemSource"
 
-    def __init__(self, label: str | None = None, color: primitives.ColorX | None = None, sprite: str | IAssetProvider[Sprite] | None = None, button_enabled: bool | None = None, allow_drag: bool | None = None, close_menu_on_press: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, label: primitives.String | None = None, color: primitives.ColorX | None = None, sprite: str | IAssetProvider[Sprite] | None = None, button_enabled: primitives.Bool | None = None, allow_drag: primitives.Bool | None = None, close_menu_on_press: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,7 +48,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
             self.close_menu_on_press = close_menu_on_press
 
     @property
-    def label(self) -> str | None:
+    def label(self) -> primitives.String | None:
         """The Label field value."""
         member = self.get_member("Label")
         if member is None:
@@ -56,7 +56,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
         return getattr(member, 'value', None)
 
     @label.setter
-    def label(self, value: str) -> None:
+    def label(self, value: primitives.String) -> None:
         """Set the Label field value."""
         member = self.get_member("Label")
         if member is not None:
@@ -107,7 +107,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
             )
 
     @property
-    def button_enabled(self) -> bool | None:
+    def button_enabled(self) -> primitives.Bool | None:
         """The ButtonEnabled field value."""
         member = self.get_member("ButtonEnabled")
         if member is None:
@@ -115,7 +115,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
         return getattr(member, 'value', None)
 
     @button_enabled.setter
-    def button_enabled(self, value: bool) -> None:
+    def button_enabled(self, value: primitives.Bool) -> None:
         """Set the ButtonEnabled field value."""
         member = self.get_member("ButtonEnabled")
         if member is not None:
@@ -126,7 +126,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
             )
 
     @property
-    def allow_drag(self) -> bool | None:
+    def allow_drag(self) -> primitives.Bool | None:
         """The AllowDrag field value."""
         member = self.get_member("AllowDrag")
         if member is None:
@@ -134,7 +134,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
         return getattr(member, 'value', None)
 
     @allow_drag.setter
-    def allow_drag(self, value: bool) -> None:
+    def allow_drag(self, value: primitives.Bool) -> None:
         """Set the AllowDrag field value."""
         member = self.get_member("AllowDrag")
         if member is not None:
@@ -145,7 +145,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
             )
 
     @property
-    def close_menu_on_press(self) -> bool | None:
+    def close_menu_on_press(self) -> primitives.Bool | None:
         """The CloseMenuOnPress field value."""
         member = self.get_member("CloseMenuOnPress")
         if member is None:
@@ -153,7 +153,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
         return getattr(member, 'value', None)
 
     @close_menu_on_press.setter
-    def close_menu_on_press(self, value: bool) -> None:
+    def close_menu_on_press(self, value: primitives.Bool) -> None:
         """Set the CloseMenuOnPress field value."""
         member = self.get_member("CloseMenuOnPress")
         if member is not None:

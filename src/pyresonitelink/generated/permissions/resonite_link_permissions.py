@@ -1,6 +1,7 @@
 """Generated component: ResoniteLinkPermissions."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworker_permissions import IWorkerPermissions
@@ -16,7 +17,7 @@ class ResoniteLinkPermissions(GeneratedComponent, IWorkerPermissions, ICustomIns
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ResoniteLinkPermissions"
 
-    def __init__(self, allow_read_access: bool | None = None, allow_write_access: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, allow_read_access: primitives.Bool | None = None, allow_write_access: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +32,7 @@ class ResoniteLinkPermissions(GeneratedComponent, IWorkerPermissions, ICustomIns
             self.allow_write_access = allow_write_access
 
     @property
-    def allow_read_access(self) -> bool | None:
+    def allow_read_access(self) -> primitives.Bool | None:
         """The AllowReadAccess field value."""
         member = self.get_member("AllowReadAccess")
         if member is None:
@@ -39,7 +40,7 @@ class ResoniteLinkPermissions(GeneratedComponent, IWorkerPermissions, ICustomIns
         return getattr(member, 'value', None)
 
     @allow_read_access.setter
-    def allow_read_access(self, value: bool) -> None:
+    def allow_read_access(self, value: primitives.Bool) -> None:
         """Set the AllowReadAccess field value."""
         member = self.get_member("AllowReadAccess")
         if member is not None:
@@ -50,7 +51,7 @@ class ResoniteLinkPermissions(GeneratedComponent, IWorkerPermissions, ICustomIns
             )
 
     @property
-    def allow_write_access(self) -> bool | None:
+    def allow_write_access(self) -> primitives.Bool | None:
         """The AllowWriteAccess field value."""
         member = self.get_member("AllowWriteAccess")
         if member is None:
@@ -58,7 +59,7 @@ class ResoniteLinkPermissions(GeneratedComponent, IWorkerPermissions, ICustomIns
         return getattr(member, 'value', None)
 
     @allow_write_access.setter
-    def allow_write_access(self, value: bool) -> None:
+    def allow_write_access(self, value: primitives.Bool) -> None:
         """Set the AllowWriteAccess field value."""
         member = self.get_member("AllowWriteAccess")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: ScaleGroup."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class ScaleGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleGroup"
 
-    def __init__(self, selected_element: str | ScaleElement | None = None, idle_scale: primitives.Float3 | None = None, background_scale: primitives.Float3 | None = None, selected_scale: primitives.Float3 | None = None, smooth_speed: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, selected_element: str | ScaleElement | None = None, idle_scale: primitives.Float3 | None = None, background_scale: primitives.Float3 | None = None, selected_scale: primitives.Float3 | None = None, smooth_speed: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -122,7 +120,7 @@ class ScaleGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def smooth_speed(self) -> np.float32 | None:
+    def smooth_speed(self) -> primitives.Float | None:
         """The SmoothSpeed field value."""
         member = self.get_member("SmoothSpeed")
         if member is None:
@@ -130,7 +128,7 @@ class ScaleGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @smooth_speed.setter
-    def smooth_speed(self, value: np.float32) -> None:
+    def smooth_speed(self, value: primitives.Float) -> None:
         """Set the SmoothSpeed field value."""
         member = self.get_member("SmoothSpeed")
         if member is not None:

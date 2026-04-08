@@ -20,14 +20,12 @@ from .random_rgb_a_color import RandomRGBA_Color
 from .random_rgb_a_colorx import RandomRGBA_ColorX
 from .random_rgb_color import RandomRGB_Color
 from .random_rgb_colorx import RandomRGB_ColorX
-from .random_rgba_color import RandomRGBA_Color
 from .random_rotation import RandomRotation
 from .random_slerp_float_q import RandomSlerpFloatQ
 from .random_string import RandomString
 from .simplex_noise_1_d import SimplexNoise_1D
 from .simplex_noise_2d import SimplexNoise_2D
 from .simplex_noise_3d import SimplexNoise_3D
-from .simplex_noise_4_d import SimplexNoise_4D
 from .simplex_noise_4d import SimplexNoise_4D
 from .point.random_point_in_circle import RandomPointInCircle
 from .point.random_point_in_cone import RandomPointInCone

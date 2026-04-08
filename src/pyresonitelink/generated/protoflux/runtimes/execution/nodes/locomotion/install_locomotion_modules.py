@@ -1,6 +1,7 @@
 """Generated component: InstallLocomotionModules."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -24,7 +25,7 @@ class InstallLocomotionModules(GeneratedComponent, ISyncNodeOperation, IExecutio
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion.InstallLocomotionModules"
 
-    def __init__(self, next: str | INodeOperation | None = None, modules_root: str | INodeObjectOutput[Slot] | None = None, target_user: str | INodeObjectOutput[User] | None = None, clear_existing: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, modules_root: str | INodeObjectOutput[Slot] | None = None, target_user: str | INodeObjectOutput[User] | None = None, clear_existing: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -109,15 +110,15 @@ class InstallLocomotionModules(GeneratedComponent, ISyncNodeOperation, IExecutio
 
     @property
     def clear_existing(self) -> str | None:
-        """Target ID of the ClearExisting reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ClearExisting reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ClearExisting")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @clear_existing.setter
-    def clear_existing(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ClearExisting reference by target ID or INodeValueOutput[bool] instance."""
+    def clear_existing(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ClearExisting reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ClearExisting")
         if isinstance(member, members.Reference):

@@ -1,7 +1,5 @@
 """Generated component: PBS_VoronoiCrystal."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_VoronoiCrystal"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, noise_scale: primitives.Float2 | None = None, noise_animation_offset: np.float32 | None = None, cell_color_tint: primitives.ColorX | None = None, color_gradient: str | IAssetProvider[ITexture2D] | None = None, emission_color: primitives.ColorX | None = None, emission_gradient: str | IAssetProvider[ITexture2D] | None = None, smoothness_gradient: str | IAssetProvider[ITexture2D] | None = None, cell_smoothness: np.float32 | None = None, cell_metallic: np.float32 | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_strength: np.float32 | None = None, normal_texture_scale: primitives.Float2 | None = None, normal_texture_offset: primitives.Float2 | None = None, edge_thickness: np.float32 | None = None, edge_color: primitives.ColorX | None = None, edge_emission: primitives.ColorX | None = None, edge_smoothness: np.float32 | None = None, edge_metallic: np.float32 | None = None, edge_normal_strength: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, noise_scale: primitives.Float2 | None = None, noise_animation_offset: primitives.Float | None = None, cell_color_tint: primitives.ColorX | None = None, color_gradient: str | IAssetProvider[ITexture2D] | None = None, emission_color: primitives.ColorX | None = None, emission_gradient: str | IAssetProvider[ITexture2D] | None = None, smoothness_gradient: str | IAssetProvider[ITexture2D] | None = None, cell_smoothness: primitives.Float | None = None, cell_metallic: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_strength: primitives.Float | None = None, normal_texture_scale: primitives.Float2 | None = None, normal_texture_offset: primitives.Float2 | None = None, edge_thickness: primitives.Float | None = None, edge_color: primitives.ColorX | None = None, edge_emission: primitives.ColorX | None = None, edge_smoothness: primitives.Float | None = None, edge_metallic: primitives.Float | None = None, edge_normal_strength: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -94,7 +92,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
             self.edge_normal_strength = edge_normal_strength
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -102,7 +100,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -153,7 +151,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
             )
 
     @property
-    def noise_animation_offset(self) -> np.float32 | None:
+    def noise_animation_offset(self) -> primitives.Float | None:
         """The NoiseAnimationOffset field value."""
         member = self.get_member("NoiseAnimationOffset")
         if member is None:
@@ -161,7 +159,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @noise_animation_offset.setter
-    def noise_animation_offset(self, value: np.float32) -> None:
+    def noise_animation_offset(self, value: primitives.Float) -> None:
         """Set the NoiseAnimationOffset field value."""
         member = self.get_member("NoiseAnimationOffset")
         if member is not None:
@@ -273,7 +271,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
             )
 
     @property
-    def cell_smoothness(self) -> np.float32 | None:
+    def cell_smoothness(self) -> primitives.Float | None:
         """The CellSmoothness field value."""
         member = self.get_member("CellSmoothness")
         if member is None:
@@ -281,7 +279,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @cell_smoothness.setter
-    def cell_smoothness(self, value: np.float32) -> None:
+    def cell_smoothness(self, value: primitives.Float) -> None:
         """Set the CellSmoothness field value."""
         member = self.get_member("CellSmoothness")
         if member is not None:
@@ -292,7 +290,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
             )
 
     @property
-    def cell_metallic(self) -> np.float32 | None:
+    def cell_metallic(self) -> primitives.Float | None:
         """The CellMetallic field value."""
         member = self.get_member("CellMetallic")
         if member is None:
@@ -300,7 +298,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @cell_metallic.setter
-    def cell_metallic(self, value: np.float32) -> None:
+    def cell_metallic(self, value: primitives.Float) -> None:
         """Set the CellMetallic field value."""
         member = self.get_member("CellMetallic")
         if member is not None:
@@ -332,7 +330,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
             )
 
     @property
-    def normal_strength(self) -> np.float32 | None:
+    def normal_strength(self) -> primitives.Float | None:
         """The NormalStrength field value."""
         member = self.get_member("NormalStrength")
         if member is None:
@@ -340,7 +338,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @normal_strength.setter
-    def normal_strength(self, value: np.float32) -> None:
+    def normal_strength(self, value: primitives.Float) -> None:
         """Set the NormalStrength field value."""
         member = self.get_member("NormalStrength")
         if member is not None:
@@ -389,7 +387,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
             )
 
     @property
-    def edge_thickness(self) -> np.float32 | None:
+    def edge_thickness(self) -> primitives.Float | None:
         """The EdgeThickness field value."""
         member = self.get_member("EdgeThickness")
         if member is None:
@@ -397,7 +395,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @edge_thickness.setter
-    def edge_thickness(self, value: np.float32) -> None:
+    def edge_thickness(self, value: primitives.Float) -> None:
         """Set the EdgeThickness field value."""
         member = self.get_member("EdgeThickness")
         if member is not None:
@@ -446,7 +444,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
             )
 
     @property
-    def edge_smoothness(self) -> np.float32 | None:
+    def edge_smoothness(self) -> primitives.Float | None:
         """The EdgeSmoothness field value."""
         member = self.get_member("EdgeSmoothness")
         if member is None:
@@ -454,7 +452,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @edge_smoothness.setter
-    def edge_smoothness(self, value: np.float32) -> None:
+    def edge_smoothness(self, value: primitives.Float) -> None:
         """Set the EdgeSmoothness field value."""
         member = self.get_member("EdgeSmoothness")
         if member is not None:
@@ -465,7 +463,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
             )
 
     @property
-    def edge_metallic(self) -> np.float32 | None:
+    def edge_metallic(self) -> primitives.Float | None:
         """The EdgeMetallic field value."""
         member = self.get_member("EdgeMetallic")
         if member is None:
@@ -473,7 +471,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @edge_metallic.setter
-    def edge_metallic(self, value: np.float32) -> None:
+    def edge_metallic(self, value: primitives.Float) -> None:
         """Set the EdgeMetallic field value."""
         member = self.get_member("EdgeMetallic")
         if member is not None:
@@ -484,7 +482,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
             )
 
     @property
-    def edge_normal_strength(self) -> np.float32 | None:
+    def edge_normal_strength(self) -> primitives.Float | None:
         """The EdgeNormalStrength field value."""
         member = self.get_member("EdgeNormalStrength")
         if member is None:
@@ -492,7 +490,7 @@ class PBS_VoronoiCrystal(GeneratedComponent, IAssetProvider, ICustomInspector, I
         return getattr(member, 'value', None)
 
     @edge_normal_strength.setter
-    def edge_normal_strength(self, value: np.float32) -> None:
+    def edge_normal_strength(self, value: primitives.Float) -> None:
         """Set the EdgeNormalStrength field value."""
         member = self.get_member("EdgeNormalStrength")
         if member is not None:

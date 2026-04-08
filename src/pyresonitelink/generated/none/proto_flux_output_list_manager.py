@@ -1,9 +1,8 @@
 """Generated component: ProtoFluxOutputListManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -20,7 +19,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.Visuals.ProtoFluxOutputListManager"
 
-    def __init__(self, visual: str | ProtoFluxNodeVisual | None = None, list_: str | ISyncList | None = None, min_elements: np.int32 | None = None, add_button_enabled: str | IField[bool] | None = None, remove_button_enabled: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, visual: str | ProtoFluxNodeVisual | None = None, list_: str | ISyncList | None = None, min_elements: primitives.Int | None = None, add_button_enabled: str | IField[primitives.Bool] | None = None, remove_button_enabled: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -86,7 +85,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
             )
 
     @property
-    def min_elements(self) -> np.int32 | None:
+    def min_elements(self) -> primitives.Int | None:
         """The MinElements field value."""
         member = self.get_member("MinElements")
         if member is None:
@@ -94,7 +93,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @min_elements.setter
-    def min_elements(self, value: np.int32) -> None:
+    def min_elements(self, value: primitives.Int) -> None:
         """Set the MinElements field value."""
         member = self.get_member("MinElements")
         if member is not None:
@@ -106,15 +105,15 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def add_button_enabled(self) -> str | None:
-        """Target ID of the AddButtonEnabled reference (targets IField[bool])."""
+        """Target ID of the AddButtonEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("AddButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @add_button_enabled.setter
-    def add_button_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the AddButtonEnabled reference by target ID or IField[bool] instance."""
+    def add_button_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the AddButtonEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("AddButtonEnabled")
         if isinstance(member, members.Reference):
@@ -127,15 +126,15 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def remove_button_enabled(self) -> str | None:
-        """Target ID of the RemoveButtonEnabled reference (targets IField[bool])."""
+        """Target ID of the RemoveButtonEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("RemoveButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @remove_button_enabled.setter
-    def remove_button_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the RemoveButtonEnabled reference by target ID or IField[bool] instance."""
+    def remove_button_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the RemoveButtonEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("RemoveButtonEnabled")
         if isinstance(member, members.Reference):

@@ -1,9 +1,8 @@
 """Generated component: HapticPointSampler."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.overlay_fresnel_material import OverlayFresnelMaterial
@@ -19,7 +18,7 @@ class HapticPointSampler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HapticPointSampler"
 
-    def __init__(self, radius: np.float32 | None = None, show_debug_visual: bool | None = None, debug_visual: str | OverlayFresnelMaterial | None = None, haptic_point_index: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, radius: primitives.Float | None = None, show_debug_visual: primitives.Bool | None = None, debug_visual: str | OverlayFresnelMaterial | None = None, haptic_point_index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +39,7 @@ class HapticPointSampler(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.haptic_point_index = haptic_point_index
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -48,7 +47,7 @@ class HapticPointSampler(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -59,7 +58,7 @@ class HapticPointSampler(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def show_debug_visual(self) -> bool | None:
+    def show_debug_visual(self) -> primitives.Bool | None:
         """The ShowDebugVisual field value."""
         member = self.get_member("ShowDebugVisual")
         if member is None:
@@ -67,7 +66,7 @@ class HapticPointSampler(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_debug_visual.setter
-    def show_debug_visual(self, value: bool) -> None:
+    def show_debug_visual(self, value: primitives.Bool) -> None:
         """Set the ShowDebugVisual field value."""
         member = self.get_member("ShowDebugVisual")
         if member is not None:
@@ -112,7 +111,7 @@ class HapticPointSampler(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("SamplingUser", value)
 
     @property
-    def haptic_point_index(self) -> np.int32 | None:
+    def haptic_point_index(self) -> primitives.Int | None:
         """The HapticPointIndex field value."""
         member = self.get_member("HapticPointIndex")
         if member is None:
@@ -120,7 +119,7 @@ class HapticPointSampler(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @haptic_point_index.setter
-    def haptic_point_index(self, value: np.int32) -> None:
+    def haptic_point_index(self, value: primitives.Int) -> None:
         """Set the HapticPointIndex field value."""
         member = self.get_member("HapticPointIndex")
         if member is not None:

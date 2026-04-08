@@ -1,8 +1,7 @@
 """Generated component: SpeedRangeInitializer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -17,7 +16,7 @@ class SpeedRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SpeedRangeInitializer"
 
-    def __init__(self, min_value: np.float32 | None = None, max_value: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_value: primitives.Float | None = None, max_value: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +31,7 @@ class SpeedRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEve
             self.max_value = max_value
 
     @property
-    def min_value(self) -> np.float32 | None:
+    def min_value(self) -> primitives.Float | None:
         """The MinValue field value."""
         member = self.get_member("MinValue")
         if member is None:
@@ -40,7 +39,7 @@ class SpeedRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @min_value.setter
-    def min_value(self, value: np.float32) -> None:
+    def min_value(self, value: primitives.Float) -> None:
         """Set the MinValue field value."""
         member = self.get_member("MinValue")
         if member is not None:
@@ -51,7 +50,7 @@ class SpeedRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def max_value(self) -> np.float32 | None:
+    def max_value(self) -> primitives.Float | None:
         """The MaxValue field value."""
         member = self.get_member("MaxValue")
         if member is None:
@@ -59,7 +58,7 @@ class SpeedRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @max_value.setter
-    def max_value(self, value: np.float32) -> None:
+    def max_value(self, value: primitives.Float) -> None:
         """Set the MaxValue field value."""
         member = self.get_member("MaxValue")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: DepthProjectionMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DepthProjectionMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, color: str | IAssetProvider[ITexture2D] | None = None, depth: str | IAssetProvider[ITexture2D] | None = None, color_texture_offset: primitives.Float2 | None = None, color_texture_scale: primitives.Float2 | None = None, depth_texture_offset: primitives.Float2 | None = None, depth_texture_scale: primitives.Float2 | None = None, depth_from: np.float32 | None = None, depth_to: np.float32 | None = None, field_of_view: primitives.Float2 | None = None, near_clip: np.float32 | None = None, far_clip: np.float32 | None = None, discard_threshold: np.float32 | None = None, discard_offset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, color: str | IAssetProvider[ITexture2D] | None = None, depth: str | IAssetProvider[ITexture2D] | None = None, color_texture_offset: primitives.Float2 | None = None, color_texture_scale: primitives.Float2 | None = None, depth_texture_offset: primitives.Float2 | None = None, depth_texture_scale: primitives.Float2 | None = None, depth_from: primitives.Float | None = None, depth_to: primitives.Float | None = None, field_of_view: primitives.Float2 | None = None, near_clip: primitives.Float | None = None, far_clip: primitives.Float | None = None, discard_threshold: primitives.Float | None = None, discard_offset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -76,7 +74,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             self.discard_offset = discard_offset
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -84,7 +82,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -247,7 +245,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def depth_from(self) -> np.float32 | None:
+    def depth_from(self) -> primitives.Float | None:
         """The DepthFrom field value."""
         member = self.get_member("DepthFrom")
         if member is None:
@@ -255,7 +253,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @depth_from.setter
-    def depth_from(self, value: np.float32) -> None:
+    def depth_from(self, value: primitives.Float) -> None:
         """Set the DepthFrom field value."""
         member = self.get_member("DepthFrom")
         if member is not None:
@@ -266,7 +264,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def depth_to(self) -> np.float32 | None:
+    def depth_to(self) -> primitives.Float | None:
         """The DepthTo field value."""
         member = self.get_member("DepthTo")
         if member is None:
@@ -274,7 +272,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @depth_to.setter
-    def depth_to(self, value: np.float32) -> None:
+    def depth_to(self, value: primitives.Float) -> None:
         """Set the DepthTo field value."""
         member = self.get_member("DepthTo")
         if member is not None:
@@ -304,7 +302,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def near_clip(self) -> np.float32 | None:
+    def near_clip(self) -> primitives.Float | None:
         """The NearClip field value."""
         member = self.get_member("NearClip")
         if member is None:
@@ -312,7 +310,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @near_clip.setter
-    def near_clip(self, value: np.float32) -> None:
+    def near_clip(self, value: primitives.Float) -> None:
         """Set the NearClip field value."""
         member = self.get_member("NearClip")
         if member is not None:
@@ -323,7 +321,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def far_clip(self) -> np.float32 | None:
+    def far_clip(self) -> primitives.Float | None:
         """The FarClip field value."""
         member = self.get_member("FarClip")
         if member is None:
@@ -331,7 +329,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @far_clip.setter
-    def far_clip(self, value: np.float32) -> None:
+    def far_clip(self, value: primitives.Float) -> None:
         """Set the FarClip field value."""
         member = self.get_member("FarClip")
         if member is not None:
@@ -342,7 +340,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def discard_threshold(self) -> np.float32 | None:
+    def discard_threshold(self) -> primitives.Float | None:
         """The DiscardThreshold field value."""
         member = self.get_member("DiscardThreshold")
         if member is None:
@@ -350,7 +348,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @discard_threshold.setter
-    def discard_threshold(self, value: np.float32) -> None:
+    def discard_threshold(self, value: primitives.Float) -> None:
         """Set the DiscardThreshold field value."""
         member = self.get_member("DiscardThreshold")
         if member is not None:
@@ -361,7 +359,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def discard_offset(self) -> np.float32 | None:
+    def discard_offset(self) -> primitives.Float | None:
         """The DiscardOffset field value."""
         member = self.get_member("DiscardOffset")
         if member is None:
@@ -369,7 +367,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @discard_offset.setter
-    def discard_offset(self, value: np.float32) -> None:
+    def discard_offset(self, value: primitives.Float) -> None:
         """Set the DiscardOffset field value."""
         member = self.get_member("DiscardOffset")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: FogBoxVolumeMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FogBoxVolumeMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, base_color: primitives.ColorX | None = None, accumulation_color: primitives.ColorX | None = None, accumulation_color_bottom: primitives.ColorX | None = None, accumulation_color_top: primitives.ColorX | None = None, fog_start: np.float32 | None = None, fog_end: np.float32 | None = None, fog_density: np.float32 | None = None, gamma_curve: np.float32 | None = None, world_space: bool | None = None, accumulation_rate: np.float32 | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, base_color: primitives.ColorX | None = None, accumulation_color: primitives.ColorX | None = None, accumulation_color_bottom: primitives.ColorX | None = None, accumulation_color_top: primitives.ColorX | None = None, fog_start: primitives.Float | None = None, fog_end: primitives.Float | None = None, fog_density: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, world_space: primitives.Bool | None = None, accumulation_rate: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,7 +67,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             self.render_queue = render_queue
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -77,7 +75,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -185,7 +183,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def fog_start(self) -> np.float32 | None:
+    def fog_start(self) -> primitives.Float | None:
         """The FogStart field value."""
         member = self.get_member("FogStart")
         if member is None:
@@ -193,7 +191,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @fog_start.setter
-    def fog_start(self, value: np.float32) -> None:
+    def fog_start(self, value: primitives.Float) -> None:
         """Set the FogStart field value."""
         member = self.get_member("FogStart")
         if member is not None:
@@ -204,7 +202,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def fog_end(self) -> np.float32 | None:
+    def fog_end(self) -> primitives.Float | None:
         """The FogEnd field value."""
         member = self.get_member("FogEnd")
         if member is None:
@@ -212,7 +210,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @fog_end.setter
-    def fog_end(self, value: np.float32) -> None:
+    def fog_end(self, value: primitives.Float) -> None:
         """Set the FogEnd field value."""
         member = self.get_member("FogEnd")
         if member is not None:
@@ -223,7 +221,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def fog_density(self) -> np.float32 | None:
+    def fog_density(self) -> primitives.Float | None:
         """The FogDensity field value."""
         member = self.get_member("FogDensity")
         if member is None:
@@ -231,7 +229,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @fog_density.setter
-    def fog_density(self, value: np.float32) -> None:
+    def fog_density(self, value: primitives.Float) -> None:
         """Set the FogDensity field value."""
         member = self.get_member("FogDensity")
         if member is not None:
@@ -242,7 +240,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def gamma_curve(self) -> np.float32 | None:
+    def gamma_curve(self) -> primitives.Float | None:
         """The GammaCurve field value."""
         member = self.get_member("GammaCurve")
         if member is None:
@@ -250,7 +248,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @gamma_curve.setter
-    def gamma_curve(self, value: np.float32) -> None:
+    def gamma_curve(self, value: primitives.Float) -> None:
         """Set the GammaCurve field value."""
         member = self.get_member("GammaCurve")
         if member is not None:
@@ -261,7 +259,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def world_space(self) -> bool | None:
+    def world_space(self) -> primitives.Bool | None:
         """The WorldSpace field value."""
         member = self.get_member("WorldSpace")
         if member is None:
@@ -269,7 +267,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @world_space.setter
-    def world_space(self, value: bool) -> None:
+    def world_space(self, value: primitives.Bool) -> None:
         """Set the WorldSpace field value."""
         member = self.get_member("WorldSpace")
         if member is not None:
@@ -319,7 +317,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         self.set_member("AccumulationMode", value)
 
     @property
-    def accumulation_rate(self) -> np.float32 | None:
+    def accumulation_rate(self) -> primitives.Float | None:
         """The AccumulationRate field value."""
         member = self.get_member("AccumulationRate")
         if member is None:
@@ -327,7 +325,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @accumulation_rate.setter
-    def accumulation_rate(self, value: np.float32) -> None:
+    def accumulation_rate(self, value: primitives.Float) -> None:
         """Set the AccumulationRate field value."""
         member = self.get_member("AccumulationRate")
         if member is not None:
@@ -351,7 +349,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         self.set_member("BlendMode", value)
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -359,7 +357,7 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

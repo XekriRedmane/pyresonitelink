@@ -1,9 +1,8 @@
 """Generated component: BreadcrumbInterface."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -19,7 +18,7 @@ class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BreadcrumbInterface"
 
-    def __init__(self, item_name: str | IField[str] | None = None, path_segment: str | None = None, item_depth: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, item_name: str | IField[primitives.String] | None = None, path_segment: primitives.String | None = None, item_depth: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,15 +37,15 @@ class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[str])."""
+        """Target ID of the ItemName reference (targets IField[primitives.String])."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_name.setter
-    def item_name(self, target: str | IField[str] | None) -> None:
-        """Set the ItemName reference by target ID or IField[str] instance."""
+    def item_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
@@ -58,7 +57,7 @@ class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def path_segment(self) -> str | None:
+    def path_segment(self) -> primitives.String | None:
         """The PathSegment field value."""
         member = self.get_member("PathSegment")
         if member is None:
@@ -66,7 +65,7 @@ class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @path_segment.setter
-    def path_segment(self, value: str) -> None:
+    def path_segment(self, value: primitives.String) -> None:
         """Set the PathSegment field value."""
         member = self.get_member("PathSegment")
         if member is not None:
@@ -77,7 +76,7 @@ class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def item_depth(self) -> np.int32 | None:
+    def item_depth(self) -> primitives.Int | None:
         """The ItemDepth field value."""
         member = self.get_member("ItemDepth")
         if member is None:
@@ -85,7 +84,7 @@ class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @item_depth.setter
-    def item_depth(self, value: np.int32) -> None:
+    def item_depth(self, value: primitives.Int) -> None:
         """Set the ItemDepth field value."""
         member = self.get_member("ItemDepth")
         if member is not None:

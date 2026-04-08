@@ -18,7 +18,7 @@ class ValueMinMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     Parameterize with a value type::
 
-        ValueMinMulti[np.float32]
+        ValueMinMulti[primitives.Float]
         ValueMinMulti[primitives.Float3]
     """
 

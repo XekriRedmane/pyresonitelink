@@ -13,7 +13,7 @@ class ReferenceDriveReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventRe
 
     Parameterize with a value type::
 
-        ReferenceDriveReceiver[np.float32]
+        ReferenceDriveReceiver[primitives.Float]
         ReferenceDriveReceiver[primitives.Float3]
     """
 

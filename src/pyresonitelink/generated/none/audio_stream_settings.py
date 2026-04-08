@@ -1,8 +1,7 @@
 """Generated component: AudioStreamSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class AudioStreamSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioStreamSettings"
 
-    def __init__(self, default_bitrate: np.float32 | None = None, default_device_id: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, default_bitrate: primitives.Float | None = None, default_device_id: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +29,7 @@ class AudioStreamSettings(GeneratedComponent, ICustomInspector):
             self.default_device_id = default_device_id
 
     @property
-    def default_bitrate(self) -> np.float32 | None:
+    def default_bitrate(self) -> primitives.Float | None:
         """The DefaultBitrate field value."""
         member = self.get_member("DefaultBitrate")
         if member is None:
@@ -38,7 +37,7 @@ class AudioStreamSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @default_bitrate.setter
-    def default_bitrate(self, value: np.float32) -> None:
+    def default_bitrate(self, value: primitives.Float) -> None:
         """Set the DefaultBitrate field value."""
         member = self.get_member("DefaultBitrate")
         if member is not None:
@@ -49,7 +48,7 @@ class AudioStreamSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def default_device_id(self) -> str | None:
+    def default_device_id(self) -> primitives.String | None:
         """The DefaultDeviceID field value."""
         member = self.get_member("DefaultDeviceID")
         if member is None:
@@ -57,7 +56,7 @@ class AudioStreamSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @default_device_id.setter
-    def default_device_id(self, value: str) -> None:
+    def default_device_id(self, value: primitives.String) -> None:
         """Set the DefaultDeviceID field value."""
         member = self.get_member("DefaultDeviceID")
         if member is not None:

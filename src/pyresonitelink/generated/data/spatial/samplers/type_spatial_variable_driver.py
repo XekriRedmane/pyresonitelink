@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_type import SyncType
@@ -17,7 +18,7 @@ class TypeSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TypeSpatialVariableDriver"
 
-    def __init__(self, drive: str | SyncType | None = None, variable_name: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, drive: str | SyncType | None = None, variable_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -53,7 +54,7 @@ class TypeSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -61,7 +62,7 @@ class TypeSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:

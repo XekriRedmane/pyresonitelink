@@ -1,8 +1,7 @@
 """Generated component: DashSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DashSettings"
 
-    def __init__(self, dash_curvature: np.float32 | None = None, open_close_speed: np.float32 | None = None, allow_replacing_settings: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, dash_curvature: primitives.Float | None = None, open_close_speed: primitives.Float | None = None, allow_replacing_settings: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
             self.allow_replacing_settings = allow_replacing_settings
 
     @property
-    def dash_curvature(self) -> np.float32 | None:
+    def dash_curvature(self) -> primitives.Float | None:
         """The DashCurvature field value."""
         member = self.get_member("DashCurvature")
         if member is None:
@@ -41,7 +40,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @dash_curvature.setter
-    def dash_curvature(self, value: np.float32) -> None:
+    def dash_curvature(self, value: primitives.Float) -> None:
         """Set the DashCurvature field value."""
         member = self.get_member("DashCurvature")
         if member is not None:
@@ -52,7 +51,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def open_close_speed(self) -> np.float32 | None:
+    def open_close_speed(self) -> primitives.Float | None:
         """The OpenCloseSpeed field value."""
         member = self.get_member("OpenCloseSpeed")
         if member is None:
@@ -60,7 +59,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @open_close_speed.setter
-    def open_close_speed(self, value: np.float32) -> None:
+    def open_close_speed(self, value: primitives.Float) -> None:
         """Set the OpenCloseSpeed field value."""
         member = self.get_member("OpenCloseSpeed")
         if member is not None:
@@ -71,7 +70,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def allow_replacing_settings(self) -> bool | None:
+    def allow_replacing_settings(self) -> primitives.Bool | None:
         """The AllowReplacingSettings field value."""
         member = self.get_member("AllowReplacingSettings")
         if member is None:
@@ -79,7 +78,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @allow_replacing_settings.setter
-    def allow_replacing_settings(self, value: bool) -> None:
+    def allow_replacing_settings(self, value: primitives.Bool) -> None:
         """Set the AllowReplacingSettings field value."""
         member = self.get_member("AllowReplacingSettings")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: FacetAnchorsSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FacetAnchorsSettings"
 
-    def __init__(self, use_facet_anchors: bool | None = None, animation_speed: np.float32 | None = None, show_container_background: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_facet_anchors: primitives.Bool | None = None, animation_speed: primitives.Float | None = None, show_container_background: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,7 +33,7 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
             self.show_container_background = show_container_background
 
     @property
-    def use_facet_anchors(self) -> bool | None:
+    def use_facet_anchors(self) -> primitives.Bool | None:
         """The UseFacetAnchors field value."""
         member = self.get_member("UseFacetAnchors")
         if member is None:
@@ -42,7 +41,7 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_facet_anchors.setter
-    def use_facet_anchors(self, value: bool) -> None:
+    def use_facet_anchors(self, value: primitives.Bool) -> None:
         """Set the UseFacetAnchors field value."""
         member = self.get_member("UseFacetAnchors")
         if member is not None:
@@ -66,7 +65,7 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
         self.set_member("FacetAnchorToggle", value)
 
     @property
-    def animation_speed(self) -> np.float32 | None:
+    def animation_speed(self) -> primitives.Float | None:
         """The AnimationSpeed field value."""
         member = self.get_member("AnimationSpeed")
         if member is None:
@@ -74,7 +73,7 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @animation_speed.setter
-    def animation_speed(self, value: np.float32) -> None:
+    def animation_speed(self, value: primitives.Float) -> None:
         """Set the AnimationSpeed field value."""
         member = self.get_member("AnimationSpeed")
         if member is not None:
@@ -85,7 +84,7 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def show_container_background(self) -> bool | None:
+    def show_container_background(self) -> primitives.Bool | None:
         """The ShowContainerBackground field value."""
         member = self.get_member("ShowContainerBackground")
         if member is None:
@@ -93,7 +92,7 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @show_container_background.setter
-    def show_container_background(self, value: bool) -> None:
+    def show_container_background(self, value: primitives.Bool) -> None:
         """Set the ShowContainerBackground field value."""
         member = self.get_member("ShowContainerBackground")
         if member is not None:

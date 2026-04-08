@@ -1,8 +1,7 @@
 """Generated component: ButtonDelegateRelay."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
@@ -16,14 +15,14 @@ class ButtonDelegateRelay(GenericComponent[T], IButtonPressReceiver, IWorldEvent
 
     Parameterize with a value type::
 
-        ButtonDelegateRelay[np.float32]
+        ButtonDelegateRelay[primitives.Float]
         ButtonDelegateRelay[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ButtonDelegateRelay<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.UIX.ButtonDelegateRelay<>"
 
-    def __init__(self, double_press_delay: np.float32 | None = None, release_press_interval: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, double_press_delay: primitives.Float | None = None, release_press_interval: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,7 +37,7 @@ class ButtonDelegateRelay(GenericComponent[T], IButtonPressReceiver, IWorldEvent
             self.release_press_interval = release_press_interval
 
     @property
-    def double_press_delay(self) -> np.float32 | None:
+    def double_press_delay(self) -> primitives.Float | None:
         """The DoublePressDelay field value."""
         member = self.get_member("DoublePressDelay")
         if member is None:
@@ -46,7 +45,7 @@ class ButtonDelegateRelay(GenericComponent[T], IButtonPressReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @double_press_delay.setter
-    def double_press_delay(self, value: np.float32) -> None:
+    def double_press_delay(self, value: primitives.Float) -> None:
         """Set the DoublePressDelay field value."""
         member = self.get_member("DoublePressDelay")
         if member is not None:
@@ -57,7 +56,7 @@ class ButtonDelegateRelay(GenericComponent[T], IButtonPressReceiver, IWorldEvent
             )
 
     @property
-    def release_press_interval(self) -> np.float32 | None:
+    def release_press_interval(self) -> primitives.Float | None:
         """The ReleasePressInterval field value."""
         member = self.get_member("ReleasePressInterval")
         if member is None:
@@ -65,7 +64,7 @@ class ButtonDelegateRelay(GenericComponent[T], IButtonPressReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @release_press_interval.setter
-    def release_press_interval(self, value: np.float32) -> None:
+    def release_press_interval(self, value: primitives.Float) -> None:
         """Set the ReleasePressInterval field value."""
         member = self.get_member("ReleasePressInterval")
         if member is not None:

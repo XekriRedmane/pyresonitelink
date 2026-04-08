@@ -1,7 +1,5 @@
 """Generated component: ArrowMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ArrowMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, vector: primitives.Float3 | None = None, sides: np.int32 | None = None, body_radius: np.float32 | None = None, head_radius: np.float32 | None = None, head_length: np.float32 | None = None, minimal_body_length: np.float32 | None = None, sphere_on_zero: bool | None = None, body_uv_scale: primitives.Float2 | None = None, body_uv_offset: primitives.Float2 | None = None, head_uv_scale: primitives.Float2 | None = None, head_uv_offset: primitives.Float2 | None = None, base_color: primitives.ColorX | None = None, top_color: primitives.ColorX | None = None, head_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, vector: primitives.Float3 | None = None, sides: primitives.Int | None = None, body_radius: primitives.Float | None = None, head_radius: primitives.Float | None = None, head_length: primitives.Float | None = None, minimal_body_length: primitives.Float | None = None, sphere_on_zero: primitives.Bool | None = None, body_uv_scale: primitives.Float2 | None = None, body_uv_offset: primitives.Float2 | None = None, head_uv_scale: primitives.Float2 | None = None, head_uv_offset: primitives.Float2 | None = None, base_color: primitives.ColorX | None = None, top_color: primitives.ColorX | None = None, head_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -81,7 +79,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             self.head_color = head_color
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -89,7 +87,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -100,7 +98,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -108,7 +106,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -170,7 +168,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def sides(self) -> np.int32 | None:
+    def sides(self) -> primitives.Int | None:
         """The Sides field value."""
         member = self.get_member("Sides")
         if member is None:
@@ -178,7 +176,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @sides.setter
-    def sides(self, value: np.int32) -> None:
+    def sides(self, value: primitives.Int) -> None:
         """Set the Sides field value."""
         member = self.get_member("Sides")
         if member is not None:
@@ -189,7 +187,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def body_radius(self) -> np.float32 | None:
+    def body_radius(self) -> primitives.Float | None:
         """The BodyRadius field value."""
         member = self.get_member("BodyRadius")
         if member is None:
@@ -197,7 +195,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @body_radius.setter
-    def body_radius(self, value: np.float32) -> None:
+    def body_radius(self, value: primitives.Float) -> None:
         """Set the BodyRadius field value."""
         member = self.get_member("BodyRadius")
         if member is not None:
@@ -208,7 +206,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def head_radius(self) -> np.float32 | None:
+    def head_radius(self) -> primitives.Float | None:
         """The HeadRadius field value."""
         member = self.get_member("HeadRadius")
         if member is None:
@@ -216,7 +214,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @head_radius.setter
-    def head_radius(self, value: np.float32) -> None:
+    def head_radius(self, value: primitives.Float) -> None:
         """Set the HeadRadius field value."""
         member = self.get_member("HeadRadius")
         if member is not None:
@@ -227,7 +225,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def head_length(self) -> np.float32 | None:
+    def head_length(self) -> primitives.Float | None:
         """The HeadLength field value."""
         member = self.get_member("HeadLength")
         if member is None:
@@ -235,7 +233,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @head_length.setter
-    def head_length(self, value: np.float32) -> None:
+    def head_length(self, value: primitives.Float) -> None:
         """Set the HeadLength field value."""
         member = self.get_member("HeadLength")
         if member is not None:
@@ -246,7 +244,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def minimal_body_length(self) -> np.float32 | None:
+    def minimal_body_length(self) -> primitives.Float | None:
         """The MinimalBodyLength field value."""
         member = self.get_member("MinimalBodyLength")
         if member is None:
@@ -254,7 +252,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @minimal_body_length.setter
-    def minimal_body_length(self, value: np.float32) -> None:
+    def minimal_body_length(self, value: primitives.Float) -> None:
         """Set the MinimalBodyLength field value."""
         member = self.get_member("MinimalBodyLength")
         if member is not None:
@@ -265,7 +263,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def sphere_on_zero(self) -> bool | None:
+    def sphere_on_zero(self) -> primitives.Bool | None:
         """The SphereOnZero field value."""
         member = self.get_member("SphereOnZero")
         if member is None:
@@ -273,7 +271,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
         return getattr(member, 'value', None)
 
     @sphere_on_zero.setter
-    def sphere_on_zero(self, value: bool) -> None:
+    def sphere_on_zero(self, value: primitives.Bool) -> None:
         """Set the SphereOnZero field value."""
         member = self.get_member("SphereOnZero")
         if member is not None:

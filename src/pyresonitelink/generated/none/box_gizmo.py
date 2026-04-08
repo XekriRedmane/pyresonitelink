@@ -20,7 +20,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxGizmo"
 
-    def __init__(self, target_slot: str | Slot | None = None, box_size: str | IField[primitives.Float3] | None = None, box_center: str | IField[primitives.Float3] | None = None, lock_offset: bool | None = None, material: str | OverlayFresnelMaterial | None = None, handle_sphere: str | IcoSphereMesh | None = None, visual_root: str | Slot | None = None, visual_position: str | IField[primitives.Float3] | None = None, visual_rotation: str | IField[primitives.FloatQ] | None = None, visual_scale: str | IField[primitives.Float3] | None = None, tube_box: str | TubeBoxMesh | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, box_size: str | IField[primitives.Float3] | None = None, box_center: str | IField[primitives.Float3] | None = None, lock_offset: primitives.Bool | None = None, material: str | OverlayFresnelMaterial | None = None, handle_sphere: str | IcoSphereMesh | None = None, visual_root: str | Slot | None = None, visual_position: str | IField[primitives.Float3] | None = None, visual_rotation: str | IField[primitives.FloatQ] | None = None, visual_scale: str | IField[primitives.Float3] | None = None, tube_box: str | TubeBoxMesh | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -151,7 +151,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
             )
 
     @property
-    def lock_offset(self) -> bool | None:
+    def lock_offset(self) -> primitives.Bool | None:
         """The LockOffset field value."""
         member = self.get_member("LockOffset")
         if member is None:
@@ -159,7 +159,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @lock_offset.setter
-    def lock_offset(self, value: bool) -> None:
+    def lock_offset(self, value: primitives.Bool) -> None:
         """Set the LockOffset field value."""
         member = self.get_member("LockOffset")
         if member is not None:

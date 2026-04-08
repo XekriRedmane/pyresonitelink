@@ -1,6 +1,7 @@
 """Generated component: InteractiveCameraPostProcessingSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class InteractiveCameraPostProcessingSettings(GeneratedComponent, ICustomInspect
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraPostProcessingSettings"
 
-    def __init__(self, motion_blur: bool | None = None, screen_space_reflections: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, motion_blur: primitives.Bool | None = None, screen_space_reflections: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,7 +29,7 @@ class InteractiveCameraPostProcessingSettings(GeneratedComponent, ICustomInspect
             self.screen_space_reflections = screen_space_reflections
 
     @property
-    def motion_blur(self) -> bool | None:
+    def motion_blur(self) -> primitives.Bool | None:
         """The MotionBlur field value."""
         member = self.get_member("MotionBlur")
         if member is None:
@@ -36,7 +37,7 @@ class InteractiveCameraPostProcessingSettings(GeneratedComponent, ICustomInspect
         return getattr(member, 'value', None)
 
     @motion_blur.setter
-    def motion_blur(self, value: bool) -> None:
+    def motion_blur(self, value: primitives.Bool) -> None:
         """Set the MotionBlur field value."""
         member = self.get_member("MotionBlur")
         if member is not None:
@@ -47,7 +48,7 @@ class InteractiveCameraPostProcessingSettings(GeneratedComponent, ICustomInspect
             )
 
     @property
-    def screen_space_reflections(self) -> bool | None:
+    def screen_space_reflections(self) -> primitives.Bool | None:
         """The ScreenSpaceReflections field value."""
         member = self.get_member("ScreenSpaceReflections")
         if member is None:
@@ -55,7 +56,7 @@ class InteractiveCameraPostProcessingSettings(GeneratedComponent, ICustomInspect
         return getattr(member, 'value', None)
 
     @screen_space_reflections.setter
-    def screen_space_reflections(self, value: bool) -> None:
+    def screen_space_reflections(self, value: primitives.Bool) -> None:
         """Set the ScreenSpaceReflections field value."""
         member = self.get_member("ScreenSpaceReflections")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: BillboardBrushTool."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -33,7 +31,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BillboardBrushTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, fixed_minimum_point_distance: np.float32 | None = None, position_smoothing: np.float32 | None = None, rotation_smoothing: np.float32 | None = None, pressure_smoothing: np.float32 | None = None, max_stroke_length: np.float32 | None = None, stroke_fade_in_length: np.float32 | None = None, stroke_fade_out_length: np.float32 | None = None, stroke_group_finish_wait_time: np.float32 | None = None, activation_threshold: np.float32 | None = None, deactivation_threshold_ratio: np.float32 | None = None, menu_size_change: np.float32 | None = None, snap_tip: bool | None = None, snap_line: bool | None = None, make_strokes_grabbable: bool | None = None, position_strokes_to_tip: bool | None = None, orient_strokes_to_tip: bool | None = None, scale_strokes_to_user: bool | None = None, pick_materials: bool | None = None, pick_colors: bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, emission_rate_per_unit_length: np.float32 | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: np.float32 | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: np.float32 | None = None, stroke_length: np.float32 | None = None, normalized_stroke_length: np.float32 | None = None, stroke_fade_multiplier: np.float32 | None = None, stroke_group_index: np.int32 | None = None, stroke_group_active: bool | None = None, tip_anchor: str | Slot | None = None, stroke_point_rate: np.float32 | None = None, constant_point_rate: np.float32 | None = None, pressure_affects_rate: bool | None = None, pressure_affects_radius: bool | None = None, particle_spawn_radius: np.float32 | None = None, snap_points: bool | None = None, min_color: primitives.Color | None = None, max_color: primitives.Color | None = None, color_gap: np.float32 | None = None, min_size: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, size_gap: np.float32 | None = None, atlas_info: str | AtlasInfo | None = None, pressure_affects_size: bool | None = None, pressure_affects_alpha: bool | None = None, pressure_affects_intensity: bool | None = None, use_color: bool | None = None, min_rotation: np.float32 | None = None, max_rotation: np.float32 | None = None, rotation_gap: np.float32 | None = None, use_rotation: bool | None = None, use_size: bool | None = None, use_uv: bool | None = None, preview_renderer: str | MeshRenderer | None = None, preview_mesh: str | PointMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, fixed_minimum_point_distance: primitives.Float | None = None, position_smoothing: primitives.Float | None = None, rotation_smoothing: primitives.Float | None = None, pressure_smoothing: primitives.Float | None = None, max_stroke_length: primitives.Float | None = None, stroke_fade_in_length: primitives.Float | None = None, stroke_fade_out_length: primitives.Float | None = None, stroke_group_finish_wait_time: primitives.Float | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold_ratio: primitives.Float | None = None, menu_size_change: primitives.Float | None = None, snap_tip: primitives.Bool | None = None, snap_line: primitives.Bool | None = None, make_strokes_grabbable: primitives.Bool | None = None, position_strokes_to_tip: primitives.Bool | None = None, orient_strokes_to_tip: primitives.Bool | None = None, scale_strokes_to_user: primitives.Bool | None = None, pick_materials: primitives.Bool | None = None, pick_colors: primitives.Bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, emission_rate_per_unit_length: primitives.Float | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: primitives.Float | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: primitives.Float | None = None, stroke_length: primitives.Float | None = None, normalized_stroke_length: primitives.Float | None = None, stroke_fade_multiplier: primitives.Float | None = None, stroke_group_index: primitives.Int | None = None, stroke_group_active: primitives.Bool | None = None, tip_anchor: str | Slot | None = None, stroke_point_rate: primitives.Float | None = None, constant_point_rate: primitives.Float | None = None, pressure_affects_rate: primitives.Bool | None = None, pressure_affects_radius: primitives.Bool | None = None, particle_spawn_radius: primitives.Float | None = None, snap_points: primitives.Bool | None = None, min_color: primitives.Color | None = None, max_color: primitives.Color | None = None, color_gap: primitives.Float | None = None, min_size: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, size_gap: primitives.Float | None = None, atlas_info: str | AtlasInfo | None = None, pressure_affects_size: primitives.Bool | None = None, pressure_affects_alpha: primitives.Bool | None = None, pressure_affects_intensity: primitives.Bool | None = None, use_color: primitives.Bool | None = None, min_rotation: primitives.Float | None = None, max_rotation: primitives.Float | None = None, rotation_gap: primitives.Float | None = None, use_rotation: primitives.Bool | None = None, use_size: primitives.Bool | None = None, use_uv: primitives.Bool | None = None, preview_renderer: str | MeshRenderer | None = None, preview_mesh: str | PointMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -295,7 +293,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -303,7 +301,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -314,7 +312,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -322,7 +320,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -333,7 +331,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -341,7 +339,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -373,7 +371,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -381,7 +379,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -392,7 +390,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def fixed_minimum_point_distance(self) -> np.float32 | None:
+    def fixed_minimum_point_distance(self) -> primitives.Float | None:
         """The FixedMinimumPointDistance field value."""
         member = self.get_member("FixedMinimumPointDistance")
         if member is None:
@@ -400,7 +398,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @fixed_minimum_point_distance.setter
-    def fixed_minimum_point_distance(self, value: np.float32) -> None:
+    def fixed_minimum_point_distance(self, value: primitives.Float) -> None:
         """Set the FixedMinimumPointDistance field value."""
         member = self.get_member("FixedMinimumPointDistance")
         if member is not None:
@@ -411,7 +409,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def position_smoothing(self) -> np.float32 | None:
+    def position_smoothing(self) -> primitives.Float | None:
         """The PositionSmoothing field value."""
         member = self.get_member("PositionSmoothing")
         if member is None:
@@ -419,7 +417,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @position_smoothing.setter
-    def position_smoothing(self, value: np.float32) -> None:
+    def position_smoothing(self, value: primitives.Float) -> None:
         """Set the PositionSmoothing field value."""
         member = self.get_member("PositionSmoothing")
         if member is not None:
@@ -430,7 +428,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def rotation_smoothing(self) -> np.float32 | None:
+    def rotation_smoothing(self) -> primitives.Float | None:
         """The RotationSmoothing field value."""
         member = self.get_member("RotationSmoothing")
         if member is None:
@@ -438,7 +436,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @rotation_smoothing.setter
-    def rotation_smoothing(self, value: np.float32) -> None:
+    def rotation_smoothing(self, value: primitives.Float) -> None:
         """Set the RotationSmoothing field value."""
         member = self.get_member("RotationSmoothing")
         if member is not None:
@@ -449,7 +447,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def pressure_smoothing(self) -> np.float32 | None:
+    def pressure_smoothing(self) -> primitives.Float | None:
         """The PressureSmoothing field value."""
         member = self.get_member("PressureSmoothing")
         if member is None:
@@ -457,7 +455,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @pressure_smoothing.setter
-    def pressure_smoothing(self, value: np.float32) -> None:
+    def pressure_smoothing(self, value: primitives.Float) -> None:
         """Set the PressureSmoothing field value."""
         member = self.get_member("PressureSmoothing")
         if member is not None:
@@ -468,7 +466,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def max_stroke_length(self) -> np.float32 | None:
+    def max_stroke_length(self) -> primitives.Float | None:
         """The MaxStrokeLength field value."""
         member = self.get_member("MaxStrokeLength")
         if member is None:
@@ -476,7 +474,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @max_stroke_length.setter
-    def max_stroke_length(self, value: np.float32) -> None:
+    def max_stroke_length(self, value: primitives.Float) -> None:
         """Set the MaxStrokeLength field value."""
         member = self.get_member("MaxStrokeLength")
         if member is not None:
@@ -487,7 +485,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def stroke_fade_in_length(self) -> np.float32 | None:
+    def stroke_fade_in_length(self) -> primitives.Float | None:
         """The StrokeFadeInLength field value."""
         member = self.get_member("StrokeFadeInLength")
         if member is None:
@@ -495,7 +493,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @stroke_fade_in_length.setter
-    def stroke_fade_in_length(self, value: np.float32) -> None:
+    def stroke_fade_in_length(self, value: primitives.Float) -> None:
         """Set the StrokeFadeInLength field value."""
         member = self.get_member("StrokeFadeInLength")
         if member is not None:
@@ -506,7 +504,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def stroke_fade_out_length(self) -> np.float32 | None:
+    def stroke_fade_out_length(self) -> primitives.Float | None:
         """The StrokeFadeOutLength field value."""
         member = self.get_member("StrokeFadeOutLength")
         if member is None:
@@ -514,7 +512,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @stroke_fade_out_length.setter
-    def stroke_fade_out_length(self, value: np.float32) -> None:
+    def stroke_fade_out_length(self, value: primitives.Float) -> None:
         """Set the StrokeFadeOutLength field value."""
         member = self.get_member("StrokeFadeOutLength")
         if member is not None:
@@ -525,7 +523,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def stroke_group_finish_wait_time(self) -> np.float32 | None:
+    def stroke_group_finish_wait_time(self) -> primitives.Float | None:
         """The StrokeGroupFinishWaitTime field value."""
         member = self.get_member("StrokeGroupFinishWaitTime")
         if member is None:
@@ -533,7 +531,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @stroke_group_finish_wait_time.setter
-    def stroke_group_finish_wait_time(self, value: np.float32) -> None:
+    def stroke_group_finish_wait_time(self, value: primitives.Float) -> None:
         """Set the StrokeGroupFinishWaitTime field value."""
         member = self.get_member("StrokeGroupFinishWaitTime")
         if member is not None:
@@ -544,7 +542,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def activation_threshold(self) -> np.float32 | None:
+    def activation_threshold(self) -> primitives.Float | None:
         """The ActivationThreshold field value."""
         member = self.get_member("ActivationThreshold")
         if member is None:
@@ -552,7 +550,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @activation_threshold.setter
-    def activation_threshold(self, value: np.float32) -> None:
+    def activation_threshold(self, value: primitives.Float) -> None:
         """Set the ActivationThreshold field value."""
         member = self.get_member("ActivationThreshold")
         if member is not None:
@@ -563,7 +561,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def deactivation_threshold_ratio(self) -> np.float32 | None:
+    def deactivation_threshold_ratio(self) -> primitives.Float | None:
         """The DeactivationThresholdRatio field value."""
         member = self.get_member("DeactivationThresholdRatio")
         if member is None:
@@ -571,7 +569,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @deactivation_threshold_ratio.setter
-    def deactivation_threshold_ratio(self, value: np.float32) -> None:
+    def deactivation_threshold_ratio(self, value: primitives.Float) -> None:
         """Set the DeactivationThresholdRatio field value."""
         member = self.get_member("DeactivationThresholdRatio")
         if member is not None:
@@ -582,7 +580,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def menu_size_change(self) -> np.float32 | None:
+    def menu_size_change(self) -> primitives.Float | None:
         """The MenuSizeChange field value."""
         member = self.get_member("MenuSizeChange")
         if member is None:
@@ -590,7 +588,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @menu_size_change.setter
-    def menu_size_change(self, value: np.float32) -> None:
+    def menu_size_change(self, value: primitives.Float) -> None:
         """Set the MenuSizeChange field value."""
         member = self.get_member("MenuSizeChange")
         if member is not None:
@@ -601,7 +599,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def snap_tip(self) -> bool | None:
+    def snap_tip(self) -> primitives.Bool | None:
         """The SnapTip field value."""
         member = self.get_member("SnapTip")
         if member is None:
@@ -609,7 +607,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @snap_tip.setter
-    def snap_tip(self, value: bool) -> None:
+    def snap_tip(self, value: primitives.Bool) -> None:
         """Set the SnapTip field value."""
         member = self.get_member("SnapTip")
         if member is not None:
@@ -620,7 +618,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def snap_line(self) -> bool | None:
+    def snap_line(self) -> primitives.Bool | None:
         """The SnapLine field value."""
         member = self.get_member("SnapLine")
         if member is None:
@@ -628,7 +626,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @snap_line.setter
-    def snap_line(self, value: bool) -> None:
+    def snap_line(self, value: primitives.Bool) -> None:
         """Set the SnapLine field value."""
         member = self.get_member("SnapLine")
         if member is not None:
@@ -652,7 +650,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         self.set_member("StrokesSpace", value)
 
     @property
-    def make_strokes_grabbable(self) -> bool | None:
+    def make_strokes_grabbable(self) -> primitives.Bool | None:
         """The MakeStrokesGrabbable field value."""
         member = self.get_member("MakeStrokesGrabbable")
         if member is None:
@@ -660,7 +658,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @make_strokes_grabbable.setter
-    def make_strokes_grabbable(self, value: bool) -> None:
+    def make_strokes_grabbable(self, value: primitives.Bool) -> None:
         """Set the MakeStrokesGrabbable field value."""
         member = self.get_member("MakeStrokesGrabbable")
         if member is not None:
@@ -671,7 +669,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def position_strokes_to_tip(self) -> bool | None:
+    def position_strokes_to_tip(self) -> primitives.Bool | None:
         """The PositionStrokesToTip field value."""
         member = self.get_member("PositionStrokesToTip")
         if member is None:
@@ -679,7 +677,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @position_strokes_to_tip.setter
-    def position_strokes_to_tip(self, value: bool) -> None:
+    def position_strokes_to_tip(self, value: primitives.Bool) -> None:
         """Set the PositionStrokesToTip field value."""
         member = self.get_member("PositionStrokesToTip")
         if member is not None:
@@ -690,7 +688,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def orient_strokes_to_tip(self) -> bool | None:
+    def orient_strokes_to_tip(self) -> primitives.Bool | None:
         """The OrientStrokesToTip field value."""
         member = self.get_member("OrientStrokesToTip")
         if member is None:
@@ -698,7 +696,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @orient_strokes_to_tip.setter
-    def orient_strokes_to_tip(self, value: bool) -> None:
+    def orient_strokes_to_tip(self, value: primitives.Bool) -> None:
         """Set the OrientStrokesToTip field value."""
         member = self.get_member("OrientStrokesToTip")
         if member is not None:
@@ -709,7 +707,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def scale_strokes_to_user(self) -> bool | None:
+    def scale_strokes_to_user(self) -> primitives.Bool | None:
         """The ScaleStrokesToUser field value."""
         member = self.get_member("ScaleStrokesToUser")
         if member is None:
@@ -717,7 +715,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @scale_strokes_to_user.setter
-    def scale_strokes_to_user(self, value: bool) -> None:
+    def scale_strokes_to_user(self, value: primitives.Bool) -> None:
         """Set the ScaleStrokesToUser field value."""
         member = self.get_member("ScaleStrokesToUser")
         if member is not None:
@@ -728,7 +726,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def pick_materials(self) -> bool | None:
+    def pick_materials(self) -> primitives.Bool | None:
         """The PickMaterials field value."""
         member = self.get_member("PickMaterials")
         if member is None:
@@ -736,7 +734,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @pick_materials.setter
-    def pick_materials(self, value: bool) -> None:
+    def pick_materials(self, value: primitives.Bool) -> None:
         """Set the PickMaterials field value."""
         member = self.get_member("PickMaterials")
         if member is not None:
@@ -747,7 +745,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def pick_colors(self) -> bool | None:
+    def pick_colors(self) -> primitives.Bool | None:
         """The PickColors field value."""
         member = self.get_member("PickColors")
         if member is None:
@@ -755,7 +753,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @pick_colors.setter
-    def pick_colors(self, value: bool) -> None:
+    def pick_colors(self, value: primitives.Bool) -> None:
         """Set the PickColors field value."""
         member = self.get_member("PickColors")
         if member is not None:
@@ -855,7 +853,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         self.set_member("ParticleTemplateHandling", value)
 
     @property
-    def emission_rate_per_unit_length(self) -> np.float32 | None:
+    def emission_rate_per_unit_length(self) -> primitives.Float | None:
         """The EmissionRatePerUnitLength field value."""
         member = self.get_member("EmissionRatePerUnitLength")
         if member is None:
@@ -863,7 +861,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @emission_rate_per_unit_length.setter
-    def emission_rate_per_unit_length(self, value: np.float32) -> None:
+    def emission_rate_per_unit_length(self, value: primitives.Float) -> None:
         """Set the EmissionRatePerUnitLength field value."""
         member = self.get_member("EmissionRatePerUnitLength")
         if member is not None:
@@ -969,7 +967,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def pressure(self) -> np.float32 | None:
+    def pressure(self) -> primitives.Float | None:
         """The Pressure field value."""
         member = self.get_member("Pressure")
         if member is None:
@@ -977,7 +975,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @pressure.setter
-    def pressure(self, value: np.float32) -> None:
+    def pressure(self, value: primitives.Float) -> None:
         """Set the Pressure field value."""
         member = self.get_member("Pressure")
         if member is not None:
@@ -1102,7 +1100,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def raw_stroke_length(self) -> np.float32 | None:
+    def raw_stroke_length(self) -> primitives.Float | None:
         """The RawStrokeLength field value."""
         member = self.get_member("RawStrokeLength")
         if member is None:
@@ -1110,7 +1108,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @raw_stroke_length.setter
-    def raw_stroke_length(self, value: np.float32) -> None:
+    def raw_stroke_length(self, value: primitives.Float) -> None:
         """Set the RawStrokeLength field value."""
         member = self.get_member("RawStrokeLength")
         if member is not None:
@@ -1121,7 +1119,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def stroke_length(self) -> np.float32 | None:
+    def stroke_length(self) -> primitives.Float | None:
         """The StrokeLength field value."""
         member = self.get_member("StrokeLength")
         if member is None:
@@ -1129,7 +1127,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @stroke_length.setter
-    def stroke_length(self, value: np.float32) -> None:
+    def stroke_length(self, value: primitives.Float) -> None:
         """Set the StrokeLength field value."""
         member = self.get_member("StrokeLength")
         if member is not None:
@@ -1140,7 +1138,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def normalized_stroke_length(self) -> np.float32 | None:
+    def normalized_stroke_length(self) -> primitives.Float | None:
         """The NormalizedStrokeLength field value."""
         member = self.get_member("NormalizedStrokeLength")
         if member is None:
@@ -1148,7 +1146,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @normalized_stroke_length.setter
-    def normalized_stroke_length(self, value: np.float32) -> None:
+    def normalized_stroke_length(self, value: primitives.Float) -> None:
         """Set the NormalizedStrokeLength field value."""
         member = self.get_member("NormalizedStrokeLength")
         if member is not None:
@@ -1159,7 +1157,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def stroke_fade_multiplier(self) -> np.float32 | None:
+    def stroke_fade_multiplier(self) -> primitives.Float | None:
         """The StrokeFadeMultiplier field value."""
         member = self.get_member("StrokeFadeMultiplier")
         if member is None:
@@ -1167,7 +1165,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @stroke_fade_multiplier.setter
-    def stroke_fade_multiplier(self, value: np.float32) -> None:
+    def stroke_fade_multiplier(self, value: primitives.Float) -> None:
         """Set the StrokeFadeMultiplier field value."""
         member = self.get_member("StrokeFadeMultiplier")
         if member is not None:
@@ -1178,7 +1176,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def stroke_group_index(self) -> np.int32 | None:
+    def stroke_group_index(self) -> primitives.Int | None:
         """The StrokeGroupIndex field value."""
         member = self.get_member("StrokeGroupIndex")
         if member is None:
@@ -1186,7 +1184,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @stroke_group_index.setter
-    def stroke_group_index(self, value: np.int32) -> None:
+    def stroke_group_index(self, value: primitives.Int) -> None:
         """Set the StrokeGroupIndex field value."""
         member = self.get_member("StrokeGroupIndex")
         if member is not None:
@@ -1197,7 +1195,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def stroke_group_active(self) -> bool | None:
+    def stroke_group_active(self) -> primitives.Bool | None:
         """The StrokeGroupActive field value."""
         member = self.get_member("StrokeGroupActive")
         if member is None:
@@ -1205,7 +1203,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @stroke_group_active.setter
-    def stroke_group_active(self, value: bool) -> None:
+    def stroke_group_active(self, value: primitives.Bool) -> None:
         """Set the StrokeGroupActive field value."""
         member = self.get_member("StrokeGroupActive")
         if member is not None:
@@ -1237,7 +1235,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def stroke_point_rate(self) -> np.float32 | None:
+    def stroke_point_rate(self) -> primitives.Float | None:
         """The StrokePointRate field value."""
         member = self.get_member("StrokePointRate")
         if member is None:
@@ -1245,7 +1243,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @stroke_point_rate.setter
-    def stroke_point_rate(self, value: np.float32) -> None:
+    def stroke_point_rate(self, value: primitives.Float) -> None:
         """Set the StrokePointRate field value."""
         member = self.get_member("StrokePointRate")
         if member is not None:
@@ -1256,7 +1254,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def constant_point_rate(self) -> np.float32 | None:
+    def constant_point_rate(self) -> primitives.Float | None:
         """The ConstantPointRate field value."""
         member = self.get_member("ConstantPointRate")
         if member is None:
@@ -1264,7 +1262,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @constant_point_rate.setter
-    def constant_point_rate(self, value: np.float32) -> None:
+    def constant_point_rate(self, value: primitives.Float) -> None:
         """Set the ConstantPointRate field value."""
         member = self.get_member("ConstantPointRate")
         if member is not None:
@@ -1275,7 +1273,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def pressure_affects_rate(self) -> bool | None:
+    def pressure_affects_rate(self) -> primitives.Bool | None:
         """The PressureAffectsRate field value."""
         member = self.get_member("PressureAffectsRate")
         if member is None:
@@ -1283,7 +1281,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @pressure_affects_rate.setter
-    def pressure_affects_rate(self, value: bool) -> None:
+    def pressure_affects_rate(self, value: primitives.Bool) -> None:
         """Set the PressureAffectsRate field value."""
         member = self.get_member("PressureAffectsRate")
         if member is not None:
@@ -1294,7 +1292,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def pressure_affects_radius(self) -> bool | None:
+    def pressure_affects_radius(self) -> primitives.Bool | None:
         """The PressureAffectsRadius field value."""
         member = self.get_member("PressureAffectsRadius")
         if member is None:
@@ -1302,7 +1300,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @pressure_affects_radius.setter
-    def pressure_affects_radius(self, value: bool) -> None:
+    def pressure_affects_radius(self, value: primitives.Bool) -> None:
         """Set the PressureAffectsRadius field value."""
         member = self.get_member("PressureAffectsRadius")
         if member is not None:
@@ -1313,7 +1311,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def particle_spawn_radius(self) -> np.float32 | None:
+    def particle_spawn_radius(self) -> primitives.Float | None:
         """The ParticleSpawnRadius field value."""
         member = self.get_member("ParticleSpawnRadius")
         if member is None:
@@ -1321,7 +1319,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @particle_spawn_radius.setter
-    def particle_spawn_radius(self, value: np.float32) -> None:
+    def particle_spawn_radius(self, value: primitives.Float) -> None:
         """Set the ParticleSpawnRadius field value."""
         member = self.get_member("ParticleSpawnRadius")
         if member is not None:
@@ -1332,7 +1330,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def snap_points(self) -> bool | None:
+    def snap_points(self) -> primitives.Bool | None:
         """The SnapPoints field value."""
         member = self.get_member("SnapPoints")
         if member is None:
@@ -1340,7 +1338,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @snap_points.setter
-    def snap_points(self, value: bool) -> None:
+    def snap_points(self, value: primitives.Bool) -> None:
         """Set the SnapPoints field value."""
         member = self.get_member("SnapPoints")
         if member is not None:
@@ -1402,7 +1400,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         self.set_member("Profile", value)
 
     @property
-    def color_gap(self) -> np.float32 | None:
+    def color_gap(self) -> primitives.Float | None:
         """The ColorGap field value."""
         member = self.get_member("ColorGap")
         if member is None:
@@ -1410,7 +1408,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @color_gap.setter
-    def color_gap(self, value: np.float32) -> None:
+    def color_gap(self, value: primitives.Float) -> None:
         """Set the ColorGap field value."""
         member = self.get_member("ColorGap")
         if member is not None:
@@ -1459,7 +1457,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def size_gap(self) -> np.float32 | None:
+    def size_gap(self) -> primitives.Float | None:
         """The SizeGap field value."""
         member = self.get_member("SizeGap")
         if member is None:
@@ -1467,7 +1465,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @size_gap.setter
-    def size_gap(self, value: np.float32) -> None:
+    def size_gap(self, value: primitives.Float) -> None:
         """Set the SizeGap field value."""
         member = self.get_member("SizeGap")
         if member is not None:
@@ -1499,7 +1497,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def pressure_affects_size(self) -> bool | None:
+    def pressure_affects_size(self) -> primitives.Bool | None:
         """The PressureAffectsSize field value."""
         member = self.get_member("PressureAffectsSize")
         if member is None:
@@ -1507,7 +1505,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @pressure_affects_size.setter
-    def pressure_affects_size(self, value: bool) -> None:
+    def pressure_affects_size(self, value: primitives.Bool) -> None:
         """Set the PressureAffectsSize field value."""
         member = self.get_member("PressureAffectsSize")
         if member is not None:
@@ -1518,7 +1516,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def pressure_affects_alpha(self) -> bool | None:
+    def pressure_affects_alpha(self) -> primitives.Bool | None:
         """The PressureAffectsAlpha field value."""
         member = self.get_member("PressureAffectsAlpha")
         if member is None:
@@ -1526,7 +1524,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @pressure_affects_alpha.setter
-    def pressure_affects_alpha(self, value: bool) -> None:
+    def pressure_affects_alpha(self, value: primitives.Bool) -> None:
         """Set the PressureAffectsAlpha field value."""
         member = self.get_member("PressureAffectsAlpha")
         if member is not None:
@@ -1537,7 +1535,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def pressure_affects_intensity(self) -> bool | None:
+    def pressure_affects_intensity(self) -> primitives.Bool | None:
         """The PressureAffectsIntensity field value."""
         member = self.get_member("PressureAffectsIntensity")
         if member is None:
@@ -1545,7 +1543,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @pressure_affects_intensity.setter
-    def pressure_affects_intensity(self, value: bool) -> None:
+    def pressure_affects_intensity(self, value: primitives.Bool) -> None:
         """Set the PressureAffectsIntensity field value."""
         member = self.get_member("PressureAffectsIntensity")
         if member is not None:
@@ -1556,7 +1554,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def use_color(self) -> bool | None:
+    def use_color(self) -> primitives.Bool | None:
         """The UseColor field value."""
         member = self.get_member("UseColor")
         if member is None:
@@ -1564,7 +1562,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @use_color.setter
-    def use_color(self, value: bool) -> None:
+    def use_color(self, value: primitives.Bool) -> None:
         """Set the UseColor field value."""
         member = self.get_member("UseColor")
         if member is not None:
@@ -1575,7 +1573,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def min_rotation(self) -> np.float32 | None:
+    def min_rotation(self) -> primitives.Float | None:
         """The MinRotation field value."""
         member = self.get_member("MinRotation")
         if member is None:
@@ -1583,7 +1581,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @min_rotation.setter
-    def min_rotation(self, value: np.float32) -> None:
+    def min_rotation(self, value: primitives.Float) -> None:
         """Set the MinRotation field value."""
         member = self.get_member("MinRotation")
         if member is not None:
@@ -1594,7 +1592,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def max_rotation(self) -> np.float32 | None:
+    def max_rotation(self) -> primitives.Float | None:
         """The MaxRotation field value."""
         member = self.get_member("MaxRotation")
         if member is None:
@@ -1602,7 +1600,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @max_rotation.setter
-    def max_rotation(self, value: np.float32) -> None:
+    def max_rotation(self, value: primitives.Float) -> None:
         """Set the MaxRotation field value."""
         member = self.get_member("MaxRotation")
         if member is not None:
@@ -1613,7 +1611,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def rotation_gap(self) -> np.float32 | None:
+    def rotation_gap(self) -> primitives.Float | None:
         """The RotationGap field value."""
         member = self.get_member("RotationGap")
         if member is None:
@@ -1621,7 +1619,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @rotation_gap.setter
-    def rotation_gap(self, value: np.float32) -> None:
+    def rotation_gap(self, value: primitives.Float) -> None:
         """Set the RotationGap field value."""
         member = self.get_member("RotationGap")
         if member is not None:
@@ -1632,7 +1630,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def use_rotation(self) -> bool | None:
+    def use_rotation(self) -> primitives.Bool | None:
         """The UseRotation field value."""
         member = self.get_member("UseRotation")
         if member is None:
@@ -1640,7 +1638,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @use_rotation.setter
-    def use_rotation(self, value: bool) -> None:
+    def use_rotation(self, value: primitives.Bool) -> None:
         """Set the UseRotation field value."""
         member = self.get_member("UseRotation")
         if member is not None:
@@ -1651,7 +1649,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def use_size(self) -> bool | None:
+    def use_size(self) -> primitives.Bool | None:
         """The UseSize field value."""
         member = self.get_member("UseSize")
         if member is None:
@@ -1659,7 +1657,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @use_size.setter
-    def use_size(self, value: bool) -> None:
+    def use_size(self, value: primitives.Bool) -> None:
         """Set the UseSize field value."""
         member = self.get_member("UseSize")
         if member is not None:
@@ -1670,7 +1668,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def use_uv(self) -> bool | None:
+    def use_uv(self) -> primitives.Bool | None:
         """The UseUV field value."""
         member = self.get_member("UseUV")
         if member is None:
@@ -1678,7 +1676,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
         return getattr(member, 'value', None)
 
     @use_uv.setter
-    def use_uv(self, value: bool) -> None:
+    def use_uv(self, value: primitives.Bool) -> None:
         """Set the UseUV field value."""
         member = self.get_member("UseUV")
         if member is not None:

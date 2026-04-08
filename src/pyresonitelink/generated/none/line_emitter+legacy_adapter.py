@@ -17,7 +17,7 @@ class LineEmitter+LegacyAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LineEmitter+LegacyAdapter"
 
-    def __init__(self, force_direction: bool | None = None, forced_direction: primitives.Float3 | None = None, direction_mode: str | IField[LineEmitterDirection] | None = None, direction0: str | IField[primitives.Float3] | None = None, direction1: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, force_direction: primitives.Bool | None = None, forced_direction: primitives.Float3 | None = None, direction_mode: str | IField[LineEmitterDirection] | None = None, direction0: str | IField[primitives.Float3] | None = None, direction1: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +41,7 @@ class LineEmitter+LegacyAdapter(GeneratedComponent, IComponent, IWorldEventRecei
             self.direction1 = direction1
 
     @property
-    def force_direction(self) -> bool | None:
+    def force_direction(self) -> primitives.Bool | None:
         """The ForceDirection field value."""
         member = self.get_member("ForceDirection")
         if member is None:
@@ -49,7 +49,7 @@ class LineEmitter+LegacyAdapter(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @force_direction.setter
-    def force_direction(self, value: bool) -> None:
+    def force_direction(self, value: primitives.Bool) -> None:
         """Set the ForceDirection field value."""
         member = self.get_member("ForceDirection")
         if member is not None:

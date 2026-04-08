@@ -1,10 +1,10 @@
 """Generated component: TryUshortToEnum."""
 
 from typing import Any
-import numpy as np
 
 E = Any
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -22,14 +22,14 @@ class TryUshortToEnum(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T
 
     Parameterize with a value type::
 
-        TryUshortToEnum[np.float32]
+        TryUshortToEnum[primitives.Float]
         TryUshortToEnum[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Enums.TryUshortToEnum<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Enums.TryUshortToEnum<>"
 
-    def __init__(self, value: str | INodeValueOutput[np.uint16] | None = None, fail_value: str | INodeValueOutput[E] | None = None, only_defined: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | INodeValueOutput[primitives.UShort] | None = None, fail_value: str | INodeValueOutput[E] | None = None, only_defined: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,15 +48,15 @@ class TryUshortToEnum(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[np.uint16])."""
+        """Target ID of the Value reference (targets INodeValueOutput[primitives.UShort])."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @value.setter
-    def value(self, target: str | INodeValueOutput[np.uint16] | None) -> None:
-        """Set the Value reference by target ID or INodeValueOutput[np.uint16] instance."""
+    def value(self, target: str | INodeValueOutput[primitives.UShort] | None) -> None:
+        """Set the Value reference by target ID or INodeValueOutput[primitives.UShort] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
@@ -90,15 +90,15 @@ class TryUshortToEnum(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T
 
     @property
     def only_defined(self) -> str | None:
-        """Target ID of the OnlyDefined reference (targets INodeValueOutput[bool])."""
+        """Target ID of the OnlyDefined reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("OnlyDefined")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @only_defined.setter
-    def only_defined(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the OnlyDefined reference by target ID or INodeValueOutput[bool] instance."""
+    def only_defined(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the OnlyDefined reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("OnlyDefined")
         if isinstance(member, members.Reference):

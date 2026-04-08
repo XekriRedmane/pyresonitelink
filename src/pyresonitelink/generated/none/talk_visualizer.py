@@ -1,7 +1,5 @@
 """Generated component: TalkVisualizer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class TalkVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TalkVisualizer"
 
-    def __init__(self, input_: str | RawOutput[np.float32] | None = None, base_color: primitives.ColorX | None = None, material_color: str | Sync[primitives.ColorX] | None = None, light_intensity: str | Sync[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, input_: str | RawOutput[primitives.Float] | None = None, base_color: primitives.ColorX | None = None, material_color: str | Sync[primitives.ColorX] | None = None, light_intensity: str | Sync[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,15 +39,15 @@ class TalkVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets RawOutput[np.float32])."""
+        """Target ID of the Input reference (targets RawOutput[primitives.Float])."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @input_.setter
-    def input_(self, target: str | RawOutput[np.float32] | None) -> None:
-        """Set the Input reference by target ID or RawOutput[np.float32] instance."""
+    def input_(self, target: str | RawOutput[primitives.Float] | None) -> None:
+        """Set the Input reference by target ID or RawOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, RawOutput) else target  # type: ignore[assignment]
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
@@ -102,15 +100,15 @@ class TalkVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def light_intensity(self) -> str | None:
-        """Target ID of the LightIntensity reference (targets Sync[np.float32])."""
+        """Target ID of the LightIntensity reference (targets Sync[primitives.Float])."""
         member = self.get_member("LightIntensity")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @light_intensity.setter
-    def light_intensity(self, target: str | Sync[np.float32] | None) -> None:
-        """Set the LightIntensity reference by target ID or Sync[np.float32] instance."""
+    def light_intensity(self, target: str | Sync[primitives.Float] | None) -> None:
+        """Set the LightIntensity reference by target ID or Sync[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
         member = self.get_member("LightIntensity")
         if isinstance(member, members.Reference):

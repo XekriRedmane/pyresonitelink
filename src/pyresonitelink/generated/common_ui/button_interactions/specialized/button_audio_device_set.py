@@ -1,8 +1,7 @@
 """Generated component: ButtonAudioDeviceSet."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
@@ -17,7 +16,7 @@ class ButtonAudioDeviceSet(GeneratedComponent, IButtonPressReceiver, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonAudioDeviceSet"
 
-    def __init__(self, device_index: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, device_index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +28,7 @@ class ButtonAudioDeviceSet(GeneratedComponent, IButtonPressReceiver, IWorldEvent
             self.device_index = device_index
 
     @property
-    def device_index(self) -> np.int32 | None:
+    def device_index(self) -> primitives.Int | None:
         """The DeviceIndex field value."""
         member = self.get_member("DeviceIndex")
         if member is None:
@@ -37,7 +36,7 @@ class ButtonAudioDeviceSet(GeneratedComponent, IButtonPressReceiver, IWorldEvent
         return getattr(member, 'value', None)
 
     @device_index.setter
-    def device_index(self, value: np.int32) -> None:
+    def device_index(self, value: primitives.Int) -> None:
         """Set the DeviceIndex field value."""
         member = self.get_member("DeviceIndex")
         if member is not None:

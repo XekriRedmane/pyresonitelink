@@ -1,9 +1,8 @@
 """Generated component: ModelImportDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -18,7 +17,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ModelImportDialog"
 
-    def __init__(self, content_root: str | Slot | None = None, scale: np.float32 | None = None, auto_scale: bool | None = None, prefer_specular: bool | None = None, rig: bool | None = None, setup_ik: bool | None = None, debug_rig: bool | None = None, colliders: bool | None = None, animations: bool | None = None, snappable: bool | None = None, timelapse: bool | None = None, external_textures: bool | None = None, grabbable: bool | None = None, scalable: bool | None = None, import_at_origin: bool | None = None, force_tpose: bool | None = None, assets_on_object: bool | None = None, as_point_cloud: bool | None = None, import_images_by_name: bool | None = None, calculate_normals: bool | None = None, calculate_tangents: bool | None = None, calculate_texture_alpha: bool | None = None, import_vertex_colors: bool | None = None, import_albedo_color: bool | None = None, import_emissive: bool | None = None, import_bones: bool | None = None, import_lights: bool | None = None, make_dual_sided: bool | None = None, make_flat_shaded: bool | None = None, deduplicate_instances: bool | None = None, optimize_model: bool | None = None, split_submeshes: bool | None = None, generate_random_colors: bool | None = None, spawn_material_orbs: bool | None = None, max_texture_size: np.int32 | None = None, force_point_filtering: bool | None = None, force_no_mip_maps: bool | None = None, force_uncompressed: bool | None = None, force_as_point_cloud: bool | None = None, potential_gaussian_splat: bool | None = None, flip_y: bool | None = None, encode_spz: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, content_root: str | Slot | None = None, scale: primitives.Float | None = None, auto_scale: primitives.Bool | None = None, prefer_specular: primitives.Bool | None = None, rig: primitives.Bool | None = None, setup_ik: primitives.Bool | None = None, debug_rig: primitives.Bool | None = None, colliders: primitives.Bool | None = None, animations: primitives.Bool | None = None, snappable: primitives.Bool | None = None, timelapse: primitives.Bool | None = None, external_textures: primitives.Bool | None = None, grabbable: primitives.Bool | None = None, scalable: primitives.Bool | None = None, import_at_origin: primitives.Bool | None = None, force_tpose: primitives.Bool | None = None, assets_on_object: primitives.Bool | None = None, as_point_cloud: primitives.Bool | None = None, import_images_by_name: primitives.Bool | None = None, calculate_normals: primitives.Bool | None = None, calculate_tangents: primitives.Bool | None = None, calculate_texture_alpha: primitives.Bool | None = None, import_vertex_colors: primitives.Bool | None = None, import_albedo_color: primitives.Bool | None = None, import_emissive: primitives.Bool | None = None, import_bones: primitives.Bool | None = None, import_lights: primitives.Bool | None = None, make_dual_sided: primitives.Bool | None = None, make_flat_shaded: primitives.Bool | None = None, deduplicate_instances: primitives.Bool | None = None, optimize_model: primitives.Bool | None = None, split_submeshes: primitives.Bool | None = None, generate_random_colors: primitives.Bool | None = None, spawn_material_orbs: primitives.Bool | None = None, max_texture_size: primitives.Int | None = None, force_point_filtering: primitives.Bool | None = None, force_no_mip_maps: primitives.Bool | None = None, force_uncompressed: primitives.Bool | None = None, force_as_point_cloud: primitives.Bool | None = None, potential_gaussian_splat: primitives.Bool | None = None, flip_y: primitives.Bool | None = None, encode_spz: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -174,7 +173,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def scale(self) -> np.float32 | None:
+    def scale(self) -> primitives.Float | None:
         """The _scale field value."""
         member = self.get_member("_scale")
         if member is None:
@@ -182,7 +181,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @scale.setter
-    def scale(self, value: np.float32) -> None:
+    def scale(self, value: primitives.Float) -> None:
         """Set the _scale field value."""
         member = self.get_member("_scale")
         if member is not None:
@@ -193,7 +192,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def auto_scale(self) -> bool | None:
+    def auto_scale(self) -> primitives.Bool | None:
         """The _autoScale field value."""
         member = self.get_member("_autoScale")
         if member is None:
@@ -201,7 +200,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_scale.setter
-    def auto_scale(self, value: bool) -> None:
+    def auto_scale(self, value: primitives.Bool) -> None:
         """Set the _autoScale field value."""
         member = self.get_member("_autoScale")
         if member is not None:
@@ -225,7 +224,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("_material", value)
 
     @property
-    def prefer_specular(self) -> bool | None:
+    def prefer_specular(self) -> primitives.Bool | None:
         """The _preferSpecular field value."""
         member = self.get_member("_preferSpecular")
         if member is None:
@@ -233,7 +232,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @prefer_specular.setter
-    def prefer_specular(self, value: bool) -> None:
+    def prefer_specular(self, value: primitives.Bool) -> None:
         """Set the _preferSpecular field value."""
         member = self.get_member("_preferSpecular")
         if member is not None:
@@ -244,7 +243,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def rig(self) -> bool | None:
+    def rig(self) -> primitives.Bool | None:
         """The _rig field value."""
         member = self.get_member("_rig")
         if member is None:
@@ -252,7 +251,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @rig.setter
-    def rig(self, value: bool) -> None:
+    def rig(self, value: primitives.Bool) -> None:
         """Set the _rig field value."""
         member = self.get_member("_rig")
         if member is not None:
@@ -263,7 +262,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def setup_ik(self) -> bool | None:
+    def setup_ik(self) -> primitives.Bool | None:
         """The _setupIK field value."""
         member = self.get_member("_setupIK")
         if member is None:
@@ -271,7 +270,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @setup_ik.setter
-    def setup_ik(self, value: bool) -> None:
+    def setup_ik(self, value: primitives.Bool) -> None:
         """Set the _setupIK field value."""
         member = self.get_member("_setupIK")
         if member is not None:
@@ -282,7 +281,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def debug_rig(self) -> bool | None:
+    def debug_rig(self) -> primitives.Bool | None:
         """The _debugRig field value."""
         member = self.get_member("_debugRig")
         if member is None:
@@ -290,7 +289,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @debug_rig.setter
-    def debug_rig(self, value: bool) -> None:
+    def debug_rig(self, value: primitives.Bool) -> None:
         """Set the _debugRig field value."""
         member = self.get_member("_debugRig")
         if member is not None:
@@ -301,7 +300,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def colliders(self) -> bool | None:
+    def colliders(self) -> primitives.Bool | None:
         """The _colliders field value."""
         member = self.get_member("_colliders")
         if member is None:
@@ -309,7 +308,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @colliders.setter
-    def colliders(self, value: bool) -> None:
+    def colliders(self, value: primitives.Bool) -> None:
         """Set the _colliders field value."""
         member = self.get_member("_colliders")
         if member is not None:
@@ -320,7 +319,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def animations(self) -> bool | None:
+    def animations(self) -> primitives.Bool | None:
         """The _animations field value."""
         member = self.get_member("_animations")
         if member is None:
@@ -328,7 +327,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @animations.setter
-    def animations(self, value: bool) -> None:
+    def animations(self, value: primitives.Bool) -> None:
         """Set the _animations field value."""
         member = self.get_member("_animations")
         if member is not None:
@@ -339,7 +338,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def snappable(self) -> bool | None:
+    def snappable(self) -> primitives.Bool | None:
         """The _snappable field value."""
         member = self.get_member("_snappable")
         if member is None:
@@ -347,7 +346,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @snappable.setter
-    def snappable(self, value: bool) -> None:
+    def snappable(self, value: primitives.Bool) -> None:
         """Set the _snappable field value."""
         member = self.get_member("_snappable")
         if member is not None:
@@ -358,7 +357,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def timelapse(self) -> bool | None:
+    def timelapse(self) -> primitives.Bool | None:
         """The _timelapse field value."""
         member = self.get_member("_timelapse")
         if member is None:
@@ -366,7 +365,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @timelapse.setter
-    def timelapse(self, value: bool) -> None:
+    def timelapse(self, value: primitives.Bool) -> None:
         """Set the _timelapse field value."""
         member = self.get_member("_timelapse")
         if member is not None:
@@ -377,7 +376,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def external_textures(self) -> bool | None:
+    def external_textures(self) -> primitives.Bool | None:
         """The _externalTextures field value."""
         member = self.get_member("_externalTextures")
         if member is None:
@@ -385,7 +384,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @external_textures.setter
-    def external_textures(self, value: bool) -> None:
+    def external_textures(self, value: primitives.Bool) -> None:
         """Set the _externalTextures field value."""
         member = self.get_member("_externalTextures")
         if member is not None:
@@ -396,7 +395,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def grabbable(self) -> bool | None:
+    def grabbable(self) -> primitives.Bool | None:
         """The _grabbable field value."""
         member = self.get_member("_grabbable")
         if member is None:
@@ -404,7 +403,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @grabbable.setter
-    def grabbable(self, value: bool) -> None:
+    def grabbable(self, value: primitives.Bool) -> None:
         """Set the _grabbable field value."""
         member = self.get_member("_grabbable")
         if member is not None:
@@ -415,7 +414,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def scalable(self) -> bool | None:
+    def scalable(self) -> primitives.Bool | None:
         """The _scalable field value."""
         member = self.get_member("_scalable")
         if member is None:
@@ -423,7 +422,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @scalable.setter
-    def scalable(self, value: bool) -> None:
+    def scalable(self, value: primitives.Bool) -> None:
         """Set the _scalable field value."""
         member = self.get_member("_scalable")
         if member is not None:
@@ -434,7 +433,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def import_at_origin(self) -> bool | None:
+    def import_at_origin(self) -> primitives.Bool | None:
         """The _importAtOrigin field value."""
         member = self.get_member("_importAtOrigin")
         if member is None:
@@ -442,7 +441,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @import_at_origin.setter
-    def import_at_origin(self, value: bool) -> None:
+    def import_at_origin(self, value: primitives.Bool) -> None:
         """Set the _importAtOrigin field value."""
         member = self.get_member("_importAtOrigin")
         if member is not None:
@@ -453,7 +452,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def force_tpose(self) -> bool | None:
+    def force_tpose(self) -> primitives.Bool | None:
         """The _forceTpose field value."""
         member = self.get_member("_forceTpose")
         if member is None:
@@ -461,7 +460,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @force_tpose.setter
-    def force_tpose(self, value: bool) -> None:
+    def force_tpose(self, value: primitives.Bool) -> None:
         """Set the _forceTpose field value."""
         member = self.get_member("_forceTpose")
         if member is not None:
@@ -472,7 +471,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def assets_on_object(self) -> bool | None:
+    def assets_on_object(self) -> primitives.Bool | None:
         """The _assetsOnObject field value."""
         member = self.get_member("_assetsOnObject")
         if member is None:
@@ -480,7 +479,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @assets_on_object.setter
-    def assets_on_object(self, value: bool) -> None:
+    def assets_on_object(self, value: primitives.Bool) -> None:
         """Set the _assetsOnObject field value."""
         member = self.get_member("_assetsOnObject")
         if member is not None:
@@ -491,7 +490,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def as_point_cloud(self) -> bool | None:
+    def as_point_cloud(self) -> primitives.Bool | None:
         """The _asPointCloud field value."""
         member = self.get_member("_asPointCloud")
         if member is None:
@@ -499,7 +498,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @as_point_cloud.setter
-    def as_point_cloud(self, value: bool) -> None:
+    def as_point_cloud(self, value: primitives.Bool) -> None:
         """Set the _asPointCloud field value."""
         member = self.get_member("_asPointCloud")
         if member is not None:
@@ -510,7 +509,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def import_images_by_name(self) -> bool | None:
+    def import_images_by_name(self) -> primitives.Bool | None:
         """The _importImagesByName field value."""
         member = self.get_member("_importImagesByName")
         if member is None:
@@ -518,7 +517,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @import_images_by_name.setter
-    def import_images_by_name(self, value: bool) -> None:
+    def import_images_by_name(self, value: primitives.Bool) -> None:
         """Set the _importImagesByName field value."""
         member = self.get_member("_importImagesByName")
         if member is not None:
@@ -542,7 +541,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("_importImageAlignment", value)
 
     @property
-    def calculate_normals(self) -> bool | None:
+    def calculate_normals(self) -> primitives.Bool | None:
         """The _calculateNormals field value."""
         member = self.get_member("_calculateNormals")
         if member is None:
@@ -550,7 +549,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @calculate_normals.setter
-    def calculate_normals(self, value: bool) -> None:
+    def calculate_normals(self, value: primitives.Bool) -> None:
         """Set the _calculateNormals field value."""
         member = self.get_member("_calculateNormals")
         if member is not None:
@@ -561,7 +560,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def calculate_tangents(self) -> bool | None:
+    def calculate_tangents(self) -> primitives.Bool | None:
         """The _calculateTangents field value."""
         member = self.get_member("_calculateTangents")
         if member is None:
@@ -569,7 +568,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @calculate_tangents.setter
-    def calculate_tangents(self, value: bool) -> None:
+    def calculate_tangents(self, value: primitives.Bool) -> None:
         """Set the _calculateTangents field value."""
         member = self.get_member("_calculateTangents")
         if member is not None:
@@ -580,7 +579,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def calculate_texture_alpha(self) -> bool | None:
+    def calculate_texture_alpha(self) -> primitives.Bool | None:
         """The _calculateTextureAlpha field value."""
         member = self.get_member("_calculateTextureAlpha")
         if member is None:
@@ -588,7 +587,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @calculate_texture_alpha.setter
-    def calculate_texture_alpha(self, value: bool) -> None:
+    def calculate_texture_alpha(self, value: primitives.Bool) -> None:
         """Set the _calculateTextureAlpha field value."""
         member = self.get_member("_calculateTextureAlpha")
         if member is not None:
@@ -599,7 +598,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def import_vertex_colors(self) -> bool | None:
+    def import_vertex_colors(self) -> primitives.Bool | None:
         """The _importVertexColors field value."""
         member = self.get_member("_importVertexColors")
         if member is None:
@@ -607,7 +606,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @import_vertex_colors.setter
-    def import_vertex_colors(self, value: bool) -> None:
+    def import_vertex_colors(self, value: primitives.Bool) -> None:
         """Set the _importVertexColors field value."""
         member = self.get_member("_importVertexColors")
         if member is not None:
@@ -618,7 +617,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def import_albedo_color(self) -> bool | None:
+    def import_albedo_color(self) -> primitives.Bool | None:
         """The _importAlbedoColor field value."""
         member = self.get_member("_importAlbedoColor")
         if member is None:
@@ -626,7 +625,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @import_albedo_color.setter
-    def import_albedo_color(self, value: bool) -> None:
+    def import_albedo_color(self, value: primitives.Bool) -> None:
         """Set the _importAlbedoColor field value."""
         member = self.get_member("_importAlbedoColor")
         if member is not None:
@@ -637,7 +636,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def import_emissive(self) -> bool | None:
+    def import_emissive(self) -> primitives.Bool | None:
         """The _importEmissive field value."""
         member = self.get_member("_importEmissive")
         if member is None:
@@ -645,7 +644,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @import_emissive.setter
-    def import_emissive(self, value: bool) -> None:
+    def import_emissive(self, value: primitives.Bool) -> None:
         """Set the _importEmissive field value."""
         member = self.get_member("_importEmissive")
         if member is not None:
@@ -656,7 +655,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def import_bones(self) -> bool | None:
+    def import_bones(self) -> primitives.Bool | None:
         """The _importBones field value."""
         member = self.get_member("_importBones")
         if member is None:
@@ -664,7 +663,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @import_bones.setter
-    def import_bones(self, value: bool) -> None:
+    def import_bones(self, value: primitives.Bool) -> None:
         """Set the _importBones field value."""
         member = self.get_member("_importBones")
         if member is not None:
@@ -675,7 +674,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def import_lights(self) -> bool | None:
+    def import_lights(self) -> primitives.Bool | None:
         """The _importLights field value."""
         member = self.get_member("_importLights")
         if member is None:
@@ -683,7 +682,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @import_lights.setter
-    def import_lights(self, value: bool) -> None:
+    def import_lights(self, value: primitives.Bool) -> None:
         """Set the _importLights field value."""
         member = self.get_member("_importLights")
         if member is not None:
@@ -694,7 +693,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def make_dual_sided(self) -> bool | None:
+    def make_dual_sided(self) -> primitives.Bool | None:
         """The _makeDualSided field value."""
         member = self.get_member("_makeDualSided")
         if member is None:
@@ -702,7 +701,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @make_dual_sided.setter
-    def make_dual_sided(self, value: bool) -> None:
+    def make_dual_sided(self, value: primitives.Bool) -> None:
         """Set the _makeDualSided field value."""
         member = self.get_member("_makeDualSided")
         if member is not None:
@@ -713,7 +712,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def make_flat_shaded(self) -> bool | None:
+    def make_flat_shaded(self) -> primitives.Bool | None:
         """The _makeFlatShaded field value."""
         member = self.get_member("_makeFlatShaded")
         if member is None:
@@ -721,7 +720,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @make_flat_shaded.setter
-    def make_flat_shaded(self, value: bool) -> None:
+    def make_flat_shaded(self, value: primitives.Bool) -> None:
         """Set the _makeFlatShaded field value."""
         member = self.get_member("_makeFlatShaded")
         if member is not None:
@@ -732,7 +731,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def deduplicate_instances(self) -> bool | None:
+    def deduplicate_instances(self) -> primitives.Bool | None:
         """The _deduplicateInstances field value."""
         member = self.get_member("_deduplicateInstances")
         if member is None:
@@ -740,7 +739,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @deduplicate_instances.setter
-    def deduplicate_instances(self, value: bool) -> None:
+    def deduplicate_instances(self, value: primitives.Bool) -> None:
         """Set the _deduplicateInstances field value."""
         member = self.get_member("_deduplicateInstances")
         if member is not None:
@@ -751,7 +750,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def optimize_model(self) -> bool | None:
+    def optimize_model(self) -> primitives.Bool | None:
         """The _optimizeModel field value."""
         member = self.get_member("_optimizeModel")
         if member is None:
@@ -759,7 +758,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @optimize_model.setter
-    def optimize_model(self, value: bool) -> None:
+    def optimize_model(self, value: primitives.Bool) -> None:
         """Set the _optimizeModel field value."""
         member = self.get_member("_optimizeModel")
         if member is not None:
@@ -770,7 +769,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def split_submeshes(self) -> bool | None:
+    def split_submeshes(self) -> primitives.Bool | None:
         """The _splitSubmeshes field value."""
         member = self.get_member("_splitSubmeshes")
         if member is None:
@@ -778,7 +777,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @split_submeshes.setter
-    def split_submeshes(self, value: bool) -> None:
+    def split_submeshes(self, value: primitives.Bool) -> None:
         """Set the _splitSubmeshes field value."""
         member = self.get_member("_splitSubmeshes")
         if member is not None:
@@ -789,7 +788,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def generate_random_colors(self) -> bool | None:
+    def generate_random_colors(self) -> primitives.Bool | None:
         """The _generateRandomColors field value."""
         member = self.get_member("_generateRandomColors")
         if member is None:
@@ -797,7 +796,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @generate_random_colors.setter
-    def generate_random_colors(self, value: bool) -> None:
+    def generate_random_colors(self, value: primitives.Bool) -> None:
         """Set the _generateRandomColors field value."""
         member = self.get_member("_generateRandomColors")
         if member is not None:
@@ -808,7 +807,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def spawn_material_orbs(self) -> bool | None:
+    def spawn_material_orbs(self) -> primitives.Bool | None:
         """The _spawnMaterialOrbs field value."""
         member = self.get_member("_spawnMaterialOrbs")
         if member is None:
@@ -816,7 +815,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @spawn_material_orbs.setter
-    def spawn_material_orbs(self, value: bool) -> None:
+    def spawn_material_orbs(self, value: primitives.Bool) -> None:
         """Set the _spawnMaterialOrbs field value."""
         member = self.get_member("_spawnMaterialOrbs")
         if member is not None:
@@ -827,7 +826,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_texture_size(self) -> np.int32 | None:
+    def max_texture_size(self) -> primitives.Int | None:
         """The _maxTextureSize field value."""
         member = self.get_member("_maxTextureSize")
         if member is None:
@@ -835,7 +834,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_texture_size.setter
-    def max_texture_size(self, value: np.int32) -> None:
+    def max_texture_size(self, value: primitives.Int) -> None:
         """Set the _maxTextureSize field value."""
         member = self.get_member("_maxTextureSize")
         if member is not None:
@@ -859,7 +858,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("_textureConversion", value)
 
     @property
-    def force_point_filtering(self) -> bool | None:
+    def force_point_filtering(self) -> primitives.Bool | None:
         """The _forcePointFiltering field value."""
         member = self.get_member("_forcePointFiltering")
         if member is None:
@@ -867,7 +866,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @force_point_filtering.setter
-    def force_point_filtering(self, value: bool) -> None:
+    def force_point_filtering(self, value: primitives.Bool) -> None:
         """Set the _forcePointFiltering field value."""
         member = self.get_member("_forcePointFiltering")
         if member is not None:
@@ -878,7 +877,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def force_no_mip_maps(self) -> bool | None:
+    def force_no_mip_maps(self) -> primitives.Bool | None:
         """The _forceNoMipMaps field value."""
         member = self.get_member("_forceNoMipMaps")
         if member is None:
@@ -886,7 +885,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @force_no_mip_maps.setter
-    def force_no_mip_maps(self, value: bool) -> None:
+    def force_no_mip_maps(self, value: primitives.Bool) -> None:
         """Set the _forceNoMipMaps field value."""
         member = self.get_member("_forceNoMipMaps")
         if member is not None:
@@ -897,7 +896,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def force_uncompressed(self) -> bool | None:
+    def force_uncompressed(self) -> primitives.Bool | None:
         """The _forceUncompressed field value."""
         member = self.get_member("_forceUncompressed")
         if member is None:
@@ -905,7 +904,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @force_uncompressed.setter
-    def force_uncompressed(self, value: bool) -> None:
+    def force_uncompressed(self, value: primitives.Bool) -> None:
         """Set the _forceUncompressed field value."""
         member = self.get_member("_forceUncompressed")
         if member is not None:
@@ -916,7 +915,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def force_as_point_cloud(self) -> bool | None:
+    def force_as_point_cloud(self) -> primitives.Bool | None:
         """The ForceAsPointCloud field value."""
         member = self.get_member("ForceAsPointCloud")
         if member is None:
@@ -924,7 +923,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @force_as_point_cloud.setter
-    def force_as_point_cloud(self, value: bool) -> None:
+    def force_as_point_cloud(self, value: primitives.Bool) -> None:
         """Set the ForceAsPointCloud field value."""
         member = self.get_member("ForceAsPointCloud")
         if member is not None:
@@ -935,7 +934,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def potential_gaussian_splat(self) -> bool | None:
+    def potential_gaussian_splat(self) -> primitives.Bool | None:
         """The PotentialGaussianSplat field value."""
         member = self.get_member("PotentialGaussianSplat")
         if member is None:
@@ -943,7 +942,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @potential_gaussian_splat.setter
-    def potential_gaussian_splat(self, value: bool) -> None:
+    def potential_gaussian_splat(self, value: primitives.Bool) -> None:
         """Set the PotentialGaussianSplat field value."""
         member = self.get_member("PotentialGaussianSplat")
         if member is not None:
@@ -954,7 +953,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def flip_y(self) -> bool | None:
+    def flip_y(self) -> primitives.Bool | None:
         """The _flipY field value."""
         member = self.get_member("_flipY")
         if member is None:
@@ -962,7 +961,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @flip_y.setter
-    def flip_y(self, value: bool) -> None:
+    def flip_y(self, value: primitives.Bool) -> None:
         """Set the _flipY field value."""
         member = self.get_member("_flipY")
         if member is not None:
@@ -973,7 +972,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def encode_spz(self) -> bool | None:
+    def encode_spz(self) -> primitives.Bool | None:
         """The _encodeSPZ field value."""
         member = self.get_member("_encodeSPZ")
         if member is None:
@@ -981,7 +980,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @encode_spz.setter
-    def encode_spz(self, value: bool) -> None:
+    def encode_spz(self, value: primitives.Bool) -> None:
         """Set the _encodeSPZ field value."""
         member = self.get_member("_encodeSPZ")
         if member is not None:

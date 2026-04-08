@@ -1,8 +1,7 @@
 """Generated component: FindParentByName."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -23,7 +22,7 @@ class FindParentByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.FindParentByName"
 
-    def __init__(self, instance: str | INodeObjectOutput[Slot] | None = None, name: str | INodeObjectOutput[str] | None = None, match_substring: str | INodeValueOutput[bool] | None = None, ignore_case: str | INodeValueOutput[bool] | None = None, search_depth: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, instance: str | INodeObjectOutput[Slot] | None = None, name: str | INodeObjectOutput[primitives.String] | None = None, match_substring: str | INodeValueOutput[primitives.Bool] | None = None, ignore_case: str | INodeValueOutput[primitives.Bool] | None = None, search_depth: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,15 +68,15 @@ class FindParentByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @name.setter
-    def name(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Name reference by target ID or INodeObjectOutput[str] instance."""
+    def name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Name reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
@@ -90,15 +89,15 @@ class FindParentByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def match_substring(self) -> str | None:
-        """Target ID of the MatchSubstring reference (targets INodeValueOutput[bool])."""
+        """Target ID of the MatchSubstring reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("MatchSubstring")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @match_substring.setter
-    def match_substring(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the MatchSubstring reference by target ID or INodeValueOutput[bool] instance."""
+    def match_substring(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the MatchSubstring reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("MatchSubstring")
         if isinstance(member, members.Reference):
@@ -111,15 +110,15 @@ class FindParentByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def ignore_case(self) -> str | None:
-        """Target ID of the IgnoreCase reference (targets INodeValueOutput[bool])."""
+        """Target ID of the IgnoreCase reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("IgnoreCase")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ignore_case.setter
-    def ignore_case(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the IgnoreCase reference by target ID or INodeValueOutput[bool] instance."""
+    def ignore_case(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the IgnoreCase reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("IgnoreCase")
         if isinstance(member, members.Reference):
@@ -132,15 +131,15 @@ class FindParentByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def search_depth(self) -> str | None:
-        """Target ID of the SearchDepth reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the SearchDepth reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("SearchDepth")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @search_depth.setter
-    def search_depth(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the SearchDepth reference by target ID or INodeValueOutput[np.int32] instance."""
+    def search_depth(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the SearchDepth reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("SearchDepth")
         if isinstance(member, members.Reference):

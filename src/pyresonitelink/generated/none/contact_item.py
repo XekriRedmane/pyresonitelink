@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.image import Image
@@ -18,7 +19,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContactItem"
 
-    def __init__(self, background: str | Image | None = None, status_indicator: str | Image | None = None, thumbnail: str | Image | None = None, thumbnail_texture: str | StaticTexture2D | None = None, username: str | Text | None = None, status: str | Text | None = None, unread_count: str | Text | None = None, join_button: str | Button | None = None, raw_username: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, background: str | Image | None = None, status_indicator: str | Image | None = None, thumbnail: str | Image | None = None, thumbnail_texture: str | StaticTexture2D | None = None, username: str | Text | None = None, status: str | Text | None = None, unread_count: str | Text | None = None, join_button: str | Button | None = None, raw_username: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -222,7 +223,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def raw_username(self) -> str | None:
+    def raw_username(self) -> primitives.String | None:
         """The _rawUsername field value."""
         member = self.get_member("_rawUsername")
         if member is None:
@@ -230,7 +231,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @raw_username.setter
-    def raw_username(self, value: str) -> None:
+    def raw_username(self, value: primitives.String) -> None:
         """Set the _rawUsername field value."""
         member = self.get_member("_rawUsername")
         if member is not None:

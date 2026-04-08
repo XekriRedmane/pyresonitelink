@@ -1,9 +1,8 @@
 """Generated component: ParticleSystem."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.particle_style import ParticleStyle
@@ -20,7 +19,7 @@ class ParticleSystem(GeneratedComponent, ICustomInspector, IRenderable, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleSystem"
 
-    def __init__(self, max_particle_count: np.int32 | None = None, style: str | ParticleStyle | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, max_particle_count: primitives.Int | None = None, style: str | ParticleStyle | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,7 +34,7 @@ class ParticleSystem(GeneratedComponent, ICustomInspector, IRenderable, IWorldEv
             self.style = style
 
     @property
-    def max_particle_count(self) -> np.int32 | None:
+    def max_particle_count(self) -> primitives.Int | None:
         """The MaxParticleCount field value."""
         member = self.get_member("MaxParticleCount")
         if member is None:
@@ -43,7 +42,7 @@ class ParticleSystem(GeneratedComponent, ICustomInspector, IRenderable, IWorldEv
         return getattr(member, 'value', None)
 
     @max_particle_count.setter
-    def max_particle_count(self, value: np.int32) -> None:
+    def max_particle_count(self, value: primitives.Int) -> None:
         """Set the MaxParticleCount field value."""
         member = self.get_member("MaxParticleCount")
         if member is not None:

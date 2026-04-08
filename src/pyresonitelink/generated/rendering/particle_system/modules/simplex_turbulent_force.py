@@ -1,7 +1,5 @@
 """Generated component: SimplexTurbulentForce."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SimplexTurbulentForce"
 
-    def __init__(self, strength: np.float32 | None = None, global_noise_offset: np.float32 | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, x_noise_offset: np.float32 | None = None, y_noise_offset: np.float32 | None = None, z_noise_offset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, strength: primitives.Float | None = None, global_noise_offset: primitives.Float | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, x_noise_offset: primitives.Float | None = None, y_noise_offset: primitives.Float | None = None, z_noise_offset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +60,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
         self.set_member("Mode", value)
 
     @property
-    def strength(self) -> np.float32 | None:
+    def strength(self) -> primitives.Float | None:
         """The Strength field value."""
         member = self.get_member("Strength")
         if member is None:
@@ -70,7 +68,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @strength.setter
-    def strength(self, value: np.float32) -> None:
+    def strength(self, value: primitives.Float) -> None:
         """Set the Strength field value."""
         member = self.get_member("Strength")
         if member is not None:
@@ -81,7 +79,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def global_noise_offset(self) -> np.float32 | None:
+    def global_noise_offset(self) -> primitives.Float | None:
         """The GlobalNoiseOffset field value."""
         member = self.get_member("GlobalNoiseOffset")
         if member is None:
@@ -89,7 +87,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @global_noise_offset.setter
-    def global_noise_offset(self, value: np.float32) -> None:
+    def global_noise_offset(self, value: primitives.Float) -> None:
         """Set the GlobalNoiseOffset field value."""
         member = self.get_member("GlobalNoiseOffset")
         if member is not None:
@@ -138,7 +136,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def x_noise_offset(self) -> np.float32 | None:
+    def x_noise_offset(self) -> primitives.Float | None:
         """The X_NoiseOffset field value."""
         member = self.get_member("X_NoiseOffset")
         if member is None:
@@ -146,7 +144,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @x_noise_offset.setter
-    def x_noise_offset(self, value: np.float32) -> None:
+    def x_noise_offset(self, value: primitives.Float) -> None:
         """Set the X_NoiseOffset field value."""
         member = self.get_member("X_NoiseOffset")
         if member is not None:
@@ -157,7 +155,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def y_noise_offset(self) -> np.float32 | None:
+    def y_noise_offset(self) -> primitives.Float | None:
         """The Y_NoiseOffset field value."""
         member = self.get_member("Y_NoiseOffset")
         if member is None:
@@ -165,7 +163,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @y_noise_offset.setter
-    def y_noise_offset(self, value: np.float32) -> None:
+    def y_noise_offset(self, value: primitives.Float) -> None:
         """Set the Y_NoiseOffset field value."""
         member = self.get_member("Y_NoiseOffset")
         if member is not None:
@@ -176,7 +174,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
             )
 
     @property
-    def z_noise_offset(self) -> np.float32 | None:
+    def z_noise_offset(self) -> primitives.Float | None:
         """The Z_NoiseOffset field value."""
         member = self.get_member("Z_NoiseOffset")
         if member is None:
@@ -184,7 +182,7 @@ class SimplexTurbulentForce(GeneratedComponent, IParticleSystemModule, IWorldEve
         return getattr(member, 'value', None)
 
     @z_noise_offset.setter
-    def z_noise_offset(self, value: np.float32) -> None:
+    def z_noise_offset(self, value: primitives.Float) -> None:
         """Set the Z_NoiseOffset field value."""
         member = self.get_member("Z_NoiseOffset")
         if member is not None:

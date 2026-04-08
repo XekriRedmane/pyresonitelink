@@ -18,7 +18,7 @@ class ValueInc(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     Parameterize with a value type::
 
-        ValueInc[np.float32]
+        ValueInc[primitives.Float]
         ValueInc[primitives.Float3]
     """
 

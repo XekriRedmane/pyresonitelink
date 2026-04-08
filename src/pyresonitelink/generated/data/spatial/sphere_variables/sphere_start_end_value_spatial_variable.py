@@ -1,9 +1,8 @@
 """Generated component: SphereStartEndValueSpatialVariable."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ispatial_variable import ISpatialVariable
@@ -18,14 +17,14 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
 
     Parameterize with a value type::
 
-        SphereStartEndValueSpatialVariable[np.float32]
+        SphereStartEndValueSpatialVariable[primitives.Float]
         SphereStartEndValueSpatialVariable[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SphereStartEndValueSpatialVariable<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.SphereStartEndValueSpatialVariable<>"
 
-    def __init__(self, variable_name: str | None = None, priority: np.int32 | None = None, radius: np.float32 | None = None, blend_distance: np.float32 | None = None, start_value: T | None = None, end_value: T | None = None, start_distance: np.float32 | None = None, end_distance: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, radius: primitives.Float | None = None, blend_distance: primitives.Float | None = None, start_value: T | None = None, end_value: T | None = None, start_distance: primitives.Float | None = None, end_distance: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +57,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
             self.end_distance = end_distance
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -66,7 +65,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:
@@ -77,7 +76,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
             )
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -85,7 +84,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:
@@ -96,7 +95,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -104,7 +103,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -115,7 +114,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
             )
 
     @property
-    def blend_distance(self) -> np.float32 | None:
+    def blend_distance(self) -> primitives.Float | None:
         """The BlendDistance field value."""
         member = self.get_member("BlendDistance")
         if member is None:
@@ -123,7 +122,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
         return getattr(member, 'value', None)
 
     @blend_distance.setter
-    def blend_distance(self, value: np.float32) -> None:
+    def blend_distance(self, value: primitives.Float) -> None:
         """Set the BlendDistance field value."""
         member = self.get_member("BlendDistance")
         if member is not None:
@@ -185,7 +184,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
             )
 
     @property
-    def start_distance(self) -> np.float32 | None:
+    def start_distance(self) -> primitives.Float | None:
         """The StartDistance field value."""
         member = self.get_member("StartDistance")
         if member is None:
@@ -193,7 +192,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
         return getattr(member, 'value', None)
 
     @start_distance.setter
-    def start_distance(self, value: np.float32) -> None:
+    def start_distance(self, value: primitives.Float) -> None:
         """Set the StartDistance field value."""
         member = self.get_member("StartDistance")
         if member is not None:
@@ -204,7 +203,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
             )
 
     @property
-    def end_distance(self) -> np.float32 | None:
+    def end_distance(self) -> primitives.Float | None:
         """The EndDistance field value."""
         member = self.get_member("EndDistance")
         if member is None:
@@ -212,7 +211,7 @@ class SphereStartEndValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
         return getattr(member, 'value', None)
 
     @end_distance.setter
-    def end_distance(self, value: np.float32) -> None:
+    def end_distance(self, value: primitives.Float) -> None:
         """Set the EndDistance field value."""
         member = self.get_member("EndDistance")
         if member is not None:

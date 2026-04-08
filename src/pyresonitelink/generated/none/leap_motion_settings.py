@@ -1,7 +1,5 @@
 """Generated component: LeapMotionSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
@@ -16,7 +14,7 @@ class LeapMotionSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LeapMotionSettings"
 
-    def __init__(self, leap_motion_enabled: bool | None = None, offset: primitives.Float3 | None = None, snap_distance: np.float32 | None = None, use_fingers_when_snapped: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, leap_motion_enabled: primitives.Bool | None = None, offset: primitives.Float3 | None = None, snap_distance: primitives.Float | None = None, use_fingers_when_snapped: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +35,7 @@ class LeapMotionSettings(GeneratedComponent, ICustomInspector):
             self.use_fingers_when_snapped = use_fingers_when_snapped
 
     @property
-    def leap_motion_enabled(self) -> bool | None:
+    def leap_motion_enabled(self) -> primitives.Bool | None:
         """The LeapMotionEnabled field value."""
         member = self.get_member("LeapMotionEnabled")
         if member is None:
@@ -45,7 +43,7 @@ class LeapMotionSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @leap_motion_enabled.setter
-    def leap_motion_enabled(self, value: bool) -> None:
+    def leap_motion_enabled(self, value: primitives.Bool) -> None:
         """Set the LeapMotionEnabled field value."""
         member = self.get_member("LeapMotionEnabled")
         if member is not None:
@@ -75,7 +73,7 @@ class LeapMotionSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def snap_distance(self) -> np.float32 | None:
+    def snap_distance(self) -> primitives.Float | None:
         """The SnapDistance field value."""
         member = self.get_member("SnapDistance")
         if member is None:
@@ -83,7 +81,7 @@ class LeapMotionSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @snap_distance.setter
-    def snap_distance(self, value: np.float32) -> None:
+    def snap_distance(self, value: primitives.Float) -> None:
         """Set the SnapDistance field value."""
         member = self.get_member("SnapDistance")
         if member is not None:
@@ -94,7 +92,7 @@ class LeapMotionSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def use_fingers_when_snapped(self) -> bool | None:
+    def use_fingers_when_snapped(self) -> primitives.Bool | None:
         """The UseFingersWhenSnapped field value."""
         member = self.get_member("UseFingersWhenSnapped")
         if member is None:
@@ -102,7 +100,7 @@ class LeapMotionSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @use_fingers_when_snapped.setter
-    def use_fingers_when_snapped(self, value: bool) -> None:
+    def use_fingers_when_snapped(self, value: primitives.Bool) -> None:
         """Set the UseFingersWhenSnapped field value."""
         member = self.get_member("UseFingersWhenSnapped")
         if member is not None:

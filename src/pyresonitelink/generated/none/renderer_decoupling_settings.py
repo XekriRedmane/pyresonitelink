@@ -1,8 +1,7 @@
 """Generated component: RendererDecouplingSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RendererDecouplingSettings"
 
-    def __init__(self, activation_framerate: np.float32 | None = None, deactivation_frames: np.int32 | None = None, force_decouple: bool | None = None, asset_processing_max_time_milliseconds: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, activation_framerate: primitives.Float | None = None, deactivation_frames: primitives.Int | None = None, force_decouple: primitives.Bool | None = None, asset_processing_max_time_milliseconds: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +35,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
             self.asset_processing_max_time_milliseconds = asset_processing_max_time_milliseconds
 
     @property
-    def activation_framerate(self) -> np.float32 | None:
+    def activation_framerate(self) -> primitives.Float | None:
         """The ActivationFramerate field value."""
         member = self.get_member("ActivationFramerate")
         if member is None:
@@ -44,7 +43,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @activation_framerate.setter
-    def activation_framerate(self, value: np.float32) -> None:
+    def activation_framerate(self, value: primitives.Float) -> None:
         """Set the ActivationFramerate field value."""
         member = self.get_member("ActivationFramerate")
         if member is not None:
@@ -55,7 +54,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def deactivation_frames(self) -> np.int32 | None:
+    def deactivation_frames(self) -> primitives.Int | None:
         """The DeactivationFrames field value."""
         member = self.get_member("DeactivationFrames")
         if member is None:
@@ -63,7 +62,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @deactivation_frames.setter
-    def deactivation_frames(self, value: np.int32) -> None:
+    def deactivation_frames(self, value: primitives.Int) -> None:
         """Set the DeactivationFrames field value."""
         member = self.get_member("DeactivationFrames")
         if member is not None:
@@ -74,7 +73,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def force_decouple(self) -> bool | None:
+    def force_decouple(self) -> primitives.Bool | None:
         """The ForceDecouple field value."""
         member = self.get_member("ForceDecouple")
         if member is None:
@@ -82,7 +81,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @force_decouple.setter
-    def force_decouple(self, value: bool) -> None:
+    def force_decouple(self, value: primitives.Bool) -> None:
         """Set the ForceDecouple field value."""
         member = self.get_member("ForceDecouple")
         if member is not None:
@@ -93,7 +92,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def asset_processing_max_time_milliseconds(self) -> np.float32 | None:
+    def asset_processing_max_time_milliseconds(self) -> primitives.Float | None:
         """The AssetProcessingMaxTimeMilliseconds field value."""
         member = self.get_member("AssetProcessingMaxTimeMilliseconds")
         if member is None:
@@ -101,7 +100,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @asset_processing_max_time_milliseconds.setter
-    def asset_processing_max_time_milliseconds(self, value: np.float32) -> None:
+    def asset_processing_max_time_milliseconds(self, value: primitives.Float) -> None:
         """Set the AssetProcessingMaxTimeMilliseconds field value."""
         member = self.get_member("AssetProcessingMaxTimeMilliseconds")
         if member is not None:

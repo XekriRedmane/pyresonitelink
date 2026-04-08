@@ -15,7 +15,7 @@ class GlobalReference(GenericComponent[T], IGlobalValueProxy[T], IComponent, IWo
 
     Parameterize with a value type::
 
-        GlobalReference[np.float32]
+        GlobalReference[primitives.Float]
         GlobalReference[primitives.Float3]
     """
 

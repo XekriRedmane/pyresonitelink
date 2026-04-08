@@ -18,7 +18,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ExternalSlotDuplicator"
 
-    def __init__(self, target_slot: str | Slot | None = None, local_position_override: primitives.Float3 | None = None, local_rotation_override: primitives.FloatQ | None = None, local_scale_override: primitives.Float3 | None = None, active_self_override: bool | None = None, do_not_restore_original_transform: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, local_position_override: primitives.Float3 | None = None, local_rotation_override: primitives.FloatQ | None = None, local_scale_override: primitives.Float3 | None = None, active_self_override: primitives.Bool | None = None, do_not_restore_original_transform: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -123,7 +123,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def active_self_override(self) -> bool | None:
+    def active_self_override(self) -> primitives.Bool | None:
         """The ActiveSelfOverride field value."""
         member = self.get_member("ActiveSelfOverride")
         if member is None:
@@ -131,7 +131,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @active_self_override.setter
-    def active_self_override(self, value: bool) -> None:
+    def active_self_override(self, value: primitives.Bool) -> None:
         """Set the ActiveSelfOverride field value."""
         member = self.get_member("ActiveSelfOverride")
         if member is not None:
@@ -142,7 +142,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def do_not_restore_original_transform(self) -> bool | None:
+    def do_not_restore_original_transform(self) -> primitives.Bool | None:
         """The DoNotRestoreOriginalTransform field value."""
         member = self.get_member("DoNotRestoreOriginalTransform")
         if member is None:
@@ -150,7 +150,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @do_not_restore_original_transform.setter
-    def do_not_restore_original_transform(self, value: bool) -> None:
+    def do_not_restore_original_transform(self, value: primitives.Bool) -> None:
         """Set the DoNotRestoreOriginalTransform field value."""
         member = self.get_member("DoNotRestoreOriginalTransform")
         if member is not None:

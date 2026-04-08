@@ -1,9 +1,8 @@
 """Generated component: DirectVisemeDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.viseme_analyzer import VisemeAnalyzer
@@ -22,7 +21,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DirectVisemeDriver"
 
-    def __init__(self, source: str | VisemeAnalyzer | None = None, mouth_tracking_source: str | IMouthTrackingSourceComponent | None = None, strength_multiplier: np.float32 | None = None, voice_mouth_supress_weight: np.float32 | None = None, laugh_threshold: np.float32 | None = None, laugh_begin_speed: np.float32 | None = None, laugh_end_speed: np.float32 | None = None, silence: str | IField[np.float32] | None = None, pp: str | IField[np.float32] | None = None, ff: str | IField[np.float32] | None = None, th: str | IField[np.float32] | None = None, dd: str | IField[np.float32] | None = None, kk: str | IField[np.float32] | None = None, ch: str | IField[np.float32] | None = None, ss: str | IField[np.float32] | None = None, nn: str | IField[np.float32] | None = None, rr: str | IField[np.float32] | None = None, aa: str | IField[np.float32] | None = None, e: str | IField[np.float32] | None = None, ih: str | IField[np.float32] | None = None, oh: str | IField[np.float32] | None = None, ou: str | IField[np.float32] | None = None, laugh: str | IField[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | VisemeAnalyzer | None = None, mouth_tracking_source: str | IMouthTrackingSourceComponent | None = None, strength_multiplier: primitives.Float | None = None, voice_mouth_supress_weight: primitives.Float | None = None, laugh_threshold: primitives.Float | None = None, laugh_begin_speed: primitives.Float | None = None, laugh_end_speed: primitives.Float | None = None, silence: str | IField[primitives.Float] | None = None, pp: str | IField[primitives.Float] | None = None, ff: str | IField[primitives.Float] | None = None, th: str | IField[primitives.Float] | None = None, dd: str | IField[primitives.Float] | None = None, kk: str | IField[primitives.Float] | None = None, ch: str | IField[primitives.Float] | None = None, ss: str | IField[primitives.Float] | None = None, nn: str | IField[primitives.Float] | None = None, rr: str | IField[primitives.Float] | None = None, aa: str | IField[primitives.Float] | None = None, e: str | IField[primitives.Float] | None = None, ih: str | IField[primitives.Float] | None = None, oh: str | IField[primitives.Float] | None = None, ou: str | IField[primitives.Float] | None = None, laugh: str | IField[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -142,7 +141,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
             )
 
     @property
-    def strength_multiplier(self) -> np.float32 | None:
+    def strength_multiplier(self) -> primitives.Float | None:
         """The StrengthMultiplier field value."""
         member = self.get_member("StrengthMultiplier")
         if member is None:
@@ -150,7 +149,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
         return getattr(member, 'value', None)
 
     @strength_multiplier.setter
-    def strength_multiplier(self, value: np.float32) -> None:
+    def strength_multiplier(self, value: primitives.Float) -> None:
         """Set the StrengthMultiplier field value."""
         member = self.get_member("StrengthMultiplier")
         if member is not None:
@@ -161,7 +160,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
             )
 
     @property
-    def voice_mouth_supress_weight(self) -> np.float32 | None:
+    def voice_mouth_supress_weight(self) -> primitives.Float | None:
         """The VoiceMouthSupressWeight field value."""
         member = self.get_member("VoiceMouthSupressWeight")
         if member is None:
@@ -169,7 +168,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
         return getattr(member, 'value', None)
 
     @voice_mouth_supress_weight.setter
-    def voice_mouth_supress_weight(self, value: np.float32) -> None:
+    def voice_mouth_supress_weight(self, value: primitives.Float) -> None:
         """Set the VoiceMouthSupressWeight field value."""
         member = self.get_member("VoiceMouthSupressWeight")
         if member is not None:
@@ -180,7 +179,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
             )
 
     @property
-    def laugh_threshold(self) -> np.float32 | None:
+    def laugh_threshold(self) -> primitives.Float | None:
         """The LaughThreshold field value."""
         member = self.get_member("LaughThreshold")
         if member is None:
@@ -188,7 +187,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
         return getattr(member, 'value', None)
 
     @laugh_threshold.setter
-    def laugh_threshold(self, value: np.float32) -> None:
+    def laugh_threshold(self, value: primitives.Float) -> None:
         """Set the LaughThreshold field value."""
         member = self.get_member("LaughThreshold")
         if member is not None:
@@ -199,7 +198,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
             )
 
     @property
-    def laugh_begin_speed(self) -> np.float32 | None:
+    def laugh_begin_speed(self) -> primitives.Float | None:
         """The LaughBeginSpeed field value."""
         member = self.get_member("LaughBeginSpeed")
         if member is None:
@@ -207,7 +206,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
         return getattr(member, 'value', None)
 
     @laugh_begin_speed.setter
-    def laugh_begin_speed(self, value: np.float32) -> None:
+    def laugh_begin_speed(self, value: primitives.Float) -> None:
         """Set the LaughBeginSpeed field value."""
         member = self.get_member("LaughBeginSpeed")
         if member is not None:
@@ -218,7 +217,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
             )
 
     @property
-    def laugh_end_speed(self) -> np.float32 | None:
+    def laugh_end_speed(self) -> primitives.Float | None:
         """The LaughEndSpeed field value."""
         member = self.get_member("LaughEndSpeed")
         if member is None:
@@ -226,7 +225,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
         return getattr(member, 'value', None)
 
     @laugh_end_speed.setter
-    def laugh_end_speed(self, value: np.float32) -> None:
+    def laugh_end_speed(self, value: primitives.Float) -> None:
         """Set the LaughEndSpeed field value."""
         member = self.get_member("LaughEndSpeed")
         if member is not None:
@@ -238,15 +237,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def silence(self) -> str | None:
-        """Target ID of the Silence reference (targets IField[np.float32])."""
+        """Target ID of the Silence reference (targets IField[primitives.Float])."""
         member = self.get_member("Silence")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @silence.setter
-    def silence(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Silence reference by target ID or IField[np.float32] instance."""
+    def silence(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Silence reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Silence")
         if isinstance(member, members.Reference):
@@ -259,15 +258,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def pp(self) -> str | None:
-        """Target ID of the PP reference (targets IField[np.float32])."""
+        """Target ID of the PP reference (targets IField[primitives.Float])."""
         member = self.get_member("PP")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @pp.setter
-    def pp(self, target: str | IField[np.float32] | None) -> None:
-        """Set the PP reference by target ID or IField[np.float32] instance."""
+    def pp(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the PP reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("PP")
         if isinstance(member, members.Reference):
@@ -280,15 +279,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ff(self) -> str | None:
-        """Target ID of the FF reference (targets IField[np.float32])."""
+        """Target ID of the FF reference (targets IField[primitives.Float])."""
         member = self.get_member("FF")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ff.setter
-    def ff(self, target: str | IField[np.float32] | None) -> None:
-        """Set the FF reference by target ID or IField[np.float32] instance."""
+    def ff(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the FF reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("FF")
         if isinstance(member, members.Reference):
@@ -301,15 +300,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def th(self) -> str | None:
-        """Target ID of the TH reference (targets IField[np.float32])."""
+        """Target ID of the TH reference (targets IField[primitives.Float])."""
         member = self.get_member("TH")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @th.setter
-    def th(self, target: str | IField[np.float32] | None) -> None:
-        """Set the TH reference by target ID or IField[np.float32] instance."""
+    def th(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the TH reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TH")
         if isinstance(member, members.Reference):
@@ -322,15 +321,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def dd(self) -> str | None:
-        """Target ID of the DD reference (targets IField[np.float32])."""
+        """Target ID of the DD reference (targets IField[primitives.Float])."""
         member = self.get_member("DD")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @dd.setter
-    def dd(self, target: str | IField[np.float32] | None) -> None:
-        """Set the DD reference by target ID or IField[np.float32] instance."""
+    def dd(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the DD reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("DD")
         if isinstance(member, members.Reference):
@@ -343,15 +342,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def kk(self) -> str | None:
-        """Target ID of the kk reference (targets IField[np.float32])."""
+        """Target ID of the kk reference (targets IField[primitives.Float])."""
         member = self.get_member("kk")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @kk.setter
-    def kk(self, target: str | IField[np.float32] | None) -> None:
-        """Set the kk reference by target ID or IField[np.float32] instance."""
+    def kk(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the kk reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("kk")
         if isinstance(member, members.Reference):
@@ -364,15 +363,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ch(self) -> str | None:
-        """Target ID of the CH reference (targets IField[np.float32])."""
+        """Target ID of the CH reference (targets IField[primitives.Float])."""
         member = self.get_member("CH")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ch.setter
-    def ch(self, target: str | IField[np.float32] | None) -> None:
-        """Set the CH reference by target ID or IField[np.float32] instance."""
+    def ch(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the CH reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("CH")
         if isinstance(member, members.Reference):
@@ -385,15 +384,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ss(self) -> str | None:
-        """Target ID of the SS reference (targets IField[np.float32])."""
+        """Target ID of the SS reference (targets IField[primitives.Float])."""
         member = self.get_member("SS")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ss.setter
-    def ss(self, target: str | IField[np.float32] | None) -> None:
-        """Set the SS reference by target ID or IField[np.float32] instance."""
+    def ss(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the SS reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SS")
         if isinstance(member, members.Reference):
@@ -406,15 +405,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def nn(self) -> str | None:
-        """Target ID of the nn reference (targets IField[np.float32])."""
+        """Target ID of the nn reference (targets IField[primitives.Float])."""
         member = self.get_member("nn")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @nn.setter
-    def nn(self, target: str | IField[np.float32] | None) -> None:
-        """Set the nn reference by target ID or IField[np.float32] instance."""
+    def nn(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the nn reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("nn")
         if isinstance(member, members.Reference):
@@ -427,15 +426,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def rr(self) -> str | None:
-        """Target ID of the RR reference (targets IField[np.float32])."""
+        """Target ID of the RR reference (targets IField[primitives.Float])."""
         member = self.get_member("RR")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @rr.setter
-    def rr(self, target: str | IField[np.float32] | None) -> None:
-        """Set the RR reference by target ID or IField[np.float32] instance."""
+    def rr(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the RR reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("RR")
         if isinstance(member, members.Reference):
@@ -448,15 +447,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def aa(self) -> str | None:
-        """Target ID of the aa reference (targets IField[np.float32])."""
+        """Target ID of the aa reference (targets IField[primitives.Float])."""
         member = self.get_member("aa")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @aa.setter
-    def aa(self, target: str | IField[np.float32] | None) -> None:
-        """Set the aa reference by target ID or IField[np.float32] instance."""
+    def aa(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the aa reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("aa")
         if isinstance(member, members.Reference):
@@ -469,15 +468,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def e(self) -> str | None:
-        """Target ID of the E reference (targets IField[np.float32])."""
+        """Target ID of the E reference (targets IField[primitives.Float])."""
         member = self.get_member("E")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @e.setter
-    def e(self, target: str | IField[np.float32] | None) -> None:
-        """Set the E reference by target ID or IField[np.float32] instance."""
+    def e(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the E reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("E")
         if isinstance(member, members.Reference):
@@ -490,15 +489,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ih(self) -> str | None:
-        """Target ID of the ih reference (targets IField[np.float32])."""
+        """Target ID of the ih reference (targets IField[primitives.Float])."""
         member = self.get_member("ih")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ih.setter
-    def ih(self, target: str | IField[np.float32] | None) -> None:
-        """Set the ih reference by target ID or IField[np.float32] instance."""
+    def ih(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the ih reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ih")
         if isinstance(member, members.Reference):
@@ -511,15 +510,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def oh(self) -> str | None:
-        """Target ID of the oh reference (targets IField[np.float32])."""
+        """Target ID of the oh reference (targets IField[primitives.Float])."""
         member = self.get_member("oh")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @oh.setter
-    def oh(self, target: str | IField[np.float32] | None) -> None:
-        """Set the oh reference by target ID or IField[np.float32] instance."""
+    def oh(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the oh reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("oh")
         if isinstance(member, members.Reference):
@@ -532,15 +531,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ou(self) -> str | None:
-        """Target ID of the ou reference (targets IField[np.float32])."""
+        """Target ID of the ou reference (targets IField[primitives.Float])."""
         member = self.get_member("ou")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ou.setter
-    def ou(self, target: str | IField[np.float32] | None) -> None:
-        """Set the ou reference by target ID or IField[np.float32] instance."""
+    def ou(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the ou reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ou")
         if isinstance(member, members.Reference):
@@ -553,15 +552,15 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def laugh(self) -> str | None:
-        """Target ID of the Laugh reference (targets IField[np.float32])."""
+        """Target ID of the Laugh reference (targets IField[primitives.Float])."""
         member = self.get_member("Laugh")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @laugh.setter
-    def laugh(self, target: str | IField[np.float32] | None) -> None:
-        """Set the Laugh reference by target ID or IField[np.float32] instance."""
+    def laugh(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the Laugh reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Laugh")
         if isinstance(member, members.Reference):

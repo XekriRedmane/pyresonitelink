@@ -1,11 +1,11 @@
 """Generated component: ProceduralAssetMetadata."""
 
 from typing import Any
-import numpy as np
 
 A = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.procedural_asset_provider import ProceduralAssetProvider
@@ -20,14 +20,14 @@ class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiv
 
     Parameterize with a value type::
 
-        ProceduralAssetMetadata[np.float32]
+        ProceduralAssetMetadata[primitives.Float]
         ProceduralAssetMetadata[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProceduralAssetMetadata<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ProceduralAssetMetadata<>"
 
-    def __init__(self, asset: str | ProceduralAssetProvider[A] | None = None, update_count: np.int32 | None = None, error: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, asset: str | ProceduralAssetProvider[A] | None = None, update_count: primitives.Int | None = None, error: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,7 +66,7 @@ class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiv
             )
 
     @property
-    def update_count(self) -> np.int32 | None:
+    def update_count(self) -> primitives.Int | None:
         """The UpdateCount field value."""
         member = self.get_member("UpdateCount")
         if member is None:
@@ -74,7 +74,7 @@ class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @update_count.setter
-    def update_count(self, value: np.int32) -> None:
+    def update_count(self, value: primitives.Int) -> None:
         """Set the UpdateCount field value."""
         member = self.get_member("UpdateCount")
         if member is not None:
@@ -85,7 +85,7 @@ class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiv
             )
 
     @property
-    def error(self) -> bool | None:
+    def error(self) -> primitives.Bool | None:
         """The Error field value."""
         member = self.get_member("Error")
         if member is None:
@@ -93,7 +93,7 @@ class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @error.setter
-    def error(self, value: bool) -> None:
+    def error(self, value: primitives.Bool) -> None:
         """Set the Error field value."""
         member = self.get_member("Error")
         if member is not None:

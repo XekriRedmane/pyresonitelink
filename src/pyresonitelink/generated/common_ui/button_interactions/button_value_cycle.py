@@ -15,7 +15,7 @@ class ButtonValueCycle(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
 
     Parameterize with a value type::
 
-        ButtonValueCycle[np.float32]
+        ButtonValueCycle[primitives.Float]
         ButtonValueCycle[primitives.Float3]
     """
 

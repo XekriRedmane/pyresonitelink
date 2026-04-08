@@ -1,7 +1,5 @@
 """Generated component: OverlayFresnelMaterial."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OverlayFresnelMaterial"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, exponent: np.float32 | None = None, gamma_curve: np.float32 | None = None, behind_far_color: primitives.ColorX | None = None, behind_near_color: primitives.ColorX | None = None, front_far_color: primitives.ColorX | None = None, front_near_color: primitives.ColorX | None = None, behind_far_texture: str | IAssetProvider[ITexture2D] | None = None, behind_near_texture: str | IAssetProvider[ITexture2D] | None = None, front_far_texture: str | IAssetProvider[ITexture2D] | None = None, front_near_texture: str | IAssetProvider[ITexture2D] | None = None, behind_far_texture_scale: primitives.Float2 | None = None, behind_far_texture_offset: primitives.Float2 | None = None, behind_near_texture_scale: primitives.Float2 | None = None, behind_near_texture_offset: primitives.Float2 | None = None, front_far_texture_scale: primitives.Float2 | None = None, front_far_texture_offset: primitives.Float2 | None = None, front_near_texture_scale: primitives.Float2 | None = None, front_near_texture_offset: primitives.Float2 | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, render_queue: np.int32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, polar_uvmapping: bool | None = None, polar_power: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, exponent: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, behind_far_color: primitives.ColorX | None = None, behind_near_color: primitives.ColorX | None = None, front_far_color: primitives.ColorX | None = None, front_near_color: primitives.ColorX | None = None, behind_far_texture: str | IAssetProvider[ITexture2D] | None = None, behind_near_texture: str | IAssetProvider[ITexture2D] | None = None, front_far_texture: str | IAssetProvider[ITexture2D] | None = None, front_near_texture: str | IAssetProvider[ITexture2D] | None = None, behind_far_texture_scale: primitives.Float2 | None = None, behind_far_texture_offset: primitives.Float2 | None = None, behind_near_texture_scale: primitives.Float2 | None = None, behind_near_texture_offset: primitives.Float2 | None = None, front_far_texture_scale: primitives.Float2 | None = None, front_far_texture_offset: primitives.Float2 | None = None, front_near_texture_scale: primitives.Float2 | None = None, front_near_texture_offset: primitives.Float2 | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, render_queue: primitives.Int | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, polar_uvmapping: primitives.Bool | None = None, polar_power: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -109,7 +107,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             self.polar_power = polar_power
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -117,7 +115,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -149,7 +147,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def exponent(self) -> np.float32 | None:
+    def exponent(self) -> primitives.Float | None:
         """The Exponent field value."""
         member = self.get_member("Exponent")
         if member is None:
@@ -157,7 +155,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @exponent.setter
-    def exponent(self, value: np.float32) -> None:
+    def exponent(self, value: primitives.Float) -> None:
         """Set the Exponent field value."""
         member = self.get_member("Exponent")
         if member is not None:
@@ -168,7 +166,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def gamma_curve(self) -> np.float32 | None:
+    def gamma_curve(self) -> primitives.Float | None:
         """The GammaCurve field value."""
         member = self.get_member("GammaCurve")
         if member is None:
@@ -176,7 +174,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @gamma_curve.setter
-    def gamma_curve(self, value: np.float32) -> None:
+    def gamma_curve(self, value: primitives.Float) -> None:
         """Set the GammaCurve field value."""
         member = self.get_member("GammaCurve")
         if member is not None:
@@ -559,7 +557,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
         self.set_member("ZWrite", value)
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -567,7 +565,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -578,7 +576,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -586,7 +584,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -597,7 +595,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -605,7 +603,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -616,7 +614,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def polar_uvmapping(self) -> bool | None:
+    def polar_uvmapping(self) -> primitives.Bool | None:
         """The PolarUVmapping field value."""
         member = self.get_member("PolarUVmapping")
         if member is None:
@@ -624,7 +622,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @polar_uvmapping.setter
-    def polar_uvmapping(self, value: bool) -> None:
+    def polar_uvmapping(self, value: primitives.Bool) -> None:
         """Set the PolarUVmapping field value."""
         member = self.get_member("PolarUVmapping")
         if member is not None:
@@ -635,7 +633,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def polar_power(self) -> np.float32 | None:
+    def polar_power(self) -> primitives.Float | None:
         """The PolarPower field value."""
         member = self.get_member("PolarPower")
         if member is None:
@@ -643,7 +641,7 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @polar_power.setter
-    def polar_power(self, value: np.float32) -> None:
+    def polar_power(self, value: primitives.Float) -> None:
         """Set the PolarPower field value."""
         member = self.get_member("PolarPower")
         if member is not None:

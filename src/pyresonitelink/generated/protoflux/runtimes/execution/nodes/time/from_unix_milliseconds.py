@@ -1,8 +1,7 @@
 """Generated component: FromUnixMilliseconds."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class FromUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.FromUnixMilliseconds"
 
-    def __init__(self, unix_miliseconds: str | INodeValueOutput[np.int64] | None = None, is_local: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, unix_miliseconds: str | INodeValueOutput[primitives.Long] | None = None, is_local: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +36,15 @@ class FromUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def unix_miliseconds(self) -> str | None:
-        """Target ID of the UnixMiliseconds reference (targets INodeValueOutput[np.int64])."""
+        """Target ID of the UnixMiliseconds reference (targets INodeValueOutput[primitives.Long])."""
         member = self.get_member("UnixMiliseconds")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @unix_miliseconds.setter
-    def unix_miliseconds(self, target: str | INodeValueOutput[np.int64] | None) -> None:
-        """Set the UnixMiliseconds reference by target ID or INodeValueOutput[np.int64] instance."""
+    def unix_miliseconds(self, target: str | INodeValueOutput[primitives.Long] | None) -> None:
+        """Set the UnixMiliseconds reference by target ID or INodeValueOutput[primitives.Long] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("UnixMiliseconds")
         if isinstance(member, members.Reference):
@@ -58,15 +57,15 @@ class FromUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def is_local(self) -> str | None:
-        """Target ID of the IsLocal reference (targets INodeValueOutput[bool])."""
+        """Target ID of the IsLocal reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("IsLocal")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_local.setter
-    def is_local(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the IsLocal reference by target ID or INodeValueOutput[bool] instance."""
+    def is_local(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the IsLocal reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("IsLocal")
         if isinstance(member, members.Reference):

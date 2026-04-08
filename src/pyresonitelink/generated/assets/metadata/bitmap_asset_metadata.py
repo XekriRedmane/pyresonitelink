@@ -1,7 +1,5 @@
 """Generated component: BitmapAssetMetadata."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BitmapAssetMetadata"
 
-    def __init__(self, asset: str | IAssetProvider[Texture2D] | None = None, width: np.int32 | None = None, height: np.int32 | None = None, base_format: str | None = None, bits_per_pixel: np.float64 | None = None, channel_count: np.int32 | None = None, average_color: primitives.ColorX | None = None, average_visible_color: primitives.ColorX | None = None, average_hsv: primitives.ColorX | None = None, average_visible_hsv: primitives.ColorX | None = None, invalid_pixel_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, asset: str | IAssetProvider[Texture2D] | None = None, width: primitives.Int | None = None, height: primitives.Int | None = None, base_format: primitives.String | None = None, bits_per_pixel: primitives.Double | None = None, channel_count: primitives.Int | None = None, average_color: primitives.ColorX | None = None, average_visible_color: primitives.ColorX | None = None, average_hsv: primitives.ColorX | None = None, average_visible_hsv: primitives.ColorX | None = None, invalid_pixel_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -84,7 +82,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def width(self) -> np.int32 | None:
+    def width(self) -> primitives.Int | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -92,7 +90,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.int32) -> None:
+    def width(self, value: primitives.Int) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -103,7 +101,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def height(self) -> np.int32 | None:
+    def height(self) -> primitives.Int | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -111,7 +109,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.int32) -> None:
+    def height(self, value: primitives.Int) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -122,7 +120,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def base_format(self) -> str | None:
+    def base_format(self) -> primitives.String | None:
         """The BaseFormat field value."""
         member = self.get_member("BaseFormat")
         if member is None:
@@ -130,7 +128,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @base_format.setter
-    def base_format(self, value: str) -> None:
+    def base_format(self, value: primitives.String) -> None:
         """Set the BaseFormat field value."""
         member = self.get_member("BaseFormat")
         if member is not None:
@@ -167,7 +165,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("AlphaData", value)
 
     @property
-    def bits_per_pixel(self) -> np.float64 | None:
+    def bits_per_pixel(self) -> primitives.Double | None:
         """The BitsPerPixel field value."""
         member = self.get_member("BitsPerPixel")
         if member is None:
@@ -175,7 +173,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @bits_per_pixel.setter
-    def bits_per_pixel(self, value: np.float64) -> None:
+    def bits_per_pixel(self, value: primitives.Double) -> None:
         """Set the BitsPerPixel field value."""
         member = self.get_member("BitsPerPixel")
         if member is not None:
@@ -186,7 +184,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def channel_count(self) -> np.int32 | None:
+    def channel_count(self) -> primitives.Int | None:
         """The ChannelCount field value."""
         member = self.get_member("ChannelCount")
         if member is None:
@@ -194,7 +192,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @channel_count.setter
-    def channel_count(self, value: np.int32) -> None:
+    def channel_count(self, value: primitives.Int) -> None:
         """Set the ChannelCount field value."""
         member = self.get_member("ChannelCount")
         if member is not None:
@@ -281,7 +279,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def invalid_pixel_count(self) -> np.int32 | None:
+    def invalid_pixel_count(self) -> primitives.Int | None:
         """The InvalidPixelCount field value."""
         member = self.get_member("InvalidPixelCount")
         if member is None:
@@ -289,7 +287,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @invalid_pixel_count.setter
-    def invalid_pixel_count(self, value: np.int32) -> None:
+    def invalid_pixel_count(self, value: primitives.Int) -> None:
         """Set the InvalidPixelCount field value."""
         member = self.get_member("InvalidPixelCount")
         if member is not None:

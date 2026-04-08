@@ -6,6 +6,7 @@ I = Any
 O = Any
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -21,7 +22,7 @@ class ReferenceCast(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceCast<,>"
 
-    def __init__(self, source: str | I | None = None, target: str | SyncRef[O] | None = None, write_back: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | I | None = None, target: str | SyncRef[O] | None = None, write_back: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -81,7 +82,7 @@ class ReferenceCast(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def write_back(self) -> bool | None:
+    def write_back(self) -> primitives.Bool | None:
         """The WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is None:
@@ -89,7 +90,7 @@ class ReferenceCast(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @write_back.setter
-    def write_back(self, value: bool) -> None:
+    def write_back(self, value: primitives.Bool) -> None:
         """Set the WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is not None:

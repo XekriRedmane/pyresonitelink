@@ -1,7 +1,5 @@
 """Generated component: InteractiveCameraControl."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -31,7 +29,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraControl"
 
-    def __init__(self, canvas: str | Canvas | None = None, panel: str | LegacyPanel | None = None, field_of_view: np.float32 | None = None, angle_position: np.float32 | None = None, distance: np.float32 | None = None, height_offset: np.float32 | None = None, first_person_pitch: np.float32 | None = None, first_person_roll: np.float32 | None = None, first_person_offset: np.float32 | None = None, framing_viewport_position: primitives.Float2 | None = None, mirror: bool | None = None, group_detection_radius: np.float32 | None = None, group_leave_boundary: np.float32 | None = None, position_smooth_speed: np.float32 | None = None, angle_smooth_speed: np.float32 | None = None, framing_smooth_speed: np.float32 | None = None, interpolate_between_anchors: bool | None = None, anchor_interpolation_speed: np.float32 | None = None, anchor_linear_interpolation: bool | None = None, framing_target_override: str | None = None, render_for_everyone: bool | None = None, anyone_can_interact: bool | None = None, render_private_ui: bool | None = None, motion_blur: bool | None = None, screen_space_reflections: bool | None = None, spawn_photo_in_world: bool | None = None, flip_preview: bool | None = None, render_texture_proxy: str | RenderTextureProxyProvider | None = None, framing_reticle: str | RectTransform | None = None, mirror_message: str | RectTransform | None = None, smooth_first_person_button: str | Button | None = None, third_person_button: str | Button | None = None, group_button: str | Button | None = None, world_button: str | Button | None = None, manual_button: str | Button | None = None, mirror_button: str | Button | None = None, users_button: str | Button | None = None, angle_increase_button: str | Button | None = None, angle_decrease_button: str | Button | None = None, height_increase_button: str | Button | None = None, height_decrease_button: str | Button | None = None, distance_increase_button: str | Button | None = None, distance_decrease_button: str | Button | None = None, reset_button: str | Button | None = None, fov_slider: str | Slider[np.float32] | None = None, avoid_occlusion: str | Checkbox | None = None, keep_in_world_space: str | Checkbox | None = None, movement_wobble: str | Checkbox | None = None, aim_in_front_of_head: str | Checkbox | None = None, force_eyes_on_camera: str | Checkbox | None = None, hide_camera: str | Checkbox | None = None, hide_badge: str | Checkbox | None = None, hide_lasers: str | Checkbox | None = None, show_frustum: str | Checkbox | None = None, timer: str | Checkbox | None = None, force_live: str | Checkbox | None = None, audio_from_camera_viewpoint: str | Checkbox | None = None, user_control: str | InteractiveCameraUserControl | None = None, settings_dialog: str | InteractiveCameraControlSettings | None = None, positioning_dialog: str | InteractiveCameraControlPositioning | None = None, anchors_dialog: str | InteractiveCameraControlAnchors | None = None, obs_dialog: str | InteractiveCameraOBS | None = None, twitch_dialog: str | TwitchChatDialog | None = None, settings_button: str | Button | None = None, positioning_button: str | Button | None = None, anchors_button: str | Button | None = None, obs_button: str | Button | None = None, twitch_button: str | Button | None = None, preview_material: str | UI_UnlitMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, canvas: str | Canvas | None = None, panel: str | LegacyPanel | None = None, field_of_view: primitives.Float | None = None, angle_position: primitives.Float | None = None, distance: primitives.Float | None = None, height_offset: primitives.Float | None = None, first_person_pitch: primitives.Float | None = None, first_person_roll: primitives.Float | None = None, first_person_offset: primitives.Float | None = None, framing_viewport_position: primitives.Float2 | None = None, mirror: primitives.Bool | None = None, group_detection_radius: primitives.Float | None = None, group_leave_boundary: primitives.Float | None = None, position_smooth_speed: primitives.Float | None = None, angle_smooth_speed: primitives.Float | None = None, framing_smooth_speed: primitives.Float | None = None, interpolate_between_anchors: primitives.Bool | None = None, anchor_interpolation_speed: primitives.Float | None = None, anchor_linear_interpolation: primitives.Bool | None = None, framing_target_override: primitives.String | None = None, render_for_everyone: primitives.Bool | None = None, anyone_can_interact: primitives.Bool | None = None, render_private_ui: primitives.Bool | None = None, motion_blur: primitives.Bool | None = None, screen_space_reflections: primitives.Bool | None = None, spawn_photo_in_world: primitives.Bool | None = None, flip_preview: primitives.Bool | None = None, render_texture_proxy: str | RenderTextureProxyProvider | None = None, framing_reticle: str | RectTransform | None = None, mirror_message: str | RectTransform | None = None, smooth_first_person_button: str | Button | None = None, third_person_button: str | Button | None = None, group_button: str | Button | None = None, world_button: str | Button | None = None, manual_button: str | Button | None = None, mirror_button: str | Button | None = None, users_button: str | Button | None = None, angle_increase_button: str | Button | None = None, angle_decrease_button: str | Button | None = None, height_increase_button: str | Button | None = None, height_decrease_button: str | Button | None = None, distance_increase_button: str | Button | None = None, distance_decrease_button: str | Button | None = None, reset_button: str | Button | None = None, fov_slider: str | Slider[primitives.Float] | None = None, avoid_occlusion: str | Checkbox | None = None, keep_in_world_space: str | Checkbox | None = None, movement_wobble: str | Checkbox | None = None, aim_in_front_of_head: str | Checkbox | None = None, force_eyes_on_camera: str | Checkbox | None = None, hide_camera: str | Checkbox | None = None, hide_badge: str | Checkbox | None = None, hide_lasers: str | Checkbox | None = None, show_frustum: str | Checkbox | None = None, timer: str | Checkbox | None = None, force_live: str | Checkbox | None = None, audio_from_camera_viewpoint: str | Checkbox | None = None, user_control: str | InteractiveCameraUserControl | None = None, settings_dialog: str | InteractiveCameraControlSettings | None = None, positioning_dialog: str | InteractiveCameraControlPositioning | None = None, anchors_dialog: str | InteractiveCameraControlAnchors | None = None, obs_dialog: str | InteractiveCameraOBS | None = None, twitch_dialog: str | TwitchChatDialog | None = None, settings_button: str | Button | None = None, positioning_button: str | Button | None = None, anchors_button: str | Button | None = None, obs_button: str | Button | None = None, twitch_button: str | Button | None = None, preview_material: str | UI_UnlitMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -289,7 +287,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def field_of_view(self) -> np.float32 | None:
+    def field_of_view(self) -> primitives.Float | None:
         """The FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is None:
@@ -297,7 +295,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @field_of_view.setter
-    def field_of_view(self, value: np.float32) -> None:
+    def field_of_view(self, value: primitives.Float) -> None:
         """Set the FieldOfView field value."""
         member = self.get_member("FieldOfView")
         if member is not None:
@@ -308,7 +306,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def angle_position(self) -> np.float32 | None:
+    def angle_position(self) -> primitives.Float | None:
         """The AnglePosition field value."""
         member = self.get_member("AnglePosition")
         if member is None:
@@ -316,7 +314,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @angle_position.setter
-    def angle_position(self, value: np.float32) -> None:
+    def angle_position(self, value: primitives.Float) -> None:
         """Set the AnglePosition field value."""
         member = self.get_member("AnglePosition")
         if member is not None:
@@ -327,7 +325,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def distance(self) -> np.float32 | None:
+    def distance(self) -> primitives.Float | None:
         """The Distance field value."""
         member = self.get_member("Distance")
         if member is None:
@@ -335,7 +333,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @distance.setter
-    def distance(self, value: np.float32) -> None:
+    def distance(self, value: primitives.Float) -> None:
         """Set the Distance field value."""
         member = self.get_member("Distance")
         if member is not None:
@@ -346,7 +344,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def height_offset(self) -> np.float32 | None:
+    def height_offset(self) -> primitives.Float | None:
         """The HeightOffset field value."""
         member = self.get_member("HeightOffset")
         if member is None:
@@ -354,7 +352,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @height_offset.setter
-    def height_offset(self, value: np.float32) -> None:
+    def height_offset(self, value: primitives.Float) -> None:
         """Set the HeightOffset field value."""
         member = self.get_member("HeightOffset")
         if member is not None:
@@ -365,7 +363,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def first_person_pitch(self) -> np.float32 | None:
+    def first_person_pitch(self) -> primitives.Float | None:
         """The FirstPersonPitch field value."""
         member = self.get_member("FirstPersonPitch")
         if member is None:
@@ -373,7 +371,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @first_person_pitch.setter
-    def first_person_pitch(self, value: np.float32) -> None:
+    def first_person_pitch(self, value: primitives.Float) -> None:
         """Set the FirstPersonPitch field value."""
         member = self.get_member("FirstPersonPitch")
         if member is not None:
@@ -384,7 +382,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def first_person_roll(self) -> np.float32 | None:
+    def first_person_roll(self) -> primitives.Float | None:
         """The FirstPersonRoll field value."""
         member = self.get_member("FirstPersonRoll")
         if member is None:
@@ -392,7 +390,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @first_person_roll.setter
-    def first_person_roll(self, value: np.float32) -> None:
+    def first_person_roll(self, value: primitives.Float) -> None:
         """Set the FirstPersonRoll field value."""
         member = self.get_member("FirstPersonRoll")
         if member is not None:
@@ -403,7 +401,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def first_person_offset(self) -> np.float32 | None:
+    def first_person_offset(self) -> primitives.Float | None:
         """The FirstPersonOffset field value."""
         member = self.get_member("FirstPersonOffset")
         if member is None:
@@ -411,7 +409,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @first_person_offset.setter
-    def first_person_offset(self, value: np.float32) -> None:
+    def first_person_offset(self, value: primitives.Float) -> None:
         """Set the FirstPersonOffset field value."""
         member = self.get_member("FirstPersonOffset")
         if member is not None:
@@ -441,7 +439,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def mirror(self) -> bool | None:
+    def mirror(self) -> primitives.Bool | None:
         """The Mirror field value."""
         member = self.get_member("Mirror")
         if member is None:
@@ -449,7 +447,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @mirror.setter
-    def mirror(self, value: bool) -> None:
+    def mirror(self, value: primitives.Bool) -> None:
         """Set the Mirror field value."""
         member = self.get_member("Mirror")
         if member is not None:
@@ -460,7 +458,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def group_detection_radius(self) -> np.float32 | None:
+    def group_detection_radius(self) -> primitives.Float | None:
         """The GroupDetectionRadius field value."""
         member = self.get_member("GroupDetectionRadius")
         if member is None:
@@ -468,7 +466,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @group_detection_radius.setter
-    def group_detection_radius(self, value: np.float32) -> None:
+    def group_detection_radius(self, value: primitives.Float) -> None:
         """Set the GroupDetectionRadius field value."""
         member = self.get_member("GroupDetectionRadius")
         if member is not None:
@@ -479,7 +477,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def group_leave_boundary(self) -> np.float32 | None:
+    def group_leave_boundary(self) -> primitives.Float | None:
         """The GroupLeaveBoundary field value."""
         member = self.get_member("GroupLeaveBoundary")
         if member is None:
@@ -487,7 +485,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @group_leave_boundary.setter
-    def group_leave_boundary(self, value: np.float32) -> None:
+    def group_leave_boundary(self, value: primitives.Float) -> None:
         """Set the GroupLeaveBoundary field value."""
         member = self.get_member("GroupLeaveBoundary")
         if member is not None:
@@ -498,7 +496,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def position_smooth_speed(self) -> np.float32 | None:
+    def position_smooth_speed(self) -> primitives.Float | None:
         """The PositionSmoothSpeed field value."""
         member = self.get_member("PositionSmoothSpeed")
         if member is None:
@@ -506,7 +504,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @position_smooth_speed.setter
-    def position_smooth_speed(self, value: np.float32) -> None:
+    def position_smooth_speed(self, value: primitives.Float) -> None:
         """Set the PositionSmoothSpeed field value."""
         member = self.get_member("PositionSmoothSpeed")
         if member is not None:
@@ -517,7 +515,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def angle_smooth_speed(self) -> np.float32 | None:
+    def angle_smooth_speed(self) -> primitives.Float | None:
         """The AngleSmoothSpeed field value."""
         member = self.get_member("AngleSmoothSpeed")
         if member is None:
@@ -525,7 +523,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @angle_smooth_speed.setter
-    def angle_smooth_speed(self, value: np.float32) -> None:
+    def angle_smooth_speed(self, value: primitives.Float) -> None:
         """Set the AngleSmoothSpeed field value."""
         member = self.get_member("AngleSmoothSpeed")
         if member is not None:
@@ -536,7 +534,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def framing_smooth_speed(self) -> np.float32 | None:
+    def framing_smooth_speed(self) -> primitives.Float | None:
         """The FramingSmoothSpeed field value."""
         member = self.get_member("FramingSmoothSpeed")
         if member is None:
@@ -544,7 +542,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @framing_smooth_speed.setter
-    def framing_smooth_speed(self, value: np.float32) -> None:
+    def framing_smooth_speed(self, value: primitives.Float) -> None:
         """Set the FramingSmoothSpeed field value."""
         member = self.get_member("FramingSmoothSpeed")
         if member is not None:
@@ -555,7 +553,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def interpolate_between_anchors(self) -> bool | None:
+    def interpolate_between_anchors(self) -> primitives.Bool | None:
         """The InterpolateBetweenAnchors field value."""
         member = self.get_member("InterpolateBetweenAnchors")
         if member is None:
@@ -563,7 +561,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @interpolate_between_anchors.setter
-    def interpolate_between_anchors(self, value: bool) -> None:
+    def interpolate_between_anchors(self, value: primitives.Bool) -> None:
         """Set the InterpolateBetweenAnchors field value."""
         member = self.get_member("InterpolateBetweenAnchors")
         if member is not None:
@@ -574,7 +572,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def anchor_interpolation_speed(self) -> np.float32 | None:
+    def anchor_interpolation_speed(self) -> primitives.Float | None:
         """The AnchorInterpolationSpeed field value."""
         member = self.get_member("AnchorInterpolationSpeed")
         if member is None:
@@ -582,7 +580,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @anchor_interpolation_speed.setter
-    def anchor_interpolation_speed(self, value: np.float32) -> None:
+    def anchor_interpolation_speed(self, value: primitives.Float) -> None:
         """Set the AnchorInterpolationSpeed field value."""
         member = self.get_member("AnchorInterpolationSpeed")
         if member is not None:
@@ -593,7 +591,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def anchor_linear_interpolation(self) -> bool | None:
+    def anchor_linear_interpolation(self) -> primitives.Bool | None:
         """The AnchorLinearInterpolation field value."""
         member = self.get_member("AnchorLinearInterpolation")
         if member is None:
@@ -601,7 +599,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @anchor_linear_interpolation.setter
-    def anchor_linear_interpolation(self, value: bool) -> None:
+    def anchor_linear_interpolation(self, value: primitives.Bool) -> None:
         """Set the AnchorLinearInterpolation field value."""
         member = self.get_member("AnchorLinearInterpolation")
         if member is not None:
@@ -625,7 +623,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         self.set_member("Mode", value)
 
     @property
-    def framing_target_override(self) -> str | None:
+    def framing_target_override(self) -> primitives.String | None:
         """The FramingTargetOverride field value."""
         member = self.get_member("FramingTargetOverride")
         if member is None:
@@ -633,7 +631,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @framing_target_override.setter
-    def framing_target_override(self, value: str) -> None:
+    def framing_target_override(self, value: primitives.String) -> None:
         """Set the FramingTargetOverride field value."""
         member = self.get_member("FramingTargetOverride")
         if member is not None:
@@ -683,7 +681,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         self.set_member("GroupExcludeUsers", value)
 
     @property
-    def render_for_everyone(self) -> bool | None:
+    def render_for_everyone(self) -> primitives.Bool | None:
         """The RenderForEveryone field value."""
         member = self.get_member("RenderForEveryone")
         if member is None:
@@ -691,7 +689,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @render_for_everyone.setter
-    def render_for_everyone(self, value: bool) -> None:
+    def render_for_everyone(self, value: primitives.Bool) -> None:
         """Set the RenderForEveryone field value."""
         member = self.get_member("RenderForEveryone")
         if member is not None:
@@ -702,7 +700,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def anyone_can_interact(self) -> bool | None:
+    def anyone_can_interact(self) -> primitives.Bool | None:
         """The AnyoneCanInteract field value."""
         member = self.get_member("AnyoneCanInteract")
         if member is None:
@@ -710,7 +708,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @anyone_can_interact.setter
-    def anyone_can_interact(self, value: bool) -> None:
+    def anyone_can_interact(self, value: primitives.Bool) -> None:
         """Set the AnyoneCanInteract field value."""
         member = self.get_member("AnyoneCanInteract")
         if member is not None:
@@ -721,7 +719,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def render_private_ui(self) -> bool | None:
+    def render_private_ui(self) -> primitives.Bool | None:
         """The RenderPrivateUI field value."""
         member = self.get_member("RenderPrivateUI")
         if member is None:
@@ -729,7 +727,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @render_private_ui.setter
-    def render_private_ui(self, value: bool) -> None:
+    def render_private_ui(self, value: primitives.Bool) -> None:
         """Set the RenderPrivateUI field value."""
         member = self.get_member("RenderPrivateUI")
         if member is not None:
@@ -740,7 +738,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def motion_blur(self) -> bool | None:
+    def motion_blur(self) -> primitives.Bool | None:
         """The MotionBlur field value."""
         member = self.get_member("MotionBlur")
         if member is None:
@@ -748,7 +746,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @motion_blur.setter
-    def motion_blur(self, value: bool) -> None:
+    def motion_blur(self, value: primitives.Bool) -> None:
         """Set the MotionBlur field value."""
         member = self.get_member("MotionBlur")
         if member is not None:
@@ -759,7 +757,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def screen_space_reflections(self) -> bool | None:
+    def screen_space_reflections(self) -> primitives.Bool | None:
         """The ScreenSpaceReflections field value."""
         member = self.get_member("ScreenSpaceReflections")
         if member is None:
@@ -767,7 +765,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @screen_space_reflections.setter
-    def screen_space_reflections(self, value: bool) -> None:
+    def screen_space_reflections(self, value: primitives.Bool) -> None:
         """Set the ScreenSpaceReflections field value."""
         member = self.get_member("ScreenSpaceReflections")
         if member is not None:
@@ -778,7 +776,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def spawn_photo_in_world(self) -> bool | None:
+    def spawn_photo_in_world(self) -> primitives.Bool | None:
         """The SpawnPhotoInWorld field value."""
         member = self.get_member("SpawnPhotoInWorld")
         if member is None:
@@ -786,7 +784,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @spawn_photo_in_world.setter
-    def spawn_photo_in_world(self, value: bool) -> None:
+    def spawn_photo_in_world(self, value: primitives.Bool) -> None:
         """Set the SpawnPhotoInWorld field value."""
         member = self.get_member("SpawnPhotoInWorld")
         if member is not None:
@@ -797,7 +795,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def flip_preview(self) -> bool | None:
+    def flip_preview(self) -> primitives.Bool | None:
         """The FlipPreview field value."""
         member = self.get_member("FlipPreview")
         if member is None:
@@ -805,7 +803,7 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @flip_preview.setter
-    def flip_preview(self, value: bool) -> None:
+    def flip_preview(self, value: primitives.Bool) -> None:
         """Set the FlipPreview field value."""
         member = self.get_member("FlipPreview")
         if member is not None:
@@ -1174,15 +1172,15 @@ class InteractiveCameraControl(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def fov_slider(self) -> str | None:
-        """Target ID of the _fovSlider reference (targets Slider[np.float32])."""
+        """Target ID of the _fovSlider reference (targets Slider[primitives.Float])."""
         member = self.get_member("_fovSlider")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @fov_slider.setter
-    def fov_slider(self, target: str | Slider[np.float32] | None) -> None:
-        """Set the _fovSlider reference by target ID or Slider[np.float32] instance."""
+    def fov_slider(self, target: str | Slider[primitives.Float] | None) -> None:
+        """Set the _fovSlider reference by target ID or Slider[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, Slider) else target  # type: ignore[assignment]
         member = self.get_member("_fovSlider")
         if isinstance(member, members.Reference):

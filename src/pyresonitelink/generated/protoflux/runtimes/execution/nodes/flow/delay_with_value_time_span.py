@@ -20,7 +20,7 @@ class DelayWithValueTimeSpan(GenericComponent[T], IAsyncNodeOperation, IExecutio
 
     Parameterize with a value type::
 
-        DelayWithValueTimeSpan[np.float32]
+        DelayWithValueTimeSpan[primitives.Float]
         DelayWithValueTimeSpan[primitives.Float3]
     """
 

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.world_orb import WorldOrb
@@ -17,7 +18,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldOrbSaver"
 
-    def __init__(self, orb: str | WorldOrb | None = None, save_here_item: str | ContextMenuItem | None = None, save_to_inventory_item: str | ContextMenuItem | None = None, cancel_item: str | ContextMenuItem | None = None, menu: str | ContextMenu | None = None, interactive: bool | None = None, saving: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, orb: str | WorldOrb | None = None, save_here_item: str | ContextMenuItem | None = None, save_to_inventory_item: str | ContextMenuItem | None = None, cancel_item: str | ContextMenuItem | None = None, menu: str | ContextMenu | None = None, interactive: primitives.Bool | None = None, saving: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -152,7 +153,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def interactive(self) -> bool | None:
+    def interactive(self) -> primitives.Bool | None:
         """The interactive field value."""
         member = self.get_member("interactive")
         if member is None:
@@ -160,7 +161,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @interactive.setter
-    def interactive(self, value: bool) -> None:
+    def interactive(self, value: primitives.Bool) -> None:
         """Set the interactive field value."""
         member = self.get_member("interactive")
         if member is not None:
@@ -171,7 +172,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def saving(self) -> bool | None:
+    def saving(self) -> primitives.Bool | None:
         """The saving field value."""
         member = self.get_member("saving")
         if member is None:
@@ -179,7 +180,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @saving.setter
-    def saving(self, value: bool) -> None:
+    def saving(self, value: primitives.Bool) -> None:
         """Set the saving field value."""
         member = self.get_member("saving")
         if member is not None:

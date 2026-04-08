@@ -13,7 +13,7 @@ class DataModelValueFieldStore+Store(GenericComponent[T], IComponent, IWorldEven
 
     Parameterize with a value type::
 
-        DataModelValueFieldStore+Store[np.float32]
+        DataModelValueFieldStore+Store[primitives.Float]
         DataModelValueFieldStore+Store[primitives.Float3]
     """
 

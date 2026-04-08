@@ -19,7 +19,7 @@ class BoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: primitives.Float3 | None = None, uv_scale: primitives.Float3 | None = None, scale_uv_with_size: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: primitives.Float3 | None = None, uv_scale: primitives.Float3 | None = None, scale_uv_with_size: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,7 +46,7 @@ class BoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventR
             self.scale_uv_with_size = scale_uv_with_size
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -54,7 +54,7 @@ class BoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventR
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -65,7 +65,7 @@ class BoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventR
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -73,7 +73,7 @@ class BoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventR
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -154,7 +154,7 @@ class BoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventR
             )
 
     @property
-    def scale_uv_with_size(self) -> bool | None:
+    def scale_uv_with_size(self) -> primitives.Bool | None:
         """The ScaleUVWithSize field value."""
         member = self.get_member("ScaleUVWithSize")
         if member is None:
@@ -162,7 +162,7 @@ class BoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventR
         return getattr(member, 'value', None)
 
     @scale_uv_with_size.setter
-    def scale_uv_with_size(self, value: bool) -> None:
+    def scale_uv_with_size(self, value: primitives.Bool) -> None:
         """Set the ScaleUVWithSize field value."""
         member = self.get_member("ScaleUVWithSize")
         if member is not None:

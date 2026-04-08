@@ -1,9 +1,8 @@
 """Generated component: HierarchyHapticsSource."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,7 +18,7 @@ class HierarchyHapticsSource(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HierarchyHapticsSource"
 
-    def __init__(self, target_hierarchy: str | Slot | None = None, interval: np.float32 | None = None, relative_intensity: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_hierarchy: str | Slot | None = None, interval: primitives.Float | None = None, relative_intensity: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +57,7 @@ class HierarchyHapticsSource(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def interval(self) -> np.float32 | None:
+    def interval(self) -> primitives.Float | None:
         """The Interval field value."""
         member = self.get_member("Interval")
         if member is None:
@@ -66,7 +65,7 @@ class HierarchyHapticsSource(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @interval.setter
-    def interval(self, value: np.float32) -> None:
+    def interval(self, value: primitives.Float) -> None:
         """Set the Interval field value."""
         member = self.get_member("Interval")
         if member is not None:
@@ -77,7 +76,7 @@ class HierarchyHapticsSource(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def relative_intensity(self) -> np.float32 | None:
+    def relative_intensity(self) -> primitives.Float | None:
         """The RelativeIntensity field value."""
         member = self.get_member("RelativeIntensity")
         if member is None:
@@ -85,7 +84,7 @@ class HierarchyHapticsSource(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @relative_intensity.setter
-    def relative_intensity(self, value: np.float32) -> None:
+    def relative_intensity(self, value: primitives.Float) -> None:
         """Set the RelativeIntensity field value."""
         member = self.get_member("RelativeIntensity")
         if member is not None:

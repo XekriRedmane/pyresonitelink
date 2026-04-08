@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -18,7 +19,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonDynamicImpulseTrigger"
 
-    def __init__(self, target: str | Slot | None = None, exclude_disabled: bool | None = None, pressed_tag: str | None = None, pressing_tag: str | None = None, released_tag: str | None = None, hover_enter_tag: str | None = None, hover_stay_tag: str | None = None, hover_leave_tag: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | Slot | None = None, exclude_disabled: primitives.Bool | None = None, pressed_tag: primitives.String | None = None, pressing_tag: primitives.String | None = None, released_tag: primitives.String | None = None, hover_enter_tag: primitives.String | None = None, hover_stay_tag: primitives.String | None = None, hover_leave_tag: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -72,7 +73,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
             )
 
     @property
-    def exclude_disabled(self) -> bool | None:
+    def exclude_disabled(self) -> primitives.Bool | None:
         """The ExcludeDisabled field value."""
         member = self.get_member("ExcludeDisabled")
         if member is None:
@@ -80,7 +81,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
         return getattr(member, 'value', None)
 
     @exclude_disabled.setter
-    def exclude_disabled(self, value: bool) -> None:
+    def exclude_disabled(self, value: primitives.Bool) -> None:
         """Set the ExcludeDisabled field value."""
         member = self.get_member("ExcludeDisabled")
         if member is not None:
@@ -91,7 +92,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
             )
 
     @property
-    def pressed_tag(self) -> str | None:
+    def pressed_tag(self) -> primitives.String | None:
         """The PressedTag field value."""
         member = self.get_member("PressedTag")
         if member is None:
@@ -99,7 +100,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
         return getattr(member, 'value', None)
 
     @pressed_tag.setter
-    def pressed_tag(self, value: str) -> None:
+    def pressed_tag(self, value: primitives.String) -> None:
         """Set the PressedTag field value."""
         member = self.get_member("PressedTag")
         if member is not None:
@@ -110,7 +111,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
             )
 
     @property
-    def pressing_tag(self) -> str | None:
+    def pressing_tag(self) -> primitives.String | None:
         """The PressingTag field value."""
         member = self.get_member("PressingTag")
         if member is None:
@@ -118,7 +119,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
         return getattr(member, 'value', None)
 
     @pressing_tag.setter
-    def pressing_tag(self, value: str) -> None:
+    def pressing_tag(self, value: primitives.String) -> None:
         """Set the PressingTag field value."""
         member = self.get_member("PressingTag")
         if member is not None:
@@ -129,7 +130,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
             )
 
     @property
-    def released_tag(self) -> str | None:
+    def released_tag(self) -> primitives.String | None:
         """The ReleasedTag field value."""
         member = self.get_member("ReleasedTag")
         if member is None:
@@ -137,7 +138,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
         return getattr(member, 'value', None)
 
     @released_tag.setter
-    def released_tag(self, value: str) -> None:
+    def released_tag(self, value: primitives.String) -> None:
         """Set the ReleasedTag field value."""
         member = self.get_member("ReleasedTag")
         if member is not None:
@@ -148,7 +149,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
             )
 
     @property
-    def hover_enter_tag(self) -> str | None:
+    def hover_enter_tag(self) -> primitives.String | None:
         """The HoverEnterTag field value."""
         member = self.get_member("HoverEnterTag")
         if member is None:
@@ -156,7 +157,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
         return getattr(member, 'value', None)
 
     @hover_enter_tag.setter
-    def hover_enter_tag(self, value: str) -> None:
+    def hover_enter_tag(self, value: primitives.String) -> None:
         """Set the HoverEnterTag field value."""
         member = self.get_member("HoverEnterTag")
         if member is not None:
@@ -167,7 +168,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
             )
 
     @property
-    def hover_stay_tag(self) -> str | None:
+    def hover_stay_tag(self) -> primitives.String | None:
         """The HoverStayTag field value."""
         member = self.get_member("HoverStayTag")
         if member is None:
@@ -175,7 +176,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
         return getattr(member, 'value', None)
 
     @hover_stay_tag.setter
-    def hover_stay_tag(self, value: str) -> None:
+    def hover_stay_tag(self, value: primitives.String) -> None:
         """Set the HoverStayTag field value."""
         member = self.get_member("HoverStayTag")
         if member is not None:
@@ -186,7 +187,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
             )
 
     @property
-    def hover_leave_tag(self) -> str | None:
+    def hover_leave_tag(self) -> primitives.String | None:
         """The HoverLeaveTag field value."""
         member = self.get_member("HoverLeaveTag")
         if member is None:
@@ -194,7 +195,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
         return getattr(member, 'value', None)
 
     @hover_leave_tag.setter
-    def hover_leave_tag(self, value: str) -> None:
+    def hover_leave_tag(self, value: primitives.String) -> None:
         """Set the HoverLeaveTag field value."""
         member = self.get_member("HoverLeaveTag")
         if member is not None:

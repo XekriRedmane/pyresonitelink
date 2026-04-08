@@ -1,9 +1,8 @@
 """Generated component: UserInspector."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -20,7 +19,7 @@ class UserInspector(GeneratedComponent, INoDestroyUndo, IDeveloperInterface, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserInspector"
 
-    def __init__(self, view_user: str | User | None = None, view_stream_group: np.uint16 | None = None, current_user: str | User | None = None, current_stream_group: np.uint16 | None = None, user_list_content_root: str | Slot | None = None, workers_content_root: str | Slot | None = None, user_text: str | Sync[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, view_user: str | User | None = None, view_stream_group: primitives.UShort | None = None, current_user: str | User | None = None, current_stream_group: primitives.UShort | None = None, user_list_content_root: str | Slot | None = None, workers_content_root: str | Slot | None = None, user_text: str | Sync[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -84,7 +83,7 @@ class UserInspector(GeneratedComponent, INoDestroyUndo, IDeveloperInterface, IWo
         self.set_member("ViewGroup", value)
 
     @property
-    def view_stream_group(self) -> np.uint16 | None:
+    def view_stream_group(self) -> primitives.UShort | None:
         """The ViewStreamGroup field value."""
         member = self.get_member("ViewStreamGroup")
         if member is None:
@@ -92,7 +91,7 @@ class UserInspector(GeneratedComponent, INoDestroyUndo, IDeveloperInterface, IWo
         return getattr(member, 'value', None)
 
     @view_stream_group.setter
-    def view_stream_group(self, value: np.uint16) -> None:
+    def view_stream_group(self, value: primitives.UShort) -> None:
         """Set the ViewStreamGroup field value."""
         member = self.get_member("ViewStreamGroup")
         if member is not None:
@@ -137,7 +136,7 @@ class UserInspector(GeneratedComponent, INoDestroyUndo, IDeveloperInterface, IWo
         self.set_member("_currentViewGroup", value)
 
     @property
-    def current_stream_group(self) -> np.uint16 | None:
+    def current_stream_group(self) -> primitives.UShort | None:
         """The _currentStreamGroup field value."""
         member = self.get_member("_currentStreamGroup")
         if member is None:
@@ -145,7 +144,7 @@ class UserInspector(GeneratedComponent, INoDestroyUndo, IDeveloperInterface, IWo
         return getattr(member, 'value', None)
 
     @current_stream_group.setter
-    def current_stream_group(self, value: np.uint16) -> None:
+    def current_stream_group(self, value: primitives.UShort) -> None:
         """Set the _currentStreamGroup field value."""
         member = self.get_member("_currentStreamGroup")
         if member is not None:
@@ -199,15 +198,15 @@ class UserInspector(GeneratedComponent, INoDestroyUndo, IDeveloperInterface, IWo
 
     @property
     def user_text(self) -> str | None:
-        """Target ID of the _userText reference (targets Sync[str])."""
+        """Target ID of the _userText reference (targets Sync[primitives.String])."""
         member = self.get_member("_userText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @user_text.setter
-    def user_text(self, target: str | Sync[str] | None) -> None:
-        """Set the _userText reference by target ID or Sync[str] instance."""
+    def user_text(self, target: str | Sync[primitives.String] | None) -> None:
+        """Set the _userText reference by target ID or Sync[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
         member = self.get_member("_userText")
         if isinstance(member, members.Reference):

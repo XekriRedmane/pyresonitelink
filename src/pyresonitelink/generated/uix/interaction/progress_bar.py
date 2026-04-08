@@ -1,7 +1,5 @@
 """Generated component: ProgressBar."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ProgressBar"
 
-    def __init__(self, progress: np.float32 | None = None, anchor_min_offset: primitives.Float2 | None = None, anchor_max_offset: primitives.Float2 | None = None, anchor_min: str | IField[primitives.Float2] | None = None, anchor_max: str | IField[primitives.Float2] | None = None, power: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, progress: primitives.Float | None = None, anchor_min_offset: primitives.Float2 | None = None, anchor_max_offset: primitives.Float2 | None = None, anchor_min: str | IField[primitives.Float2] | None = None, anchor_max: str | IField[primitives.Float2] | None = None, power: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -47,7 +45,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.power = power
 
     @property
-    def progress(self) -> np.float32 | None:
+    def progress(self) -> primitives.Float | None:
         """The Progress field value."""
         member = self.get_member("Progress")
         if member is None:
@@ -55,7 +53,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @progress.setter
-    def progress(self, value: np.float32) -> None:
+    def progress(self, value: primitives.Float) -> None:
         """Set the Progress field value."""
         member = self.get_member("Progress")
         if member is not None:
@@ -146,7 +144,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def power(self) -> np.float32 | None:
+    def power(self) -> primitives.Float | None:
         """The Power field value."""
         member = self.get_member("Power")
         if member is None:
@@ -154,7 +152,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @power.setter
-    def power(self, value: np.float32) -> None:
+    def power(self, value: primitives.Float) -> None:
         """Set the Power field value."""
         member = self.get_member("Power")
         if member is not None:

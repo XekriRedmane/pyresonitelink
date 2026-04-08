@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -15,7 +16,7 @@ class DevCreateNewForm(GeneratedComponent, IDeveloperInterface, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DevCreateNewForm"
 
-    def __init__(self, category_root: str | None = None, content_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, category_root: primitives.String | None = None, content_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class DevCreateNewForm(GeneratedComponent, IDeveloperInterface, IWorldEventRecei
             self.content_root = content_root
 
     @property
-    def category_root(self) -> str | None:
+    def category_root(self) -> primitives.String | None:
         """The CategoryRoot field value."""
         member = self.get_member("CategoryRoot")
         if member is None:
@@ -38,7 +39,7 @@ class DevCreateNewForm(GeneratedComponent, IDeveloperInterface, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @category_root.setter
-    def category_root(self, value: str) -> None:
+    def category_root(self, value: primitives.String) -> None:
         """Set the CategoryRoot field value."""
         member = self.get_member("CategoryRoot")
         if member is not None:

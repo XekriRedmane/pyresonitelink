@@ -1,8 +1,7 @@
 """Generated component: IsBetween_Float."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class IsBetween_Float(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.IsBetween_Float"
 
-    def __init__(self, value: str | INodeValueOutput[np.float32] | None = None, min: str | INodeValueOutput[np.float32] | None = None, max: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | INodeValueOutput[primitives.Float] | None = None, min: str | INodeValueOutput[primitives.Float] | None = None, max: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,15 +39,15 @@ class IsBetween_Float(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Value reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @value.setter
-    def value(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Value reference by target ID or INodeValueOutput[np.float32] instance."""
+    def value(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Value reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
@@ -61,15 +60,15 @@ class IsBetween_Float(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def min(self) -> str | None:
-        """Target ID of the Min reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Min reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @min.setter
-    def min(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Min reference by target ID or INodeValueOutput[np.float32] instance."""
+    def min(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Min reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
@@ -82,15 +81,15 @@ class IsBetween_Float(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def max(self) -> str | None:
-        """Target ID of the Max reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Max reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @max.setter
-    def max(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Max reference by target ID or INodeValueOutput[np.float32] instance."""
+    def max(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Max reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Max")
         if isinstance(member, members.Reference):

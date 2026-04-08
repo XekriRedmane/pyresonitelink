@@ -1,7 +1,5 @@
 """Generated component: RaycastDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RaycastDriver"
 
-    def __init__(self, ignore_hierarchy: str | Slot | None = None, filter_distance: np.float32 | None = None, origin: str | Slot | None = None, offset: primitives.Float3 | None = None, direction: primitives.Float3 | None = None, max_distance: np.float32 | None = None, no_hit_distance: np.float32 | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, ignore_hierarchy: str | Slot | None = None, filter_distance: primitives.Float | None = None, origin: str | Slot | None = None, offset: primitives.Float3 | None = None, direction: primitives.Float3 | None = None, max_distance: primitives.Float | None = None, no_hit_distance: primitives.Float | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -78,7 +76,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def filter_distance(self) -> np.float32 | None:
+    def filter_distance(self) -> primitives.Float | None:
         """The FilterDistance field value."""
         member = self.get_member("FilterDistance")
         if member is None:
@@ -86,7 +84,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @filter_distance.setter
-    def filter_distance(self, value: np.float32) -> None:
+    def filter_distance(self, value: primitives.Float) -> None:
         """Set the FilterDistance field value."""
         member = self.get_member("FilterDistance")
         if member is not None:
@@ -156,7 +154,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -164,7 +162,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:
@@ -175,7 +173,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def no_hit_distance(self) -> np.float32 | None:
+    def no_hit_distance(self) -> primitives.Float | None:
         """The NoHitDistance field value."""
         member = self.get_member("NoHitDistance")
         if member is None:
@@ -183,7 +181,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @no_hit_distance.setter
-    def no_hit_distance(self, value: np.float32) -> None:
+    def no_hit_distance(self, value: primitives.Float) -> None:
         """Set the NoHitDistance field value."""
         member = self.get_member("NoHitDistance")
         if member is not None:

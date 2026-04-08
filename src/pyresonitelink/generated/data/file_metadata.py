@@ -1,6 +1,7 @@
 """Generated component: FileMetadata."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -16,7 +17,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FileMetadata"
 
-    def __init__(self, filename: str | None = None, mime: str | None = None, is_processing: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, filename: primitives.String | None = None, mime: primitives.String | None = None, is_processing: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,7 +35,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
             self.is_processing = is_processing
 
     @property
-    def filename(self) -> str | None:
+    def filename(self) -> primitives.String | None:
         """The Filename field value."""
         member = self.get_member("Filename")
         if member is None:
@@ -42,7 +43,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
         return getattr(member, 'value', None)
 
     @filename.setter
-    def filename(self, value: str) -> None:
+    def filename(self, value: primitives.String) -> None:
         """Set the Filename field value."""
         member = self.get_member("Filename")
         if member is not None:
@@ -53,7 +54,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
             )
 
     @property
-    def mime(self) -> str | None:
+    def mime(self) -> primitives.String | None:
         """The MIME field value."""
         member = self.get_member("MIME")
         if member is None:
@@ -61,7 +62,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
         return getattr(member, 'value', None)
 
     @mime.setter
-    def mime(self, value: str) -> None:
+    def mime(self, value: primitives.String) -> None:
         """Set the MIME field value."""
         member = self.get_member("MIME")
         if member is not None:
@@ -72,7 +73,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
             )
 
     @property
-    def is_processing(self) -> bool | None:
+    def is_processing(self) -> primitives.Bool | None:
         """The IsProcessing field value."""
         member = self.get_member("IsProcessing")
         if member is None:
@@ -80,7 +81,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
         return getattr(member, 'value', None)
 
     @is_processing.setter
-    def is_processing(self, value: bool) -> None:
+    def is_processing(self, value: primitives.Bool) -> None:
         """Set the IsProcessing field value."""
         member = self.get_member("IsProcessing")
         if member is not None:

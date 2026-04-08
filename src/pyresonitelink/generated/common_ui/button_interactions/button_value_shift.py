@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -16,14 +17,14 @@ class ButtonValueShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
 
     Parameterize with a value type::
 
-        ButtonValueShift[np.float32]
+        ButtonValueShift[primitives.Float]
         ButtonValueShift[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonValueShift<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ButtonValueShift<>"
 
-    def __init__(self, target_value: str | IField[T] | None = None, delta: T | None = None, min: T | None = None, max: T | None = None, wrap_around: bool | None = None, max_is_exclusive: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_value: str | IField[T] | None = None, delta: T | None = None, min: T | None = None, max: T | None = None, wrap_around: primitives.Bool | None = None, max_is_exclusive: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -128,7 +129,7 @@ class ButtonValueShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
             )
 
     @property
-    def wrap_around(self) -> bool | None:
+    def wrap_around(self) -> primitives.Bool | None:
         """The WrapAround field value."""
         member = self.get_member("WrapAround")
         if member is None:
@@ -136,7 +137,7 @@ class ButtonValueShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
         return getattr(member, 'value', None)
 
     @wrap_around.setter
-    def wrap_around(self, value: bool) -> None:
+    def wrap_around(self, value: primitives.Bool) -> None:
         """Set the WrapAround field value."""
         member = self.get_member("WrapAround")
         if member is not None:
@@ -147,7 +148,7 @@ class ButtonValueShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
             )
 
     @property
-    def max_is_exclusive(self) -> bool | None:
+    def max_is_exclusive(self) -> primitives.Bool | None:
         """The MaxIsExclusive field value."""
         member = self.get_member("MaxIsExclusive")
         if member is None:
@@ -155,7 +156,7 @@ class ButtonValueShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
         return getattr(member, 'value', None)
 
     @max_is_exclusive.setter
-    def max_is_exclusive(self, value: bool) -> None:
+    def max_is_exclusive(self, value: primitives.Bool) -> None:
         """Set the MaxIsExclusive field value."""
         member = self.get_member("MaxIsExclusive")
         if member is not None:

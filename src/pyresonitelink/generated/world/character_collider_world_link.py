@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.world_link import WorldLink
@@ -17,7 +18,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterColliderWorldLink"
 
-    def __init__(self, triggers_only: bool | None = None, open_on_contact_start: bool | None = None, open_on_contact_stay: bool | None = None, open_on_contact_end: bool | None = None, world_link: str | WorldLink | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, triggers_only: primitives.Bool | None = None, open_on_contact_start: primitives.Bool | None = None, open_on_contact_stay: primitives.Bool | None = None, open_on_contact_end: primitives.Bool | None = None, world_link: str | WorldLink | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +42,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
             self.world_link = world_link
 
     @property
-    def triggers_only(self) -> bool | None:
+    def triggers_only(self) -> primitives.Bool | None:
         """The TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is None:
@@ -49,7 +50,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @triggers_only.setter
-    def triggers_only(self, value: bool) -> None:
+    def triggers_only(self, value: primitives.Bool) -> None:
         """Set the TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is not None:
@@ -60,7 +61,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
             )
 
     @property
-    def open_on_contact_start(self) -> bool | None:
+    def open_on_contact_start(self) -> primitives.Bool | None:
         """The OpenOnContactStart field value."""
         member = self.get_member("OpenOnContactStart")
         if member is None:
@@ -68,7 +69,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @open_on_contact_start.setter
-    def open_on_contact_start(self, value: bool) -> None:
+    def open_on_contact_start(self, value: primitives.Bool) -> None:
         """Set the OpenOnContactStart field value."""
         member = self.get_member("OpenOnContactStart")
         if member is not None:
@@ -79,7 +80,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
             )
 
     @property
-    def open_on_contact_stay(self) -> bool | None:
+    def open_on_contact_stay(self) -> primitives.Bool | None:
         """The OpenOnContactStay field value."""
         member = self.get_member("OpenOnContactStay")
         if member is None:
@@ -87,7 +88,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @open_on_contact_stay.setter
-    def open_on_contact_stay(self, value: bool) -> None:
+    def open_on_contact_stay(self, value: primitives.Bool) -> None:
         """Set the OpenOnContactStay field value."""
         member = self.get_member("OpenOnContactStay")
         if member is not None:
@@ -98,7 +99,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
             )
 
     @property
-    def open_on_contact_end(self) -> bool | None:
+    def open_on_contact_end(self) -> primitives.Bool | None:
         """The OpenOnContactEnd field value."""
         member = self.get_member("OpenOnContactEnd")
         if member is None:
@@ -106,7 +107,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @open_on_contact_end.setter
-    def open_on_contact_end(self, value: bool) -> None:
+    def open_on_contact_end(self, value: primitives.Bool) -> None:
         """Set the OpenOnContactEnd field value."""
         member = self.get_member("OpenOnContactEnd")
         if member is not None:

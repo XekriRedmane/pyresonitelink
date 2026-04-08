@@ -1,6 +1,7 @@
 """Generated component: EquipAvatar."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -24,7 +25,7 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.EquipAvatar"
 
-    def __init__(self, next: str | INodeOperation | None = None, user: str | INodeObjectOutput[User] | None = None, avatar_root: str | INodeObjectOutput[Slot] | None = None, destroy_old: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, user: str | INodeObjectOutput[User] | None = None, avatar_root: str | INodeObjectOutput[Slot] | None = None, destroy_old: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -109,15 +110,15 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def destroy_old(self) -> str | None:
-        """Target ID of the DestroyOld reference (targets INodeValueOutput[bool])."""
+        """Target ID of the DestroyOld reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("DestroyOld")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @destroy_old.setter
-    def destroy_old(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the DestroyOld reference by target ID or INodeValueOutput[bool] instance."""
+    def destroy_old(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the DestroyOld reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("DestroyOld")
         if isinstance(member, members.Reference):

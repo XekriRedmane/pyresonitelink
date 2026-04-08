@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,14 +16,14 @@ class ParentReference(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        ParentReference[np.float32]
+        ParentReference[primitives.Float]
         ParentReference[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ParentReference<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ParentReference<>"
 
-    def __init__(self, tag: str | None = None, reference: str | T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tag: primitives.String | None = None, reference: str | T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +38,7 @@ class ParentReference(GenericComponent[T], IComponent, IWorldEventReceiver):
             self.reference = reference
 
     @property
-    def tag(self) -> str | None:
+    def tag(self) -> primitives.String | None:
         """The Tag field value."""
         member = self.get_member("Tag")
         if member is None:
@@ -45,7 +46,7 @@ class ParentReference(GenericComponent[T], IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @tag.setter
-    def tag(self, value: str) -> None:
+    def tag(self, value: primitives.String) -> None:
         """Set the Tag field value."""
         member = self.get_member("Tag")
         if member is not None:

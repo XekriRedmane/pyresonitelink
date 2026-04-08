@@ -20,7 +20,7 @@ class ElementSource(GenericComponent[T], ISource, INodeObjectOutput[T], IExecuti
 
     Parameterize with a value type::
 
-        ElementSource[np.float32]
+        ElementSource[primitives.Float]
         ElementSource[primitives.Float3]
     """
 

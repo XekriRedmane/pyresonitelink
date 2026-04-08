@@ -1,7 +1,5 @@
 """Generated component: SlideLocomotion."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlideLocomotion"
 
-    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, max_speed: np.float32 | None = None, minimum_fly_speed_ratio: np.float32 | None = None, max_snap_distance: np.float32 | None = None, snap_check_offset: np.float32 | None = None, snap_min_object_size: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, max_speed: primitives.Float | None = None, minimum_fly_speed_ratio: primitives.Float | None = None, max_snap_distance: primitives.Float | None = None, snap_check_offset: primitives.Float | None = None, snap_min_object_size: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -174,7 +172,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
         self.set_member("Turn", value)
 
     @property
-    def max_speed(self) -> np.float32 | None:
+    def max_speed(self) -> primitives.Float | None:
         """The MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is None:
@@ -182,7 +180,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
         return getattr(member, 'value', None)
 
     @max_speed.setter
-    def max_speed(self, value: np.float32) -> None:
+    def max_speed(self, value: primitives.Float) -> None:
         """Set the MaxSpeed field value."""
         member = self.get_member("MaxSpeed")
         if member is not None:
@@ -193,7 +191,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
             )
 
     @property
-    def minimum_fly_speed_ratio(self) -> np.float32 | None:
+    def minimum_fly_speed_ratio(self) -> primitives.Float | None:
         """The MinimumFlySpeedRatio field value."""
         member = self.get_member("MinimumFlySpeedRatio")
         if member is None:
@@ -201,7 +199,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
         return getattr(member, 'value', None)
 
     @minimum_fly_speed_ratio.setter
-    def minimum_fly_speed_ratio(self, value: np.float32) -> None:
+    def minimum_fly_speed_ratio(self, value: primitives.Float) -> None:
         """Set the MinimumFlySpeedRatio field value."""
         member = self.get_member("MinimumFlySpeedRatio")
         if member is not None:
@@ -212,7 +210,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
             )
 
     @property
-    def max_snap_distance(self) -> np.float32 | None:
+    def max_snap_distance(self) -> primitives.Float | None:
         """The MaxSnapDistance field value."""
         member = self.get_member("MaxSnapDistance")
         if member is None:
@@ -220,7 +218,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
         return getattr(member, 'value', None)
 
     @max_snap_distance.setter
-    def max_snap_distance(self, value: np.float32) -> None:
+    def max_snap_distance(self, value: primitives.Float) -> None:
         """Set the MaxSnapDistance field value."""
         member = self.get_member("MaxSnapDistance")
         if member is not None:
@@ -231,7 +229,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
             )
 
     @property
-    def snap_check_offset(self) -> np.float32 | None:
+    def snap_check_offset(self) -> primitives.Float | None:
         """The SnapCheckOffset field value."""
         member = self.get_member("SnapCheckOffset")
         if member is None:
@@ -239,7 +237,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
         return getattr(member, 'value', None)
 
     @snap_check_offset.setter
-    def snap_check_offset(self, value: np.float32) -> None:
+    def snap_check_offset(self, value: primitives.Float) -> None:
         """Set the SnapCheckOffset field value."""
         member = self.get_member("SnapCheckOffset")
         if member is not None:
@@ -250,7 +248,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
             )
 
     @property
-    def snap_min_object_size(self) -> np.float32 | None:
+    def snap_min_object_size(self) -> primitives.Float | None:
         """The SnapMinObjectSize field value."""
         member = self.get_member("SnapMinObjectSize")
         if member is None:
@@ -258,7 +256,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
         return getattr(member, 'value', None)
 
     @snap_min_object_size.setter
-    def snap_min_object_size(self, value: np.float32) -> None:
+    def snap_min_object_size(self, value: primitives.Float) -> None:
         """Set the SnapMinObjectSize field value."""
         member = self.get_member("SnapMinObjectSize")
         if member is not None:

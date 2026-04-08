@@ -19,7 +19,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NoticeDisplayInterface"
 
-    def __init__(self, item_name: str | IField[str] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[str] | None = None, is_instance: bool | None = None, heading: str | IField[str] | None = None, icon: str | IField[str] | None = None, text: str | IField[str] | None = None, color: str | IField[primitives.Color] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, item_name: str | IField[primitives.String] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[primitives.String] | None = None, is_instance: primitives.Bool | None = None, heading: str | IField[primitives.String] | None = None, icon: str | IField[str] | None = None, text: str | IField[primitives.String] | None = None, color: str | IField[primitives.Color] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -53,15 +53,15 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[str])."""
+        """Target ID of the ItemName reference (targets IField[primitives.String])."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_name.setter
-    def item_name(self, target: str | IField[str] | None) -> None:
-        """Set the ItemName reference by target ID or IField[str] instance."""
+    def item_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
@@ -95,15 +95,15 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[str])."""
+        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spawning_user_id.setter
-    def spawning_user_id(self, target: str | IField[str] | None) -> None:
-        """Set the SpawningUserID reference by target ID or IField[str] instance."""
+    def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
@@ -115,7 +115,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
             )
 
     @property
-    def is_instance(self) -> bool | None:
+    def is_instance(self) -> primitives.Bool | None:
         """The IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is None:
@@ -123,7 +123,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
         return getattr(member, 'value', None)
 
     @is_instance.setter
-    def is_instance(self, value: bool) -> None:
+    def is_instance(self, value: primitives.Bool) -> None:
         """Set the IsInstance field value."""
         member = self.get_member("IsInstance")
         if member is not None:
@@ -135,15 +135,15 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def heading(self) -> str | None:
-        """Target ID of the Heading reference (targets IField[str])."""
+        """Target ID of the Heading reference (targets IField[primitives.String])."""
         member = self.get_member("Heading")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @heading.setter
-    def heading(self, target: str | IField[str] | None) -> None:
-        """Set the Heading reference by target ID or IField[str] instance."""
+    def heading(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Heading reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Heading")
         if isinstance(member, members.Reference):
@@ -177,15 +177,15 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[str])."""
+        """Target ID of the Text reference (targets IField[primitives.String])."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @text.setter
-    def text(self, target: str | IField[str] | None) -> None:
-        """Set the Text reference by target ID or IField[str] instance."""
+    def text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Text reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Text")
         if isinstance(member, members.Reference):

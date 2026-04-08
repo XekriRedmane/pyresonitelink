@@ -1,6 +1,7 @@
 """Generated component: CustomizationSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class CustomizationSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CustomizationSettings"
 
-    def __init__(self, user_interface_edit_mode: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user_interface_edit_mode: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class CustomizationSettings(GeneratedComponent, ICustomInspector):
             self.user_interface_edit_mode = user_interface_edit_mode
 
     @property
-    def user_interface_edit_mode(self) -> bool | None:
+    def user_interface_edit_mode(self) -> primitives.Bool | None:
         """The UserInterfaceEditMode field value."""
         member = self.get_member("UserInterfaceEditMode")
         if member is None:
@@ -33,7 +34,7 @@ class CustomizationSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @user_interface_edit_mode.setter
-    def user_interface_edit_mode(self, value: bool) -> None:
+    def user_interface_edit_mode(self, value: primitives.Bool) -> None:
         """Set the UserInterfaceEditMode field value."""
         member = self.get_member("UserInterfaceEditMode")
         if member is not None:

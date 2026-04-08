@@ -14,7 +14,7 @@ class DynamicVariableInputProxy(GenericComponent[T], IDynamicVariable[T], ICompo
 
     Parameterize with a value type::
 
-        DynamicVariableInputProxy[np.float32]
+        DynamicVariableInputProxy[primitives.Float]
         DynamicVariableInputProxy[primitives.Float3]
     """
 

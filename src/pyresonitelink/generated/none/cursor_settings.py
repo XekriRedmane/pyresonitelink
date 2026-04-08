@@ -1,8 +1,7 @@
 """Generated component: CursorSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CursorSettings"
 
-    def __init__(self, base_cursor_size: np.float32 | None = None, grab_multiplier: np.float32 | None = None, interaction_multiplier: np.float32 | None = None, text_multiplier: np.float32 | None = None, slider_multiplier: np.float32 | None = None, direct_cursor_enabled: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, base_cursor_size: primitives.Float | None = None, grab_multiplier: primitives.Float | None = None, interaction_multiplier: primitives.Float | None = None, text_multiplier: primitives.Float | None = None, slider_multiplier: primitives.Float | None = None, direct_cursor_enabled: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +41,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
             self.direct_cursor_enabled = direct_cursor_enabled
 
     @property
-    def base_cursor_size(self) -> np.float32 | None:
+    def base_cursor_size(self) -> primitives.Float | None:
         """The BaseCursorSize field value."""
         member = self.get_member("BaseCursorSize")
         if member is None:
@@ -50,7 +49,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @base_cursor_size.setter
-    def base_cursor_size(self, value: np.float32) -> None:
+    def base_cursor_size(self, value: primitives.Float) -> None:
         """Set the BaseCursorSize field value."""
         member = self.get_member("BaseCursorSize")
         if member is not None:
@@ -61,7 +60,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def grab_multiplier(self) -> np.float32 | None:
+    def grab_multiplier(self) -> primitives.Float | None:
         """The GrabMultiplier field value."""
         member = self.get_member("GrabMultiplier")
         if member is None:
@@ -69,7 +68,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @grab_multiplier.setter
-    def grab_multiplier(self, value: np.float32) -> None:
+    def grab_multiplier(self, value: primitives.Float) -> None:
         """Set the GrabMultiplier field value."""
         member = self.get_member("GrabMultiplier")
         if member is not None:
@@ -80,7 +79,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def interaction_multiplier(self) -> np.float32 | None:
+    def interaction_multiplier(self) -> primitives.Float | None:
         """The InteractionMultiplier field value."""
         member = self.get_member("InteractionMultiplier")
         if member is None:
@@ -88,7 +87,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @interaction_multiplier.setter
-    def interaction_multiplier(self, value: np.float32) -> None:
+    def interaction_multiplier(self, value: primitives.Float) -> None:
         """Set the InteractionMultiplier field value."""
         member = self.get_member("InteractionMultiplier")
         if member is not None:
@@ -99,7 +98,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def text_multiplier(self) -> np.float32 | None:
+    def text_multiplier(self) -> primitives.Float | None:
         """The TextMultiplier field value."""
         member = self.get_member("TextMultiplier")
         if member is None:
@@ -107,7 +106,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @text_multiplier.setter
-    def text_multiplier(self, value: np.float32) -> None:
+    def text_multiplier(self, value: primitives.Float) -> None:
         """Set the TextMultiplier field value."""
         member = self.get_member("TextMultiplier")
         if member is not None:
@@ -118,7 +117,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def slider_multiplier(self) -> np.float32 | None:
+    def slider_multiplier(self) -> primitives.Float | None:
         """The SliderMultiplier field value."""
         member = self.get_member("SliderMultiplier")
         if member is None:
@@ -126,7 +125,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @slider_multiplier.setter
-    def slider_multiplier(self, value: np.float32) -> None:
+    def slider_multiplier(self, value: primitives.Float) -> None:
         """Set the SliderMultiplier field value."""
         member = self.get_member("SliderMultiplier")
         if member is not None:
@@ -137,7 +136,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def direct_cursor_enabled(self) -> bool | None:
+    def direct_cursor_enabled(self) -> primitives.Bool | None:
         """The DirectCursorEnabled field value."""
         member = self.get_member("DirectCursorEnabled")
         if member is None:
@@ -145,7 +144,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @direct_cursor_enabled.setter
-    def direct_cursor_enabled(self, value: bool) -> None:
+    def direct_cursor_enabled(self, value: primitives.Bool) -> None:
         """Set the DirectCursorEnabled field value."""
         member = self.get_member("DirectCursorEnabled")
         if member is not None:

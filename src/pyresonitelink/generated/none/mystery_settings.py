@@ -1,9 +1,8 @@
 """Generated component: MysterySettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MysterySettings"
 
-    def __init__(self, loooong: bool | None = None, the_truth: bool | None = None, mirror_mirrors: bool | None = None, phantom_sense: bool | None = None, expressiveness: np.float32 | None = None, ghosts: bool | None = None, more_fps: bool | None = None, precious_toggle: bool | None = None, toggle_toggle: bool | None = None, toggle_toggle_toggle: bool | None = None, toggle_toggle_toggle_toggle: bool | None = None, toggle_toggle_toggle_toggle_toggle: bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle: bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle: bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle: bool | None = None, precious_toggle_start: str | None = None, precious_toggle_duration: str | None = None, mysterious_message: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, loooong: primitives.Bool | None = None, the_truth: primitives.Bool | None = None, mirror_mirrors: primitives.Bool | None = None, phantom_sense: primitives.Bool | None = None, expressiveness: primitives.Float | None = None, ghosts: primitives.Bool | None = None, more_fps: primitives.Bool | None = None, precious_toggle: primitives.Bool | None = None, toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, precious_toggle_start: str | None = None, precious_toggle_duration: str | None = None, mysterious_message: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -92,7 +91,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         self.set_member("Difficulty", value)
 
     @property
-    def loooong(self) -> bool | None:
+    def loooong(self) -> primitives.Bool | None:
         """The Loooong field value."""
         member = self.get_member("Loooong")
         if member is None:
@@ -100,7 +99,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @loooong.setter
-    def loooong(self, value: bool) -> None:
+    def loooong(self, value: primitives.Bool) -> None:
         """Set the Loooong field value."""
         member = self.get_member("Loooong")
         if member is not None:
@@ -111,7 +110,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def the_truth(self) -> bool | None:
+    def the_truth(self) -> primitives.Bool | None:
         """The TheTruth field value."""
         member = self.get_member("TheTruth")
         if member is None:
@@ -119,7 +118,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @the_truth.setter
-    def the_truth(self, value: bool) -> None:
+    def the_truth(self, value: primitives.Bool) -> None:
         """Set the TheTruth field value."""
         member = self.get_member("TheTruth")
         if member is not None:
@@ -130,7 +129,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def mirror_mirrors(self) -> bool | None:
+    def mirror_mirrors(self) -> primitives.Bool | None:
         """The MirrorMirrors field value."""
         member = self.get_member("MirrorMirrors")
         if member is None:
@@ -138,7 +137,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @mirror_mirrors.setter
-    def mirror_mirrors(self, value: bool) -> None:
+    def mirror_mirrors(self, value: primitives.Bool) -> None:
         """Set the MirrorMirrors field value."""
         member = self.get_member("MirrorMirrors")
         if member is not None:
@@ -149,7 +148,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def phantom_sense(self) -> bool | None:
+    def phantom_sense(self) -> primitives.Bool | None:
         """The PhantomSense field value."""
         member = self.get_member("PhantomSense")
         if member is None:
@@ -157,7 +156,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @phantom_sense.setter
-    def phantom_sense(self, value: bool) -> None:
+    def phantom_sense(self, value: primitives.Bool) -> None:
         """Set the PhantomSense field value."""
         member = self.get_member("PhantomSense")
         if member is not None:
@@ -168,7 +167,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def expressiveness(self) -> np.float32 | None:
+    def expressiveness(self) -> primitives.Float | None:
         """The Expressiveness field value."""
         member = self.get_member("Expressiveness")
         if member is None:
@@ -176,7 +175,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @expressiveness.setter
-    def expressiveness(self, value: np.float32) -> None:
+    def expressiveness(self, value: primitives.Float) -> None:
         """Set the Expressiveness field value."""
         member = self.get_member("Expressiveness")
         if member is not None:
@@ -187,7 +186,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def ghosts(self) -> bool | None:
+    def ghosts(self) -> primitives.Bool | None:
         """The Ghosts field value."""
         member = self.get_member("Ghosts")
         if member is None:
@@ -195,7 +194,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @ghosts.setter
-    def ghosts(self, value: bool) -> None:
+    def ghosts(self, value: primitives.Bool) -> None:
         """Set the Ghosts field value."""
         member = self.get_member("Ghosts")
         if member is not None:
@@ -206,7 +205,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def more_fps(self) -> bool | None:
+    def more_fps(self) -> primitives.Bool | None:
         """The MoreFPS field value."""
         member = self.get_member("MoreFPS")
         if member is None:
@@ -214,7 +213,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @more_fps.setter
-    def more_fps(self, value: bool) -> None:
+    def more_fps(self, value: primitives.Bool) -> None:
         """Set the MoreFPS field value."""
         member = self.get_member("MoreFPS")
         if member is not None:
@@ -225,7 +224,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def precious_toggle(self) -> bool | None:
+    def precious_toggle(self) -> primitives.Bool | None:
         """The PreciousToggle field value."""
         member = self.get_member("PreciousToggle")
         if member is None:
@@ -233,7 +232,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @precious_toggle.setter
-    def precious_toggle(self, value: bool) -> None:
+    def precious_toggle(self, value: primitives.Bool) -> None:
         """Set the PreciousToggle field value."""
         member = self.get_member("PreciousToggle")
         if member is not None:
@@ -244,7 +243,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def toggle_toggle(self) -> bool | None:
+    def toggle_toggle(self) -> primitives.Bool | None:
         """The ToggleToggle field value."""
         member = self.get_member("ToggleToggle")
         if member is None:
@@ -252,7 +251,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @toggle_toggle.setter
-    def toggle_toggle(self, value: bool) -> None:
+    def toggle_toggle(self, value: primitives.Bool) -> None:
         """Set the ToggleToggle field value."""
         member = self.get_member("ToggleToggle")
         if member is not None:
@@ -263,7 +262,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def toggle_toggle_toggle(self) -> bool | None:
+    def toggle_toggle_toggle(self) -> primitives.Bool | None:
         """The ToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggle")
         if member is None:
@@ -271,7 +270,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @toggle_toggle_toggle.setter
-    def toggle_toggle_toggle(self, value: bool) -> None:
+    def toggle_toggle_toggle(self, value: primitives.Bool) -> None:
         """Set the ToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggle")
         if member is not None:
@@ -282,7 +281,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def toggle_toggle_toggle_toggle(self) -> bool | None:
+    def toggle_toggle_toggle_toggle(self) -> primitives.Bool | None:
         """The ToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggle")
         if member is None:
@@ -290,7 +289,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @toggle_toggle_toggle_toggle.setter
-    def toggle_toggle_toggle_toggle(self, value: bool) -> None:
+    def toggle_toggle_toggle_toggle(self, value: primitives.Bool) -> None:
         """Set the ToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggle")
         if member is not None:
@@ -301,7 +300,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def toggle_toggle_toggle_toggle_toggle(self) -> bool | None:
+    def toggle_toggle_toggle_toggle_toggle(self) -> primitives.Bool | None:
         """The ToggleToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggleToggle")
         if member is None:
@@ -309,7 +308,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @toggle_toggle_toggle_toggle_toggle.setter
-    def toggle_toggle_toggle_toggle_toggle(self, value: bool) -> None:
+    def toggle_toggle_toggle_toggle_toggle(self, value: primitives.Bool) -> None:
         """Set the ToggleToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggleToggle")
         if member is not None:
@@ -320,7 +319,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def toggle_toggle_toggle_toggle_toggle_toggle(self) -> bool | None:
+    def toggle_toggle_toggle_toggle_toggle_toggle(self) -> primitives.Bool | None:
         """The ToggleToggleToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggleToggleToggle")
         if member is None:
@@ -328,7 +327,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @toggle_toggle_toggle_toggle_toggle_toggle.setter
-    def toggle_toggle_toggle_toggle_toggle_toggle(self, value: bool) -> None:
+    def toggle_toggle_toggle_toggle_toggle_toggle(self, value: primitives.Bool) -> None:
         """Set the ToggleToggleToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggleToggleToggle")
         if member is not None:
@@ -339,7 +338,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def toggle_toggle_toggle_toggle_toggle_toggle_toggle(self) -> bool | None:
+    def toggle_toggle_toggle_toggle_toggle_toggle_toggle(self) -> primitives.Bool | None:
         """The ToggleToggleToggleToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggleToggleToggleToggle")
         if member is None:
@@ -347,7 +346,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @toggle_toggle_toggle_toggle_toggle_toggle_toggle.setter
-    def toggle_toggle_toggle_toggle_toggle_toggle_toggle(self, value: bool) -> None:
+    def toggle_toggle_toggle_toggle_toggle_toggle_toggle(self, value: primitives.Bool) -> None:
         """Set the ToggleToggleToggleToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggleToggleToggleToggle")
         if member is not None:
@@ -358,7 +357,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle(self) -> bool | None:
+    def toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle(self) -> primitives.Bool | None:
         """The ToggleToggleToggleToggleToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggleToggleToggleToggleToggle")
         if member is None:
@@ -366,7 +365,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle.setter
-    def toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle(self, value: bool) -> None:
+    def toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle(self, value: primitives.Bool) -> None:
         """Set the ToggleToggleToggleToggleToggleToggleToggleToggle field value."""
         member = self.get_member("ToggleToggleToggleToggleToggleToggleToggleToggle")
         if member is not None:
@@ -415,7 +414,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def mysterious_message(self) -> str | None:
+    def mysterious_message(self) -> primitives.String | None:
         """The MysteriousMessage field value."""
         member = self.get_member("MysteriousMessage")
         if member is None:
@@ -423,7 +422,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @mysterious_message.setter
-    def mysterious_message(self, value: str) -> None:
+    def mysterious_message(self, value: primitives.String) -> None:
         """Set the MysteriousMessage field value."""
         member = self.get_member("MysteriousMessage")
         if member is not None:

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -17,14 +18,14 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     Parameterize with a value type::
 
-        NullableSourceDriver[np.float32]
+        NullableSourceDriver[primitives.Float]
         NullableSourceDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NullableSourceDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.NullableSourceDriver<>"
 
-    def __init__(self, source: str | IField[Nullable[T]] | None = None, value: str | IField[T] | None = None, has_value: str | IField[bool] | None = None, default_value: T | None = None, write_back: bool | None = None, update_default_value: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[Nullable[T]] | None = None, value: str | IField[T] | None = None, has_value: str | IField[primitives.Bool] | None = None, default_value: T | None = None, write_back: primitives.Bool | None = None, update_default_value: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -94,15 +95,15 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def has_value(self) -> str | None:
-        """Target ID of the HasValue reference (targets IField[bool])."""
+        """Target ID of the HasValue reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_value.setter
-    def has_value(self, target: str | IField[bool] | None) -> None:
-        """Set the HasValue reference by target ID or IField[bool] instance."""
+    def has_value(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasValue reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasValue")
         if isinstance(member, members.Reference):
@@ -133,7 +134,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
             )
 
     @property
-    def write_back(self) -> bool | None:
+    def write_back(self) -> primitives.Bool | None:
         """The WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is None:
@@ -141,7 +142,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @write_back.setter
-    def write_back(self, value: bool) -> None:
+    def write_back(self, value: primitives.Bool) -> None:
         """Set the WriteBack field value."""
         member = self.get_member("WriteBack")
         if member is not None:
@@ -152,7 +153,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
             )
 
     @property
-    def update_default_value(self) -> bool | None:
+    def update_default_value(self) -> primitives.Bool | None:
         """The UpdateDefaultValue field value."""
         member = self.get_member("UpdateDefaultValue")
         if member is None:
@@ -160,7 +161,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @update_default_value.setter
-    def update_default_value(self, value: bool) -> None:
+    def update_default_value(self, value: primitives.Bool) -> None:
         """Set the UpdateDefaultValue field value."""
         member = self.get_member("UpdateDefaultValue")
         if member is not None:

@@ -1,8 +1,7 @@
 """Generated component: UpdatesTimer."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
@@ -26,7 +25,7 @@ class UpdatesTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.UpdatesTimer"
 
-    def __init__(self, updating_user: str | IGlobalValueProxy[User] | None = None, skip_if_null: str | IGlobalValueProxy[bool] | None = None, on_update: str | ISyncNodeOperation | None = None, interval: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, updating_user: str | IGlobalValueProxy[User] | None = None, skip_if_null: str | IGlobalValueProxy[primitives.Bool] | None = None, on_update: str | ISyncNodeOperation | None = None, interval: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -69,15 +68,15 @@ class UpdatesTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, 
 
     @property
     def skip_if_null(self) -> str | None:
-        """Target ID of the SkipIfNull reference (targets IGlobalValueProxy[bool])."""
+        """Target ID of the SkipIfNull reference (targets IGlobalValueProxy[primitives.Bool])."""
         member = self.get_member("SkipIfNull")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @skip_if_null.setter
-    def skip_if_null(self, target: str | IGlobalValueProxy[bool] | None) -> None:
-        """Set the SkipIfNull reference by target ID or IGlobalValueProxy[bool] instance."""
+    def skip_if_null(self, target: str | IGlobalValueProxy[primitives.Bool] | None) -> None:
+        """Set the SkipIfNull reference by target ID or IGlobalValueProxy[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
         member = self.get_member("SkipIfNull")
         if isinstance(member, members.Reference):
@@ -111,15 +110,15 @@ class UpdatesTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, 
 
     @property
     def interval(self) -> str | None:
-        """Target ID of the Interval reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Interval reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Interval")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @interval.setter
-    def interval(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Interval reference by target ID or INodeValueOutput[np.int32] instance."""
+    def interval(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Interval reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Interval")
         if isinstance(member, members.Reference):

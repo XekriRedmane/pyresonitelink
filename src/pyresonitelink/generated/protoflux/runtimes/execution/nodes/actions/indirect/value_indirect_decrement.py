@@ -15,7 +15,7 @@ class ValueIndirectDecrement(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        ValueIndirectDecrement[np.float32]
+        ValueIndirectDecrement[primitives.Float]
         ValueIndirectDecrement[primitives.Float3]
     """
 

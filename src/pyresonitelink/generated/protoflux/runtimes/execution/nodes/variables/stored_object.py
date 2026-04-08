@@ -18,7 +18,7 @@ class StoredObject(GenericComponent[T], IVariable, INodeObjectOutput[T], IExecut
 
     Parameterize with a value type::
 
-        StoredObject[np.float32]
+        StoredObject[primitives.Float]
         StoredObject[primitives.Float3]
     """
 

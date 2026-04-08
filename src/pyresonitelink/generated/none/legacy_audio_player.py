@@ -1,8 +1,7 @@
 """Generated component: LegacyAudioPlayer."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -25,7 +24,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyAudioPlayer"
 
-    def __init__(self, audio_clip: str | IAssetProvider[AudioClip] | None = None, clip_player: str | AudioClipPlayer | None = None, audio_output: str | AudioOutput | None = None, waveform_material: str | UnlitMaterial | None = None, playback_material: str | UnlitMaterial | None = None, waveform_ring_mesh: str | RingMesh | None = None, playback_ring_mesh: str | RingMesh | None = None, playback_ring_arc: str | IField[np.float32] | None = None, volume_ring_arc: str | IField[np.float32] | None = None, playback_time_text: str | IField[str] | None = None, clip_length_time_text: str | IField[str] | None = None, icon_texture_url: str | IField[str] | None = None, stop_item: str | Item | None = None, loop_item: str | Item | None = None, spatial_item: str | Item | None = None, loop_icon_url: str | IField[str] | None = None, spatial_icon_url: str | IField[str] | None = None, exportable: str | AudioExportable | None = None, asset_proxy: str | AssetProxy[AudioClip] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, audio_clip: str | IAssetProvider[AudioClip] | None = None, clip_player: str | AudioClipPlayer | None = None, audio_output: str | AudioOutput | None = None, waveform_material: str | UnlitMaterial | None = None, playback_material: str | UnlitMaterial | None = None, waveform_ring_mesh: str | RingMesh | None = None, playback_ring_mesh: str | RingMesh | None = None, playback_ring_arc: str | IField[primitives.Float] | None = None, volume_ring_arc: str | IField[primitives.Float] | None = None, playback_time_text: str | IField[primitives.String] | None = None, clip_length_time_text: str | IField[primitives.String] | None = None, icon_texture_url: str | IField[str] | None = None, stop_item: str | Item | None = None, loop_item: str | Item | None = None, spatial_item: str | Item | None = None, loop_icon_url: str | IField[str] | None = None, spatial_icon_url: str | IField[str] | None = None, exportable: str | AudioExportable | None = None, asset_proxy: str | AssetProxy[AudioClip] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -239,15 +238,15 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def playback_ring_arc(self) -> str | None:
-        """Target ID of the _playbackRingArc reference (targets IField[np.float32])."""
+        """Target ID of the _playbackRingArc reference (targets IField[primitives.Float])."""
         member = self.get_member("_playbackRingArc")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @playback_ring_arc.setter
-    def playback_ring_arc(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _playbackRingArc reference by target ID or IField[np.float32] instance."""
+    def playback_ring_arc(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _playbackRingArc reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_playbackRingArc")
         if isinstance(member, members.Reference):
@@ -260,15 +259,15 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def volume_ring_arc(self) -> str | None:
-        """Target ID of the _volumeRingArc reference (targets IField[np.float32])."""
+        """Target ID of the _volumeRingArc reference (targets IField[primitives.Float])."""
         member = self.get_member("_volumeRingArc")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @volume_ring_arc.setter
-    def volume_ring_arc(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _volumeRingArc reference by target ID or IField[np.float32] instance."""
+    def volume_ring_arc(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _volumeRingArc reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_volumeRingArc")
         if isinstance(member, members.Reference):
@@ -281,15 +280,15 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def playback_time_text(self) -> str | None:
-        """Target ID of the _playbackTimeText reference (targets IField[str])."""
+        """Target ID of the _playbackTimeText reference (targets IField[primitives.String])."""
         member = self.get_member("_playbackTimeText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @playback_time_text.setter
-    def playback_time_text(self, target: str | IField[str] | None) -> None:
-        """Set the _playbackTimeText reference by target ID or IField[str] instance."""
+    def playback_time_text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _playbackTimeText reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_playbackTimeText")
         if isinstance(member, members.Reference):
@@ -302,15 +301,15 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def clip_length_time_text(self) -> str | None:
-        """Target ID of the _clipLengthTimeText reference (targets IField[str])."""
+        """Target ID of the _clipLengthTimeText reference (targets IField[primitives.String])."""
         member = self.get_member("_clipLengthTimeText")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @clip_length_time_text.setter
-    def clip_length_time_text(self, target: str | IField[str] | None) -> None:
-        """Set the _clipLengthTimeText reference by target ID or IField[str] instance."""
+    def clip_length_time_text(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _clipLengthTimeText reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_clipLengthTimeText")
         if isinstance(member, members.Reference):

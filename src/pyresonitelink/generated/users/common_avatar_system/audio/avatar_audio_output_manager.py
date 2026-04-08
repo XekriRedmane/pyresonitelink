@@ -1,9 +1,8 @@
 """Generated component: AvatarAudioOutputManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.audio_output import AudioOutput
@@ -24,7 +23,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAudioOutputManager"
 
-    def __init__(self, audio_output: str | AudioOutput | None = None, is_view_voice: bool | None = None, legacy_whisper_volume: np.float32 | None = None, legacy_normal_volume: np.float32 | None = None, legacy_shout_volume: np.float32 | None = None, legacy_broadcast_volume: np.float32 | None = None, legacy_normal_doppler_level: np.float32 | None = None, legacy_shout_doppler_level: np.float32 | None = None, legacy_whisper_range: np.float32 | None = None, active_user: str | User | None = None, enabled: str | IField[bool] | None = None, volume: str | IField[np.float32] | None = None, doppler: str | IField[np.float32] | None = None, spatialize: str | IField[bool] | None = None, spatial_blend: str | IField[np.float32] | None = None, ignore_audio_effects: str | IField[bool] | None = None, min_distance: str | IField[np.float32] | None = None, max_distance: str | IField[np.float32] | None = None, roll_off_mode: str | IField[AudioRolloffCurve] | None = None, distance_space: str | IField[AudioDistanceSpace] | None = None, min_scale: str | IField[np.float32] | None = None, max_scale: str | IField[np.float32] | None = None, scale_compensation: np.float32 | None = None, audio_configuration: str | AvatarAudioConfiguration | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, audio_output: str | AudioOutput | None = None, is_view_voice: primitives.Bool | None = None, legacy_whisper_volume: primitives.Float | None = None, legacy_normal_volume: primitives.Float | None = None, legacy_shout_volume: primitives.Float | None = None, legacy_broadcast_volume: primitives.Float | None = None, legacy_normal_doppler_level: primitives.Float | None = None, legacy_shout_doppler_level: primitives.Float | None = None, legacy_whisper_range: primitives.Float | None = None, active_user: str | User | None = None, enabled: str | IField[primitives.Bool] | None = None, volume: str | IField[primitives.Float] | None = None, doppler: str | IField[primitives.Float] | None = None, spatialize: str | IField[primitives.Bool] | None = None, spatial_blend: str | IField[primitives.Float] | None = None, ignore_audio_effects: str | IField[primitives.Bool] | None = None, min_distance: str | IField[primitives.Float] | None = None, max_distance: str | IField[primitives.Float] | None = None, roll_off_mode: str | IField[AudioRolloffCurve] | None = None, distance_space: str | IField[AudioDistanceSpace] | None = None, min_scale: str | IField[primitives.Float] | None = None, max_scale: str | IField[primitives.Float] | None = None, scale_compensation: primitives.Float | None = None, audio_configuration: str | AvatarAudioConfiguration | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -126,7 +125,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
             )
 
     @property
-    def is_view_voice(self) -> bool | None:
+    def is_view_voice(self) -> primitives.Bool | None:
         """The IsViewVoice field value."""
         member = self.get_member("IsViewVoice")
         if member is None:
@@ -134,7 +133,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         return getattr(member, 'value', None)
 
     @is_view_voice.setter
-    def is_view_voice(self, value: bool) -> None:
+    def is_view_voice(self, value: primitives.Bool) -> None:
         """Set the IsViewVoice field value."""
         member = self.get_member("IsViewVoice")
         if member is not None:
@@ -197,7 +196,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         self.set_member("BroadcastConfig", value)
 
     @property
-    def legacy_whisper_volume(self) -> np.float32 | None:
+    def legacy_whisper_volume(self) -> primitives.Float | None:
         """The __legacyWhisperVolume field value."""
         member = self.get_member("__legacyWhisperVolume")
         if member is None:
@@ -205,7 +204,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         return getattr(member, 'value', None)
 
     @legacy_whisper_volume.setter
-    def legacy_whisper_volume(self, value: np.float32) -> None:
+    def legacy_whisper_volume(self, value: primitives.Float) -> None:
         """Set the __legacyWhisperVolume field value."""
         member = self.get_member("__legacyWhisperVolume")
         if member is not None:
@@ -216,7 +215,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
             )
 
     @property
-    def legacy_normal_volume(self) -> np.float32 | None:
+    def legacy_normal_volume(self) -> primitives.Float | None:
         """The __legacyNormalVolume field value."""
         member = self.get_member("__legacyNormalVolume")
         if member is None:
@@ -224,7 +223,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         return getattr(member, 'value', None)
 
     @legacy_normal_volume.setter
-    def legacy_normal_volume(self, value: np.float32) -> None:
+    def legacy_normal_volume(self, value: primitives.Float) -> None:
         """Set the __legacyNormalVolume field value."""
         member = self.get_member("__legacyNormalVolume")
         if member is not None:
@@ -235,7 +234,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
             )
 
     @property
-    def legacy_shout_volume(self) -> np.float32 | None:
+    def legacy_shout_volume(self) -> primitives.Float | None:
         """The __legacyShoutVolume field value."""
         member = self.get_member("__legacyShoutVolume")
         if member is None:
@@ -243,7 +242,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         return getattr(member, 'value', None)
 
     @legacy_shout_volume.setter
-    def legacy_shout_volume(self, value: np.float32) -> None:
+    def legacy_shout_volume(self, value: primitives.Float) -> None:
         """Set the __legacyShoutVolume field value."""
         member = self.get_member("__legacyShoutVolume")
         if member is not None:
@@ -254,7 +253,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
             )
 
     @property
-    def legacy_broadcast_volume(self) -> np.float32 | None:
+    def legacy_broadcast_volume(self) -> primitives.Float | None:
         """The __legacyBroadcastVolume field value."""
         member = self.get_member("__legacyBroadcastVolume")
         if member is None:
@@ -262,7 +261,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         return getattr(member, 'value', None)
 
     @legacy_broadcast_volume.setter
-    def legacy_broadcast_volume(self, value: np.float32) -> None:
+    def legacy_broadcast_volume(self, value: primitives.Float) -> None:
         """Set the __legacyBroadcastVolume field value."""
         member = self.get_member("__legacyBroadcastVolume")
         if member is not None:
@@ -273,7 +272,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
             )
 
     @property
-    def legacy_normal_doppler_level(self) -> np.float32 | None:
+    def legacy_normal_doppler_level(self) -> primitives.Float | None:
         """The __legacyNormalDopplerLevel field value."""
         member = self.get_member("__legacyNormalDopplerLevel")
         if member is None:
@@ -281,7 +280,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         return getattr(member, 'value', None)
 
     @legacy_normal_doppler_level.setter
-    def legacy_normal_doppler_level(self, value: np.float32) -> None:
+    def legacy_normal_doppler_level(self, value: primitives.Float) -> None:
         """Set the __legacyNormalDopplerLevel field value."""
         member = self.get_member("__legacyNormalDopplerLevel")
         if member is not None:
@@ -292,7 +291,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
             )
 
     @property
-    def legacy_shout_doppler_level(self) -> np.float32 | None:
+    def legacy_shout_doppler_level(self) -> primitives.Float | None:
         """The __legacyShoutDopplerLevel field value."""
         member = self.get_member("__legacyShoutDopplerLevel")
         if member is None:
@@ -300,7 +299,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         return getattr(member, 'value', None)
 
     @legacy_shout_doppler_level.setter
-    def legacy_shout_doppler_level(self, value: np.float32) -> None:
+    def legacy_shout_doppler_level(self, value: primitives.Float) -> None:
         """Set the __legacyShoutDopplerLevel field value."""
         member = self.get_member("__legacyShoutDopplerLevel")
         if member is not None:
@@ -311,7 +310,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
             )
 
     @property
-    def legacy_whisper_range(self) -> np.float32 | None:
+    def legacy_whisper_range(self) -> primitives.Float | None:
         """The __legacyWhisperRange field value."""
         member = self.get_member("__legacyWhisperRange")
         if member is None:
@@ -319,7 +318,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         return getattr(member, 'value', None)
 
     @legacy_whisper_range.setter
-    def legacy_whisper_range(self, value: np.float32) -> None:
+    def legacy_whisper_range(self, value: primitives.Float) -> None:
         """Set the __legacyWhisperRange field value."""
         member = self.get_member("__legacyWhisperRange")
         if member is not None:
@@ -352,15 +351,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def enabled(self) -> str | None:
-        """Target ID of the _enabled reference (targets IField[bool])."""
+        """Target ID of the _enabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_enabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @enabled.setter
-    def enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _enabled reference by target ID or IField[bool] instance."""
+    def enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _enabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_enabled")
         if isinstance(member, members.Reference):
@@ -373,15 +372,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def volume(self) -> str | None:
-        """Target ID of the _volume reference (targets IField[np.float32])."""
+        """Target ID of the _volume reference (targets IField[primitives.Float])."""
         member = self.get_member("_volume")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @volume.setter
-    def volume(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _volume reference by target ID or IField[np.float32] instance."""
+    def volume(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _volume reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_volume")
         if isinstance(member, members.Reference):
@@ -394,15 +393,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def doppler(self) -> str | None:
-        """Target ID of the _doppler reference (targets IField[np.float32])."""
+        """Target ID of the _doppler reference (targets IField[primitives.Float])."""
         member = self.get_member("_doppler")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @doppler.setter
-    def doppler(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _doppler reference by target ID or IField[np.float32] instance."""
+    def doppler(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _doppler reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_doppler")
         if isinstance(member, members.Reference):
@@ -415,15 +414,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def spatialize(self) -> str | None:
-        """Target ID of the _spatialize reference (targets IField[bool])."""
+        """Target ID of the _spatialize reference (targets IField[primitives.Bool])."""
         member = self.get_member("_spatialize")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spatialize.setter
-    def spatialize(self, target: str | IField[bool] | None) -> None:
-        """Set the _spatialize reference by target ID or IField[bool] instance."""
+    def spatialize(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _spatialize reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_spatialize")
         if isinstance(member, members.Reference):
@@ -436,15 +435,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def spatial_blend(self) -> str | None:
-        """Target ID of the _spatialBlend reference (targets IField[np.float32])."""
+        """Target ID of the _spatialBlend reference (targets IField[primitives.Float])."""
         member = self.get_member("_spatialBlend")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @spatial_blend.setter
-    def spatial_blend(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _spatialBlend reference by target ID or IField[np.float32] instance."""
+    def spatial_blend(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _spatialBlend reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_spatialBlend")
         if isinstance(member, members.Reference):
@@ -457,15 +456,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def ignore_audio_effects(self) -> str | None:
-        """Target ID of the _ignoreAudioEffects reference (targets IField[bool])."""
+        """Target ID of the _ignoreAudioEffects reference (targets IField[primitives.Bool])."""
         member = self.get_member("_ignoreAudioEffects")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ignore_audio_effects.setter
-    def ignore_audio_effects(self, target: str | IField[bool] | None) -> None:
-        """Set the _ignoreAudioEffects reference by target ID or IField[bool] instance."""
+    def ignore_audio_effects(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _ignoreAudioEffects reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_ignoreAudioEffects")
         if isinstance(member, members.Reference):
@@ -478,15 +477,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def min_distance(self) -> str | None:
-        """Target ID of the _minDistance reference (targets IField[np.float32])."""
+        """Target ID of the _minDistance reference (targets IField[primitives.Float])."""
         member = self.get_member("_minDistance")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @min_distance.setter
-    def min_distance(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _minDistance reference by target ID or IField[np.float32] instance."""
+    def min_distance(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _minDistance reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_minDistance")
         if isinstance(member, members.Reference):
@@ -499,15 +498,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def max_distance(self) -> str | None:
-        """Target ID of the _maxDistance reference (targets IField[np.float32])."""
+        """Target ID of the _maxDistance reference (targets IField[primitives.Float])."""
         member = self.get_member("_maxDistance")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @max_distance.setter
-    def max_distance(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _maxDistance reference by target ID or IField[np.float32] instance."""
+    def max_distance(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _maxDistance reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_maxDistance")
         if isinstance(member, members.Reference):
@@ -562,15 +561,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def min_scale(self) -> str | None:
-        """Target ID of the _minScale reference (targets IField[np.float32])."""
+        """Target ID of the _minScale reference (targets IField[primitives.Float])."""
         member = self.get_member("_minScale")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @min_scale.setter
-    def min_scale(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _minScale reference by target ID or IField[np.float32] instance."""
+    def min_scale(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _minScale reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_minScale")
         if isinstance(member, members.Reference):
@@ -583,15 +582,15 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def max_scale(self) -> str | None:
-        """Target ID of the _maxScale reference (targets IField[np.float32])."""
+        """Target ID of the _maxScale reference (targets IField[primitives.Float])."""
         member = self.get_member("_maxScale")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @max_scale.setter
-    def max_scale(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _maxScale reference by target ID or IField[np.float32] instance."""
+    def max_scale(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _maxScale reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_maxScale")
         if isinstance(member, members.Reference):
@@ -603,7 +602,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
             )
 
     @property
-    def scale_compensation(self) -> np.float32 | None:
+    def scale_compensation(self) -> primitives.Float | None:
         """The _scaleCompensation field value."""
         member = self.get_member("_scaleCompensation")
         if member is None:
@@ -611,7 +610,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
         return getattr(member, 'value', None)
 
     @scale_compensation.setter
-    def scale_compensation(self, value: np.float32) -> None:
+    def scale_compensation(self, value: primitives.Float) -> None:
         """Set the _scaleCompensation field value."""
         member = self.get_member("_scaleCompensation")
         if member is not None:

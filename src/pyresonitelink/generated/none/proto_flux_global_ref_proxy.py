@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -21,7 +22,7 @@ class ProtoFluxGlobalRefProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxGlobalRefProxy"
 
-    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: str | None = None, label: str | IField[str] | None = None, proxy_visual: str | Button | None = None, ref_proxy_source: str | ReferenceProxySource | None = None, target_global_ref: str | ISyncRef | None = None, current_proxy: str | IGlobalValueProxy | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, label: str | IField[primitives.String] | None = None, proxy_visual: str | Button | None = None, ref_proxy_source: str | ReferenceProxySource | None = None, target_global_ref: str | ISyncRef | None = None, current_proxy: str | IGlobalValueProxy | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -72,7 +73,7 @@ class ProtoFluxGlobalRefProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
             )
 
     @property
-    def element_name(self) -> str | None:
+    def element_name(self) -> primitives.String | None:
         """The ElementName field value."""
         member = self.get_member("ElementName")
         if member is None:
@@ -80,7 +81,7 @@ class ProtoFluxGlobalRefProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
         return getattr(member, 'value', None)
 
     @element_name.setter
-    def element_name(self, value: str) -> None:
+    def element_name(self, value: primitives.String) -> None:
         """Set the ElementName field value."""
         member = self.get_member("ElementName")
         if member is not None:
@@ -105,15 +106,15 @@ class ProtoFluxGlobalRefProxy(GeneratedComponent, IUIGrabReceiver, IWorldEventRe
 
     @property
     def label(self) -> str | None:
-        """Target ID of the _label reference (targets IField[str])."""
+        """Target ID of the _label reference (targets IField[primitives.String])."""
         member = self.get_member("_label")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @label.setter
-    def label(self, target: str | IField[str] | None) -> None:
-        """Set the _label reference by target ID or IField[str] instance."""
+    def label(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the _label reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_label")
         if isinstance(member, members.Reference):

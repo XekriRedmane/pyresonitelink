@@ -1,9 +1,8 @@
 """Generated component: UserspaceFacetAnchorsManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.userspace_radiant_dash import UserspaceRadiantDash
@@ -17,7 +16,7 @@ class UserspaceFacetAnchorsManager(GeneratedComponent, IComponent, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserspaceFacetAnchorsManager"
 
-    def __init__(self, open: bool | None = None, use_facet_anchors: bool | None = None, anim_speed: np.float32 | None = None, dash: str | UserspaceRadiantDash | None = None, profile_name: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, open: primitives.Bool | None = None, use_facet_anchors: primitives.Bool | None = None, anim_speed: primitives.Float | None = None, dash: str | UserspaceRadiantDash | None = None, profile_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +40,7 @@ class UserspaceFacetAnchorsManager(GeneratedComponent, IComponent, IWorldEventRe
             self.profile_name = profile_name
 
     @property
-    def open(self) -> bool | None:
+    def open(self) -> primitives.Bool | None:
         """The Open field value."""
         member = self.get_member("Open")
         if member is None:
@@ -49,7 +48,7 @@ class UserspaceFacetAnchorsManager(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @open.setter
-    def open(self, value: bool) -> None:
+    def open(self, value: primitives.Bool) -> None:
         """Set the Open field value."""
         member = self.get_member("Open")
         if member is not None:
@@ -60,7 +59,7 @@ class UserspaceFacetAnchorsManager(GeneratedComponent, IComponent, IWorldEventRe
             )
 
     @property
-    def use_facet_anchors(self) -> bool | None:
+    def use_facet_anchors(self) -> primitives.Bool | None:
         """The UseFacetAnchors field value."""
         member = self.get_member("UseFacetAnchors")
         if member is None:
@@ -68,7 +67,7 @@ class UserspaceFacetAnchorsManager(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @use_facet_anchors.setter
-    def use_facet_anchors(self, value: bool) -> None:
+    def use_facet_anchors(self, value: primitives.Bool) -> None:
         """Set the UseFacetAnchors field value."""
         member = self.get_member("UseFacetAnchors")
         if member is not None:
@@ -92,7 +91,7 @@ class UserspaceFacetAnchorsManager(GeneratedComponent, IComponent, IWorldEventRe
         self.set_member("Toggle", value)
 
     @property
-    def anim_speed(self) -> np.float32 | None:
+    def anim_speed(self) -> primitives.Float | None:
         """The AnimSpeed field value."""
         member = self.get_member("AnimSpeed")
         if member is None:
@@ -100,7 +99,7 @@ class UserspaceFacetAnchorsManager(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @anim_speed.setter
-    def anim_speed(self, value: np.float32) -> None:
+    def anim_speed(self, value: primitives.Float) -> None:
         """Set the AnimSpeed field value."""
         member = self.get_member("AnimSpeed")
         if member is not None:
@@ -132,7 +131,7 @@ class UserspaceFacetAnchorsManager(GeneratedComponent, IComponent, IWorldEventRe
             )
 
     @property
-    def profile_name(self) -> str | None:
+    def profile_name(self) -> primitives.String | None:
         """The ProfileName field value."""
         member = self.get_member("ProfileName")
         if member is None:
@@ -140,7 +139,7 @@ class UserspaceFacetAnchorsManager(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @profile_name.setter
-    def profile_name(self, value: str) -> None:
+    def profile_name(self, value: primitives.String) -> None:
         """Set the ProfileName field value."""
         member = self.get_member("ProfileName")
         if member is not None:

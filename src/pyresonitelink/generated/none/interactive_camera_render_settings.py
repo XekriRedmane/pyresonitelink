@@ -1,6 +1,7 @@
 """Generated component: InteractiveCameraRenderSettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class InteractiveCameraRenderSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraRenderSettings"
 
-    def __init__(self, hide_all_badges: bool | None = None, hide_all_lasers: bool | None = None, force_eyes_on_camera: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, hide_all_badges: primitives.Bool | None = None, hide_all_lasers: primitives.Bool | None = None, force_eyes_on_camera: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +32,7 @@ class InteractiveCameraRenderSettings(GeneratedComponent, ICustomInspector):
             self.force_eyes_on_camera = force_eyes_on_camera
 
     @property
-    def hide_all_badges(self) -> bool | None:
+    def hide_all_badges(self) -> primitives.Bool | None:
         """The HideAllBadges field value."""
         member = self.get_member("HideAllBadges")
         if member is None:
@@ -39,7 +40,7 @@ class InteractiveCameraRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @hide_all_badges.setter
-    def hide_all_badges(self, value: bool) -> None:
+    def hide_all_badges(self, value: primitives.Bool) -> None:
         """Set the HideAllBadges field value."""
         member = self.get_member("HideAllBadges")
         if member is not None:
@@ -50,7 +51,7 @@ class InteractiveCameraRenderSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def hide_all_lasers(self) -> bool | None:
+    def hide_all_lasers(self) -> primitives.Bool | None:
         """The HideAllLasers field value."""
         member = self.get_member("HideAllLasers")
         if member is None:
@@ -58,7 +59,7 @@ class InteractiveCameraRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @hide_all_lasers.setter
-    def hide_all_lasers(self, value: bool) -> None:
+    def hide_all_lasers(self, value: primitives.Bool) -> None:
         """Set the HideAllLasers field value."""
         member = self.get_member("HideAllLasers")
         if member is not None:
@@ -69,7 +70,7 @@ class InteractiveCameraRenderSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def force_eyes_on_camera(self) -> bool | None:
+    def force_eyes_on_camera(self) -> primitives.Bool | None:
         """The ForceEyesOnCamera field value."""
         member = self.get_member("ForceEyesOnCamera")
         if member is None:
@@ -77,7 +78,7 @@ class InteractiveCameraRenderSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @force_eyes_on_camera.setter
-    def force_eyes_on_camera(self, value: bool) -> None:
+    def force_eyes_on_camera(self, value: primitives.Bool) -> None:
         """Set the ForceEyesOnCamera field value."""
         member = self.get_member("ForceEyesOnCamera")
         if member is not None:

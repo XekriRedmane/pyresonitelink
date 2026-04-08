@@ -23,7 +23,7 @@ class AssetInput(GenericComponent[T], IInput[T], INodeObjectOutput[T], IExecutio
 
     Parameterize with a value type::
 
-        AssetInput[np.float32]
+        AssetInput[primitives.Float]
         AssetInput[primitives.Float3]
     """
 

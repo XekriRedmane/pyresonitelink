@@ -1,8 +1,7 @@
 """Generated component: RequestHostAccess."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -25,7 +24,7 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network.RequestHostAccess"
 
-    def __init__(self, on_granted: str | INodeOperation | None = None, on_denied: str | INodeOperation | None = None, on_ignored: str | INodeOperation | None = None, host: str | INodeObjectOutput[str] | None = None, port: str | INodeValueOutput[np.int32] | None = None, scope: str | INodeValueOutput[HostAccessScope] | None = None, reason: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, on_granted: str | INodeOperation | None = None, on_denied: str | INodeOperation | None = None, on_ignored: str | INodeOperation | None = None, host: str | INodeObjectOutput[primitives.String] | None = None, port: str | INodeValueOutput[primitives.Int] | None = None, scope: str | INodeValueOutput[HostAccessScope] | None = None, reason: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -119,15 +118,15 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def host(self) -> str | None:
-        """Target ID of the Host reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Host reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Host")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @host.setter
-    def host(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Host reference by target ID or INodeObjectOutput[str] instance."""
+    def host(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Host reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Host")
         if isinstance(member, members.Reference):
@@ -140,15 +139,15 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def port(self) -> str | None:
-        """Target ID of the Port reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Port reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Port")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @port.setter
-    def port(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Port reference by target ID or INodeValueOutput[np.int32] instance."""
+    def port(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Port reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Port")
         if isinstance(member, members.Reference):
@@ -182,15 +181,15 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def reason(self) -> str | None:
-        """Target ID of the Reason reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Reason reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Reason")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @reason.setter
-    def reason(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Reason reference by target ID or INodeObjectOutput[str] instance."""
+    def reason(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Reason reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Reason")
         if isinstance(member, members.Reference):

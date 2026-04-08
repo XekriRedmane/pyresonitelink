@@ -18,7 +18,7 @@ class ValueEvaluationPoint(GenericComponent[T], IExecutionNode[T], INode, ICusto
 
     Parameterize with a value type::
 
-        ValueEvaluationPoint[np.float32]
+        ValueEvaluationPoint[primitives.Float]
         ValueEvaluationPoint[primitives.Float3]
     """
 

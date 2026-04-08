@@ -1,7 +1,5 @@
 """Generated component: TriangleDiagnosticMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TriangleDiagnosticMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, triangle_index: np.int32 | None = None, vertex0_color: primitives.Color | None = None, vertex1_color: primitives.Color | None = None, vertex2_color: primitives.Color | None = None, displace: np.float32 | None = None, mesh: str | IAssetProvider[Mesh] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, triangle_index: primitives.Int | None = None, vertex0_color: primitives.Color | None = None, vertex1_color: primitives.Color | None = None, vertex2_color: primitives.Color | None = None, displace: primitives.Float | None = None, mesh: str | IAssetProvider[Mesh] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +56,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             self.mesh = mesh
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -66,7 +64,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -77,7 +75,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -85,7 +83,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -128,7 +126,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         self.set_member("Profile", value)
 
     @property
-    def triangle_index(self) -> np.int32 | None:
+    def triangle_index(self) -> primitives.Int | None:
         """The TriangleIndex field value."""
         member = self.get_member("TriangleIndex")
         if member is None:
@@ -136,7 +134,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @triangle_index.setter
-    def triangle_index(self, value: np.int32) -> None:
+    def triangle_index(self, value: primitives.Int) -> None:
         """Set the TriangleIndex field value."""
         member = self.get_member("TriangleIndex")
         if member is not None:
@@ -217,7 +215,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         self.set_member("VertexColorProfile", value)
 
     @property
-    def displace(self) -> np.float32 | None:
+    def displace(self) -> primitives.Float | None:
         """The Displace field value."""
         member = self.get_member("Displace")
         if member is None:
@@ -225,7 +223,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
         return getattr(member, 'value', None)
 
     @displace.setter
-    def displace(self, value: np.float32) -> None:
+    def displace(self, value: primitives.Float) -> None:
         """Set the Displace field value."""
         member = self.get_member("Displace")
         if member is not None:

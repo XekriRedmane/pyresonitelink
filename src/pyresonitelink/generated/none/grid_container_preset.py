@@ -1,9 +1,8 @@
 """Generated component: GridContainerPreset."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.imodified_event_receiver import IModifiedEventReceiver
@@ -16,7 +15,7 @@ class GridContainerPreset(GeneratedComponent, IModifiedEventReceiver, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GridContainerPreset"
 
-    def __init__(self, initialized_version: np.int32 | None = None, is_modified: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, initialized_version: primitives.Int | None = None, is_modified: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,7 +43,7 @@ class GridContainerPreset(GeneratedComponent, IModifiedEventReceiver, IWorldEven
         self.set_member("_initializer", value)
 
     @property
-    def initialized_version(self) -> np.int32 | None:
+    def initialized_version(self) -> primitives.Int | None:
         """The _initializedVersion field value."""
         member = self.get_member("_initializedVersion")
         if member is None:
@@ -52,7 +51,7 @@ class GridContainerPreset(GeneratedComponent, IModifiedEventReceiver, IWorldEven
         return getattr(member, 'value', None)
 
     @initialized_version.setter
-    def initialized_version(self, value: np.int32) -> None:
+    def initialized_version(self, value: primitives.Int) -> None:
         """Set the _initializedVersion field value."""
         member = self.get_member("_initializedVersion")
         if member is not None:
@@ -63,7 +62,7 @@ class GridContainerPreset(GeneratedComponent, IModifiedEventReceiver, IWorldEven
             )
 
     @property
-    def is_modified(self) -> bool | None:
+    def is_modified(self) -> primitives.Bool | None:
         """The _isModified field value."""
         member = self.get_member("_isModified")
         if member is None:
@@ -71,7 +70,7 @@ class GridContainerPreset(GeneratedComponent, IModifiedEventReceiver, IWorldEven
         return getattr(member, 'value', None)
 
     @is_modified.setter
-    def is_modified(self, value: bool) -> None:
+    def is_modified(self, value: primitives.Bool) -> None:
         """Set the _isModified field value."""
         member = self.get_member("_isModified")
         if member is not None:

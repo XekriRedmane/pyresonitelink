@@ -1,7 +1,5 @@
 """Generated component: PBSLerpSpecular."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBSLerpSpecular"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, lerp: np.float32 | None = None, lerp_texture: str | IAssetProvider[ITexture2D] | None = None, lerp_texture_scale: primitives.Float2 | None = None, lerp_texture_offset: primitives.Float2 | None = None, texture0_scale: primitives.Float2 | None = None, texture0_offset: primitives.Float2 | None = None, texture1_scale: primitives.Float2 | None = None, texture1_offset: primitives.Float2 | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_texture0: str | IAssetProvider[ITexture2D] | None = None, albedo_texture1: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_map0: str | IAssetProvider[ITexture2D] | None = None, emissive_map1: str | IAssetProvider[ITexture2D] | None = None, normal_map0: str | IAssetProvider[ITexture2D] | None = None, normal_map1: str | IAssetProvider[ITexture2D] | None = None, normal_scale0: np.float32 | None = None, normal_scale1: np.float32 | None = None, multi_value: bool | None = None, occlusion_map0: str | IAssetProvider[ITexture2D] | None = None, occlusion_map1: str | IAssetProvider[ITexture2D] | None = None, alpha_cutoff: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, specular_color0: primitives.ColorX | None = None, specular_color1: primitives.ColorX | None = None, specular_map0: str | IAssetProvider[ITexture2D] | None = None, specular_map1: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, lerp: primitives.Float | None = None, lerp_texture: str | IAssetProvider[ITexture2D] | None = None, lerp_texture_scale: primitives.Float2 | None = None, lerp_texture_offset: primitives.Float2 | None = None, texture0_scale: primitives.Float2 | None = None, texture0_offset: primitives.Float2 | None = None, texture1_scale: primitives.Float2 | None = None, texture1_offset: primitives.Float2 | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_texture0: str | IAssetProvider[ITexture2D] | None = None, albedo_texture1: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_map0: str | IAssetProvider[ITexture2D] | None = None, emissive_map1: str | IAssetProvider[ITexture2D] | None = None, normal_map0: str | IAssetProvider[ITexture2D] | None = None, normal_map1: str | IAssetProvider[ITexture2D] | None = None, normal_scale0: primitives.Float | None = None, normal_scale1: primitives.Float | None = None, multi_value: primitives.Bool | None = None, occlusion_map0: str | IAssetProvider[ITexture2D] | None = None, occlusion_map1: str | IAssetProvider[ITexture2D] | None = None, alpha_cutoff: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color0: primitives.ColorX | None = None, specular_color1: primitives.ColorX | None = None, specular_map0: str | IAssetProvider[ITexture2D] | None = None, specular_map1: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -130,7 +128,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.specular_map1 = specular_map1
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -138,7 +136,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -170,7 +168,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def lerp(self) -> np.float32 | None:
+    def lerp(self) -> primitives.Float | None:
         """The Lerp field value."""
         member = self.get_member("Lerp")
         if member is None:
@@ -178,7 +176,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @lerp.setter
-    def lerp(self, value: np.float32) -> None:
+    def lerp(self, value: primitives.Float) -> None:
         """Set the Lerp field value."""
         member = self.get_member("Lerp")
         if member is not None:
@@ -526,7 +524,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def normal_scale0(self) -> np.float32 | None:
+    def normal_scale0(self) -> primitives.Float | None:
         """The NormalScale0 field value."""
         member = self.get_member("NormalScale0")
         if member is None:
@@ -534,7 +532,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @normal_scale0.setter
-    def normal_scale0(self, value: np.float32) -> None:
+    def normal_scale0(self, value: primitives.Float) -> None:
         """Set the NormalScale0 field value."""
         member = self.get_member("NormalScale0")
         if member is not None:
@@ -545,7 +543,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def normal_scale1(self) -> np.float32 | None:
+    def normal_scale1(self) -> primitives.Float | None:
         """The NormalScale1 field value."""
         member = self.get_member("NormalScale1")
         if member is None:
@@ -553,7 +551,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @normal_scale1.setter
-    def normal_scale1(self, value: np.float32) -> None:
+    def normal_scale1(self, value: primitives.Float) -> None:
         """Set the NormalScale1 field value."""
         member = self.get_member("NormalScale1")
         if member is not None:
@@ -564,7 +562,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def multi_value(self) -> bool | None:
+    def multi_value(self) -> primitives.Bool | None:
         """The MultiValue field value."""
         member = self.get_member("MultiValue")
         if member is None:
@@ -572,7 +570,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @multi_value.setter
-    def multi_value(self, value: bool) -> None:
+    def multi_value(self, value: primitives.Bool) -> None:
         """Set the MultiValue field value."""
         member = self.get_member("MultiValue")
         if member is not None:
@@ -638,7 +636,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         self.set_member("BlendMode", value)
 
     @property
-    def alpha_cutoff(self) -> np.float32 | None:
+    def alpha_cutoff(self) -> primitives.Float | None:
         """The AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is None:
@@ -646,7 +644,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @alpha_cutoff.setter
-    def alpha_cutoff(self, value: np.float32) -> None:
+    def alpha_cutoff(self, value: primitives.Float) -> None:
         """Set the AlphaCutoff field value."""
         member = self.get_member("AlphaCutoff")
         if member is not None:
@@ -696,7 +694,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         self.set_member("Culling", value)
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -704,7 +702,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -715,7 +713,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -723,7 +721,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -734,7 +732,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -742,7 +740,7 @@ class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

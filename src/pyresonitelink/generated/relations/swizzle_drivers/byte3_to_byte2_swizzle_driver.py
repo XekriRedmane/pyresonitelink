@@ -1,7 +1,5 @@
 """Generated component: Byte3ToByte2SwizzleDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class Byte3ToByte2SwizzleDriver(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Byte3ToByte2SwizzleDriver"
 
-    def __init__(self, source: str | IField[primitives.Byte3] | None = None, target: str | IField[primitives.Byte2] | None = None, x: np.int32 | None = None, y: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[primitives.Byte3] | None = None, target: str | IField[primitives.Byte2] | None = None, x: primitives.Int | None = None, y: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -83,7 +81,7 @@ class Byte3ToByte2SwizzleDriver(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def x(self) -> np.int32 | None:
+    def x(self) -> primitives.Int | None:
         """The X field value."""
         member = self.get_member("X")
         if member is None:
@@ -91,7 +89,7 @@ class Byte3ToByte2SwizzleDriver(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @x.setter
-    def x(self, value: np.int32) -> None:
+    def x(self, value: primitives.Int) -> None:
         """Set the X field value."""
         member = self.get_member("X")
         if member is not None:
@@ -102,7 +100,7 @@ class Byte3ToByte2SwizzleDriver(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def y(self) -> np.int32 | None:
+    def y(self) -> primitives.Int | None:
         """The Y field value."""
         member = self.get_member("Y")
         if member is None:
@@ -110,7 +108,7 @@ class Byte3ToByte2SwizzleDriver(GeneratedComponent, IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @y.setter
-    def y(self, value: np.int32) -> None:
+    def y(self, value: primitives.Int) -> None:
         """Set the Y field value."""
         member = self.get_member("Y")
         if member is not None:

@@ -1,6 +1,7 @@
 """Generated component: HoverDynamicValueSet."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.iui_hoverable import IUIHoverable
@@ -15,14 +16,14 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
 
     Parameterize with a value type::
 
-        HoverDynamicValueSet[np.float32]
+        HoverDynamicValueSet[primitives.Float]
         HoverDynamicValueSet[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.HoverDynamicValueSet<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.UIX.HoverDynamicValueSet<>"
 
-    def __init__(self, variable_name: str | None = None, value_on_begin_hover: T | None = None, value_on_end_hover: T | None = None, set_value_on_begin_hover: bool | None = None, set_value_on_end_hover: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, value_on_begin_hover: T | None = None, value_on_end_hover: T | None = None, set_value_on_begin_hover: primitives.Bool | None = None, set_value_on_end_hover: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,7 +47,7 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
             self.set_value_on_end_hover = set_value_on_end_hover
 
     @property
-    def variable_name(self) -> str | None:
+    def variable_name(self) -> primitives.String | None:
         """The VariableName field value."""
         member = self.get_member("VariableName")
         if member is None:
@@ -54,7 +55,7 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
         return getattr(member, 'value', None)
 
     @variable_name.setter
-    def variable_name(self, value: str) -> None:
+    def variable_name(self, value: primitives.String) -> None:
         """Set the VariableName field value."""
         member = self.get_member("VariableName")
         if member is not None:
@@ -103,7 +104,7 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
             )
 
     @property
-    def set_value_on_begin_hover(self) -> bool | None:
+    def set_value_on_begin_hover(self) -> primitives.Bool | None:
         """The SetValueOnBeginHover field value."""
         member = self.get_member("SetValueOnBeginHover")
         if member is None:
@@ -111,7 +112,7 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
         return getattr(member, 'value', None)
 
     @set_value_on_begin_hover.setter
-    def set_value_on_begin_hover(self, value: bool) -> None:
+    def set_value_on_begin_hover(self, value: primitives.Bool) -> None:
         """Set the SetValueOnBeginHover field value."""
         member = self.get_member("SetValueOnBeginHover")
         if member is not None:
@@ -122,7 +123,7 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
             )
 
     @property
-    def set_value_on_end_hover(self) -> bool | None:
+    def set_value_on_end_hover(self) -> primitives.Bool | None:
         """The SetValueOnEndHover field value."""
         member = self.get_member("SetValueOnEndHover")
         if member is None:
@@ -130,7 +131,7 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
         return getattr(member, 'value', None)
 
     @set_value_on_end_hover.setter
-    def set_value_on_end_hover(self, value: bool) -> None:
+    def set_value_on_end_hover(self, value: primitives.Bool) -> None:
         """Set the SetValueOnEndHover field value."""
         member = self.get_member("SetValueOnEndHover")
         if member is not None:

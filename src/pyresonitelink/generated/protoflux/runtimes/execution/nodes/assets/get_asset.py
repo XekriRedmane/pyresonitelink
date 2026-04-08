@@ -22,7 +22,7 @@ class GetAsset(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INo
 
     Parameterize with a value type::
 
-        GetAsset[np.float32]
+        GetAsset[primitives.Float]
         GetAsset[primitives.Float3]
     """
 

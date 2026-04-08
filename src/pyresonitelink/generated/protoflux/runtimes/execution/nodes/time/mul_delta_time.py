@@ -18,7 +18,7 @@ class MulDeltaTime(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], 
 
     Parameterize with a value type::
 
-        MulDeltaTime[np.float32]
+        MulDeltaTime[primitives.Float]
         MulDeltaTime[primitives.Float3]
     """
 

@@ -1,8 +1,7 @@
 """Generated component: ValueConstantLerp."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -22,14 +21,14 @@ class ValueConstantLerp(GenericComponent[T], INodeValueOutput[T], IExecutionUpda
 
     Parameterize with a value type::
 
-        ValueConstantLerp[np.float32]
+        ValueConstantLerp[primitives.Float]
         ValueConstantLerp[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.ValueConstantLerp<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.ValueConstantLerp<>"
 
-    def __init__(self, input_: str | INodeValueOutput[T] | None = None, speed: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, input_: str | INodeValueOutput[T] | None = None, speed: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,15 +65,15 @@ class ValueConstantLerp(GenericComponent[T], INodeValueOutput[T], IExecutionUpda
 
     @property
     def speed(self) -> str | None:
-        """Target ID of the Speed reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Speed reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @speed.setter
-    def speed(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Speed reference by target ID or INodeValueOutput[np.float32] instance."""
+    def speed(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Speed reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):

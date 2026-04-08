@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slide_swap_region import SlideSwapRegion
@@ -19,7 +20,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LoginDialog"
 
-    def __init__(self, register_only: bool | None = None, interaction_enabled: bool | None = None, swap_region: str | SlideSwapRegion | None = None, username: str | TextField | None = None, email: str | TextField | None = None, email_repeat: str | TextField | None = None, password: str | TextField | None = None, password_repeat: str | TextField | None = None, recovery_code: str | TextField | None = None, birth_month: str | IntTextEditorParser | None = None, birth_day: str | IntTextEditorParser | None = None, birth_year: str | IntTextEditorParser | None = None, remember_login: str | Checkbox | None = None, reset_user_id: str | Checkbox | None = None, policies: str | Checkbox | None = None, register_button: str | Button | None = None, login_email: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, register_only: primitives.Bool | None = None, interaction_enabled: primitives.Bool | None = None, swap_region: str | SlideSwapRegion | None = None, username: str | TextField | None = None, email: str | TextField | None = None, email_repeat: str | TextField | None = None, password: str | TextField | None = None, password_repeat: str | TextField | None = None, recovery_code: str | TextField | None = None, birth_month: str | IntTextEditorParser | None = None, birth_day: str | IntTextEditorParser | None = None, birth_year: str | IntTextEditorParser | None = None, remember_login: str | Checkbox | None = None, reset_user_id: str | Checkbox | None = None, policies: str | Checkbox | None = None, register_button: str | Button | None = None, login_email: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -79,7 +80,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.login_email = login_email
 
     @property
-    def register_only(self) -> bool | None:
+    def register_only(self) -> primitives.Bool | None:
         """The RegisterOnly field value."""
         member = self.get_member("RegisterOnly")
         if member is None:
@@ -87,7 +88,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @register_only.setter
-    def register_only(self, value: bool) -> None:
+    def register_only(self, value: primitives.Bool) -> None:
         """Set the RegisterOnly field value."""
         member = self.get_member("RegisterOnly")
         if member is not None:
@@ -98,7 +99,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def interaction_enabled(self) -> bool | None:
+    def interaction_enabled(self) -> primitives.Bool | None:
         """The _interactionEnabled field value."""
         member = self.get_member("_interactionEnabled")
         if member is None:
@@ -106,7 +107,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @interaction_enabled.setter
-    def interaction_enabled(self, value: bool) -> None:
+    def interaction_enabled(self, value: primitives.Bool) -> None:
         """Set the _interactionEnabled field value."""
         member = self.get_member("_interactionEnabled")
         if member is not None:
@@ -411,7 +412,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def login_email(self) -> str | None:
+    def login_email(self) -> primitives.String | None:
         """The _loginEmail field value."""
         member = self.get_member("_loginEmail")
         if member is None:
@@ -419,7 +420,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @login_email.setter
-    def login_email(self, value: str) -> None:
+    def login_email(self, value: primitives.String) -> None:
         """Set the _loginEmail field value."""
         member = self.get_member("_loginEmail")
         if member is not None:

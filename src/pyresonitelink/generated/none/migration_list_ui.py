@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -15,7 +16,7 @@ class MigrationListUI(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MigrationListUI"
 
-    def __init__(self, selected_task_id: str | None = None, list_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, selected_task_id: primitives.String | None = None, list_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class MigrationListUI(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.list_root = list_root
 
     @property
-    def selected_task_id(self) -> str | None:
+    def selected_task_id(self) -> primitives.String | None:
         """The SelectedTaskId field value."""
         member = self.get_member("SelectedTaskId")
         if member is None:
@@ -38,7 +39,7 @@ class MigrationListUI(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @selected_task_id.setter
-    def selected_task_id(self, value: str) -> None:
+    def selected_task_id(self, value: primitives.String) -> None:
         """Set the SelectedTaskId field value."""
         member = self.get_member("SelectedTaskId")
         if member is not None:

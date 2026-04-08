@@ -18,7 +18,7 @@ class ValueInverseLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     Parameterize with a value type::
 
-        ValueInverseLerp[np.float32]
+        ValueInverseLerp[primitives.Float]
         ValueInverseLerp[primitives.Float3]
     """
 

@@ -1,7 +1,5 @@
 """Generated component: PBS_DistanceLerpMetallic."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -23,7 +21,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_DistanceLerpMetallic"
 
-    def __init__(self, high_priority_integration: bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, grid_size: primitives.Float3 | None = None, grid_offset: primitives.Float3 | None = None, displace_from: np.float32 | None = None, displace_to: np.float32 | None = None, displace_magnitude_from: np.float32 | None = None, displace_magnitude_to: np.float32 | None = None, emission_from: np.float32 | None = None, emission_to: np.float32 | None = None, emission_color_from: primitives.ColorX | None = None, emission_color_to: primitives.ColorX | None = None, override_displacement_direction: primitives.Float3 | None = None, local_space: bool | None = None, transparent: bool | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, metallic: np.float32 | None = None, smoothness: np.float32 | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, grid_size: primitives.Float3 | None = None, grid_offset: primitives.Float3 | None = None, displace_from: primitives.Float | None = None, displace_to: primitives.Float | None = None, displace_magnitude_from: primitives.Float | None = None, displace_magnitude_to: primitives.Float | None = None, emission_from: primitives.Float | None = None, emission_to: primitives.Float | None = None, emission_color_from: primitives.ColorX | None = None, emission_color_to: primitives.ColorX | None = None, override_displacement_direction: primitives.Float3 | None = None, local_space: primitives.Bool | None = None, transparent: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -122,7 +120,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             self.regular = regular
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -130,7 +128,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -280,7 +278,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -288,7 +286,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -358,7 +356,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def displace_from(self) -> np.float32 | None:
+    def displace_from(self) -> primitives.Float | None:
         """The DisplaceFrom field value."""
         member = self.get_member("DisplaceFrom")
         if member is None:
@@ -366,7 +364,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @displace_from.setter
-    def displace_from(self, value: np.float32) -> None:
+    def displace_from(self, value: primitives.Float) -> None:
         """Set the DisplaceFrom field value."""
         member = self.get_member("DisplaceFrom")
         if member is not None:
@@ -377,7 +375,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def displace_to(self) -> np.float32 | None:
+    def displace_to(self) -> primitives.Float | None:
         """The DisplaceTo field value."""
         member = self.get_member("DisplaceTo")
         if member is None:
@@ -385,7 +383,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @displace_to.setter
-    def displace_to(self, value: np.float32) -> None:
+    def displace_to(self, value: primitives.Float) -> None:
         """Set the DisplaceTo field value."""
         member = self.get_member("DisplaceTo")
         if member is not None:
@@ -396,7 +394,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def displace_magnitude_from(self) -> np.float32 | None:
+    def displace_magnitude_from(self) -> primitives.Float | None:
         """The DisplaceMagnitudeFrom field value."""
         member = self.get_member("DisplaceMagnitudeFrom")
         if member is None:
@@ -404,7 +402,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @displace_magnitude_from.setter
-    def displace_magnitude_from(self, value: np.float32) -> None:
+    def displace_magnitude_from(self, value: primitives.Float) -> None:
         """Set the DisplaceMagnitudeFrom field value."""
         member = self.get_member("DisplaceMagnitudeFrom")
         if member is not None:
@@ -415,7 +413,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def displace_magnitude_to(self) -> np.float32 | None:
+    def displace_magnitude_to(self) -> primitives.Float | None:
         """The DisplaceMagnitudeTo field value."""
         member = self.get_member("DisplaceMagnitudeTo")
         if member is None:
@@ -423,7 +421,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @displace_magnitude_to.setter
-    def displace_magnitude_to(self, value: np.float32) -> None:
+    def displace_magnitude_to(self, value: primitives.Float) -> None:
         """Set the DisplaceMagnitudeTo field value."""
         member = self.get_member("DisplaceMagnitudeTo")
         if member is not None:
@@ -434,7 +432,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def emission_from(self) -> np.float32 | None:
+    def emission_from(self) -> primitives.Float | None:
         """The EmissionFrom field value."""
         member = self.get_member("EmissionFrom")
         if member is None:
@@ -442,7 +440,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @emission_from.setter
-    def emission_from(self, value: np.float32) -> None:
+    def emission_from(self, value: primitives.Float) -> None:
         """Set the EmissionFrom field value."""
         member = self.get_member("EmissionFrom")
         if member is not None:
@@ -453,7 +451,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def emission_to(self) -> np.float32 | None:
+    def emission_to(self) -> primitives.Float | None:
         """The EmissionTo field value."""
         member = self.get_member("EmissionTo")
         if member is None:
@@ -461,7 +459,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @emission_to.setter
-    def emission_to(self, value: np.float32) -> None:
+    def emission_to(self, value: primitives.Float) -> None:
         """Set the EmissionTo field value."""
         member = self.get_member("EmissionTo")
         if member is not None:
@@ -529,7 +527,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def local_space(self) -> bool | None:
+    def local_space(self) -> primitives.Bool | None:
         """The LocalSpace field value."""
         member = self.get_member("LocalSpace")
         if member is None:
@@ -537,7 +535,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @local_space.setter
-    def local_space(self, value: bool) -> None:
+    def local_space(self, value: primitives.Bool) -> None:
         """Set the LocalSpace field value."""
         member = self.get_member("LocalSpace")
         if member is not None:
@@ -574,7 +572,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         self.set_member("Culling", value)
 
     @property
-    def transparent(self) -> bool | None:
+    def transparent(self) -> primitives.Bool | None:
         """The Transparent field value."""
         member = self.get_member("Transparent")
         if member is None:
@@ -582,7 +580,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @transparent.setter
-    def transparent(self, value: bool) -> None:
+    def transparent(self, value: primitives.Bool) -> None:
         """Set the Transparent field value."""
         member = self.get_member("Transparent")
         if member is not None:
@@ -593,7 +591,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -601,7 +599,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -612,7 +610,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -620,7 +618,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -631,7 +629,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -639,7 +637,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -650,7 +648,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def metallic(self) -> np.float32 | None:
+    def metallic(self) -> primitives.Float | None:
         """The Metallic field value."""
         member = self.get_member("Metallic")
         if member is None:
@@ -658,7 +656,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @metallic.setter
-    def metallic(self, value: np.float32) -> None:
+    def metallic(self, value: primitives.Float) -> None:
         """Set the Metallic field value."""
         member = self.get_member("Metallic")
         if member is not None:
@@ -669,7 +667,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
             )
 
     @property
-    def smoothness(self) -> np.float32 | None:
+    def smoothness(self) -> primitives.Float | None:
         """The Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is None:
@@ -677,7 +675,7 @@ class PBS_DistanceLerpMetallic(GeneratedComponent, ICullingMaterial, IAssetProvi
         return getattr(member, 'value', None)
 
     @smoothness.setter
-    def smoothness(self, value: np.float32) -> None:
+    def smoothness(self, value: primitives.Float) -> None:
         """Set the Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: AxisMultiViewportPanner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.AxisMultiViewportPanner"
 
-    def __init__(self, viewport_index: np.int32 | None = None, animation_time: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, viewport_index: primitives.Int | None = None, animation_time: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceive
             self.animation_time = animation_time
 
     @property
-    def viewport_index(self) -> np.int32 | None:
+    def viewport_index(self) -> primitives.Int | None:
         """The ViewportIndex field value."""
         member = self.get_member("ViewportIndex")
         if member is None:
@@ -41,7 +40,7 @@ class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @viewport_index.setter
-    def viewport_index(self, value: np.int32) -> None:
+    def viewport_index(self, value: primitives.Int) -> None:
         """Set the ViewportIndex field value."""
         member = self.get_member("ViewportIndex")
         if member is not None:
@@ -52,7 +51,7 @@ class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def animation_time(self) -> np.float32 | None:
+    def animation_time(self) -> primitives.Float | None:
         """The AnimationTime field value."""
         member = self.get_member("AnimationTime")
         if member is None:
@@ -60,7 +59,7 @@ class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @animation_time.setter
-    def animation_time(self, value: np.float32) -> None:
+    def animation_time(self, value: primitives.Float) -> None:
         """Set the AnimationTime field value."""
         member = self.get_member("AnimationTime")
         if member is not None:

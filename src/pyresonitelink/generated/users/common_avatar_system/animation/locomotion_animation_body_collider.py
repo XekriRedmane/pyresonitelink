@@ -1,6 +1,7 @@
 """Generated component: LocomotionAnimationBodyCollider."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class LocomotionAnimationBodyCollider(GeneratedComponent, IComponent, IWorldEven
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionAnimationBodyCollider"
 
-    def __init__(self, ignore_for_left_hand: bool | None = None, ignore_for_right_hand: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, ignore_for_left_hand: primitives.Bool | None = None, ignore_for_right_hand: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class LocomotionAnimationBodyCollider(GeneratedComponent, IComponent, IWorldEven
             self.ignore_for_right_hand = ignore_for_right_hand
 
     @property
-    def ignore_for_left_hand(self) -> bool | None:
+    def ignore_for_left_hand(self) -> primitives.Bool | None:
         """The IgnoreForLeftHand field value."""
         member = self.get_member("IgnoreForLeftHand")
         if member is None:
@@ -38,7 +39,7 @@ class LocomotionAnimationBodyCollider(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @ignore_for_left_hand.setter
-    def ignore_for_left_hand(self, value: bool) -> None:
+    def ignore_for_left_hand(self, value: primitives.Bool) -> None:
         """Set the IgnoreForLeftHand field value."""
         member = self.get_member("IgnoreForLeftHand")
         if member is not None:
@@ -49,7 +50,7 @@ class LocomotionAnimationBodyCollider(GeneratedComponent, IComponent, IWorldEven
             )
 
     @property
-    def ignore_for_right_hand(self) -> bool | None:
+    def ignore_for_right_hand(self) -> primitives.Bool | None:
         """The IgnoreForRightHand field value."""
         member = self.get_member("IgnoreForRightHand")
         if member is None:
@@ -57,7 +58,7 @@ class LocomotionAnimationBodyCollider(GeneratedComponent, IComponent, IWorldEven
         return getattr(member, 'value', None)
 
     @ignore_for_right_hand.setter
-    def ignore_for_right_hand(self, value: bool) -> None:
+    def ignore_for_right_hand(self, value: primitives.Bool) -> None:
         """Set the IgnoreForRightHand field value."""
         member = self.get_member("IgnoreForRightHand")
         if member is not None:

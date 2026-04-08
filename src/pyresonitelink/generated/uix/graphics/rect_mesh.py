@@ -14,7 +14,7 @@ class RectMesh(GenericComponent[T], IUIComputeComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        RectMesh[np.float32]
+        RectMesh[primitives.Float]
         RectMesh[primitives.Float3]
     """
 

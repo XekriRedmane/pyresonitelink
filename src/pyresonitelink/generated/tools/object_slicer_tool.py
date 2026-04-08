@@ -1,7 +1,5 @@
 """Generated component: ObjectSlicerTool."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ObjectSlicerTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, apply_to_object_root: bool | None = None, edge_color: primitives.ColorX | None = None, edge_start: np.float32 | None = None, edge_end: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, apply_to_object_root: primitives.Bool | None = None, edge_color: primitives.ColorX | None = None, edge_start: primitives.Float | None = None, edge_end: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -97,7 +95,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -105,7 +103,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -116,7 +114,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -124,7 +122,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -135,7 +133,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -143,7 +141,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -175,7 +173,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -183,7 +181,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -194,7 +192,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
             )
 
     @property
-    def apply_to_object_root(self) -> bool | None:
+    def apply_to_object_root(self) -> primitives.Bool | None:
         """The ApplyToObjectRoot field value."""
         member = self.get_member("ApplyToObjectRoot")
         if member is None:
@@ -202,7 +200,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
         return getattr(member, 'value', None)
 
     @apply_to_object_root.setter
-    def apply_to_object_root(self, value: bool) -> None:
+    def apply_to_object_root(self, value: primitives.Bool) -> None:
         """Set the ApplyToObjectRoot field value."""
         member = self.get_member("ApplyToObjectRoot")
         if member is not None:
@@ -232,7 +230,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
             )
 
     @property
-    def edge_start(self) -> np.float32 | None:
+    def edge_start(self) -> primitives.Float | None:
         """The EdgeStart field value."""
         member = self.get_member("EdgeStart")
         if member is None:
@@ -240,7 +238,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
         return getattr(member, 'value', None)
 
     @edge_start.setter
-    def edge_start(self, value: np.float32) -> None:
+    def edge_start(self, value: primitives.Float) -> None:
         """Set the EdgeStart field value."""
         member = self.get_member("EdgeStart")
         if member is not None:
@@ -251,7 +249,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
             )
 
     @property
-    def edge_end(self) -> np.float32 | None:
+    def edge_end(self) -> primitives.Float | None:
         """The EdgeEnd field value."""
         member = self.get_member("EdgeEnd")
         if member is None:
@@ -259,7 +257,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
         return getattr(member, 'value', None)
 
     @edge_end.setter
-    def edge_end(self, value: np.float32) -> None:
+    def edge_end(self, value: primitives.Float) -> None:
         """Set the EdgeEnd field value."""
         member = self.get_member("EdgeEnd")
         if member is not None:

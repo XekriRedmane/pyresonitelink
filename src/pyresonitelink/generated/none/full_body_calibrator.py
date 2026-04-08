@@ -1,7 +1,5 @@
 """Generated component: FullBodyCalibrator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -28,7 +26,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FullBodyCalibrator"
 
-    def __init__(self, target_user: str | User | None = None, use_symmetry_for_trackers: bool | None = None, use_symmetry_for_avatar: bool | None = None, show_body_overlay: bool | None = None, show_avatar_overlay: bool | None = None, height_compensation: np.float32 | None = None, avatar_height_compensation: np.float32 | None = None, calibrating_pose: bool | None = None, space_offset: primitives.Float3 | None = None, grabbable: str | Grabbable | None = None, head_reference: str | Slot | None = None, left_hand_reference: str | Slot | None = None, right_hand_reference: str | Slot | None = None, hips_source: str | TrackedDevicePositioner | None = None, chest_source: str | TrackedDevicePositioner | None = None, left_foot_source: str | TrackedDevicePositioner | None = None, right_foot_source: str | TrackedDevicePositioner | None = None, left_elbow_source: str | TrackedDevicePositioner | None = None, right_elbow_source: str | TrackedDevicePositioner | None = None, left_knee_source: str | TrackedDevicePositioner | None = None, right_knee_source: str | TrackedDevicePositioner | None = None, dialog: str | FullBodyCalibratorDialog | None = None, left_hand_override: str | Slot | None = None, right_hand_override: str | Slot | None = None, target_custom_avatar: str | VRIKAvatar | None = None, avatar_hips_offset: str | Slot | None = None, avatar_left_foot_offset: str | Slot | None = None, avatar_right_foot_offset: str | Slot | None = None, avatar_left_knee_default_offset: str | Slot | None = None, avatar_right_knee_default_offset: str | Slot | None = None, avatar_hip_handle: str | Slot | None = None, avatar_left_foot_handle: str | Slot | None = None, avatar_right_foot_handle: str | Slot | None = None, avatar_left_knee_handle: str | Slot | None = None, avatar_right_knee_handle: str | Slot | None = None, avatar_left_knee_offset: str | IField[primitives.Float3] | None = None, avatar_right_knee_offset: str | IField[primitives.Float3] | None = None, ground: str | Slot | None = None, visualization_root: str | Slot | None = None, body_node_material: str | FresnelMaterial | None = None, calibration_reference_material: str | OverlayFresnelMaterial | None = None, left_hand_override_material: str | OverlayFresnelMaterial | None = None, right_hand_override_material: str | OverlayFresnelMaterial | None = None, left_hand_override_front_color: str | IField[primitives.ColorX] | None = None, left_hand_override_behind_color: str | IField[primitives.ColorX] | None = None, right_hand_override_front_color: str | IField[primitives.ColorX] | None = None, right_hand_override_behind_color: str | IField[primitives.ColorX] | None = None, pattern_tex: str | StaticTexture2D | None = None, title: str | TextRenderer | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_user: str | User | None = None, use_symmetry_for_trackers: primitives.Bool | None = None, use_symmetry_for_avatar: primitives.Bool | None = None, show_body_overlay: primitives.Bool | None = None, show_avatar_overlay: primitives.Bool | None = None, height_compensation: primitives.Float | None = None, avatar_height_compensation: primitives.Float | None = None, calibrating_pose: primitives.Bool | None = None, space_offset: primitives.Float3 | None = None, grabbable: str | Grabbable | None = None, head_reference: str | Slot | None = None, left_hand_reference: str | Slot | None = None, right_hand_reference: str | Slot | None = None, hips_source: str | TrackedDevicePositioner | None = None, chest_source: str | TrackedDevicePositioner | None = None, left_foot_source: str | TrackedDevicePositioner | None = None, right_foot_source: str | TrackedDevicePositioner | None = None, left_elbow_source: str | TrackedDevicePositioner | None = None, right_elbow_source: str | TrackedDevicePositioner | None = None, left_knee_source: str | TrackedDevicePositioner | None = None, right_knee_source: str | TrackedDevicePositioner | None = None, dialog: str | FullBodyCalibratorDialog | None = None, left_hand_override: str | Slot | None = None, right_hand_override: str | Slot | None = None, target_custom_avatar: str | VRIKAvatar | None = None, avatar_hips_offset: str | Slot | None = None, avatar_left_foot_offset: str | Slot | None = None, avatar_right_foot_offset: str | Slot | None = None, avatar_left_knee_default_offset: str | Slot | None = None, avatar_right_knee_default_offset: str | Slot | None = None, avatar_hip_handle: str | Slot | None = None, avatar_left_foot_handle: str | Slot | None = None, avatar_right_foot_handle: str | Slot | None = None, avatar_left_knee_handle: str | Slot | None = None, avatar_right_knee_handle: str | Slot | None = None, avatar_left_knee_offset: str | IField[primitives.Float3] | None = None, avatar_right_knee_offset: str | IField[primitives.Float3] | None = None, ground: str | Slot | None = None, visualization_root: str | Slot | None = None, body_node_material: str | FresnelMaterial | None = None, calibration_reference_material: str | OverlayFresnelMaterial | None = None, left_hand_override_material: str | OverlayFresnelMaterial | None = None, right_hand_override_material: str | OverlayFresnelMaterial | None = None, left_hand_override_front_color: str | IField[primitives.ColorX] | None = None, left_hand_override_behind_color: str | IField[primitives.ColorX] | None = None, right_hand_override_front_color: str | IField[primitives.ColorX] | None = None, right_hand_override_behind_color: str | IField[primitives.ColorX] | None = None, pattern_tex: str | StaticTexture2D | None = None, title: str | TextRenderer | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -205,7 +203,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def use_symmetry_for_trackers(self) -> bool | None:
+    def use_symmetry_for_trackers(self) -> primitives.Bool | None:
         """The UseSymmetryForTrackers field value."""
         member = self.get_member("UseSymmetryForTrackers")
         if member is None:
@@ -213,7 +211,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_symmetry_for_trackers.setter
-    def use_symmetry_for_trackers(self, value: bool) -> None:
+    def use_symmetry_for_trackers(self, value: primitives.Bool) -> None:
         """Set the UseSymmetryForTrackers field value."""
         member = self.get_member("UseSymmetryForTrackers")
         if member is not None:
@@ -224,7 +222,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def use_symmetry_for_avatar(self) -> bool | None:
+    def use_symmetry_for_avatar(self) -> primitives.Bool | None:
         """The UseSymmetryForAvatar field value."""
         member = self.get_member("UseSymmetryForAvatar")
         if member is None:
@@ -232,7 +230,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @use_symmetry_for_avatar.setter
-    def use_symmetry_for_avatar(self, value: bool) -> None:
+    def use_symmetry_for_avatar(self, value: primitives.Bool) -> None:
         """Set the UseSymmetryForAvatar field value."""
         member = self.get_member("UseSymmetryForAvatar")
         if member is not None:
@@ -243,7 +241,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def show_body_overlay(self) -> bool | None:
+    def show_body_overlay(self) -> primitives.Bool | None:
         """The ShowBodyOverlay field value."""
         member = self.get_member("ShowBodyOverlay")
         if member is None:
@@ -251,7 +249,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_body_overlay.setter
-    def show_body_overlay(self, value: bool) -> None:
+    def show_body_overlay(self, value: primitives.Bool) -> None:
         """Set the ShowBodyOverlay field value."""
         member = self.get_member("ShowBodyOverlay")
         if member is not None:
@@ -262,7 +260,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def show_avatar_overlay(self) -> bool | None:
+    def show_avatar_overlay(self) -> primitives.Bool | None:
         """The ShowAvatarOverlay field value."""
         member = self.get_member("ShowAvatarOverlay")
         if member is None:
@@ -270,7 +268,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_avatar_overlay.setter
-    def show_avatar_overlay(self, value: bool) -> None:
+    def show_avatar_overlay(self, value: primitives.Bool) -> None:
         """Set the ShowAvatarOverlay field value."""
         member = self.get_member("ShowAvatarOverlay")
         if member is not None:
@@ -281,7 +279,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def height_compensation(self) -> np.float32 | None:
+    def height_compensation(self) -> primitives.Float | None:
         """The HeightCompensation field value."""
         member = self.get_member("HeightCompensation")
         if member is None:
@@ -289,7 +287,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @height_compensation.setter
-    def height_compensation(self, value: np.float32) -> None:
+    def height_compensation(self, value: primitives.Float) -> None:
         """Set the HeightCompensation field value."""
         member = self.get_member("HeightCompensation")
         if member is not None:
@@ -300,7 +298,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def avatar_height_compensation(self) -> np.float32 | None:
+    def avatar_height_compensation(self) -> primitives.Float | None:
         """The AvatarHeightCompensation field value."""
         member = self.get_member("AvatarHeightCompensation")
         if member is None:
@@ -308,7 +306,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @avatar_height_compensation.setter
-    def avatar_height_compensation(self, value: np.float32) -> None:
+    def avatar_height_compensation(self, value: primitives.Float) -> None:
         """Set the AvatarHeightCompensation field value."""
         member = self.get_member("AvatarHeightCompensation")
         if member is not None:
@@ -319,7 +317,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def calibrating_pose(self) -> bool | None:
+    def calibrating_pose(self) -> primitives.Bool | None:
         """The _calibratingPose field value."""
         member = self.get_member("_calibratingPose")
         if member is None:
@@ -327,7 +325,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @calibrating_pose.setter
-    def calibrating_pose(self, value: bool) -> None:
+    def calibrating_pose(self, value: primitives.Bool) -> None:
         """Set the _calibratingPose field value."""
         member = self.get_member("_calibratingPose")
         if member is not None:

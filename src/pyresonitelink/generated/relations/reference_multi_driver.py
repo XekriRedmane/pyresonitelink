@@ -14,7 +14,7 @@ class ReferenceMultiDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     Parameterize with a value type::
 
-        ReferenceMultiDriver[np.float32]
+        ReferenceMultiDriver[primitives.Float]
         ReferenceMultiDriver[primitives.Float3]
     """
 

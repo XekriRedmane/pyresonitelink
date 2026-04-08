@@ -1,7 +1,5 @@
 """Generated component: DynamicBoneChain."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicBoneChain"
 
-    def __init__(self, inertia: np.float32 | None = None, inertia_force: np.float32 | None = None, damping: np.float32 | None = None, elasticity: np.float32 | None = None, stiffness: np.float32 | None = None, simulate_terminal_bones: bool | None = None, base_bone_radius: np.float32 | None = None, dynamic_player_collision: bool | None = None, collide_with_own_body: bool | None = None, collide_with_head: bool | None = None, collide_with_body: bool | None = None, collide_with_left_hand: bool | None = None, collide_with_right_hand: bool | None = None, gravity: primitives.Float3 | None = None, use_user_gravity_direction: bool | None = None, local_force: primitives.Float3 | None = None, global_stretch: np.float32 | None = None, max_stretch_ratio: np.float32 | None = None, current_stretch_ratio: np.float32 | None = None, stretch_restore_speed: np.float32 | None = None, use_local_user_space: bool | None = None, visualize_colliders: bool | None = None, visualize_bones: bool | None = None, is_grabbable: bool | None = None, active_user_root_only: bool | None = None, allow_steal: bool | None = None, grab_priority: np.int32 | None = None, ignore_grab_on_first_bone: bool | None = None, grab_radius_tolerance: np.float32 | None = None, grab_release_distance: np.float32 | None = None, grab_slipping: bool | None = None, grab_terminal_bones: bool | None = None, ignore_own_left_hand: bool | None = None, ignore_own_right_hand: bool | None = None, effector_target: str | Slot | None = None, effector_bone_index: np.int32 | None = None, effector_bone_offset: primitives.Float3 | None = None, active_grabber: str | Grabber | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, inertia: primitives.Float | None = None, inertia_force: primitives.Float | None = None, damping: primitives.Float | None = None, elasticity: primitives.Float | None = None, stiffness: primitives.Float | None = None, simulate_terminal_bones: primitives.Bool | None = None, base_bone_radius: primitives.Float | None = None, dynamic_player_collision: primitives.Bool | None = None, collide_with_own_body: primitives.Bool | None = None, collide_with_head: primitives.Bool | None = None, collide_with_body: primitives.Bool | None = None, collide_with_left_hand: primitives.Bool | None = None, collide_with_right_hand: primitives.Bool | None = None, gravity: primitives.Float3 | None = None, use_user_gravity_direction: primitives.Bool | None = None, local_force: primitives.Float3 | None = None, global_stretch: primitives.Float | None = None, max_stretch_ratio: primitives.Float | None = None, current_stretch_ratio: primitives.Float | None = None, stretch_restore_speed: primitives.Float | None = None, use_local_user_space: primitives.Bool | None = None, visualize_colliders: primitives.Bool | None = None, visualize_bones: primitives.Bool | None = None, is_grabbable: primitives.Bool | None = None, active_user_root_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, ignore_grab_on_first_bone: primitives.Bool | None = None, grab_radius_tolerance: primitives.Float | None = None, grab_release_distance: primitives.Float | None = None, grab_slipping: primitives.Bool | None = None, grab_terminal_bones: primitives.Bool | None = None, ignore_own_left_hand: primitives.Bool | None = None, ignore_own_right_hand: primitives.Bool | None = None, effector_target: str | Slot | None = None, effector_bone_index: primitives.Int | None = None, effector_bone_offset: primitives.Float3 | None = None, active_grabber: str | Grabber | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -147,7 +145,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             self.active_grabber = active_grabber
 
     @property
-    def inertia(self) -> np.float32 | None:
+    def inertia(self) -> primitives.Float | None:
         """The Inertia field value."""
         member = self.get_member("Inertia")
         if member is None:
@@ -155,7 +153,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @inertia.setter
-    def inertia(self, value: np.float32) -> None:
+    def inertia(self, value: primitives.Float) -> None:
         """Set the Inertia field value."""
         member = self.get_member("Inertia")
         if member is not None:
@@ -166,7 +164,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def inertia_force(self) -> np.float32 | None:
+    def inertia_force(self) -> primitives.Float | None:
         """The InertiaForce field value."""
         member = self.get_member("InertiaForce")
         if member is None:
@@ -174,7 +172,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @inertia_force.setter
-    def inertia_force(self, value: np.float32) -> None:
+    def inertia_force(self, value: primitives.Float) -> None:
         """Set the InertiaForce field value."""
         member = self.get_member("InertiaForce")
         if member is not None:
@@ -185,7 +183,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def damping(self) -> np.float32 | None:
+    def damping(self) -> primitives.Float | None:
         """The Damping field value."""
         member = self.get_member("Damping")
         if member is None:
@@ -193,7 +191,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @damping.setter
-    def damping(self, value: np.float32) -> None:
+    def damping(self, value: primitives.Float) -> None:
         """Set the Damping field value."""
         member = self.get_member("Damping")
         if member is not None:
@@ -204,7 +202,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def elasticity(self) -> np.float32 | None:
+    def elasticity(self) -> primitives.Float | None:
         """The Elasticity field value."""
         member = self.get_member("Elasticity")
         if member is None:
@@ -212,7 +210,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @elasticity.setter
-    def elasticity(self, value: np.float32) -> None:
+    def elasticity(self, value: primitives.Float) -> None:
         """Set the Elasticity field value."""
         member = self.get_member("Elasticity")
         if member is not None:
@@ -223,7 +221,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def stiffness(self) -> np.float32 | None:
+    def stiffness(self) -> primitives.Float | None:
         """The Stiffness field value."""
         member = self.get_member("Stiffness")
         if member is None:
@@ -231,7 +229,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @stiffness.setter
-    def stiffness(self, value: np.float32) -> None:
+    def stiffness(self, value: primitives.Float) -> None:
         """Set the Stiffness field value."""
         member = self.get_member("Stiffness")
         if member is not None:
@@ -242,7 +240,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def simulate_terminal_bones(self) -> bool | None:
+    def simulate_terminal_bones(self) -> primitives.Bool | None:
         """The SimulateTerminalBones field value."""
         member = self.get_member("SimulateTerminalBones")
         if member is None:
@@ -250,7 +248,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @simulate_terminal_bones.setter
-    def simulate_terminal_bones(self, value: bool) -> None:
+    def simulate_terminal_bones(self, value: primitives.Bool) -> None:
         """Set the SimulateTerminalBones field value."""
         member = self.get_member("SimulateTerminalBones")
         if member is not None:
@@ -261,7 +259,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def base_bone_radius(self) -> np.float32 | None:
+    def base_bone_radius(self) -> primitives.Float | None:
         """The BaseBoneRadius field value."""
         member = self.get_member("BaseBoneRadius")
         if member is None:
@@ -269,7 +267,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @base_bone_radius.setter
-    def base_bone_radius(self, value: np.float32) -> None:
+    def base_bone_radius(self, value: primitives.Float) -> None:
         """Set the BaseBoneRadius field value."""
         member = self.get_member("BaseBoneRadius")
         if member is not None:
@@ -280,7 +278,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def dynamic_player_collision(self) -> bool | None:
+    def dynamic_player_collision(self) -> primitives.Bool | None:
         """The DynamicPlayerCollision field value."""
         member = self.get_member("DynamicPlayerCollision")
         if member is None:
@@ -288,7 +286,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @dynamic_player_collision.setter
-    def dynamic_player_collision(self, value: bool) -> None:
+    def dynamic_player_collision(self, value: primitives.Bool) -> None:
         """Set the DynamicPlayerCollision field value."""
         member = self.get_member("DynamicPlayerCollision")
         if member is not None:
@@ -299,7 +297,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def collide_with_own_body(self) -> bool | None:
+    def collide_with_own_body(self) -> primitives.Bool | None:
         """The CollideWithOwnBody field value."""
         member = self.get_member("CollideWithOwnBody")
         if member is None:
@@ -307,7 +305,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @collide_with_own_body.setter
-    def collide_with_own_body(self, value: bool) -> None:
+    def collide_with_own_body(self, value: primitives.Bool) -> None:
         """Set the CollideWithOwnBody field value."""
         member = self.get_member("CollideWithOwnBody")
         if member is not None:
@@ -331,7 +329,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         self.set_member("HandCollisionVibration", value)
 
     @property
-    def collide_with_head(self) -> bool | None:
+    def collide_with_head(self) -> primitives.Bool | None:
         """The CollideWithHead field value."""
         member = self.get_member("CollideWithHead")
         if member is None:
@@ -339,7 +337,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @collide_with_head.setter
-    def collide_with_head(self, value: bool) -> None:
+    def collide_with_head(self, value: primitives.Bool) -> None:
         """Set the CollideWithHead field value."""
         member = self.get_member("CollideWithHead")
         if member is not None:
@@ -350,7 +348,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def collide_with_body(self) -> bool | None:
+    def collide_with_body(self) -> primitives.Bool | None:
         """The CollideWithBody field value."""
         member = self.get_member("CollideWithBody")
         if member is None:
@@ -358,7 +356,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @collide_with_body.setter
-    def collide_with_body(self, value: bool) -> None:
+    def collide_with_body(self, value: primitives.Bool) -> None:
         """Set the CollideWithBody field value."""
         member = self.get_member("CollideWithBody")
         if member is not None:
@@ -369,7 +367,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def collide_with_left_hand(self) -> bool | None:
+    def collide_with_left_hand(self) -> primitives.Bool | None:
         """The CollideWithLeftHand field value."""
         member = self.get_member("CollideWithLeftHand")
         if member is None:
@@ -377,7 +375,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @collide_with_left_hand.setter
-    def collide_with_left_hand(self, value: bool) -> None:
+    def collide_with_left_hand(self, value: primitives.Bool) -> None:
         """Set the CollideWithLeftHand field value."""
         member = self.get_member("CollideWithLeftHand")
         if member is not None:
@@ -388,7 +386,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def collide_with_right_hand(self) -> bool | None:
+    def collide_with_right_hand(self) -> primitives.Bool | None:
         """The CollideWithRightHand field value."""
         member = self.get_member("CollideWithRightHand")
         if member is None:
@@ -396,7 +394,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @collide_with_right_hand.setter
-    def collide_with_right_hand(self, value: bool) -> None:
+    def collide_with_right_hand(self, value: primitives.Bool) -> None:
         """Set the CollideWithRightHand field value."""
         member = self.get_member("CollideWithRightHand")
         if member is not None:
@@ -439,7 +437,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         self.set_member("GravitySpace", value)
 
     @property
-    def use_user_gravity_direction(self) -> bool | None:
+    def use_user_gravity_direction(self) -> primitives.Bool | None:
         """The UseUserGravityDirection field value."""
         member = self.get_member("UseUserGravityDirection")
         if member is None:
@@ -447,7 +445,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @use_user_gravity_direction.setter
-    def use_user_gravity_direction(self, value: bool) -> None:
+    def use_user_gravity_direction(self, value: primitives.Bool) -> None:
         """Set the UseUserGravityDirection field value."""
         member = self.get_member("UseUserGravityDirection")
         if member is not None:
@@ -477,7 +475,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def global_stretch(self) -> np.float32 | None:
+    def global_stretch(self) -> primitives.Float | None:
         """The GlobalStretch field value."""
         member = self.get_member("GlobalStretch")
         if member is None:
@@ -485,7 +483,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @global_stretch.setter
-    def global_stretch(self, value: np.float32) -> None:
+    def global_stretch(self, value: primitives.Float) -> None:
         """Set the GlobalStretch field value."""
         member = self.get_member("GlobalStretch")
         if member is not None:
@@ -496,7 +494,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def max_stretch_ratio(self) -> np.float32 | None:
+    def max_stretch_ratio(self) -> primitives.Float | None:
         """The MaxStretchRatio field value."""
         member = self.get_member("MaxStretchRatio")
         if member is None:
@@ -504,7 +502,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @max_stretch_ratio.setter
-    def max_stretch_ratio(self, value: np.float32) -> None:
+    def max_stretch_ratio(self, value: primitives.Float) -> None:
         """Set the MaxStretchRatio field value."""
         member = self.get_member("MaxStretchRatio")
         if member is not None:
@@ -515,7 +513,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def current_stretch_ratio(self) -> np.float32 | None:
+    def current_stretch_ratio(self) -> primitives.Float | None:
         """The CurrentStretchRatio field value."""
         member = self.get_member("CurrentStretchRatio")
         if member is None:
@@ -523,7 +521,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @current_stretch_ratio.setter
-    def current_stretch_ratio(self, value: np.float32) -> None:
+    def current_stretch_ratio(self, value: primitives.Float) -> None:
         """Set the CurrentStretchRatio field value."""
         member = self.get_member("CurrentStretchRatio")
         if member is not None:
@@ -534,7 +532,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def stretch_restore_speed(self) -> np.float32 | None:
+    def stretch_restore_speed(self) -> primitives.Float | None:
         """The StretchRestoreSpeed field value."""
         member = self.get_member("StretchRestoreSpeed")
         if member is None:
@@ -542,7 +540,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @stretch_restore_speed.setter
-    def stretch_restore_speed(self, value: np.float32) -> None:
+    def stretch_restore_speed(self, value: primitives.Float) -> None:
         """Set the StretchRestoreSpeed field value."""
         member = self.get_member("StretchRestoreSpeed")
         if member is not None:
@@ -553,7 +551,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def use_local_user_space(self) -> bool | None:
+    def use_local_user_space(self) -> primitives.Bool | None:
         """The UseLocalUserSpace field value."""
         member = self.get_member("UseLocalUserSpace")
         if member is None:
@@ -561,7 +559,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @use_local_user_space.setter
-    def use_local_user_space(self, value: bool) -> None:
+    def use_local_user_space(self, value: primitives.Bool) -> None:
         """Set the UseLocalUserSpace field value."""
         member = self.get_member("UseLocalUserSpace")
         if member is not None:
@@ -598,7 +596,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         self.set_member("StaticColliders", value)
 
     @property
-    def visualize_colliders(self) -> bool | None:
+    def visualize_colliders(self) -> primitives.Bool | None:
         """The VisualizeColliders field value."""
         member = self.get_member("VisualizeColliders")
         if member is None:
@@ -606,7 +604,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @visualize_colliders.setter
-    def visualize_colliders(self, value: bool) -> None:
+    def visualize_colliders(self, value: primitives.Bool) -> None:
         """Set the VisualizeColliders field value."""
         member = self.get_member("VisualizeColliders")
         if member is not None:
@@ -617,7 +615,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def visualize_bones(self) -> bool | None:
+    def visualize_bones(self) -> primitives.Bool | None:
         """The VisualizeBones field value."""
         member = self.get_member("VisualizeBones")
         if member is None:
@@ -625,7 +623,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @visualize_bones.setter
-    def visualize_bones(self, value: bool) -> None:
+    def visualize_bones(self, value: primitives.Bool) -> None:
         """Set the VisualizeBones field value."""
         member = self.get_member("VisualizeBones")
         if member is not None:
@@ -636,7 +634,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def is_grabbable(self) -> bool | None:
+    def is_grabbable(self) -> primitives.Bool | None:
         """The IsGrabbable field value."""
         member = self.get_member("IsGrabbable")
         if member is None:
@@ -644,7 +642,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @is_grabbable.setter
-    def is_grabbable(self, value: bool) -> None:
+    def is_grabbable(self, value: primitives.Bool) -> None:
         """Set the IsGrabbable field value."""
         member = self.get_member("IsGrabbable")
         if member is not None:
@@ -655,7 +653,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def active_user_root_only(self) -> bool | None:
+    def active_user_root_only(self) -> primitives.Bool | None:
         """The ActiveUserRootOnly field value."""
         member = self.get_member("ActiveUserRootOnly")
         if member is None:
@@ -663,7 +661,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @active_user_root_only.setter
-    def active_user_root_only(self, value: bool) -> None:
+    def active_user_root_only(self, value: primitives.Bool) -> None:
         """Set the ActiveUserRootOnly field value."""
         member = self.get_member("ActiveUserRootOnly")
         if member is not None:
@@ -674,7 +672,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def allow_steal(self) -> bool | None:
+    def allow_steal(self) -> primitives.Bool | None:
         """The AllowSteal field value."""
         member = self.get_member("AllowSteal")
         if member is None:
@@ -682,7 +680,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @allow_steal.setter
-    def allow_steal(self, value: bool) -> None:
+    def allow_steal(self, value: primitives.Bool) -> None:
         """Set the AllowSteal field value."""
         member = self.get_member("AllowSteal")
         if member is not None:
@@ -693,7 +691,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def grab_priority(self) -> np.int32 | None:
+    def grab_priority(self) -> primitives.Int | None:
         """The GrabPriority field value."""
         member = self.get_member("GrabPriority")
         if member is None:
@@ -701,7 +699,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @grab_priority.setter
-    def grab_priority(self, value: np.int32) -> None:
+    def grab_priority(self, value: primitives.Int) -> None:
         """Set the GrabPriority field value."""
         member = self.get_member("GrabPriority")
         if member is not None:
@@ -712,7 +710,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def ignore_grab_on_first_bone(self) -> bool | None:
+    def ignore_grab_on_first_bone(self) -> primitives.Bool | None:
         """The IgnoreGrabOnFirstBone field value."""
         member = self.get_member("IgnoreGrabOnFirstBone")
         if member is None:
@@ -720,7 +718,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @ignore_grab_on_first_bone.setter
-    def ignore_grab_on_first_bone(self, value: bool) -> None:
+    def ignore_grab_on_first_bone(self, value: primitives.Bool) -> None:
         """Set the IgnoreGrabOnFirstBone field value."""
         member = self.get_member("IgnoreGrabOnFirstBone")
         if member is not None:
@@ -731,7 +729,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def grab_radius_tolerance(self) -> np.float32 | None:
+    def grab_radius_tolerance(self) -> primitives.Float | None:
         """The GrabRadiusTolerance field value."""
         member = self.get_member("GrabRadiusTolerance")
         if member is None:
@@ -739,7 +737,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @grab_radius_tolerance.setter
-    def grab_radius_tolerance(self, value: np.float32) -> None:
+    def grab_radius_tolerance(self, value: primitives.Float) -> None:
         """Set the GrabRadiusTolerance field value."""
         member = self.get_member("GrabRadiusTolerance")
         if member is not None:
@@ -750,7 +748,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def grab_release_distance(self) -> np.float32 | None:
+    def grab_release_distance(self) -> primitives.Float | None:
         """The GrabReleaseDistance field value."""
         member = self.get_member("GrabReleaseDistance")
         if member is None:
@@ -758,7 +756,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @grab_release_distance.setter
-    def grab_release_distance(self, value: np.float32) -> None:
+    def grab_release_distance(self, value: primitives.Float) -> None:
         """Set the GrabReleaseDistance field value."""
         member = self.get_member("GrabReleaseDistance")
         if member is not None:
@@ -769,7 +767,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def grab_slipping(self) -> bool | None:
+    def grab_slipping(self) -> primitives.Bool | None:
         """The GrabSlipping field value."""
         member = self.get_member("GrabSlipping")
         if member is None:
@@ -777,7 +775,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @grab_slipping.setter
-    def grab_slipping(self, value: bool) -> None:
+    def grab_slipping(self, value: primitives.Bool) -> None:
         """Set the GrabSlipping field value."""
         member = self.get_member("GrabSlipping")
         if member is not None:
@@ -788,7 +786,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def grab_terminal_bones(self) -> bool | None:
+    def grab_terminal_bones(self) -> primitives.Bool | None:
         """The GrabTerminalBones field value."""
         member = self.get_member("GrabTerminalBones")
         if member is None:
@@ -796,7 +794,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @grab_terminal_bones.setter
-    def grab_terminal_bones(self, value: bool) -> None:
+    def grab_terminal_bones(self, value: primitives.Bool) -> None:
         """Set the GrabTerminalBones field value."""
         member = self.get_member("GrabTerminalBones")
         if member is not None:
@@ -820,7 +818,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         self.set_member("GrabVibration", value)
 
     @property
-    def ignore_own_left_hand(self) -> bool | None:
+    def ignore_own_left_hand(self) -> primitives.Bool | None:
         """The IgnoreOwnLeftHand field value."""
         member = self.get_member("IgnoreOwnLeftHand")
         if member is None:
@@ -828,7 +826,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @ignore_own_left_hand.setter
-    def ignore_own_left_hand(self, value: bool) -> None:
+    def ignore_own_left_hand(self, value: primitives.Bool) -> None:
         """Set the IgnoreOwnLeftHand field value."""
         member = self.get_member("IgnoreOwnLeftHand")
         if member is not None:
@@ -839,7 +837,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def ignore_own_right_hand(self) -> bool | None:
+    def ignore_own_right_hand(self) -> primitives.Bool | None:
         """The IgnoreOwnRightHand field value."""
         member = self.get_member("IgnoreOwnRightHand")
         if member is None:
@@ -847,7 +845,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @ignore_own_right_hand.setter
-    def ignore_own_right_hand(self, value: bool) -> None:
+    def ignore_own_right_hand(self, value: primitives.Bool) -> None:
         """Set the IgnoreOwnRightHand field value."""
         member = self.get_member("IgnoreOwnRightHand")
         if member is not None:
@@ -879,7 +877,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def effector_bone_index(self) -> np.int32 | None:
+    def effector_bone_index(self) -> primitives.Int | None:
         """The EffectorBoneIndex field value."""
         member = self.get_member("EffectorBoneIndex")
         if member is None:
@@ -887,7 +885,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
         return getattr(member, 'value', None)
 
     @effector_bone_index.setter
-    def effector_bone_index(self, value: np.int32) -> None:
+    def effector_bone_index(self, value: primitives.Int) -> None:
         """Set the EffectorBoneIndex field value."""
         member = self.get_member("EffectorBoneIndex")
         if member is not None:

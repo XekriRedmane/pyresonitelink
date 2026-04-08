@@ -1,6 +1,7 @@
 """Generated component: UserFromID."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -19,7 +20,7 @@ class UserFromID(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserFromID"
 
-    def __init__(self, user_id: str | INodeObjectOutput[str] | None = None, machine_id: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user_id: str | INodeObjectOutput[primitives.String] | None = None, machine_id: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,15 +36,15 @@ class UserFromID(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, I
 
     @property
     def user_id(self) -> str | None:
-        """Target ID of the UserId reference (targets INodeObjectOutput[str])."""
+        """Target ID of the UserId reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("UserId")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @user_id.setter
-    def user_id(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the UserId reference by target ID or INodeObjectOutput[str] instance."""
+    def user_id(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the UserId reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("UserId")
         if isinstance(member, members.Reference):
@@ -56,15 +57,15 @@ class UserFromID(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, I
 
     @property
     def machine_id(self) -> str | None:
-        """Target ID of the MachineId reference (targets INodeObjectOutput[str])."""
+        """Target ID of the MachineId reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("MachineId")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @machine_id.setter
-    def machine_id(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the MachineId reference by target ID or INodeObjectOutput[str] instance."""
+    def machine_id(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the MachineId reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("MachineId")
         if isinstance(member, members.Reference):

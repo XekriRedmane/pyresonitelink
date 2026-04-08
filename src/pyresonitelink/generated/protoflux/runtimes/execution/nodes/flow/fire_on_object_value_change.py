@@ -22,7 +22,7 @@ class FireOnObjectValueChange(GenericComponent[T], IProtoFluxEngineProxyNode, IM
 
     Parameterize with a value type::
 
-        FireOnObjectValueChange[np.float32]
+        FireOnObjectValueChange[primitives.Float]
         FireOnObjectValueChange[primitives.Float3]
     """
 

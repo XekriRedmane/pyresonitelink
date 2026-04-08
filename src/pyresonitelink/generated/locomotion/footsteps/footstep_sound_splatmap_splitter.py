@@ -1,9 +1,8 @@
 """Generated component: FootstepSoundSplatmapSplitter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,7 +19,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FootstepSoundSplatmapSplitter"
 
-    def __init__(self, splat_map: str | IAssetProvider[Texture2D] | None = None, r_sound_material: str | IFootstepSoundMaterial | None = None, g_sound_material: str | IFootstepSoundMaterial | None = None, b_sound_material: str | IFootstepSoundMaterial | None = None, a_sound_material: str | IFootstepSoundMaterial | None = None, blend_sounds: bool | None = None, minimum_threshold: np.float32 | None = None, r_weight: np.float32 | None = None, g_weight: np.float32 | None = None, b_weight: np.float32 | None = None, a_weight: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, splat_map: str | IAssetProvider[Texture2D] | None = None, r_sound_material: str | IFootstepSoundMaterial | None = None, g_sound_material: str | IFootstepSoundMaterial | None = None, b_sound_material: str | IFootstepSoundMaterial | None = None, a_sound_material: str | IFootstepSoundMaterial | None = None, blend_sounds: primitives.Bool | None = None, minimum_threshold: primitives.Float | None = None, r_weight: primitives.Float | None = None, g_weight: primitives.Float | None = None, b_weight: primitives.Float | None = None, a_weight: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -167,7 +166,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
             )
 
     @property
-    def blend_sounds(self) -> bool | None:
+    def blend_sounds(self) -> primitives.Bool | None:
         """The BlendSounds field value."""
         member = self.get_member("BlendSounds")
         if member is None:
@@ -175,7 +174,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
         return getattr(member, 'value', None)
 
     @blend_sounds.setter
-    def blend_sounds(self, value: bool) -> None:
+    def blend_sounds(self, value: primitives.Bool) -> None:
         """Set the BlendSounds field value."""
         member = self.get_member("BlendSounds")
         if member is not None:
@@ -186,7 +185,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
             )
 
     @property
-    def minimum_threshold(self) -> np.float32 | None:
+    def minimum_threshold(self) -> primitives.Float | None:
         """The MinimumThreshold field value."""
         member = self.get_member("MinimumThreshold")
         if member is None:
@@ -194,7 +193,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
         return getattr(member, 'value', None)
 
     @minimum_threshold.setter
-    def minimum_threshold(self, value: np.float32) -> None:
+    def minimum_threshold(self, value: primitives.Float) -> None:
         """Set the MinimumThreshold field value."""
         member = self.get_member("MinimumThreshold")
         if member is not None:
@@ -205,7 +204,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
             )
 
     @property
-    def r_weight(self) -> np.float32 | None:
+    def r_weight(self) -> primitives.Float | None:
         """The R_Weight field value."""
         member = self.get_member("R_Weight")
         if member is None:
@@ -213,7 +212,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
         return getattr(member, 'value', None)
 
     @r_weight.setter
-    def r_weight(self, value: np.float32) -> None:
+    def r_weight(self, value: primitives.Float) -> None:
         """Set the R_Weight field value."""
         member = self.get_member("R_Weight")
         if member is not None:
@@ -224,7 +223,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
             )
 
     @property
-    def g_weight(self) -> np.float32 | None:
+    def g_weight(self) -> primitives.Float | None:
         """The G_Weight field value."""
         member = self.get_member("G_Weight")
         if member is None:
@@ -232,7 +231,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
         return getattr(member, 'value', None)
 
     @g_weight.setter
-    def g_weight(self, value: np.float32) -> None:
+    def g_weight(self, value: primitives.Float) -> None:
         """Set the G_Weight field value."""
         member = self.get_member("G_Weight")
         if member is not None:
@@ -243,7 +242,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
             )
 
     @property
-    def b_weight(self) -> np.float32 | None:
+    def b_weight(self) -> primitives.Float | None:
         """The B_Weight field value."""
         member = self.get_member("B_Weight")
         if member is None:
@@ -251,7 +250,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
         return getattr(member, 'value', None)
 
     @b_weight.setter
-    def b_weight(self, value: np.float32) -> None:
+    def b_weight(self, value: primitives.Float) -> None:
         """Set the B_Weight field value."""
         member = self.get_member("B_Weight")
         if member is not None:
@@ -262,7 +261,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
             )
 
     @property
-    def a_weight(self) -> np.float32 | None:
+    def a_weight(self) -> primitives.Float | None:
         """The A_Weight field value."""
         member = self.get_member("A_Weight")
         if member is None:
@@ -270,7 +269,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
         return getattr(member, 'value', None)
 
     @a_weight.setter
-    def a_weight(self, value: np.float32) -> None:
+    def a_weight(self, value: primitives.Float) -> None:
         """Set the A_Weight field value."""
         member = self.get_member("A_Weight")
         if member is not None:

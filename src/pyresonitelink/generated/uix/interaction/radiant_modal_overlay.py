@@ -1,7 +1,5 @@
 """Generated component: RadiantModalOverlay."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,7 +23,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantModalOverlay"
 
-    def __init__(self, show_lerp: np.float32 | None = None, animation_time: np.float32 | None = None, size_root: str | RectTransform | None = None, content_root: str | RectTransform | None = None, close_on_context_menu_action: bool | None = None, close_on_click: bool | None = None, blur_spread: np.float32 | None = None, background_color: primitives.ColorX | None = None, content_animation_scale_offset: np.float32 | None = None, header_size: np.float32 | None = None, padding: np.float32 | None = None, title: str | Text | None = None, blur: str | BlurMaterial | None = None, blur_graphic: str | RawGraphic | None = None, mask_rect: str | IField[primitives.Rect] | None = None, header_offset_min: str | IField[primitives.Float2] | None = None, header_offset_max: str | IField[primitives.Float2] | None = None, content_offset_min: str | IField[primitives.Float2] | None = None, content_offset_max: str | IField[primitives.Float2] | None = None, title_offset_min: str | IField[primitives.Float2] | None = None, title_offset_max: str | IField[primitives.Float2] | None = None, close_offset_min: str | IField[primitives.Float2] | None = None, close_offset_max: str | IField[primitives.Float2] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, show_lerp: primitives.Float | None = None, animation_time: primitives.Float | None = None, size_root: str | RectTransform | None = None, content_root: str | RectTransform | None = None, close_on_context_menu_action: primitives.Bool | None = None, close_on_click: primitives.Bool | None = None, blur_spread: primitives.Float | None = None, background_color: primitives.ColorX | None = None, content_animation_scale_offset: primitives.Float | None = None, header_size: primitives.Float | None = None, padding: primitives.Float | None = None, title: str | Text | None = None, blur: str | BlurMaterial | None = None, blur_graphic: str | RawGraphic | None = None, mask_rect: str | IField[primitives.Rect] | None = None, header_offset_min: str | IField[primitives.Float2] | None = None, header_offset_max: str | IField[primitives.Float2] | None = None, content_offset_min: str | IField[primitives.Float2] | None = None, content_offset_max: str | IField[primitives.Float2] | None = None, title_offset_min: str | IField[primitives.Float2] | None = None, title_offset_max: str | IField[primitives.Float2] | None = None, close_offset_min: str | IField[primitives.Float2] | None = None, close_offset_max: str | IField[primitives.Float2] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -103,7 +101,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             self.close_offset_max = close_offset_max
 
     @property
-    def show_lerp(self) -> np.float32 | None:
+    def show_lerp(self) -> primitives.Float | None:
         """The ShowLerp field value."""
         member = self.get_member("ShowLerp")
         if member is None:
@@ -111,7 +109,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @show_lerp.setter
-    def show_lerp(self, value: np.float32) -> None:
+    def show_lerp(self, value: primitives.Float) -> None:
         """Set the ShowLerp field value."""
         member = self.get_member("ShowLerp")
         if member is not None:
@@ -122,7 +120,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def animation_time(self) -> np.float32 | None:
+    def animation_time(self) -> primitives.Float | None:
         """The AnimationTime field value."""
         member = self.get_member("AnimationTime")
         if member is None:
@@ -130,7 +128,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @animation_time.setter
-    def animation_time(self, value: np.float32) -> None:
+    def animation_time(self, value: primitives.Float) -> None:
         """Set the AnimationTime field value."""
         member = self.get_member("AnimationTime")
         if member is not None:
@@ -183,7 +181,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def close_on_context_menu_action(self) -> bool | None:
+    def close_on_context_menu_action(self) -> primitives.Bool | None:
         """The CloseOnContextMenuAction field value."""
         member = self.get_member("CloseOnContextMenuAction")
         if member is None:
@@ -191,7 +189,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @close_on_context_menu_action.setter
-    def close_on_context_menu_action(self, value: bool) -> None:
+    def close_on_context_menu_action(self, value: primitives.Bool) -> None:
         """Set the CloseOnContextMenuAction field value."""
         member = self.get_member("CloseOnContextMenuAction")
         if member is not None:
@@ -202,7 +200,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def close_on_click(self) -> bool | None:
+    def close_on_click(self) -> primitives.Bool | None:
         """The CloseOnClick field value."""
         member = self.get_member("CloseOnClick")
         if member is None:
@@ -210,7 +208,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @close_on_click.setter
-    def close_on_click(self, value: bool) -> None:
+    def close_on_click(self, value: primitives.Bool) -> None:
         """Set the CloseOnClick field value."""
         member = self.get_member("CloseOnClick")
         if member is not None:
@@ -221,7 +219,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def blur_spread(self) -> np.float32 | None:
+    def blur_spread(self) -> primitives.Float | None:
         """The BlurSpread field value."""
         member = self.get_member("BlurSpread")
         if member is None:
@@ -229,7 +227,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @blur_spread.setter
-    def blur_spread(self, value: np.float32) -> None:
+    def blur_spread(self, value: primitives.Float) -> None:
         """Set the BlurSpread field value."""
         member = self.get_member("BlurSpread")
         if member is not None:
@@ -259,7 +257,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def content_animation_scale_offset(self) -> np.float32 | None:
+    def content_animation_scale_offset(self) -> primitives.Float | None:
         """The ContentAnimationScaleOffset field value."""
         member = self.get_member("ContentAnimationScaleOffset")
         if member is None:
@@ -267,7 +265,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @content_animation_scale_offset.setter
-    def content_animation_scale_offset(self, value: np.float32) -> None:
+    def content_animation_scale_offset(self, value: primitives.Float) -> None:
         """Set the ContentAnimationScaleOffset field value."""
         member = self.get_member("ContentAnimationScaleOffset")
         if member is not None:
@@ -278,7 +276,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def header_size(self) -> np.float32 | None:
+    def header_size(self) -> primitives.Float | None:
         """The HeaderSize field value."""
         member = self.get_member("HeaderSize")
         if member is None:
@@ -286,7 +284,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @header_size.setter
-    def header_size(self, value: np.float32) -> None:
+    def header_size(self, value: primitives.Float) -> None:
         """Set the HeaderSize field value."""
         member = self.get_member("HeaderSize")
         if member is not None:
@@ -297,7 +295,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def padding(self) -> np.float32 | None:
+    def padding(self) -> primitives.Float | None:
         """The Padding field value."""
         member = self.get_member("Padding")
         if member is None:
@@ -305,7 +303,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @padding.setter
-    def padding(self, value: np.float32) -> None:
+    def padding(self, value: primitives.Float) -> None:
         """Set the Padding field value."""
         member = self.get_member("Padding")
         if member is not None:

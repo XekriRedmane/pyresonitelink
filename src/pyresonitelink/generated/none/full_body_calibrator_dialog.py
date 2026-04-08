@@ -1,9 +1,8 @@
 """Generated component: FullBodyCalibratorDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.full_body_calibrator import FullBodyCalibrator
@@ -23,7 +22,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FullBodyCalibratorDialog"
 
-    def __init__(self, calibrator: str | FullBodyCalibrator | None = None, confirm_trackers: str | Button | None = None, reset_trackers: str | Button | None = None, calibrate_avatar: str | Button | None = None, height_compensation: str | Slider[np.float32] | None = None, use_symmetry: str | Checkbox | None = None, show_body_overlay: str | Checkbox | None = None, show_avatar_overlay: str | Checkbox | None = None, hips_mapping: str | Text | None = None, feet_mapping: str | Text | None = None, chest_mapping: str | Text | None = None, elbows_mapping: str | Text | None = None, knees_mapping: str | Text | None = None, height_field: str | QuantityTextEditorParser | None = None, height_warning: str | Text | None = None, use_imperial: bool | None = None, swap_region: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, calibrator: str | FullBodyCalibrator | None = None, confirm_trackers: str | Button | None = None, reset_trackers: str | Button | None = None, calibrate_avatar: str | Button | None = None, height_compensation: str | Slider[primitives.Float] | None = None, use_symmetry: str | Checkbox | None = None, show_body_overlay: str | Checkbox | None = None, show_avatar_overlay: str | Checkbox | None = None, hips_mapping: str | Text | None = None, feet_mapping: str | Text | None = None, chest_mapping: str | Text | None = None, elbows_mapping: str | Text | None = None, knees_mapping: str | Text | None = None, height_field: str | QuantityTextEditorParser | None = None, height_warning: str | Text | None = None, use_imperial: primitives.Bool | None = None, swap_region: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -181,15 +180,15 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def height_compensation(self) -> str | None:
-        """Target ID of the _heightCompensation reference (targets Slider[np.float32])."""
+        """Target ID of the _heightCompensation reference (targets Slider[primitives.Float])."""
         member = self.get_member("_heightCompensation")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @height_compensation.setter
-    def height_compensation(self, target: str | Slider[np.float32] | None) -> None:
-        """Set the _heightCompensation reference by target ID or Slider[np.float32] instance."""
+    def height_compensation(self, target: str | Slider[primitives.Float] | None) -> None:
+        """Set the _heightCompensation reference by target ID or Slider[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, Slider) else target  # type: ignore[assignment]
         member = self.get_member("_heightCompensation")
         if isinstance(member, members.Reference):
@@ -411,7 +410,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def use_imperial(self) -> bool | None:
+    def use_imperial(self) -> primitives.Bool | None:
         """The _useImperial field value."""
         member = self.get_member("_useImperial")
         if member is None:
@@ -419,7 +418,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @use_imperial.setter
-    def use_imperial(self, value: bool) -> None:
+    def use_imperial(self, value: primitives.Bool) -> None:
         """Set the _useImperial field value."""
         member = self.get_member("_useImperial")
         if member is not None:

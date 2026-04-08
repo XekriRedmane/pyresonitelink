@@ -1,9 +1,8 @@
 """Generated component: RectTransformLerp."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.rect_transform import RectTransform
@@ -19,7 +18,7 @@ class RectTransformLerp(GeneratedComponent, IUIComputeComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.RectTransformLerp"
 
-    def __init__(self, lerp: np.float32 | None = None, source_rect: str | RectTransform | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, lerp: primitives.Float | None = None, source_rect: str | RectTransform | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,7 +33,7 @@ class RectTransformLerp(GeneratedComponent, IUIComputeComponent, IWorldEventRece
             self.source_rect = source_rect
 
     @property
-    def lerp(self) -> np.float32 | None:
+    def lerp(self) -> primitives.Float | None:
         """The Lerp field value."""
         member = self.get_member("Lerp")
         if member is None:
@@ -42,7 +41,7 @@ class RectTransformLerp(GeneratedComponent, IUIComputeComponent, IWorldEventRece
         return getattr(member, 'value', None)
 
     @lerp.setter
-    def lerp(self, value: np.float32) -> None:
+    def lerp(self, value: primitives.Float) -> None:
         """Set the Lerp field value."""
         member = self.get_member("Lerp")
         if member is not None:

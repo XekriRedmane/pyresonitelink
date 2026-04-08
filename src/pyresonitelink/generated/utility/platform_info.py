@@ -1,6 +1,7 @@
 """Generated component: PlatformInfo."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PlatformInfo"
 
-    def __init__(self, platform_name: str | None = None, short_name_prefix: str | None = None, abbreviation: str | None = None, domain: str | None = None, email: str | None = None, discord_invite_url: str | None = None, policies_page: str | None = None, patreon_url: str | None = None, git_hub_profile: str | None = None, git_hub_issues_repository: str | None = None, auth_scheme: str | None = None, app_scheme: str | None = None, db_scheme: str | None = None, session_scheme: str | None = None, record_scheme: str | None = None, user_session_scheme: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, platform_name: primitives.String | None = None, short_name_prefix: primitives.String | None = None, abbreviation: primitives.String | None = None, domain: primitives.String | None = None, email: primitives.String | None = None, discord_invite_url: primitives.String | None = None, policies_page: primitives.String | None = None, patreon_url: primitives.String | None = None, git_hub_profile: primitives.String | None = None, git_hub_issues_repository: primitives.String | None = None, auth_scheme: primitives.String | None = None, app_scheme: primitives.String | None = None, db_scheme: primitives.String | None = None, session_scheme: primitives.String | None = None, record_scheme: primitives.String | None = None, user_session_scheme: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -72,7 +73,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.user_session_scheme = user_session_scheme
 
     @property
-    def platform_name(self) -> str | None:
+    def platform_name(self) -> primitives.String | None:
         """The PlatformName field value."""
         member = self.get_member("PlatformName")
         if member is None:
@@ -80,7 +81,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @platform_name.setter
-    def platform_name(self, value: str) -> None:
+    def platform_name(self, value: primitives.String) -> None:
         """Set the PlatformName field value."""
         member = self.get_member("PlatformName")
         if member is not None:
@@ -91,7 +92,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def short_name_prefix(self) -> str | None:
+    def short_name_prefix(self) -> primitives.String | None:
         """The ShortNamePrefix field value."""
         member = self.get_member("ShortNamePrefix")
         if member is None:
@@ -99,7 +100,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @short_name_prefix.setter
-    def short_name_prefix(self, value: str) -> None:
+    def short_name_prefix(self, value: primitives.String) -> None:
         """Set the ShortNamePrefix field value."""
         member = self.get_member("ShortNamePrefix")
         if member is not None:
@@ -110,7 +111,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def abbreviation(self) -> str | None:
+    def abbreviation(self) -> primitives.String | None:
         """The Abbreviation field value."""
         member = self.get_member("Abbreviation")
         if member is None:
@@ -118,7 +119,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @abbreviation.setter
-    def abbreviation(self, value: str) -> None:
+    def abbreviation(self, value: primitives.String) -> None:
         """Set the Abbreviation field value."""
         member = self.get_member("Abbreviation")
         if member is not None:
@@ -129,7 +130,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def domain(self) -> str | None:
+    def domain(self) -> primitives.String | None:
         """The Domain field value."""
         member = self.get_member("Domain")
         if member is None:
@@ -137,7 +138,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @domain.setter
-    def domain(self, value: str) -> None:
+    def domain(self, value: primitives.String) -> None:
         """Set the Domain field value."""
         member = self.get_member("Domain")
         if member is not None:
@@ -148,7 +149,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def email(self) -> str | None:
+    def email(self) -> primitives.String | None:
         """The Email field value."""
         member = self.get_member("Email")
         if member is None:
@@ -156,7 +157,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @email.setter
-    def email(self, value: str) -> None:
+    def email(self, value: primitives.String) -> None:
         """Set the Email field value."""
         member = self.get_member("Email")
         if member is not None:
@@ -167,7 +168,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def discord_invite_url(self) -> str | None:
+    def discord_invite_url(self) -> primitives.String | None:
         """The DiscordInviteUrl field value."""
         member = self.get_member("DiscordInviteUrl")
         if member is None:
@@ -175,7 +176,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @discord_invite_url.setter
-    def discord_invite_url(self, value: str) -> None:
+    def discord_invite_url(self, value: primitives.String) -> None:
         """Set the DiscordInviteUrl field value."""
         member = self.get_member("DiscordInviteUrl")
         if member is not None:
@@ -186,7 +187,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def policies_page(self) -> str | None:
+    def policies_page(self) -> primitives.String | None:
         """The PoliciesPage field value."""
         member = self.get_member("PoliciesPage")
         if member is None:
@@ -194,7 +195,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @policies_page.setter
-    def policies_page(self, value: str) -> None:
+    def policies_page(self, value: primitives.String) -> None:
         """Set the PoliciesPage field value."""
         member = self.get_member("PoliciesPage")
         if member is not None:
@@ -205,7 +206,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def patreon_url(self) -> str | None:
+    def patreon_url(self) -> primitives.String | None:
         """The PatreonUrl field value."""
         member = self.get_member("PatreonUrl")
         if member is None:
@@ -213,7 +214,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @patreon_url.setter
-    def patreon_url(self, value: str) -> None:
+    def patreon_url(self, value: primitives.String) -> None:
         """Set the PatreonUrl field value."""
         member = self.get_member("PatreonUrl")
         if member is not None:
@@ -224,7 +225,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def git_hub_profile(self) -> str | None:
+    def git_hub_profile(self) -> primitives.String | None:
         """The GitHubProfile field value."""
         member = self.get_member("GitHubProfile")
         if member is None:
@@ -232,7 +233,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @git_hub_profile.setter
-    def git_hub_profile(self, value: str) -> None:
+    def git_hub_profile(self, value: primitives.String) -> None:
         """Set the GitHubProfile field value."""
         member = self.get_member("GitHubProfile")
         if member is not None:
@@ -243,7 +244,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def git_hub_issues_repository(self) -> str | None:
+    def git_hub_issues_repository(self) -> primitives.String | None:
         """The GitHubIssuesRepository field value."""
         member = self.get_member("GitHubIssuesRepository")
         if member is None:
@@ -251,7 +252,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @git_hub_issues_repository.setter
-    def git_hub_issues_repository(self, value: str) -> None:
+    def git_hub_issues_repository(self, value: primitives.String) -> None:
         """Set the GitHubIssuesRepository field value."""
         member = self.get_member("GitHubIssuesRepository")
         if member is not None:
@@ -262,7 +263,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def auth_scheme(self) -> str | None:
+    def auth_scheme(self) -> primitives.String | None:
         """The AuthScheme field value."""
         member = self.get_member("AuthScheme")
         if member is None:
@@ -270,7 +271,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auth_scheme.setter
-    def auth_scheme(self, value: str) -> None:
+    def auth_scheme(self, value: primitives.String) -> None:
         """Set the AuthScheme field value."""
         member = self.get_member("AuthScheme")
         if member is not None:
@@ -281,7 +282,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def app_scheme(self) -> str | None:
+    def app_scheme(self) -> primitives.String | None:
         """The AppScheme field value."""
         member = self.get_member("AppScheme")
         if member is None:
@@ -289,7 +290,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @app_scheme.setter
-    def app_scheme(self, value: str) -> None:
+    def app_scheme(self, value: primitives.String) -> None:
         """Set the AppScheme field value."""
         member = self.get_member("AppScheme")
         if member is not None:
@@ -300,7 +301,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def db_scheme(self) -> str | None:
+    def db_scheme(self) -> primitives.String | None:
         """The DBScheme field value."""
         member = self.get_member("DBScheme")
         if member is None:
@@ -308,7 +309,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @db_scheme.setter
-    def db_scheme(self, value: str) -> None:
+    def db_scheme(self, value: primitives.String) -> None:
         """Set the DBScheme field value."""
         member = self.get_member("DBScheme")
         if member is not None:
@@ -319,7 +320,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def session_scheme(self) -> str | None:
+    def session_scheme(self) -> primitives.String | None:
         """The SessionScheme field value."""
         member = self.get_member("SessionScheme")
         if member is None:
@@ -327,7 +328,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @session_scheme.setter
-    def session_scheme(self, value: str) -> None:
+    def session_scheme(self, value: primitives.String) -> None:
         """Set the SessionScheme field value."""
         member = self.get_member("SessionScheme")
         if member is not None:
@@ -338,7 +339,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def record_scheme(self) -> str | None:
+    def record_scheme(self) -> primitives.String | None:
         """The RecordScheme field value."""
         member = self.get_member("RecordScheme")
         if member is None:
@@ -346,7 +347,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @record_scheme.setter
-    def record_scheme(self, value: str) -> None:
+    def record_scheme(self, value: primitives.String) -> None:
         """Set the RecordScheme field value."""
         member = self.get_member("RecordScheme")
         if member is not None:
@@ -357,7 +358,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def user_session_scheme(self) -> str | None:
+    def user_session_scheme(self) -> primitives.String | None:
         """The UserSessionScheme field value."""
         member = self.get_member("UserSessionScheme")
         if member is None:
@@ -365,7 +366,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @user_session_scheme.setter
-    def user_session_scheme(self, value: str) -> None:
+    def user_session_scheme(self, value: primitives.String) -> None:
         """Set the UserSessionScheme field value."""
         member = self.get_member("UserSessionScheme")
         if member is not None:

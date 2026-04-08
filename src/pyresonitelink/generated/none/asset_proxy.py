@@ -16,7 +16,7 @@ class AssetProxy(GenericComponent[T], IReferenceSource[T], IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        AssetProxy[np.float32]
+        AssetProxy[primitives.Float]
         AssetProxy[primitives.Float3]
     """
 

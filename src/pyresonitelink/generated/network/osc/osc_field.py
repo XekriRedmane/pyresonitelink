@@ -1,9 +1,8 @@
 """Generated component: OSC_Field."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.osc_handler import OSC_Handler
@@ -17,14 +16,14 @@ class OSC_Field(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        OSC_Field[np.float32]
+        OSC_Field[primitives.Float]
         OSC_Field[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OSC_Field<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.OSC_Field<>"
 
-    def __init__(self, handler: str | OSC_Handler | None = None, path: str | None = None, argument_index: np.int32 | None = None, field: str | IField[T] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, handler: str | OSC_Handler | None = None, path: primitives.String | None = None, argument_index: primitives.Int | None = None, field: str | IField[T] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,7 +65,7 @@ class OSC_Field(GenericComponent[T]):
             )
 
     @property
-    def path(self) -> str | None:
+    def path(self) -> primitives.String | None:
         """The Path field value."""
         member = self.get_member("Path")
         if member is None:
@@ -74,7 +73,7 @@ class OSC_Field(GenericComponent[T]):
         return getattr(member, 'value', None)
 
     @path.setter
-    def path(self, value: str) -> None:
+    def path(self, value: primitives.String) -> None:
         """Set the Path field value."""
         member = self.get_member("Path")
         if member is not None:
@@ -85,7 +84,7 @@ class OSC_Field(GenericComponent[T]):
             )
 
     @property
-    def argument_index(self) -> np.int32 | None:
+    def argument_index(self) -> primitives.Int | None:
         """The ArgumentIndex field value."""
         member = self.get_member("ArgumentIndex")
         if member is None:
@@ -93,7 +92,7 @@ class OSC_Field(GenericComponent[T]):
         return getattr(member, 'value', None)
 
     @argument_index.setter
-    def argument_index(self, value: np.int32) -> None:
+    def argument_index(self, value: primitives.Int) -> None:
         """Set the ArgumentIndex field value."""
         member = self.get_member("ArgumentIndex")
         if member is not None:

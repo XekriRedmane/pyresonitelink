@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -14,14 +15,14 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        SetReference[np.float32]
+        SetReference[primitives.Float]
         SetReference[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.SetReference<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.Undo.SetReference<>"
 
-    def __init__(self, target: str | SyncRef[T] | None = None, target_before: str | T | None = None, target_after: str | T | None = None, performed: bool | None = None, description: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | SyncRef[T] | None = None, target_before: str | T | None = None, target_after: str | T | None = None, performed: primitives.Bool | None = None, description: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -108,7 +109,7 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def performed(self) -> bool | None:
+    def performed(self) -> primitives.Bool | None:
         """The _performed field value."""
         member = self.get_member("_performed")
         if member is None:
@@ -116,7 +117,7 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @performed.setter
-    def performed(self, value: bool) -> None:
+    def performed(self, value: primitives.Bool) -> None:
         """Set the _performed field value."""
         member = self.get_member("_performed")
         if member is not None:
@@ -127,7 +128,7 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def description(self) -> str | None:
+    def description(self) -> primitives.String | None:
         """The _description field value."""
         member = self.get_member("_description")
         if member is None:
@@ -135,7 +136,7 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @description.setter
-    def description(self, value: str) -> None:
+    def description(self, value: primitives.String) -> None:
         """Set the _description field value."""
         member = self.get_member("_description")
         if member is not None:

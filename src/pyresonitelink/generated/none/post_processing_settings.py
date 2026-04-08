@@ -1,9 +1,8 @@
 """Generated component: PostProcessingSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,7 +15,7 @@ class PostProcessingSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PostProcessingSettings"
 
-    def __init__(self, motion_blur_intensity: np.float32 | None = None, bloom_intensity: np.float32 | None = None, ambient_occlusion_intensity: np.float32 | None = None, screen_space_reflections: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, motion_blur_intensity: primitives.Float | None = None, bloom_intensity: primitives.Float | None = None, ambient_occlusion_intensity: primitives.Float | None = None, screen_space_reflections: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +36,7 @@ class PostProcessingSettings(GeneratedComponent, ICustomInspector):
             self.screen_space_reflections = screen_space_reflections
 
     @property
-    def motion_blur_intensity(self) -> np.float32 | None:
+    def motion_blur_intensity(self) -> primitives.Float | None:
         """The MotionBlurIntensity field value."""
         member = self.get_member("MotionBlurIntensity")
         if member is None:
@@ -45,7 +44,7 @@ class PostProcessingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @motion_blur_intensity.setter
-    def motion_blur_intensity(self, value: np.float32) -> None:
+    def motion_blur_intensity(self, value: primitives.Float) -> None:
         """Set the MotionBlurIntensity field value."""
         member = self.get_member("MotionBlurIntensity")
         if member is not None:
@@ -56,7 +55,7 @@ class PostProcessingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def bloom_intensity(self) -> np.float32 | None:
+    def bloom_intensity(self) -> primitives.Float | None:
         """The BloomIntensity field value."""
         member = self.get_member("BloomIntensity")
         if member is None:
@@ -64,7 +63,7 @@ class PostProcessingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @bloom_intensity.setter
-    def bloom_intensity(self, value: np.float32) -> None:
+    def bloom_intensity(self, value: primitives.Float) -> None:
         """Set the BloomIntensity field value."""
         member = self.get_member("BloomIntensity")
         if member is not None:
@@ -75,7 +74,7 @@ class PostProcessingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def ambient_occlusion_intensity(self) -> np.float32 | None:
+    def ambient_occlusion_intensity(self) -> primitives.Float | None:
         """The AmbientOcclusionIntensity field value."""
         member = self.get_member("AmbientOcclusionIntensity")
         if member is None:
@@ -83,7 +82,7 @@ class PostProcessingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @ambient_occlusion_intensity.setter
-    def ambient_occlusion_intensity(self, value: np.float32) -> None:
+    def ambient_occlusion_intensity(self, value: primitives.Float) -> None:
         """Set the AmbientOcclusionIntensity field value."""
         member = self.get_member("AmbientOcclusionIntensity")
         if member is not None:
@@ -94,7 +93,7 @@ class PostProcessingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def screen_space_reflections(self) -> bool | None:
+    def screen_space_reflections(self) -> primitives.Bool | None:
         """The ScreenSpaceReflections field value."""
         member = self.get_member("ScreenSpaceReflections")
         if member is None:
@@ -102,7 +101,7 @@ class PostProcessingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @screen_space_reflections.setter
-    def screen_space_reflections(self, value: bool) -> None:
+    def screen_space_reflections(self, value: primitives.Bool) -> None:
         """Set the ScreenSpaceReflections field value."""
         member = self.get_member("ScreenSpaceReflections")
         if member is not None:

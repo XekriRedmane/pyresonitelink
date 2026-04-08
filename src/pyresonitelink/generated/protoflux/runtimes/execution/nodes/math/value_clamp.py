@@ -18,7 +18,7 @@ class ValueClamp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], IN
 
     Parameterize with a value type::
 
-        ValueClamp[np.float32]
+        ValueClamp[primitives.Float]
         ValueClamp[primitives.Float3]
     """
 

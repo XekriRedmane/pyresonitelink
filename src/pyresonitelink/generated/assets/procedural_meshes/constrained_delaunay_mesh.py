@@ -19,7 +19,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConstrainedDelaunayMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, auto_triangulation_plane: bool | None = None, triangulation_center: primitives.Float3 | None = None, triangulation_plane_normal: primitives.Float3 | None = None, auto_normals: bool | None = None, auto_tangents: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, auto_triangulation_plane: primitives.Bool | None = None, triangulation_center: primitives.Float3 | None = None, triangulation_plane_normal: primitives.Float3 | None = None, auto_normals: primitives.Bool | None = None, auto_tangents: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -52,7 +52,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             self.auto_tangents = auto_tangents
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -60,7 +60,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -71,7 +71,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -79,7 +79,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -148,7 +148,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         self.set_member("Holes", value)
 
     @property
-    def auto_triangulation_plane(self) -> bool | None:
+    def auto_triangulation_plane(self) -> primitives.Bool | None:
         """The AutoTriangulationPlane field value."""
         member = self.get_member("AutoTriangulationPlane")
         if member is None:
@@ -156,7 +156,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @auto_triangulation_plane.setter
-    def auto_triangulation_plane(self, value: bool) -> None:
+    def auto_triangulation_plane(self, value: primitives.Bool) -> None:
         """Set the AutoTriangulationPlane field value."""
         member = self.get_member("AutoTriangulationPlane")
         if member is not None:
@@ -205,7 +205,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def auto_normals(self) -> bool | None:
+    def auto_normals(self) -> primitives.Bool | None:
         """The AutoNormals field value."""
         member = self.get_member("AutoNormals")
         if member is None:
@@ -213,7 +213,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @auto_normals.setter
-    def auto_normals(self, value: bool) -> None:
+    def auto_normals(self, value: primitives.Bool) -> None:
         """Set the AutoNormals field value."""
         member = self.get_member("AutoNormals")
         if member is not None:
@@ -224,7 +224,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def auto_tangents(self) -> bool | None:
+    def auto_tangents(self) -> primitives.Bool | None:
         """The AutoTangents field value."""
         member = self.get_member("AutoTangents")
         if member is None:
@@ -232,7 +232,7 @@ class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspect
         return getattr(member, 'value', None)
 
     @auto_tangents.setter
-    def auto_tangents(self, value: bool) -> None:
+    def auto_tangents(self, value: primitives.Bool) -> None:
         """Set the AutoTangents field value."""
         member = self.get_member("AutoTangents")
         if member is not None:

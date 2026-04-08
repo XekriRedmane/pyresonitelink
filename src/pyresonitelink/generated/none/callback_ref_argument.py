@@ -16,7 +16,7 @@ class CallbackRefArgument(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     Parameterize with a value type::
 
-        CallbackRefArgument[np.float32]
+        CallbackRefArgument[primitives.Float]
         CallbackRefArgument[primitives.Float3]
     """
 

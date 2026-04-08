@@ -1,7 +1,5 @@
 """Generated component: LegacyColorDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyColorDialog"
 
-    def __init__(self, realtime: bool | None = None, target_field: str | IField[primitives.ColorX] | None = None, original_color: primitives.ColorX | None = None, hue: np.float32 | None = None, saturation: np.float32 | None = None, value: np.float32 | None = None, alpha: np.float32 | None = None, gain: np.float32 | None = None, r_slider: str | LegacySlider | None = None, g_slider: str | LegacySlider | None = None, b_slider: str | LegacySlider | None = None, a_slider: str | LegacySlider | None = None, gain_slider: str | LegacySlider | None = None, r_value: str | IField[np.float32] | None = None, g_value: str | IField[np.float32] | None = None, b_value: str | IField[np.float32] | None = None, a_value: str | IField[np.float32] | None = None, gain_value: str | IField[np.float32] | None = None, color_wheel_mesh: str | ColorWheelTriangleMesh | None = None, ok_button: str | LegacyButton | None = None, cancel_button: str | LegacyButton | None = None, style: str | LegacyUIStyle | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, realtime: primitives.Bool | None = None, target_field: str | IField[primitives.ColorX] | None = None, original_color: primitives.ColorX | None = None, hue: primitives.Float | None = None, saturation: primitives.Float | None = None, value: primitives.Float | None = None, alpha: primitives.Float | None = None, gain: primitives.Float | None = None, r_slider: str | LegacySlider | None = None, g_slider: str | LegacySlider | None = None, b_slider: str | LegacySlider | None = None, a_slider: str | LegacySlider | None = None, gain_slider: str | LegacySlider | None = None, r_value: str | IField[primitives.Float] | None = None, g_value: str | IField[primitives.Float] | None = None, b_value: str | IField[primitives.Float] | None = None, a_value: str | IField[primitives.Float] | None = None, gain_value: str | IField[primitives.Float] | None = None, color_wheel_mesh: str | ColorWheelTriangleMesh | None = None, ok_button: str | LegacyButton | None = None, cancel_button: str | LegacyButton | None = None, style: str | LegacyUIStyle | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -99,7 +97,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
             self.style = style
 
     @property
-    def realtime(self) -> bool | None:
+    def realtime(self) -> primitives.Bool | None:
         """The Realtime field value."""
         member = self.get_member("Realtime")
         if member is None:
@@ -107,7 +105,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @realtime.setter
-    def realtime(self, value: bool) -> None:
+    def realtime(self, value: primitives.Bool) -> None:
         """Set the Realtime field value."""
         member = self.get_member("Realtime")
         if member is not None:
@@ -158,7 +156,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
             )
 
     @property
-    def hue(self) -> np.float32 | None:
+    def hue(self) -> primitives.Float | None:
         """The _hue field value."""
         member = self.get_member("_hue")
         if member is None:
@@ -166,7 +164,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @hue.setter
-    def hue(self, value: np.float32) -> None:
+    def hue(self, value: primitives.Float) -> None:
         """Set the _hue field value."""
         member = self.get_member("_hue")
         if member is not None:
@@ -177,7 +175,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
             )
 
     @property
-    def saturation(self) -> np.float32 | None:
+    def saturation(self) -> primitives.Float | None:
         """The _saturation field value."""
         member = self.get_member("_saturation")
         if member is None:
@@ -185,7 +183,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @saturation.setter
-    def saturation(self, value: np.float32) -> None:
+    def saturation(self, value: primitives.Float) -> None:
         """Set the _saturation field value."""
         member = self.get_member("_saturation")
         if member is not None:
@@ -196,7 +194,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
             )
 
     @property
-    def value(self) -> np.float32 | None:
+    def value(self) -> primitives.Float | None:
         """The _value field value."""
         member = self.get_member("_value")
         if member is None:
@@ -204,7 +202,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @value.setter
-    def value(self, value: np.float32) -> None:
+    def value(self, value: primitives.Float) -> None:
         """Set the _value field value."""
         member = self.get_member("_value")
         if member is not None:
@@ -215,7 +213,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
             )
 
     @property
-    def alpha(self) -> np.float32 | None:
+    def alpha(self) -> primitives.Float | None:
         """The _alpha field value."""
         member = self.get_member("_alpha")
         if member is None:
@@ -223,7 +221,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @alpha.setter
-    def alpha(self, value: np.float32) -> None:
+    def alpha(self, value: primitives.Float) -> None:
         """Set the _alpha field value."""
         member = self.get_member("_alpha")
         if member is not None:
@@ -247,7 +245,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
         self.set_member("_profile", value)
 
     @property
-    def gain(self) -> np.float32 | None:
+    def gain(self) -> primitives.Float | None:
         """The _gain field value."""
         member = self.get_member("_gain")
         if member is None:
@@ -255,7 +253,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @gain.setter
-    def gain(self, value: np.float32) -> None:
+    def gain(self, value: primitives.Float) -> None:
         """Set the _gain field value."""
         member = self.get_member("_gain")
         if member is not None:
@@ -372,15 +370,15 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def r_value(self) -> str | None:
-        """Target ID of the _rValue reference (targets IField[np.float32])."""
+        """Target ID of the _rValue reference (targets IField[primitives.Float])."""
         member = self.get_member("_rValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @r_value.setter
-    def r_value(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _rValue reference by target ID or IField[np.float32] instance."""
+    def r_value(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _rValue reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_rValue")
         if isinstance(member, members.Reference):
@@ -393,15 +391,15 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def g_value(self) -> str | None:
-        """Target ID of the _gValue reference (targets IField[np.float32])."""
+        """Target ID of the _gValue reference (targets IField[primitives.Float])."""
         member = self.get_member("_gValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @g_value.setter
-    def g_value(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _gValue reference by target ID or IField[np.float32] instance."""
+    def g_value(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _gValue reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_gValue")
         if isinstance(member, members.Reference):
@@ -414,15 +412,15 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def b_value(self) -> str | None:
-        """Target ID of the _bValue reference (targets IField[np.float32])."""
+        """Target ID of the _bValue reference (targets IField[primitives.Float])."""
         member = self.get_member("_bValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @b_value.setter
-    def b_value(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _bValue reference by target ID or IField[np.float32] instance."""
+    def b_value(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _bValue reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_bValue")
         if isinstance(member, members.Reference):
@@ -435,15 +433,15 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def a_value(self) -> str | None:
-        """Target ID of the _aValue reference (targets IField[np.float32])."""
+        """Target ID of the _aValue reference (targets IField[primitives.Float])."""
         member = self.get_member("_aValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @a_value.setter
-    def a_value(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _aValue reference by target ID or IField[np.float32] instance."""
+    def a_value(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _aValue reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_aValue")
         if isinstance(member, members.Reference):
@@ -456,15 +454,15 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def gain_value(self) -> str | None:
-        """Target ID of the _gainValue reference (targets IField[np.float32])."""
+        """Target ID of the _gainValue reference (targets IField[primitives.Float])."""
         member = self.get_member("_gainValue")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @gain_value.setter
-    def gain_value(self, target: str | IField[np.float32] | None) -> None:
-        """Set the _gainValue reference by target ID or IField[np.float32] instance."""
+    def gain_value(self, target: str | IField[primitives.Float] | None) -> None:
+        """Set the _gainValue reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_gainValue")
         if isinstance(member, members.Reference):

@@ -1,7 +1,5 @@
 """Generated component: MockupMouthTrackingSource."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -18,7 +16,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MockupMouthTrackingSource"
 
-    def __init__(self, jaw: primitives.Float3 | None = None, jaw_open: np.float32 | None = None, tongue: primitives.Float3 | None = None, tongue_roll: np.float32 | None = None, lip_upper_left_raise: np.float32 | None = None, lip_upper_right_raise: np.float32 | None = None, lip_lower_left_raise: np.float32 | None = None, lip_lower_right_raise: np.float32 | None = None, lip_upper_horizontal: np.float32 | None = None, lip_lower_horizontal: np.float32 | None = None, mouth_left_smile_frown: np.float32 | None = None, mouth_right_smile_frown: np.float32 | None = None, mouth_left_dimple: np.float32 | None = None, mouth_right_dimple: np.float32 | None = None, mouth_pout_left: np.float32 | None = None, mouth_pout_right: np.float32 | None = None, lip_top_left_overturn: np.float32 | None = None, lip_top_right_overturn: np.float32 | None = None, lip_bottom_left_overturn: np.float32 | None = None, lip_bottom_right_overturn: np.float32 | None = None, lip_top_left_over_under: np.float32 | None = None, lip_top_right_over_under: np.float32 | None = None, lip_bottom_left_over_under: np.float32 | None = None, lip_bottom_right_over_under: np.float32 | None = None, lip_left_stretch_tighten: np.float32 | None = None, lip_right_stretch_tighten: np.float32 | None = None, lips_left_press: np.float32 | None = None, lips_right_press: np.float32 | None = None, cheek_left_puff_suck: np.float32 | None = None, cheek_right_puff_suck: np.float32 | None = None, cheek_left_raise: np.float32 | None = None, cheek_right_raise: np.float32 | None = None, nose_wrinkle_left: np.float32 | None = None, nose_wrinkle_right: np.float32 | None = None, chin_raise_bottom: np.float32 | None = None, chin_raise_top: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, jaw: primitives.Float3 | None = None, jaw_open: primitives.Float | None = None, tongue: primitives.Float3 | None = None, tongue_roll: primitives.Float | None = None, lip_upper_left_raise: primitives.Float | None = None, lip_upper_right_raise: primitives.Float | None = None, lip_lower_left_raise: primitives.Float | None = None, lip_lower_right_raise: primitives.Float | None = None, lip_upper_horizontal: primitives.Float | None = None, lip_lower_horizontal: primitives.Float | None = None, mouth_left_smile_frown: primitives.Float | None = None, mouth_right_smile_frown: primitives.Float | None = None, mouth_left_dimple: primitives.Float | None = None, mouth_right_dimple: primitives.Float | None = None, mouth_pout_left: primitives.Float | None = None, mouth_pout_right: primitives.Float | None = None, lip_top_left_overturn: primitives.Float | None = None, lip_top_right_overturn: primitives.Float | None = None, lip_bottom_left_overturn: primitives.Float | None = None, lip_bottom_right_overturn: primitives.Float | None = None, lip_top_left_over_under: primitives.Float | None = None, lip_top_right_over_under: primitives.Float | None = None, lip_bottom_left_over_under: primitives.Float | None = None, lip_bottom_right_over_under: primitives.Float | None = None, lip_left_stretch_tighten: primitives.Float | None = None, lip_right_stretch_tighten: primitives.Float | None = None, lips_left_press: primitives.Float | None = None, lips_right_press: primitives.Float | None = None, cheek_left_puff_suck: primitives.Float | None = None, cheek_right_puff_suck: primitives.Float | None = None, cheek_left_raise: primitives.Float | None = None, cheek_right_raise: primitives.Float | None = None, nose_wrinkle_left: primitives.Float | None = None, nose_wrinkle_right: primitives.Float | None = None, chin_raise_bottom: primitives.Float | None = None, chin_raise_top: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -154,7 +152,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def jaw_open(self) -> np.float32 | None:
+    def jaw_open(self) -> primitives.Float | None:
         """The JawOpen field value."""
         member = self.get_member("JawOpen")
         if member is None:
@@ -162,7 +160,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @jaw_open.setter
-    def jaw_open(self, value: np.float32) -> None:
+    def jaw_open(self, value: primitives.Float) -> None:
         """Set the JawOpen field value."""
         member = self.get_member("JawOpen")
         if member is not None:
@@ -192,7 +190,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def tongue_roll(self) -> np.float32 | None:
+    def tongue_roll(self) -> primitives.Float | None:
         """The TongueRoll field value."""
         member = self.get_member("TongueRoll")
         if member is None:
@@ -200,7 +198,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @tongue_roll.setter
-    def tongue_roll(self, value: np.float32) -> None:
+    def tongue_roll(self, value: primitives.Float) -> None:
         """Set the TongueRoll field value."""
         member = self.get_member("TongueRoll")
         if member is not None:
@@ -211,7 +209,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_upper_left_raise(self) -> np.float32 | None:
+    def lip_upper_left_raise(self) -> primitives.Float | None:
         """The LipUpperLeftRaise field value."""
         member = self.get_member("LipUpperLeftRaise")
         if member is None:
@@ -219,7 +217,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_upper_left_raise.setter
-    def lip_upper_left_raise(self, value: np.float32) -> None:
+    def lip_upper_left_raise(self, value: primitives.Float) -> None:
         """Set the LipUpperLeftRaise field value."""
         member = self.get_member("LipUpperLeftRaise")
         if member is not None:
@@ -230,7 +228,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_upper_right_raise(self) -> np.float32 | None:
+    def lip_upper_right_raise(self) -> primitives.Float | None:
         """The LipUpperRightRaise field value."""
         member = self.get_member("LipUpperRightRaise")
         if member is None:
@@ -238,7 +236,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_upper_right_raise.setter
-    def lip_upper_right_raise(self, value: np.float32) -> None:
+    def lip_upper_right_raise(self, value: primitives.Float) -> None:
         """Set the LipUpperRightRaise field value."""
         member = self.get_member("LipUpperRightRaise")
         if member is not None:
@@ -249,7 +247,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_lower_left_raise(self) -> np.float32 | None:
+    def lip_lower_left_raise(self) -> primitives.Float | None:
         """The LipLowerLeftRaise field value."""
         member = self.get_member("LipLowerLeftRaise")
         if member is None:
@@ -257,7 +255,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_lower_left_raise.setter
-    def lip_lower_left_raise(self, value: np.float32) -> None:
+    def lip_lower_left_raise(self, value: primitives.Float) -> None:
         """Set the LipLowerLeftRaise field value."""
         member = self.get_member("LipLowerLeftRaise")
         if member is not None:
@@ -268,7 +266,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_lower_right_raise(self) -> np.float32 | None:
+    def lip_lower_right_raise(self) -> primitives.Float | None:
         """The LipLowerRightRaise field value."""
         member = self.get_member("LipLowerRightRaise")
         if member is None:
@@ -276,7 +274,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_lower_right_raise.setter
-    def lip_lower_right_raise(self, value: np.float32) -> None:
+    def lip_lower_right_raise(self, value: primitives.Float) -> None:
         """Set the LipLowerRightRaise field value."""
         member = self.get_member("LipLowerRightRaise")
         if member is not None:
@@ -287,7 +285,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_upper_horizontal(self) -> np.float32 | None:
+    def lip_upper_horizontal(self) -> primitives.Float | None:
         """The LipUpperHorizontal field value."""
         member = self.get_member("LipUpperHorizontal")
         if member is None:
@@ -295,7 +293,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_upper_horizontal.setter
-    def lip_upper_horizontal(self, value: np.float32) -> None:
+    def lip_upper_horizontal(self, value: primitives.Float) -> None:
         """Set the LipUpperHorizontal field value."""
         member = self.get_member("LipUpperHorizontal")
         if member is not None:
@@ -306,7 +304,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_lower_horizontal(self) -> np.float32 | None:
+    def lip_lower_horizontal(self) -> primitives.Float | None:
         """The LipLowerHorizontal field value."""
         member = self.get_member("LipLowerHorizontal")
         if member is None:
@@ -314,7 +312,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_lower_horizontal.setter
-    def lip_lower_horizontal(self, value: np.float32) -> None:
+    def lip_lower_horizontal(self, value: primitives.Float) -> None:
         """Set the LipLowerHorizontal field value."""
         member = self.get_member("LipLowerHorizontal")
         if member is not None:
@@ -325,7 +323,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def mouth_left_smile_frown(self) -> np.float32 | None:
+    def mouth_left_smile_frown(self) -> primitives.Float | None:
         """The MouthLeftSmileFrown field value."""
         member = self.get_member("MouthLeftSmileFrown")
         if member is None:
@@ -333,7 +331,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @mouth_left_smile_frown.setter
-    def mouth_left_smile_frown(self, value: np.float32) -> None:
+    def mouth_left_smile_frown(self, value: primitives.Float) -> None:
         """Set the MouthLeftSmileFrown field value."""
         member = self.get_member("MouthLeftSmileFrown")
         if member is not None:
@@ -344,7 +342,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def mouth_right_smile_frown(self) -> np.float32 | None:
+    def mouth_right_smile_frown(self) -> primitives.Float | None:
         """The MouthRightSmileFrown field value."""
         member = self.get_member("MouthRightSmileFrown")
         if member is None:
@@ -352,7 +350,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @mouth_right_smile_frown.setter
-    def mouth_right_smile_frown(self, value: np.float32) -> None:
+    def mouth_right_smile_frown(self, value: primitives.Float) -> None:
         """Set the MouthRightSmileFrown field value."""
         member = self.get_member("MouthRightSmileFrown")
         if member is not None:
@@ -363,7 +361,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def mouth_left_dimple(self) -> np.float32 | None:
+    def mouth_left_dimple(self) -> primitives.Float | None:
         """The MouthLeftDimple field value."""
         member = self.get_member("MouthLeftDimple")
         if member is None:
@@ -371,7 +369,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @mouth_left_dimple.setter
-    def mouth_left_dimple(self, value: np.float32) -> None:
+    def mouth_left_dimple(self, value: primitives.Float) -> None:
         """Set the MouthLeftDimple field value."""
         member = self.get_member("MouthLeftDimple")
         if member is not None:
@@ -382,7 +380,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def mouth_right_dimple(self) -> np.float32 | None:
+    def mouth_right_dimple(self) -> primitives.Float | None:
         """The MouthRightDimple field value."""
         member = self.get_member("MouthRightDimple")
         if member is None:
@@ -390,7 +388,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @mouth_right_dimple.setter
-    def mouth_right_dimple(self, value: np.float32) -> None:
+    def mouth_right_dimple(self, value: primitives.Float) -> None:
         """Set the MouthRightDimple field value."""
         member = self.get_member("MouthRightDimple")
         if member is not None:
@@ -401,7 +399,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def mouth_pout_left(self) -> np.float32 | None:
+    def mouth_pout_left(self) -> primitives.Float | None:
         """The MouthPoutLeft field value."""
         member = self.get_member("MouthPoutLeft")
         if member is None:
@@ -409,7 +407,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @mouth_pout_left.setter
-    def mouth_pout_left(self, value: np.float32) -> None:
+    def mouth_pout_left(self, value: primitives.Float) -> None:
         """Set the MouthPoutLeft field value."""
         member = self.get_member("MouthPoutLeft")
         if member is not None:
@@ -420,7 +418,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def mouth_pout_right(self) -> np.float32 | None:
+    def mouth_pout_right(self) -> primitives.Float | None:
         """The MouthPoutRight field value."""
         member = self.get_member("MouthPoutRight")
         if member is None:
@@ -428,7 +426,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @mouth_pout_right.setter
-    def mouth_pout_right(self, value: np.float32) -> None:
+    def mouth_pout_right(self, value: primitives.Float) -> None:
         """Set the MouthPoutRight field value."""
         member = self.get_member("MouthPoutRight")
         if member is not None:
@@ -439,7 +437,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_top_left_overturn(self) -> np.float32 | None:
+    def lip_top_left_overturn(self) -> primitives.Float | None:
         """The LipTopLeftOverturn field value."""
         member = self.get_member("LipTopLeftOverturn")
         if member is None:
@@ -447,7 +445,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_top_left_overturn.setter
-    def lip_top_left_overturn(self, value: np.float32) -> None:
+    def lip_top_left_overturn(self, value: primitives.Float) -> None:
         """Set the LipTopLeftOverturn field value."""
         member = self.get_member("LipTopLeftOverturn")
         if member is not None:
@@ -458,7 +456,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_top_right_overturn(self) -> np.float32 | None:
+    def lip_top_right_overturn(self) -> primitives.Float | None:
         """The LipTopRightOverturn field value."""
         member = self.get_member("LipTopRightOverturn")
         if member is None:
@@ -466,7 +464,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_top_right_overturn.setter
-    def lip_top_right_overturn(self, value: np.float32) -> None:
+    def lip_top_right_overturn(self, value: primitives.Float) -> None:
         """Set the LipTopRightOverturn field value."""
         member = self.get_member("LipTopRightOverturn")
         if member is not None:
@@ -477,7 +475,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_bottom_left_overturn(self) -> np.float32 | None:
+    def lip_bottom_left_overturn(self) -> primitives.Float | None:
         """The LipBottomLeftOverturn field value."""
         member = self.get_member("LipBottomLeftOverturn")
         if member is None:
@@ -485,7 +483,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_bottom_left_overturn.setter
-    def lip_bottom_left_overturn(self, value: np.float32) -> None:
+    def lip_bottom_left_overturn(self, value: primitives.Float) -> None:
         """Set the LipBottomLeftOverturn field value."""
         member = self.get_member("LipBottomLeftOverturn")
         if member is not None:
@@ -496,7 +494,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_bottom_right_overturn(self) -> np.float32 | None:
+    def lip_bottom_right_overturn(self) -> primitives.Float | None:
         """The LipBottomRightOverturn field value."""
         member = self.get_member("LipBottomRightOverturn")
         if member is None:
@@ -504,7 +502,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_bottom_right_overturn.setter
-    def lip_bottom_right_overturn(self, value: np.float32) -> None:
+    def lip_bottom_right_overturn(self, value: primitives.Float) -> None:
         """Set the LipBottomRightOverturn field value."""
         member = self.get_member("LipBottomRightOverturn")
         if member is not None:
@@ -515,7 +513,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_top_left_over_under(self) -> np.float32 | None:
+    def lip_top_left_over_under(self) -> primitives.Float | None:
         """The LipTopLeftOverUnder field value."""
         member = self.get_member("LipTopLeftOverUnder")
         if member is None:
@@ -523,7 +521,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_top_left_over_under.setter
-    def lip_top_left_over_under(self, value: np.float32) -> None:
+    def lip_top_left_over_under(self, value: primitives.Float) -> None:
         """Set the LipTopLeftOverUnder field value."""
         member = self.get_member("LipTopLeftOverUnder")
         if member is not None:
@@ -534,7 +532,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_top_right_over_under(self) -> np.float32 | None:
+    def lip_top_right_over_under(self) -> primitives.Float | None:
         """The LipTopRightOverUnder field value."""
         member = self.get_member("LipTopRightOverUnder")
         if member is None:
@@ -542,7 +540,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_top_right_over_under.setter
-    def lip_top_right_over_under(self, value: np.float32) -> None:
+    def lip_top_right_over_under(self, value: primitives.Float) -> None:
         """Set the LipTopRightOverUnder field value."""
         member = self.get_member("LipTopRightOverUnder")
         if member is not None:
@@ -553,7 +551,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_bottom_left_over_under(self) -> np.float32 | None:
+    def lip_bottom_left_over_under(self) -> primitives.Float | None:
         """The LipBottomLeftOverUnder field value."""
         member = self.get_member("LipBottomLeftOverUnder")
         if member is None:
@@ -561,7 +559,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_bottom_left_over_under.setter
-    def lip_bottom_left_over_under(self, value: np.float32) -> None:
+    def lip_bottom_left_over_under(self, value: primitives.Float) -> None:
         """Set the LipBottomLeftOverUnder field value."""
         member = self.get_member("LipBottomLeftOverUnder")
         if member is not None:
@@ -572,7 +570,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_bottom_right_over_under(self) -> np.float32 | None:
+    def lip_bottom_right_over_under(self) -> primitives.Float | None:
         """The LipBottomRightOverUnder field value."""
         member = self.get_member("LipBottomRightOverUnder")
         if member is None:
@@ -580,7 +578,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_bottom_right_over_under.setter
-    def lip_bottom_right_over_under(self, value: np.float32) -> None:
+    def lip_bottom_right_over_under(self, value: primitives.Float) -> None:
         """Set the LipBottomRightOverUnder field value."""
         member = self.get_member("LipBottomRightOverUnder")
         if member is not None:
@@ -591,7 +589,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_left_stretch_tighten(self) -> np.float32 | None:
+    def lip_left_stretch_tighten(self) -> primitives.Float | None:
         """The LipLeftStretchTighten field value."""
         member = self.get_member("LipLeftStretchTighten")
         if member is None:
@@ -599,7 +597,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_left_stretch_tighten.setter
-    def lip_left_stretch_tighten(self, value: np.float32) -> None:
+    def lip_left_stretch_tighten(self, value: primitives.Float) -> None:
         """Set the LipLeftStretchTighten field value."""
         member = self.get_member("LipLeftStretchTighten")
         if member is not None:
@@ -610,7 +608,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lip_right_stretch_tighten(self) -> np.float32 | None:
+    def lip_right_stretch_tighten(self) -> primitives.Float | None:
         """The LipRightStretchTighten field value."""
         member = self.get_member("LipRightStretchTighten")
         if member is None:
@@ -618,7 +616,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lip_right_stretch_tighten.setter
-    def lip_right_stretch_tighten(self, value: np.float32) -> None:
+    def lip_right_stretch_tighten(self, value: primitives.Float) -> None:
         """Set the LipRightStretchTighten field value."""
         member = self.get_member("LipRightStretchTighten")
         if member is not None:
@@ -629,7 +627,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lips_left_press(self) -> np.float32 | None:
+    def lips_left_press(self) -> primitives.Float | None:
         """The LipsLeftPress field value."""
         member = self.get_member("LipsLeftPress")
         if member is None:
@@ -637,7 +635,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lips_left_press.setter
-    def lips_left_press(self, value: np.float32) -> None:
+    def lips_left_press(self, value: primitives.Float) -> None:
         """Set the LipsLeftPress field value."""
         member = self.get_member("LipsLeftPress")
         if member is not None:
@@ -648,7 +646,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def lips_right_press(self) -> np.float32 | None:
+    def lips_right_press(self) -> primitives.Float | None:
         """The LipsRightPress field value."""
         member = self.get_member("LipsRightPress")
         if member is None:
@@ -656,7 +654,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @lips_right_press.setter
-    def lips_right_press(self, value: np.float32) -> None:
+    def lips_right_press(self, value: primitives.Float) -> None:
         """Set the LipsRightPress field value."""
         member = self.get_member("LipsRightPress")
         if member is not None:
@@ -667,7 +665,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def cheek_left_puff_suck(self) -> np.float32 | None:
+    def cheek_left_puff_suck(self) -> primitives.Float | None:
         """The CheekLeftPuffSuck field value."""
         member = self.get_member("CheekLeftPuffSuck")
         if member is None:
@@ -675,7 +673,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @cheek_left_puff_suck.setter
-    def cheek_left_puff_suck(self, value: np.float32) -> None:
+    def cheek_left_puff_suck(self, value: primitives.Float) -> None:
         """Set the CheekLeftPuffSuck field value."""
         member = self.get_member("CheekLeftPuffSuck")
         if member is not None:
@@ -686,7 +684,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def cheek_right_puff_suck(self) -> np.float32 | None:
+    def cheek_right_puff_suck(self) -> primitives.Float | None:
         """The CheekRightPuffSuck field value."""
         member = self.get_member("CheekRightPuffSuck")
         if member is None:
@@ -694,7 +692,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @cheek_right_puff_suck.setter
-    def cheek_right_puff_suck(self, value: np.float32) -> None:
+    def cheek_right_puff_suck(self, value: primitives.Float) -> None:
         """Set the CheekRightPuffSuck field value."""
         member = self.get_member("CheekRightPuffSuck")
         if member is not None:
@@ -705,7 +703,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def cheek_left_raise(self) -> np.float32 | None:
+    def cheek_left_raise(self) -> primitives.Float | None:
         """The CheekLeftRaise field value."""
         member = self.get_member("CheekLeftRaise")
         if member is None:
@@ -713,7 +711,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @cheek_left_raise.setter
-    def cheek_left_raise(self, value: np.float32) -> None:
+    def cheek_left_raise(self, value: primitives.Float) -> None:
         """Set the CheekLeftRaise field value."""
         member = self.get_member("CheekLeftRaise")
         if member is not None:
@@ -724,7 +722,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def cheek_right_raise(self) -> np.float32 | None:
+    def cheek_right_raise(self) -> primitives.Float | None:
         """The CheekRightRaise field value."""
         member = self.get_member("CheekRightRaise")
         if member is None:
@@ -732,7 +730,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @cheek_right_raise.setter
-    def cheek_right_raise(self, value: np.float32) -> None:
+    def cheek_right_raise(self, value: primitives.Float) -> None:
         """Set the CheekRightRaise field value."""
         member = self.get_member("CheekRightRaise")
         if member is not None:
@@ -743,7 +741,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def nose_wrinkle_left(self) -> np.float32 | None:
+    def nose_wrinkle_left(self) -> primitives.Float | None:
         """The NoseWrinkleLeft field value."""
         member = self.get_member("NoseWrinkleLeft")
         if member is None:
@@ -751,7 +749,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @nose_wrinkle_left.setter
-    def nose_wrinkle_left(self, value: np.float32) -> None:
+    def nose_wrinkle_left(self, value: primitives.Float) -> None:
         """Set the NoseWrinkleLeft field value."""
         member = self.get_member("NoseWrinkleLeft")
         if member is not None:
@@ -762,7 +760,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def nose_wrinkle_right(self) -> np.float32 | None:
+    def nose_wrinkle_right(self) -> primitives.Float | None:
         """The NoseWrinkleRight field value."""
         member = self.get_member("NoseWrinkleRight")
         if member is None:
@@ -770,7 +768,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @nose_wrinkle_right.setter
-    def nose_wrinkle_right(self, value: np.float32) -> None:
+    def nose_wrinkle_right(self, value: primitives.Float) -> None:
         """Set the NoseWrinkleRight field value."""
         member = self.get_member("NoseWrinkleRight")
         if member is not None:
@@ -781,7 +779,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def chin_raise_bottom(self) -> np.float32 | None:
+    def chin_raise_bottom(self) -> primitives.Float | None:
         """The ChinRaiseBottom field value."""
         member = self.get_member("ChinRaiseBottom")
         if member is None:
@@ -789,7 +787,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @chin_raise_bottom.setter
-    def chin_raise_bottom(self, value: np.float32) -> None:
+    def chin_raise_bottom(self, value: primitives.Float) -> None:
         """Set the ChinRaiseBottom field value."""
         member = self.get_member("ChinRaiseBottom")
         if member is not None:
@@ -800,7 +798,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
             )
 
     @property
-    def chin_raise_top(self) -> np.float32 | None:
+    def chin_raise_top(self) -> primitives.Float | None:
         """The ChinRaiseTop field value."""
         member = self.get_member("ChinRaiseTop")
         if member is None:
@@ -808,7 +806,7 @@ class MockupMouthTrackingSource(GeneratedComponent, IMouthTrackingSourceComponen
         return getattr(member, 'value', None)
 
     @chin_raise_top.setter
-    def chin_raise_top(self, value: np.float32) -> None:
+    def chin_raise_top(self, value: primitives.Float) -> None:
         """Set the ChinRaiseTop field value."""
         member = self.get_member("ChinRaiseTop")
         if member is not None:

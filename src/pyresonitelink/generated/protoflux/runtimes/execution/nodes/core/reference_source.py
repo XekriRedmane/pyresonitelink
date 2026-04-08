@@ -22,7 +22,7 @@ class ReferenceSource(GenericComponent[T], IVariable, ISource, INodeObjectOutput
 
     Parameterize with a value type::
 
-        ReferenceSource[np.float32]
+        ReferenceSource[primitives.Float]
         ReferenceSource[primitives.Float3]
     """
 

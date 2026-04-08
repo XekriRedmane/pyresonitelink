@@ -1,9 +1,8 @@
 """Generated component: BooleanSwitcher."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -19,7 +18,7 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BooleanSwitcher"
 
-    def __init__(self, auto_add_children: bool | None = None, active_index: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_add_children: primitives.Bool | None = None, active_index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,7 +33,7 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             self.active_index = active_index
 
     @property
-    def auto_add_children(self) -> bool | None:
+    def auto_add_children(self) -> primitives.Bool | None:
         """The AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is None:
@@ -42,7 +41,7 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @auto_add_children.setter
-    def auto_add_children(self, value: bool) -> None:
+    def auto_add_children(self, value: primitives.Bool) -> None:
         """Set the AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is not None:
@@ -79,7 +78,7 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         self.set_member("Targets", value)
 
     @property
-    def active_index(self) -> np.int32 | None:
+    def active_index(self) -> primitives.Int | None:
         """The ActiveIndex field value."""
         member = self.get_member("ActiveIndex")
         if member is None:
@@ -87,7 +86,7 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
         return getattr(member, 'value', None)
 
     @active_index.setter
-    def active_index(self, value: np.int32) -> None:
+    def active_index(self, value: primitives.Int) -> None:
         """Set the ActiveIndex field value."""
         member = self.get_member("ActiveIndex")
         if member is not None:

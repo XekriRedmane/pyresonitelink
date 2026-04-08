@@ -1,6 +1,7 @@
 """Generated component: NiceTypeName."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -20,7 +21,7 @@ class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.NiceTypeName"
 
-    def __init__(self, type_: str | INodeObjectOutput[Type] | None = None, open_symbol: str | INodeObjectOutput[str] | None = None, close_symbol: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, type_: str | INodeObjectOutput[Type] | None = None, open_symbol: str | INodeObjectOutput[primitives.String] | None = None, close_symbol: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -60,15 +61,15 @@ class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def open_symbol(self) -> str | None:
-        """Target ID of the OpenSymbol reference (targets INodeObjectOutput[str])."""
+        """Target ID of the OpenSymbol reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("OpenSymbol")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @open_symbol.setter
-    def open_symbol(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the OpenSymbol reference by target ID or INodeObjectOutput[str] instance."""
+    def open_symbol(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the OpenSymbol reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("OpenSymbol")
         if isinstance(member, members.Reference):
@@ -81,15 +82,15 @@ class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def close_symbol(self) -> str | None:
-        """Target ID of the CloseSymbol reference (targets INodeObjectOutput[str])."""
+        """Target ID of the CloseSymbol reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("CloseSymbol")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @close_symbol.setter
-    def close_symbol(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the CloseSymbol reference by target ID or INodeObjectOutput[str] instance."""
+    def close_symbol(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the CloseSymbol reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("CloseSymbol")
         if isinstance(member, members.Reference):

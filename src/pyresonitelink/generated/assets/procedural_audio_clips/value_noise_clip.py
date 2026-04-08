@@ -1,8 +1,7 @@
 """Generated component: ValueNoiseClip."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -19,7 +18,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueNoiseClip"
 
-    def __init__(self, high_priority_integration: bool | None = None, duration: np.float32 | None = None, seed: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, duration: primitives.Float | None = None, seed: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +36,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.seed = seed
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -45,7 +44,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -56,7 +55,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def duration(self) -> np.float32 | None:
+    def duration(self) -> primitives.Float | None:
         """The Duration field value."""
         member = self.get_member("Duration")
         if member is None:
@@ -64,7 +63,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @duration.setter
-    def duration(self, value: np.float32) -> None:
+    def duration(self, value: primitives.Float) -> None:
         """Set the Duration field value."""
         member = self.get_member("Duration")
         if member is not None:
@@ -75,7 +74,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def seed(self) -> np.int32 | None:
+    def seed(self) -> primitives.Int | None:
         """The Seed field value."""
         member = self.get_member("Seed")
         if member is None:
@@ -83,7 +82,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
         return getattr(member, 'value', None)
 
     @seed.setter
-    def seed(self, value: np.int32) -> None:
+    def seed(self, value: primitives.Int) -> None:
         """Set the Seed field value."""
         member = self.get_member("Seed")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: ProtoFluxOperationListManager."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -20,7 +19,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.Visuals.ProtoFluxOperationListManager"
 
-    def __init__(self, visual: str | ProtoFluxNodeVisual | None = None, list_: str | ISyncList | None = None, min_elements: np.int32 | None = None, add_button_enabled: str | IField[bool] | None = None, remove_button_enabled: str | IField[bool] | None = None, supports_async: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, visual: str | ProtoFluxNodeVisual | None = None, list_: str | ISyncList | None = None, min_elements: primitives.Int | None = None, add_button_enabled: str | IField[primitives.Bool] | None = None, remove_button_enabled: str | IField[primitives.Bool] | None = None, supports_async: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -89,7 +88,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
             )
 
     @property
-    def min_elements(self) -> np.int32 | None:
+    def min_elements(self) -> primitives.Int | None:
         """The MinElements field value."""
         member = self.get_member("MinElements")
         if member is None:
@@ -97,7 +96,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @min_elements.setter
-    def min_elements(self, value: np.int32) -> None:
+    def min_elements(self, value: primitives.Int) -> None:
         """Set the MinElements field value."""
         member = self.get_member("MinElements")
         if member is not None:
@@ -109,15 +108,15 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     @property
     def add_button_enabled(self) -> str | None:
-        """Target ID of the AddButtonEnabled reference (targets IField[bool])."""
+        """Target ID of the AddButtonEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("AddButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @add_button_enabled.setter
-    def add_button_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the AddButtonEnabled reference by target ID or IField[bool] instance."""
+    def add_button_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the AddButtonEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("AddButtonEnabled")
         if isinstance(member, members.Reference):
@@ -130,15 +129,15 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     @property
     def remove_button_enabled(self) -> str | None:
-        """Target ID of the RemoveButtonEnabled reference (targets IField[bool])."""
+        """Target ID of the RemoveButtonEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("RemoveButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @remove_button_enabled.setter
-    def remove_button_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the RemoveButtonEnabled reference by target ID or IField[bool] instance."""
+    def remove_button_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the RemoveButtonEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("RemoveButtonEnabled")
         if isinstance(member, members.Reference):
@@ -163,7 +162,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
         self.set_member("_elements", value)
 
     @property
-    def supports_async(self) -> bool | None:
+    def supports_async(self) -> primitives.Bool | None:
         """The SupportsAsync field value."""
         member = self.get_member("SupportsAsync")
         if member is None:
@@ -171,7 +170,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @supports_async.setter
-    def supports_async(self, value: bool) -> None:
+    def supports_async(self, value: primitives.Bool) -> None:
         """Set the SupportsAsync field value."""
         member = self.get_member("SupportsAsync")
         if member is not None:

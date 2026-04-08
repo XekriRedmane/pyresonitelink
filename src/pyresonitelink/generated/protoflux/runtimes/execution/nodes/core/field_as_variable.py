@@ -20,7 +20,7 @@ class FieldAsVariable(GenericComponent[T], IVariable, INodeObjectOutput[T], IExe
 
     Parameterize with a value type::
 
-        FieldAsVariable[np.float32]
+        FieldAsVariable[primitives.Float]
         FieldAsVariable[primitives.Float3]
     """
 

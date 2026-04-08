@@ -1,6 +1,7 @@
 """Generated component: SurrogatePairToUTF32."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -19,7 +20,7 @@ class SurrogatePairToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.SurrogatePairToUTF32"
 
-    def __init__(self, high_surrogate: str | INodeValueOutput[str] | None = None, low_surrogate: str | INodeValueOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_surrogate: str | INodeValueOutput[primitives.Char] | None = None, low_surrogate: str | INodeValueOutput[primitives.Char] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,15 +36,15 @@ class SurrogatePairToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def high_surrogate(self) -> str | None:
-        """Target ID of the HighSurrogate reference (targets INodeValueOutput[str])."""
+        """Target ID of the HighSurrogate reference (targets INodeValueOutput[primitives.Char])."""
         member = self.get_member("HighSurrogate")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @high_surrogate.setter
-    def high_surrogate(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the HighSurrogate reference by target ID or INodeValueOutput[str] instance."""
+    def high_surrogate(self, target: str | INodeValueOutput[primitives.Char] | None) -> None:
+        """Set the HighSurrogate reference by target ID or INodeValueOutput[primitives.Char] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("HighSurrogate")
         if isinstance(member, members.Reference):
@@ -56,15 +57,15 @@ class SurrogatePairToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def low_surrogate(self) -> str | None:
-        """Target ID of the LowSurrogate reference (targets INodeValueOutput[str])."""
+        """Target ID of the LowSurrogate reference (targets INodeValueOutput[primitives.Char])."""
         member = self.get_member("LowSurrogate")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @low_surrogate.setter
-    def low_surrogate(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the LowSurrogate reference by target ID or INodeValueOutput[str] instance."""
+    def low_surrogate(self, target: str | INodeValueOutput[primitives.Char] | None) -> None:
+        """Set the LowSurrogate reference by target ID or INodeValueOutput[primitives.Char] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("LowSurrogate")
         if isinstance(member, members.Reference):

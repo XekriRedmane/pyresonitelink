@@ -1,7 +1,5 @@
 """Generated component: VectorGizmo."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VectorGizmo"
 
-    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_vector: str | IField[primitives.Float3] | None = None, target_rotation: str | IField[primitives.FloatQ] | None = None, fix_magnitude: bool | None = None, fixed_magnitude: np.float32 | None = None, visual_magnitude_scale: np.float32 | None = None, visual_thickness: np.float32 | None = None, collider_rotation: str | IField[primitives.FloatQ] | None = None, collider: str | CylinderCollider | None = None, mesh: str | ArrowMesh | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: primitives.Bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_vector: str | IField[primitives.Float3] | None = None, target_rotation: str | IField[primitives.FloatQ] | None = None, fix_magnitude: primitives.Bool | None = None, fixed_magnitude: primitives.Float | None = None, visual_magnitude_scale: primitives.Float | None = None, visual_thickness: primitives.Float | None = None, collider_rotation: str | IField[primitives.FloatQ] | None = None, collider: str | CylinderCollider | None = None, mesh: str | ArrowMesh | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -108,7 +106,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
             )
 
     @property
-    def auto_position_at_target_slot(self) -> bool | None:
+    def auto_position_at_target_slot(self) -> primitives.Bool | None:
         """The AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
@@ -116,7 +114,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @auto_position_at_target_slot.setter
-    def auto_position_at_target_slot(self, value: bool) -> None:
+    def auto_position_at_target_slot(self, value: primitives.Bool) -> None:
         """Set the AutoPositionAtTargetSlot field value."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is not None:
@@ -329,7 +327,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
             )
 
     @property
-    def fix_magnitude(self) -> bool | None:
+    def fix_magnitude(self) -> primitives.Bool | None:
         """The FixMagnitude field value."""
         member = self.get_member("FixMagnitude")
         if member is None:
@@ -337,7 +335,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @fix_magnitude.setter
-    def fix_magnitude(self, value: bool) -> None:
+    def fix_magnitude(self, value: primitives.Bool) -> None:
         """Set the FixMagnitude field value."""
         member = self.get_member("FixMagnitude")
         if member is not None:
@@ -348,7 +346,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
             )
 
     @property
-    def fixed_magnitude(self) -> np.float32 | None:
+    def fixed_magnitude(self) -> primitives.Float | None:
         """The FixedMagnitude field value."""
         member = self.get_member("FixedMagnitude")
         if member is None:
@@ -356,7 +354,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @fixed_magnitude.setter
-    def fixed_magnitude(self, value: np.float32) -> None:
+    def fixed_magnitude(self, value: primitives.Float) -> None:
         """Set the FixedMagnitude field value."""
         member = self.get_member("FixedMagnitude")
         if member is not None:
@@ -367,7 +365,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
             )
 
     @property
-    def visual_magnitude_scale(self) -> np.float32 | None:
+    def visual_magnitude_scale(self) -> primitives.Float | None:
         """The VisualMagnitudeScale field value."""
         member = self.get_member("VisualMagnitudeScale")
         if member is None:
@@ -375,7 +373,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @visual_magnitude_scale.setter
-    def visual_magnitude_scale(self, value: np.float32) -> None:
+    def visual_magnitude_scale(self, value: primitives.Float) -> None:
         """Set the VisualMagnitudeScale field value."""
         member = self.get_member("VisualMagnitudeScale")
         if member is not None:
@@ -386,7 +384,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
             )
 
     @property
-    def visual_thickness(self) -> np.float32 | None:
+    def visual_thickness(self) -> primitives.Float | None:
         """The VisualThickness field value."""
         member = self.get_member("VisualThickness")
         if member is None:
@@ -394,7 +392,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @visual_thickness.setter
-    def visual_thickness(self, value: np.float32) -> None:
+    def visual_thickness(self, value: primitives.Float) -> None:
         """Set the VisualThickness field value."""
         member = self.get_member("VisualThickness")
         if member is not None:

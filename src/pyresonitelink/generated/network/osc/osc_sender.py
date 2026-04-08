@@ -1,9 +1,8 @@
 """Generated component: OSC_Sender."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OSC_Sender"
 
-    def __init__(self, access_reason: str | None = None, url: str | None = None, local_port: np.int32 | None = None, is_sending: bool | None = None, auto_resend_interval: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, access_reason: primitives.String | None = None, url: str | None = None, local_port: primitives.Int | None = None, is_sending: primitives.Bool | None = None, auto_resend_interval: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -55,7 +54,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("HandlingUser", value)
 
     @property
-    def access_reason(self) -> str | None:
+    def access_reason(self) -> primitives.String | None:
         """The AccessReason field value."""
         member = self.get_member("AccessReason")
         if member is None:
@@ -63,7 +62,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @access_reason.setter
-    def access_reason(self, value: str) -> None:
+    def access_reason(self, value: primitives.String) -> None:
         """Set the AccessReason field value."""
         member = self.get_member("AccessReason")
         if member is not None:
@@ -93,7 +92,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def local_port(self) -> np.int32 | None:
+    def local_port(self) -> primitives.Int | None:
         """The LocalPort field value."""
         member = self.get_member("LocalPort")
         if member is None:
@@ -101,7 +100,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @local_port.setter
-    def local_port(self, value: np.int32) -> None:
+    def local_port(self, value: primitives.Int) -> None:
         """Set the LocalPort field value."""
         member = self.get_member("LocalPort")
         if member is not None:
@@ -112,7 +111,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def is_sending(self) -> bool | None:
+    def is_sending(self) -> primitives.Bool | None:
         """The IsSending field value."""
         member = self.get_member("IsSending")
         if member is None:
@@ -120,7 +119,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @is_sending.setter
-    def is_sending(self, value: bool) -> None:
+    def is_sending(self, value: primitives.Bool) -> None:
         """Set the IsSending field value."""
         member = self.get_member("IsSending")
         if member is not None:
@@ -144,7 +143,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("SendMode", value)
 
     @property
-    def auto_resend_interval(self) -> np.float32 | None:
+    def auto_resend_interval(self) -> primitives.Float | None:
         """The AutoResendInterval field value."""
         member = self.get_member("AutoResendInterval")
         if member is None:
@@ -152,7 +151,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_resend_interval.setter
-    def auto_resend_interval(self, value: np.float32) -> None:
+    def auto_resend_interval(self, value: primitives.Float) -> None:
         """Set the AutoResendInterval field value."""
         member = self.get_member("AutoResendInterval")
         if member is not None:

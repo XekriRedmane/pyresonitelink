@@ -1,7 +1,5 @@
 """Generated component: ArcSegmentLayout."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ArcSegmentLayout"
 
-    def __init__(self, nested: str | RectTransform | None = None, nested_size_ratio: np.float32 | None = None, label: str | Text | None = None, label_size: primitives.Float2 | None = None, label_distance: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, nested: str | RectTransform | None = None, nested_size_ratio: primitives.Float | None = None, label: str | Text | None = None, label_size: primitives.Float2 | None = None, label_distance: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,7 +65,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
             )
 
     @property
-    def nested_size_ratio(self) -> np.float32 | None:
+    def nested_size_ratio(self) -> primitives.Float | None:
         """The NestedSizeRatio field value."""
         member = self.get_member("NestedSizeRatio")
         if member is None:
@@ -75,7 +73,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @nested_size_ratio.setter
-    def nested_size_ratio(self, value: np.float32) -> None:
+    def nested_size_ratio(self, value: primitives.Float) -> None:
         """Set the NestedSizeRatio field value."""
         member = self.get_member("NestedSizeRatio")
         if member is not None:
@@ -126,7 +124,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
             )
 
     @property
-    def label_distance(self) -> np.float32 | None:
+    def label_distance(self) -> primitives.Float | None:
         """The LabelDistance field value."""
         member = self.get_member("LabelDistance")
         if member is None:
@@ -134,7 +132,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
         return getattr(member, 'value', None)
 
     @label_distance.setter
-    def label_distance(self, value: np.float32) -> None:
+    def label_distance(self, value: primitives.Float) -> None:
         """Set the LabelDistance field value."""
         member = self.get_member("LabelDistance")
         if member is not None:

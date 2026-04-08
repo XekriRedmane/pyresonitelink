@@ -1,7 +1,5 @@
 """Generated component: Projection360Material."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -26,7 +24,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Projection360Material"
 
-    def __init__(self, high_priority_integration: bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, secondary_texture: str | IAssetProvider[ITexture2D] | None = None, cubemap: str | IAssetProvider[Cubemap] | None = None, secondary_cubemap: str | IAssetProvider[Cubemap] | None = None, cubemap_lod: np.float32 | None = None, texture_lerp: np.float32 | None = None, field_of_view: primitives.Float2 | None = None, angle_offset: primitives.Float2 | None = None, perspective_field_of_view: primitives.Float2 | None = None, perspective_angle_offset: primitives.Float2 | None = None, tint: primitives.ColorX | None = None, exposure: np.float32 | None = None, gamma: np.float32 | None = None, tint_texture: str | IAssetProvider[ITexture2D] | None = None, tint_texture_scale: primitives.Float2 | None = None, tint_texture_offset: primitives.Float2 | None = None, tint0: primitives.ColorX | None = None, tint1: primitives.ColorX | None = None, outside_color: primitives.ColorX | None = None, texture_offset: primitives.Float2 | None = None, texture_scale: primitives.Float2 | None = None, stereo_texture_transform: bool | None = None, right_eye_texture_offset: primitives.Float2 | None = None, right_eye_texture_scale: primitives.Float2 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, max_intensity: np.float32 | None = None, rect: primitives.Rect | None = None, rect_clip: bool | None = None, offset_texture: str | IAssetProvider[ITexture2D] | None = None, offset_mask: str | IAssetProvider[ITexture2D] | None = None, offset_texture_offset: primitives.Float2 | None = None, offset_texture_scale: primitives.Float2 | None = None, offset_magnitude: primitives.Float2 | None = None, stencil_id: np.uint8 | None = None, stencil_write_mask: np.uint8 | None = None, stencil_read_mask: np.uint8 | None = None, render_queue: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, secondary_texture: str | IAssetProvider[ITexture2D] | None = None, cubemap: str | IAssetProvider[Cubemap] | None = None, secondary_cubemap: str | IAssetProvider[Cubemap] | None = None, cubemap_lod: primitives.Float | None = None, texture_lerp: primitives.Float | None = None, field_of_view: primitives.Float2 | None = None, angle_offset: primitives.Float2 | None = None, perspective_field_of_view: primitives.Float2 | None = None, perspective_angle_offset: primitives.Float2 | None = None, tint: primitives.ColorX | None = None, exposure: primitives.Float | None = None, gamma: primitives.Float | None = None, tint_texture: str | IAssetProvider[ITexture2D] | None = None, tint_texture_scale: primitives.Float2 | None = None, tint_texture_offset: primitives.Float2 | None = None, tint0: primitives.ColorX | None = None, tint1: primitives.ColorX | None = None, outside_color: primitives.ColorX | None = None, texture_offset: primitives.Float2 | None = None, texture_scale: primitives.Float2 | None = None, stereo_texture_transform: primitives.Bool | None = None, right_eye_texture_offset: primitives.Float2 | None = None, right_eye_texture_scale: primitives.Float2 | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, max_intensity: primitives.Float | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, offset_texture: str | IAssetProvider[ITexture2D] | None = None, offset_mask: str | IAssetProvider[ITexture2D] | None = None, offset_texture_offset: primitives.Float2 | None = None, offset_texture_scale: primitives.Float2 | None = None, offset_magnitude: primitives.Float2 | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -155,7 +153,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             self.render_queue = render_queue
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -163,7 +161,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -279,7 +277,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def cubemap_lod(self) -> np.float32 | None:
+    def cubemap_lod(self) -> primitives.Float | None:
         """The CubemapLOD field value."""
         member = self.get_member("CubemapLOD")
         if member is None:
@@ -287,7 +285,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @cubemap_lod.setter
-    def cubemap_lod(self, value: np.float32) -> None:
+    def cubemap_lod(self, value: primitives.Float) -> None:
         """Set the CubemapLOD field value."""
         member = self.get_member("CubemapLOD")
         if member is not None:
@@ -298,7 +296,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def texture_lerp(self) -> np.float32 | None:
+    def texture_lerp(self) -> primitives.Float | None:
         """The TextureLerp field value."""
         member = self.get_member("TextureLerp")
         if member is None:
@@ -306,7 +304,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @texture_lerp.setter
-    def texture_lerp(self, value: np.float32) -> None:
+    def texture_lerp(self, value: primitives.Float) -> None:
         """Set the TextureLerp field value."""
         member = self.get_member("TextureLerp")
         if member is not None:
@@ -425,7 +423,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def exposure(self) -> np.float32 | None:
+    def exposure(self) -> primitives.Float | None:
         """The Exposure field value."""
         member = self.get_member("Exposure")
         if member is None:
@@ -433,7 +431,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @exposure.setter
-    def exposure(self, value: np.float32) -> None:
+    def exposure(self, value: primitives.Float) -> None:
         """Set the Exposure field value."""
         member = self.get_member("Exposure")
         if member is not None:
@@ -444,7 +442,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def gamma(self) -> np.float32 | None:
+    def gamma(self) -> primitives.Float | None:
         """The Gamma field value."""
         member = self.get_member("Gamma")
         if member is None:
@@ -452,7 +450,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @gamma.setter
-    def gamma(self, value: np.float32) -> None:
+    def gamma(self, value: primitives.Float) -> None:
         """Set the Gamma field value."""
         member = self.get_member("Gamma")
         if member is not None:
@@ -643,7 +641,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def stereo_texture_transform(self) -> bool | None:
+    def stereo_texture_transform(self) -> primitives.Bool | None:
         """The StereoTextureTransform field value."""
         member = self.get_member("StereoTextureTransform")
         if member is None:
@@ -651,7 +649,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @stereo_texture_transform.setter
-    def stereo_texture_transform(self, value: bool) -> None:
+    def stereo_texture_transform(self, value: primitives.Bool) -> None:
         """Set the StereoTextureTransform field value."""
         member = self.get_member("StereoTextureTransform")
         if member is not None:
@@ -752,7 +750,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         self.set_member("BlendMode", value)
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -760,7 +758,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -771,7 +769,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -779,7 +777,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -790,7 +788,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def max_intensity(self) -> np.float32 | None:
+    def max_intensity(self) -> primitives.Float | None:
         """The MaxIntensity field value."""
         member = self.get_member("MaxIntensity")
         if member is None:
@@ -798,7 +796,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @max_intensity.setter
-    def max_intensity(self, value: np.float32) -> None:
+    def max_intensity(self, value: primitives.Float) -> None:
         """Set the MaxIntensity field value."""
         member = self.get_member("MaxIntensity")
         if member is not None:
@@ -828,7 +826,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def rect_clip(self) -> bool | None:
+    def rect_clip(self) -> primitives.Bool | None:
         """The RectClip field value."""
         member = self.get_member("RectClip")
         if member is None:
@@ -836,7 +834,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @rect_clip.setter
-    def rect_clip(self, value: bool) -> None:
+    def rect_clip(self, value: primitives.Bool) -> None:
         """Set the RectClip field value."""
         member = self.get_member("RectClip")
         if member is not None:
@@ -985,7 +983,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         self.set_member("StencilOperation", value)
 
     @property
-    def stencil_id(self) -> np.uint8 | None:
+    def stencil_id(self) -> primitives.Byte | None:
         """The StencilID field value."""
         member = self.get_member("StencilID")
         if member is None:
@@ -993,7 +991,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @stencil_id.setter
-    def stencil_id(self, value: np.uint8) -> None:
+    def stencil_id(self, value: primitives.Byte) -> None:
         """Set the StencilID field value."""
         member = self.get_member("StencilID")
         if member is not None:
@@ -1004,7 +1002,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def stencil_write_mask(self) -> np.uint8 | None:
+    def stencil_write_mask(self) -> primitives.Byte | None:
         """The StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is None:
@@ -1012,7 +1010,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @stencil_write_mask.setter
-    def stencil_write_mask(self, value: np.uint8) -> None:
+    def stencil_write_mask(self, value: primitives.Byte) -> None:
         """Set the StencilWriteMask field value."""
         member = self.get_member("StencilWriteMask")
         if member is not None:
@@ -1023,7 +1021,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def stencil_read_mask(self) -> np.uint8 | None:
+    def stencil_read_mask(self) -> primitives.Byte | None:
         """The StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is None:
@@ -1031,7 +1029,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @stencil_read_mask.setter
-    def stencil_read_mask(self, value: np.uint8) -> None:
+    def stencil_read_mask(self, value: primitives.Byte) -> None:
         """Set the StencilReadMask field value."""
         member = self.get_member("StencilReadMask")
         if member is not None:
@@ -1042,7 +1040,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -1050,7 +1048,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:

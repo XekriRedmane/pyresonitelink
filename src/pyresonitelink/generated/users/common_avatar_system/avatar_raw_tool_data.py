@@ -1,7 +1,5 @@
 """Generated component: AvatarRawToolData."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarRawToolData"
 
-    def __init__(self, pressing_primary: bool | None = None, pressing_secondary: bool | None = None, pressing_grab: bool | None = None, primary_strength: np.float32 | None = None, secondary_axis: primitives.Float2 | None = None, active_user: str | User | None = None, strength_stream: str | ValueStream[np.float32] | None = None, axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[bool] | None = None, secondary_stream: str | ValueStream[bool] | None = None, grab_stream: str | ValueStream[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, pressing_primary: primitives.Bool | None = None, pressing_secondary: primitives.Bool | None = None, pressing_grab: primitives.Bool | None = None, primary_strength: primitives.Float | None = None, secondary_axis: primitives.Float2 | None = None, active_user: str | User | None = None, strength_stream: str | ValueStream[primitives.Float] | None = None, axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[primitives.Bool] | None = None, secondary_stream: str | ValueStream[primitives.Bool] | None = None, grab_stream: str | ValueStream[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -76,7 +74,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
         self.set_member("ControllerSide", value)
 
     @property
-    def pressing_primary(self) -> bool | None:
+    def pressing_primary(self) -> primitives.Bool | None:
         """The PressingPrimary field value."""
         member = self.get_member("PressingPrimary")
         if member is None:
@@ -84,7 +82,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @pressing_primary.setter
-    def pressing_primary(self, value: bool) -> None:
+    def pressing_primary(self, value: primitives.Bool) -> None:
         """Set the PressingPrimary field value."""
         member = self.get_member("PressingPrimary")
         if member is not None:
@@ -95,7 +93,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
             )
 
     @property
-    def pressing_secondary(self) -> bool | None:
+    def pressing_secondary(self) -> primitives.Bool | None:
         """The PressingSecondary field value."""
         member = self.get_member("PressingSecondary")
         if member is None:
@@ -103,7 +101,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @pressing_secondary.setter
-    def pressing_secondary(self, value: bool) -> None:
+    def pressing_secondary(self, value: primitives.Bool) -> None:
         """Set the PressingSecondary field value."""
         member = self.get_member("PressingSecondary")
         if member is not None:
@@ -114,7 +112,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
             )
 
     @property
-    def pressing_grab(self) -> bool | None:
+    def pressing_grab(self) -> primitives.Bool | None:
         """The PressingGrab field value."""
         member = self.get_member("PressingGrab")
         if member is None:
@@ -122,7 +120,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @pressing_grab.setter
-    def pressing_grab(self, value: bool) -> None:
+    def pressing_grab(self, value: primitives.Bool) -> None:
         """Set the PressingGrab field value."""
         member = self.get_member("PressingGrab")
         if member is not None:
@@ -133,7 +131,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
             )
 
     @property
-    def primary_strength(self) -> np.float32 | None:
+    def primary_strength(self) -> primitives.Float | None:
         """The PrimaryStrength field value."""
         member = self.get_member("PrimaryStrength")
         if member is None:
@@ -141,7 +139,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @primary_strength.setter
-    def primary_strength(self, value: np.float32) -> None:
+    def primary_strength(self, value: primitives.Float) -> None:
         """Set the PrimaryStrength field value."""
         member = self.get_member("PrimaryStrength")
         if member is not None:
@@ -193,15 +191,15 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def strength_stream(self) -> str | None:
-        """Target ID of the _strengthStream reference (targets ValueStream[np.float32])."""
+        """Target ID of the _strengthStream reference (targets ValueStream[primitives.Float])."""
         member = self.get_member("_strengthStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @strength_stream.setter
-    def strength_stream(self, target: str | ValueStream[np.float32] | None) -> None:
-        """Set the _strengthStream reference by target ID or ValueStream[np.float32] instance."""
+    def strength_stream(self, target: str | ValueStream[primitives.Float] | None) -> None:
+        """Set the _strengthStream reference by target ID or ValueStream[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("_strengthStream")
         if isinstance(member, members.Reference):
@@ -235,15 +233,15 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def primary_stream(self) -> str | None:
-        """Target ID of the _primaryStream reference (targets ValueStream[bool])."""
+        """Target ID of the _primaryStream reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("_primaryStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @primary_stream.setter
-    def primary_stream(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the _primaryStream reference by target ID or ValueStream[bool] instance."""
+    def primary_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the _primaryStream reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("_primaryStream")
         if isinstance(member, members.Reference):
@@ -256,15 +254,15 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def secondary_stream(self) -> str | None:
-        """Target ID of the _secondaryStream reference (targets ValueStream[bool])."""
+        """Target ID of the _secondaryStream reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("_secondaryStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @secondary_stream.setter
-    def secondary_stream(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the _secondaryStream reference by target ID or ValueStream[bool] instance."""
+    def secondary_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the _secondaryStream reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("_secondaryStream")
         if isinstance(member, members.Reference):
@@ -277,15 +275,15 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def grab_stream(self) -> str | None:
-        """Target ID of the _grabStream reference (targets ValueStream[bool])."""
+        """Target ID of the _grabStream reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("_grabStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @grab_stream.setter
-    def grab_stream(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the _grabStream reference by target ID or ValueStream[bool] instance."""
+    def grab_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the _grabStream reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("_grabStream")
         if isinstance(member, members.Reference):

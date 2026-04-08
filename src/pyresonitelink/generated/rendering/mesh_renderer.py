@@ -1,9 +1,8 @@
 """Generated component: MeshRenderer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -24,7 +23,7 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshRenderer"
 
-    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, sorting_order: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, sorting_order: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -112,7 +111,7 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
         self.set_member("MotionVectorMode", value)
 
     @property
-    def sorting_order(self) -> np.int32 | None:
+    def sorting_order(self) -> primitives.Int | None:
         """The SortingOrder field value."""
         member = self.get_member("SortingOrder")
         if member is None:
@@ -120,7 +119,7 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
         return getattr(member, 'value', None)
 
     @sorting_order.setter
-    def sorting_order(self, value: np.int32) -> None:
+    def sorting_order(self, value: primitives.Int) -> None:
         """Set the SortingOrder field value."""
         member = self.get_member("SortingOrder")
         if member is not None:

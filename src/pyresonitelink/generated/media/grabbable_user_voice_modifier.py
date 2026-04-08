@@ -1,9 +1,8 @@
 """Generated component: GrabbableUserVoiceModifier."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.igrab_event_receiver import IGrabEventReceiver
@@ -18,7 +17,7 @@ class GrabbableUserVoiceModifier(GeneratedComponent, IGrabEventReceiver, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabbableUserVoiceModifier"
 
-    def __init__(self, original_enabled: bool | None = None, original_spatialize: bool | None = None, original_spatial_blend: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, original_enabled: primitives.Bool | None = None, original_spatialize: primitives.Bool | None = None, original_spatial_blend: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +61,7 @@ class GrabbableUserVoiceModifier(GeneratedComponent, IGrabEventReceiver, IWorldE
         self.set_member("StateOnReleased", value)
 
     @property
-    def original_enabled(self) -> bool | None:
+    def original_enabled(self) -> primitives.Bool | None:
         """The _originalEnabled field value."""
         member = self.get_member("_originalEnabled")
         if member is None:
@@ -70,7 +69,7 @@ class GrabbableUserVoiceModifier(GeneratedComponent, IGrabEventReceiver, IWorldE
         return getattr(member, 'value', None)
 
     @original_enabled.setter
-    def original_enabled(self, value: bool) -> None:
+    def original_enabled(self, value: primitives.Bool) -> None:
         """Set the _originalEnabled field value."""
         member = self.get_member("_originalEnabled")
         if member is not None:
@@ -81,7 +80,7 @@ class GrabbableUserVoiceModifier(GeneratedComponent, IGrabEventReceiver, IWorldE
             )
 
     @property
-    def original_spatialize(self) -> bool | None:
+    def original_spatialize(self) -> primitives.Bool | None:
         """The _originalSpatialize field value."""
         member = self.get_member("_originalSpatialize")
         if member is None:
@@ -89,7 +88,7 @@ class GrabbableUserVoiceModifier(GeneratedComponent, IGrabEventReceiver, IWorldE
         return getattr(member, 'value', None)
 
     @original_spatialize.setter
-    def original_spatialize(self, value: bool) -> None:
+    def original_spatialize(self, value: primitives.Bool) -> None:
         """Set the _originalSpatialize field value."""
         member = self.get_member("_originalSpatialize")
         if member is not None:
@@ -100,7 +99,7 @@ class GrabbableUserVoiceModifier(GeneratedComponent, IGrabEventReceiver, IWorldE
             )
 
     @property
-    def original_spatial_blend(self) -> np.float32 | None:
+    def original_spatial_blend(self) -> primitives.Float | None:
         """The _originalSpatialBlend field value."""
         member = self.get_member("_originalSpatialBlend")
         if member is None:
@@ -108,7 +107,7 @@ class GrabbableUserVoiceModifier(GeneratedComponent, IGrabEventReceiver, IWorldE
         return getattr(member, 'value', None)
 
     @original_spatial_blend.setter
-    def original_spatial_blend(self, value: np.float32) -> None:
+    def original_spatial_blend(self, value: primitives.Float) -> None:
         """Set the _originalSpatialBlend field value."""
         member = self.get_member("_originalSpatialBlend")
         if member is not None:

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -14,7 +15,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GiggleTechSettings"
 
-    def __init__(self, giggle_puck_ip: str | None = None, is_giggle_puck_valid: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, giggle_puck_ip: primitives.String | None = None, is_giggle_puck_valid: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,7 +43,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
         self.set_member("Devices", value)
 
     @property
-    def giggle_puck_ip(self) -> str | None:
+    def giggle_puck_ip(self) -> primitives.String | None:
         """The GigglePuckIP field value."""
         member = self.get_member("GigglePuckIP")
         if member is None:
@@ -50,7 +51,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @giggle_puck_ip.setter
-    def giggle_puck_ip(self, value: str) -> None:
+    def giggle_puck_ip(self, value: primitives.String) -> None:
         """Set the GigglePuckIP field value."""
         member = self.get_member("GigglePuckIP")
         if member is not None:
@@ -61,7 +62,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def is_giggle_puck_valid(self) -> bool | None:
+    def is_giggle_puck_valid(self) -> primitives.Bool | None:
         """The IsGigglePuckValid field value."""
         member = self.get_member("IsGigglePuckValid")
         if member is None:
@@ -69,7 +70,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @is_giggle_puck_valid.setter
-    def is_giggle_puck_valid(self, value: bool) -> None:
+    def is_giggle_puck_valid(self, value: primitives.Bool) -> None:
         """Set the IsGigglePuckValid field value."""
         member = self.get_member("IsGigglePuckValid")
         if member is not None:
@@ -89,7 +90,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
             resolink, "RegisterGigglePuck", {}, debug,
         )
 
-    async def get_device_for_subsetting(self, resolink: protocols.ResoniteLinkClient, key: str, debug: bool = False) -> dict:
+    async def get_device_for_subsetting(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
         """Call the GetDeviceForSubsetting sync method.
 
         Args:

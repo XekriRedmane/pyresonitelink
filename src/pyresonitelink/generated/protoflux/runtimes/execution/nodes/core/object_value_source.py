@@ -22,7 +22,7 @@ class ObjectValueSource(GenericComponent[T], IVariable, ISource, INodeObjectOutp
 
     Parameterize with a value type::
 
-        ObjectValueSource[np.float32]
+        ObjectValueSource[primitives.Float]
         ObjectValueSource[primitives.Float3]
     """
 

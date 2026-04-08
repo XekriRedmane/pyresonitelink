@@ -1,6 +1,7 @@
 """Generated component: FormatTimespan."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +22,7 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.FormatTimespan"
 
-    def __init__(self, time_span: str | INodeValueOutput[str] | None = None, show_seconds: str | INodeValueOutput[bool] | None = None, show_milliseconds: str | INodeValueOutput[bool] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, time_span: str | INodeValueOutput[str] | None = None, show_seconds: str | INodeValueOutput[primitives.Bool] | None = None, show_milliseconds: str | INodeValueOutput[primitives.Bool] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -64,15 +65,15 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def show_seconds(self) -> str | None:
-        """Target ID of the ShowSeconds reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ShowSeconds reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ShowSeconds")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @show_seconds.setter
-    def show_seconds(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ShowSeconds reference by target ID or INodeValueOutput[bool] instance."""
+    def show_seconds(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ShowSeconds reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ShowSeconds")
         if isinstance(member, members.Reference):
@@ -85,15 +86,15 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def show_milliseconds(self) -> str | None:
-        """Target ID of the ShowMilliseconds reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ShowMilliseconds reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ShowMilliseconds")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @show_milliseconds.setter
-    def show_milliseconds(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ShowMilliseconds reference by target ID or INodeValueOutput[bool] instance."""
+    def show_milliseconds(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ShowMilliseconds reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ShowMilliseconds")
         if isinstance(member, members.Reference):

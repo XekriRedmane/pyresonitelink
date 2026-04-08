@@ -1,7 +1,5 @@
 """Generated component: DebugSphere."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -25,7 +23,7 @@ class DebugSphere(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugSphere"
 
-    def __init__(self, next: str | INodeOperation | None = None, point: str | INodeValueOutput[primitives.Float3] | None = None, radius: str | INodeValueOutput[np.float32] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, duration: str | INodeValueOutput[np.float32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, point: str | INodeValueOutput[primitives.Float3] | None = None, radius: str | INodeValueOutput[primitives.Float] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -92,15 +90,15 @@ class DebugSphere(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
 
     @property
     def radius(self) -> str | None:
-        """Target ID of the Radius reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Radius reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @radius.setter
-    def radius(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Radius reference by target ID or INodeValueOutput[np.float32] instance."""
+    def radius(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Radius reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
@@ -134,15 +132,15 @@ class DebugSphere(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @duration.setter
-    def duration(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Duration reference by target ID or INodeValueOutput[np.float32] instance."""
+    def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):

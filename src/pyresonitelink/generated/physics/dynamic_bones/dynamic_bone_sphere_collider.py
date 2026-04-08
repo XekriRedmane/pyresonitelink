@@ -1,8 +1,7 @@
 """Generated component: DynamicBoneSphereCollider."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.idynamic_bone_collider import IDynamicBoneCollider
@@ -17,7 +16,7 @@ class DynamicBoneSphereCollider(GeneratedComponent, IDynamicBoneCollider, IWorld
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicBoneSphereCollider"
 
-    def __init__(self, radius: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +28,7 @@ class DynamicBoneSphereCollider(GeneratedComponent, IDynamicBoneCollider, IWorld
             self.radius = radius
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -37,7 +36,7 @@ class DynamicBoneSphereCollider(GeneratedComponent, IDynamicBoneCollider, IWorld
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:

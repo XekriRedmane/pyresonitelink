@@ -17,7 +17,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleAligner"
 
-    def __init__(self, auto_add_children: bool | None = None, base_size: primitives.Float3 | None = None, increment: primitives.Float3 | None = None, multiplier: primitives.Float3 | None = None, non_uniform: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_add_children: primitives.Bool | None = None, base_size: primitives.Float3 | None = None, increment: primitives.Float3 | None = None, multiplier: primitives.Float3 | None = None, non_uniform: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,7 +41,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.non_uniform = non_uniform
 
     @property
-    def auto_add_children(self) -> bool | None:
+    def auto_add_children(self) -> primitives.Bool | None:
         """The AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is None:
@@ -49,7 +49,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_add_children.setter
-    def auto_add_children(self, value: bool) -> None:
+    def auto_add_children(self, value: primitives.Bool) -> None:
         """Set the AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is not None:
@@ -130,7 +130,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def non_uniform(self) -> bool | None:
+    def non_uniform(self) -> primitives.Bool | None:
         """The NonUniform field value."""
         member = self.get_member("NonUniform")
         if member is None:
@@ -138,7 +138,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @non_uniform.setter
-    def non_uniform(self, value: bool) -> None:
+    def non_uniform(self, value: primitives.Bool) -> None:
         """Set the NonUniform field value."""
         member = self.get_member("NonUniform")
         if member is not None:

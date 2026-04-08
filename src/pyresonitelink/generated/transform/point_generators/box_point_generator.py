@@ -16,7 +16,7 @@ class BoxPointGenerator(GeneratedComponent, IPointGenerator, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxPointGenerator"
 
-    def __init__(self, size: primitives.Float3 | None = None, shell: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, size: primitives.Float3 | None = None, shell: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -50,7 +50,7 @@ class BoxPointGenerator(GeneratedComponent, IPointGenerator, IWorldEventReceiver
             )
 
     @property
-    def shell(self) -> bool | None:
+    def shell(self) -> primitives.Bool | None:
         """The Shell field value."""
         member = self.get_member("Shell")
         if member is None:
@@ -58,7 +58,7 @@ class BoxPointGenerator(GeneratedComponent, IPointGenerator, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @shell.setter
-    def shell(self, value: bool) -> None:
+    def shell(self, value: primitives.Bool) -> None:
         """Set the Shell field value."""
         member = self.get_member("Shell")
         if member is not None:

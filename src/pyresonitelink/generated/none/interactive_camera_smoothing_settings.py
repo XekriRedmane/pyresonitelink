@@ -1,8 +1,7 @@
 """Generated component: InteractiveCameraSmoothingSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraSmoothingSettings"
 
-    def __init__(self, position_smooth_speed: np.float32 | None = None, angle_smooth_speed: np.float32 | None = None, framing_smooth_speed: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, position_smooth_speed: primitives.Float | None = None, angle_smooth_speed: primitives.Float | None = None, framing_smooth_speed: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
             self.framing_smooth_speed = framing_smooth_speed
 
     @property
-    def position_smooth_speed(self) -> np.float32 | None:
+    def position_smooth_speed(self) -> primitives.Float | None:
         """The PositionSmoothSpeed field value."""
         member = self.get_member("PositionSmoothSpeed")
         if member is None:
@@ -41,7 +40,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @position_smooth_speed.setter
-    def position_smooth_speed(self, value: np.float32) -> None:
+    def position_smooth_speed(self, value: primitives.Float) -> None:
         """Set the PositionSmoothSpeed field value."""
         member = self.get_member("PositionSmoothSpeed")
         if member is not None:
@@ -52,7 +51,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def angle_smooth_speed(self) -> np.float32 | None:
+    def angle_smooth_speed(self) -> primitives.Float | None:
         """The AngleSmoothSpeed field value."""
         member = self.get_member("AngleSmoothSpeed")
         if member is None:
@@ -60,7 +59,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @angle_smooth_speed.setter
-    def angle_smooth_speed(self, value: np.float32) -> None:
+    def angle_smooth_speed(self, value: primitives.Float) -> None:
         """Set the AngleSmoothSpeed field value."""
         member = self.get_member("AngleSmoothSpeed")
         if member is not None:
@@ -71,7 +70,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def framing_smooth_speed(self) -> np.float32 | None:
+    def framing_smooth_speed(self) -> primitives.Float | None:
         """The FramingSmoothSpeed field value."""
         member = self.get_member("FramingSmoothSpeed")
         if member is None:
@@ -79,7 +78,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @framing_smooth_speed.setter
-    def framing_smooth_speed(self, value: np.float32) -> None:
+    def framing_smooth_speed(self, value: primitives.Float) -> None:
         """Set the FramingSmoothSpeed field value."""
         member = self.get_member("FramingSmoothSpeed")
         if member is not None:

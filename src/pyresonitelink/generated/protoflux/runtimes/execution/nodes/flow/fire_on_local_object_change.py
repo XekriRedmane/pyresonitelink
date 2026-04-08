@@ -14,7 +14,7 @@ class FireOnLocalObjectChange(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        FireOnLocalObjectChange[np.float32]
+        FireOnLocalObjectChange[primitives.Float]
         FireOnLocalObjectChange[primitives.Float3]
     """
 

@@ -1,7 +1,5 @@
 """Generated component: BallisticPathMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -21,7 +19,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BallisticPathMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, initial_position: primitives.Float3 | None = None, initial_velocity: primitives.Float3 | None = None, gravity: primitives.Float3 | None = None, drag: np.float32 | None = None, step_size: np.float32 | None = None, total_units: np.float32 | None = None, size: np.float32 | None = None, points: np.int32 | None = None, dual_sided: bool | None = None, up: primitives.Float3 | None = None, distance_size_growth: np.float32 | None = None, min_grown_size: np.float32 | None = None, max_grown_size: np.float32 | None = None, use_last_segment: bool | None = None, last_segment_position: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, initial_position: primitives.Float3 | None = None, initial_velocity: primitives.Float3 | None = None, gravity: primitives.Float3 | None = None, drag: primitives.Float | None = None, step_size: primitives.Float | None = None, total_units: primitives.Float | None = None, size: primitives.Float | None = None, points: primitives.Int | None = None, dual_sided: primitives.Bool | None = None, up: primitives.Float3 | None = None, distance_size_growth: primitives.Float | None = None, min_grown_size: primitives.Float | None = None, max_grown_size: primitives.Float | None = None, use_last_segment: primitives.Bool | None = None, last_segment_position: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -84,7 +82,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             self.last_segment_position = last_segment_position
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -92,7 +90,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -103,7 +101,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -111,7 +109,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -211,7 +209,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def drag(self) -> np.float32 | None:
+    def drag(self) -> primitives.Float | None:
         """The Drag field value."""
         member = self.get_member("Drag")
         if member is None:
@@ -219,7 +217,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @drag.setter
-    def drag(self, value: np.float32) -> None:
+    def drag(self, value: primitives.Float) -> None:
         """Set the Drag field value."""
         member = self.get_member("Drag")
         if member is not None:
@@ -243,7 +241,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         self.set_member("Mode", value)
 
     @property
-    def step_size(self) -> np.float32 | None:
+    def step_size(self) -> primitives.Float | None:
         """The StepSize field value."""
         member = self.get_member("StepSize")
         if member is None:
@@ -251,7 +249,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @step_size.setter
-    def step_size(self, value: np.float32) -> None:
+    def step_size(self, value: primitives.Float) -> None:
         """Set the StepSize field value."""
         member = self.get_member("StepSize")
         if member is not None:
@@ -262,7 +260,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def total_units(self) -> np.float32 | None:
+    def total_units(self) -> primitives.Float | None:
         """The TotalUnits field value."""
         member = self.get_member("TotalUnits")
         if member is None:
@@ -270,7 +268,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @total_units.setter
-    def total_units(self, value: np.float32) -> None:
+    def total_units(self, value: primitives.Float) -> None:
         """Set the TotalUnits field value."""
         member = self.get_member("TotalUnits")
         if member is not None:
@@ -294,7 +292,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         self.set_member("Shape", value)
 
     @property
-    def size(self) -> np.float32 | None:
+    def size(self) -> primitives.Float | None:
         """The Size field value."""
         member = self.get_member("Size")
         if member is None:
@@ -302,7 +300,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @size.setter
-    def size(self, value: np.float32) -> None:
+    def size(self, value: primitives.Float) -> None:
         """Set the Size field value."""
         member = self.get_member("Size")
         if member is not None:
@@ -313,7 +311,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def points(self) -> np.int32 | None:
+    def points(self) -> primitives.Int | None:
         """The Points field value."""
         member = self.get_member("Points")
         if member is None:
@@ -321,7 +319,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @points.setter
-    def points(self, value: np.int32) -> None:
+    def points(self, value: primitives.Int) -> None:
         """Set the Points field value."""
         member = self.get_member("Points")
         if member is not None:
@@ -332,7 +330,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def dual_sided(self) -> bool | None:
+    def dual_sided(self) -> primitives.Bool | None:
         """The DualSided field value."""
         member = self.get_member("DualSided")
         if member is None:
@@ -340,7 +338,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @dual_sided.setter
-    def dual_sided(self, value: bool) -> None:
+    def dual_sided(self, value: primitives.Bool) -> None:
         """Set the DualSided field value."""
         member = self.get_member("DualSided")
         if member is not None:
@@ -370,7 +368,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def distance_size_growth(self) -> np.float32 | None:
+    def distance_size_growth(self) -> primitives.Float | None:
         """The DistanceSizeGrowth field value."""
         member = self.get_member("DistanceSizeGrowth")
         if member is None:
@@ -378,7 +376,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @distance_size_growth.setter
-    def distance_size_growth(self, value: np.float32) -> None:
+    def distance_size_growth(self, value: primitives.Float) -> None:
         """Set the DistanceSizeGrowth field value."""
         member = self.get_member("DistanceSizeGrowth")
         if member is not None:
@@ -389,7 +387,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def min_grown_size(self) -> np.float32 | None:
+    def min_grown_size(self) -> primitives.Float | None:
         """The MinGrownSize field value."""
         member = self.get_member("MinGrownSize")
         if member is None:
@@ -397,7 +395,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @min_grown_size.setter
-    def min_grown_size(self, value: np.float32) -> None:
+    def min_grown_size(self, value: primitives.Float) -> None:
         """Set the MinGrownSize field value."""
         member = self.get_member("MinGrownSize")
         if member is not None:
@@ -408,7 +406,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def max_grown_size(self) -> np.float32 | None:
+    def max_grown_size(self) -> primitives.Float | None:
         """The MaxGrownSize field value."""
         member = self.get_member("MaxGrownSize")
         if member is None:
@@ -416,7 +414,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @max_grown_size.setter
-    def max_grown_size(self, value: np.float32) -> None:
+    def max_grown_size(self, value: primitives.Float) -> None:
         """Set the MaxGrownSize field value."""
         member = self.get_member("MaxGrownSize")
         if member is not None:
@@ -427,7 +425,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def use_last_segment(self) -> bool | None:
+    def use_last_segment(self) -> primitives.Bool | None:
         """The UseLastSegment field value."""
         member = self.get_member("UseLastSegment")
         if member is None:
@@ -435,7 +433,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
         return getattr(member, 'value', None)
 
     @use_last_segment.setter
-    def use_last_segment(self, value: bool) -> None:
+    def use_last_segment(self, value: primitives.Bool) -> None:
         """Set the UseLastSegment field value."""
         member = self.get_member("UseLastSegment")
         if member is not None:

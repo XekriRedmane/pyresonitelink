@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -14,7 +15,7 @@ class NotificationSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NotificationSettings"
 
-    def __init__(self, user_online: bool | None = None, user_online_on_another_build: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user_online: primitives.Bool | None = None, user_online_on_another_build: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +30,7 @@ class NotificationSettings(GeneratedComponent, ICustomInspector):
             self.user_online_on_another_build = user_online_on_another_build
 
     @property
-    def user_online(self) -> bool | None:
+    def user_online(self) -> primitives.Bool | None:
         """The UserOnline field value."""
         member = self.get_member("UserOnline")
         if member is None:
@@ -37,7 +38,7 @@ class NotificationSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @user_online.setter
-    def user_online(self, value: bool) -> None:
+    def user_online(self, value: primitives.Bool) -> None:
         """Set the UserOnline field value."""
         member = self.get_member("UserOnline")
         if member is not None:
@@ -48,7 +49,7 @@ class NotificationSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def user_online_on_another_build(self) -> bool | None:
+    def user_online_on_another_build(self) -> primitives.Bool | None:
         """The UserOnlineOnAnotherBuild field value."""
         member = self.get_member("UserOnlineOnAnotherBuild")
         if member is None:
@@ -56,7 +57,7 @@ class NotificationSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @user_online_on_another_build.setter
-    def user_online_on_another_build(self, value: bool) -> None:
+    def user_online_on_another_build(self, value: primitives.Bool) -> None:
         """Set the UserOnlineOnAnotherBuild field value."""
         member = self.get_member("UserOnlineOnAnotherBuild")
         if member is not None:

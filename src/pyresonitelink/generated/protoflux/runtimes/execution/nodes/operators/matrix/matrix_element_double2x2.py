@@ -1,7 +1,5 @@
 """Generated component: MatrixElement_Double2x2."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class MatrixElement_Double2x2(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.MatrixElement_Double2x2"
 
-    def __init__(self, matrix: str | INodeValueOutput[primitives.Double2x2] | None = None, row: str | INodeValueOutput[np.int32] | None = None, column: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, matrix: str | INodeValueOutput[primitives.Double2x2] | None = None, row: str | INodeValueOutput[primitives.Int] | None = None, column: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,15 +60,15 @@ class MatrixElement_Double2x2(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def row(self) -> str | None:
-        """Target ID of the Row reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Row reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Row")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @row.setter
-    def row(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Row reference by target ID or INodeValueOutput[np.int32] instance."""
+    def row(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Row reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Row")
         if isinstance(member, members.Reference):
@@ -83,15 +81,15 @@ class MatrixElement_Double2x2(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def column(self) -> str | None:
-        """Target ID of the Column reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Column reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Column")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @column.setter
-    def column(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Column reference by target ID or INodeValueOutput[np.int32] instance."""
+    def column(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Column reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Column")
         if isinstance(member, members.Reference):

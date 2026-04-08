@@ -1,8 +1,7 @@
 """Generated component: StringInsert."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -22,7 +21,7 @@ class StringInsert(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.StringInsert"
 
-    def __init__(self, str_: str | INodeObjectOutput[str] | None = None, value: str | INodeObjectOutput[str] | None = None, start_index: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, str_: str | INodeObjectOutput[primitives.String] | None = None, value: str | INodeObjectOutput[primitives.String] | None = None, start_index: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,15 +40,15 @@ class StringInsert(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @str_.setter
-    def str_(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Str reference by target ID or INodeObjectOutput[str] instance."""
+    def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
@@ -62,15 +61,15 @@ class StringInsert(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Value reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @value.setter
-    def value(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Value reference by target ID or INodeObjectOutput[str] instance."""
+    def value(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Value reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
@@ -83,15 +82,15 @@ class StringInsert(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def start_index(self) -> str | None:
-        """Target ID of the StartIndex reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the StartIndex reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @start_index.setter
-    def start_index(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the StartIndex reference by target ID or INodeValueOutput[np.int32] instance."""
+    def start_index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the StartIndex reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):

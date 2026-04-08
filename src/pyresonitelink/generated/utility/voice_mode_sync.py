@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -16,7 +17,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VoiceModeSync"
 
-    def __init__(self, global_mute: bool | None = None, broadcast_allowed: bool | None = None, shout_allowed: bool | None = None, normal_allowed: bool | None = None, whisper_allowed: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, global_mute: primitives.Bool | None = None, broadcast_allowed: primitives.Bool | None = None, shout_allowed: primitives.Bool | None = None, normal_allowed: primitives.Bool | None = None, whisper_allowed: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -53,7 +54,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("FocusedWorldVoiceMode", value)
 
     @property
-    def global_mute(self) -> bool | None:
+    def global_mute(self) -> primitives.Bool | None:
         """The GlobalMute field value."""
         member = self.get_member("GlobalMute")
         if member is None:
@@ -61,7 +62,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @global_mute.setter
-    def global_mute(self, value: bool) -> None:
+    def global_mute(self, value: primitives.Bool) -> None:
         """Set the GlobalMute field value."""
         member = self.get_member("GlobalMute")
         if member is not None:
@@ -85,7 +86,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("FocusedWorldMaxAllowedVoiceMode", value)
 
     @property
-    def broadcast_allowed(self) -> bool | None:
+    def broadcast_allowed(self) -> primitives.Bool | None:
         """The BroadcastAllowed field value."""
         member = self.get_member("BroadcastAllowed")
         if member is None:
@@ -93,7 +94,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @broadcast_allowed.setter
-    def broadcast_allowed(self, value: bool) -> None:
+    def broadcast_allowed(self, value: primitives.Bool) -> None:
         """Set the BroadcastAllowed field value."""
         member = self.get_member("BroadcastAllowed")
         if member is not None:
@@ -104,7 +105,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def shout_allowed(self) -> bool | None:
+    def shout_allowed(self) -> primitives.Bool | None:
         """The ShoutAllowed field value."""
         member = self.get_member("ShoutAllowed")
         if member is None:
@@ -112,7 +113,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @shout_allowed.setter
-    def shout_allowed(self, value: bool) -> None:
+    def shout_allowed(self, value: primitives.Bool) -> None:
         """Set the ShoutAllowed field value."""
         member = self.get_member("ShoutAllowed")
         if member is not None:
@@ -123,7 +124,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def normal_allowed(self) -> bool | None:
+    def normal_allowed(self) -> primitives.Bool | None:
         """The NormalAllowed field value."""
         member = self.get_member("NormalAllowed")
         if member is None:
@@ -131,7 +132,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @normal_allowed.setter
-    def normal_allowed(self, value: bool) -> None:
+    def normal_allowed(self, value: primitives.Bool) -> None:
         """Set the NormalAllowed field value."""
         member = self.get_member("NormalAllowed")
         if member is not None:
@@ -142,7 +143,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def whisper_allowed(self) -> bool | None:
+    def whisper_allowed(self) -> primitives.Bool | None:
         """The WhisperAllowed field value."""
         member = self.get_member("WhisperAllowed")
         if member is None:
@@ -150,7 +151,7 @@ class VoiceModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @whisper_allowed.setter
-    def whisper_allowed(self, value: bool) -> None:
+    def whisper_allowed(self, value: primitives.Bool) -> None:
         """Set the WhisperAllowed field value."""
         member = self.get_member("WhisperAllowed")
         if member is not None:

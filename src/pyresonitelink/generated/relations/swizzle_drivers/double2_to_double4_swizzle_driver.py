@@ -1,7 +1,5 @@
 """Generated component: Double2ToDouble4SwizzleDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class Double2ToDouble4SwizzleDriver(GeneratedComponent, IComponent, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Double2ToDouble4SwizzleDriver"
 
-    def __init__(self, source: str | IField[primitives.Double2] | None = None, target: str | IField[primitives.Double4] | None = None, x: np.int32 | None = None, y: np.int32 | None = None, z: np.int32 | None = None, w: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[primitives.Double2] | None = None, target: str | IField[primitives.Double4] | None = None, x: primitives.Int | None = None, y: primitives.Int | None = None, z: primitives.Int | None = None, w: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -89,7 +87,7 @@ class Double2ToDouble4SwizzleDriver(GeneratedComponent, IComponent, IWorldEventR
             )
 
     @property
-    def x(self) -> np.int32 | None:
+    def x(self) -> primitives.Int | None:
         """The X field value."""
         member = self.get_member("X")
         if member is None:
@@ -97,7 +95,7 @@ class Double2ToDouble4SwizzleDriver(GeneratedComponent, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @x.setter
-    def x(self, value: np.int32) -> None:
+    def x(self, value: primitives.Int) -> None:
         """Set the X field value."""
         member = self.get_member("X")
         if member is not None:
@@ -108,7 +106,7 @@ class Double2ToDouble4SwizzleDriver(GeneratedComponent, IComponent, IWorldEventR
             )
 
     @property
-    def y(self) -> np.int32 | None:
+    def y(self) -> primitives.Int | None:
         """The Y field value."""
         member = self.get_member("Y")
         if member is None:
@@ -116,7 +114,7 @@ class Double2ToDouble4SwizzleDriver(GeneratedComponent, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @y.setter
-    def y(self, value: np.int32) -> None:
+    def y(self, value: primitives.Int) -> None:
         """Set the Y field value."""
         member = self.get_member("Y")
         if member is not None:
@@ -127,7 +125,7 @@ class Double2ToDouble4SwizzleDriver(GeneratedComponent, IComponent, IWorldEventR
             )
 
     @property
-    def z(self) -> np.int32 | None:
+    def z(self) -> primitives.Int | None:
         """The Z field value."""
         member = self.get_member("Z")
         if member is None:
@@ -135,7 +133,7 @@ class Double2ToDouble4SwizzleDriver(GeneratedComponent, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @z.setter
-    def z(self, value: np.int32) -> None:
+    def z(self, value: primitives.Int) -> None:
         """Set the Z field value."""
         member = self.get_member("Z")
         if member is not None:
@@ -146,7 +144,7 @@ class Double2ToDouble4SwizzleDriver(GeneratedComponent, IComponent, IWorldEventR
             )
 
     @property
-    def w(self) -> np.int32 | None:
+    def w(self) -> primitives.Int | None:
         """The W field value."""
         member = self.get_member("W")
         if member is None:
@@ -154,7 +152,7 @@ class Double2ToDouble4SwizzleDriver(GeneratedComponent, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @w.setter
-    def w(self, value: np.int32) -> None:
+    def w(self, value: primitives.Int) -> None:
         """Set the W field value."""
         member = self.get_member("W")
         if member is not None:

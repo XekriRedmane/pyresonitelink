@@ -1,7 +1,5 @@
 """Generated component: LookAt."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LookAt"
 
-    def __init__(self, target: str | Slot | None = None, target_point: primitives.Float3 | None = None, up: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, swing_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, max_swing: np.float32 | None = None, max_twist: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | Slot | None = None, target_point: primitives.Float3 | None = None, up: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, swing_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -184,7 +182,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
             )
 
     @property
-    def max_swing(self) -> np.float32 | None:
+    def max_swing(self) -> primitives.Float | None:
         """The MaxSwing field value."""
         member = self.get_member("MaxSwing")
         if member is None:
@@ -192,7 +190,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @max_swing.setter
-    def max_swing(self, value: np.float32) -> None:
+    def max_swing(self, value: primitives.Float) -> None:
         """Set the MaxSwing field value."""
         member = self.get_member("MaxSwing")
         if member is not None:
@@ -203,7 +201,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
             )
 
     @property
-    def max_twist(self) -> np.float32 | None:
+    def max_twist(self) -> primitives.Float | None:
         """The MaxTwist field value."""
         member = self.get_member("MaxTwist")
         if member is None:
@@ -211,7 +209,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @max_twist.setter
-    def max_twist(self, value: np.float32) -> None:
+    def max_twist(self, value: primitives.Float) -> None:
         """Set the MaxTwist field value."""
         member = self.get_member("MaxTwist")
         if member is not None:

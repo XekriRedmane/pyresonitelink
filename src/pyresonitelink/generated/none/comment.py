@@ -1,6 +1,7 @@
 """Generated component: Comment."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -13,7 +14,7 @@ class Comment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Comment"
 
-    def __init__(self, text: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, text: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class Comment(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.text = text
 
     @property
-    def text(self) -> str | None:
+    def text(self) -> primitives.String | None:
         """The Text field value."""
         member = self.get_member("Text")
         if member is None:
@@ -33,7 +34,7 @@ class Comment(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @text.setter
-    def text(self, value: str) -> None:
+    def text(self, value: primitives.String) -> None:
         """Set the Text field value."""
         member = self.get_member("Text")
         if member is not None:

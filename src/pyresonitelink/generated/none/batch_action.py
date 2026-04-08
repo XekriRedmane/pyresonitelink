@@ -1,6 +1,7 @@
 """Generated component: BatchAction."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iundoable import IUndoable
@@ -13,7 +14,7 @@ class BatchAction(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.BatchAction"
 
-    def __init__(self, description: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, description: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,7 +26,7 @@ class BatchAction(GeneratedComponent, IUndoable, IWorldEventReceiver):
             self.description = description
 
     @property
-    def description(self) -> str | None:
+    def description(self) -> primitives.String | None:
         """The _description field value."""
         member = self.get_member("_description")
         if member is None:
@@ -33,7 +34,7 @@ class BatchAction(GeneratedComponent, IUndoable, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @description.setter
-    def description(self, value: str) -> None:
+    def description(self, value: primitives.String) -> None:
         """Set the _description field value."""
         member = self.get_member("_description")
         if member is not None:

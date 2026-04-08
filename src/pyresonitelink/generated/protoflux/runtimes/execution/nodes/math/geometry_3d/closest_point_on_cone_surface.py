@@ -1,7 +1,5 @@
 """Generated component: ClosestPointOnConeSurface."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -22,7 +20,7 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry3D.ClosestPointOnConeSurface"
 
-    def __init__(self, cone_center: str | INodeValueOutput[primitives.Float3] | None = None, cone_orientation: str | INodeValueOutput[primitives.FloatQ] | None = None, cone_height: str | INodeValueOutput[np.float32] | None = None, cone_base_radius: str | INodeValueOutput[np.float32] | None = None, point: str | INodeValueOutput[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, cone_center: str | INodeValueOutput[primitives.Float3] | None = None, cone_orientation: str | INodeValueOutput[primitives.FloatQ] | None = None, cone_height: str | INodeValueOutput[primitives.Float] | None = None, cone_base_radius: str | INodeValueOutput[primitives.Float] | None = None, point: str | INodeValueOutput[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -89,15 +87,15 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def cone_height(self) -> str | None:
-        """Target ID of the ConeHeight reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the ConeHeight reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("ConeHeight")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @cone_height.setter
-    def cone_height(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the ConeHeight reference by target ID or INodeValueOutput[np.float32] instance."""
+    def cone_height(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the ConeHeight reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ConeHeight")
         if isinstance(member, members.Reference):
@@ -110,15 +108,15 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def cone_base_radius(self) -> str | None:
-        """Target ID of the ConeBaseRadius reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the ConeBaseRadius reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("ConeBaseRadius")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @cone_base_radius.setter
-    def cone_base_radius(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the ConeBaseRadius reference by target ID or INodeValueOutput[np.float32] instance."""
+    def cone_base_radius(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the ConeBaseRadius reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ConeBaseRadius")
         if isinstance(member, members.Reference):

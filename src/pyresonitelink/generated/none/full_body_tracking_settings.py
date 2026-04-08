@@ -1,8 +1,7 @@
 """Generated component: FullBodyTrackingSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class FullBodyTrackingSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FullBodyTrackingSettings"
 
-    def __init__(self, body_horizontal_angle: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, body_horizontal_angle: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,7 +26,7 @@ class FullBodyTrackingSettings(GeneratedComponent, ICustomInspector):
             self.body_horizontal_angle = body_horizontal_angle
 
     @property
-    def body_horizontal_angle(self) -> np.float32 | None:
+    def body_horizontal_angle(self) -> primitives.Float | None:
         """The BodyHorizontalAngle field value."""
         member = self.get_member("BodyHorizontalAngle")
         if member is None:
@@ -35,7 +34,7 @@ class FullBodyTrackingSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @body_horizontal_angle.setter
-    def body_horizontal_angle(self, value: np.float32) -> None:
+    def body_horizontal_angle(self, value: primitives.Float) -> None:
         """Set the BodyHorizontalAngle field value."""
         member = self.get_member("BodyHorizontalAngle")
         if member is not None:

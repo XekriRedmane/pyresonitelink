@@ -1,8 +1,7 @@
 """Generated component: FootstepEventDebugVisualizer."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifootstep_event_receiver import IFootstepEventReceiver
@@ -17,7 +16,7 @@ class FootstepEventDebugVisualizer(GeneratedComponent, IFootstepEventReceiver, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FootstepEventDebugVisualizer"
 
-    def __init__(self, duration: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, duration: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +28,7 @@ class FootstepEventDebugVisualizer(GeneratedComponent, IFootstepEventReceiver, I
             self.duration = duration
 
     @property
-    def duration(self) -> np.float32 | None:
+    def duration(self) -> primitives.Float | None:
         """The Duration field value."""
         member = self.get_member("Duration")
         if member is None:
@@ -37,7 +36,7 @@ class FootstepEventDebugVisualizer(GeneratedComponent, IFootstepEventReceiver, I
         return getattr(member, 'value', None)
 
     @duration.setter
-    def duration(self, value: np.float32) -> None:
+    def duration(self, value: primitives.Float) -> None:
         """Set the Duration field value."""
         member = self.get_member("Duration")
         if member is not None:

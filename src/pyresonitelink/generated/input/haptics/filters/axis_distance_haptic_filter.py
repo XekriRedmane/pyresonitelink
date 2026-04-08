@@ -1,7 +1,5 @@
 """Generated component: AxisDistanceHapticFilter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -18,7 +16,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AxisDistanceHapticFilter"
 
-    def __init__(self, axis: primitives.Float3 | None = None, start_distance: np.float32 | None = None, end_distance: np.float32 | None = None, start_intensity: np.float32 | None = None, end_intensity: np.float32 | None = None, power: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, axis: primitives.Float3 | None = None, start_distance: primitives.Float | None = None, end_distance: primitives.Float | None = None, start_intensity: primitives.Float | None = None, end_intensity: primitives.Float | None = None, power: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -64,7 +62,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def start_distance(self) -> np.float32 | None:
+    def start_distance(self) -> primitives.Float | None:
         """The StartDistance field value."""
         member = self.get_member("StartDistance")
         if member is None:
@@ -72,7 +70,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @start_distance.setter
-    def start_distance(self, value: np.float32) -> None:
+    def start_distance(self, value: primitives.Float) -> None:
         """Set the StartDistance field value."""
         member = self.get_member("StartDistance")
         if member is not None:
@@ -83,7 +81,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def end_distance(self) -> np.float32 | None:
+    def end_distance(self) -> primitives.Float | None:
         """The EndDistance field value."""
         member = self.get_member("EndDistance")
         if member is None:
@@ -91,7 +89,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @end_distance.setter
-    def end_distance(self, value: np.float32) -> None:
+    def end_distance(self, value: primitives.Float) -> None:
         """Set the EndDistance field value."""
         member = self.get_member("EndDistance")
         if member is not None:
@@ -102,7 +100,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def start_intensity(self) -> np.float32 | None:
+    def start_intensity(self) -> primitives.Float | None:
         """The StartIntensity field value."""
         member = self.get_member("StartIntensity")
         if member is None:
@@ -110,7 +108,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @start_intensity.setter
-    def start_intensity(self, value: np.float32) -> None:
+    def start_intensity(self, value: primitives.Float) -> None:
         """Set the StartIntensity field value."""
         member = self.get_member("StartIntensity")
         if member is not None:
@@ -121,7 +119,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def end_intensity(self) -> np.float32 | None:
+    def end_intensity(self) -> primitives.Float | None:
         """The EndIntensity field value."""
         member = self.get_member("EndIntensity")
         if member is None:
@@ -129,7 +127,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @end_intensity.setter
-    def end_intensity(self, value: np.float32) -> None:
+    def end_intensity(self, value: primitives.Float) -> None:
         """Set the EndIntensity field value."""
         member = self.get_member("EndIntensity")
         if member is not None:
@@ -140,7 +138,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def power(self) -> np.float32 | None:
+    def power(self) -> primitives.Float | None:
         """The Power field value."""
         member = self.get_member("Power")
         if member is None:
@@ -148,7 +146,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @power.setter
-    def power(self, value: np.float32) -> None:
+    def power(self, value: primitives.Float) -> None:
         """Set the Power field value."""
         member = self.get_member("Power")
         if member is not None:

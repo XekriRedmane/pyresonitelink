@@ -1,9 +1,8 @@
 """Generated component: CloudServerStatus."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -18,7 +17,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CloudServerStatus"
 
-    def __init__(self, response_time_milliseconds: np.int32 | None = None, last_server_update_time: str | None = None, last_server_state_fetch: str | None = None, last_local_server_response_time: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, response_time_milliseconds: primitives.Int | None = None, last_server_update_time: str | None = None, last_server_state_fetch: str | None = None, last_local_server_response_time: str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -52,7 +51,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("Status", value)
 
     @property
-    def response_time_milliseconds(self) -> np.int32 | None:
+    def response_time_milliseconds(self) -> primitives.Int | None:
         """The ResponseTimeMilliseconds field value."""
         member = self.get_member("ResponseTimeMilliseconds")
         if member is None:
@@ -60,7 +59,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @response_time_milliseconds.setter
-    def response_time_milliseconds(self, value: np.int32) -> None:
+    def response_time_milliseconds(self, value: primitives.Int) -> None:
         """Set the ResponseTimeMilliseconds field value."""
         member = self.get_member("ResponseTimeMilliseconds")
         if member is not None:

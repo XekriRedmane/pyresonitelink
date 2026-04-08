@@ -19,7 +19,7 @@ class Box(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, I
 
     Parameterize with a value type::
 
-        Box[np.float32]
+        Box[primitives.Float]
         Box[primitives.Float3]
     """
 

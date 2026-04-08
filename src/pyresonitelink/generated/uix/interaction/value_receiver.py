@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -17,14 +18,14 @@ class ValueReceiver(GenericComponent[T], IUIGrabReceiver, IValueReceiver, IWorld
 
     Parameterize with a value type::
 
-        ValueReceiver[np.float32]
+        ValueReceiver[primitives.Float]
         ValueReceiver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ValueReceiver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.UIX.ValueReceiver<>"
 
-    def __init__(self, field: str | IField[T] | None = None, undoable: bool | None = None, try_convert_values: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, field: str | IField[T] | None = None, undoable: primitives.Bool | None = None, try_convert_values: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,7 +64,7 @@ class ValueReceiver(GenericComponent[T], IUIGrabReceiver, IValueReceiver, IWorld
             )
 
     @property
-    def undoable(self) -> bool | None:
+    def undoable(self) -> primitives.Bool | None:
         """The Undoable field value."""
         member = self.get_member("Undoable")
         if member is None:
@@ -71,7 +72,7 @@ class ValueReceiver(GenericComponent[T], IUIGrabReceiver, IValueReceiver, IWorld
         return getattr(member, 'value', None)
 
     @undoable.setter
-    def undoable(self, value: bool) -> None:
+    def undoable(self, value: primitives.Bool) -> None:
         """Set the Undoable field value."""
         member = self.get_member("Undoable")
         if member is not None:
@@ -82,7 +83,7 @@ class ValueReceiver(GenericComponent[T], IUIGrabReceiver, IValueReceiver, IWorld
             )
 
     @property
-    def try_convert_values(self) -> bool | None:
+    def try_convert_values(self) -> primitives.Bool | None:
         """The TryConvertValues field value."""
         member = self.get_member("TryConvertValues")
         if member is None:
@@ -90,7 +91,7 @@ class ValueReceiver(GenericComponent[T], IUIGrabReceiver, IValueReceiver, IWorld
         return getattr(member, 'value', None)
 
     @try_convert_values.setter
-    def try_convert_values(self, value: bool) -> None:
+    def try_convert_values(self, value: primitives.Bool) -> None:
         """Set the TryConvertValues field value."""
         member = self.get_member("TryConvertValues")
         if member is not None:

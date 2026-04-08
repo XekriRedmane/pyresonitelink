@@ -1,9 +1,8 @@
 """Generated component: QuantityTextFormatDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -18,14 +17,14 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     Parameterize with a value type::
 
-        QuantityTextFormatDriver[np.float32]
+        QuantityTextFormatDriver[primitives.Float]
         QuantityTextFormatDriver[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.QuantityTextFormatDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.QuantityTextFormatDriver<>"
 
-    def __init__(self, target: str | IField[str] | None = None, base_value: np.float64 | None = None, format_unit: str | None = None, format_number: str | None = None, compound_use_long_names: bool | None = None, compound_override_names: bool | None = None, compound_discard_last_fraction: bool | None = None, compound_separator: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.String] | None = None, base_value: primitives.Double | None = None, format_unit: primitives.String | None = None, format_number: primitives.String | None = None, compound_use_long_names: primitives.Bool | None = None, compound_override_names: primitives.Bool | None = None, compound_discard_last_fraction: primitives.Bool | None = None, compound_separator: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -59,15 +58,15 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[str])."""
+        """Target ID of the Target reference (targets IField[primitives.String])."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @target.setter
-    def target(self, target: str | IField[str] | None) -> None:
-        """Set the Target reference by target ID or IField[str] instance."""
+    def target(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
@@ -79,7 +78,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def base_value(self) -> np.float64 | None:
+    def base_value(self) -> primitives.Double | None:
         """The BaseValue field value."""
         member = self.get_member("BaseValue")
         if member is None:
@@ -87,7 +86,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @base_value.setter
-    def base_value(self, value: np.float64) -> None:
+    def base_value(self, value: primitives.Double) -> None:
         """Set the BaseValue field value."""
         member = self.get_member("BaseValue")
         if member is not None:
@@ -98,7 +97,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def format_unit(self) -> str | None:
+    def format_unit(self) -> primitives.String | None:
         """The FormatUnit field value."""
         member = self.get_member("FormatUnit")
         if member is None:
@@ -106,7 +105,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @format_unit.setter
-    def format_unit(self, value: str) -> None:
+    def format_unit(self, value: primitives.String) -> None:
         """Set the FormatUnit field value."""
         member = self.get_member("FormatUnit")
         if member is not None:
@@ -117,7 +116,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def format_number(self) -> str | None:
+    def format_number(self) -> primitives.String | None:
         """The FormatNumber field value."""
         member = self.get_member("FormatNumber")
         if member is None:
@@ -125,7 +124,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @format_number.setter
-    def format_number(self, value: str) -> None:
+    def format_number(self, value: primitives.String) -> None:
         """Set the FormatNumber field value."""
         member = self.get_member("FormatNumber")
         if member is not None:
@@ -149,7 +148,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
         self.set_member("CompoundFormatUnits", value)
 
     @property
-    def compound_use_long_names(self) -> bool | None:
+    def compound_use_long_names(self) -> primitives.Bool | None:
         """The CompoundUseLongNames field value."""
         member = self.get_member("CompoundUseLongNames")
         if member is None:
@@ -157,7 +156,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @compound_use_long_names.setter
-    def compound_use_long_names(self, value: bool) -> None:
+    def compound_use_long_names(self, value: primitives.Bool) -> None:
         """Set the CompoundUseLongNames field value."""
         member = self.get_member("CompoundUseLongNames")
         if member is not None:
@@ -168,7 +167,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def compound_override_names(self) -> bool | None:
+    def compound_override_names(self) -> primitives.Bool | None:
         """The CompoundOverrideNames field value."""
         member = self.get_member("CompoundOverrideNames")
         if member is None:
@@ -176,7 +175,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @compound_override_names.setter
-    def compound_override_names(self, value: bool) -> None:
+    def compound_override_names(self, value: primitives.Bool) -> None:
         """Set the CompoundOverrideNames field value."""
         member = self.get_member("CompoundOverrideNames")
         if member is not None:
@@ -187,7 +186,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def compound_discard_last_fraction(self) -> bool | None:
+    def compound_discard_last_fraction(self) -> primitives.Bool | None:
         """The CompoundDiscardLastFraction field value."""
         member = self.get_member("CompoundDiscardLastFraction")
         if member is None:
@@ -195,7 +194,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @compound_discard_last_fraction.setter
-    def compound_discard_last_fraction(self, value: bool) -> None:
+    def compound_discard_last_fraction(self, value: primitives.Bool) -> None:
         """Set the CompoundDiscardLastFraction field value."""
         member = self.get_member("CompoundDiscardLastFraction")
         if member is not None:
@@ -206,7 +205,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def compound_separator(self) -> str | None:
+    def compound_separator(self) -> primitives.String | None:
         """The CompoundSeparator field value."""
         member = self.get_member("CompoundSeparator")
         if member is None:
@@ -214,7 +213,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
         return getattr(member, 'value', None)
 
     @compound_separator.setter
-    def compound_separator(self, value: str) -> None:
+    def compound_separator(self, value: primitives.String) -> None:
         """Set the CompoundSeparator field value."""
         member = self.get_member("CompoundSeparator")
         if member is not None:

@@ -1,9 +1,8 @@
 """Generated component: ExportDialog."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text_field import TextField
@@ -19,7 +18,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ExportDialog"
 
-    def __init__(self, selected_export_option: np.int32 | None = None, export_name: str | TextField | None = None, target_folder: str | None = None, edit_enabled: bool | None = None, cancel: str | Button | None = None, export: str | Button | None = None, file_name: str | IField | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, selected_export_option: primitives.Int | None = None, export_name: str | TextField | None = None, target_folder: primitives.String | None = None, edit_enabled: primitives.Bool | None = None, cancel: str | Button | None = None, export: str | Button | None = None, file_name: str | IField | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -49,7 +48,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.file_name = file_name
 
     @property
-    def selected_export_option(self) -> np.int32 | None:
+    def selected_export_option(self) -> primitives.Int | None:
         """The SelectedExportOption field value."""
         member = self.get_member("SelectedExportOption")
         if member is None:
@@ -57,7 +56,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @selected_export_option.setter
-    def selected_export_option(self, value: np.int32) -> None:
+    def selected_export_option(self, value: primitives.Int) -> None:
         """Set the SelectedExportOption field value."""
         member = self.get_member("SelectedExportOption")
         if member is not None:
@@ -89,7 +88,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def target_folder(self) -> str | None:
+    def target_folder(self) -> primitives.String | None:
         """The _targetFolder field value."""
         member = self.get_member("_targetFolder")
         if member is None:
@@ -97,7 +96,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @target_folder.setter
-    def target_folder(self, value: str) -> None:
+    def target_folder(self, value: primitives.String) -> None:
         """Set the _targetFolder field value."""
         member = self.get_member("_targetFolder")
         if member is not None:
@@ -108,7 +107,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def edit_enabled(self) -> bool | None:
+    def edit_enabled(self) -> primitives.Bool | None:
         """The EditEnabled field value."""
         member = self.get_member("EditEnabled")
         if member is None:
@@ -116,7 +115,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @edit_enabled.setter
-    def edit_enabled(self, value: bool) -> None:
+    def edit_enabled(self, value: primitives.Bool) -> None:
         """Set the EditEnabled field value."""
         member = self.get_member("EditEnabled")
         if member is not None:

@@ -1,7 +1,5 @@
 """Generated component: PBS_RimMetallic."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_RimMetallic"
 
-    def __init__(self, high_priority_integration: bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, rim_color: primitives.ColorX | None = None, rim_power: np.float32 | None = None, gamma_curve: np.float32 | None = None, transparent: bool | None = None, force_zwrite: bool | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, metallic: np.float32 | None = None, smoothness: np.float32 | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, rim_color: primitives.ColorX | None = None, rim_power: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, transparent: primitives.Bool | None = None, force_zwrite: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -100,7 +98,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.zwrite = zwrite
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -108,7 +106,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -258,7 +256,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -266,7 +264,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -317,7 +315,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def rim_power(self) -> np.float32 | None:
+    def rim_power(self) -> primitives.Float | None:
         """The RimPower field value."""
         member = self.get_member("RimPower")
         if member is None:
@@ -325,7 +323,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @rim_power.setter
-    def rim_power(self, value: np.float32) -> None:
+    def rim_power(self, value: primitives.Float) -> None:
         """Set the RimPower field value."""
         member = self.get_member("RimPower")
         if member is not None:
@@ -336,7 +334,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def gamma_curve(self) -> np.float32 | None:
+    def gamma_curve(self) -> primitives.Float | None:
         """The GammaCurve field value."""
         member = self.get_member("GammaCurve")
         if member is None:
@@ -344,7 +342,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @gamma_curve.setter
-    def gamma_curve(self, value: np.float32) -> None:
+    def gamma_curve(self, value: primitives.Float) -> None:
         """Set the GammaCurve field value."""
         member = self.get_member("GammaCurve")
         if member is not None:
@@ -355,7 +353,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def transparent(self) -> bool | None:
+    def transparent(self) -> primitives.Bool | None:
         """The Transparent field value."""
         member = self.get_member("Transparent")
         if member is None:
@@ -363,7 +361,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @transparent.setter
-    def transparent(self, value: bool) -> None:
+    def transparent(self, value: primitives.Bool) -> None:
         """Set the Transparent field value."""
         member = self.get_member("Transparent")
         if member is not None:
@@ -374,7 +372,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def force_zwrite(self) -> bool | None:
+    def force_zwrite(self) -> primitives.Bool | None:
         """The ForceZWrite field value."""
         member = self.get_member("ForceZWrite")
         if member is None:
@@ -382,7 +380,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @force_zwrite.setter
-    def force_zwrite(self, value: bool) -> None:
+    def force_zwrite(self, value: primitives.Bool) -> None:
         """Set the ForceZWrite field value."""
         member = self.get_member("ForceZWrite")
         if member is not None:
@@ -393,7 +391,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -401,7 +399,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -412,7 +410,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -420,7 +418,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -431,7 +429,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -439,7 +437,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -450,7 +448,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def metallic(self) -> np.float32 | None:
+    def metallic(self) -> primitives.Float | None:
         """The Metallic field value."""
         member = self.get_member("Metallic")
         if member is None:
@@ -458,7 +456,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @metallic.setter
-    def metallic(self, value: np.float32) -> None:
+    def metallic(self, value: primitives.Float) -> None:
         """Set the Metallic field value."""
         member = self.get_member("Metallic")
         if member is not None:
@@ -469,7 +467,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def smoothness(self) -> np.float32 | None:
+    def smoothness(self) -> primitives.Float | None:
         """The Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is None:
@@ -477,7 +475,7 @@ class PBS_RimMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
         return getattr(member, 'value', None)
 
     @smoothness.setter
-    def smoothness(self, value: np.float32) -> None:
+    def smoothness(self, value: primitives.Float) -> None:
         """Set the Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is not None:

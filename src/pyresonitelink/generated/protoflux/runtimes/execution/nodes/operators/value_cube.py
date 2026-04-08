@@ -18,7 +18,7 @@ class ValueCube(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     Parameterize with a value type::
 
-        ValueCube[np.float32]
+        ValueCube[primitives.Float]
         ValueCube[primitives.Float3]
     """
 

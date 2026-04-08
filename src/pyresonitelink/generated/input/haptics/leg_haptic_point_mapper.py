@@ -1,7 +1,5 @@
 """Generated component: LegHapticPointMapper."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegHapticPointMapper"
 
-    def __init__(self, priority: np.int32 | None = None, show_debug_visuals: bool | None = None, normalized_start: np.float32 | None = None, normalized_end: np.float32 | None = None, up_axis: primitives.Float3 | None = None, forward_axis: primitives.Float3 | None = None, upper_leg_radius: np.float32 | None = None, knee_radius: np.float32 | None = None, ankle_radius: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, priority: primitives.Int | None = None, show_debug_visuals: primitives.Bool | None = None, normalized_start: primitives.Float | None = None, normalized_end: primitives.Float | None = None, up_axis: primitives.Float3 | None = None, forward_axis: primitives.Float3 | None = None, upper_leg_radius: primitives.Float | None = None, knee_radius: primitives.Float | None = None, ankle_radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -55,7 +53,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.ankle_radius = ankle_radius
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -63,7 +61,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:
@@ -74,7 +72,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def show_debug_visuals(self) -> bool | None:
+    def show_debug_visuals(self) -> primitives.Bool | None:
         """The ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
@@ -82,7 +80,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @show_debug_visuals.setter
-    def show_debug_visuals(self, value: bool) -> None:
+    def show_debug_visuals(self, value: primitives.Bool) -> None:
         """Set the ShowDebugVisuals field value."""
         member = self.get_member("ShowDebugVisuals")
         if member is not None:
@@ -106,7 +104,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("BoneChain", value)
 
     @property
-    def normalized_start(self) -> np.float32 | None:
+    def normalized_start(self) -> primitives.Float | None:
         """The NormalizedStart field value."""
         member = self.get_member("NormalizedStart")
         if member is None:
@@ -114,7 +112,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @normalized_start.setter
-    def normalized_start(self, value: np.float32) -> None:
+    def normalized_start(self, value: primitives.Float) -> None:
         """Set the NormalizedStart field value."""
         member = self.get_member("NormalizedStart")
         if member is not None:
@@ -125,7 +123,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def normalized_end(self) -> np.float32 | None:
+    def normalized_end(self) -> primitives.Float | None:
         """The NormalizedEnd field value."""
         member = self.get_member("NormalizedEnd")
         if member is None:
@@ -133,7 +131,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @normalized_end.setter
-    def normalized_end(self, value: np.float32) -> None:
+    def normalized_end(self, value: primitives.Float) -> None:
         """Set the NormalizedEnd field value."""
         member = self.get_member("NormalizedEnd")
         if member is not None:
@@ -195,7 +193,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def upper_leg_radius(self) -> np.float32 | None:
+    def upper_leg_radius(self) -> primitives.Float | None:
         """The UpperLegRadius field value."""
         member = self.get_member("UpperLegRadius")
         if member is None:
@@ -203,7 +201,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @upper_leg_radius.setter
-    def upper_leg_radius(self, value: np.float32) -> None:
+    def upper_leg_radius(self, value: primitives.Float) -> None:
         """Set the UpperLegRadius field value."""
         member = self.get_member("UpperLegRadius")
         if member is not None:
@@ -214,7 +212,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def knee_radius(self) -> np.float32 | None:
+    def knee_radius(self) -> primitives.Float | None:
         """The KneeRadius field value."""
         member = self.get_member("KneeRadius")
         if member is None:
@@ -222,7 +220,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @knee_radius.setter
-    def knee_radius(self, value: np.float32) -> None:
+    def knee_radius(self, value: primitives.Float) -> None:
         """Set the KneeRadius field value."""
         member = self.get_member("KneeRadius")
         if member is not None:
@@ -233,7 +231,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def ankle_radius(self) -> np.float32 | None:
+    def ankle_radius(self) -> primitives.Float | None:
         """The AnkleRadius field value."""
         member = self.get_member("AnkleRadius")
         if member is None:
@@ -241,7 +239,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @ankle_radius.setter
-    def ankle_radius(self, value: np.float32) -> None:
+    def ankle_radius(self, value: primitives.Float) -> None:
         """Set the AnkleRadius field value."""
         member = self.get_member("AnkleRadius")
         if member is not None:

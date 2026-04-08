@@ -1,7 +1,5 @@
 """Generated component: DebugLocomotionSimulator."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class DebugLocomotionSimulator(GeneratedComponent, IComponent, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugLocomotionSimulator"
 
-    def __init__(self, track_position: bool | None = None, movement_speed: primitives.Float3 | None = None, angular_speed: np.float32 | None = None, rotate_direction: bool | None = None, offset_root: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, track_position: primitives.Bool | None = None, movement_speed: primitives.Float3 | None = None, angular_speed: primitives.Float | None = None, rotate_direction: primitives.Bool | None = None, offset_root: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,7 +41,7 @@ class DebugLocomotionSimulator(GeneratedComponent, IComponent, IWorldEventReceiv
             self.offset_root = offset_root
 
     @property
-    def track_position(self) -> bool | None:
+    def track_position(self) -> primitives.Bool | None:
         """The TrackPosition field value."""
         member = self.get_member("TrackPosition")
         if member is None:
@@ -51,7 +49,7 @@ class DebugLocomotionSimulator(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @track_position.setter
-    def track_position(self, value: bool) -> None:
+    def track_position(self, value: primitives.Bool) -> None:
         """Set the TrackPosition field value."""
         member = self.get_member("TrackPosition")
         if member is not None:
@@ -94,7 +92,7 @@ class DebugLocomotionSimulator(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def angular_speed(self) -> np.float32 | None:
+    def angular_speed(self) -> primitives.Float | None:
         """The AngularSpeed field value."""
         member = self.get_member("AngularSpeed")
         if member is None:
@@ -102,7 +100,7 @@ class DebugLocomotionSimulator(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @angular_speed.setter
-    def angular_speed(self, value: np.float32) -> None:
+    def angular_speed(self, value: primitives.Float) -> None:
         """Set the AngularSpeed field value."""
         member = self.get_member("AngularSpeed")
         if member is not None:
@@ -113,7 +111,7 @@ class DebugLocomotionSimulator(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def rotate_direction(self) -> bool | None:
+    def rotate_direction(self) -> primitives.Bool | None:
         """The RotateDirection field value."""
         member = self.get_member("RotateDirection")
         if member is None:
@@ -121,7 +119,7 @@ class DebugLocomotionSimulator(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @rotate_direction.setter
-    def rotate_direction(self, value: bool) -> None:
+    def rotate_direction(self, value: primitives.Bool) -> None:
         """Set the RotateDirection field value."""
         member = self.get_member("RotateDirection")
         if member is not None:
@@ -132,7 +130,7 @@ class DebugLocomotionSimulator(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def offset_root(self) -> bool | None:
+    def offset_root(self) -> primitives.Bool | None:
         """The OffsetRoot field value."""
         member = self.get_member("OffsetRoot")
         if member is None:
@@ -140,7 +138,7 @@ class DebugLocomotionSimulator(GeneratedComponent, IComponent, IWorldEventReceiv
         return getattr(member, 'value', None)
 
     @offset_root.setter
-    def offset_root(self, value: bool) -> None:
+    def offset_root(self, value: primitives.Bool) -> None:
         """Set the OffsetRoot field value."""
         member = self.get_member("OffsetRoot")
         if member is not None:

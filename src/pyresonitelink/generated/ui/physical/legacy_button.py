@@ -1,7 +1,5 @@
 """Generated component: LegacyButton."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -26,7 +24,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyButton"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: bool | None = None, accept_remote_touch: bool | None = None, color: primitives.ColorX | None = None, width: np.float32 | None = None, height: np.float32 | None = None, thickness: np.float32 | None = None, slant: np.float32 | None = None, is_enabled: bool | None = None, is_pressed: bool | None = None, accept_out_of_sight_touch: bool | None = None, text_slot: str | Slot | None = None, text_renderer: str | TextRenderer | None = None, button_position: str | IField[primitives.Float3] | None = None, collider_size: str | IField[primitives.Float3] | None = None, collider_offset: str | IField[primitives.Float3] | None = None, text_position: str | IField[primitives.Float3] | None = None, text_bounds: str | IField[primitives.Float2] | None = None, holder_mesh: str | BevelStripeMesh | None = None, button_mesh: str | BevelStripeMesh | None = None, holder_material: str | PBS_RimMetallic | None = None, button_material: str | PBS_RimMetallic | None = None, press_depth: np.float32 | None = None, flash_index: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, color: primitives.ColorX | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, slant: primitives.Float | None = None, is_enabled: primitives.Bool | None = None, is_pressed: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, text_slot: str | Slot | None = None, text_renderer: str | TextRenderer | None = None, button_position: str | IField[primitives.Float3] | None = None, collider_size: str | IField[primitives.Float3] | None = None, collider_offset: str | IField[primitives.Float3] | None = None, text_position: str | IField[primitives.Float3] | None = None, text_bounds: str | IField[primitives.Float2] | None = None, holder_mesh: str | BevelStripeMesh | None = None, button_mesh: str | BevelStripeMesh | None = None, holder_material: str | PBS_RimMetallic | None = None, button_material: str | PBS_RimMetallic | None = None, press_depth: primitives.Float | None = None, flash_index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -128,7 +126,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def accept_physical_touch(self) -> bool | None:
+    def accept_physical_touch(self) -> primitives.Bool | None:
         """The AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is None:
@@ -136,7 +134,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @accept_physical_touch.setter
-    def accept_physical_touch(self, value: bool) -> None:
+    def accept_physical_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptPhysicalTouch field value."""
         member = self.get_member("AcceptPhysicalTouch")
         if member is not None:
@@ -147,7 +145,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def accept_remote_touch(self) -> bool | None:
+    def accept_remote_touch(self) -> primitives.Bool | None:
         """The AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is None:
@@ -155,7 +153,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @accept_remote_touch.setter
-    def accept_remote_touch(self, value: bool) -> None:
+    def accept_remote_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptRemoteTouch field value."""
         member = self.get_member("AcceptRemoteTouch")
         if member is not None:
@@ -185,7 +183,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def width(self) -> np.float32 | None:
+    def width(self) -> primitives.Float | None:
         """The Width field value."""
         member = self.get_member("Width")
         if member is None:
@@ -193,7 +191,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: np.float32) -> None:
+    def width(self, value: primitives.Float) -> None:
         """Set the Width field value."""
         member = self.get_member("Width")
         if member is not None:
@@ -204,7 +202,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def height(self) -> np.float32 | None:
+    def height(self) -> primitives.Float | None:
         """The Height field value."""
         member = self.get_member("Height")
         if member is None:
@@ -212,7 +210,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: np.float32) -> None:
+    def height(self, value: primitives.Float) -> None:
         """Set the Height field value."""
         member = self.get_member("Height")
         if member is not None:
@@ -223,7 +221,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def thickness(self) -> np.float32 | None:
+    def thickness(self) -> primitives.Float | None:
         """The Thickness field value."""
         member = self.get_member("Thickness")
         if member is None:
@@ -231,7 +229,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @thickness.setter
-    def thickness(self, value: np.float32) -> None:
+    def thickness(self, value: primitives.Float) -> None:
         """Set the Thickness field value."""
         member = self.get_member("Thickness")
         if member is not None:
@@ -242,7 +240,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def slant(self) -> np.float32 | None:
+    def slant(self) -> primitives.Float | None:
         """The Slant field value."""
         member = self.get_member("Slant")
         if member is None:
@@ -250,7 +248,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @slant.setter
-    def slant(self, value: np.float32) -> None:
+    def slant(self, value: primitives.Float) -> None:
         """Set the Slant field value."""
         member = self.get_member("Slant")
         if member is not None:
@@ -261,7 +259,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def is_enabled(self) -> bool | None:
+    def is_enabled(self) -> primitives.Bool | None:
         """The IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is None:
@@ -269,7 +267,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @is_enabled.setter
-    def is_enabled(self, value: bool) -> None:
+    def is_enabled(self, value: primitives.Bool) -> None:
         """Set the IsEnabled field value."""
         member = self.get_member("IsEnabled")
         if member is not None:
@@ -280,7 +278,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def is_pressed(self) -> bool | None:
+    def is_pressed(self) -> primitives.Bool | None:
         """The IsPressed field value."""
         member = self.get_member("IsPressed")
         if member is None:
@@ -288,7 +286,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @is_pressed.setter
-    def is_pressed(self, value: bool) -> None:
+    def is_pressed(self, value: primitives.Bool) -> None:
         """Set the IsPressed field value."""
         member = self.get_member("IsPressed")
         if member is not None:
@@ -299,7 +297,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def accept_out_of_sight_touch(self) -> bool | None:
+    def accept_out_of_sight_touch(self) -> primitives.Bool | None:
         """The AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is None:
@@ -307,7 +305,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @accept_out_of_sight_touch.setter
-    def accept_out_of_sight_touch(self, value: bool) -> None:
+    def accept_out_of_sight_touch(self, value: primitives.Bool) -> None:
         """Set the AcceptOutOfSightTouch field value."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is not None:
@@ -549,7 +547,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def press_depth(self) -> np.float32 | None:
+    def press_depth(self) -> primitives.Float | None:
         """The _pressDepth field value."""
         member = self.get_member("_pressDepth")
         if member is None:
@@ -557,7 +555,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @press_depth.setter
-    def press_depth(self, value: np.float32) -> None:
+    def press_depth(self, value: primitives.Float) -> None:
         """Set the _pressDepth field value."""
         member = self.get_member("_pressDepth")
         if member is not None:
@@ -568,7 +566,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
             )
 
     @property
-    def flash_index(self) -> np.int32 | None:
+    def flash_index(self) -> primitives.Int | None:
         """The _flashIndex field value."""
         member = self.get_member("_flashIndex")
         if member is None:
@@ -576,7 +574,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @flash_index.setter
-    def flash_index(self, value: np.int32) -> None:
+    def flash_index(self, value: primitives.Int) -> None:
         """Set the _flashIndex field value."""
         member = self.get_member("_flashIndex")
         if member is not None:

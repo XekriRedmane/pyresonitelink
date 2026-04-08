@@ -1,9 +1,8 @@
 """Generated component: MaterialSet."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_asset_list import SyncAssetList
@@ -21,7 +20,7 @@ class MaterialSet(GeneratedComponent, ICustomInspector, IComponent, IWorldEventR
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MaterialSet"
 
-    def __init__(self, active_set_index: np.int32 | None = None, target: str | SyncAssetList[Material] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, active_set_index: primitives.Int | None = None, target: str | SyncAssetList[Material] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +35,7 @@ class MaterialSet(GeneratedComponent, ICustomInspector, IComponent, IWorldEventR
             self.target = target
 
     @property
-    def active_set_index(self) -> np.int32 | None:
+    def active_set_index(self) -> primitives.Int | None:
         """The ActiveSetIndex field value."""
         member = self.get_member("ActiveSetIndex")
         if member is None:
@@ -44,7 +43,7 @@ class MaterialSet(GeneratedComponent, ICustomInspector, IComponent, IWorldEventR
         return getattr(member, 'value', None)
 
     @active_set_index.setter
-    def active_set_index(self, value: np.int32) -> None:
+    def active_set_index(self, value: primitives.Int) -> None:
         """Set the ActiveSetIndex field value."""
         member = self.get_member("ActiveSetIndex")
         if member is not None:

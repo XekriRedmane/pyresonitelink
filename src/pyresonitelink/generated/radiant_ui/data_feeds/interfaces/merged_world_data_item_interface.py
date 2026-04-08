@@ -1,9 +1,8 @@
 """Generated component: MergedWorldDataItemInterface."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -23,7 +22,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MergedWorldDataItemInterface"
 
-    def __init__(self, has_data: bool | None = None, item_name: str | IField[str] | None = None, item_key: str | IField[str] | None = None, item_description: str | IField[str] | None = None, has_description: str | IField[bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[bool] | None = None, is_merged: str | IField[bool] | None = None, session_count: str | IField[np.int32] | None = None, world_count: str | IField[np.int32] | None = None, main_name: str | IField[str] | None = None, main_thumbnail: str | IField[str] | None = None, world_or_session_id: str | IField[str] | None = None, total_aggregate_active_users: str | IField[np.int32] | None = None, total_aggregate_contacts: str | IField[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, has_data: primitives.Bool | None = None, item_name: str | IField[primitives.String] | None = None, item_key: str | IField[primitives.String] | None = None, item_description: str | IField[primitives.String] | None = None, has_description: str | IField[primitives.Bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[primitives.Bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[primitives.Bool] | None = None, is_merged: str | IField[primitives.Bool] | None = None, session_count: str | IField[primitives.Int] | None = None, world_count: str | IField[primitives.Int] | None = None, main_name: str | IField[primitives.String] | None = None, main_thumbnail: str | IField[str] | None = None, world_or_session_id: str | IField[primitives.String] | None = None, total_aggregate_active_users: str | IField[primitives.Int] | None = None, total_aggregate_contacts: str | IField[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -95,7 +94,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
             self.total_aggregate_contacts = total_aggregate_contacts
 
     @property
-    def has_data(self) -> bool | None:
+    def has_data(self) -> primitives.Bool | None:
         """The HasData field value."""
         member = self.get_member("HasData")
         if member is None:
@@ -103,7 +102,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
         return getattr(member, 'value', None)
 
     @has_data.setter
-    def has_data(self, value: bool) -> None:
+    def has_data(self, value: primitives.Bool) -> None:
         """Set the HasData field value."""
         member = self.get_member("HasData")
         if member is not None:
@@ -115,15 +114,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[str])."""
+        """Target ID of the ItemName reference (targets IField[primitives.String])."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_name.setter
-    def item_name(self, target: str | IField[str] | None) -> None:
-        """Set the ItemName reference by target ID or IField[str] instance."""
+    def item_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
@@ -136,15 +135,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def item_key(self) -> str | None:
-        """Target ID of the ItemKey reference (targets IField[str])."""
+        """Target ID of the ItemKey reference (targets IField[primitives.String])."""
         member = self.get_member("ItemKey")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_key.setter
-    def item_key(self, target: str | IField[str] | None) -> None:
-        """Set the ItemKey reference by target ID or IField[str] instance."""
+    def item_key(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemKey reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemKey")
         if isinstance(member, members.Reference):
@@ -157,15 +156,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def item_description(self) -> str | None:
-        """Target ID of the ItemDescription reference (targets IField[str])."""
+        """Target ID of the ItemDescription reference (targets IField[primitives.String])."""
         member = self.get_member("ItemDescription")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @item_description.setter
-    def item_description(self, target: str | IField[str] | None) -> None:
-        """Set the ItemDescription reference by target ID or IField[str] instance."""
+    def item_description(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the ItemDescription reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("ItemDescription")
         if isinstance(member, members.Reference):
@@ -178,15 +177,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def has_description(self) -> str | None:
-        """Target ID of the HasDescription reference (targets IField[bool])."""
+        """Target ID of the HasDescription reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasDescription")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_description.setter
-    def has_description(self, target: str | IField[bool] | None) -> None:
-        """Set the HasDescription reference by target ID or IField[bool] instance."""
+    def has_description(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasDescription reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasDescription")
         if isinstance(member, members.Reference):
@@ -241,15 +240,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def has_icon(self) -> str | None:
-        """Target ID of the HasIcon reference (targets IField[bool])."""
+        """Target ID of the HasIcon reference (targets IField[primitives.Bool])."""
         member = self.get_member("HasIcon")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @has_icon.setter
-    def has_icon(self, target: str | IField[bool] | None) -> None:
-        """Set the HasIcon reference by target ID or IField[bool] instance."""
+    def has_icon(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the HasIcon reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("HasIcon")
         if isinstance(member, members.Reference):
@@ -359,15 +358,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def enabled_state(self) -> str | None:
-        """Target ID of the EnabledState reference (targets IField[bool])."""
+        """Target ID of the EnabledState reference (targets IField[primitives.Bool])."""
         member = self.get_member("EnabledState")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @enabled_state.setter
-    def enabled_state(self, target: str | IField[bool] | None) -> None:
-        """Set the EnabledState reference by target ID or IField[bool] instance."""
+    def enabled_state(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the EnabledState reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("EnabledState")
         if isinstance(member, members.Reference):
@@ -380,15 +379,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def is_merged(self) -> str | None:
-        """Target ID of the IsMerged reference (targets IField[bool])."""
+        """Target ID of the IsMerged reference (targets IField[primitives.Bool])."""
         member = self.get_member("IsMerged")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @is_merged.setter
-    def is_merged(self, target: str | IField[bool] | None) -> None:
-        """Set the IsMerged reference by target ID or IField[bool] instance."""
+    def is_merged(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the IsMerged reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("IsMerged")
         if isinstance(member, members.Reference):
@@ -401,15 +400,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def session_count(self) -> str | None:
-        """Target ID of the SessionCount reference (targets IField[np.int32])."""
+        """Target ID of the SessionCount reference (targets IField[primitives.Int])."""
         member = self.get_member("SessionCount")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @session_count.setter
-    def session_count(self, target: str | IField[np.int32] | None) -> None:
-        """Set the SessionCount reference by target ID or IField[np.int32] instance."""
+    def session_count(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the SessionCount reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("SessionCount")
         if isinstance(member, members.Reference):
@@ -422,15 +421,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def world_count(self) -> str | None:
-        """Target ID of the WorldCount reference (targets IField[np.int32])."""
+        """Target ID of the WorldCount reference (targets IField[primitives.Int])."""
         member = self.get_member("WorldCount")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @world_count.setter
-    def world_count(self, target: str | IField[np.int32] | None) -> None:
-        """Set the WorldCount reference by target ID or IField[np.int32] instance."""
+    def world_count(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the WorldCount reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("WorldCount")
         if isinstance(member, members.Reference):
@@ -443,15 +442,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def main_name(self) -> str | None:
-        """Target ID of the MainName reference (targets IField[str])."""
+        """Target ID of the MainName reference (targets IField[primitives.String])."""
         member = self.get_member("MainName")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @main_name.setter
-    def main_name(self, target: str | IField[str] | None) -> None:
-        """Set the MainName reference by target ID or IField[str] instance."""
+    def main_name(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the MainName reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("MainName")
         if isinstance(member, members.Reference):
@@ -485,15 +484,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def world_or_session_id(self) -> str | None:
-        """Target ID of the WorldOrSessionId reference (targets IField[str])."""
+        """Target ID of the WorldOrSessionId reference (targets IField[primitives.String])."""
         member = self.get_member("WorldOrSessionId")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @world_or_session_id.setter
-    def world_or_session_id(self, target: str | IField[str] | None) -> None:
-        """Set the WorldOrSessionId reference by target ID or IField[str] instance."""
+    def world_or_session_id(self, target: str | IField[primitives.String] | None) -> None:
+        """Set the WorldOrSessionId reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("WorldOrSessionId")
         if isinstance(member, members.Reference):
@@ -506,15 +505,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def total_aggregate_active_users(self) -> str | None:
-        """Target ID of the TotalAggregateActiveUsers reference (targets IField[np.int32])."""
+        """Target ID of the TotalAggregateActiveUsers reference (targets IField[primitives.Int])."""
         member = self.get_member("TotalAggregateActiveUsers")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @total_aggregate_active_users.setter
-    def total_aggregate_active_users(self, target: str | IField[np.int32] | None) -> None:
-        """Set the TotalAggregateActiveUsers reference by target ID or IField[np.int32] instance."""
+    def total_aggregate_active_users(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the TotalAggregateActiveUsers reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TotalAggregateActiveUsers")
         if isinstance(member, members.Reference):
@@ -527,15 +526,15 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def total_aggregate_contacts(self) -> str | None:
-        """Target ID of the TotalAggregateContacts reference (targets IField[np.int32])."""
+        """Target ID of the TotalAggregateContacts reference (targets IField[primitives.Int])."""
         member = self.get_member("TotalAggregateContacts")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @total_aggregate_contacts.setter
-    def total_aggregate_contacts(self, target: str | IField[np.int32] | None) -> None:
-        """Set the TotalAggregateContacts reference by target ID or IField[np.int32] instance."""
+    def total_aggregate_contacts(self, target: str | IField[primitives.Int] | None) -> None:
+        """Set the TotalAggregateContacts reference by target ID or IField[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("TotalAggregateContacts")
         if isinstance(member, members.Reference):

@@ -1,7 +1,5 @@
 """Generated component: DebugTangentSpace."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugTangentSpace"
 
-    def __init__(self, mesh: str | MeshRenderer | None = None, triangle: np.int32 | None = None, bary_coord: primitives.Float3 | None = None, radius_ratio: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mesh: str | MeshRenderer | None = None, triangle: primitives.Int | None = None, bary_coord: primitives.Float3 | None = None, radius_ratio: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +60,7 @@ class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def triangle(self) -> np.int32 | None:
+    def triangle(self) -> primitives.Int | None:
         """The Triangle field value."""
         member = self.get_member("Triangle")
         if member is None:
@@ -70,7 +68,7 @@ class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @triangle.setter
-    def triangle(self, value: np.int32) -> None:
+    def triangle(self, value: primitives.Int) -> None:
         """Set the Triangle field value."""
         member = self.get_member("Triangle")
         if member is not None:
@@ -100,7 +98,7 @@ class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def radius_ratio(self) -> np.float32 | None:
+    def radius_ratio(self) -> primitives.Float | None:
         """The RadiusRatio field value."""
         member = self.get_member("RadiusRatio")
         if member is None:
@@ -108,7 +106,7 @@ class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius_ratio.setter
-    def radius_ratio(self, value: np.float32) -> None:
+    def radius_ratio(self, value: primitives.Float) -> None:
         """Set the RadiusRatio field value."""
         member = self.get_member("RadiusRatio")
         if member is not None:

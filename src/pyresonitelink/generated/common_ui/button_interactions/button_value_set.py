@@ -15,7 +15,7 @@ class ButtonValueSet(GenericComponent[T], IButtonPressReceiver, IWorldEventRecei
 
     Parameterize with a value type::
 
-        ButtonValueSet[np.float32]
+        ButtonValueSet[primitives.Float]
         ButtonValueSet[primitives.Float3]
     """
 

@@ -1,8 +1,7 @@
 """Generated component: Cast_ushort_To_float."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -22,7 +21,7 @@ class Cast_ushort_To_float(GeneratedComponent, ICast, INodeValueOutput, IExecuti
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Casts.Cast_ushort_To_float"
 
-    def __init__(self, input_: str | INodeValueOutput[np.uint16] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, input_: str | INodeValueOutput[primitives.UShort] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,15 +34,15 @@ class Cast_ushort_To_float(GeneratedComponent, ICast, INodeValueOutput, IExecuti
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets INodeValueOutput[np.uint16])."""
+        """Target ID of the Input reference (targets INodeValueOutput[primitives.UShort])."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @input_.setter
-    def input_(self, target: str | INodeValueOutput[np.uint16] | None) -> None:
-        """Set the Input reference by target ID or INodeValueOutput[np.uint16] instance."""
+    def input_(self, target: str | INodeValueOutput[primitives.UShort] | None) -> None:
+        """Set the Input reference by target ID or INodeValueOutput[primitives.UShort] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Input")
         if isinstance(member, members.Reference):

@@ -1,7 +1,5 @@
 """Generated component: CircleAligner."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -19,7 +17,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CircleAligner"
 
-    def __init__(self, auto_add_children: bool | None = None, axis: primitives.Float3 | None = None, radius: np.float32 | None = None, offset: np.float32 | None = None, arc: np.float32 | None = None, fill_whole_arc: bool | None = None, rotation_offset: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_add_children: primitives.Bool | None = None, axis: primitives.Float3 | None = None, radius: primitives.Float | None = None, offset: primitives.Float | None = None, arc: primitives.Float | None = None, fill_whole_arc: primitives.Bool | None = None, rotation_offset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -49,7 +47,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.rotation_offset = rotation_offset
 
     @property
-    def auto_add_children(self) -> bool | None:
+    def auto_add_children(self) -> primitives.Bool | None:
         """The AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is None:
@@ -57,7 +55,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @auto_add_children.setter
-    def auto_add_children(self, value: bool) -> None:
+    def auto_add_children(self, value: primitives.Bool) -> None:
         """Set the AutoAddChildren field value."""
         member = self.get_member("AutoAddChildren")
         if member is not None:
@@ -100,7 +98,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def radius(self) -> np.float32 | None:
+    def radius(self) -> primitives.Float | None:
         """The Radius field value."""
         member = self.get_member("Radius")
         if member is None:
@@ -108,7 +106,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @radius.setter
-    def radius(self, value: np.float32) -> None:
+    def radius(self, value: primitives.Float) -> None:
         """Set the Radius field value."""
         member = self.get_member("Radius")
         if member is not None:
@@ -119,7 +117,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -127,7 +125,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:
@@ -138,7 +136,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def arc(self) -> np.float32 | None:
+    def arc(self) -> primitives.Float | None:
         """The Arc field value."""
         member = self.get_member("Arc")
         if member is None:
@@ -146,7 +144,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @arc.setter
-    def arc(self, value: np.float32) -> None:
+    def arc(self, value: primitives.Float) -> None:
         """Set the Arc field value."""
         member = self.get_member("Arc")
         if member is not None:
@@ -157,7 +155,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def fill_whole_arc(self) -> bool | None:
+    def fill_whole_arc(self) -> primitives.Bool | None:
         """The FillWholeArc field value."""
         member = self.get_member("FillWholeArc")
         if member is None:
@@ -165,7 +163,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @fill_whole_arc.setter
-    def fill_whole_arc(self, value: bool) -> None:
+    def fill_whole_arc(self, value: primitives.Bool) -> None:
         """Set the FillWholeArc field value."""
         member = self.get_member("FillWholeArc")
         if member is not None:
@@ -176,7 +174,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def rotation_offset(self) -> np.float32 | None:
+    def rotation_offset(self) -> primitives.Float | None:
         """The RotationOffset field value."""
         member = self.get_member("RotationOffset")
         if member is None:
@@ -184,7 +182,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @rotation_offset.setter
-    def rotation_offset(self, value: np.float32) -> None:
+    def rotation_offset(self, value: primitives.Float) -> None:
         """Set the RotationOffset field value."""
         member = self.get_member("RotationOffset")
         if member is not None:

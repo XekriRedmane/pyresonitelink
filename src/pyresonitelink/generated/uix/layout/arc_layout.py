@@ -1,9 +1,8 @@
 """Generated component: ArcLayout."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ilayout_element import ILayoutElement
@@ -19,7 +18,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ArcLayout"
 
-    def __init__(self, arc: np.float32 | None = None, offset: np.float32 | None = None, separation: np.float32 | None = None, center_at_separation: bool | None = None, proportional_size: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, arc: primitives.Float | None = None, offset: primitives.Float | None = None, separation: primitives.Float | None = None, center_at_separation: primitives.Bool | None = None, proportional_size: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,7 +42,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
             self.proportional_size = proportional_size
 
     @property
-    def arc(self) -> np.float32 | None:
+    def arc(self) -> primitives.Float | None:
         """The Arc field value."""
         member = self.get_member("Arc")
         if member is None:
@@ -51,7 +50,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
         return getattr(member, 'value', None)
 
     @arc.setter
-    def arc(self, value: np.float32) -> None:
+    def arc(self, value: primitives.Float) -> None:
         """Set the Arc field value."""
         member = self.get_member("Arc")
         if member is not None:
@@ -62,7 +61,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
             )
 
     @property
-    def offset(self) -> np.float32 | None:
+    def offset(self) -> primitives.Float | None:
         """The Offset field value."""
         member = self.get_member("Offset")
         if member is None:
@@ -70,7 +69,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
         return getattr(member, 'value', None)
 
     @offset.setter
-    def offset(self, value: np.float32) -> None:
+    def offset(self, value: primitives.Float) -> None:
         """Set the Offset field value."""
         member = self.get_member("Offset")
         if member is not None:
@@ -81,7 +80,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
             )
 
     @property
-    def separation(self) -> np.float32 | None:
+    def separation(self) -> primitives.Float | None:
         """The Separation field value."""
         member = self.get_member("Separation")
         if member is None:
@@ -89,7 +88,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
         return getattr(member, 'value', None)
 
     @separation.setter
-    def separation(self, value: np.float32) -> None:
+    def separation(self, value: primitives.Float) -> None:
         """Set the Separation field value."""
         member = self.get_member("Separation")
         if member is not None:
@@ -100,7 +99,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
             )
 
     @property
-    def center_at_separation(self) -> bool | None:
+    def center_at_separation(self) -> primitives.Bool | None:
         """The CenterAtSeparation field value."""
         member = self.get_member("CenterAtSeparation")
         if member is None:
@@ -108,7 +107,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
         return getattr(member, 'value', None)
 
     @center_at_separation.setter
-    def center_at_separation(self, value: bool) -> None:
+    def center_at_separation(self, value: primitives.Bool) -> None:
         """Set the CenterAtSeparation field value."""
         member = self.get_member("CenterAtSeparation")
         if member is not None:
@@ -119,7 +118,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
             )
 
     @property
-    def proportional_size(self) -> bool | None:
+    def proportional_size(self) -> primitives.Bool | None:
         """The ProportionalSize field value."""
         member = self.get_member("ProportionalSize")
         if member is None:
@@ -127,7 +126,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
         return getattr(member, 'value', None)
 
     @proportional_size.setter
-    def proportional_size(self, value: bool) -> None:
+    def proportional_size(self, value: primitives.Bool) -> None:
         """Set the ProportionalSize field value."""
         member = self.get_member("ProportionalSize")
         if member is not None:

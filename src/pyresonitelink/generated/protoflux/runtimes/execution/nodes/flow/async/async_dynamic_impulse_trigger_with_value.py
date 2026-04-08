@@ -1,6 +1,7 @@
 """Generated component: AsyncDynamicImpulseTriggerWithValue."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -22,14 +23,14 @@ class AsyncDynamicImpulseTriggerWithValue(GenericComponent[T], IAsyncNodeOperati
 
     Parameterize with a value type::
 
-        AsyncDynamicImpulseTriggerWithValue[np.float32]
+        AsyncDynamicImpulseTriggerWithValue[primitives.Float]
         AsyncDynamicImpulseTriggerWithValue[primitives.Float3]
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.AsyncDynamicImpulseTriggerWithValue<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.AsyncDynamicImpulseTriggerWithValue<>"
 
-    def __init__(self, next: str | INodeOperation | None = None, tag: str | INodeObjectOutput[str] | None = None, target_hierarchy: str | INodeObjectOutput[Slot] | None = None, exclude_disabled: str | INodeValueOutput[bool] | None = None, value: str | INodeValueOutput[T] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, tag: str | INodeObjectOutput[primitives.String] | None = None, target_hierarchy: str | INodeObjectOutput[Slot] | None = None, exclude_disabled: str | INodeValueOutput[primitives.Bool] | None = None, value: str | INodeValueOutput[T] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -75,15 +76,15 @@ class AsyncDynamicImpulseTriggerWithValue(GenericComponent[T], IAsyncNodeOperati
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the Tag reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Tag reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @tag.setter
-    def tag(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Tag reference by target ID or INodeObjectOutput[str] instance."""
+    def tag(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Tag reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
@@ -117,15 +118,15 @@ class AsyncDynamicImpulseTriggerWithValue(GenericComponent[T], IAsyncNodeOperati
 
     @property
     def exclude_disabled(self) -> str | None:
-        """Target ID of the ExcludeDisabled reference (targets INodeValueOutput[bool])."""
+        """Target ID of the ExcludeDisabled reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("ExcludeDisabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @exclude_disabled.setter
-    def exclude_disabled(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the ExcludeDisabled reference by target ID or INodeValueOutput[bool] instance."""
+    def exclude_disabled(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the ExcludeDisabled reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("ExcludeDisabled")
         if isinstance(member, members.Reference):

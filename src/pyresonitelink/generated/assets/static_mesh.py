@@ -1,7 +1,5 @@
 """Generated component: StaticMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
@@ -20,7 +18,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticMesh"
 
-    def __init__(self, url: str | None = None, readable: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, readable: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +52,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def readable(self) -> bool | None:
+    def readable(self) -> primitives.Bool | None:
         """The Readable field value."""
         member = self.get_member("Readable")
         if member is None:
@@ -62,7 +60,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         return getattr(member, 'value', None)
 
     @readable.setter
-    def readable(self, value: bool) -> None:
+    def readable(self, value: primitives.Bool) -> None:
         """Set the Readable field value."""
         member = self.get_member("Readable")
         if member is not None:
@@ -232,7 +230,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             resolink, "StripBlendshapeTangents", {}, debug,
         )
 
-    async def trim_bone_weight_count(self, resolink: protocols.ResoniteLinkClient, max_bone_count: np.int32, debug: bool = False) -> dict:
+    async def trim_bone_weight_count(self, resolink: protocols.ResoniteLinkClient, max_bone_count: primitives.Int, debug: bool = False) -> dict:
         """Call the TrimBoneWeightCount sync method.
 
         Args:

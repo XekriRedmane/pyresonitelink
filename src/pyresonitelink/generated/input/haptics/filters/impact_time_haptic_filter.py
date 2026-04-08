@@ -1,8 +1,7 @@
 """Generated component: ImpactTimeHapticFilter."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -17,7 +16,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ImpactTimeHapticFilter"
 
-    def __init__(self, use_global_time: bool | None = None, start_time: np.float32 | None = None, end_time: np.float32 | None = None, start_intensity: np.float32 | None = None, end_intensity: np.float32 | None = None, power: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_global_time: primitives.Bool | None = None, start_time: primitives.Float | None = None, end_time: primitives.Float | None = None, start_intensity: primitives.Float | None = None, end_intensity: primitives.Float | None = None, power: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,7 +43,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
             self.power = power
 
     @property
-    def use_global_time(self) -> bool | None:
+    def use_global_time(self) -> primitives.Bool | None:
         """The UseGlobalTime field value."""
         member = self.get_member("UseGlobalTime")
         if member is None:
@@ -52,7 +51,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @use_global_time.setter
-    def use_global_time(self, value: bool) -> None:
+    def use_global_time(self, value: primitives.Bool) -> None:
         """Set the UseGlobalTime field value."""
         member = self.get_member("UseGlobalTime")
         if member is not None:
@@ -63,7 +62,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def start_time(self) -> np.float32 | None:
+    def start_time(self) -> primitives.Float | None:
         """The StartTime field value."""
         member = self.get_member("StartTime")
         if member is None:
@@ -71,7 +70,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @start_time.setter
-    def start_time(self, value: np.float32) -> None:
+    def start_time(self, value: primitives.Float) -> None:
         """Set the StartTime field value."""
         member = self.get_member("StartTime")
         if member is not None:
@@ -82,7 +81,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def end_time(self) -> np.float32 | None:
+    def end_time(self) -> primitives.Float | None:
         """The EndTime field value."""
         member = self.get_member("EndTime")
         if member is None:
@@ -90,7 +89,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @end_time.setter
-    def end_time(self, value: np.float32) -> None:
+    def end_time(self, value: primitives.Float) -> None:
         """Set the EndTime field value."""
         member = self.get_member("EndTime")
         if member is not None:
@@ -101,7 +100,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def start_intensity(self) -> np.float32 | None:
+    def start_intensity(self) -> primitives.Float | None:
         """The StartIntensity field value."""
         member = self.get_member("StartIntensity")
         if member is None:
@@ -109,7 +108,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @start_intensity.setter
-    def start_intensity(self, value: np.float32) -> None:
+    def start_intensity(self, value: primitives.Float) -> None:
         """Set the StartIntensity field value."""
         member = self.get_member("StartIntensity")
         if member is not None:
@@ -120,7 +119,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def end_intensity(self) -> np.float32 | None:
+    def end_intensity(self) -> primitives.Float | None:
         """The EndIntensity field value."""
         member = self.get_member("EndIntensity")
         if member is None:
@@ -128,7 +127,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @end_intensity.setter
-    def end_intensity(self, value: np.float32) -> None:
+    def end_intensity(self, value: primitives.Float) -> None:
         """Set the EndIntensity field value."""
         member = self.get_member("EndIntensity")
         if member is not None:
@@ -139,7 +138,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def power(self) -> np.float32 | None:
+    def power(self) -> primitives.Float | None:
         """The Power field value."""
         member = self.get_member("Power")
         if member is None:
@@ -147,7 +146,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @power.setter
-    def power(self, value: np.float32) -> None:
+    def power(self, value: primitives.Float) -> None:
         """Set the Power field value."""
         member = self.get_member("Power")
         if member is not None:

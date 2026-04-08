@@ -1,7 +1,5 @@
 """Generated component: RawDataTool."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -25,7 +23,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RawDataTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, local_tip_offset: primitives.Float3 | None = None, local_tip_reference: str | Slot | None = None, use_laser: bool | None = None, block_primary_when_touching: bool | None = None, use_secondary: bool | None = None, allow_use_when_holding: bool | None = None, equipped: bool | None = None, primary_strength: np.float32 | None = None, secondary_axis: primitives.Float2 | None = None, primary: bool | None = None, secondary: bool | None = None, primary_strength_stream: str | ValueStream[np.float32] | None = None, secondary_axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[bool] | None = None, secondary_stream: str | ValueStream[bool] | None = None, raw_strength: np.float32 | None = None, raw_axis: primitives.Float2 | None = None, raw_primary: bool | None = None, raw_secondary: bool | None = None, primary_action_description: str | None = None, secondary_action_description: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, local_tip_offset: primitives.Float3 | None = None, local_tip_reference: str | Slot | None = None, use_laser: primitives.Bool | None = None, block_primary_when_touching: primitives.Bool | None = None, use_secondary: primitives.Bool | None = None, allow_use_when_holding: primitives.Bool | None = None, equipped: primitives.Bool | None = None, primary_strength: primitives.Float | None = None, secondary_axis: primitives.Float2 | None = None, primary: primitives.Bool | None = None, secondary: primitives.Bool | None = None, primary_strength_stream: str | ValueStream[primitives.Float] | None = None, secondary_axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[primitives.Bool] | None = None, secondary_stream: str | ValueStream[primitives.Bool] | None = None, raw_strength: primitives.Float | None = None, raw_axis: primitives.Float2 | None = None, raw_primary: primitives.Bool | None = None, raw_secondary: primitives.Bool | None = None, primary_action_description: primitives.String | None = None, secondary_action_description: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -149,7 +147,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def block_grip_equip(self) -> bool | None:
+    def block_grip_equip(self) -> primitives.Bool | None:
         """The BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is None:
@@ -157,7 +155,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @block_grip_equip.setter
-    def block_grip_equip(self, value: bool) -> None:
+    def block_grip_equip(self, value: primitives.Bool) -> None:
         """Set the BlockGripEquip field value."""
         member = self.get_member("BlockGripEquip")
         if member is not None:
@@ -168,7 +166,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def block_remote_equip(self) -> bool | None:
+    def block_remote_equip(self) -> primitives.Bool | None:
         """The BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
@@ -176,7 +174,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @block_remote_equip.setter
-    def block_remote_equip(self, value: bool) -> None:
+    def block_remote_equip(self, value: primitives.Bool) -> None:
         """Set the BlockRemoteEquip field value."""
         member = self.get_member("BlockRemoteEquip")
         if member is not None:
@@ -187,7 +185,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def equip_name(self) -> str | None:
+    def equip_name(self) -> primitives.String | None:
         """The EquipName field value."""
         member = self.get_member("EquipName")
         if member is None:
@@ -195,7 +193,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @equip_name.setter
-    def equip_name(self, value: str) -> None:
+    def equip_name(self, value: primitives.String) -> None:
         """Set the EquipName field value."""
         member = self.get_member("EquipName")
         if member is not None:
@@ -227,7 +225,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def grip_poses_generated(self) -> bool | None:
+    def grip_poses_generated(self) -> primitives.Bool | None:
         """The _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
@@ -235,7 +233,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @grip_poses_generated.setter
-    def grip_poses_generated(self, value: bool) -> None:
+    def grip_poses_generated(self, value: primitives.Bool) -> None:
         """Set the _gripPosesGenerated field value."""
         member = self.get_member("_gripPosesGenerated")
         if member is not None:
@@ -286,7 +284,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def use_laser(self) -> bool | None:
+    def use_laser(self) -> primitives.Bool | None:
         """The UseLaser field value."""
         member = self.get_member("UseLaser")
         if member is None:
@@ -294,7 +292,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @use_laser.setter
-    def use_laser(self, value: bool) -> None:
+    def use_laser(self, value: primitives.Bool) -> None:
         """Set the UseLaser field value."""
         member = self.get_member("UseLaser")
         if member is not None:
@@ -305,7 +303,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def block_primary_when_touching(self) -> bool | None:
+    def block_primary_when_touching(self) -> primitives.Bool | None:
         """The BlockPrimaryWhenTouching field value."""
         member = self.get_member("BlockPrimaryWhenTouching")
         if member is None:
@@ -313,7 +311,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @block_primary_when_touching.setter
-    def block_primary_when_touching(self, value: bool) -> None:
+    def block_primary_when_touching(self, value: primitives.Bool) -> None:
         """Set the BlockPrimaryWhenTouching field value."""
         member = self.get_member("BlockPrimaryWhenTouching")
         if member is not None:
@@ -324,7 +322,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def use_secondary(self) -> bool | None:
+    def use_secondary(self) -> primitives.Bool | None:
         """The UseSecondary field value."""
         member = self.get_member("UseSecondary")
         if member is None:
@@ -332,7 +330,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @use_secondary.setter
-    def use_secondary(self, value: bool) -> None:
+    def use_secondary(self, value: primitives.Bool) -> None:
         """Set the UseSecondary field value."""
         member = self.get_member("UseSecondary")
         if member is not None:
@@ -343,7 +341,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def allow_use_when_holding(self) -> bool | None:
+    def allow_use_when_holding(self) -> primitives.Bool | None:
         """The AllowUseWhenHolding field value."""
         member = self.get_member("AllowUseWhenHolding")
         if member is None:
@@ -351,7 +349,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @allow_use_when_holding.setter
-    def allow_use_when_holding(self, value: bool) -> None:
+    def allow_use_when_holding(self, value: primitives.Bool) -> None:
         """Set the AllowUseWhenHolding field value."""
         member = self.get_member("AllowUseWhenHolding")
         if member is not None:
@@ -362,7 +360,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def equipped(self) -> bool | None:
+    def equipped(self) -> primitives.Bool | None:
         """The Equipped field value."""
         member = self.get_member("Equipped")
         if member is None:
@@ -370,7 +368,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @equipped.setter
-    def equipped(self, value: bool) -> None:
+    def equipped(self, value: primitives.Bool) -> None:
         """Set the Equipped field value."""
         member = self.get_member("Equipped")
         if member is not None:
@@ -407,7 +405,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         self.set_member("ControllerSide", value)
 
     @property
-    def primary_strength(self) -> np.float32 | None:
+    def primary_strength(self) -> primitives.Float | None:
         """The PrimaryStrength field value."""
         member = self.get_member("PrimaryStrength")
         if member is None:
@@ -415,7 +413,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @primary_strength.setter
-    def primary_strength(self, value: np.float32) -> None:
+    def primary_strength(self, value: primitives.Float) -> None:
         """Set the PrimaryStrength field value."""
         member = self.get_member("PrimaryStrength")
         if member is not None:
@@ -445,7 +443,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def primary(self) -> bool | None:
+    def primary(self) -> primitives.Bool | None:
         """The Primary field value."""
         member = self.get_member("Primary")
         if member is None:
@@ -453,7 +451,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @primary.setter
-    def primary(self, value: bool) -> None:
+    def primary(self, value: primitives.Bool) -> None:
         """Set the Primary field value."""
         member = self.get_member("Primary")
         if member is not None:
@@ -464,7 +462,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def secondary(self) -> bool | None:
+    def secondary(self) -> primitives.Bool | None:
         """The Secondary field value."""
         member = self.get_member("Secondary")
         if member is None:
@@ -472,7 +470,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @secondary.setter
-    def secondary(self, value: bool) -> None:
+    def secondary(self, value: primitives.Bool) -> None:
         """Set the Secondary field value."""
         member = self.get_member("Secondary")
         if member is not None:
@@ -484,15 +482,15 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
 
     @property
     def primary_strength_stream(self) -> str | None:
-        """Target ID of the _primaryStrengthStream reference (targets ValueStream[np.float32])."""
+        """Target ID of the _primaryStrengthStream reference (targets ValueStream[primitives.Float])."""
         member = self.get_member("_primaryStrengthStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @primary_strength_stream.setter
-    def primary_strength_stream(self, target: str | ValueStream[np.float32] | None) -> None:
-        """Set the _primaryStrengthStream reference by target ID or ValueStream[np.float32] instance."""
+    def primary_strength_stream(self, target: str | ValueStream[primitives.Float] | None) -> None:
+        """Set the _primaryStrengthStream reference by target ID or ValueStream[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("_primaryStrengthStream")
         if isinstance(member, members.Reference):
@@ -526,15 +524,15 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
 
     @property
     def primary_stream(self) -> str | None:
-        """Target ID of the _primaryStream reference (targets ValueStream[bool])."""
+        """Target ID of the _primaryStream reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("_primaryStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @primary_stream.setter
-    def primary_stream(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the _primaryStream reference by target ID or ValueStream[bool] instance."""
+    def primary_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the _primaryStream reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("_primaryStream")
         if isinstance(member, members.Reference):
@@ -547,15 +545,15 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
 
     @property
     def secondary_stream(self) -> str | None:
-        """Target ID of the _secondaryStream reference (targets ValueStream[bool])."""
+        """Target ID of the _secondaryStream reference (targets ValueStream[primitives.Bool])."""
         member = self.get_member("_secondaryStream")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @secondary_stream.setter
-    def secondary_stream(self, target: str | ValueStream[bool] | None) -> None:
-        """Set the _secondaryStream reference by target ID or ValueStream[bool] instance."""
+    def secondary_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
+        """Set the _secondaryStream reference by target ID or ValueStream[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
         member = self.get_member("_secondaryStream")
         if isinstance(member, members.Reference):
@@ -567,7 +565,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def raw_strength(self) -> np.float32 | None:
+    def raw_strength(self) -> primitives.Float | None:
         """The _rawStrength field value."""
         member = self.get_member("_rawStrength")
         if member is None:
@@ -575,7 +573,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @raw_strength.setter
-    def raw_strength(self, value: np.float32) -> None:
+    def raw_strength(self, value: primitives.Float) -> None:
         """Set the _rawStrength field value."""
         member = self.get_member("_rawStrength")
         if member is not None:
@@ -605,7 +603,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def raw_primary(self) -> bool | None:
+    def raw_primary(self) -> primitives.Bool | None:
         """The _rawPrimary field value."""
         member = self.get_member("_rawPrimary")
         if member is None:
@@ -613,7 +611,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @raw_primary.setter
-    def raw_primary(self, value: bool) -> None:
+    def raw_primary(self, value: primitives.Bool) -> None:
         """Set the _rawPrimary field value."""
         member = self.get_member("_rawPrimary")
         if member is not None:
@@ -624,7 +622,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def raw_secondary(self) -> bool | None:
+    def raw_secondary(self) -> primitives.Bool | None:
         """The _rawSecondary field value."""
         member = self.get_member("_rawSecondary")
         if member is None:
@@ -632,7 +630,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @raw_secondary.setter
-    def raw_secondary(self, value: bool) -> None:
+    def raw_secondary(self, value: primitives.Bool) -> None:
         """Set the _rawSecondary field value."""
         member = self.get_member("_rawSecondary")
         if member is not None:
@@ -643,7 +641,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def primary_action_description(self) -> str | None:
+    def primary_action_description(self) -> primitives.String | None:
         """The PrimaryActionDescription field value."""
         member = self.get_member("PrimaryActionDescription")
         if member is None:
@@ -651,7 +649,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @primary_action_description.setter
-    def primary_action_description(self, value: str) -> None:
+    def primary_action_description(self, value: primitives.String) -> None:
         """Set the PrimaryActionDescription field value."""
         member = self.get_member("PrimaryActionDescription")
         if member is not None:
@@ -662,7 +660,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def secondary_action_description(self) -> str | None:
+    def secondary_action_description(self) -> primitives.String | None:
         """The SecondaryActionDescription field value."""
         member = self.get_member("SecondaryActionDescription")
         if member is None:
@@ -670,7 +668,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         return getattr(member, 'value', None)
 
     @secondary_action_description.setter
-    def secondary_action_description(self, value: str) -> None:
+    def secondary_action_description(self, value: primitives.String) -> None:
         """Set the SecondaryActionDescription field value."""
         member = self.get_member("SecondaryActionDescription")
         if member is not None:

@@ -1,6 +1,7 @@
 """Generated component: UserFromUsername."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -20,7 +21,7 @@ class UserFromUsername(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserFromUsername"
 
-    def __init__(self, username: str | INodeObjectOutput[str] | None = None, ignore_case: str | INodeValueOutput[bool] | None = None, allow_partial_match: str | INodeValueOutput[bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, username: str | INodeObjectOutput[primitives.String] | None = None, ignore_case: str | INodeValueOutput[primitives.Bool] | None = None, allow_partial_match: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,15 +40,15 @@ class UserFromUsername(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def username(self) -> str | None:
-        """Target ID of the Username reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Username reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Username")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @username.setter
-    def username(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Username reference by target ID or INodeObjectOutput[str] instance."""
+    def username(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Username reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Username")
         if isinstance(member, members.Reference):
@@ -60,15 +61,15 @@ class UserFromUsername(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def ignore_case(self) -> str | None:
-        """Target ID of the IgnoreCase reference (targets INodeValueOutput[bool])."""
+        """Target ID of the IgnoreCase reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("IgnoreCase")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @ignore_case.setter
-    def ignore_case(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the IgnoreCase reference by target ID or INodeValueOutput[bool] instance."""
+    def ignore_case(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the IgnoreCase reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("IgnoreCase")
         if isinstance(member, members.Reference):
@@ -81,15 +82,15 @@ class UserFromUsername(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def allow_partial_match(self) -> str | None:
-        """Target ID of the AllowPartialMatch reference (targets INodeValueOutput[bool])."""
+        """Target ID of the AllowPartialMatch reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("AllowPartialMatch")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @allow_partial_match.setter
-    def allow_partial_match(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the AllowPartialMatch reference by target ID or INodeValueOutput[bool] instance."""
+    def allow_partial_match(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the AllowPartialMatch reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("AllowPartialMatch")
         if isinstance(member, members.Reference):

@@ -19,7 +19,7 @@ class PositionDeltaDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PositionDeltaDriver"
 
-    def __init__(self, origin: str | Slot | None = None, target: str | Slot | None = None, normalized: bool | None = None, vector: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, origin: str | Slot | None = None, target: str | Slot | None = None, normalized: primitives.Bool | None = None, vector: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -95,7 +95,7 @@ class PositionDeltaDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("VectorSpace", value)
 
     @property
-    def normalized(self) -> bool | None:
+    def normalized(self) -> primitives.Bool | None:
         """The Normalized field value."""
         member = self.get_member("Normalized")
         if member is None:
@@ -103,7 +103,7 @@ class PositionDeltaDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @normalized.setter
-    def normalized(self, value: bool) -> None:
+    def normalized(self, value: primitives.Bool) -> None:
         """Set the Normalized field value."""
         member = self.get_member("Normalized")
         if member is not None:

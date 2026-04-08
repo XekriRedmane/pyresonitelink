@@ -1,8 +1,7 @@
 """Generated component: VelocityDrag."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -17,7 +16,7 @@ class VelocityDrag(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.VelocityDrag"
 
-    def __init__(self, drag: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, drag: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +28,7 @@ class VelocityDrag(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
             self.drag = drag
 
     @property
-    def drag(self) -> np.float32 | None:
+    def drag(self) -> primitives.Float | None:
         """The Drag field value."""
         member = self.get_member("Drag")
         if member is None:
@@ -37,7 +36,7 @@ class VelocityDrag(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
         return getattr(member, 'value', None)
 
     @drag.setter
-    def drag(self, value: np.float32) -> None:
+    def drag(self, value: primitives.Float) -> None:
         """Set the Drag field value."""
         member = self.get_member("Drag")
         if member is not None:

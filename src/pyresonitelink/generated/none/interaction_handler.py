@@ -1,7 +1,5 @@
 """Generated component: InteractionHandler."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -34,7 +32,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionHandler"
 
-    def __init__(self, locomotion_controller: str | LocomotionController | None = None, grab_smoothing: np.float32 | None = None, stream_driver: str | InteractionHandlerStreamDriver | None = None, undo_item: str | ContextMenuItem | None = None, redo_item: str | ContextMenuItem | None = None, context_menu: str | ContextMenu | None = None, equipping_enabled: bool | None = None, menu_enabled: bool | None = None, user_scaling_enabled: bool | None = None, visual_enabled: bool | None = None, pointing_grab: bool | None = None, pointing_touch: bool | None = None, tool_root: str | Slot | None = None, laser_slot: str | Slot | None = None, laser_position: str | IField[primitives.Float3] | None = None, laser_rotation: str | IField[primitives.FloatQ] | None = None, interaction_laser: str | InteractionLaser | None = None, laser_enabled: bool | None = None, grab_toggle: bool | None = None, holder_pos: str | IField[primitives.Float3] | None = None, holder_rot: str | IField[primitives.FloatQ] | None = None, holder_axis_offset: np.float32 | None = None, holder_rotation_offset: primitives.FloatQ | None = None, holder_rotation_reference: primitives.FloatQ | None = None, original_twist_offset: np.float32 | None = None, userspace_toggle_indicator: str | RingMesh | None = None, tool_holder: str | Slot | None = None, show_interaction_hints: bool | None = None, grabber_sphere_active: str | IField[bool] | None = None, grab_ignore_root: str | Slot | None = None, grabber: str | Grabber | None = None, active_tool_link: str | LinkTarget[ITool] | None = None, active_tool_grip_pose_reference: str | GripPoseReference | None = None, tool_locked: bool | None = None, grab_material: str | FresnelMaterial | None = None, item_shelf_slot: str | Slot | None = None, item_shelf: str | ItemShelf | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, locomotion_controller: str | LocomotionController | None = None, grab_smoothing: primitives.Float | None = None, stream_driver: str | InteractionHandlerStreamDriver | None = None, undo_item: str | ContextMenuItem | None = None, redo_item: str | ContextMenuItem | None = None, context_menu: str | ContextMenu | None = None, equipping_enabled: primitives.Bool | None = None, menu_enabled: primitives.Bool | None = None, user_scaling_enabled: primitives.Bool | None = None, visual_enabled: primitives.Bool | None = None, pointing_grab: primitives.Bool | None = None, pointing_touch: primitives.Bool | None = None, tool_root: str | Slot | None = None, laser_slot: str | Slot | None = None, laser_position: str | IField[primitives.Float3] | None = None, laser_rotation: str | IField[primitives.FloatQ] | None = None, interaction_laser: str | InteractionLaser | None = None, laser_enabled: primitives.Bool | None = None, grab_toggle: primitives.Bool | None = None, holder_pos: str | IField[primitives.Float3] | None = None, holder_rot: str | IField[primitives.FloatQ] | None = None, holder_axis_offset: primitives.Float | None = None, holder_rotation_offset: primitives.FloatQ | None = None, holder_rotation_reference: primitives.FloatQ | None = None, original_twist_offset: primitives.Float | None = None, userspace_toggle_indicator: str | RingMesh | None = None, tool_holder: str | Slot | None = None, show_interaction_hints: primitives.Bool | None = None, grabber_sphere_active: str | IField[primitives.Bool] | None = None, grab_ignore_root: str | Slot | None = None, grabber: str | Grabber | None = None, active_tool_link: str | LinkTarget[ITool] | None = None, active_tool_grip_pose_reference: str | GripPoseReference | None = None, tool_locked: primitives.Bool | None = None, grab_material: str | FresnelMaterial | None = None, item_shelf_slot: str | Slot | None = None, item_shelf: str | ItemShelf | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -188,7 +186,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def grab_smoothing(self) -> np.float32 | None:
+    def grab_smoothing(self) -> primitives.Float | None:
         """The GrabSmoothing field value."""
         member = self.get_member("GrabSmoothing")
         if member is None:
@@ -196,7 +194,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @grab_smoothing.setter
-    def grab_smoothing(self, value: np.float32) -> None:
+    def grab_smoothing(self, value: primitives.Float) -> None:
         """Set the GrabSmoothing field value."""
         member = self.get_member("GrabSmoothing")
         if member is not None:
@@ -291,7 +289,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def equipping_enabled(self) -> bool | None:
+    def equipping_enabled(self) -> primitives.Bool | None:
         """The EquippingEnabled field value."""
         member = self.get_member("EquippingEnabled")
         if member is None:
@@ -299,7 +297,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @equipping_enabled.setter
-    def equipping_enabled(self, value: bool) -> None:
+    def equipping_enabled(self, value: primitives.Bool) -> None:
         """Set the EquippingEnabled field value."""
         member = self.get_member("EquippingEnabled")
         if member is not None:
@@ -310,7 +308,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def menu_enabled(self) -> bool | None:
+    def menu_enabled(self) -> primitives.Bool | None:
         """The MenuEnabled field value."""
         member = self.get_member("MenuEnabled")
         if member is None:
@@ -318,7 +316,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @menu_enabled.setter
-    def menu_enabled(self, value: bool) -> None:
+    def menu_enabled(self, value: primitives.Bool) -> None:
         """Set the MenuEnabled field value."""
         member = self.get_member("MenuEnabled")
         if member is not None:
@@ -329,7 +327,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def user_scaling_enabled(self) -> bool | None:
+    def user_scaling_enabled(self) -> primitives.Bool | None:
         """The UserScalingEnabled field value."""
         member = self.get_member("UserScalingEnabled")
         if member is None:
@@ -337,7 +335,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @user_scaling_enabled.setter
-    def user_scaling_enabled(self, value: bool) -> None:
+    def user_scaling_enabled(self, value: primitives.Bool) -> None:
         """Set the UserScalingEnabled field value."""
         member = self.get_member("UserScalingEnabled")
         if member is not None:
@@ -348,7 +346,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def visual_enabled(self) -> bool | None:
+    def visual_enabled(self) -> primitives.Bool | None:
         """The VisualEnabled field value."""
         member = self.get_member("VisualEnabled")
         if member is None:
@@ -356,7 +354,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @visual_enabled.setter
-    def visual_enabled(self, value: bool) -> None:
+    def visual_enabled(self, value: primitives.Bool) -> None:
         """Set the VisualEnabled field value."""
         member = self.get_member("VisualEnabled")
         if member is not None:
@@ -367,7 +365,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def pointing_grab(self) -> bool | None:
+    def pointing_grab(self) -> primitives.Bool | None:
         """The PointingGrab field value."""
         member = self.get_member("PointingGrab")
         if member is None:
@@ -375,7 +373,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @pointing_grab.setter
-    def pointing_grab(self, value: bool) -> None:
+    def pointing_grab(self, value: primitives.Bool) -> None:
         """Set the PointingGrab field value."""
         member = self.get_member("PointingGrab")
         if member is not None:
@@ -386,7 +384,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def pointing_touch(self) -> bool | None:
+    def pointing_touch(self) -> primitives.Bool | None:
         """The PointingTouch field value."""
         member = self.get_member("PointingTouch")
         if member is None:
@@ -394,7 +392,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @pointing_touch.setter
-    def pointing_touch(self, value: bool) -> None:
+    def pointing_touch(self, value: primitives.Bool) -> None:
         """Set the PointingTouch field value."""
         member = self.get_member("PointingTouch")
         if member is not None:
@@ -510,7 +508,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def laser_enabled(self) -> bool | None:
+    def laser_enabled(self) -> primitives.Bool | None:
         """The _laserEnabled field value."""
         member = self.get_member("_laserEnabled")
         if member is None:
@@ -518,7 +516,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @laser_enabled.setter
-    def laser_enabled(self, value: bool) -> None:
+    def laser_enabled(self, value: primitives.Bool) -> None:
         """Set the _laserEnabled field value."""
         member = self.get_member("_laserEnabled")
         if member is not None:
@@ -542,7 +540,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         self.set_member("_handGrabType", value)
 
     @property
-    def grab_toggle(self) -> bool | None:
+    def grab_toggle(self) -> primitives.Bool | None:
         """The _grabToggle field value."""
         member = self.get_member("_grabToggle")
         if member is None:
@@ -550,7 +548,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @grab_toggle.setter
-    def grab_toggle(self, value: bool) -> None:
+    def grab_toggle(self, value: primitives.Bool) -> None:
         """Set the _grabToggle field value."""
         member = self.get_member("_grabToggle")
         if member is not None:
@@ -616,7 +614,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         self.set_member("_laserRotationType", value)
 
     @property
-    def holder_axis_offset(self) -> np.float32 | None:
+    def holder_axis_offset(self) -> primitives.Float | None:
         """The _holderAxisOffset field value."""
         member = self.get_member("_holderAxisOffset")
         if member is None:
@@ -624,7 +622,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @holder_axis_offset.setter
-    def holder_axis_offset(self, value: np.float32) -> None:
+    def holder_axis_offset(self, value: primitives.Float) -> None:
         """Set the _holderAxisOffset field value."""
         member = self.get_member("_holderAxisOffset")
         if member is not None:
@@ -673,7 +671,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def original_twist_offset(self) -> np.float32 | None:
+    def original_twist_offset(self) -> primitives.Float | None:
         """The _originalTwistOffset field value."""
         member = self.get_member("_originalTwistOffset")
         if member is None:
@@ -681,7 +679,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @original_twist_offset.setter
-    def original_twist_offset(self, value: np.float32) -> None:
+    def original_twist_offset(self, value: primitives.Float) -> None:
         """Set the _originalTwistOffset field value."""
         member = self.get_member("_originalTwistOffset")
         if member is not None:
@@ -734,7 +732,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def show_interaction_hints(self) -> bool | None:
+    def show_interaction_hints(self) -> primitives.Bool | None:
         """The ShowInteractionHints field value."""
         member = self.get_member("ShowInteractionHints")
         if member is None:
@@ -742,7 +740,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @show_interaction_hints.setter
-    def show_interaction_hints(self, value: bool) -> None:
+    def show_interaction_hints(self, value: primitives.Bool) -> None:
         """Set the ShowInteractionHints field value."""
         member = self.get_member("ShowInteractionHints")
         if member is not None:
@@ -754,15 +752,15 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
 
     @property
     def grabber_sphere_active(self) -> str | None:
-        """Target ID of the _grabberSphereActive reference (targets IField[bool])."""
+        """Target ID of the _grabberSphereActive reference (targets IField[primitives.Bool])."""
         member = self.get_member("_grabberSphereActive")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @grabber_sphere_active.setter
-    def grabber_sphere_active(self, target: str | IField[bool] | None) -> None:
-        """Set the _grabberSphereActive reference by target ID or IField[bool] instance."""
+    def grabber_sphere_active(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _grabberSphereActive reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_grabberSphereActive")
         if isinstance(member, members.Reference):
@@ -871,7 +869,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
             )
 
     @property
-    def tool_locked(self) -> bool | None:
+    def tool_locked(self) -> primitives.Bool | None:
         """The _toolLocked field value."""
         member = self.get_member("_toolLocked")
         if member is None:
@@ -879,7 +877,7 @@ class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomot
         return getattr(member, 'value', None)
 
     @tool_locked.setter
-    def tool_locked(self, value: bool) -> None:
+    def tool_locked(self, value: primitives.Bool) -> None:
         """Set the _toolLocked field value."""
         member = self.get_member("_toolLocked")
         if member is not None:

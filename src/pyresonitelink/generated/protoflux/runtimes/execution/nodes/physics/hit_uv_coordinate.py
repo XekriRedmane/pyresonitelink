@@ -1,7 +1,5 @@
 """Generated component: HitUVCoordinate."""
 
-import numpy as np
-
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -24,7 +22,7 @@ class HitUVCoordinate(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.HitUVCoordinate"
 
-    def __init__(self, hit_collider: str | INodeObjectOutput[ICollider] | None = None, hit_triangle_index: str | INodeValueOutput[np.int32] | None = None, hit_point: str | INodeValueOutput[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, hit_collider: str | INodeObjectOutput[ICollider] | None = None, hit_triangle_index: str | INodeValueOutput[primitives.Int] | None = None, hit_point: str | INodeValueOutput[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -64,15 +62,15 @@ class HitUVCoordinate(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 
     @property
     def hit_triangle_index(self) -> str | None:
-        """Target ID of the HitTriangleIndex reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the HitTriangleIndex reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("HitTriangleIndex")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @hit_triangle_index.setter
-    def hit_triangle_index(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the HitTriangleIndex reference by target ID or INodeValueOutput[np.int32] instance."""
+    def hit_triangle_index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the HitTriangleIndex reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("HitTriangleIndex")
         if isinstance(member, members.Reference):

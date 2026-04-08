@@ -1,6 +1,7 @@
 """Generated component: CharacterEventTrigger."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -15,7 +16,7 @@ class CharacterEventTrigger(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterEventTrigger"
 
-    def __init__(self, triggers_only: bool | None = None, ignore_parent_user: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, triggers_only: primitives.Bool | None = None, ignore_parent_user: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +31,7 @@ class CharacterEventTrigger(GeneratedComponent, IComponent, IWorldEventReceiver)
             self.ignore_parent_user = ignore_parent_user
 
     @property
-    def triggers_only(self) -> bool | None:
+    def triggers_only(self) -> primitives.Bool | None:
         """The TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is None:
@@ -38,7 +39,7 @@ class CharacterEventTrigger(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @triggers_only.setter
-    def triggers_only(self, value: bool) -> None:
+    def triggers_only(self, value: primitives.Bool) -> None:
         """Set the TriggersOnly field value."""
         member = self.get_member("TriggersOnly")
         if member is not None:
@@ -49,7 +50,7 @@ class CharacterEventTrigger(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def ignore_parent_user(self) -> bool | None:
+    def ignore_parent_user(self) -> primitives.Bool | None:
         """The IgnoreParentUser field value."""
         member = self.get_member("IgnoreParentUser")
         if member is None:
@@ -57,7 +58,7 @@ class CharacterEventTrigger(GeneratedComponent, IComponent, IWorldEventReceiver)
         return getattr(member, 'value', None)
 
     @ignore_parent_user.setter
-    def ignore_parent_user(self, value: bool) -> None:
+    def ignore_parent_user(self, value: primitives.Bool) -> None:
         """Set the IgnoreParentUser field value."""
         member = self.get_member("IgnoreParentUser")
         if member is not None:

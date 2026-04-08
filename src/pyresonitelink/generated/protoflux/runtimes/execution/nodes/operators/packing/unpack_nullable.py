@@ -19,7 +19,7 @@ class UnpackNullable(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     Parameterize with a value type::
 
-        UnpackNullable[np.float32]
+        UnpackNullable[primitives.Float]
         UnpackNullable[primitives.Float3]
     """
 

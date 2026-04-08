@@ -1,7 +1,5 @@
 """Generated component: GridMesh."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -22,7 +20,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GridMesh"
 
-    def __init__(self, high_priority_integration: bool | None = None, override_bounding_box: bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, points: primitives.Int2 | None = None, rotation: primitives.FloatQ | None = None, size: primitives.Float2 | None = None, flat_shading: bool | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, displacement_magnitude: np.float32 | None = None, displacement_texture: str | IAssetProvider[Texture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, points: primitives.Int2 | None = None, rotation: primitives.FloatQ | None = None, size: primitives.Float2 | None = None, flat_shading: primitives.Bool | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, displacement_magnitude: primitives.Float | None = None, displacement_texture: str | IAssetProvider[Texture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -64,7 +62,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             self.displacement_texture = displacement_texture
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -72,7 +70,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -83,7 +81,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def override_bounding_box(self) -> bool | None:
+    def override_bounding_box(self) -> primitives.Bool | None:
         """The OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is None:
@@ -91,7 +89,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @override_bounding_box.setter
-    def override_bounding_box(self, value: bool) -> None:
+    def override_bounding_box(self, value: primitives.Bool) -> None:
         """Set the OverrideBoundingBox field value."""
         member = self.get_member("OverrideBoundingBox")
         if member is not None:
@@ -191,7 +189,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def flat_shading(self) -> bool | None:
+    def flat_shading(self) -> primitives.Bool | None:
         """The FlatShading field value."""
         member = self.get_member("FlatShading")
         if member is None:
@@ -199,7 +197,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @flat_shading.setter
-    def flat_shading(self, value: bool) -> None:
+    def flat_shading(self, value: primitives.Bool) -> None:
         """Set the FlatShading field value."""
         member = self.get_member("FlatShading")
         if member is not None:
@@ -248,7 +246,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def displacement_magnitude(self) -> np.float32 | None:
+    def displacement_magnitude(self) -> primitives.Float | None:
         """The DisplacementMagnitude field value."""
         member = self.get_member("DisplacementMagnitude")
         if member is None:
@@ -256,7 +254,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
         return getattr(member, 'value', None)
 
     @displacement_magnitude.setter
-    def displacement_magnitude(self, value: np.float32) -> None:
+    def displacement_magnitude(self, value: primitives.Float) -> None:
         """Set the DisplacementMagnitude field value."""
         member = self.get_member("DisplacementMagnitude")
         if member is not None:

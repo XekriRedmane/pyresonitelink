@@ -16,7 +16,7 @@ class ValueIndirectWriteLatch(GenericComponent[T]):
 
     Parameterize with a value type::
 
-        ValueIndirectWriteLatch[np.float32]
+        ValueIndirectWriteLatch[primitives.Float]
         ValueIndirectWriteLatch[primitives.Float3]
     """
 

@@ -1,7 +1,5 @@
 """Generated component: PhotoCaptureSettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -17,7 +15,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotoCaptureSettings"
 
-    def __init__(self, finger_gesture_enabled: bool | None = None, normal_capture_resolution: primitives.Int2 | None = None, timer_capture_resolution: primitives.Int2 | None = None, timer_seconds: np.float32 | None = None, hands_near_fov: np.float32 | None = None, hands_far_fov: np.float32 | None = None, capture_private_ui: bool | None = None, capture_stereo: bool | None = None, stereo_separation: np.float32 | None = None, always_hide_nameplates: bool | None = None, photo_autosave_path: str | None = None, autosave_active: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, finger_gesture_enabled: primitives.Bool | None = None, normal_capture_resolution: primitives.Int2 | None = None, timer_capture_resolution: primitives.Int2 | None = None, timer_seconds: primitives.Float | None = None, hands_near_fov: primitives.Float | None = None, hands_far_fov: primitives.Float | None = None, capture_private_ui: primitives.Bool | None = None, capture_stereo: primitives.Bool | None = None, stereo_separation: primitives.Float | None = None, always_hide_nameplates: primitives.Bool | None = None, photo_autosave_path: primitives.String | None = None, autosave_active: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,7 +60,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             self.autosave_active = autosave_active
 
     @property
-    def finger_gesture_enabled(self) -> bool | None:
+    def finger_gesture_enabled(self) -> primitives.Bool | None:
         """The FingerGestureEnabled field value."""
         member = self.get_member("FingerGestureEnabled")
         if member is None:
@@ -70,7 +68,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @finger_gesture_enabled.setter
-    def finger_gesture_enabled(self, value: bool) -> None:
+    def finger_gesture_enabled(self, value: primitives.Bool) -> None:
         """Set the FingerGestureEnabled field value."""
         member = self.get_member("FingerGestureEnabled")
         if member is not None:
@@ -119,7 +117,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def timer_seconds(self) -> np.float32 | None:
+    def timer_seconds(self) -> primitives.Float | None:
         """The TimerSeconds field value."""
         member = self.get_member("TimerSeconds")
         if member is None:
@@ -127,7 +125,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @timer_seconds.setter
-    def timer_seconds(self, value: np.float32) -> None:
+    def timer_seconds(self, value: primitives.Float) -> None:
         """Set the TimerSeconds field value."""
         member = self.get_member("TimerSeconds")
         if member is not None:
@@ -138,7 +136,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def hands_near_fov(self) -> np.float32 | None:
+    def hands_near_fov(self) -> primitives.Float | None:
         """The HandsNearFOV field value."""
         member = self.get_member("HandsNearFOV")
         if member is None:
@@ -146,7 +144,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @hands_near_fov.setter
-    def hands_near_fov(self, value: np.float32) -> None:
+    def hands_near_fov(self, value: primitives.Float) -> None:
         """Set the HandsNearFOV field value."""
         member = self.get_member("HandsNearFOV")
         if member is not None:
@@ -157,7 +155,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def hands_far_fov(self) -> np.float32 | None:
+    def hands_far_fov(self) -> primitives.Float | None:
         """The HandsFarFOV field value."""
         member = self.get_member("HandsFarFOV")
         if member is None:
@@ -165,7 +163,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @hands_far_fov.setter
-    def hands_far_fov(self, value: np.float32) -> None:
+    def hands_far_fov(self, value: primitives.Float) -> None:
         """Set the HandsFarFOV field value."""
         member = self.get_member("HandsFarFOV")
         if member is not None:
@@ -176,7 +174,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def capture_private_ui(self) -> bool | None:
+    def capture_private_ui(self) -> primitives.Bool | None:
         """The CapturePrivateUI field value."""
         member = self.get_member("CapturePrivateUI")
         if member is None:
@@ -184,7 +182,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @capture_private_ui.setter
-    def capture_private_ui(self, value: bool) -> None:
+    def capture_private_ui(self, value: primitives.Bool) -> None:
         """Set the CapturePrivateUI field value."""
         member = self.get_member("CapturePrivateUI")
         if member is not None:
@@ -195,7 +193,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def capture_stereo(self) -> bool | None:
+    def capture_stereo(self) -> primitives.Bool | None:
         """The CaptureStereo field value."""
         member = self.get_member("CaptureStereo")
         if member is None:
@@ -203,7 +201,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @capture_stereo.setter
-    def capture_stereo(self, value: bool) -> None:
+    def capture_stereo(self, value: primitives.Bool) -> None:
         """Set the CaptureStereo field value."""
         member = self.get_member("CaptureStereo")
         if member is not None:
@@ -214,7 +212,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def stereo_separation(self) -> np.float32 | None:
+    def stereo_separation(self) -> primitives.Float | None:
         """The StereoSeparation field value."""
         member = self.get_member("StereoSeparation")
         if member is None:
@@ -222,7 +220,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @stereo_separation.setter
-    def stereo_separation(self, value: np.float32) -> None:
+    def stereo_separation(self, value: primitives.Float) -> None:
         """Set the StereoSeparation field value."""
         member = self.get_member("StereoSeparation")
         if member is not None:
@@ -233,7 +231,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def always_hide_nameplates(self) -> bool | None:
+    def always_hide_nameplates(self) -> primitives.Bool | None:
         """The AlwaysHideNameplates field value."""
         member = self.get_member("AlwaysHideNameplates")
         if member is None:
@@ -241,7 +239,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @always_hide_nameplates.setter
-    def always_hide_nameplates(self, value: bool) -> None:
+    def always_hide_nameplates(self, value: primitives.Bool) -> None:
         """Set the AlwaysHideNameplates field value."""
         member = self.get_member("AlwaysHideNameplates")
         if member is not None:
@@ -265,7 +263,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         self.set_member("EncodeFormat", value)
 
     @property
-    def photo_autosave_path(self) -> str | None:
+    def photo_autosave_path(self) -> primitives.String | None:
         """The PhotoAutosavePath field value."""
         member = self.get_member("PhotoAutosavePath")
         if member is None:
@@ -273,7 +271,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @photo_autosave_path.setter
-    def photo_autosave_path(self, value: str) -> None:
+    def photo_autosave_path(self, value: primitives.String) -> None:
         """Set the PhotoAutosavePath field value."""
         member = self.get_member("PhotoAutosavePath")
         if member is not None:
@@ -284,7 +282,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def autosave_active(self) -> bool | None:
+    def autosave_active(self) -> primitives.Bool | None:
         """The AutosaveActive field value."""
         member = self.get_member("AutosaveActive")
         if member is None:
@@ -292,7 +290,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @autosave_active.setter
-    def autosave_active(self, value: bool) -> None:
+    def autosave_active(self, value: primitives.Bool) -> None:
         """Set the AutosaveActive field value."""
         member = self.get_member("AutosaveActive")
         if member is not None:

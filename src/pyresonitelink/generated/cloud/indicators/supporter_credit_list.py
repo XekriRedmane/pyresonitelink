@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -16,7 +17,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SupporterCreditList"
 
-    def __init__(self, separator: str | None = None, prefix: str | None = None, suffix: str | None = None, formatted_list: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, separator: primitives.String | None = None, prefix: primitives.String | None = None, suffix: primitives.String | None = None, formatted_list: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -50,7 +51,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
         self.set_member("CreditType", value)
 
     @property
-    def separator(self) -> str | None:
+    def separator(self) -> primitives.String | None:
         """The Separator field value."""
         member = self.get_member("Separator")
         if member is None:
@@ -58,7 +59,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @separator.setter
-    def separator(self, value: str) -> None:
+    def separator(self, value: primitives.String) -> None:
         """Set the Separator field value."""
         member = self.get_member("Separator")
         if member is not None:
@@ -69,7 +70,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def prefix(self) -> str | None:
+    def prefix(self) -> primitives.String | None:
         """The Prefix field value."""
         member = self.get_member("Prefix")
         if member is None:
@@ -77,7 +78,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @prefix.setter
-    def prefix(self, value: str) -> None:
+    def prefix(self, value: primitives.String) -> None:
         """Set the Prefix field value."""
         member = self.get_member("Prefix")
         if member is not None:
@@ -88,7 +89,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def suffix(self) -> str | None:
+    def suffix(self) -> primitives.String | None:
         """The Suffix field value."""
         member = self.get_member("Suffix")
         if member is None:
@@ -96,7 +97,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @suffix.setter
-    def suffix(self, value: str) -> None:
+    def suffix(self, value: primitives.String) -> None:
         """Set the Suffix field value."""
         member = self.get_member("Suffix")
         if member is not None:
@@ -107,7 +108,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def formatted_list(self) -> str | None:
+    def formatted_list(self) -> primitives.String | None:
         """The FormattedList field value."""
         member = self.get_member("FormattedList")
         if member is None:
@@ -115,7 +116,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @formatted_list.setter
-    def formatted_list(self, value: str) -> None:
+    def formatted_list(self, value: primitives.String) -> None:
         """Set the FormattedList field value."""
         member = self.get_member("FormattedList")
         if member is not None:

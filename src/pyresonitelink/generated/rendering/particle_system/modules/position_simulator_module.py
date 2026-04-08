@@ -1,9 +1,8 @@
 """Generated component: PositionSimulatorModule."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -18,7 +17,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.PositionSimulatorModule"
 
-    def __init__(self, collisions: bool | None = None, collision_lifetime_loss_ratio: np.float32 | None = None, collision_bounce_ratio: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, collisions: primitives.Bool | None = None, collision_lifetime_loss_ratio: primitives.Float | None = None, collision_bounce_ratio: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,7 +35,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
             self.collision_bounce_ratio = collision_bounce_ratio
 
     @property
-    def collisions(self) -> bool | None:
+    def collisions(self) -> primitives.Bool | None:
         """The Collisions field value."""
         member = self.get_member("Collisions")
         if member is None:
@@ -44,7 +43,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
         return getattr(member, 'value', None)
 
     @collisions.setter
-    def collisions(self, value: bool) -> None:
+    def collisions(self, value: primitives.Bool) -> None:
         """Set the Collisions field value."""
         member = self.get_member("Collisions")
         if member is not None:
@@ -55,7 +54,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
             )
 
     @property
-    def collision_lifetime_loss_ratio(self) -> np.float32 | None:
+    def collision_lifetime_loss_ratio(self) -> primitives.Float | None:
         """The CollisionLifetimeLossRatio field value."""
         member = self.get_member("CollisionLifetimeLossRatio")
         if member is None:
@@ -63,7 +62,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
         return getattr(member, 'value', None)
 
     @collision_lifetime_loss_ratio.setter
-    def collision_lifetime_loss_ratio(self, value: np.float32) -> None:
+    def collision_lifetime_loss_ratio(self, value: primitives.Float) -> None:
         """Set the CollisionLifetimeLossRatio field value."""
         member = self.get_member("CollisionLifetimeLossRatio")
         if member is not None:
@@ -74,7 +73,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
             )
 
     @property
-    def collision_bounce_ratio(self) -> np.float32 | None:
+    def collision_bounce_ratio(self) -> primitives.Float | None:
         """The CollisionBounceRatio field value."""
         member = self.get_member("CollisionBounceRatio")
         if member is None:
@@ -82,7 +81,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
         return getattr(member, 'value', None)
 
     @collision_bounce_ratio.setter
-    def collision_bounce_ratio(self, value: np.float32) -> None:
+    def collision_bounce_ratio(self, value: primitives.Float) -> None:
         """Set the CollisionBounceRatio field value."""
         member = self.get_member("CollisionBounceRatio")
         if member is not None:

@@ -14,7 +14,7 @@ class GlobalDelegate(GenericComponent[T], IGlobalValueProxy[T], IComponent, IWor
 
     Parameterize with a value type::
 
-        GlobalDelegate[np.float32]
+        GlobalDelegate[primitives.Float]
         GlobalDelegate[primitives.Float3]
     """
 

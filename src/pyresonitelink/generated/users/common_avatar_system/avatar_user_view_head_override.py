@@ -20,7 +20,7 @@ class AvatarUserViewHeadOverride(GeneratedComponent, IAvatarObjectComponent, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarUserViewHeadOverride"
 
-    def __init__(self, render_transform_override: str | RenderTransformOverride | None = None, override_enabled: str | IField[bool] | None = None, pos_override: str | IField[Nullable[primitives.Float3]] | None = None, rot_override: str | IField[Nullable[primitives.FloatQ]] | None = None, equipping_slot: str | AvatarObjectSlot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, render_transform_override: str | RenderTransformOverride | None = None, override_enabled: str | IField[primitives.Bool] | None = None, pos_override: str | IField[Nullable[primitives.Float3]] | None = None, rot_override: str | IField[Nullable[primitives.FloatQ]] | None = None, equipping_slot: str | AvatarObjectSlot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -66,15 +66,15 @@ class AvatarUserViewHeadOverride(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def override_enabled(self) -> str | None:
-        """Target ID of the _overrideEnabled reference (targets IField[bool])."""
+        """Target ID of the _overrideEnabled reference (targets IField[primitives.Bool])."""
         member = self.get_member("_overrideEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @override_enabled.setter
-    def override_enabled(self, target: str | IField[bool] | None) -> None:
-        """Set the _overrideEnabled reference by target ID or IField[bool] instance."""
+    def override_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
+        """Set the _overrideEnabled reference by target ID or IField[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_overrideEnabled")
         if isinstance(member, members.Reference):

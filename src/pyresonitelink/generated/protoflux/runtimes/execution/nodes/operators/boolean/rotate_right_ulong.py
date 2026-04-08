@@ -1,8 +1,7 @@
 """Generated component: RotateRight_Ulong."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class RotateRight_Ulong(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.RotateRight_Ulong"
 
-    def __init__(self, a: str | INodeValueOutput[np.uint64] | None = None, rotate: str | INodeValueOutput[np.int32] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, a: str | INodeValueOutput[primitives.ULong] | None = None, rotate: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +36,15 @@ class RotateRight_Ulong(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[np.uint64])."""
+        """Target ID of the A reference (targets INodeValueOutput[primitives.ULong])."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @a.setter
-    def a(self, target: str | INodeValueOutput[np.uint64] | None) -> None:
-        """Set the A reference by target ID or INodeValueOutput[np.uint64] instance."""
+    def a(self, target: str | INodeValueOutput[primitives.ULong] | None) -> None:
+        """Set the A reference by target ID or INodeValueOutput[primitives.ULong] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("A")
         if isinstance(member, members.Reference):
@@ -58,15 +57,15 @@ class RotateRight_Ulong(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def rotate(self) -> str | None:
-        """Target ID of the Rotate reference (targets INodeValueOutput[np.int32])."""
+        """Target ID of the Rotate reference (targets INodeValueOutput[primitives.Int])."""
         member = self.get_member("Rotate")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @rotate.setter
-    def rotate(self, target: str | INodeValueOutput[np.int32] | None) -> None:
-        """Set the Rotate reference by target ID or INodeValueOutput[np.int32] instance."""
+    def rotate(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+        """Set the Rotate reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Rotate")
         if isinstance(member, members.Reference):

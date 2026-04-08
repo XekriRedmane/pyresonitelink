@@ -1,8 +1,7 @@
 """Generated component: AudioAccessibilitySettings."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -15,7 +14,7 @@ class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioAccessibilitySettings"
 
-    def __init__(self, whisper_volume: np.float32 | None = None, voice_message_volume: np.float32 | None = None, force_voice_audio_effects_off: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, whisper_volume: primitives.Float | None = None, voice_message_volume: primitives.Float | None = None, force_voice_audio_effects_off: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +32,7 @@ class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
             self.force_voice_audio_effects_off = force_voice_audio_effects_off
 
     @property
-    def whisper_volume(self) -> np.float32 | None:
+    def whisper_volume(self) -> primitives.Float | None:
         """The WhisperVolume field value."""
         member = self.get_member("WhisperVolume")
         if member is None:
@@ -41,7 +40,7 @@ class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @whisper_volume.setter
-    def whisper_volume(self, value: np.float32) -> None:
+    def whisper_volume(self, value: primitives.Float) -> None:
         """Set the WhisperVolume field value."""
         member = self.get_member("WhisperVolume")
         if member is not None:
@@ -52,7 +51,7 @@ class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def voice_message_volume(self) -> np.float32 | None:
+    def voice_message_volume(self) -> primitives.Float | None:
         """The VoiceMessageVolume field value."""
         member = self.get_member("VoiceMessageVolume")
         if member is None:
@@ -60,7 +59,7 @@ class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @voice_message_volume.setter
-    def voice_message_volume(self, value: np.float32) -> None:
+    def voice_message_volume(self, value: primitives.Float) -> None:
         """Set the VoiceMessageVolume field value."""
         member = self.get_member("VoiceMessageVolume")
         if member is not None:
@@ -71,7 +70,7 @@ class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def force_voice_audio_effects_off(self) -> bool | None:
+    def force_voice_audio_effects_off(self) -> primitives.Bool | None:
         """The ForceVoiceAudioEffectsOff field value."""
         member = self.get_member("ForceVoiceAudioEffectsOff")
         if member is None:
@@ -79,7 +78,7 @@ class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @force_voice_audio_effects_off.setter
-    def force_voice_audio_effects_off(self, value: bool) -> None:
+    def force_voice_audio_effects_off(self, value: primitives.Bool) -> None:
         """Set the ForceVoiceAudioEffectsOff field value."""
         member = self.get_member("ForceVoiceAudioEffectsOff")
         if member is not None:

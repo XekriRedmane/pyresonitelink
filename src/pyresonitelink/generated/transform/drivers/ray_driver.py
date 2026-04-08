@@ -1,7 +1,5 @@
 """Generated component: RayDriver."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -20,7 +18,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RayDriver"
 
-    def __init__(self, max_distance: np.float32 | None = None, point_a: str | Sync[primitives.Float3] | None = None, point_b: str | Sync[primitives.Float3] | None = None, local_origin: primitives.Float3 | None = None, local_direction: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, max_distance: primitives.Float | None = None, point_a: str | Sync[primitives.Float3] | None = None, point_b: str | Sync[primitives.Float3] | None = None, local_origin: primitives.Float3 | None = None, local_direction: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,7 +42,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.local_direction = local_direction
 
     @property
-    def max_distance(self) -> np.float32 | None:
+    def max_distance(self) -> primitives.Float | None:
         """The MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is None:
@@ -52,7 +50,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @max_distance.setter
-    def max_distance(self, value: np.float32) -> None:
+    def max_distance(self, value: primitives.Float) -> None:
         """Set the MaxDistance field value."""
         member = self.get_member("MaxDistance")
         if member is not None:

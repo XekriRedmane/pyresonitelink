@@ -15,7 +15,7 @@ class DataPresetReference(GenericComponent[T], IDataPresetEntry, IWorldEventRece
 
     Parameterize with a value type::
 
-        DataPresetReference[np.float32]
+        DataPresetReference[primitives.Float]
         DataPresetReference[primitives.Float3]
     """
 

@@ -1,6 +1,7 @@
 """Generated component: FindAnimationTrackIndex."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -21,7 +22,7 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.FindAnimationTrackIndex"
 
-    def __init__(self, animation: str | INodeObjectOutput[Animation] | None = None, node: str | INodeObjectOutput[str] | None = None, property: str | INodeObjectOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, animation: str | INodeObjectOutput[Animation] | None = None, node: str | INodeObjectOutput[primitives.String] | None = None, property: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,15 +62,15 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Node reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @node.setter
-    def node(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Node reference by target ID or INodeObjectOutput[str] instance."""
+    def node(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Node reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
@@ -82,15 +83,15 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def property(self) -> str | None:
-        """Target ID of the Property reference (targets INodeObjectOutput[str])."""
+        """Target ID of the Property reference (targets INodeObjectOutput[primitives.String])."""
         member = self.get_member("Property")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @property.setter
-    def property(self, target: str | INodeObjectOutput[str] | None) -> None:
-        """Set the Property reference by target ID or INodeObjectOutput[str] instance."""
+    def property(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+        """Set the Property reference by target ID or INodeObjectOutput[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Property")
         if isinstance(member, members.Reference):

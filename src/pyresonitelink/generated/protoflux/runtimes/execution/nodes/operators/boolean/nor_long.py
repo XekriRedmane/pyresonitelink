@@ -1,8 +1,7 @@
 """Generated component: NOR_Long."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -21,7 +20,7 @@ class NOR_Long(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.NOR_Long"
 
-    def __init__(self, a: str | INodeValueOutput[np.int64] | None = None, b: str | INodeValueOutput[np.int64] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, a: str | INodeValueOutput[primitives.Long] | None = None, b: str | INodeValueOutput[primitives.Long] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,15 +36,15 @@ class NOR_Long(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[np.int64])."""
+        """Target ID of the A reference (targets INodeValueOutput[primitives.Long])."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @a.setter
-    def a(self, target: str | INodeValueOutput[np.int64] | None) -> None:
-        """Set the A reference by target ID or INodeValueOutput[np.int64] instance."""
+    def a(self, target: str | INodeValueOutput[primitives.Long] | None) -> None:
+        """Set the A reference by target ID or INodeValueOutput[primitives.Long] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("A")
         if isinstance(member, members.Reference):
@@ -58,15 +57,15 @@ class NOR_Long(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[np.int64])."""
+        """Target ID of the B reference (targets INodeValueOutput[primitives.Long])."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @b.setter
-    def b(self, target: str | INodeValueOutput[np.int64] | None) -> None:
-        """Set the B reference by target ID or INodeValueOutput[np.int64] instance."""
+    def b(self, target: str | INodeValueOutput[primitives.Long] | None) -> None:
+        """Set the B reference by target ID or INodeValueOutput[primitives.Long] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("B")
         if isinstance(member, members.Reference):

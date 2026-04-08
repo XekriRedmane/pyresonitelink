@@ -1,6 +1,7 @@
 """Generated component: MediaPrivacySettings."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -13,7 +14,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MediaPrivacySettings"
 
-    def __init__(self, media_metadata_opt_out: bool | None = None, hide_in_screenshots: bool | None = None, strip_image_file_metadata: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, media_metadata_opt_out: primitives.Bool | None = None, hide_in_screenshots: primitives.Bool | None = None, strip_image_file_metadata: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +32,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
             self.strip_image_file_metadata = strip_image_file_metadata
 
     @property
-    def media_metadata_opt_out(self) -> bool | None:
+    def media_metadata_opt_out(self) -> primitives.Bool | None:
         """The MediaMetadataOptOut field value."""
         member = self.get_member("MediaMetadataOptOut")
         if member is None:
@@ -39,7 +40,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @media_metadata_opt_out.setter
-    def media_metadata_opt_out(self, value: bool) -> None:
+    def media_metadata_opt_out(self, value: primitives.Bool) -> None:
         """Set the MediaMetadataOptOut field value."""
         member = self.get_member("MediaMetadataOptOut")
         if member is not None:
@@ -50,7 +51,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def hide_in_screenshots(self) -> bool | None:
+    def hide_in_screenshots(self) -> primitives.Bool | None:
         """The HideInScreenshots field value."""
         member = self.get_member("HideInScreenshots")
         if member is None:
@@ -58,7 +59,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @hide_in_screenshots.setter
-    def hide_in_screenshots(self, value: bool) -> None:
+    def hide_in_screenshots(self, value: primitives.Bool) -> None:
         """Set the HideInScreenshots field value."""
         member = self.get_member("HideInScreenshots")
         if member is not None:
@@ -69,7 +70,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def strip_image_file_metadata(self) -> bool | None:
+    def strip_image_file_metadata(self) -> primitives.Bool | None:
         """The StripImageFileMetadata field value."""
         member = self.get_member("StripImageFileMetadata")
         if member is None:
@@ -77,7 +78,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @strip_image_file_metadata.setter
-    def strip_image_file_metadata(self, value: bool) -> None:
+    def strip_image_file_metadata(self, value: primitives.Bool) -> None:
         """Set the StripImageFileMetadata field value."""
         member = self.get_member("StripImageFileMetadata")
         if member is not None:

@@ -1,8 +1,7 @@
 """Generated component: PlaybackDrive."""
 
-import numpy as np
-
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
@@ -26,7 +25,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.PlaybackDrive"
 
-    def __init__(self, target: str | INodeObjectOutput[SyncPlayback] | None = None, normalized_position: str | INodeValueOutput[np.float32] | None = None, maximum_position_error: str | INodeValueOutput[np.float32] | None = None, speed: str | INodeValueOutput[np.float32] | None = None, play: str | INodeValueOutput[bool] | None = None, loop: str | INodeValueOutput[bool] | None = None, on_start_drive: str | INodeOperation | None = None, on_stop_drive: str | INodeOperation | None = None, on_resync: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | INodeObjectOutput[SyncPlayback] | None = None, normalized_position: str | INodeValueOutput[primitives.Float] | None = None, maximum_position_error: str | INodeValueOutput[primitives.Float] | None = None, speed: str | INodeValueOutput[primitives.Float] | None = None, play: str | INodeValueOutput[primitives.Bool] | None = None, loop: str | INodeValueOutput[primitives.Bool] | None = None, on_start_drive: str | INodeOperation | None = None, on_stop_drive: str | INodeOperation | None = None, on_resync: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -84,15 +83,15 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def normalized_position(self) -> str | None:
-        """Target ID of the NormalizedPosition reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the NormalizedPosition reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("NormalizedPosition")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @normalized_position.setter
-    def normalized_position(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the NormalizedPosition reference by target ID or INodeValueOutput[np.float32] instance."""
+    def normalized_position(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the NormalizedPosition reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("NormalizedPosition")
         if isinstance(member, members.Reference):
@@ -105,15 +104,15 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def maximum_position_error(self) -> str | None:
-        """Target ID of the MaximumPositionError reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the MaximumPositionError reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("MaximumPositionError")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @maximum_position_error.setter
-    def maximum_position_error(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the MaximumPositionError reference by target ID or INodeValueOutput[np.float32] instance."""
+    def maximum_position_error(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the MaximumPositionError reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("MaximumPositionError")
         if isinstance(member, members.Reference):
@@ -126,15 +125,15 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def speed(self) -> str | None:
-        """Target ID of the Speed reference (targets INodeValueOutput[np.float32])."""
+        """Target ID of the Speed reference (targets INodeValueOutput[primitives.Float])."""
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @speed.setter
-    def speed(self, target: str | INodeValueOutput[np.float32] | None) -> None:
-        """Set the Speed reference by target ID or INodeValueOutput[np.float32] instance."""
+    def speed(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
+        """Set the Speed reference by target ID or INodeValueOutput[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
@@ -147,15 +146,15 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def play(self) -> str | None:
-        """Target ID of the Play reference (targets INodeValueOutput[bool])."""
+        """Target ID of the Play reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("Play")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @play.setter
-    def play(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the Play reference by target ID or INodeValueOutput[bool] instance."""
+    def play(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the Play reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Play")
         if isinstance(member, members.Reference):
@@ -168,15 +167,15 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def loop(self) -> str | None:
-        """Target ID of the Loop reference (targets INodeValueOutput[bool])."""
+        """Target ID of the Loop reference (targets INodeValueOutput[primitives.Bool])."""
         member = self.get_member("Loop")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @loop.setter
-    def loop(self, target: str | INodeValueOutput[bool] | None) -> None:
-        """Set the Loop reference by target ID or INodeValueOutput[bool] instance."""
+    def loop(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the Loop reference by target ID or INodeValueOutput[primitives.Bool] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Loop")
         if isinstance(member, members.Reference):

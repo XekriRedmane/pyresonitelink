@@ -1,7 +1,5 @@
 """Generated component: PBS_DisplaceMetallic."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -24,7 +22,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_DisplaceMetallic"
 
-    def __init__(self, high_priority_integration: bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: np.float32 | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, vertex_displace_map: str | IAssetProvider[ITexture2D] | None = None, vertex_displace_magnitude: np.float32 | None = None, vertex_displace_bias: np.float32 | None = None, vertex_displace_map_scale: primitives.Float2 | None = None, vertex_displace_map_offset: primitives.Float2 | None = None, uv_displace_map: str | IAssetProvider[ITexture2D] | None = None, uv_displace_magnitude: np.float32 | None = None, uv_displace_bias: np.float32 | None = None, uv_displace_map_scale: primitives.Float2 | None = None, uv_displace_map_offset: primitives.Float2 | None = None, worldspace_vertex_offset_map: str | IAssetProvider[ITexture2D] | None = None, worldspace_offset_magnitude: primitives.Float2 | None = None, worldspace_vertex_offset_map_scale: primitives.Float2 | None = None, worldspace_vertex_offset_map_offset: primitives.Float2 | None = None, worldspace_offset_per_vertex: bool | None = None, alpha_clip: np.float32 | None = None, offset_factor: np.float32 | None = None, offset_units: np.float32 | None = None, render_queue: np.int32 | None = None, metallic: np.float32 | None = None, smoothness: np.float32 | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, vertex_displace_map: str | IAssetProvider[ITexture2D] | None = None, vertex_displace_magnitude: primitives.Float | None = None, vertex_displace_bias: primitives.Float | None = None, vertex_displace_map_scale: primitives.Float2 | None = None, vertex_displace_map_offset: primitives.Float2 | None = None, uv_displace_map: str | IAssetProvider[ITexture2D] | None = None, uv_displace_magnitude: primitives.Float | None = None, uv_displace_bias: primitives.Float | None = None, uv_displace_map_scale: primitives.Float2 | None = None, uv_displace_map_offset: primitives.Float2 | None = None, worldspace_vertex_offset_map: str | IAssetProvider[ITexture2D] | None = None, worldspace_offset_magnitude: primitives.Float2 | None = None, worldspace_vertex_offset_map_scale: primitives.Float2 | None = None, worldspace_vertex_offset_map_offset: primitives.Float2 | None = None, worldspace_offset_per_vertex: primitives.Bool | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -135,7 +133,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             self.transparent = transparent
 
     @property
-    def high_priority_integration(self) -> bool | None:
+    def high_priority_integration(self) -> primitives.Bool | None:
         """The HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is None:
@@ -143,7 +141,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @high_priority_integration.setter
-    def high_priority_integration(self, value: bool) -> None:
+    def high_priority_integration(self, value: primitives.Bool) -> None:
         """Set the HighPriorityIntegration field value."""
         member = self.get_member("HighPriorityIntegration")
         if member is not None:
@@ -293,7 +291,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def normal_scale(self) -> np.float32 | None:
+    def normal_scale(self) -> primitives.Float | None:
         """The NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is None:
@@ -301,7 +299,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @normal_scale.setter
-    def normal_scale(self, value: np.float32) -> None:
+    def normal_scale(self, value: primitives.Float) -> None:
         """Set the NormalScale field value."""
         member = self.get_member("NormalScale")
         if member is not None:
@@ -354,7 +352,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def vertex_displace_magnitude(self) -> np.float32 | None:
+    def vertex_displace_magnitude(self) -> primitives.Float | None:
         """The VertexDisplaceMagnitude field value."""
         member = self.get_member("VertexDisplaceMagnitude")
         if member is None:
@@ -362,7 +360,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @vertex_displace_magnitude.setter
-    def vertex_displace_magnitude(self, value: np.float32) -> None:
+    def vertex_displace_magnitude(self, value: primitives.Float) -> None:
         """Set the VertexDisplaceMagnitude field value."""
         member = self.get_member("VertexDisplaceMagnitude")
         if member is not None:
@@ -373,7 +371,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def vertex_displace_bias(self) -> np.float32 | None:
+    def vertex_displace_bias(self) -> primitives.Float | None:
         """The VertexDisplaceBias field value."""
         member = self.get_member("VertexDisplaceBias")
         if member is None:
@@ -381,7 +379,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @vertex_displace_bias.setter
-    def vertex_displace_bias(self, value: np.float32) -> None:
+    def vertex_displace_bias(self, value: primitives.Float) -> None:
         """Set the VertexDisplaceBias field value."""
         member = self.get_member("VertexDisplaceBias")
         if member is not None:
@@ -451,7 +449,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def uv_displace_magnitude(self) -> np.float32 | None:
+    def uv_displace_magnitude(self) -> primitives.Float | None:
         """The UVDisplaceMagnitude field value."""
         member = self.get_member("UVDisplaceMagnitude")
         if member is None:
@@ -459,7 +457,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @uv_displace_magnitude.setter
-    def uv_displace_magnitude(self, value: np.float32) -> None:
+    def uv_displace_magnitude(self, value: primitives.Float) -> None:
         """Set the UVDisplaceMagnitude field value."""
         member = self.get_member("UVDisplaceMagnitude")
         if member is not None:
@@ -470,7 +468,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def uv_displace_bias(self) -> np.float32 | None:
+    def uv_displace_bias(self) -> primitives.Float | None:
         """The UVDisplaceBias field value."""
         member = self.get_member("UVDisplaceBias")
         if member is None:
@@ -478,7 +476,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @uv_displace_bias.setter
-    def uv_displace_bias(self, value: np.float32) -> None:
+    def uv_displace_bias(self, value: primitives.Float) -> None:
         """Set the UVDisplaceBias field value."""
         member = self.get_member("UVDisplaceBias")
         if member is not None:
@@ -605,7 +603,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def worldspace_offset_per_vertex(self) -> bool | None:
+    def worldspace_offset_per_vertex(self) -> primitives.Bool | None:
         """The WorldspaceOffsetPerVertex field value."""
         member = self.get_member("WorldspaceOffsetPerVertex")
         if member is None:
@@ -613,7 +611,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @worldspace_offset_per_vertex.setter
-    def worldspace_offset_per_vertex(self, value: bool) -> None:
+    def worldspace_offset_per_vertex(self, value: primitives.Bool) -> None:
         """Set the WorldspaceOffsetPerVertex field value."""
         member = self.get_member("WorldspaceOffsetPerVertex")
         if member is not None:
@@ -650,7 +648,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         self.set_member("AlphaHandling", value)
 
     @property
-    def alpha_clip(self) -> np.float32 | None:
+    def alpha_clip(self) -> primitives.Float | None:
         """The AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is None:
@@ -658,7 +656,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @alpha_clip.setter
-    def alpha_clip(self, value: np.float32) -> None:
+    def alpha_clip(self, value: primitives.Float) -> None:
         """Set the AlphaClip field value."""
         member = self.get_member("AlphaClip")
         if member is not None:
@@ -669,7 +667,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def offset_factor(self) -> np.float32 | None:
+    def offset_factor(self) -> primitives.Float | None:
         """The OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is None:
@@ -677,7 +675,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @offset_factor.setter
-    def offset_factor(self, value: np.float32) -> None:
+    def offset_factor(self, value: primitives.Float) -> None:
         """Set the OffsetFactor field value."""
         member = self.get_member("OffsetFactor")
         if member is not None:
@@ -688,7 +686,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def offset_units(self) -> np.float32 | None:
+    def offset_units(self) -> primitives.Float | None:
         """The OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is None:
@@ -696,7 +694,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @offset_units.setter
-    def offset_units(self, value: np.float32) -> None:
+    def offset_units(self, value: primitives.Float) -> None:
         """Set the OffsetUnits field value."""
         member = self.get_member("OffsetUnits")
         if member is not None:
@@ -707,7 +705,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def render_queue(self) -> np.int32 | None:
+    def render_queue(self) -> primitives.Int | None:
         """The RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is None:
@@ -715,7 +713,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @render_queue.setter
-    def render_queue(self, value: np.int32) -> None:
+    def render_queue(self, value: primitives.Int) -> None:
         """Set the RenderQueue field value."""
         member = self.get_member("RenderQueue")
         if member is not None:
@@ -726,7 +724,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def metallic(self) -> np.float32 | None:
+    def metallic(self) -> primitives.Float | None:
         """The Metallic field value."""
         member = self.get_member("Metallic")
         if member is None:
@@ -734,7 +732,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @metallic.setter
-    def metallic(self, value: np.float32) -> None:
+    def metallic(self, value: primitives.Float) -> None:
         """Set the Metallic field value."""
         member = self.get_member("Metallic")
         if member is not None:
@@ -745,7 +743,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def smoothness(self) -> np.float32 | None:
+    def smoothness(self) -> primitives.Float | None:
         """The Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is None:
@@ -753,7 +751,7 @@ class PBS_DisplaceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
         return getattr(member, 'value', None)
 
     @smoothness.setter
-    def smoothness(self, value: np.float32) -> None:
+    def smoothness(self, value: primitives.Float) -> None:
         """Set the Smoothness field value."""
         member = self.get_member("Smoothness")
         if member is not None:

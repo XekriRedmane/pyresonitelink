@@ -21,7 +21,7 @@ class EnumToUshort(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], 
 
     Parameterize with a value type::
 
-        EnumToUshort[np.float32]
+        EnumToUshort[primitives.Float]
         EnumToUshort[primitives.Float3]
     """
 

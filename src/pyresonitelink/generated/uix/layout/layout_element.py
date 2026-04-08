@@ -1,8 +1,7 @@
 """Generated component: LayoutElement."""
 
-import numpy as np
-
 from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ilayout_element import ILayoutElement
@@ -18,7 +17,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.LayoutElement"
 
-    def __init__(self, min_width: np.float32 | None = None, preferred_width: np.float32 | None = None, flexible_width: np.float32 | None = None, min_height: np.float32 | None = None, preferred_height: np.float32 | None = None, flexible_height: np.float32 | None = None, area: np.float32 | None = None, priority: np.int32 | None = None, use_zero_metrics: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_width: primitives.Float | None = None, preferred_width: primitives.Float | None = None, flexible_width: primitives.Float | None = None, min_height: primitives.Float | None = None, preferred_height: primitives.Float | None = None, flexible_height: primitives.Float | None = None, area: primitives.Float | None = None, priority: primitives.Int | None = None, use_zero_metrics: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,7 +53,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
             self.use_zero_metrics = use_zero_metrics
 
     @property
-    def min_width(self) -> np.float32 | None:
+    def min_width(self) -> primitives.Float | None:
         """The MinWidth field value."""
         member = self.get_member("MinWidth")
         if member is None:
@@ -62,7 +61,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
         return getattr(member, 'value', None)
 
     @min_width.setter
-    def min_width(self, value: np.float32) -> None:
+    def min_width(self, value: primitives.Float) -> None:
         """Set the MinWidth field value."""
         member = self.get_member("MinWidth")
         if member is not None:
@@ -73,7 +72,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
             )
 
     @property
-    def preferred_width(self) -> np.float32 | None:
+    def preferred_width(self) -> primitives.Float | None:
         """The PreferredWidth field value."""
         member = self.get_member("PreferredWidth")
         if member is None:
@@ -81,7 +80,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
         return getattr(member, 'value', None)
 
     @preferred_width.setter
-    def preferred_width(self, value: np.float32) -> None:
+    def preferred_width(self, value: primitives.Float) -> None:
         """Set the PreferredWidth field value."""
         member = self.get_member("PreferredWidth")
         if member is not None:
@@ -92,7 +91,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
             )
 
     @property
-    def flexible_width(self) -> np.float32 | None:
+    def flexible_width(self) -> primitives.Float | None:
         """The FlexibleWidth field value."""
         member = self.get_member("FlexibleWidth")
         if member is None:
@@ -100,7 +99,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
         return getattr(member, 'value', None)
 
     @flexible_width.setter
-    def flexible_width(self, value: np.float32) -> None:
+    def flexible_width(self, value: primitives.Float) -> None:
         """Set the FlexibleWidth field value."""
         member = self.get_member("FlexibleWidth")
         if member is not None:
@@ -111,7 +110,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
             )
 
     @property
-    def min_height(self) -> np.float32 | None:
+    def min_height(self) -> primitives.Float | None:
         """The MinHeight field value."""
         member = self.get_member("MinHeight")
         if member is None:
@@ -119,7 +118,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
         return getattr(member, 'value', None)
 
     @min_height.setter
-    def min_height(self, value: np.float32) -> None:
+    def min_height(self, value: primitives.Float) -> None:
         """Set the MinHeight field value."""
         member = self.get_member("MinHeight")
         if member is not None:
@@ -130,7 +129,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
             )
 
     @property
-    def preferred_height(self) -> np.float32 | None:
+    def preferred_height(self) -> primitives.Float | None:
         """The PreferredHeight field value."""
         member = self.get_member("PreferredHeight")
         if member is None:
@@ -138,7 +137,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
         return getattr(member, 'value', None)
 
     @preferred_height.setter
-    def preferred_height(self, value: np.float32) -> None:
+    def preferred_height(self, value: primitives.Float) -> None:
         """Set the PreferredHeight field value."""
         member = self.get_member("PreferredHeight")
         if member is not None:
@@ -149,7 +148,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
             )
 
     @property
-    def flexible_height(self) -> np.float32 | None:
+    def flexible_height(self) -> primitives.Float | None:
         """The FlexibleHeight field value."""
         member = self.get_member("FlexibleHeight")
         if member is None:
@@ -157,7 +156,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
         return getattr(member, 'value', None)
 
     @flexible_height.setter
-    def flexible_height(self, value: np.float32) -> None:
+    def flexible_height(self, value: primitives.Float) -> None:
         """Set the FlexibleHeight field value."""
         member = self.get_member("FlexibleHeight")
         if member is not None:
@@ -168,7 +167,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
             )
 
     @property
-    def area(self) -> np.float32 | None:
+    def area(self) -> primitives.Float | None:
         """The Area field value."""
         member = self.get_member("Area")
         if member is None:
@@ -176,7 +175,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
         return getattr(member, 'value', None)
 
     @area.setter
-    def area(self, value: np.float32) -> None:
+    def area(self, value: primitives.Float) -> None:
         """Set the Area field value."""
         member = self.get_member("Area")
         if member is not None:
@@ -187,7 +186,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
             )
 
     @property
-    def priority(self) -> np.int32 | None:
+    def priority(self) -> primitives.Int | None:
         """The Priority field value."""
         member = self.get_member("Priority")
         if member is None:
@@ -195,7 +194,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
         return getattr(member, 'value', None)
 
     @priority.setter
-    def priority(self, value: np.int32) -> None:
+    def priority(self, value: primitives.Int) -> None:
         """Set the Priority field value."""
         member = self.get_member("Priority")
         if member is not None:
@@ -206,7 +205,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
             )
 
     @property
-    def use_zero_metrics(self) -> bool | None:
+    def use_zero_metrics(self) -> primitives.Bool | None:
         """The UseZeroMetrics field value."""
         member = self.get_member("UseZeroMetrics")
         if member is None:
@@ -214,7 +213,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
         return getattr(member, 'value', None)
 
     @use_zero_metrics.setter
-    def use_zero_metrics(self, value: bool) -> None:
+    def use_zero_metrics(self, value: primitives.Bool) -> None:
         """Set the UseZeroMetrics field value."""
         member = self.get_member("UseZeroMetrics")
         if member is not None:
