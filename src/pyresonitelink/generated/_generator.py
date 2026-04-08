@@ -524,15 +524,14 @@ def _is_generic_parameter(member_def: dict[str, Any]) -> bool:
 def generate_component_source(
     component_type: str,
     definition: dict[str, Any],
-    component_data: dict[str, Any] | None = None,
     interfaces: list[str] | None = None,
     all_type_defs: dict[str, dict[str, Any]] | None = None,
 ) -> str:
     """Generate Python source code for a component wrapper class.
 
-    Uses component_data (from GetComponent) as the primary source for
-    member type resolution, falling back to the definition when data
-    is not available.
+    Resolves member types from the definition's ``TypeReference``
+    dicts, which include full generic arguments (e.g.
+    ``INodeValueOutput<>`` with ``genericArguments: [{type: "float"}]``).
 
     For generic component types (those with ``<>``), generates a class
     inheriting from ``GenericComponent`` with ``_GENERIC_TYPE_TEMPLATE``
@@ -547,11 +546,9 @@ def generate_component_source(
     Args:
         component_type: The fully-qualified component type string.
         definition: The "definition" dict from ComponentDefinitionData.
-        component_data: Optional component data dict (the "data" field
-            from a ComponentData response). Provides concrete member
-            $types that are more reliable than the definition.
         interfaces: Resonite interface type strings implemented by
             this component (collected from the type hierarchy).
+        all_type_defs: All known TypeDefinitions (for MRO dedup).
 
     Returns:
         The Python source code as a string.
@@ -560,7 +557,7 @@ def generate_component_source(
     category = definition.get("categoryPath", "")
     is_generic = _is_generic_type(component_type)
 
-    data_members = component_data.get("members", {}) if component_data else {}
+    data_members: dict[str, Any] = {}
     def_members = definition.get("members", {})
 
     # Union of all member names from both sources, preserving definition order
@@ -1634,33 +1631,21 @@ def get_reference_target_types(
 
     Args:
         definition: The definition dict from ComponentDefinitionData.
-        component_data: Optional component data from GetComponent.
+        component_data: Deprecated, ignored. Kept for backward
+            compatibility.
 
     Returns:
         Mapping of member name to target type string for all reference
         members that have a known target type.
     """
-    data_members = component_data.get("members", {}) if component_data else {}
     def_members = definition.get("members", {})
 
-    all_names = list(def_members.keys())
-    for name in data_members:
-        if name not in all_names:
-            all_names.append(name)
-
     result: dict[str, str] = {}
-    for name in all_names:
+    for name, mem_def in def_members.items():
         if name in _BASE_MEMBERS:
             continue
-        # Check if this member is a reference
-        dtype = ""
-        if name in data_members:
-            dtype = data_members[name].get("$type", "")
-        elif name in def_members:
-            dtype = def_members[name].get("$type", "")
-
-        if dtype == "reference":
-            tt = _extract_reference_target_type(name, data_members, def_members)
+        if mem_def.get("$type") == "reference":
+            tt = _extract_reference_target_type(name, {}, def_members)
             if tt:
                 result[name] = tt
 

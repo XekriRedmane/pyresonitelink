@@ -18,10 +18,7 @@ from pathlib import Path
 from typing import Any, cast
 
 from pyresonitelink import client
-from pyresonitelink.data import fields
-from pyresonitelink.data import members
 from pyresonitelink.data import messages
-from pyresonitelink.data import workers
 from pyresonitelink.generated._generator import (
     generate_component_source,
     generate_type_source,
@@ -345,7 +342,6 @@ async def _generate_component(
     all_type_defs: dict[str, dict[str, Any]],
     dry_run: bool,
     type_def_cache: dict[str, dict[str, Any] | None] | None = None,
-    temp_slot_id: str | None = None,
 ) -> None:
     """Generate a component and recursively generate referenced types.
 
@@ -356,9 +352,6 @@ async def _generate_component(
         all_type_defs: Accumulator for all fetched TypeDefinitions.
         dry_run: If True, print source instead of writing.
         type_def_cache: Shared cache for GetTypeDefinition responses.
-        temp_slot_id: Reusable temp slot ID for instantiating
-            non-generic components.  If None, one is created and
-            destroyed per component.
     """
     if type_def_cache is None:
         type_def_cache = {}
@@ -383,50 +376,12 @@ async def _generate_component(
     if category in _SKIP_CATEGORIES:
         return
 
-    # Try to instantiate for concrete member types
-    comp_data: dict[str, Any] | None = None
-    is_generic = "<>" in component_type
-    if not is_generic:
-        # Reuse the shared temp slot if provided, otherwise create one
-        owns_slot = temp_slot_id is None
-        if owns_slot:
-            slot_resp = await resolink.request_json(
-                messages.AddSlot(
-                    data=workers.Slot(
-                        parent=members.Reference(targetId="Root"),
-                        name=fields.FieldString(value="__gencode_temp__"),
-                    )
-                )
-            )
-            temp_slot_id = cast(str, slot_resp.get("entityId"))
-
-        add_resp = await resolink.request_json(
-            messages.AddComponent(
-                containerSlotId=temp_slot_id,
-                data=workers.Component(componentType=component_type),
-            )
-        )
-        comp_id = add_resp.get("entityId")
-        if isinstance(comp_id, str):
-            comp_json = await resolink.request_json(
-                messages.GetComponent(componentId=comp_id)
-            )
-            raw_data = comp_json.get("data")
-            if isinstance(raw_data, dict):
-                comp_data = cast(dict[str, Any], raw_data)
-            # Remove the component to keep the slot clean
-            await resolink.request_json(
-                messages.RemoveComponent(componentId=comp_id)
-            )
-
-        if owns_slot:
-            await resolink.request_json(
-                messages.RemoveSlot(slotId=temp_slot_id)
-            )
-            temp_slot_id = None
-
-    # Generate referenced types first
-    ref_targets = get_reference_target_types(definition, comp_data)
+    # Generate referenced types first.
+    # The definition's TypeReference dicts contain full generic args
+    # (e.g. INodeValueOutput<> with genericArguments: [{type: "float"}]),
+    # so we don't need to instantiate the component to get concrete
+    # member types.  comp_data is no longer used.
+    ref_targets = get_reference_target_types(definition, None)
     for target_type_str in ref_targets.values():
         for ref_base in _collect_referenced_types(target_type_str):
             ref_cls = _simple_class_name(ref_base)
@@ -441,7 +396,7 @@ async def _generate_component(
                     await _generate_component(
                         resolink, ref_base, generated,
                         all_type_defs, dry_run,
-                        type_def_cache, temp_slot_id,
+                        type_def_cache,
                     )
                 else:
                     await _generate_type_hierarchy(
@@ -468,7 +423,7 @@ async def _generate_component(
 
     # Generate this component
     source = generate_component_source(
-        component_type, definition, comp_data,
+        component_type, definition,
         interfaces=component_interfaces,
         all_type_defs=all_type_defs,
     )
@@ -583,19 +538,6 @@ async def generate(
     all_type_defs: dict[str, dict[str, Any]] = {}
     type_def_cache: dict[str, dict[str, Any] | None] = {}
 
-    # Create a reusable temp slot for instantiating non-generic
-    # components.  This avoids creating/destroying a slot for each
-    # component, saving 2 round-trips per component.
-    temp_slot_resp = await resolink.request_json(
-        messages.AddSlot(
-            data=workers.Slot(
-                parent=members.Reference(targetId="Root"),
-                name=fields.FieldString(value="__gencode_temp__"),
-            )
-        )
-    )
-    temp_slot_id = cast(str, temp_slot_resp.get("entityId"))
-
     # Clear the global interface cache so stale data from a previous
     # run doesn't carry over.
     _interface_cache.clear()
@@ -603,11 +545,8 @@ async def generate(
     await _generate_component(
         resolink, component_type, generated,
         all_type_defs, dry_run,
-        type_def_cache, temp_slot_id,
+        type_def_cache,
     )
-
-    # Clean up temp slot
-    await resolink.request_json(messages.RemoveSlot(slotId=temp_slot_id))
 
     if not dry_run:
         # Rebuild __init__.py re-exports for all category directories
