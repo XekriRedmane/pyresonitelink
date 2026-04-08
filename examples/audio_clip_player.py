@@ -17,7 +17,7 @@ import time
 from pyresonitelink import client
 from pyresonitelink.data import workers
 from pyresonitelink.components.assets import StaticAudioClip
-from pyresonitelink.components.audio import AudioClipPlayer
+from pyresonitelink.components.audio import AudioClipPlayer, AudioOutput
 
 
 async def main(port: int) -> None:
@@ -59,6 +59,12 @@ async def main(port: int) -> None:
     assert player.id is not None
     print(f"AudioClipPlayer: {player.id}")
     print(f"  clip -> {player.clip}")
+
+    # --- Create an AudioOutput to hear the audio ---
+    output = AudioOutput(source=player.id)
+    await output.add_to_slot(resolink, slot)
+    print(f"AudioOutput: {output.id}")
+    print(f"  source -> {output.source}")
 
     # --- Play it ---
     print("\nPlaying...")
