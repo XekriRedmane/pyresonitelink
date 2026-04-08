@@ -72,12 +72,18 @@ def _clean_text(text: str) -> str:
     # Strip HTML comments
     text = re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)
     text = _strip_templates(text)
+    # Strip [[Category:...]] before general wiki link stripping
+    text = re.sub(r"\[\[Category:[^\]]*\]\]", "", text)
     text = _strip_wiki_links(text)
+    # Strip bold/italic markup
+    text = re.sub(r"'{2,3}", "", text)
     text = re.sub(r"<br\s*/?>", " ", text)
     text = re.sub(r"<code>(.*?)</code>", r"``\1``", text)
     text = re.sub(r"<[^>]+>", "", text)
-    # Collapse multiple spaces
-    text = re.sub(r"  +", " ", text)
+    # Collapse multiple spaces (but preserve newlines)
+    text = re.sub(r"[^\S\n]+", " ", text)
+    # Collapse multiple blank lines
+    text = re.sub(r"\n{3,}", "\n\n", text)
     text = text.strip()
     return text
 
@@ -100,24 +106,45 @@ def parse_wikitext(wikitext: str) -> dict:
         "notes": [],
     }
 
-    # Extract description from SHORTDESC or first paragraph
-    shortdesc = re.search(r"\{\{SHORTDESC:(.*?)\}\}", wikitext)
-    if shortdesc:
-        doc["description"] = _clean_text(shortdesc.group(1))
+    # Extract the long description: all body text between the last
+    # template/infobox and the first == section heading.  This includes
+    # paragraphs, bullet lists, etc.
+    # First, find where the body starts (after templates and infobox)
+    body_lines: list[str] = []
+    in_body = False
+    for line in wikitext.split("\n"):
+        stripped = line.strip()
+        if stripped.startswith("=="):
+            break  # hit a section heading, stop
+        if in_body:
+            body_lines.append(line)
+        elif (
+            stripped
+            and not stripped.startswith("{{")
+            and not stripped.startswith("}}")
+            and not stripped.startswith("<!--")
+            and not stripped.startswith("|")
+            and not stripped.startswith("<languages")
+            and not stripped.startswith("<translate")
+            and not stripped.startswith("</translate")
+        ):
+            in_body = True
+            body_lines.append(line)
+
+    long_desc = _clean_text("\n".join(body_lines))
+
+    # Convert wiki bullet lists to plain text
+    # * Item -> - Item
+    long_desc = re.sub(r"^\* ", "- ", long_desc, flags=re.MULTILINE)
+    long_desc = re.sub(r"^\*\* ", "  - ", long_desc, flags=re.MULTILINE)
+
+    if long_desc:
+        doc["description"] = long_desc
     else:
-        # First non-template, non-empty line after the infobox
-        lines = wikitext.split("\n")
-        for line in lines:
-            line = line.strip()
-            if (
-                line
-                and not line.startswith("{{")
-                and not line.startswith("<!--")
-                and not line.startswith("==")
-                and not line.startswith("|")
-            ):
-                doc["description"] = _clean_text(line)
-                break
+        # Fall back to SHORTDESC if no body text
+        shortdesc = re.search(r"\{\{SHORTDESC:(.*?)\}\}", wikitext)
+        if shortdesc:
+            doc["description"] = _clean_text(shortdesc.group(1))
 
     # Parse fields from {{Table ComponentFields ... }}
     # Can't use simple regex because inner templates also use }}.
