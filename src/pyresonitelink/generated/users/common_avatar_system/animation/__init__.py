@@ -1,0 +1,8 @@
+"""Generated animation components."""
+
+from .locomotion_animation_body_collider import LocomotionAnimationBodyCollider
+from .locomotion_animation_collider_block import LocomotionAnimationColliderBlock
+from .locomotion_animation_configuration import LocomotionAnimationConfiguration
+from .locomotion_animation_feet_metrics import LocomotionAnimationFeetMetrics
+from .locomotion_animation_hand_metrics import LocomotionAnimationHandMetrics
+from .locomotion_animation_suppressor import LocomotionAnimationSuppressor

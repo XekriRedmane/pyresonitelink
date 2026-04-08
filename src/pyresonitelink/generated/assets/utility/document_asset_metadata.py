@@ -1,5 +1,8 @@
 """Generated component: DocumentAssetMetadata."""
 
+import numpy as np
+
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -17,16 +20,19 @@ class DocumentAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DocumentAssetMetadata"
 
-    def __init__(self, document: str | IAssetProvider[Document] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, document: str | IAssetProvider[Document] | None = None, page_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             document: Initial value for Document.
+            page_count: Initial value for PageCount.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if document is not None:
             self.document = document
+        if page_count is not None:
+            self.page_count = page_count
 
     @property
     def document(self) -> str | None:
@@ -50,15 +56,21 @@ class DocumentAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def page_count(self) -> members.EmptyElement | None:
-        """The PageCount member."""
+    def page_count(self) -> np.int32 | None:
+        """The PageCount field value."""
         member = self.get_member("PageCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @page_count.setter
-    def page_count(self, value: members.EmptyElement) -> None:
-        """Set the PageCount member."""
-        self.set_member("PageCount", value)
+    def page_count(self, value: np.int32) -> None:
+        """Set the PageCount field value."""
+        member = self.get_member("PageCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "PageCount", fields.FieldInt(value=value)
+            )
 

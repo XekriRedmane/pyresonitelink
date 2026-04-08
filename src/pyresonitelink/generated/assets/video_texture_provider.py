@@ -22,7 +22,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VideoTextureProvider"
 
-    def __init__(self, url: str | None = None, stream: bool | None = None, volume: np.float32 | None = None, force_playback_engine: str | None = None, force_video_streaming_service_parsing: bool | None = None, anisotropic_level: np.int32 | None = None, audio_track_index: np.int32 | None = None, prefer_audio_only: bool | None = None, max_width: np.int32 | None = None, max_height: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, stream: bool | None = None, volume: np.float32 | None = None, force_playback_engine: str | None = None, force_video_streaming_service_parsing: bool | None = None, video_title: str | None = None, current_playback_engine: str | None = None, current_clock_error: np.float32 | None = None, anisotropic_level: np.int32 | None = None, audio_track_index: np.int32 | None = None, prefer_audio_only: bool | None = None, max_width: np.int32 | None = None, max_height: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,6 +31,9 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
             volume: Initial value for Volume.
             force_playback_engine: Initial value for ForcePlaybackEngine.
             force_video_streaming_service_parsing: Initial value for ForceVideoStreamingServiceParsing.
+            video_title: Initial value for VideoTitle.
+            current_playback_engine: Initial value for CurrentPlaybackEngine.
+            current_clock_error: Initial value for CurrentClockError.
             anisotropic_level: Initial value for AnisotropicLevel.
             audio_track_index: Initial value for AudioTrackIndex.
             prefer_audio_only: Initial value for PreferAudioOnly.
@@ -49,6 +52,12 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
             self.force_playback_engine = force_playback_engine
         if force_video_streaming_service_parsing is not None:
             self.force_video_streaming_service_parsing = force_video_streaming_service_parsing
+        if video_title is not None:
+            self.video_title = video_title
+        if current_playback_engine is not None:
+            self.current_playback_engine = current_playback_engine
+        if current_clock_error is not None:
+            self.current_clock_error = current_clock_error
         if anisotropic_level is not None:
             self.anisotropic_level = anisotropic_level
         if audio_track_index is not None:
@@ -169,43 +178,61 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
             )
 
     @property
-    def video_title(self) -> members.EmptyElement | None:
-        """The VideoTitle member."""
+    def video_title(self) -> str | None:
+        """The VideoTitle field value."""
         member = self.get_member("VideoTitle")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @video_title.setter
-    def video_title(self, value: members.EmptyElement) -> None:
-        """Set the VideoTitle member."""
-        self.set_member("VideoTitle", value)
+    def video_title(self, value: str) -> None:
+        """Set the VideoTitle field value."""
+        member = self.get_member("VideoTitle")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "VideoTitle", fields.FieldString(value=value)
+            )
 
     @property
-    def current_playback_engine(self) -> members.EmptyElement | None:
-        """The CurrentPlaybackEngine member."""
+    def current_playback_engine(self) -> str | None:
+        """The CurrentPlaybackEngine field value."""
         member = self.get_member("CurrentPlaybackEngine")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @current_playback_engine.setter
-    def current_playback_engine(self, value: members.EmptyElement) -> None:
-        """Set the CurrentPlaybackEngine member."""
-        self.set_member("CurrentPlaybackEngine", value)
+    def current_playback_engine(self, value: str) -> None:
+        """Set the CurrentPlaybackEngine field value."""
+        member = self.get_member("CurrentPlaybackEngine")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "CurrentPlaybackEngine", fields.FieldString(value=value)
+            )
 
     @property
-    def current_clock_error(self) -> members.EmptyElement | None:
-        """The CurrentClockError member."""
+    def current_clock_error(self) -> np.float32 | None:
+        """The CurrentClockError field value."""
         member = self.get_member("CurrentClockError")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @current_clock_error.setter
-    def current_clock_error(self, value: members.EmptyElement) -> None:
-        """Set the CurrentClockError member."""
-        self.set_member("CurrentClockError", value)
+    def current_clock_error(self, value: np.float32) -> None:
+        """Set the CurrentClockError field value."""
+        member = self.get_member("CurrentClockError")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "CurrentClockError", fields.FieldFloat(value=value)
+            )
 
     @property
     def filter_mode(self) -> members.FieldEnum | None:

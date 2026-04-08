@@ -8,7 +8,6 @@ from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.avatar_anchor_user_event import AvatarAnchorUserEvent
 from pyresonitelink.generated._types.iavatar_anchor import IAvatarAnchor
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -21,7 +20,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchor"
 
-    def __init__(self, highlight: bool | None = None, min_scale: np.float32 | None = None, max_scale: np.float32 | None = None, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up_on_enter: bool | None = None, preserve_up_on_exit: bool | None = None, unparent_everything_on_destroy: bool | None = None, restore_reference: str | Slot | None = None, original_space: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: np.float32 | None = None, user_anchored: str | AvatarAnchorUserEvent | None = None, user_stay: str | AvatarAnchorUserEvent | None = None, user_released: str | AvatarAnchorUserEvent | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, highlight: bool | None = None, min_scale: np.float32 | None = None, max_scale: np.float32 | None = None, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up_on_enter: bool | None = None, preserve_up_on_exit: bool | None = None, unparent_everything_on_destroy: bool | None = None, restore_reference: str | Slot | None = None, original_space: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: np.float32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,9 +37,6 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             original_position: Initial value for _originalPosition.
             original_rotation: Initial value for _originalRotation.
             original_scale: Initial value for _originalScale.
-            user_anchored: Initial value for UserAnchored.
-            user_stay: Initial value for UserStay.
-            user_released: Initial value for UserReleased.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -70,12 +66,6 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             self.original_rotation = original_rotation
         if original_scale is not None:
             self.original_scale = original_scale
-        if user_anchored is not None:
-            self.user_anchored = user_anchored
-        if user_stay is not None:
-            self.user_stay = user_stay
-        if user_released is not None:
-            self.user_released = user_released
 
     @property
     def highlight(self) -> bool | None:
@@ -435,67 +425,4 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
     def dummy_object_slots(self, value: members.SyncList) -> None:
         """Set the _dummyObjectSlots member."""
         self.set_member("_dummyObjectSlots", value)
-
-    @property
-    def user_anchored(self) -> str | None:
-        """Target ID of the UserAnchored reference (targets AvatarAnchorUserEvent)."""
-        member = self.get_member("UserAnchored")
-        if isinstance(member, members.Reference):
-            return member.targetId
-        return None
-
-    @user_anchored.setter
-    def user_anchored(self, target: str | AvatarAnchorUserEvent | None) -> None:
-        """Set the UserAnchored reference by target ID or AvatarAnchorUserEvent instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarAnchorUserEvent) else target  # type: ignore[assignment]
-        member = self.get_member("UserAnchored")
-        if isinstance(member, members.Reference):
-            member.targetId = target_id
-        else:
-            self.set_member(
-                "UserAnchored",
-                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorUserEvent'),
-            )
-
-    @property
-    def user_stay(self) -> str | None:
-        """Target ID of the UserStay reference (targets AvatarAnchorUserEvent)."""
-        member = self.get_member("UserStay")
-        if isinstance(member, members.Reference):
-            return member.targetId
-        return None
-
-    @user_stay.setter
-    def user_stay(self, target: str | AvatarAnchorUserEvent | None) -> None:
-        """Set the UserStay reference by target ID or AvatarAnchorUserEvent instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarAnchorUserEvent) else target  # type: ignore[assignment]
-        member = self.get_member("UserStay")
-        if isinstance(member, members.Reference):
-            member.targetId = target_id
-        else:
-            self.set_member(
-                "UserStay",
-                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorUserEvent'),
-            )
-
-    @property
-    def user_released(self) -> str | None:
-        """Target ID of the UserReleased reference (targets AvatarAnchorUserEvent)."""
-        member = self.get_member("UserReleased")
-        if isinstance(member, members.Reference):
-            return member.targetId
-        return None
-
-    @user_released.setter
-    def user_released(self, target: str | AvatarAnchorUserEvent | None) -> None:
-        """Set the UserReleased reference by target ID or AvatarAnchorUserEvent instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarAnchorUserEvent) else target  # type: ignore[assignment]
-        member = self.get_member("UserReleased")
-        if isinstance(member, members.Reference):
-            member.targetId = target_id
-        else:
-            self.set_member(
-                "UserReleased",
-                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorUserEvent'),
-            )
 

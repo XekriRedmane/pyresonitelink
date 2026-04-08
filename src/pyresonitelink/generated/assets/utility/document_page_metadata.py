@@ -4,6 +4,7 @@ import numpy as np
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,12 +21,13 @@ class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DocumentPageMetadata"
 
-    def __init__(self, document: str | IAssetProvider[Document] | None = None, page_index: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, document: str | IAssetProvider[Document] | None = None, page_index: np.int32 | None = None, reference_size: primitives.Double2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             document: Initial value for Document.
             page_index: Initial value for PageIndex.
+            reference_size: Initial value for ReferenceSize.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -33,6 +35,8 @@ class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.document = document
         if page_index is not None:
             self.page_index = page_index
+        if reference_size is not None:
+            self.reference_size = reference_size
 
     @property
     def document(self) -> str | None:
@@ -75,15 +79,21 @@ class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def reference_size(self) -> members.EmptyElement | None:
-        """The ReferenceSize member."""
+    def reference_size(self) -> primitives.Double2 | None:
+        """The ReferenceSize field value."""
         member = self.get_member("ReferenceSize")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @reference_size.setter
-    def reference_size(self, value: members.EmptyElement) -> None:
-        """Set the ReferenceSize member."""
-        self.set_member("ReferenceSize", value)
+    def reference_size(self, value: primitives.Double2) -> None:
+        """Set the ReferenceSize field value."""
+        member = self.get_member("ReferenceSize")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ReferenceSize", fields.FieldDouble2(value=value)
+            )
 

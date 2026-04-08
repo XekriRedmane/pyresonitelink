@@ -1,0 +1,99 @@
+"""Generated component: RefEditor."""
+
+from pyresonitelink.data import members
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.isync_ref import ISyncRef
+from pyresonitelink.generated._types.ifield import IField
+from pyresonitelink.generated._types.button import Button
+from pyresonitelink.generated._types.iui_grab_receiver import IUIGrabReceiver
+from pyresonitelink.generated._types.iui_grabbable import IUIGrabbable
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class RefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.RefEditor.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RefEditor"
+
+    def __init__(self, target_ref: str | ISyncRef | None = None, text_drive: str | IField[str] | None = None, button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            target_ref: Initial value for _targetRef.
+            text_drive: Initial value for _textDrive.
+            button: Initial value for _button.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if target_ref is not None:
+            self.target_ref = target_ref
+        if text_drive is not None:
+            self.text_drive = text_drive
+        if button is not None:
+            self.button = button
+
+    @property
+    def target_ref(self) -> str | None:
+        """Target ID of the _targetRef reference (targets ISyncRef)."""
+        member = self.get_member("_targetRef")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @target_ref.setter
+    def target_ref(self, target: str | ISyncRef | None) -> None:
+        """Set the _targetRef reference by target ID or ISyncRef instance."""
+        target_id: str | None = target.id if isinstance(target, ISyncRef) else target  # type: ignore[assignment]
+        member = self.get_member("_targetRef")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_targetRef",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ISyncRef'),
+            )
+
+    @property
+    def text_drive(self) -> str | None:
+        """Target ID of the _textDrive reference (targets IField[str])."""
+        member = self.get_member("_textDrive")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @text_drive.setter
+    def text_drive(self, target: str | IField[str] | None) -> None:
+        """Set the _textDrive reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("_textDrive")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_textDrive",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def button(self) -> str | None:
+        """Target ID of the _button reference (targets Button)."""
+        member = self.get_member("_button")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @button.setter
+    def button(self, target: str | Button | None) -> None:
+        """Set the _button reference by target ID or Button instance."""
+        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        member = self.get_member("_button")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_button",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UIX.Button'),
+            )
+

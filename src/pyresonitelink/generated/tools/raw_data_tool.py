@@ -25,7 +25,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RawDataTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, local_tip_offset: primitives.Float3 | None = None, local_tip_reference: str | Slot | None = None, use_laser: bool | None = None, block_primary_when_touching: bool | None = None, use_secondary: bool | None = None, allow_use_when_holding: bool | None = None, equipped: bool | None = None, primary_strength_stream: str | ValueStream[np.float32] | None = None, secondary_axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[bool] | None = None, secondary_stream: str | ValueStream[bool] | None = None, raw_strength: np.float32 | None = None, raw_axis: primitives.Float2 | None = None, raw_primary: bool | None = None, raw_secondary: bool | None = None, primary_action_description: str | None = None, secondary_action_description: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: bool | None = None, block_remote_equip: bool | None = None, equip_name: str | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: bool | None = None, local_tip_offset: primitives.Float3 | None = None, local_tip_reference: str | Slot | None = None, use_laser: bool | None = None, block_primary_when_touching: bool | None = None, use_secondary: bool | None = None, allow_use_when_holding: bool | None = None, equipped: bool | None = None, primary_strength: np.float32 | None = None, secondary_axis: primitives.Float2 | None = None, primary: bool | None = None, secondary: bool | None = None, primary_strength_stream: str | ValueStream[np.float32] | None = None, secondary_axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[bool] | None = None, secondary_stream: str | ValueStream[bool] | None = None, raw_strength: np.float32 | None = None, raw_axis: primitives.Float2 | None = None, raw_primary: bool | None = None, raw_secondary: bool | None = None, primary_action_description: str | None = None, secondary_action_description: str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -42,6 +42,10 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             use_secondary: Initial value for UseSecondary.
             allow_use_when_holding: Initial value for AllowUseWhenHolding.
             equipped: Initial value for Equipped.
+            primary_strength: Initial value for PrimaryStrength.
+            secondary_axis: Initial value for SecondaryAxis.
+            primary: Initial value for Primary.
+            secondary: Initial value for Secondary.
             primary_strength_stream: Initial value for _primaryStrengthStream.
             secondary_axis_stream: Initial value for _secondaryAxisStream.
             primary_stream: Initial value for _primaryStream.
@@ -81,6 +85,14 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             self.allow_use_when_holding = allow_use_when_holding
         if equipped is not None:
             self.equipped = equipped
+        if primary_strength is not None:
+            self.primary_strength = primary_strength
+        if secondary_axis is not None:
+            self.secondary_axis = secondary_axis
+        if primary is not None:
+            self.primary = primary
+        if secondary is not None:
+            self.secondary = secondary
         if primary_strength_stream is not None:
             self.primary_strength_stream = primary_strength_stream
         if secondary_axis_stream is not None:
@@ -369,15 +381,15 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
             )
 
     @property
-    def controller_type(self) -> members.Member | None:
+    def controller_type(self) -> members.FieldEnum | None:
         """The ControllerType member."""
         member = self.get_member("ControllerType")
-        if isinstance(member, members.Member):
+        if isinstance(member, members.FieldEnum):
             return member
         return None
 
     @controller_type.setter
-    def controller_type(self, value: members.Member) -> None:
+    def controller_type(self, value: members.FieldEnum) -> None:
         """Set the ControllerType member."""
         self.set_member("ControllerType", value)
 
@@ -395,56 +407,80 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
         self.set_member("ControllerSide", value)
 
     @property
-    def primary_strength(self) -> members.EmptyElement | None:
-        """The PrimaryStrength member."""
+    def primary_strength(self) -> np.float32 | None:
+        """The PrimaryStrength field value."""
         member = self.get_member("PrimaryStrength")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @primary_strength.setter
-    def primary_strength(self, value: members.EmptyElement) -> None:
-        """Set the PrimaryStrength member."""
-        self.set_member("PrimaryStrength", value)
+    def primary_strength(self, value: np.float32) -> None:
+        """Set the PrimaryStrength field value."""
+        member = self.get_member("PrimaryStrength")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "PrimaryStrength", fields.FieldFloat(value=value)
+            )
 
     @property
-    def secondary_axis(self) -> members.EmptyElement | None:
-        """The SecondaryAxis member."""
+    def secondary_axis(self) -> primitives.Float2 | None:
+        """The SecondaryAxis field value."""
         member = self.get_member("SecondaryAxis")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @secondary_axis.setter
-    def secondary_axis(self, value: members.EmptyElement) -> None:
-        """Set the SecondaryAxis member."""
-        self.set_member("SecondaryAxis", value)
+    def secondary_axis(self, value: primitives.Float2) -> None:
+        """Set the SecondaryAxis field value."""
+        member = self.get_member("SecondaryAxis")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "SecondaryAxis", fields.FieldFloat2(value=value)
+            )
 
     @property
-    def primary(self) -> members.EmptyElement | None:
-        """The Primary member."""
+    def primary(self) -> bool | None:
+        """The Primary field value."""
         member = self.get_member("Primary")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @primary.setter
-    def primary(self, value: members.EmptyElement) -> None:
-        """Set the Primary member."""
-        self.set_member("Primary", value)
+    def primary(self, value: bool) -> None:
+        """Set the Primary field value."""
+        member = self.get_member("Primary")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Primary", fields.FieldBool(value=value)
+            )
 
     @property
-    def secondary(self) -> members.EmptyElement | None:
-        """The Secondary member."""
+    def secondary(self) -> bool | None:
+        """The Secondary field value."""
         member = self.get_member("Secondary")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @secondary.setter
-    def secondary(self, value: members.EmptyElement) -> None:
-        """Set the Secondary member."""
-        self.set_member("Secondary", value)
+    def secondary(self, value: bool) -> None:
+        """Set the Secondary field value."""
+        member = self.get_member("Secondary")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Secondary", fields.FieldBool(value=value)
+            )
 
     @property
     def primary_strength_stream(self) -> str | None:

@@ -1,0 +1,180 @@
+"""Generated component: HapticManager."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.HapticManager.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HapticManager"
+
+    def __init__(self, injected_body_part_intensity: np.float32 | None = None, injected_hand_intensity: np.float32 | None = None, injected_head_intensity: np.float32 | None = None, injected_radius_start_ratio: np.float32 | None = None, injected_radius_end_ratio: np.float32 | None = None, injected_radius_power: np.float32 | None = None, show_debug_visuals: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            injected_body_part_intensity: Initial value for InjectedBodyPartIntensity.
+            injected_hand_intensity: Initial value for InjectedHandIntensity.
+            injected_head_intensity: Initial value for InjectedHeadIntensity.
+            injected_radius_start_ratio: Initial value for InjectedRadiusStartRatio.
+            injected_radius_end_ratio: Initial value for InjectedRadiusEndRatio.
+            injected_radius_power: Initial value for InjectedRadiusPower.
+            show_debug_visuals: Initial value for ShowDebugVisuals.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if injected_body_part_intensity is not None:
+            self.injected_body_part_intensity = injected_body_part_intensity
+        if injected_hand_intensity is not None:
+            self.injected_hand_intensity = injected_hand_intensity
+        if injected_head_intensity is not None:
+            self.injected_head_intensity = injected_head_intensity
+        if injected_radius_start_ratio is not None:
+            self.injected_radius_start_ratio = injected_radius_start_ratio
+        if injected_radius_end_ratio is not None:
+            self.injected_radius_end_ratio = injected_radius_end_ratio
+        if injected_radius_power is not None:
+            self.injected_radius_power = injected_radius_power
+        if show_debug_visuals is not None:
+            self.show_debug_visuals = show_debug_visuals
+
+    @property
+    def injected_body_part_intensity(self) -> np.float32 | None:
+        """The InjectedBodyPartIntensity field value."""
+        member = self.get_member("InjectedBodyPartIntensity")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @injected_body_part_intensity.setter
+    def injected_body_part_intensity(self, value: np.float32) -> None:
+        """Set the InjectedBodyPartIntensity field value."""
+        member = self.get_member("InjectedBodyPartIntensity")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "InjectedBodyPartIntensity", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def injected_hand_intensity(self) -> np.float32 | None:
+        """The InjectedHandIntensity field value."""
+        member = self.get_member("InjectedHandIntensity")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @injected_hand_intensity.setter
+    def injected_hand_intensity(self, value: np.float32) -> None:
+        """Set the InjectedHandIntensity field value."""
+        member = self.get_member("InjectedHandIntensity")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "InjectedHandIntensity", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def injected_head_intensity(self) -> np.float32 | None:
+        """The InjectedHeadIntensity field value."""
+        member = self.get_member("InjectedHeadIntensity")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @injected_head_intensity.setter
+    def injected_head_intensity(self, value: np.float32) -> None:
+        """Set the InjectedHeadIntensity field value."""
+        member = self.get_member("InjectedHeadIntensity")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "InjectedHeadIntensity", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def injected_radius_start_ratio(self) -> np.float32 | None:
+        """The InjectedRadiusStartRatio field value."""
+        member = self.get_member("InjectedRadiusStartRatio")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @injected_radius_start_ratio.setter
+    def injected_radius_start_ratio(self, value: np.float32) -> None:
+        """Set the InjectedRadiusStartRatio field value."""
+        member = self.get_member("InjectedRadiusStartRatio")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "InjectedRadiusStartRatio", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def injected_radius_end_ratio(self) -> np.float32 | None:
+        """The InjectedRadiusEndRatio field value."""
+        member = self.get_member("InjectedRadiusEndRatio")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @injected_radius_end_ratio.setter
+    def injected_radius_end_ratio(self, value: np.float32) -> None:
+        """Set the InjectedRadiusEndRatio field value."""
+        member = self.get_member("InjectedRadiusEndRatio")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "InjectedRadiusEndRatio", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def injected_radius_power(self) -> np.float32 | None:
+        """The InjectedRadiusPower field value."""
+        member = self.get_member("InjectedRadiusPower")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @injected_radius_power.setter
+    def injected_radius_power(self, value: np.float32) -> None:
+        """Set the InjectedRadiusPower field value."""
+        member = self.get_member("InjectedRadiusPower")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "InjectedRadiusPower", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def show_debug_visuals(self) -> bool | None:
+        """The ShowDebugVisuals field value."""
+        member = self.get_member("ShowDebugVisuals")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @show_debug_visuals.setter
+    def show_debug_visuals(self, value: bool) -> None:
+        """Set the ShowDebugVisuals field value."""
+        member = self.get_member("ShowDebugVisuals")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ShowDebugVisuals", fields.FieldBool(value=value)
+            )
+

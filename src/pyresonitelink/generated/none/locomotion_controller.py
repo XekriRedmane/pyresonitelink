@@ -8,8 +8,6 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icollider import ICollider
 from pyresonitelink.generated._types.character_controller import CharacterController
-from pyresonitelink.generated._types.action import Action
-from pyresonitelink.generated._types.locomotion_controller import LocomotionController
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -20,7 +18,7 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionController"
 
-    def __init__(self, scaling_enabled: bool | None = None, active_module_index: np.int32 | None = None, find_user_preferred_module: bool | None = None, current_ground_collider: str | ICollider | None = None, last_ground_collider: str | ICollider | None = None, dummy_character_controller: str | CharacterController | None = None, on_initialized: str | Action[LocomotionController] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, scaling_enabled: bool | None = None, active_module_index: np.int32 | None = None, find_user_preferred_module: bool | None = None, current_ground_collider: str | ICollider | None = None, last_ground_collider: str | ICollider | None = None, dummy_character_controller: str | CharacterController | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,7 +28,6 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
             current_ground_collider: Initial value for _currentGroundCollider.
             last_ground_collider: Initial value for _lastGroundCollider.
             dummy_character_controller: Initial value for _dummyCharacterController.
-            on_initialized: Initial value for OnInitialized.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -46,8 +43,6 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.last_ground_collider = last_ground_collider
         if dummy_character_controller is not None:
             self.dummy_character_controller = dummy_character_controller
-        if on_initialized is not None:
-            self.on_initialized = on_initialized
 
     @property
     def scaling_enabled(self) -> bool | None:
@@ -219,26 +214,5 @@ class LocomotionController(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.set_member(
                 "_dummyCharacterController",
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.CharacterController'),
-            )
-
-    @property
-    def on_initialized(self) -> str | None:
-        """Target ID of the OnInitialized reference (targets Action[LocomotionController])."""
-        member = self.get_member("OnInitialized")
-        if isinstance(member, members.Reference):
-            return member.targetId
-        return None
-
-    @on_initialized.setter
-    def on_initialized(self, target: str | Action[LocomotionController] | None) -> None:
-        """Set the OnInitialized reference by target ID or Action[LocomotionController] instance."""
-        target_id: str | None = target.id if isinstance(target, Action) else target  # type: ignore[assignment]
-        member = self.get_member("OnInitialized")
-        if isinstance(member, members.Reference):
-            member.targetId = target_id
-        else:
-            self.set_member(
-                "OnInitialized",
-                members.Reference(targetId=target_id, targetType='Action<[FrooxEngine]FrooxEngine.LocomotionController>'),
             )
 

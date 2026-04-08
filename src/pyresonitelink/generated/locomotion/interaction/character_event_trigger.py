@@ -1,0 +1,69 @@
+"""Generated component: CharacterEventTrigger."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class CharacterEventTrigger(GeneratedComponent, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.CharacterEventTrigger.
+
+    Category: Locomotion/Interaction
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterEventTrigger"
+
+    def __init__(self, triggers_only: bool | None = None, ignore_parent_user: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            triggers_only: Initial value for TriggersOnly.
+            ignore_parent_user: Initial value for IgnoreParentUser.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if triggers_only is not None:
+            self.triggers_only = triggers_only
+        if ignore_parent_user is not None:
+            self.ignore_parent_user = ignore_parent_user
+
+    @property
+    def triggers_only(self) -> bool | None:
+        """The TriggersOnly field value."""
+        member = self.get_member("TriggersOnly")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @triggers_only.setter
+    def triggers_only(self, value: bool) -> None:
+        """Set the TriggersOnly field value."""
+        member = self.get_member("TriggersOnly")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "TriggersOnly", fields.FieldBool(value=value)
+            )
+
+    @property
+    def ignore_parent_user(self) -> bool | None:
+        """The IgnoreParentUser field value."""
+        member = self.get_member("IgnoreParentUser")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @ignore_parent_user.setter
+    def ignore_parent_user(self, value: bool) -> None:
+        """Set the IgnoreParentUser field value."""
+        member = self.get_member("IgnoreParentUser")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "IgnoreParentUser", fields.FieldBool(value=value)
+            )
+

@@ -1,0 +1,155 @@
+{
+  "$type": "componentDefinitionData",
+  "definition": {
+    "baseTypeIsComponent": true,
+    "categoryPath": "ProtoFlux/Runtimes/Execution/Nodes/Operators",
+    "type": {
+      "baseType": null,
+      "fullTypeName": "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.Add_Float_Float2",
+      "assemblyName": "ProtoFluxBindings",
+      "namespace": "FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators",
+      "name": "Add_Float_Float2",
+      "isAbstract": false,
+      "isInterface": false,
+      "isGenericType": false,
+      "isGenericTypeDefinition": false,
+      "directGenericParameterCount": 0,
+      "isEnginePrimitive": false,
+      "isValueType": false,
+      "isEnum": false,
+      "isComponent": true,
+      "isSyncObject": false,
+      "isWorldElement": true,
+      "isNested": false,
+      "declaringType": null,
+      "genericArguments": null,
+      "genericParameters": null,
+      "interfaces": []
+    },
+    "members": {
+      "persistent": {
+        "$type": "field",
+        "valueType": {
+          "type": "bool",
+          "isGenericParameter": false,
+          "genericArguments": null
+        },
+        "type": {
+          "type": "[FrooxEngine]FrooxEngine.Sync<>",
+          "isGenericParameter": false,
+          "genericArguments": [
+            {
+              "type": "bool",
+              "isGenericParameter": false,
+              "genericArguments": null
+            }
+          ]
+        }
+      },
+      "UpdateOrder": {
+        "$type": "field",
+        "valueType": {
+          "type": "int",
+          "isGenericParameter": false,
+          "genericArguments": null
+        },
+        "type": {
+          "type": "[FrooxEngine]FrooxEngine.Sync<>",
+          "isGenericParameter": false,
+          "genericArguments": [
+            {
+              "type": "int",
+              "isGenericParameter": false,
+              "genericArguments": null
+            }
+          ]
+        }
+      },
+      "Enabled": {
+        "$type": "field",
+        "valueType": {
+          "type": "bool",
+          "isGenericParameter": false,
+          "genericArguments": null
+        },
+        "type": {
+          "type": "[FrooxEngine]FrooxEngine.Sync<>",
+          "isGenericParameter": false,
+          "genericArguments": [
+            {
+              "type": "bool",
+              "isGenericParameter": false,
+              "genericArguments": null
+            }
+          ]
+        }
+      },
+      "A": {
+        "$type": "reference",
+        "targetType": {
+          "type": "[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<>",
+          "isGenericParameter": false,
+          "genericArguments": [
+            {
+              "type": "float",
+              "isGenericParameter": false,
+              "genericArguments": null
+            }
+          ]
+        },
+        "type": {
+          "type": "[FrooxEngine]FrooxEngine.SyncRef<>",
+          "isGenericParameter": false,
+          "genericArguments": [
+            {
+              "type": "[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<>",
+              "isGenericParameter": false,
+              "genericArguments": [
+                {
+                  "type": "float",
+                  "isGenericParameter": false,
+                  "genericArguments": null
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "B": {
+        "$type": "reference",
+        "targetType": {
+          "type": "[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<>",
+          "isGenericParameter": false,
+          "genericArguments": [
+            {
+              "type": "float2",
+              "isGenericParameter": false,
+              "genericArguments": null
+            }
+          ]
+        },
+        "type": {
+          "type": "[FrooxEngine]FrooxEngine.SyncRef<>",
+          "isGenericParameter": false,
+          "genericArguments": [
+            {
+              "type": "[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<>",
+              "isGenericParameter": false,
+              "genericArguments": [
+                {
+                  "type": "float2",
+                  "isGenericParameter": false,
+                  "genericArguments": null
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "methods": []
+  },
+  "sourceMessageId": "e997cfe0-9fb3-4787-b466-44d6cacd2dc8",
+  "success": true,
+  "errorInfo": null
+}

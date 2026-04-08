@@ -1,0 +1,47 @@
+"""Generated component: DebugFeatureUpgrade."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class DebugFeatureUpgrade(GeneratedComponent, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.DebugFeatureUpgrade.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugFeatureUpgrade"
+
+    def __init__(self, test: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            test: Initial value for Test.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if test is not None:
+            self.test = test
+
+    @property
+    def test(self) -> np.int32 | None:
+        """The Test field value."""
+        member = self.get_member("Test")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @test.setter
+    def test(self, value: np.int32) -> None:
+        """Set the Test field value."""
+        member = self.get_member("Test")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Test", fields.FieldInt(value=value)
+            )
+

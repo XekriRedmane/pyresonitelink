@@ -222,28 +222,28 @@ class IcoSphereMeshSH3(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def colors(self) -> members.Member | None:
+    def colors(self) -> members.FieldEnum | None:
         """The Colors member."""
         member = self.get_member("Colors")
-        if isinstance(member, members.Member):
+        if isinstance(member, members.FieldEnum):
             return member
         return None
 
     @colors.setter
-    def colors(self, value: members.Member) -> None:
+    def colors(self, value: members.FieldEnum) -> None:
         """Set the Colors member."""
         self.set_member("Colors", value)
 
     @property
-    def radius_multiplier(self) -> members.Member | None:
+    def radius_multiplier(self) -> members.FieldEnum | None:
         """The RadiusMultiplier member."""
         member = self.get_member("RadiusMultiplier")
-        if isinstance(member, members.Member):
+        if isinstance(member, members.FieldEnum):
             return member
         return None
 
     @radius_multiplier.setter
-    def radius_multiplier(self, value: members.Member) -> None:
+    def radius_multiplier(self, value: members.FieldEnum) -> None:
         """Set the RadiusMultiplier member."""
         self.set_member("RadiusMultiplier", value)
 

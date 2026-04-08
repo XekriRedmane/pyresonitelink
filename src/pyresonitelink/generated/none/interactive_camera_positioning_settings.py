@@ -1,0 +1,99 @@
+"""Generated component: InteractiveCameraPositioningSettings."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import protocols
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+
+
+class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector):
+    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraPositioningSettings.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraPositioningSettings"
+
+    def __init__(self, avoid_occlusion: bool | None = None, keep_in_world_space: bool | None = None, movement_wobble: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            avoid_occlusion: Initial value for AvoidOcclusion.
+            keep_in_world_space: Initial value for KeepInWorldSpace.
+            movement_wobble: Initial value for MovementWobble.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if avoid_occlusion is not None:
+            self.avoid_occlusion = avoid_occlusion
+        if keep_in_world_space is not None:
+            self.keep_in_world_space = keep_in_world_space
+        if movement_wobble is not None:
+            self.movement_wobble = movement_wobble
+
+    @property
+    def avoid_occlusion(self) -> bool | None:
+        """The AvoidOcclusion field value."""
+        member = self.get_member("AvoidOcclusion")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @avoid_occlusion.setter
+    def avoid_occlusion(self, value: bool) -> None:
+        """Set the AvoidOcclusion field value."""
+        member = self.get_member("AvoidOcclusion")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AvoidOcclusion", fields.FieldBool(value=value)
+            )
+
+    @property
+    def keep_in_world_space(self) -> bool | None:
+        """The KeepInWorldSpace field value."""
+        member = self.get_member("KeepInWorldSpace")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @keep_in_world_space.setter
+    def keep_in_world_space(self, value: bool) -> None:
+        """Set the KeepInWorldSpace field value."""
+        member = self.get_member("KeepInWorldSpace")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "KeepInWorldSpace", fields.FieldBool(value=value)
+            )
+
+    @property
+    def movement_wobble(self) -> bool | None:
+        """The MovementWobble field value."""
+        member = self.get_member("MovementWobble")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @movement_wobble.setter
+    def movement_wobble(self, value: bool) -> None:
+        """Set the MovementWobble field value."""
+        member = self.get_member("MovementWobble")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "MovementWobble", fields.FieldBool(value=value)
+            )
+
+    async def reset_to_default(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the ResetToDefault sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "ResetToDefault", {}, debug,
+        )
+

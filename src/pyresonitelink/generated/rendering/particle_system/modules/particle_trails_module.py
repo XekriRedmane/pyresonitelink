@@ -1,0 +1,256 @@
+"""Generated component: ParticleTrailsModule."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.iasset_provider import IAssetProvider
+from pyresonitelink.generated._types.material import Material
+from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
+from pyresonitelink.generated._types.iparticle_renderer import IParticleRenderer
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class ParticleTrailsModule(GeneratedComponent, IParticleSystemModule, IParticleRenderer, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ParticleTrailsModule.
+
+    Category: Rendering/Particle System/Modules
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleTrailsModule"
+
+    def __init__(self, material: str | IAssetProvider[Material] | None = None, generate_lighting_data: bool | None = None, trails_ratio: np.float32 | None = None, max_trails: np.int32 | None = None, min_vertex_distance: np.float32 | None = None, trail_dies_with_particle: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            material: Initial value for Material.
+            generate_lighting_data: Initial value for GenerateLightingData.
+            trails_ratio: Initial value for TrailsRatio.
+            max_trails: Initial value for MaxTrails.
+            min_vertex_distance: Initial value for MinVertexDistance.
+            trail_dies_with_particle: Initial value for TrailDiesWithParticle.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if material is not None:
+            self.material = material
+        if generate_lighting_data is not None:
+            self.generate_lighting_data = generate_lighting_data
+        if trails_ratio is not None:
+            self.trails_ratio = trails_ratio
+        if max_trails is not None:
+            self.max_trails = max_trails
+        if min_vertex_distance is not None:
+            self.min_vertex_distance = min_vertex_distance
+        if trail_dies_with_particle is not None:
+            self.trail_dies_with_particle = trail_dies_with_particle
+
+    @property
+    def material(self) -> str | None:
+        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        member = self.get_member("Material")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @material.setter
+    def material(self, target: str | IAssetProvider[Material] | None) -> None:
+        """Set the Material reference by target ID or IAssetProvider[Material] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("Material")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Material",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.Material>'),
+            )
+
+    @property
+    def texture_mode(self) -> members.FieldEnum | None:
+        """The TextureMode member."""
+        member = self.get_member("TextureMode")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @texture_mode.setter
+    def texture_mode(self, value: members.FieldEnum) -> None:
+        """Set the TextureMode member."""
+        self.set_member("TextureMode", value)
+
+    @property
+    def motion_vector_mode(self) -> members.FieldEnum | None:
+        """The MotionVectorMode member."""
+        member = self.get_member("MotionVectorMode")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @motion_vector_mode.setter
+    def motion_vector_mode(self, value: members.FieldEnum) -> None:
+        """Set the MotionVectorMode member."""
+        self.set_member("MotionVectorMode", value)
+
+    @property
+    def generate_lighting_data(self) -> bool | None:
+        """The GenerateLightingData field value."""
+        member = self.get_member("GenerateLightingData")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @generate_lighting_data.setter
+    def generate_lighting_data(self, value: bool) -> None:
+        """Set the GenerateLightingData field value."""
+        member = self.get_member("GenerateLightingData")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "GenerateLightingData", fields.FieldBool(value=value)
+            )
+
+    @property
+    def trails_ratio(self) -> np.float32 | None:
+        """The TrailsRatio field value."""
+        member = self.get_member("TrailsRatio")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @trails_ratio.setter
+    def trails_ratio(self, value: np.float32) -> None:
+        """Set the TrailsRatio field value."""
+        member = self.get_member("TrailsRatio")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "TrailsRatio", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def distribution(self) -> members.FieldEnum | None:
+        """The Distribution member."""
+        member = self.get_member("Distribution")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @distribution.setter
+    def distribution(self, value: members.FieldEnum) -> None:
+        """Set the Distribution member."""
+        self.set_member("Distribution", value)
+
+    @property
+    def max_trails(self) -> np.int32 | None:
+        """The MaxTrails field value."""
+        member = self.get_member("MaxTrails")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @max_trails.setter
+    def max_trails(self, value: np.int32) -> None:
+        """Set the MaxTrails field value."""
+        member = self.get_member("MaxTrails")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "MaxTrails", fields.FieldInt(value=value)
+            )
+
+    @property
+    def simulation_space(self) -> members.SyncObject | None:
+        """The SimulationSpace member."""
+        member = self.get_member("SimulationSpace")
+        if isinstance(member, members.SyncObject):
+            return member
+        return None
+
+    @simulation_space.setter
+    def simulation_space(self, value: members.SyncObject) -> None:
+        """Set the SimulationSpace member."""
+        self.set_member("SimulationSpace", value)
+
+    @property
+    def min_vertex_distance(self) -> np.float32 | None:
+        """The MinVertexDistance field value."""
+        member = self.get_member("MinVertexDistance")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @min_vertex_distance.setter
+    def min_vertex_distance(self, value: np.float32) -> None:
+        """Set the MinVertexDistance field value."""
+        member = self.get_member("MinVertexDistance")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "MinVertexDistance", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def trail_dies_with_particle(self) -> bool | None:
+        """The TrailDiesWithParticle field value."""
+        member = self.get_member("TrailDiesWithParticle")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @trail_dies_with_particle.setter
+    def trail_dies_with_particle(self, value: bool) -> None:
+        """Set the TrailDiesWithParticle field value."""
+        member = self.get_member("TrailDiesWithParticle")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "TrailDiesWithParticle", fields.FieldBool(value=value)
+            )
+
+    @property
+    def particle_color_inheritance(self) -> members.FieldEnum | None:
+        """The ParticleColorInheritance member."""
+        member = self.get_member("ParticleColorInheritance")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @particle_color_inheritance.setter
+    def particle_color_inheritance(self, value: members.FieldEnum) -> None:
+        """Set the ParticleColorInheritance member."""
+        self.set_member("ParticleColorInheritance", value)
+
+    @property
+    def particle_size_inheritance(self) -> members.FieldEnum | None:
+        """The ParticleSizeInheritance member."""
+        member = self.get_member("ParticleSizeInheritance")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @particle_size_inheritance.setter
+    def particle_size_inheritance(self, value: members.FieldEnum) -> None:
+        """Set the ParticleSizeInheritance member."""
+        self.set_member("ParticleSizeInheritance", value)
+
+    @property
+    def size_inheritance_mode(self) -> members.FieldEnum | None:
+        """The SizeInheritanceMode member."""
+        member = self.get_member("SizeInheritanceMode")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @size_inheritance_mode.setter
+    def size_inheritance_mode(self, value: members.FieldEnum) -> None:
+        """Set the SizeInheritanceMode member."""
+        self.set_member("SizeInheritanceMode", value)
+

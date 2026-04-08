@@ -1,6 +1,10 @@
 """Generated component: VideoTextureAssetMetadata."""
 
+import numpy as np
+
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -17,16 +21,34 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VideoTextureAssetMetadata"
 
-    def __init__(self, texture: str | IAssetProvider[VideoTexture] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[VideoTexture] | None = None, size: primitives.Int2 | None = None, width: np.int32 | None = None, height: np.int32 | None = None, has_alpha: bool | None = None, length: np.float64 | None = None, playback_engine: str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             texture: Initial value for Texture.
+            size: Initial value for Size.
+            width: Initial value for Width.
+            height: Initial value for Height.
+            has_alpha: Initial value for HasAlpha.
+            length: Initial value for Length.
+            playback_engine: Initial value for PlaybackEngine.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if texture is not None:
             self.texture = texture
+        if size is not None:
+            self.size = size
+        if width is not None:
+            self.width = width
+        if height is not None:
+            self.height = height
+        if has_alpha is not None:
+            self.has_alpha = has_alpha
+        if length is not None:
+            self.length = length
+        if playback_engine is not None:
+            self.playback_engine = playback_engine
 
     @property
     def texture(self) -> str | None:
@@ -50,80 +72,116 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def size(self) -> members.EmptyElement | None:
-        """The Size member."""
+    def size(self) -> primitives.Int2 | None:
+        """The Size field value."""
         member = self.get_member("Size")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @size.setter
-    def size(self, value: members.EmptyElement) -> None:
-        """Set the Size member."""
-        self.set_member("Size", value)
+    def size(self, value: primitives.Int2) -> None:
+        """Set the Size field value."""
+        member = self.get_member("Size")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Size", fields.FieldInt2(value=value)
+            )
 
     @property
-    def width(self) -> members.EmptyElement | None:
-        """The Width member."""
+    def width(self) -> np.int32 | None:
+        """The Width field value."""
         member = self.get_member("Width")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: members.EmptyElement) -> None:
-        """Set the Width member."""
-        self.set_member("Width", value)
+    def width(self, value: np.int32) -> None:
+        """Set the Width field value."""
+        member = self.get_member("Width")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Width", fields.FieldInt(value=value)
+            )
 
     @property
-    def height(self) -> members.EmptyElement | None:
-        """The Height member."""
+    def height(self) -> np.int32 | None:
+        """The Height field value."""
         member = self.get_member("Height")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: members.EmptyElement) -> None:
-        """Set the Height member."""
-        self.set_member("Height", value)
+    def height(self, value: np.int32) -> None:
+        """Set the Height field value."""
+        member = self.get_member("Height")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Height", fields.FieldInt(value=value)
+            )
 
     @property
-    def has_alpha(self) -> members.EmptyElement | None:
-        """The HasAlpha member."""
+    def has_alpha(self) -> bool | None:
+        """The HasAlpha field value."""
         member = self.get_member("HasAlpha")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @has_alpha.setter
-    def has_alpha(self, value: members.EmptyElement) -> None:
-        """Set the HasAlpha member."""
-        self.set_member("HasAlpha", value)
+    def has_alpha(self, value: bool) -> None:
+        """Set the HasAlpha field value."""
+        member = self.get_member("HasAlpha")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasAlpha", fields.FieldBool(value=value)
+            )
 
     @property
-    def length(self) -> members.EmptyElement | None:
-        """The Length member."""
+    def length(self) -> np.float64 | None:
+        """The Length field value."""
         member = self.get_member("Length")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @length.setter
-    def length(self, value: members.EmptyElement) -> None:
-        """Set the Length member."""
-        self.set_member("Length", value)
+    def length(self, value: np.float64) -> None:
+        """Set the Length field value."""
+        member = self.get_member("Length")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Length", fields.FieldDouble(value=value)
+            )
 
     @property
-    def playback_engine(self) -> members.EmptyElement | None:
-        """The PlaybackEngine member."""
+    def playback_engine(self) -> str | None:
+        """The PlaybackEngine field value."""
         member = self.get_member("PlaybackEngine")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @playback_engine.setter
-    def playback_engine(self, value: members.EmptyElement) -> None:
-        """Set the PlaybackEngine member."""
-        self.set_member("PlaybackEngine", value)
+    def playback_engine(self, value: str) -> None:
+        """Set the PlaybackEngine field value."""
+        member = self.get_member("PlaybackEngine")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "PlaybackEngine", fields.FieldString(value=value)
+            )
 

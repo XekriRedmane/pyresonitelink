@@ -1,0 +1,164 @@
+"""Generated component: TextExpandIndicator."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.ifield import IField
+from pyresonitelink.generated._types.slot import Slot
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.UIX.TextExpandIndicator.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.TextExpandIndicator"
+
+    def __init__(self, text: str | IField[str] | None = None, section_root: str | Slot | None = None, children_root: str | Slot | None = None, closed: str | None = None, opened: str | None = None, empty: str | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            text: Initial value for Text.
+            section_root: Initial value for SectionRoot.
+            children_root: Initial value for ChildrenRoot.
+            closed: Initial value for Closed.
+            opened: Initial value for Opened.
+            empty: Initial value for Empty.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if text is not None:
+            self.text = text
+        if section_root is not None:
+            self.section_root = section_root
+        if children_root is not None:
+            self.children_root = children_root
+        if closed is not None:
+            self.closed = closed
+        if opened is not None:
+            self.opened = opened
+        if empty is not None:
+            self.empty = empty
+
+    @property
+    def text(self) -> str | None:
+        """Target ID of the Text reference (targets IField[str])."""
+        member = self.get_member("Text")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @text.setter
+    def text(self, target: str | IField[str] | None) -> None:
+        """Set the Text reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("Text")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Text",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def section_root(self) -> str | None:
+        """Target ID of the SectionRoot reference (targets Slot)."""
+        member = self.get_member("SectionRoot")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @section_root.setter
+    def section_root(self, target: str | Slot | None) -> None:
+        """Set the SectionRoot reference by target ID or Slot instance."""
+        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        member = self.get_member("SectionRoot")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "SectionRoot",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
+            )
+
+    @property
+    def children_root(self) -> str | None:
+        """Target ID of the ChildrenRoot reference (targets Slot)."""
+        member = self.get_member("ChildrenRoot")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @children_root.setter
+    def children_root(self, target: str | Slot | None) -> None:
+        """Set the ChildrenRoot reference by target ID or Slot instance."""
+        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        member = self.get_member("ChildrenRoot")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ChildrenRoot",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
+            )
+
+    @property
+    def closed(self) -> str | None:
+        """The Closed field value."""
+        member = self.get_member("Closed")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @closed.setter
+    def closed(self, value: str) -> None:
+        """Set the Closed field value."""
+        member = self.get_member("Closed")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Closed", fields.FieldString(value=value)
+            )
+
+    @property
+    def opened(self) -> str | None:
+        """The Opened field value."""
+        member = self.get_member("Opened")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @opened.setter
+    def opened(self, value: str) -> None:
+        """Set the Opened field value."""
+        member = self.get_member("Opened")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Opened", fields.FieldString(value=value)
+            )
+
+    @property
+    def empty(self) -> str | None:
+        """The Empty field value."""
+        member = self.get_member("Empty")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @empty.setter
+    def empty(self, value: str) -> None:
+        """Set the Empty field value."""
+        member = self.get_member("Empty")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Empty", fields.FieldString(value=value)
+            )
+

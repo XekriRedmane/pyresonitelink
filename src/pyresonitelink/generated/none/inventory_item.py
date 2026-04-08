@@ -1,0 +1,90 @@
+"""Generated component: InventoryItem."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class InventoryItem(GeneratedComponent, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.InventoryItem.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InventoryItem"
+
+    def __init__(self, relative_to_user_root: bool | None = None, saved_rotation: primitives.FloatQ | None = None, saved_scale: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            relative_to_user_root: Initial value for RelativeToUserRoot.
+            saved_rotation: Initial value for SavedRotation.
+            saved_scale: Initial value for SavedScale.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if relative_to_user_root is not None:
+            self.relative_to_user_root = relative_to_user_root
+        if saved_rotation is not None:
+            self.saved_rotation = saved_rotation
+        if saved_scale is not None:
+            self.saved_scale = saved_scale
+
+    @property
+    def relative_to_user_root(self) -> bool | None:
+        """The RelativeToUserRoot field value."""
+        member = self.get_member("RelativeToUserRoot")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @relative_to_user_root.setter
+    def relative_to_user_root(self, value: bool) -> None:
+        """Set the RelativeToUserRoot field value."""
+        member = self.get_member("RelativeToUserRoot")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "RelativeToUserRoot", fields.FieldBool(value=value)
+            )
+
+    @property
+    def saved_rotation(self) -> primitives.FloatQ | None:
+        """The SavedRotation field value."""
+        member = self.get_member("SavedRotation")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @saved_rotation.setter
+    def saved_rotation(self, value: primitives.FloatQ) -> None:
+        """Set the SavedRotation field value."""
+        member = self.get_member("SavedRotation")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "SavedRotation", fields.FieldFloatQ(value=value)
+            )
+
+    @property
+    def saved_scale(self) -> primitives.Float3 | None:
+        """The SavedScale field value."""
+        member = self.get_member("SavedScale")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @saved_scale.setter
+    def saved_scale(self, value: primitives.Float3) -> None:
+        """Set the SavedScale field value."""
+        member = self.get_member("SavedScale")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "SavedScale", fields.FieldFloat3(value=value)
+            )
+

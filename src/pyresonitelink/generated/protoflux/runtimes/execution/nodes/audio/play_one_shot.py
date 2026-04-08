@@ -10,6 +10,7 @@ from pyresonitelink.generated._types.inode_object_output import INodeObjectOutpu
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.audio_clip import AudioClip
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
+from pyresonitelink.generated._types.nullable import Nullable
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.audio_rolloff_curve import AudioRolloffCurve
 from pyresonitelink.generated._types.audio_distance_space import AudioDistanceSpace
@@ -32,7 +33,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Audio.PlayOneShot"
 
-    def __init__(self, clip: str | INodeObjectOutput[IAssetProvider[AudioClip]] | None = None, volume: str | INodeValueOutput[np.float32] | None = None, speed: str | INodeValueOutput[np.float32] | None = None, spatialize: str | INodeValueOutput[bool] | None = None, spatial_blend: str | INodeValueOutput[np.float32] | None = None, global_: str | INodeObjectOutput[bool | None] | None = None, point: str | INodeValueOutput[primitives.Float3] | None = None, root: str | INodeObjectOutput[Slot] | None = None, parent_under_root: str | INodeValueOutput[bool] | None = None, priority: str | INodeValueOutput[np.int32] | None = None, doppler: str | INodeValueOutput[np.float32] | None = None, min_distance: str | INodeValueOutput[np.float32] | None = None, max_distance: str | INodeValueOutput[np.float32] | None = None, rolloff: str | INodeValueOutput[AudioRolloffCurve] | None = None, distance_space: str | INodeValueOutput[AudioDistanceSpace] | None = None, min_scale: str | INodeValueOutput[np.float32] | None = None, max_scale: str | INodeValueOutput[np.float32] | None = None, group: str | INodeValueOutput[AudioTypeGroup] | None = None, ignore_audio_effects: str | INodeValueOutput[bool] | None = None, local_only: str | INodeValueOutput[bool] | None = None, on_started_playing: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, clip: str | INodeObjectOutput[IAssetProvider[AudioClip]] | None = None, volume: str | INodeValueOutput[np.float32] | None = None, speed: str | INodeValueOutput[np.float32] | None = None, spatialize: str | INodeValueOutput[bool] | None = None, spatial_blend: str | INodeValueOutput[np.float32] | None = None, global_: str | INodeObjectOutput[Nullable[bool]] | None = None, point: str | INodeValueOutput[primitives.Float3] | None = None, root: str | INodeObjectOutput[Slot] | None = None, parent_under_root: str | INodeValueOutput[bool] | None = None, priority: str | INodeValueOutput[np.int32] | None = None, doppler: str | INodeValueOutput[np.float32] | None = None, min_distance: str | INodeValueOutput[np.float32] | None = None, max_distance: str | INodeValueOutput[np.float32] | None = None, rolloff: str | INodeValueOutput[AudioRolloffCurve] | None = None, distance_space: str | INodeValueOutput[AudioDistanceSpace] | None = None, min_scale: str | INodeValueOutput[np.float32] | None = None, max_scale: str | INodeValueOutput[np.float32] | None = None, group: str | INodeValueOutput[AudioTypeGroup] | None = None, ignore_audio_effects: str | INodeValueOutput[bool] | None = None, local_only: str | INodeValueOutput[bool] | None = None, on_started_playing: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -210,15 +211,15 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
 
     @property
     def global_(self) -> str | None:
-        """Target ID of the Global reference (targets INodeObjectOutput[bool | None])."""
+        """Target ID of the Global reference (targets INodeObjectOutput[Nullable[bool]])."""
         member = self.get_member("Global")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @global_.setter
-    def global_(self, target: str | INodeObjectOutput[bool | None] | None) -> None:
-        """Set the Global reference by target ID or INodeObjectOutput[bool | None] instance."""
+    def global_(self, target: str | INodeObjectOutput[Nullable[bool]] | None) -> None:
+        """Set the Global reference by target ID or INodeObjectOutput[Nullable[bool]] instance."""
         target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
         member = self.get_member("Global")
         if isinstance(member, members.Reference):
@@ -226,7 +227,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
         else:
             self.set_member(
                 "Global",
-                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeObjectOutput<bool?>'),
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeObjectOutput<Nullable<bool>>'),
             )
 
     @property

@@ -1,0 +1,324 @@
+"""Generated component: PhotoCaptureSettings."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import protocols
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+
+
+class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
+    """Wrapper for [FrooxEngine]FrooxEngine.PhotoCaptureSettings.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotoCaptureSettings"
+
+    def __init__(self, finger_gesture_enabled: bool | None = None, normal_capture_resolution: primitives.Int2 | None = None, timer_capture_resolution: primitives.Int2 | None = None, timer_seconds: np.float32 | None = None, hands_near_fov: np.float32 | None = None, hands_far_fov: np.float32 | None = None, capture_private_ui: bool | None = None, capture_stereo: bool | None = None, stereo_separation: np.float32 | None = None, always_hide_nameplates: bool | None = None, photo_autosave_path: str | None = None, autosave_active: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            finger_gesture_enabled: Initial value for FingerGestureEnabled.
+            normal_capture_resolution: Initial value for NormalCaptureResolution.
+            timer_capture_resolution: Initial value for TimerCaptureResolution.
+            timer_seconds: Initial value for TimerSeconds.
+            hands_near_fov: Initial value for HandsNearFOV.
+            hands_far_fov: Initial value for HandsFarFOV.
+            capture_private_ui: Initial value for CapturePrivateUI.
+            capture_stereo: Initial value for CaptureStereo.
+            stereo_separation: Initial value for StereoSeparation.
+            always_hide_nameplates: Initial value for AlwaysHideNameplates.
+            photo_autosave_path: Initial value for PhotoAutosavePath.
+            autosave_active: Initial value for AutosaveActive.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if finger_gesture_enabled is not None:
+            self.finger_gesture_enabled = finger_gesture_enabled
+        if normal_capture_resolution is not None:
+            self.normal_capture_resolution = normal_capture_resolution
+        if timer_capture_resolution is not None:
+            self.timer_capture_resolution = timer_capture_resolution
+        if timer_seconds is not None:
+            self.timer_seconds = timer_seconds
+        if hands_near_fov is not None:
+            self.hands_near_fov = hands_near_fov
+        if hands_far_fov is not None:
+            self.hands_far_fov = hands_far_fov
+        if capture_private_ui is not None:
+            self.capture_private_ui = capture_private_ui
+        if capture_stereo is not None:
+            self.capture_stereo = capture_stereo
+        if stereo_separation is not None:
+            self.stereo_separation = stereo_separation
+        if always_hide_nameplates is not None:
+            self.always_hide_nameplates = always_hide_nameplates
+        if photo_autosave_path is not None:
+            self.photo_autosave_path = photo_autosave_path
+        if autosave_active is not None:
+            self.autosave_active = autosave_active
+
+    @property
+    def finger_gesture_enabled(self) -> bool | None:
+        """The FingerGestureEnabled field value."""
+        member = self.get_member("FingerGestureEnabled")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @finger_gesture_enabled.setter
+    def finger_gesture_enabled(self, value: bool) -> None:
+        """Set the FingerGestureEnabled field value."""
+        member = self.get_member("FingerGestureEnabled")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "FingerGestureEnabled", fields.FieldBool(value=value)
+            )
+
+    @property
+    def normal_capture_resolution(self) -> primitives.Int2 | None:
+        """The NormalCaptureResolution field value."""
+        member = self.get_member("NormalCaptureResolution")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @normal_capture_resolution.setter
+    def normal_capture_resolution(self, value: primitives.Int2) -> None:
+        """Set the NormalCaptureResolution field value."""
+        member = self.get_member("NormalCaptureResolution")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NormalCaptureResolution", fields.FieldInt2(value=value)
+            )
+
+    @property
+    def timer_capture_resolution(self) -> primitives.Int2 | None:
+        """The TimerCaptureResolution field value."""
+        member = self.get_member("TimerCaptureResolution")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @timer_capture_resolution.setter
+    def timer_capture_resolution(self, value: primitives.Int2) -> None:
+        """Set the TimerCaptureResolution field value."""
+        member = self.get_member("TimerCaptureResolution")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "TimerCaptureResolution", fields.FieldInt2(value=value)
+            )
+
+    @property
+    def timer_seconds(self) -> np.float32 | None:
+        """The TimerSeconds field value."""
+        member = self.get_member("TimerSeconds")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @timer_seconds.setter
+    def timer_seconds(self, value: np.float32) -> None:
+        """Set the TimerSeconds field value."""
+        member = self.get_member("TimerSeconds")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "TimerSeconds", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def hands_near_fov(self) -> np.float32 | None:
+        """The HandsNearFOV field value."""
+        member = self.get_member("HandsNearFOV")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @hands_near_fov.setter
+    def hands_near_fov(self, value: np.float32) -> None:
+        """Set the HandsNearFOV field value."""
+        member = self.get_member("HandsNearFOV")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HandsNearFOV", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def hands_far_fov(self) -> np.float32 | None:
+        """The HandsFarFOV field value."""
+        member = self.get_member("HandsFarFOV")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @hands_far_fov.setter
+    def hands_far_fov(self, value: np.float32) -> None:
+        """Set the HandsFarFOV field value."""
+        member = self.get_member("HandsFarFOV")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HandsFarFOV", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def capture_private_ui(self) -> bool | None:
+        """The CapturePrivateUI field value."""
+        member = self.get_member("CapturePrivateUI")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @capture_private_ui.setter
+    def capture_private_ui(self, value: bool) -> None:
+        """Set the CapturePrivateUI field value."""
+        member = self.get_member("CapturePrivateUI")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "CapturePrivateUI", fields.FieldBool(value=value)
+            )
+
+    @property
+    def capture_stereo(self) -> bool | None:
+        """The CaptureStereo field value."""
+        member = self.get_member("CaptureStereo")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @capture_stereo.setter
+    def capture_stereo(self, value: bool) -> None:
+        """Set the CaptureStereo field value."""
+        member = self.get_member("CaptureStereo")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "CaptureStereo", fields.FieldBool(value=value)
+            )
+
+    @property
+    def stereo_separation(self) -> np.float32 | None:
+        """The StereoSeparation field value."""
+        member = self.get_member("StereoSeparation")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @stereo_separation.setter
+    def stereo_separation(self, value: np.float32) -> None:
+        """Set the StereoSeparation field value."""
+        member = self.get_member("StereoSeparation")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "StereoSeparation", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def always_hide_nameplates(self) -> bool | None:
+        """The AlwaysHideNameplates field value."""
+        member = self.get_member("AlwaysHideNameplates")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @always_hide_nameplates.setter
+    def always_hide_nameplates(self, value: bool) -> None:
+        """Set the AlwaysHideNameplates field value."""
+        member = self.get_member("AlwaysHideNameplates")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AlwaysHideNameplates", fields.FieldBool(value=value)
+            )
+
+    @property
+    def encode_format(self) -> members.FieldEnum | None:
+        """The EncodeFormat member."""
+        member = self.get_member("EncodeFormat")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @encode_format.setter
+    def encode_format(self, value: members.FieldEnum) -> None:
+        """Set the EncodeFormat member."""
+        self.set_member("EncodeFormat", value)
+
+    @property
+    def photo_autosave_path(self) -> str | None:
+        """The PhotoAutosavePath field value."""
+        member = self.get_member("PhotoAutosavePath")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @photo_autosave_path.setter
+    def photo_autosave_path(self, value: str) -> None:
+        """Set the PhotoAutosavePath field value."""
+        member = self.get_member("PhotoAutosavePath")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "PhotoAutosavePath", fields.FieldString(value=value)
+            )
+
+    @property
+    def autosave_active(self) -> bool | None:
+        """The AutosaveActive field value."""
+        member = self.get_member("AutosaveActive")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @autosave_active.setter
+    def autosave_active(self, value: bool) -> None:
+        """Set the AutosaveActive field value."""
+        member = self.get_member("AutosaveActive")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AutosaveActive", fields.FieldBool(value=value)
+            )
+
+    async def open_autosave_path(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the OpenAutosavePath sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "OpenAutosavePath", {}, debug,
+        )
+
+    async def reset_to_default(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the ResetToDefault sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "ResetToDefault", {}, debug,
+        )
+

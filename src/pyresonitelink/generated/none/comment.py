@@ -1,0 +1,45 @@
+"""Generated component: Comment."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class Comment(GeneratedComponent, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.Comment.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Comment"
+
+    def __init__(self, text: str | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            text: Initial value for Text.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if text is not None:
+            self.text = text
+
+    @property
+    def text(self) -> str | None:
+        """The Text field value."""
+        member = self.get_member("Text")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @text.setter
+    def text(self, value: str) -> None:
+        """Set the Text field value."""
+        member = self.get_member("Text")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Text", fields.FieldString(value=value)
+            )
+

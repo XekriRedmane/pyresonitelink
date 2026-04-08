@@ -20,15 +20,15 @@ class TypeObjectInput(GeneratedComponent, IInput, INodeObjectOutput, IExecutionN
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TypeObjectInput"
 
     @property
-    def type_(self) -> members.Member | None:
+    def type_(self) -> members.FieldEnum | None:
         """The Type member."""
         member = self.get_member("Type")
-        if isinstance(member, members.Member):
+        if isinstance(member, members.FieldEnum):
             return member
         return None
 
     @type_.setter
-    def type_(self, value: members.Member) -> None:
+    def type_(self, value: members.FieldEnum) -> None:
         """Set the Type member."""
         self.set_member("Type", value)
 

@@ -1,5 +1,8 @@
 """Generated component: GaussianSplatAssetMetadata."""
 
+import numpy as np
+
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -17,16 +20,28 @@ class GaussianSplatAssetMetadata(GeneratedComponent, IComponent, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GaussianSplatAssetMetadata"
 
-    def __init__(self, splat: str | IAssetProvider[GaussianSplat] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, splat: str | IAssetProvider[GaussianSplat] | None = None, splat_count: np.int32 | None = None, memory_bytes: np.int64 | None = None, formatted_memory_bytes: str | None = None, actual_loaded_variant: str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             splat: Initial value for Splat.
+            splat_count: Initial value for SplatCount.
+            memory_bytes: Initial value for MemoryBytes.
+            formatted_memory_bytes: Initial value for FormattedMemoryBytes.
+            actual_loaded_variant: Initial value for ActualLoadedVariant.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if splat is not None:
             self.splat = splat
+        if splat_count is not None:
+            self.splat_count = splat_count
+        if memory_bytes is not None:
+            self.memory_bytes = memory_bytes
+        if formatted_memory_bytes is not None:
+            self.formatted_memory_bytes = formatted_memory_bytes
+        if actual_loaded_variant is not None:
+            self.actual_loaded_variant = actual_loaded_variant
 
     @property
     def splat(self) -> str | None:
@@ -50,54 +65,78 @@ class GaussianSplatAssetMetadata(GeneratedComponent, IComponent, IWorldEventRece
             )
 
     @property
-    def splat_count(self) -> members.EmptyElement | None:
-        """The SplatCount member."""
+    def splat_count(self) -> np.int32 | None:
+        """The SplatCount field value."""
         member = self.get_member("SplatCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @splat_count.setter
-    def splat_count(self, value: members.EmptyElement) -> None:
-        """Set the SplatCount member."""
-        self.set_member("SplatCount", value)
+    def splat_count(self, value: np.int32) -> None:
+        """Set the SplatCount field value."""
+        member = self.get_member("SplatCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "SplatCount", fields.FieldInt(value=value)
+            )
 
     @property
-    def memory_bytes(self) -> members.EmptyElement | None:
-        """The MemoryBytes member."""
+    def memory_bytes(self) -> np.int64 | None:
+        """The MemoryBytes field value."""
         member = self.get_member("MemoryBytes")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @memory_bytes.setter
-    def memory_bytes(self, value: members.EmptyElement) -> None:
-        """Set the MemoryBytes member."""
-        self.set_member("MemoryBytes", value)
+    def memory_bytes(self, value: np.int64) -> None:
+        """Set the MemoryBytes field value."""
+        member = self.get_member("MemoryBytes")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "MemoryBytes", fields.FieldLong(value=value)
+            )
 
     @property
-    def formatted_memory_bytes(self) -> members.EmptyElement | None:
-        """The FormattedMemoryBytes member."""
+    def formatted_memory_bytes(self) -> str | None:
+        """The FormattedMemoryBytes field value."""
         member = self.get_member("FormattedMemoryBytes")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @formatted_memory_bytes.setter
-    def formatted_memory_bytes(self, value: members.EmptyElement) -> None:
-        """Set the FormattedMemoryBytes member."""
-        self.set_member("FormattedMemoryBytes", value)
+    def formatted_memory_bytes(self, value: str) -> None:
+        """Set the FormattedMemoryBytes field value."""
+        member = self.get_member("FormattedMemoryBytes")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "FormattedMemoryBytes", fields.FieldString(value=value)
+            )
 
     @property
-    def actual_loaded_variant(self) -> members.EmptyElement | None:
-        """The ActualLoadedVariant member."""
+    def actual_loaded_variant(self) -> str | None:
+        """The ActualLoadedVariant field value."""
         member = self.get_member("ActualLoadedVariant")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @actual_loaded_variant.setter
-    def actual_loaded_variant(self, value: members.EmptyElement) -> None:
-        """Set the ActualLoadedVariant member."""
-        self.set_member("ActualLoadedVariant", value)
+    def actual_loaded_variant(self, value: str) -> None:
+        """Set the ActualLoadedVariant field value."""
+        member = self.get_member("ActualLoadedVariant")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ActualLoadedVariant", fields.FieldString(value=value)
+            )
 

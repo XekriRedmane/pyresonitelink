@@ -72,15 +72,15 @@ class TypeSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRecei
             )
 
     @property
-    def default_type(self) -> members.Member | None:
+    def default_type(self) -> members.FieldEnum | None:
         """The DefaultType member."""
         member = self.get_member("DefaultType")
-        if isinstance(member, members.Member):
+        if isinstance(member, members.FieldEnum):
             return member
         return None
 
     @default_type.setter
-    def default_type(self, value: members.Member) -> None:
+    def default_type(self, value: members.FieldEnum) -> None:
         """Set the DefaultType member."""
         self.set_member("DefaultType", value)
 

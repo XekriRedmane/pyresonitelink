@@ -1,5 +1,6 @@
 """Generated component: LocalDateTimeConvertor."""
 
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -16,16 +17,19 @@ class LocalDateTimeConvertor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocalDateTimeConvertor"
 
-    def __init__(self, source: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[str] | None = None, local_date_time: str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             source: Initial value for Source.
+            local_date_time: Initial value for LocalDateTime.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if source is not None:
             self.source = source
+        if local_date_time is not None:
+            self.local_date_time = local_date_time
 
     @property
     def source(self) -> str | None:
@@ -49,15 +53,21 @@ class LocalDateTimeConvertor(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def local_date_time(self) -> members.EmptyElement | None:
-        """The LocalDateTime member."""
+    def local_date_time(self) -> str | None:
+        """The LocalDateTime field value."""
         member = self.get_member("LocalDateTime")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @local_date_time.setter
-    def local_date_time(self, value: members.EmptyElement) -> None:
-        """Set the LocalDateTime member."""
-        self.set_member("LocalDateTime", value)
+    def local_date_time(self, value: str) -> None:
+        """Set the LocalDateTime field value."""
+        member = self.get_member("LocalDateTime")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "LocalDateTime", fields.FieldDateTime(value=value)
+            )
 

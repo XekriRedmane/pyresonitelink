@@ -1,0 +1,958 @@
+"""Generated component: SessionInfoItemInterface."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.ifield import IField
+from pyresonitelink.generated._types.slot import Slot
+from pyresonitelink.generated._types.sync_ref import SyncRef
+from pyresonitelink.generated._types.idata_feed_view import IDataFeedView
+from pyresonitelink.generated._types.feed_item_interface import FeedItemInterface
+from pyresonitelink.generated._types.sync_field_list import SyncFieldList
+from pyresonitelink.generated._types.session_access_level import SessionAccessLevel
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.SessionInfoItemInterface.
+
+    Category: Radiant UI/Data Feeds/Interfaces
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionInfoItemInterface"
+
+    def __init__(self, has_data: bool | None = None, item_name: str | IField[str] | None = None, item_key: str | IField[str] | None = None, item_description: str | IField[str] | None = None, has_description: str | IField[bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[bool] | None = None, session_name: str | IField[str] | None = None, description: str | IField[str] | None = None, thumbnail_url: str | IField[str] | None = None, session_id: str | IField[str] | None = None, session_urls: str | SyncFieldList[str] | None = None, host_user_id: str | IField[str] | None = None, host_user_session_id: str | IField[str] | None = None, host_machine_id: str | IField[str] | None = None, host_username: str | IField[str] | None = None, compatibility_hash: str | IField[str] | None = None, universe_id: str | IField[str] | None = None, app_version: str | IField[str] | None = None, is_headless_host: str | IField[bool] | None = None, is_on_lan: str | IField[bool] | None = None, joined_users: str | IField[np.int32] | None = None, active_users: str | IField[np.int32] | None = None, total_joined_users: str | IField[np.int32] | None = None, total_active_users: str | IField[np.int32] | None = None, maximum_users: str | IField[np.int32] | None = None, session_begin_time: str | IField[str] | None = None, last_update: str | IField[str] | None = None, access_level: str | IField[SessionAccessLevel] | None = None, hide_from_listing: str | IField[bool] | None = None, away_kick_enabled: str | IField[bool] | None = None, away_kick_interval: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            has_data: Initial value for HasData.
+            item_name: Initial value for ItemName.
+            item_key: Initial value for ItemKey.
+            item_description: Initial value for ItemDescription.
+            has_description: Initial value for HasDescription.
+            description_cleanup: Initial value for DescriptionCleanup.
+            item_icon: Initial value for ItemIcon.
+            has_icon: Initial value for HasIcon.
+            icon_cleanup: Initial value for IconCleanup.
+            view: Initial value for View.
+            parent_container: Initial value for ParentContainer.
+            child_container: Initial value for ChildContainer.
+            enabled_state: Initial value for EnabledState.
+            session_name: Initial value for SessionName.
+            description: Initial value for Description.
+            thumbnail_url: Initial value for ThumbnailUrl.
+            session_id: Initial value for SessionId.
+            session_urls: Initial value for SessionURLs.
+            host_user_id: Initial value for HostUserId.
+            host_user_session_id: Initial value for HostUserSessionId.
+            host_machine_id: Initial value for HostMachineId.
+            host_username: Initial value for HostUsername.
+            compatibility_hash: Initial value for CompatibilityHash.
+            universe_id: Initial value for UniverseId.
+            app_version: Initial value for AppVersion.
+            is_headless_host: Initial value for IsHeadlessHost.
+            is_on_lan: Initial value for IsOnLAN.
+            joined_users: Initial value for JoinedUsers.
+            active_users: Initial value for ActiveUsers.
+            total_joined_users: Initial value for TotalJoinedUsers.
+            total_active_users: Initial value for TotalActiveUsers.
+            maximum_users: Initial value for MaximumUsers.
+            session_begin_time: Initial value for SessionBeginTime.
+            last_update: Initial value for LastUpdate.
+            access_level: Initial value for AccessLevel.
+            hide_from_listing: Initial value for HideFromListing.
+            away_kick_enabled: Initial value for AwayKickEnabled.
+            away_kick_interval: Initial value for AwayKickInterval.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if has_data is not None:
+            self.has_data = has_data
+        if item_name is not None:
+            self.item_name = item_name
+        if item_key is not None:
+            self.item_key = item_key
+        if item_description is not None:
+            self.item_description = item_description
+        if has_description is not None:
+            self.has_description = has_description
+        if description_cleanup is not None:
+            self.description_cleanup = description_cleanup
+        if item_icon is not None:
+            self.item_icon = item_icon
+        if has_icon is not None:
+            self.has_icon = has_icon
+        if icon_cleanup is not None:
+            self.icon_cleanup = icon_cleanup
+        if view is not None:
+            self.view = view
+        if parent_container is not None:
+            self.parent_container = parent_container
+        if child_container is not None:
+            self.child_container = child_container
+        if enabled_state is not None:
+            self.enabled_state = enabled_state
+        if session_name is not None:
+            self.session_name = session_name
+        if description is not None:
+            self.description = description
+        if thumbnail_url is not None:
+            self.thumbnail_url = thumbnail_url
+        if session_id is not None:
+            self.session_id = session_id
+        if session_urls is not None:
+            self.session_urls = session_urls
+        if host_user_id is not None:
+            self.host_user_id = host_user_id
+        if host_user_session_id is not None:
+            self.host_user_session_id = host_user_session_id
+        if host_machine_id is not None:
+            self.host_machine_id = host_machine_id
+        if host_username is not None:
+            self.host_username = host_username
+        if compatibility_hash is not None:
+            self.compatibility_hash = compatibility_hash
+        if universe_id is not None:
+            self.universe_id = universe_id
+        if app_version is not None:
+            self.app_version = app_version
+        if is_headless_host is not None:
+            self.is_headless_host = is_headless_host
+        if is_on_lan is not None:
+            self.is_on_lan = is_on_lan
+        if joined_users is not None:
+            self.joined_users = joined_users
+        if active_users is not None:
+            self.active_users = active_users
+        if total_joined_users is not None:
+            self.total_joined_users = total_joined_users
+        if total_active_users is not None:
+            self.total_active_users = total_active_users
+        if maximum_users is not None:
+            self.maximum_users = maximum_users
+        if session_begin_time is not None:
+            self.session_begin_time = session_begin_time
+        if last_update is not None:
+            self.last_update = last_update
+        if access_level is not None:
+            self.access_level = access_level
+        if hide_from_listing is not None:
+            self.hide_from_listing = hide_from_listing
+        if away_kick_enabled is not None:
+            self.away_kick_enabled = away_kick_enabled
+        if away_kick_interval is not None:
+            self.away_kick_interval = away_kick_interval
+
+    @property
+    def has_data(self) -> bool | None:
+        """The HasData field value."""
+        member = self.get_member("HasData")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @has_data.setter
+    def has_data(self, value: bool) -> None:
+        """Set the HasData field value."""
+        member = self.get_member("HasData")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasData", fields.FieldBool(value=value)
+            )
+
+    @property
+    def item_name(self) -> str | None:
+        """Target ID of the ItemName reference (targets IField[str])."""
+        member = self.get_member("ItemName")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @item_name.setter
+    def item_name(self, target: str | IField[str] | None) -> None:
+        """Set the ItemName reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("ItemName")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ItemName",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def item_key(self) -> str | None:
+        """Target ID of the ItemKey reference (targets IField[str])."""
+        member = self.get_member("ItemKey")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @item_key.setter
+    def item_key(self, target: str | IField[str] | None) -> None:
+        """Set the ItemKey reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("ItemKey")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ItemKey",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def item_description(self) -> str | None:
+        """Target ID of the ItemDescription reference (targets IField[str])."""
+        member = self.get_member("ItemDescription")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @item_description.setter
+    def item_description(self, target: str | IField[str] | None) -> None:
+        """Set the ItemDescription reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("ItemDescription")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ItemDescription",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def has_description(self) -> str | None:
+        """Target ID of the HasDescription reference (targets IField[bool])."""
+        member = self.get_member("HasDescription")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @has_description.setter
+    def has_description(self, target: str | IField[bool] | None) -> None:
+        """Set the HasDescription reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("HasDescription")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "HasDescription",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def description_cleanup(self) -> str | None:
+        """Target ID of the DescriptionCleanup reference (targets Slot)."""
+        member = self.get_member("DescriptionCleanup")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @description_cleanup.setter
+    def description_cleanup(self, target: str | Slot | None) -> None:
+        """Set the DescriptionCleanup reference by target ID or Slot instance."""
+        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        member = self.get_member("DescriptionCleanup")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "DescriptionCleanup",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
+            )
+
+    @property
+    def item_icon(self) -> str | None:
+        """Target ID of the ItemIcon reference (targets IField[str])."""
+        member = self.get_member("ItemIcon")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @item_icon.setter
+    def item_icon(self, target: str | IField[str] | None) -> None:
+        """Set the ItemIcon reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("ItemIcon")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ItemIcon",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<Uri>'),
+            )
+
+    @property
+    def has_icon(self) -> str | None:
+        """Target ID of the HasIcon reference (targets IField[bool])."""
+        member = self.get_member("HasIcon")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @has_icon.setter
+    def has_icon(self, target: str | IField[bool] | None) -> None:
+        """Set the HasIcon reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("HasIcon")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "HasIcon",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def icon_cleanup(self) -> str | None:
+        """Target ID of the IconCleanup reference (targets Slot)."""
+        member = self.get_member("IconCleanup")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @icon_cleanup.setter
+    def icon_cleanup(self, target: str | Slot | None) -> None:
+        """Set the IconCleanup reference by target ID or Slot instance."""
+        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        member = self.get_member("IconCleanup")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "IconCleanup",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
+            )
+
+    @property
+    def view(self) -> str | None:
+        """Target ID of the View reference (targets SyncRef[IDataFeedView])."""
+        member = self.get_member("View")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @view.setter
+    def view(self, target: str | SyncRef[IDataFeedView] | None) -> None:
+        """Set the View reference by target ID or SyncRef[IDataFeedView] instance."""
+        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        member = self.get_member("View")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "View",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.SyncRef<[FrooxEngine]FrooxEngine.IDataFeedView>'),
+            )
+
+    @property
+    def parent_container(self) -> str | None:
+        """Target ID of the ParentContainer reference (targets FeedItemInterface)."""
+        member = self.get_member("ParentContainer")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @parent_container.setter
+    def parent_container(self, target: str | FeedItemInterface | None) -> None:
+        """Set the ParentContainer reference by target ID or FeedItemInterface instance."""
+        target_id: str | None = target.id if isinstance(target, FeedItemInterface) else target  # type: ignore[assignment]
+        member = self.get_member("ParentContainer")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ParentContainer",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.FeedItemInterface'),
+            )
+
+    @property
+    def child_container(self) -> str | None:
+        """Target ID of the ChildContainer reference (targets Slot)."""
+        member = self.get_member("ChildContainer")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @child_container.setter
+    def child_container(self, target: str | Slot | None) -> None:
+        """Set the ChildContainer reference by target ID or Slot instance."""
+        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        member = self.get_member("ChildContainer")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ChildContainer",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
+            )
+
+    @property
+    def nested_items(self) -> members.SyncList | None:
+        """The NestedItems member."""
+        member = self.get_member("NestedItems")
+        if isinstance(member, members.SyncList):
+            return member
+        return None
+
+    @nested_items.setter
+    def nested_items(self, value: members.SyncList) -> None:
+        """Set the NestedItems member."""
+        self.set_member("NestedItems", value)
+
+    @property
+    def enabled_state(self) -> str | None:
+        """Target ID of the EnabledState reference (targets IField[bool])."""
+        member = self.get_member("EnabledState")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @enabled_state.setter
+    def enabled_state(self, target: str | IField[bool] | None) -> None:
+        """Set the EnabledState reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("EnabledState")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "EnabledState",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def session_name(self) -> str | None:
+        """Target ID of the SessionName reference (targets IField[str])."""
+        member = self.get_member("SessionName")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @session_name.setter
+    def session_name(self, target: str | IField[str] | None) -> None:
+        """Set the SessionName reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("SessionName")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "SessionName",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def description(self) -> str | None:
+        """Target ID of the Description reference (targets IField[str])."""
+        member = self.get_member("Description")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @description.setter
+    def description(self, target: str | IField[str] | None) -> None:
+        """Set the Description reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("Description")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Description",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def thumbnail_url(self) -> str | None:
+        """Target ID of the ThumbnailUrl reference (targets IField[str])."""
+        member = self.get_member("ThumbnailUrl")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @thumbnail_url.setter
+    def thumbnail_url(self, target: str | IField[str] | None) -> None:
+        """Set the ThumbnailUrl reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("ThumbnailUrl")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ThumbnailUrl",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<Uri>'),
+            )
+
+    @property
+    def session_id(self) -> str | None:
+        """Target ID of the SessionId reference (targets IField[str])."""
+        member = self.get_member("SessionId")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @session_id.setter
+    def session_id(self, target: str | IField[str] | None) -> None:
+        """Set the SessionId reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("SessionId")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "SessionId",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def session_urls(self) -> str | None:
+        """Target ID of the SessionURLs reference (targets SyncFieldList[str])."""
+        member = self.get_member("SessionURLs")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @session_urls.setter
+    def session_urls(self, target: str | SyncFieldList[str] | None) -> None:
+        """Set the SessionURLs reference by target ID or SyncFieldList[str] instance."""
+        target_id: str | None = target.id if isinstance(target, SyncFieldList) else target  # type: ignore[assignment]
+        member = self.get_member("SessionURLs")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "SessionURLs",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.SyncFieldList<Uri>'),
+            )
+
+    @property
+    def host_user_id(self) -> str | None:
+        """Target ID of the HostUserId reference (targets IField[str])."""
+        member = self.get_member("HostUserId")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @host_user_id.setter
+    def host_user_id(self, target: str | IField[str] | None) -> None:
+        """Set the HostUserId reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("HostUserId")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "HostUserId",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def host_user_session_id(self) -> str | None:
+        """Target ID of the HostUserSessionId reference (targets IField[str])."""
+        member = self.get_member("HostUserSessionId")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @host_user_session_id.setter
+    def host_user_session_id(self, target: str | IField[str] | None) -> None:
+        """Set the HostUserSessionId reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("HostUserSessionId")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "HostUserSessionId",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def host_machine_id(self) -> str | None:
+        """Target ID of the HostMachineId reference (targets IField[str])."""
+        member = self.get_member("HostMachineId")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @host_machine_id.setter
+    def host_machine_id(self, target: str | IField[str] | None) -> None:
+        """Set the HostMachineId reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("HostMachineId")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "HostMachineId",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def host_username(self) -> str | None:
+        """Target ID of the HostUsername reference (targets IField[str])."""
+        member = self.get_member("HostUsername")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @host_username.setter
+    def host_username(self, target: str | IField[str] | None) -> None:
+        """Set the HostUsername reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("HostUsername")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "HostUsername",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def compatibility_hash(self) -> str | None:
+        """Target ID of the CompatibilityHash reference (targets IField[str])."""
+        member = self.get_member("CompatibilityHash")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @compatibility_hash.setter
+    def compatibility_hash(self, target: str | IField[str] | None) -> None:
+        """Set the CompatibilityHash reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("CompatibilityHash")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "CompatibilityHash",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def universe_id(self) -> str | None:
+        """Target ID of the UniverseId reference (targets IField[str])."""
+        member = self.get_member("UniverseId")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @universe_id.setter
+    def universe_id(self, target: str | IField[str] | None) -> None:
+        """Set the UniverseId reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("UniverseId")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "UniverseId",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def app_version(self) -> str | None:
+        """Target ID of the AppVersion reference (targets IField[str])."""
+        member = self.get_member("AppVersion")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @app_version.setter
+    def app_version(self, target: str | IField[str] | None) -> None:
+        """Set the AppVersion reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("AppVersion")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "AppVersion",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def is_headless_host(self) -> str | None:
+        """Target ID of the IsHeadlessHost reference (targets IField[bool])."""
+        member = self.get_member("IsHeadlessHost")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @is_headless_host.setter
+    def is_headless_host(self, target: str | IField[bool] | None) -> None:
+        """Set the IsHeadlessHost reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("IsHeadlessHost")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "IsHeadlessHost",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def is_on_lan(self) -> str | None:
+        """Target ID of the IsOnLAN reference (targets IField[bool])."""
+        member = self.get_member("IsOnLAN")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @is_on_lan.setter
+    def is_on_lan(self, target: str | IField[bool] | None) -> None:
+        """Set the IsOnLAN reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("IsOnLAN")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "IsOnLAN",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def joined_users(self) -> str | None:
+        """Target ID of the JoinedUsers reference (targets IField[np.int32])."""
+        member = self.get_member("JoinedUsers")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @joined_users.setter
+    def joined_users(self, target: str | IField[np.int32] | None) -> None:
+        """Set the JoinedUsers reference by target ID or IField[np.int32] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("JoinedUsers")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "JoinedUsers",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<int>'),
+            )
+
+    @property
+    def active_users(self) -> str | None:
+        """Target ID of the ActiveUsers reference (targets IField[np.int32])."""
+        member = self.get_member("ActiveUsers")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @active_users.setter
+    def active_users(self, target: str | IField[np.int32] | None) -> None:
+        """Set the ActiveUsers reference by target ID or IField[np.int32] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("ActiveUsers")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ActiveUsers",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<int>'),
+            )
+
+    @property
+    def total_joined_users(self) -> str | None:
+        """Target ID of the TotalJoinedUsers reference (targets IField[np.int32])."""
+        member = self.get_member("TotalJoinedUsers")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @total_joined_users.setter
+    def total_joined_users(self, target: str | IField[np.int32] | None) -> None:
+        """Set the TotalJoinedUsers reference by target ID or IField[np.int32] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("TotalJoinedUsers")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "TotalJoinedUsers",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<int>'),
+            )
+
+    @property
+    def total_active_users(self) -> str | None:
+        """Target ID of the TotalActiveUsers reference (targets IField[np.int32])."""
+        member = self.get_member("TotalActiveUsers")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @total_active_users.setter
+    def total_active_users(self, target: str | IField[np.int32] | None) -> None:
+        """Set the TotalActiveUsers reference by target ID or IField[np.int32] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("TotalActiveUsers")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "TotalActiveUsers",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<int>'),
+            )
+
+    @property
+    def maximum_users(self) -> str | None:
+        """Target ID of the MaximumUsers reference (targets IField[np.int32])."""
+        member = self.get_member("MaximumUsers")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @maximum_users.setter
+    def maximum_users(self, target: str | IField[np.int32] | None) -> None:
+        """Set the MaximumUsers reference by target ID or IField[np.int32] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("MaximumUsers")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "MaximumUsers",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<int>'),
+            )
+
+    @property
+    def session_begin_time(self) -> str | None:
+        """Target ID of the SessionBeginTime reference (targets IField[str])."""
+        member = self.get_member("SessionBeginTime")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @session_begin_time.setter
+    def session_begin_time(self, target: str | IField[str] | None) -> None:
+        """Set the SessionBeginTime reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("SessionBeginTime")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "SessionBeginTime",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<DateTime>'),
+            )
+
+    @property
+    def last_update(self) -> str | None:
+        """Target ID of the LastUpdate reference (targets IField[str])."""
+        member = self.get_member("LastUpdate")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @last_update.setter
+    def last_update(self, target: str | IField[str] | None) -> None:
+        """Set the LastUpdate reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("LastUpdate")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "LastUpdate",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<DateTime>'),
+            )
+
+    @property
+    def access_level(self) -> str | None:
+        """Target ID of the AccessLevel reference (targets IField[SessionAccessLevel])."""
+        member = self.get_member("AccessLevel")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @access_level.setter
+    def access_level(self, target: str | IField[SessionAccessLevel] | None) -> None:
+        """Set the AccessLevel reference by target ID or IField[SessionAccessLevel] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("AccessLevel")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "AccessLevel",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<[SkyFrost.Base.Models]SkyFrost.Base.SessionAccessLevel>'),
+            )
+
+    @property
+    def hide_from_listing(self) -> str | None:
+        """Target ID of the HideFromListing reference (targets IField[bool])."""
+        member = self.get_member("HideFromListing")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @hide_from_listing.setter
+    def hide_from_listing(self, target: str | IField[bool] | None) -> None:
+        """Set the HideFromListing reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("HideFromListing")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "HideFromListing",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def away_kick_enabled(self) -> str | None:
+        """Target ID of the AwayKickEnabled reference (targets IField[bool])."""
+        member = self.get_member("AwayKickEnabled")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @away_kick_enabled.setter
+    def away_kick_enabled(self, target: str | IField[bool] | None) -> None:
+        """Set the AwayKickEnabled reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("AwayKickEnabled")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "AwayKickEnabled",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def away_kick_interval(self) -> str | None:
+        """Target ID of the AwayKickInterval reference (targets IField[str])."""
+        member = self.get_member("AwayKickInterval")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @away_kick_interval.setter
+    def away_kick_interval(self, target: str | IField[str] | None) -> None:
+        """Set the AwayKickInterval reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("AwayKickInterval")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "AwayKickInterval",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<TimeSpan>'),
+            )
+

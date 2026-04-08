@@ -1,0 +1,346 @@
+"""Generated component: TutorialScreen."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.slot import Slot
+from pyresonitelink.generated._types.canvas import Canvas
+from pyresonitelink.generated._types.modal_overlay_manager import ModalOverlayManager
+from pyresonitelink.generated._types.radiant_dash_button import RadiantDashButton
+from pyresonitelink.generated._types.iasset_provider import IAssetProvider
+from pyresonitelink.generated._types.texture_2d import Texture2D
+from pyresonitelink.generated._types.slide_swap_region import SlideSwapRegion
+from pyresonitelink.generated._types.quantity_text_editor_parser import QuantityTextEditorParser
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.TutorialScreen.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TutorialScreen"
+
+    def __init__(self, icon: str | None = None, active_color: primitives.ColorX | None = None, label: str | None = None, screen_enabled: bool | None = None, base_resolution: primitives.Float2 | None = None, screen_root: str | Slot | None = None, screen_canvas: str | Canvas | None = None, modal_overlay_manager: str | ModalOverlayManager | None = None, button: str | RadiantDashButton | None = None, icon_texture: str | IAssetProvider[Texture2D] | None = None, swap_region: str | SlideSwapRegion | None = None, height_field: str | QuantityTextEditorParser | None = None, next_enabled: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            icon: Initial value for Icon.
+            active_color: Initial value for ActiveColor.
+            label: Initial value for Label.
+            screen_enabled: Initial value for ScreenEnabled.
+            base_resolution: Initial value for BaseResolution.
+            screen_root: Initial value for _screenRoot.
+            screen_canvas: Initial value for _screenCanvas.
+            modal_overlay_manager: Initial value for _modalOverlayManager.
+            button: Initial value for _button.
+            icon_texture: Initial value for _iconTexture.
+            swap_region: Initial value for _swapRegion.
+            height_field: Initial value for _heightField.
+            next_enabled: Initial value for _nextEnabled.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if icon is not None:
+            self.icon = icon
+        if active_color is not None:
+            self.active_color = active_color
+        if label is not None:
+            self.label = label
+        if screen_enabled is not None:
+            self.screen_enabled = screen_enabled
+        if base_resolution is not None:
+            self.base_resolution = base_resolution
+        if screen_root is not None:
+            self.screen_root = screen_root
+        if screen_canvas is not None:
+            self.screen_canvas = screen_canvas
+        if modal_overlay_manager is not None:
+            self.modal_overlay_manager = modal_overlay_manager
+        if button is not None:
+            self.button = button
+        if icon_texture is not None:
+            self.icon_texture = icon_texture
+        if swap_region is not None:
+            self.swap_region = swap_region
+        if height_field is not None:
+            self.height_field = height_field
+        if next_enabled is not None:
+            self.next_enabled = next_enabled
+
+    @property
+    def icon(self) -> str | None:
+        """The Icon field value."""
+        member = self.get_member("Icon")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @icon.setter
+    def icon(self, value: str) -> None:
+        """Set the Icon field value."""
+        member = self.get_member("Icon")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Icon", fields.FieldUri(value=value)
+            )
+
+    @property
+    def active_color(self) -> primitives.ColorX | None:
+        """The ActiveColor field value."""
+        member = self.get_member("ActiveColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @active_color.setter
+    def active_color(self, value: primitives.ColorX) -> None:
+        """Set the ActiveColor field value."""
+        member = self.get_member("ActiveColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ActiveColor", fields.FieldNullableColorX(value=value)
+            )
+
+    @property
+    def label(self) -> str | None:
+        """The Label field value."""
+        member = self.get_member("Label")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @label.setter
+    def label(self, value: str) -> None:
+        """Set the Label field value."""
+        member = self.get_member("Label")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Label", fields.FieldString(value=value)
+            )
+
+    @property
+    def screen_enabled(self) -> bool | None:
+        """The ScreenEnabled field value."""
+        member = self.get_member("ScreenEnabled")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @screen_enabled.setter
+    def screen_enabled(self, value: bool) -> None:
+        """Set the ScreenEnabled field value."""
+        member = self.get_member("ScreenEnabled")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ScreenEnabled", fields.FieldBool(value=value)
+            )
+
+    @property
+    def base_resolution(self) -> primitives.Float2 | None:
+        """The BaseResolution field value."""
+        member = self.get_member("BaseResolution")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @base_resolution.setter
+    def base_resolution(self, value: primitives.Float2) -> None:
+        """Set the BaseResolution field value."""
+        member = self.get_member("BaseResolution")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BaseResolution", fields.FieldFloat2(value=value)
+            )
+
+    @property
+    def screen_root(self) -> str | None:
+        """Target ID of the _screenRoot reference (targets Slot)."""
+        member = self.get_member("_screenRoot")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @screen_root.setter
+    def screen_root(self, target: str | Slot | None) -> None:
+        """Set the _screenRoot reference by target ID or Slot instance."""
+        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        member = self.get_member("_screenRoot")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_screenRoot",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
+            )
+
+    @property
+    def screen_canvas(self) -> str | None:
+        """Target ID of the _screenCanvas reference (targets Canvas)."""
+        member = self.get_member("_screenCanvas")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @screen_canvas.setter
+    def screen_canvas(self, target: str | Canvas | None) -> None:
+        """Set the _screenCanvas reference by target ID or Canvas instance."""
+        target_id: str | None = target.id if isinstance(target, Canvas) else target  # type: ignore[assignment]
+        member = self.get_member("_screenCanvas")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_screenCanvas",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UIX.Canvas'),
+            )
+
+    @property
+    def modal_overlay_manager(self) -> str | None:
+        """Target ID of the _modalOverlayManager reference (targets ModalOverlayManager)."""
+        member = self.get_member("_modalOverlayManager")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @modal_overlay_manager.setter
+    def modal_overlay_manager(self, target: str | ModalOverlayManager | None) -> None:
+        """Set the _modalOverlayManager reference by target ID or ModalOverlayManager instance."""
+        target_id: str | None = target.id if isinstance(target, ModalOverlayManager) else target  # type: ignore[assignment]
+        member = self.get_member("_modalOverlayManager")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_modalOverlayManager",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ModalOverlayManager'),
+            )
+
+    @property
+    def button(self) -> str | None:
+        """Target ID of the _button reference (targets RadiantDashButton)."""
+        member = self.get_member("_button")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @button.setter
+    def button(self, target: str | RadiantDashButton | None) -> None:
+        """Set the _button reference by target ID or RadiantDashButton instance."""
+        target_id: str | None = target.id if isinstance(target, RadiantDashButton) else target  # type: ignore[assignment]
+        member = self.get_member("_button")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_button",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.RadiantDashButton'),
+            )
+
+    @property
+    def icon_texture(self) -> str | None:
+        """Target ID of the _iconTexture reference (targets IAssetProvider[Texture2D])."""
+        member = self.get_member("_iconTexture")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @icon_texture.setter
+    def icon_texture(self, target: str | IAssetProvider[Texture2D] | None) -> None:
+        """Set the _iconTexture reference by target ID or IAssetProvider[Texture2D] instance."""
+        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        member = self.get_member("_iconTexture")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_iconTexture",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.Texture2D>'),
+            )
+
+    @property
+    def swap_region(self) -> str | None:
+        """Target ID of the _swapRegion reference (targets SlideSwapRegion)."""
+        member = self.get_member("_swapRegion")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @swap_region.setter
+    def swap_region(self, target: str | SlideSwapRegion | None) -> None:
+        """Set the _swapRegion reference by target ID or SlideSwapRegion instance."""
+        target_id: str | None = target.id if isinstance(target, SlideSwapRegion) else target  # type: ignore[assignment]
+        member = self.get_member("_swapRegion")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_swapRegion",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UIX.SlideSwapRegion'),
+            )
+
+    @property
+    def current_screen(self) -> members.FieldEnum | None:
+        """The _currentScreen member."""
+        member = self.get_member("_currentScreen")
+        if isinstance(member, members.FieldEnum):
+            return member
+        return None
+
+    @current_screen.setter
+    def current_screen(self, value: members.FieldEnum) -> None:
+        """Set the _currentScreen member."""
+        self.set_member("_currentScreen", value)
+
+    @property
+    def height_field(self) -> str | None:
+        """Target ID of the _heightField reference (targets QuantityTextEditorParser)."""
+        member = self.get_member("_heightField")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @height_field.setter
+    def height_field(self, target: str | QuantityTextEditorParser | None) -> None:
+        """Set the _heightField reference by target ID or QuantityTextEditorParser instance."""
+        target_id: str | None = target.id if isinstance(target, QuantityTextEditorParser) else target  # type: ignore[assignment]
+        member = self.get_member("_heightField")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_heightField",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.QuantityTextEditorParser<,>'),
+            )
+
+    @property
+    def next_enabled(self) -> bool | None:
+        """The _nextEnabled field value."""
+        member = self.get_member("_nextEnabled")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @next_enabled.setter
+    def next_enabled(self, value: bool) -> None:
+        """Set the _nextEnabled field value."""
+        member = self.get_member("_nextEnabled")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "_nextEnabled", fields.FieldBool(value=value)
+            )
+

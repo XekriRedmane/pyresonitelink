@@ -1,6 +1,10 @@
 """Generated component: BitmapAssetMetadata."""
 
+import numpy as np
+
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -17,16 +21,46 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BitmapAssetMetadata"
 
-    def __init__(self, asset: str | IAssetProvider[Texture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, asset: str | IAssetProvider[Texture2D] | None = None, width: np.int32 | None = None, height: np.int32 | None = None, base_format: str | None = None, bits_per_pixel: np.float64 | None = None, channel_count: np.int32 | None = None, average_color: primitives.ColorX | None = None, average_visible_color: primitives.ColorX | None = None, average_hsv: primitives.ColorX | None = None, average_visible_hsv: primitives.ColorX | None = None, invalid_pixel_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             asset: Initial value for Asset.
+            width: Initial value for Width.
+            height: Initial value for Height.
+            base_format: Initial value for BaseFormat.
+            bits_per_pixel: Initial value for BitsPerPixel.
+            channel_count: Initial value for ChannelCount.
+            average_color: Initial value for AverageColor.
+            average_visible_color: Initial value for AverageVisibleColor.
+            average_hsv: Initial value for AverageHSV.
+            average_visible_hsv: Initial value for AverageVisibleHSV.
+            invalid_pixel_count: Initial value for InvalidPixelCount.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if asset is not None:
             self.asset = asset
+        if width is not None:
+            self.width = width
+        if height is not None:
+            self.height = height
+        if base_format is not None:
+            self.base_format = base_format
+        if bits_per_pixel is not None:
+            self.bits_per_pixel = bits_per_pixel
+        if channel_count is not None:
+            self.channel_count = channel_count
+        if average_color is not None:
+            self.average_color = average_color
+        if average_visible_color is not None:
+            self.average_visible_color = average_visible_color
+        if average_hsv is not None:
+            self.average_hsv = average_hsv
+        if average_visible_hsv is not None:
+            self.average_visible_hsv = average_visible_hsv
+        if invalid_pixel_count is not None:
+            self.invalid_pixel_count = invalid_pixel_count
 
     @property
     def asset(self) -> str | None:
@@ -50,158 +84,218 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def width(self) -> members.EmptyElement | None:
-        """The Width member."""
+    def width(self) -> np.int32 | None:
+        """The Width field value."""
         member = self.get_member("Width")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: members.EmptyElement) -> None:
-        """Set the Width member."""
-        self.set_member("Width", value)
+    def width(self, value: np.int32) -> None:
+        """Set the Width field value."""
+        member = self.get_member("Width")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Width", fields.FieldInt(value=value)
+            )
 
     @property
-    def height(self) -> members.EmptyElement | None:
-        """The Height member."""
+    def height(self) -> np.int32 | None:
+        """The Height field value."""
         member = self.get_member("Height")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: members.EmptyElement) -> None:
-        """Set the Height member."""
-        self.set_member("Height", value)
+    def height(self, value: np.int32) -> None:
+        """Set the Height field value."""
+        member = self.get_member("Height")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Height", fields.FieldInt(value=value)
+            )
 
     @property
-    def base_format(self) -> members.EmptyElement | None:
-        """The BaseFormat member."""
+    def base_format(self) -> str | None:
+        """The BaseFormat field value."""
         member = self.get_member("BaseFormat")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @base_format.setter
-    def base_format(self, value: members.EmptyElement) -> None:
-        """Set the BaseFormat member."""
-        self.set_member("BaseFormat", value)
+    def base_format(self, value: str) -> None:
+        """Set the BaseFormat field value."""
+        member = self.get_member("BaseFormat")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BaseFormat", fields.FieldString(value=value)
+            )
 
     @property
-    def color_data(self) -> members.EmptyElement | None:
+    def color_data(self) -> members.FieldEnum | None:
         """The ColorData member."""
         member = self.get_member("ColorData")
-        if isinstance(member, members.EmptyElement):
+        if isinstance(member, members.FieldEnum):
             return member
         return None
 
     @color_data.setter
-    def color_data(self, value: members.EmptyElement) -> None:
+    def color_data(self, value: members.FieldEnum) -> None:
         """Set the ColorData member."""
         self.set_member("ColorData", value)
 
     @property
-    def alpha_data(self) -> members.EmptyElement | None:
+    def alpha_data(self) -> members.FieldEnum | None:
         """The AlphaData member."""
         member = self.get_member("AlphaData")
-        if isinstance(member, members.EmptyElement):
+        if isinstance(member, members.FieldEnum):
             return member
         return None
 
     @alpha_data.setter
-    def alpha_data(self, value: members.EmptyElement) -> None:
+    def alpha_data(self, value: members.FieldEnum) -> None:
         """Set the AlphaData member."""
         self.set_member("AlphaData", value)
 
     @property
-    def bits_per_pixel(self) -> members.EmptyElement | None:
-        """The BitsPerPixel member."""
+    def bits_per_pixel(self) -> np.float64 | None:
+        """The BitsPerPixel field value."""
         member = self.get_member("BitsPerPixel")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @bits_per_pixel.setter
-    def bits_per_pixel(self, value: members.EmptyElement) -> None:
-        """Set the BitsPerPixel member."""
-        self.set_member("BitsPerPixel", value)
+    def bits_per_pixel(self, value: np.float64) -> None:
+        """Set the BitsPerPixel field value."""
+        member = self.get_member("BitsPerPixel")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BitsPerPixel", fields.FieldDouble(value=value)
+            )
 
     @property
-    def channel_count(self) -> members.EmptyElement | None:
-        """The ChannelCount member."""
+    def channel_count(self) -> np.int32 | None:
+        """The ChannelCount field value."""
         member = self.get_member("ChannelCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @channel_count.setter
-    def channel_count(self, value: members.EmptyElement) -> None:
-        """Set the ChannelCount member."""
-        self.set_member("ChannelCount", value)
+    def channel_count(self, value: np.int32) -> None:
+        """Set the ChannelCount field value."""
+        member = self.get_member("ChannelCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ChannelCount", fields.FieldInt(value=value)
+            )
 
     @property
-    def average_color(self) -> members.EmptyElement | None:
-        """The AverageColor member."""
+    def average_color(self) -> primitives.ColorX | None:
+        """The AverageColor field value."""
         member = self.get_member("AverageColor")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @average_color.setter
-    def average_color(self, value: members.EmptyElement) -> None:
-        """Set the AverageColor member."""
-        self.set_member("AverageColor", value)
+    def average_color(self, value: primitives.ColorX) -> None:
+        """Set the AverageColor field value."""
+        member = self.get_member("AverageColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AverageColor", fields.FieldColorX(value=value)
+            )
 
     @property
-    def average_visible_color(self) -> members.EmptyElement | None:
-        """The AverageVisibleColor member."""
+    def average_visible_color(self) -> primitives.ColorX | None:
+        """The AverageVisibleColor field value."""
         member = self.get_member("AverageVisibleColor")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @average_visible_color.setter
-    def average_visible_color(self, value: members.EmptyElement) -> None:
-        """Set the AverageVisibleColor member."""
-        self.set_member("AverageVisibleColor", value)
+    def average_visible_color(self, value: primitives.ColorX) -> None:
+        """Set the AverageVisibleColor field value."""
+        member = self.get_member("AverageVisibleColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AverageVisibleColor", fields.FieldColorX(value=value)
+            )
 
     @property
-    def average_hsv(self) -> members.EmptyElement | None:
-        """The AverageHSV member."""
+    def average_hsv(self) -> primitives.ColorX | None:
+        """The AverageHSV field value."""
         member = self.get_member("AverageHSV")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @average_hsv.setter
-    def average_hsv(self, value: members.EmptyElement) -> None:
-        """Set the AverageHSV member."""
-        self.set_member("AverageHSV", value)
+    def average_hsv(self, value: primitives.ColorX) -> None:
+        """Set the AverageHSV field value."""
+        member = self.get_member("AverageHSV")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AverageHSV", fields.FieldColorX(value=value)
+            )
 
     @property
-    def average_visible_hsv(self) -> members.EmptyElement | None:
-        """The AverageVisibleHSV member."""
+    def average_visible_hsv(self) -> primitives.ColorX | None:
+        """The AverageVisibleHSV field value."""
         member = self.get_member("AverageVisibleHSV")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @average_visible_hsv.setter
-    def average_visible_hsv(self, value: members.EmptyElement) -> None:
-        """Set the AverageVisibleHSV member."""
-        self.set_member("AverageVisibleHSV", value)
+    def average_visible_hsv(self, value: primitives.ColorX) -> None:
+        """Set the AverageVisibleHSV field value."""
+        member = self.get_member("AverageVisibleHSV")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AverageVisibleHSV", fields.FieldColorX(value=value)
+            )
 
     @property
-    def invalid_pixel_count(self) -> members.EmptyElement | None:
-        """The InvalidPixelCount member."""
+    def invalid_pixel_count(self) -> np.int32 | None:
+        """The InvalidPixelCount field value."""
         member = self.get_member("InvalidPixelCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @invalid_pixel_count.setter
-    def invalid_pixel_count(self, value: members.EmptyElement) -> None:
-        """Set the InvalidPixelCount member."""
-        self.set_member("InvalidPixelCount", value)
+    def invalid_pixel_count(self, value: np.int32) -> None:
+        """Set the InvalidPixelCount field value."""
+        member = self.get_member("InvalidPixelCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "InvalidPixelCount", fields.FieldInt(value=value)
+            )
 

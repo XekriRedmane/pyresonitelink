@@ -20,7 +20,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Consumable"
 
-    def __init__(self, must_be_holding: bool | None = None, can_feed_to_others: bool | None = None, override_reference_point: str | Slot | None = None, radius: np.float32 | None = None, start_hysteresis: np.float32 | None = None, current_stage_index: np.int32 | None = None, destroy_on_consumed: bool | None = None, waiting_for_reset: bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, must_be_holding: bool | None = None, can_feed_to_others: bool | None = None, override_reference_point: str | Slot | None = None, radius: np.float32 | None = None, start_hysteresis: np.float32 | None = None, current_stage_index: np.int32 | None = None, is_being_consumed: bool | None = None, has_been_fully_consumed: bool | None = None, destroy_on_consumed: bool | None = None, waiting_for_reset: bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,6 +30,8 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             radius: Initial value for Radius.
             start_hysteresis: Initial value for StartHysteresis.
             current_stage_index: Initial value for CurrentStageIndex.
+            is_being_consumed: Initial value for IsBeingConsumed.
+            has_been_fully_consumed: Initial value for HasBeenFullyConsumed.
             destroy_on_consumed: Initial value for DestroyOnConsumed.
             waiting_for_reset: Initial value for _waitingForReset.
             component: Existing Component to wrap.
@@ -47,6 +49,10 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             self.start_hysteresis = start_hysteresis
         if current_stage_index is not None:
             self.current_stage_index = current_stage_index
+        if is_being_consumed is not None:
+            self.is_being_consumed = is_being_consumed
+        if has_been_fully_consumed is not None:
+            self.has_been_fully_consumed = has_been_fully_consumed
         if destroy_on_consumed is not None:
             self.destroy_on_consumed = destroy_on_consumed
         if waiting_for_reset is not None:
@@ -169,30 +175,42 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             )
 
     @property
-    def is_being_consumed(self) -> members.EmptyElement | None:
-        """The IsBeingConsumed member."""
+    def is_being_consumed(self) -> bool | None:
+        """The IsBeingConsumed field value."""
         member = self.get_member("IsBeingConsumed")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @is_being_consumed.setter
-    def is_being_consumed(self, value: members.EmptyElement) -> None:
-        """Set the IsBeingConsumed member."""
-        self.set_member("IsBeingConsumed", value)
+    def is_being_consumed(self, value: bool) -> None:
+        """Set the IsBeingConsumed field value."""
+        member = self.get_member("IsBeingConsumed")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "IsBeingConsumed", fields.FieldBool(value=value)
+            )
 
     @property
-    def has_been_fully_consumed(self) -> members.EmptyElement | None:
-        """The HasBeenFullyConsumed member."""
+    def has_been_fully_consumed(self) -> bool | None:
+        """The HasBeenFullyConsumed field value."""
         member = self.get_member("HasBeenFullyConsumed")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @has_been_fully_consumed.setter
-    def has_been_fully_consumed(self, value: members.EmptyElement) -> None:
-        """Set the HasBeenFullyConsumed member."""
-        self.set_member("HasBeenFullyConsumed", value)
+    def has_been_fully_consumed(self, value: bool) -> None:
+        """Set the HasBeenFullyConsumed field value."""
+        member = self.get_member("HasBeenFullyConsumed")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasBeenFullyConsumed", fields.FieldBool(value=value)
+            )
 
     @property
     def currently_consuming_user(self) -> members.SyncObject | None:
@@ -257,30 +275,4 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
             self.set_member(
                 "_waitingForReset", fields.FieldBool(value=value)
             )
-
-    @property
-    def on_any_stage_consumed(self) -> members.SyncList | None:
-        """The OnAnyStageConsumed member."""
-        member = self.get_member("OnAnyStageConsumed")
-        if isinstance(member, members.SyncList):
-            return member
-        return None
-
-    @on_any_stage_consumed.setter
-    def on_any_stage_consumed(self, value: members.SyncList) -> None:
-        """Set the OnAnyStageConsumed member."""
-        self.set_member("OnAnyStageConsumed", value)
-
-    @property
-    def on_fully_consumed(self) -> members.SyncList | None:
-        """The OnFullyConsumed member."""
-        member = self.get_member("OnFullyConsumed")
-        if isinstance(member, members.SyncList):
-            return member
-        return None
-
-    @on_fully_consumed.setter
-    def on_fully_consumed(self, value: members.SyncList) -> None:
-        """Set the OnFullyConsumed member."""
-        self.set_member("OnFullyConsumed", value)
 

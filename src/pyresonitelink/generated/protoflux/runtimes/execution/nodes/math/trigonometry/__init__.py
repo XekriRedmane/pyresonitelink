@@ -24,6 +24,16 @@ from .atan2_color import Atan2_Color
 from .atan2_color_float import Atan2_Color_Float
 from .atan2_colorx import Atan2_ColorX
 from .atan2_colorx_float import Atan2_ColorX_Float
+from .atan2_double import Atan2_Double
+from .atan2_double2 import Atan2_Double2
+from .atan2_double2_double import Atan2_Double2_Double
+from .atan2_double3 import Atan2_Double3
+from .atan2_double3_double import Atan2_Double3_Double
+from .atan2_double4 import Atan2_Double4
+from .atan2_double4_double import Atan2_Double4_Double
+from .atan2_double_double2 import Atan2_Double_Double2
+from .atan2_double_double3 import Atan2_Double_Double3
+from .atan2_double_double4 import Atan2_Double_Double4
 from .atan2_float import Atan2_Float
 from .atan2_float2 import Atan2_Float2
 from .atan2_float2_float import Atan2_Float2_Float

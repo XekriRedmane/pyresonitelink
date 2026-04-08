@@ -1,6 +1,10 @@
 """Generated component: ITexture2DAssetMetadata."""
 
+import numpy as np
+
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -17,16 +21,25 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ITexture2DAssetMetadata"
 
-    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, size: primitives.Int2 | None = None, width: np.int32 | None = None, height: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             texture: Initial value for Texture.
+            size: Initial value for Size.
+            width: Initial value for Width.
+            height: Initial value for Height.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if texture is not None:
             self.texture = texture
+        if size is not None:
+            self.size = size
+        if width is not None:
+            self.width = width
+        if height is not None:
+            self.height = height
 
     @property
     def texture(self) -> str | None:
@@ -50,41 +63,59 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def size(self) -> members.EmptyElement | None:
-        """The Size member."""
+    def size(self) -> primitives.Int2 | None:
+        """The Size field value."""
         member = self.get_member("Size")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @size.setter
-    def size(self, value: members.EmptyElement) -> None:
-        """Set the Size member."""
-        self.set_member("Size", value)
+    def size(self, value: primitives.Int2) -> None:
+        """Set the Size field value."""
+        member = self.get_member("Size")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Size", fields.FieldInt2(value=value)
+            )
 
     @property
-    def width(self) -> members.EmptyElement | None:
-        """The Width member."""
+    def width(self) -> np.int32 | None:
+        """The Width field value."""
         member = self.get_member("Width")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @width.setter
-    def width(self, value: members.EmptyElement) -> None:
-        """Set the Width member."""
-        self.set_member("Width", value)
+    def width(self, value: np.int32) -> None:
+        """Set the Width field value."""
+        member = self.get_member("Width")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Width", fields.FieldInt(value=value)
+            )
 
     @property
-    def height(self) -> members.EmptyElement | None:
-        """The Height member."""
+    def height(self) -> np.int32 | None:
+        """The Height field value."""
         member = self.get_member("Height")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @height.setter
-    def height(self, value: members.EmptyElement) -> None:
-        """Set the Height member."""
-        self.set_member("Height", value)
+    def height(self, value: np.int32) -> None:
+        """Set the Height field value."""
+        member = self.get_member("Height")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Height", fields.FieldInt(value=value)
+            )
 

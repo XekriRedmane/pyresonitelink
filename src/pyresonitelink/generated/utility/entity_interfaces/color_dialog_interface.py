@@ -1,0 +1,220 @@
+"""Generated component: ColorDialogInterface."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.ifield import IField
+from pyresonitelink.generated._types.user_ref import UserRef
+from pyresonitelink.generated._types.sync_ref import SyncRef
+from pyresonitelink.generated._types.iitem_metadata_source import IItemMetadataSource
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.ColorDialogInterface.
+
+    Category: Utility/Entity Interfaces
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorDialogInterface"
+
+    def __init__(self, item_name: str | IField[str] | None = None, spawning_user: str | UserRef | None = None, spawning_user_id: str | IField[str] | None = None, is_instance: bool | None = None, target_color: str | SyncRef[IField[primitives.ColorX]] | None = None, continuous: str | IField[bool] | None = None, allow_alpha: str | IField[bool] | None = None, allow_hdr: str | IField[bool] | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            item_name: Initial value for ItemName.
+            spawning_user: Initial value for SpawningUser.
+            spawning_user_id: Initial value for SpawningUserID.
+            is_instance: Initial value for IsInstance.
+            target_color: Initial value for TargetColor.
+            continuous: Initial value for Continuous.
+            allow_alpha: Initial value for AllowAlpha.
+            allow_hdr: Initial value for AllowHDR.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if item_name is not None:
+            self.item_name = item_name
+        if spawning_user is not None:
+            self.spawning_user = spawning_user
+        if spawning_user_id is not None:
+            self.spawning_user_id = spawning_user_id
+        if is_instance is not None:
+            self.is_instance = is_instance
+        if target_color is not None:
+            self.target_color = target_color
+        if continuous is not None:
+            self.continuous = continuous
+        if allow_alpha is not None:
+            self.allow_alpha = allow_alpha
+        if allow_hdr is not None:
+            self.allow_hdr = allow_hdr
+
+    @property
+    def item_name(self) -> str | None:
+        """Target ID of the ItemName reference (targets IField[str])."""
+        member = self.get_member("ItemName")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @item_name.setter
+    def item_name(self, target: str | IField[str] | None) -> None:
+        """Set the ItemName reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("ItemName")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "ItemName",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def spawning_user(self) -> str | None:
+        """Target ID of the SpawningUser reference (targets UserRef)."""
+        member = self.get_member("SpawningUser")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @spawning_user.setter
+    def spawning_user(self, target: str | UserRef | None) -> None:
+        """Set the SpawningUser reference by target ID or UserRef instance."""
+        target_id: str | None = target.id if isinstance(target, UserRef) else target  # type: ignore[assignment]
+        member = self.get_member("SpawningUser")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "SpawningUser",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UserRef'),
+            )
+
+    @property
+    def spawning_user_id(self) -> str | None:
+        """Target ID of the SpawningUserID reference (targets IField[str])."""
+        member = self.get_member("SpawningUserID")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @spawning_user_id.setter
+    def spawning_user_id(self, target: str | IField[str] | None) -> None:
+        """Set the SpawningUserID reference by target ID or IField[str] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("SpawningUserID")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "SpawningUserID",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<string>'),
+            )
+
+    @property
+    def is_instance(self) -> bool | None:
+        """The IsInstance field value."""
+        member = self.get_member("IsInstance")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @is_instance.setter
+    def is_instance(self, value: bool) -> None:
+        """Set the IsInstance field value."""
+        member = self.get_member("IsInstance")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "IsInstance", fields.FieldBool(value=value)
+            )
+
+    @property
+    def target_color(self) -> str | None:
+        """Target ID of the TargetColor reference (targets SyncRef[IField[primitives.ColorX]])."""
+        member = self.get_member("TargetColor")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @target_color.setter
+    def target_color(self, target: str | SyncRef[IField[primitives.ColorX]] | None) -> None:
+        """Set the TargetColor reference by target ID or SyncRef[IField[primitives.ColorX]] instance."""
+        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        member = self.get_member("TargetColor")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "TargetColor",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.SyncRef<[FrooxEngine]FrooxEngine.IField<colorX>>'),
+            )
+
+    @property
+    def continuous(self) -> str | None:
+        """Target ID of the Continuous reference (targets IField[bool])."""
+        member = self.get_member("Continuous")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @continuous.setter
+    def continuous(self, target: str | IField[bool] | None) -> None:
+        """Set the Continuous reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("Continuous")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Continuous",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def allow_alpha(self) -> str | None:
+        """Target ID of the AllowAlpha reference (targets IField[bool])."""
+        member = self.get_member("AllowAlpha")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @allow_alpha.setter
+    def allow_alpha(self, target: str | IField[bool] | None) -> None:
+        """Set the AllowAlpha reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("AllowAlpha")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "AllowAlpha",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def allow_hdr(self) -> str | None:
+        """Target ID of the AllowHDR reference (targets IField[bool])."""
+        member = self.get_member("AllowHDR")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @allow_hdr.setter
+    def allow_hdr(self, target: str | IField[bool] | None) -> None:
+        """Set the AllowHDR reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("AllowHDR")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "AllowHDR",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+

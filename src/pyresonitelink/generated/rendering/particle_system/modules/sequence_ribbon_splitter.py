@@ -1,0 +1,71 @@
+"""Generated component: SequenceRibbonSplitter."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class SequenceRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SequenceRibbonSplitter.
+
+    Category: Rendering/Particle System/Modules
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SequenceRibbonSplitter"
+
+    def __init__(self, min_sequence_count: np.int32 | None = None, max_sequence_count: np.int32 | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            min_sequence_count: Initial value for MinSequenceCount.
+            max_sequence_count: Initial value for MaxSequenceCount.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if min_sequence_count is not None:
+            self.min_sequence_count = min_sequence_count
+        if max_sequence_count is not None:
+            self.max_sequence_count = max_sequence_count
+
+    @property
+    def min_sequence_count(self) -> np.int32 | None:
+        """The MinSequenceCount field value."""
+        member = self.get_member("MinSequenceCount")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @min_sequence_count.setter
+    def min_sequence_count(self, value: np.int32) -> None:
+        """Set the MinSequenceCount field value."""
+        member = self.get_member("MinSequenceCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "MinSequenceCount", fields.FieldInt(value=value)
+            )
+
+    @property
+    def max_sequence_count(self) -> np.int32 | None:
+        """The MaxSequenceCount field value."""
+        member = self.get_member("MaxSequenceCount")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @max_sequence_count.setter
+    def max_sequence_count(self, value: np.int32) -> None:
+        """Set the MaxSequenceCount field value."""
+        member = self.get_member("MaxSequenceCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "MaxSequenceCount", fields.FieldInt(value=value)
+            )
+

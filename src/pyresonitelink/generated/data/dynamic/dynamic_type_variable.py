@@ -51,15 +51,15 @@ class DynamicTypeVariable(GeneratedComponent, IDynamicVariable, IComponent, IWor
             )
 
     @property
-    def value(self) -> members.Member | None:
+    def value(self) -> members.FieldEnum | None:
         """The Value member."""
         member = self.get_member("Value")
-        if isinstance(member, members.Member):
+        if isinstance(member, members.FieldEnum):
             return member
         return None
 
     @value.setter
-    def value(self, value: members.Member) -> None:
+    def value(self, value: members.FieldEnum) -> None:
         """Set the Value member."""
         self.set_member("Value", value)
 

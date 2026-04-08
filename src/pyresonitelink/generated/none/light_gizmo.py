@@ -1,0 +1,316 @@
+"""Generated component: LightGizmo."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.light import Light
+from pyresonitelink.generated._types.ifield import IField
+from pyresonitelink.generated._types.sphere_gizmo import SphereGizmo
+from pyresonitelink.generated._types.cone_gizmo import ConeGizmo
+from pyresonitelink.generated._types.vector_gizmo import VectorGizmo
+from pyresonitelink.generated._types.overlay_fresnel_material import OverlayFresnelMaterial
+from pyresonitelink.generated._types.icomponent_gizmo import IComponentGizmo
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class LightGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.LightGizmo.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LightGizmo"
+
+    def __init__(self, active: bool | None = None, target: str | Light | None = None, point_icon_active: str | IField[bool] | None = None, spot_icon_active: str | IField[bool] | None = None, directional_icon_active: str | IField[bool] | None = None, point_active: str | IField[bool] | None = None, spot_active: str | IField[bool] | None = None, directional_active: str | IField[bool] | None = None, point_gizmo: str | SphereGizmo | None = None, spot_gizmo: str | ConeGizmo | None = None, dir_gizmo: str | VectorGizmo | None = None, icon_material: str | OverlayFresnelMaterial | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            active: Initial value for Active.
+            target: Initial value for _target.
+            point_icon_active: Initial value for _pointIconActive.
+            spot_icon_active: Initial value for _spotIconActive.
+            directional_icon_active: Initial value for _directionalIconActive.
+            point_active: Initial value for _pointActive.
+            spot_active: Initial value for _spotActive.
+            directional_active: Initial value for _directionalActive.
+            point_gizmo: Initial value for _pointGizmo.
+            spot_gizmo: Initial value for _spotGizmo.
+            dir_gizmo: Initial value for _dirGizmo.
+            icon_material: Initial value for _iconMaterial.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if active is not None:
+            self.active = active
+        if target is not None:
+            self.target = target
+        if point_icon_active is not None:
+            self.point_icon_active = point_icon_active
+        if spot_icon_active is not None:
+            self.spot_icon_active = spot_icon_active
+        if directional_icon_active is not None:
+            self.directional_icon_active = directional_icon_active
+        if point_active is not None:
+            self.point_active = point_active
+        if spot_active is not None:
+            self.spot_active = spot_active
+        if directional_active is not None:
+            self.directional_active = directional_active
+        if point_gizmo is not None:
+            self.point_gizmo = point_gizmo
+        if spot_gizmo is not None:
+            self.spot_gizmo = spot_gizmo
+        if dir_gizmo is not None:
+            self.dir_gizmo = dir_gizmo
+        if icon_material is not None:
+            self.icon_material = icon_material
+
+    @property
+    def active(self) -> bool | None:
+        """The Active field value."""
+        member = self.get_member("Active")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @active.setter
+    def active(self, value: bool) -> None:
+        """Set the Active field value."""
+        member = self.get_member("Active")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Active", fields.FieldBool(value=value)
+            )
+
+    @property
+    def target(self) -> str | None:
+        """Target ID of the _target reference (targets Light)."""
+        member = self.get_member("_target")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @target.setter
+    def target(self, target: str | Light | None) -> None:
+        """Set the _target reference by target ID or Light instance."""
+        target_id: str | None = target.id if isinstance(target, Light) else target  # type: ignore[assignment]
+        member = self.get_member("_target")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_target",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Light'),
+            )
+
+    @property
+    def point_icon_active(self) -> str | None:
+        """Target ID of the _pointIconActive reference (targets IField[bool])."""
+        member = self.get_member("_pointIconActive")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @point_icon_active.setter
+    def point_icon_active(self, target: str | IField[bool] | None) -> None:
+        """Set the _pointIconActive reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("_pointIconActive")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_pointIconActive",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def spot_icon_active(self) -> str | None:
+        """Target ID of the _spotIconActive reference (targets IField[bool])."""
+        member = self.get_member("_spotIconActive")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @spot_icon_active.setter
+    def spot_icon_active(self, target: str | IField[bool] | None) -> None:
+        """Set the _spotIconActive reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("_spotIconActive")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_spotIconActive",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def directional_icon_active(self) -> str | None:
+        """Target ID of the _directionalIconActive reference (targets IField[bool])."""
+        member = self.get_member("_directionalIconActive")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @directional_icon_active.setter
+    def directional_icon_active(self, target: str | IField[bool] | None) -> None:
+        """Set the _directionalIconActive reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("_directionalIconActive")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_directionalIconActive",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def point_active(self) -> str | None:
+        """Target ID of the _pointActive reference (targets IField[bool])."""
+        member = self.get_member("_pointActive")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @point_active.setter
+    def point_active(self, target: str | IField[bool] | None) -> None:
+        """Set the _pointActive reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("_pointActive")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_pointActive",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def spot_active(self) -> str | None:
+        """Target ID of the _spotActive reference (targets IField[bool])."""
+        member = self.get_member("_spotActive")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @spot_active.setter
+    def spot_active(self, target: str | IField[bool] | None) -> None:
+        """Set the _spotActive reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("_spotActive")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_spotActive",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def directional_active(self) -> str | None:
+        """Target ID of the _directionalActive reference (targets IField[bool])."""
+        member = self.get_member("_directionalActive")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @directional_active.setter
+    def directional_active(self, target: str | IField[bool] | None) -> None:
+        """Set the _directionalActive reference by target ID or IField[bool] instance."""
+        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        member = self.get_member("_directionalActive")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_directionalActive",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
+            )
+
+    @property
+    def point_gizmo(self) -> str | None:
+        """Target ID of the _pointGizmo reference (targets SphereGizmo)."""
+        member = self.get_member("_pointGizmo")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @point_gizmo.setter
+    def point_gizmo(self, target: str | SphereGizmo | None) -> None:
+        """Set the _pointGizmo reference by target ID or SphereGizmo instance."""
+        target_id: str | None = target.id if isinstance(target, SphereGizmo) else target  # type: ignore[assignment]
+        member = self.get_member("_pointGizmo")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_pointGizmo",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.SphereGizmo'),
+            )
+
+    @property
+    def spot_gizmo(self) -> str | None:
+        """Target ID of the _spotGizmo reference (targets ConeGizmo)."""
+        member = self.get_member("_spotGizmo")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @spot_gizmo.setter
+    def spot_gizmo(self, target: str | ConeGizmo | None) -> None:
+        """Set the _spotGizmo reference by target ID or ConeGizmo instance."""
+        target_id: str | None = target.id if isinstance(target, ConeGizmo) else target  # type: ignore[assignment]
+        member = self.get_member("_spotGizmo")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_spotGizmo",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ConeGizmo'),
+            )
+
+    @property
+    def dir_gizmo(self) -> str | None:
+        """Target ID of the _dirGizmo reference (targets VectorGizmo)."""
+        member = self.get_member("_dirGizmo")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @dir_gizmo.setter
+    def dir_gizmo(self, target: str | VectorGizmo | None) -> None:
+        """Set the _dirGizmo reference by target ID or VectorGizmo instance."""
+        target_id: str | None = target.id if isinstance(target, VectorGizmo) else target  # type: ignore[assignment]
+        member = self.get_member("_dirGizmo")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_dirGizmo",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.VectorGizmo'),
+            )
+
+    @property
+    def icon_material(self) -> str | None:
+        """Target ID of the _iconMaterial reference (targets OverlayFresnelMaterial)."""
+        member = self.get_member("_iconMaterial")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @icon_material.setter
+    def icon_material(self, target: str | OverlayFresnelMaterial | None) -> None:
+        """Set the _iconMaterial reference by target ID or OverlayFresnelMaterial instance."""
+        target_id: str | None = target.id if isinstance(target, OverlayFresnelMaterial) else target  # type: ignore[assignment]
+        member = self.get_member("_iconMaterial")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_iconMaterial",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.OverlayFresnelMaterial'),
+            )
+

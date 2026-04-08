@@ -1,5 +1,8 @@
 """Generated component: MaterialAssetMetadata."""
 
+import numpy as np
+
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -17,16 +20,31 @@ class MaterialAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MaterialAssetMetadata"
 
-    def __init__(self, material: str | IAssetProvider[Material] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, material: str | IAssetProvider[Material] | None = None, variant_index: np.uint32 | None = None, raw_variant_index: np.uint32 | None = None, variant_id: str | None = None, raw_variant_id: str | None = None, waiting_for_apply: bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             material: Initial value for Material.
+            variant_index: Initial value for VariantIndex.
+            raw_variant_index: Initial value for RawVariantIndex.
+            variant_id: Initial value for VariantID.
+            raw_variant_id: Initial value for RawVariantID.
+            waiting_for_apply: Initial value for WaitingForApply.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if material is not None:
             self.material = material
+        if variant_index is not None:
+            self.variant_index = variant_index
+        if raw_variant_index is not None:
+            self.raw_variant_index = raw_variant_index
+        if variant_id is not None:
+            self.variant_id = variant_id
+        if raw_variant_id is not None:
+            self.raw_variant_id = raw_variant_id
+        if waiting_for_apply is not None:
+            self.waiting_for_apply = waiting_for_apply
 
     @property
     def material(self) -> str | None:
@@ -50,67 +68,97 @@ class MaterialAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     @property
-    def variant_index(self) -> members.EmptyElement | None:
-        """The VariantIndex member."""
+    def variant_index(self) -> np.uint32 | None:
+        """The VariantIndex field value."""
         member = self.get_member("VariantIndex")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @variant_index.setter
-    def variant_index(self, value: members.EmptyElement) -> None:
-        """Set the VariantIndex member."""
-        self.set_member("VariantIndex", value)
+    def variant_index(self, value: np.uint32) -> None:
+        """Set the VariantIndex field value."""
+        member = self.get_member("VariantIndex")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "VariantIndex", fields.FieldNullableUint(value=value)
+            )
 
     @property
-    def raw_variant_index(self) -> members.EmptyElement | None:
-        """The RawVariantIndex member."""
+    def raw_variant_index(self) -> np.uint32 | None:
+        """The RawVariantIndex field value."""
         member = self.get_member("RawVariantIndex")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @raw_variant_index.setter
-    def raw_variant_index(self, value: members.EmptyElement) -> None:
-        """Set the RawVariantIndex member."""
-        self.set_member("RawVariantIndex", value)
+    def raw_variant_index(self, value: np.uint32) -> None:
+        """Set the RawVariantIndex field value."""
+        member = self.get_member("RawVariantIndex")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "RawVariantIndex", fields.FieldNullableUint(value=value)
+            )
 
     @property
-    def variant_id(self) -> members.EmptyElement | None:
-        """The VariantID member."""
+    def variant_id(self) -> str | None:
+        """The VariantID field value."""
         member = self.get_member("VariantID")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @variant_id.setter
-    def variant_id(self, value: members.EmptyElement) -> None:
-        """Set the VariantID member."""
-        self.set_member("VariantID", value)
+    def variant_id(self, value: str) -> None:
+        """Set the VariantID field value."""
+        member = self.get_member("VariantID")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "VariantID", fields.FieldString(value=value)
+            )
 
     @property
-    def raw_variant_id(self) -> members.EmptyElement | None:
-        """The RawVariantID member."""
+    def raw_variant_id(self) -> str | None:
+        """The RawVariantID field value."""
         member = self.get_member("RawVariantID")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @raw_variant_id.setter
-    def raw_variant_id(self, value: members.EmptyElement) -> None:
-        """Set the RawVariantID member."""
-        self.set_member("RawVariantID", value)
+    def raw_variant_id(self, value: str) -> None:
+        """Set the RawVariantID field value."""
+        member = self.get_member("RawVariantID")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "RawVariantID", fields.FieldString(value=value)
+            )
 
     @property
-    def waiting_for_apply(self) -> members.EmptyElement | None:
-        """The WaitingForApply member."""
+    def waiting_for_apply(self) -> bool | None:
+        """The WaitingForApply field value."""
         member = self.get_member("WaitingForApply")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @waiting_for_apply.setter
-    def waiting_for_apply(self, value: members.EmptyElement) -> None:
-        """Set the WaitingForApply member."""
-        self.set_member("WaitingForApply", value)
+    def waiting_for_apply(self, value: bool) -> None:
+        """Set the WaitingForApply field value."""
+        member = self.get_member("WaitingForApply")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "WaitingForApply", fields.FieldBool(value=value)
+            )
 

@@ -151,15 +151,15 @@ class UV_RectMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def clip_rect(self) -> members.Member | None:
+    def clip_rect(self) -> members.FieldEnum | None:
         """The ClipRect member."""
         member = self.get_member("ClipRect")
-        if isinstance(member, members.Member):
+        if isinstance(member, members.FieldEnum):
             return member
         return None
 
     @clip_rect.setter
-    def clip_rect(self, value: members.Member) -> None:
+    def clip_rect(self, value: members.FieldEnum) -> None:
         """Set the ClipRect member."""
         self.set_member("ClipRect", value)
 

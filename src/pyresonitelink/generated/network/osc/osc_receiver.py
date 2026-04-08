@@ -1,0 +1,107 @@
+"""Generated component: OSC_Receiver."""
+
+import numpy as np
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
+    """Wrapper for [FrooxEngine]FrooxEngine.OSC_Receiver.
+
+    Category: Network/OSC
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OSC_Receiver"
+
+    def __init__(self, access_reason: str | None = None, port: np.int32 | None = None, is_listening: bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            access_reason: Initial value for AccessReason.
+            port: Initial value for Port.
+            is_listening: Initial value for IsListening.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if access_reason is not None:
+            self.access_reason = access_reason
+        if port is not None:
+            self.port = port
+        if is_listening is not None:
+            self.is_listening = is_listening
+
+    @property
+    def handling_user(self) -> members.SyncObject | None:
+        """The HandlingUser member."""
+        member = self.get_member("HandlingUser")
+        if isinstance(member, members.SyncObject):
+            return member
+        return None
+
+    @handling_user.setter
+    def handling_user(self, value: members.SyncObject) -> None:
+        """Set the HandlingUser member."""
+        self.set_member("HandlingUser", value)
+
+    @property
+    def access_reason(self) -> str | None:
+        """The AccessReason field value."""
+        member = self.get_member("AccessReason")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @access_reason.setter
+    def access_reason(self, value: str) -> None:
+        """Set the AccessReason field value."""
+        member = self.get_member("AccessReason")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AccessReason", fields.FieldString(value=value)
+            )
+
+    @property
+    def port(self) -> np.int32 | None:
+        """The Port field value."""
+        member = self.get_member("Port")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @port.setter
+    def port(self, value: np.int32) -> None:
+        """Set the Port field value."""
+        member = self.get_member("Port")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Port", fields.FieldInt(value=value)
+            )
+
+    @property
+    def is_listening(self) -> bool | None:
+        """The IsListening field value."""
+        member = self.get_member("IsListening")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @is_listening.setter
+    def is_listening(self, value: bool) -> None:
+        """Set the IsListening field value."""
+        member = self.get_member("IsListening")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "IsListening", fields.FieldBool(value=value)
+            )
+

@@ -1,5 +1,8 @@
 """Generated component: MeshAssetMetadata."""
 
+import numpy as np
+
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
@@ -17,16 +20,55 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshAssetMetadata"
 
-    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, vertex_count: np.int32 | None = None, triangle_count: np.int32 | None = None, point_count: np.int32 | None = None, submesh_count: np.int32 | None = None, bone_count: np.int32 | None = None, blendshape_count: np.int32 | None = None, has_normals: bool | None = None, has_tangents: bool | None = None, has_vertex_colors: bool | None = None, has_uv0s: bool | None = None, has_uv1s: bool | None = None, has_uv2s: bool | None = None, has_uv3s: bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             mesh: Initial value for Mesh.
+            vertex_count: Initial value for VertexCount.
+            triangle_count: Initial value for TriangleCount.
+            point_count: Initial value for PointCount.
+            submesh_count: Initial value for SubmeshCount.
+            bone_count: Initial value for BoneCount.
+            blendshape_count: Initial value for BlendshapeCount.
+            has_normals: Initial value for HasNormals.
+            has_tangents: Initial value for HasTangents.
+            has_vertex_colors: Initial value for HasVertexColors.
+            has_uv0s: Initial value for HasUV0s.
+            has_uv1s: Initial value for HasUV1s.
+            has_uv2s: Initial value for HasUV2s.
+            has_uv3s: Initial value for HasUV3s.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if mesh is not None:
             self.mesh = mesh
+        if vertex_count is not None:
+            self.vertex_count = vertex_count
+        if triangle_count is not None:
+            self.triangle_count = triangle_count
+        if point_count is not None:
+            self.point_count = point_count
+        if submesh_count is not None:
+            self.submesh_count = submesh_count
+        if bone_count is not None:
+            self.bone_count = bone_count
+        if blendshape_count is not None:
+            self.blendshape_count = blendshape_count
+        if has_normals is not None:
+            self.has_normals = has_normals
+        if has_tangents is not None:
+            self.has_tangents = has_tangents
+        if has_vertex_colors is not None:
+            self.has_vertex_colors = has_vertex_colors
+        if has_uv0s is not None:
+            self.has_uv0s = has_uv0s
+        if has_uv1s is not None:
+            self.has_uv1s = has_uv1s
+        if has_uv2s is not None:
+            self.has_uv2s = has_uv2s
+        if has_uv3s is not None:
+            self.has_uv3s = has_uv3s
 
     @property
     def mesh(self) -> str | None:
@@ -50,171 +92,249 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def vertex_count(self) -> members.EmptyElement | None:
-        """The VertexCount member."""
+    def vertex_count(self) -> np.int32 | None:
+        """The VertexCount field value."""
         member = self.get_member("VertexCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @vertex_count.setter
-    def vertex_count(self, value: members.EmptyElement) -> None:
-        """Set the VertexCount member."""
-        self.set_member("VertexCount", value)
+    def vertex_count(self, value: np.int32) -> None:
+        """Set the VertexCount field value."""
+        member = self.get_member("VertexCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "VertexCount", fields.FieldInt(value=value)
+            )
 
     @property
-    def triangle_count(self) -> members.EmptyElement | None:
-        """The TriangleCount member."""
+    def triangle_count(self) -> np.int32 | None:
+        """The TriangleCount field value."""
         member = self.get_member("TriangleCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @triangle_count.setter
-    def triangle_count(self, value: members.EmptyElement) -> None:
-        """Set the TriangleCount member."""
-        self.set_member("TriangleCount", value)
+    def triangle_count(self, value: np.int32) -> None:
+        """Set the TriangleCount field value."""
+        member = self.get_member("TriangleCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "TriangleCount", fields.FieldInt(value=value)
+            )
 
     @property
-    def point_count(self) -> members.EmptyElement | None:
-        """The PointCount member."""
+    def point_count(self) -> np.int32 | None:
+        """The PointCount field value."""
         member = self.get_member("PointCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @point_count.setter
-    def point_count(self, value: members.EmptyElement) -> None:
-        """Set the PointCount member."""
-        self.set_member("PointCount", value)
+    def point_count(self, value: np.int32) -> None:
+        """Set the PointCount field value."""
+        member = self.get_member("PointCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "PointCount", fields.FieldInt(value=value)
+            )
 
     @property
-    def submesh_count(self) -> members.EmptyElement | None:
-        """The SubmeshCount member."""
+    def submesh_count(self) -> np.int32 | None:
+        """The SubmeshCount field value."""
         member = self.get_member("SubmeshCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @submesh_count.setter
-    def submesh_count(self, value: members.EmptyElement) -> None:
-        """Set the SubmeshCount member."""
-        self.set_member("SubmeshCount", value)
+    def submesh_count(self, value: np.int32) -> None:
+        """Set the SubmeshCount field value."""
+        member = self.get_member("SubmeshCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "SubmeshCount", fields.FieldInt(value=value)
+            )
 
     @property
-    def bone_count(self) -> members.EmptyElement | None:
-        """The BoneCount member."""
+    def bone_count(self) -> np.int32 | None:
+        """The BoneCount field value."""
         member = self.get_member("BoneCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @bone_count.setter
-    def bone_count(self, value: members.EmptyElement) -> None:
-        """Set the BoneCount member."""
-        self.set_member("BoneCount", value)
+    def bone_count(self, value: np.int32) -> None:
+        """Set the BoneCount field value."""
+        member = self.get_member("BoneCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BoneCount", fields.FieldInt(value=value)
+            )
 
     @property
-    def blendshape_count(self) -> members.EmptyElement | None:
-        """The BlendshapeCount member."""
+    def blendshape_count(self) -> np.int32 | None:
+        """The BlendshapeCount field value."""
         member = self.get_member("BlendshapeCount")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @blendshape_count.setter
-    def blendshape_count(self, value: members.EmptyElement) -> None:
-        """Set the BlendshapeCount member."""
-        self.set_member("BlendshapeCount", value)
+    def blendshape_count(self, value: np.int32) -> None:
+        """Set the BlendshapeCount field value."""
+        member = self.get_member("BlendshapeCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BlendshapeCount", fields.FieldInt(value=value)
+            )
 
     @property
-    def has_normals(self) -> members.EmptyElement | None:
-        """The HasNormals member."""
+    def has_normals(self) -> bool | None:
+        """The HasNormals field value."""
         member = self.get_member("HasNormals")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @has_normals.setter
-    def has_normals(self, value: members.EmptyElement) -> None:
-        """Set the HasNormals member."""
-        self.set_member("HasNormals", value)
+    def has_normals(self, value: bool) -> None:
+        """Set the HasNormals field value."""
+        member = self.get_member("HasNormals")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasNormals", fields.FieldBool(value=value)
+            )
 
     @property
-    def has_tangents(self) -> members.EmptyElement | None:
-        """The HasTangents member."""
+    def has_tangents(self) -> bool | None:
+        """The HasTangents field value."""
         member = self.get_member("HasTangents")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @has_tangents.setter
-    def has_tangents(self, value: members.EmptyElement) -> None:
-        """Set the HasTangents member."""
-        self.set_member("HasTangents", value)
+    def has_tangents(self, value: bool) -> None:
+        """Set the HasTangents field value."""
+        member = self.get_member("HasTangents")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasTangents", fields.FieldBool(value=value)
+            )
 
     @property
-    def has_vertex_colors(self) -> members.EmptyElement | None:
-        """The HasVertexColors member."""
+    def has_vertex_colors(self) -> bool | None:
+        """The HasVertexColors field value."""
         member = self.get_member("HasVertexColors")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @has_vertex_colors.setter
-    def has_vertex_colors(self, value: members.EmptyElement) -> None:
-        """Set the HasVertexColors member."""
-        self.set_member("HasVertexColors", value)
+    def has_vertex_colors(self, value: bool) -> None:
+        """Set the HasVertexColors field value."""
+        member = self.get_member("HasVertexColors")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasVertexColors", fields.FieldBool(value=value)
+            )
 
     @property
-    def has_uv0s(self) -> members.EmptyElement | None:
-        """The HasUV0s member."""
+    def has_uv0s(self) -> bool | None:
+        """The HasUV0s field value."""
         member = self.get_member("HasUV0s")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @has_uv0s.setter
-    def has_uv0s(self, value: members.EmptyElement) -> None:
-        """Set the HasUV0s member."""
-        self.set_member("HasUV0s", value)
+    def has_uv0s(self, value: bool) -> None:
+        """Set the HasUV0s field value."""
+        member = self.get_member("HasUV0s")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasUV0s", fields.FieldBool(value=value)
+            )
 
     @property
-    def has_uv1s(self) -> members.EmptyElement | None:
-        """The HasUV1s member."""
+    def has_uv1s(self) -> bool | None:
+        """The HasUV1s field value."""
         member = self.get_member("HasUV1s")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @has_uv1s.setter
-    def has_uv1s(self, value: members.EmptyElement) -> None:
-        """Set the HasUV1s member."""
-        self.set_member("HasUV1s", value)
+    def has_uv1s(self, value: bool) -> None:
+        """Set the HasUV1s field value."""
+        member = self.get_member("HasUV1s")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasUV1s", fields.FieldBool(value=value)
+            )
 
     @property
-    def has_uv2s(self) -> members.EmptyElement | None:
-        """The HasUV2s member."""
+    def has_uv2s(self) -> bool | None:
+        """The HasUV2s field value."""
         member = self.get_member("HasUV2s")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @has_uv2s.setter
-    def has_uv2s(self, value: members.EmptyElement) -> None:
-        """Set the HasUV2s member."""
-        self.set_member("HasUV2s", value)
+    def has_uv2s(self, value: bool) -> None:
+        """Set the HasUV2s field value."""
+        member = self.get_member("HasUV2s")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasUV2s", fields.FieldBool(value=value)
+            )
 
     @property
-    def has_uv3s(self) -> members.EmptyElement | None:
-        """The HasUV3s member."""
+    def has_uv3s(self) -> bool | None:
+        """The HasUV3s field value."""
         member = self.get_member("HasUV3s")
-        if isinstance(member, members.EmptyElement):
-            return member
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @has_uv3s.setter
-    def has_uv3s(self, value: members.EmptyElement) -> None:
-        """Set the HasUV3s member."""
-        self.set_member("HasUV3s", value)
+    def has_uv3s(self, value: bool) -> None:
+        """Set the HasUV3s field value."""
+        member = self.get_member("HasUV3s")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HasUV3s", fields.FieldBool(value=value)
+            )
 
