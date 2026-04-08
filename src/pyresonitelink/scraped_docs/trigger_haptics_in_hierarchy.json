@@ -1,0 +1,8 @@
+{
+  "description": "The Trigger Haptics In Hierarchy node takes in a Slot hierarchy and will send out haptic pulses through it.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

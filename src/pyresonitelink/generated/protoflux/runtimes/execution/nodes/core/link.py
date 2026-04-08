@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Link(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Link.
+    """The Link node is used to connect two different node groups into one. You can drag an output wire (must be value or object, not call) into the null input to connect it. This can be used to make it easier to pack separated nodes together, due to being part of the same group and selecting one node will select them all.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
     """

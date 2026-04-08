@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Animation.TweenValue<>.
+    """Tween Value is a node that allows you to change a Target (Numeric or Enum IField`1) over a Duration (float) from a starting point to an ending point. The different curve presets determine the interpolation used, and when applicable will smoothly change using non whole numbers.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions
 

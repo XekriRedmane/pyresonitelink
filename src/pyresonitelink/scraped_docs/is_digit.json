@@ -1,0 +1,8 @@
+{
+  "description": "The Is Digit node takes in a character literal and returns if that character is a digit. Digit characters are numbers that have a numeric value to them and are not a symbol.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

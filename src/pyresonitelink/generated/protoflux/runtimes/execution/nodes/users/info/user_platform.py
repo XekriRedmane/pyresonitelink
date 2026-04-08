@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserPlatform(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserPlatform.
+    """The User Platform node returns the user's current platform/operating system they are playing Resonite on.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

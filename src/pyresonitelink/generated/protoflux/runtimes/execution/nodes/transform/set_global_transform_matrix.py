@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetGlobalTransformMatrix(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform.SetGlobalTransformMatrix.
+    """The Set Global Transform Matrix node takes in a slot to transform (position, rotation, and scale) in 3D space along with the matrix value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform
     """

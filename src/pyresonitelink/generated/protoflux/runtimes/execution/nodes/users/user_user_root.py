@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserUserRoot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserUserRoot.
+    """The User User Root node returns a user's User Root.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """

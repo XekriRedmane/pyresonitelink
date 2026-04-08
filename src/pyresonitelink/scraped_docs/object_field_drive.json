@@ -1,0 +1,13 @@
+{
+  "description": "The Object Field DriveT node creates a drive on a field with the value of its input. The field type allows object types.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* Value Field Drive\n\nProtoFlux:Core\nListener nodes"
+    }
+  ]
+}

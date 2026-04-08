@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssetLoadProgress(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.AssetLoadProgress<>.
+    """Asset Load Progress is a node that allows for the reading on weither or not a user has loaded an asset. This node takes a UsersAssetLoadProgress`1 component and allows for the extraction of the load progress of a certain User.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
 

@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetLocalScale(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform.SetLocalScale.
+    """The Set Local Scale node sets the input slot's scale to the input value in local coordinate space.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform
     """

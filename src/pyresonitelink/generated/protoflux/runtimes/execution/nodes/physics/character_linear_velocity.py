@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterLinearVelocity(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.CharacterLinearVelocity.
+    """The Character Linear Velocity node takes in a character controller reference and returns the current velocity that it is currently going at over time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """

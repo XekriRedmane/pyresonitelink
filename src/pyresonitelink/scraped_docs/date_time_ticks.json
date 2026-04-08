@@ -1,0 +1,8 @@
+{
+  "description": "The DateTime Ticks node takes in a DateTime and returns the amount of ticks of that DateTime. There is Microsoft documentation about Ticks.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

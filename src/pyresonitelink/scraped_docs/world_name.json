@@ -1,0 +1,8 @@
+{
+  "description": "The World Name node returns this world's \"World Name\" field from the Session tab in the Dash.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

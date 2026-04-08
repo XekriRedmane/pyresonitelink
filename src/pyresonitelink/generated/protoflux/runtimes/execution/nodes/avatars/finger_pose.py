@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FingerPose(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.FingerPose.
+    """Finger Pose is a ProtoFlux node that takes a Pose source and a body node corresponding to a finger on a user's avatar and returns it's rotation and position.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars
     """

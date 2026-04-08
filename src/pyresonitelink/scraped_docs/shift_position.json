@@ -1,0 +1,8 @@
+{
+  "description": "The Shift Position node tells a IPlayable to move the current playback position upon impulse.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

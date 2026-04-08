@@ -1,0 +1,8 @@
+{
+  "description": "Grabbable Grabber is a Protoflux node that takes an IGrabbable (any kind of grabbable) and gets the grabber that is currently grabbing it. usually this will be a limb capable of grasping around an object, and holding it like a hand, or a monkey's foot.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

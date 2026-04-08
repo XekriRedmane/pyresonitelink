@@ -1,0 +1,8 @@
+{
+  "description": "The Feet Rotation node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the feet rotation value of the User (facing forward would be your frame of reference).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

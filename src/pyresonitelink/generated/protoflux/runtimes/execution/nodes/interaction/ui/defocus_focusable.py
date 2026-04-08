@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DefocusFocusable(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Focusing.DefocusFocusable.
+    """The Defocus Focusable node clears the target IFocusable UI from the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/UI
     """

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnpackSH1(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.SphericalHarmonics.UnpackSH1<>.
+    """The Unpack SH1 node takes in the SphericalHarmonicsL1 type, and splits it into their separate values.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Spherical Harmonics
 

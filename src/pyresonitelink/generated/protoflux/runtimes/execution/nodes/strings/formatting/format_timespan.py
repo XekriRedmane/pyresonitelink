@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.FormatTimespan.
+    """The Format Timespan node takes in a TimeSpan and extra parameters to convert it into a string.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """

@@ -13,9 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorFromHexCode(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorFromHexCode.
+    """Color From Hex Code is a ProtoFlux node that parses a hex color code such as "FFAEBB" into a Color.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
+
+    **Gallery**: File:Protoflux_Color_From_Hex_Code.webp|How to use Color From Hex Code to turn a string hex into a color.
+
+ProtoFlux:Colors
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorFromHexCode"

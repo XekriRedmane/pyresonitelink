@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FieldAsVariable(GenericComponent[T], IVariable, INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.FieldAsVariable<>.
+    """The Field As Variable node transforms an IValue of the given type into an IVariable that can then be written to with an Indirect Write node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

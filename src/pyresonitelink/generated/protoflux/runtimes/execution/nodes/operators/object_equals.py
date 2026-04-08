@@ -13,9 +13,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectEquals(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectEquals<>.
+    """The Equals node takes in 2 inputs and returns if the values match.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
+
+    **Bugs & Issues**: * This node does not correctly return the correct value when using and comparing ``NaN`` values against each other: #1046 & #1244.
 
     Parameterize with a value type::
 

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FloatAsUInt(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Binary.FloatAsUInt.
+    """The Float As UInt node takes in a float and converts it into a uint.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/Binary
     """

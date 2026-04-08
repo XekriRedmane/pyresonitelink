@@ -1,0 +1,13 @@
+{
+  "description": "Returns the time it took to perform the last update, clamped to a maximum of 0.1 seconds.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* SmoothDeltaTime tries to smooth out the delta time to minimize interference from stutters.\n* RawDeltaTime returns the raw, unclamped update time.\n\nProtoFlux:Time\nContinuouslyChanging nodes"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The User Active View Targetting Controller node returns a user's targetting controller. This seems to return a result when a user is in desktop mode, as VR mode returns only null.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

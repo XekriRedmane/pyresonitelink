@@ -1,0 +1,8 @@
+{
+  "description": "The New Line node is a character literal constant that represents a new line in text. Note that this node comes in two versions: A char version and a String version.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

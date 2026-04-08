@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PackProtoFluxNodes(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Nodes.PackProtoFluxNodes.
+    """The Pack ProtoFlux Nodes node takes in the Slot root (where we want to pack to), and the Slot target (the set of ProtoFlux nodes we want to pack), then packs them into the Slot. Many community-based tools (such as Redprint) use this to pack nodes into slots.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Nodes
     """

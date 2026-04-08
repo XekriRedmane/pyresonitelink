@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetNormalizedPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.SetNormalizedPosition.
+    """The Set Normalized Position node tells a IPlayable to jump to a position upon impulse.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """

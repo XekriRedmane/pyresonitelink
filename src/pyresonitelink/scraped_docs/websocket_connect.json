@@ -1,0 +1,8 @@
+{
+  "description": "This node allows you to connect to a websocket server via the WebSocketClient component.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

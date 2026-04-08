@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.LocalLeakyImpulseBucket.
+    """Local Leaky Impulse Bucket is a ProtoFlux node that will count how many impulses have been sent to it through Trigger (Call), and if the capacity goes over MaximumCapacity (int) it will send an impulse. The CurrentCapacity (int) is local for every user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.FormatString.
+    """This node simply calls the C# String.Format function using the provided parameters. It allows you to take a string like "I am a {0} who likes to do {1} while {2}" And populate {0}, {1}, and {2} with values. If you plug any value into the list of inputs for the Parameters, it will auto add a cast node into an object.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """

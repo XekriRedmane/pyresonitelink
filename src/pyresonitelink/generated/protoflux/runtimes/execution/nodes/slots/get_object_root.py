@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetObjectRoot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.GetObjectRoot.
+    """Returns the "root" slot of an object, from a slot child input.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
     """

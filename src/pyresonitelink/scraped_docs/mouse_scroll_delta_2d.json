@@ -1,0 +1,8 @@
+{
+  "description": "The Mouse Scroll Delta 2D node returns the local user's mouse scroll wheel delta from their Resonite application. If you are focused on the Resonite window, this node will listen for changes on your scroll wheel. The faster you scroll within a frame, the larger the delta.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

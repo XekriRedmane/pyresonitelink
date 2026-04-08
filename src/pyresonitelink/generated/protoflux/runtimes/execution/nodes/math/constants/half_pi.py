@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HalfPi(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.HalfPi.
+    """The HalfPi or π/2node outputs the mathematical constant π divided by 2.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """

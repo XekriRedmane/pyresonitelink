@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsLower(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.IsLower.
+    """The Is Lower node takes in a character literal and returns if that character is a lower case letter.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

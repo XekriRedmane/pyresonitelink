@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Stopwatch(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time.Stopwatch.
+    """The Stopwatch node keeps track of time when running. Akin to a real stopwatch, it allows one to start time, stop time, and reset time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

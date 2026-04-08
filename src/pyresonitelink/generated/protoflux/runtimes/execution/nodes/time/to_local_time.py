@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToLocalTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.ToLocalTime.
+    """The To Local Time node takes in a DateTime and converts it to local time using your local time offset. This is in accordance to Universal Time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

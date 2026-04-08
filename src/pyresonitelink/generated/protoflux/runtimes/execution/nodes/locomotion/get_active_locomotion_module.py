@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetActiveLocomotionModule(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion.GetActiveLocomotionModule.
+    """Get Active Locomotion Module is a ProtoFlux node that allows you to get the locomotion component that the User (User) is currently using to move.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Locomotion
     """

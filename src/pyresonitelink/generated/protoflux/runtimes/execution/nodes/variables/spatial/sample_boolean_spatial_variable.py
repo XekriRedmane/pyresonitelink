@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SampleBooleanSpatialVariable(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.SampleBooleanSpatialVariable.
+    """The Sample Boolean Spatial Variable node takes in a point in 3D space, a name that matches that space, a boolean operation mode, and a default (base) value if that space cannot be found, then returns the value found in the space, otherwise it will return the default value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables/Spatial
     """

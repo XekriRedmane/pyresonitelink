@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AllocatingUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.References.AllocatingUser.
+    """The Allocating User node takes in an IWorldElement and returns with the user that allocated (spawned/created) it.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/References
     """

@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CreateSpawnUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.CreateSpawnUndoStep.
+    """The Create Spawn Undo Step will create an undo step in the Context Menu of the person who the impulse came from. This node will make the description of the undo step in the context menu the provided Description (String). This does the best when paired with a Duplicate Slot, since the slot is being spawned this node will allow the duplicate to be undo-able by the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """

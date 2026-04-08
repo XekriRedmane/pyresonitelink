@@ -1,0 +1,8 @@
+{
+  "description": "The Middle Mouse Pressed node returns the local user's middle mouse button being pressed down. This will change within that frame, so combining it with Fire On True is recommended.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The Sub node takes in 2 inputs and returns the calculated result. The second input (B) will take away anything from the first input (A).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

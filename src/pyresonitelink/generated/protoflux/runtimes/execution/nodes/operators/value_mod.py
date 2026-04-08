@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueMod(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueMod<>.
+    """The ValueMod node takes in 2 inputs and returns the remainder value of a division operation. This node goes by names such as "Modulus", "Modulo", and "Mod". (TODO: Does truncation/rounding come into play when using this as an int value compared to float values?)
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

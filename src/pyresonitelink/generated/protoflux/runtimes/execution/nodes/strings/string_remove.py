@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StringRemove(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.StringRemove.
+    """String Remove is a ProtoFlux node that allows you to remove part of a provided Str (String) of a given Length (int) starting at StartIndex (int).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

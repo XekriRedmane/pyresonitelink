@@ -1,0 +1,8 @@
+{
+  "description": "The Nice Type Name node takes in a Type as well as optional open and close symbols, then returns the pretty human readable name of the provided type. For example, using a type that has a float and connecting it to this node, it will return float.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

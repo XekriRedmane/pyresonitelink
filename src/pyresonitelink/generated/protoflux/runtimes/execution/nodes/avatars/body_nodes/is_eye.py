@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsEye(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes.IsEye.
+    """Is Eye is a ProtoFlux node that checks if the provided Node (BodyNode) is equal to "Left Eye" or "Right Eye".
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Body Nodes
     """

@@ -1,0 +1,13 @@
+{
+  "description": "The Not Equals node takes in 2 inputs and returns if the values do not match.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Bugs & Issues",
+      "text": "* This node does not correctly return the correct value when using and comparing ``NaN`` values against each other: #1046 & #1244."
+    }
+  ]
+}

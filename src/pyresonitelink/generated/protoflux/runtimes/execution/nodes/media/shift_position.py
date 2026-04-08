@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ShiftPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.ShiftPosition.
+    """The Shift Position node tells a IPlayable to move the current playback position upon impulse.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """

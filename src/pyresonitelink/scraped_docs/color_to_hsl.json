@@ -1,0 +1,8 @@
+{
+  "description": "Color To HSL converts a Color to HSL. The result is represented as 3 separate Float values for Hue, Saturation, and Lightness.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

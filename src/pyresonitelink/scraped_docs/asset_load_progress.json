@@ -1,0 +1,8 @@
+{
+  "description": "Asset Load Progress is a node that allows for the reading on weither or not a user has loaded an asset. This node takes a UsersAssetLoadProgress`1 component and allows for the extraction of the load progress of a certain User.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

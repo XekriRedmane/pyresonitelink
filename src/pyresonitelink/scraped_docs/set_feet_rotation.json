@@ -1,0 +1,8 @@
+{
+  "description": "The Set Feet Rotation node takes in a user's UserRoot and the rotation for the feet, then sets the rotation.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The Stop node tells a IPlayable to stop playback upon impulse.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

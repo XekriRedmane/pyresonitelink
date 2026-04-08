@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserTimeOffset(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserTimeOffset.
+    """The User Time Offset node returns a user's time zone offset. More information about UTC here: https://en.wikipedia.org/wiki/UTC_offset
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

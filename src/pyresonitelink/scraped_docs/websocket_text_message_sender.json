@@ -1,0 +1,8 @@
+{
+  "description": "This node allows you to send text messages to a WebSocket server via a WebSocketClient.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

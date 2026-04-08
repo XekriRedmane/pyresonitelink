@@ -1,0 +1,8 @@
+{
+  "description": "The Set Local Scale node sets the input slot's scale to the input value in local coordinate space.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

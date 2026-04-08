@@ -1,0 +1,8 @@
+{
+  "description": "The Sample ColorX node takes in the point and direction, along with the bounds of the a near and far clip to sample a color. This node will attempt to return a color that was found and sampled.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

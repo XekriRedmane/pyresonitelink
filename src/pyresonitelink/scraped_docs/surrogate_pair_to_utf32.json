@@ -1,0 +1,8 @@
+{
+  "description": "The Surrogate Pair To UTF32 node returns the codepoint (UTF-32 value) generated from the two surrogate characters.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The Release All Grabbed node, when impulsed, makes all slots the provided body node has, to become released. This also has the option to suppress events, useful if the slots were listening using the On Grabbable Released node, preventing a lot of pulses from firing.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

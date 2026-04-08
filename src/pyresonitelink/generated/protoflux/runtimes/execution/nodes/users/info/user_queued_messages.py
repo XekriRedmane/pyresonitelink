@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserQueuedMessages(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserQueuedMessages.
+    """The User Queued Messages node returns the user's queued messages (also called packets), and shows how behind a user is and how much they need to catch up by.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

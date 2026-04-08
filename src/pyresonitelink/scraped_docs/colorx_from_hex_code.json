@@ -1,0 +1,13 @@
+{
+  "description": "Color From Hex Code is a ProtoFlux node that parses a hex color code such as \"FFAEBB\" into a ColorX.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "References",
+      "text": "ProtoFlux:Colors"
+    }
+  ]
+}

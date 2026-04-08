@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.BoundingBoxProperties.
+    """The Bounding Box Properties node provides several pieces of information about the input bounding box.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Bounds
     """

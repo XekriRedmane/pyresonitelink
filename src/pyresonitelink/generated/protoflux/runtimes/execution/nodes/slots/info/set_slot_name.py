@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetSlotName(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetSlotName.
+    """Set's the name of the provided Instance slot upon calling * (Call).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots/Info
     """

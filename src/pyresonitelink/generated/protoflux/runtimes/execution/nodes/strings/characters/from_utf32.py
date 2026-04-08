@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FromUTF32(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.FromUTF32.
+    """The From UTF32 node transforms a UTF32 codepoint into its respective UTF32 character.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The Set DateTime Kind node takes in a DateTime and an enum Kind of DateTime, then returns the new DateTime value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

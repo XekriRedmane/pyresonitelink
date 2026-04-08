@@ -1,0 +1,8 @@
+{
+  "description": "You can use this node for constantly firing a gun, or something where a drive cannot be used and you need to create events every game tick while a value is true.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "You can use this node for constantly firing a gun, or something where a drive cannot be used and you need to create events every game tick while a value is true.",
+  "notes": []
+}

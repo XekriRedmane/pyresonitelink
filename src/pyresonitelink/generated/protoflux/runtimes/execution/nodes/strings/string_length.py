@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StringLength(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.StringLength.
+    """String Length is a ProtoFlux node that returns the length of A (String) including any white spaces.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

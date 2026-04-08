@@ -1,0 +1,8 @@
+{
+  "description": "The Middle Mouse Released node returns the local user's middle mouse button being released. This will change within that frame, so combining it with Fire On True is recommended.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

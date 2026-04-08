@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueDiv(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueDiv<>.
+    """The Div node takes in 2 inputs and returns the calculated result. The second input (B) will divide the first input (A) into sub sections (mathematically speaking), and the result will show how many of our first value will fit into the second value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

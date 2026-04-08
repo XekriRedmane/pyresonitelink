@@ -1,0 +1,8 @@
+{
+  "description": "The User Primary Hand node returns the user's primary/preferred hand as a Chirality value. This gets set when the user makes an account for the first time and gets asked which hand is their primary hand.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

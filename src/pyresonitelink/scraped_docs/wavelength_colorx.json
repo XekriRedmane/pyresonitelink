@@ -1,0 +1,8 @@
+{
+  "description": "The Wavelength ColorX node takes in a float number value (in nanometers) and converts that to a visible light spectrum color.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

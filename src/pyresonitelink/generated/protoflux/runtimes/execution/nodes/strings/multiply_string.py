@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MultiplyString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.MultiplyString.
+    """Multiply String is a ProtoFlux node that takes an input string A (String) and makes it repeat B (int) times for the output * (String).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

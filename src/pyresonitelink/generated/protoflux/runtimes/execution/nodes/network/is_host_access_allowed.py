@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsHostAccessAllowed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network.IsHostAccessAllowed.
+    """The Is Host Access Allowed node takes in a Host IP address, an accessible port of that address, and the scope of what type of connection this is. When everything is accurate, this node will return if the user has the host access to a service. This relates to the settings in the Dash that a user can look through to see what services they have access to.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network
     """

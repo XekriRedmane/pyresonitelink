@@ -1,0 +1,8 @@
+{
+  "description": "The Dynamic Impulse Trigger node sends a dynamic impulse to all Dynamic Impulse Receivers matching the provided Tag under the TargetHierarchy.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

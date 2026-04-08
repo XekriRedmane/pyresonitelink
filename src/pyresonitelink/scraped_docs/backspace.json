@@ -1,0 +1,13 @@
+{
+  "description": "The Backspace node is a character literal constant for the \"Backspace\" control character (Unicode: U+0008).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Bugs",
+      "text": "The name of this node currently does not display correctly in-app due to a bug."
+    }
+  ]
+}

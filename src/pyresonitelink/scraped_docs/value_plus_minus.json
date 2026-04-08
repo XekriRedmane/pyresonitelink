@@ -1,0 +1,8 @@
+{
+  "description": "The Value Plus Minus node takes in a value and an offset, then returns the plus and minus outputs from the calculated results using the offset.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

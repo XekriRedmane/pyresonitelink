@@ -10,9 +10,15 @@ from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 
 
 class ValueIndirectWrite(GenericComponent[T]):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueIndirectWrite<>.
+    """Indirect writes can be commonly found in legacy content that has been migrated from other platforms. Indirect writes take Variable (Variable) as an input, and the type that Variable wraps will determine what Value (Generic) will take as a value. The node will then write Value (Generic) to the field Variable (Variable) wraps.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions/Indirect
+
+    **Indirect Write or Write?**: The difference between a Write node and an Indirect Write is in how they reference the variable they affect.  In a Write node, what is called a Global is used to hold the variable, and this reference is only evaluated when the Protoflux starts executing.  Therefore, code that changes the variable for a normal Write during its execution will have no effect.
+
+In contrast, an Indirect Write node uses a normal input for its variable, which is evaluated whenever the node is called.  This allows for the variable to be programmatically changed during the flow of execution, such as via a multiplexer with an indeterminate number of possible inputs.
+
+In short, if you're writing to a static variable stick with normal Write, while if your code might change the variable you're writing to during execution use Indirect Write instead.
 
     Parameterize with a value type::
 

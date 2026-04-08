@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HandSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots.HandSlot.
+    """The Hand Slot node takes in a reference of a UserRoot and a side, and if that UserRoot is active or being used, it returns a Slot reference of the user's hand.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

@@ -10,9 +10,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldSessionWebURL(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.WorldSessionWebURL.
+    """The World Session Web URL node returns this world's Session Web URL. This node is interesting as it provides a Web Address for the world and there is no application this can be used for yet. When trying to use the contents of this node by putting the result into a web browser and going to that location, the web browser may warn you of potential security risks, and going past that there is only an error 403 page (access to the requested resource is recognized but is forbidden).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
+
+    **Images**: File:PotentialSecurityRiskAheadForGoResoniteCom.jpg|Security warning page from the Firefox Browser.
+File:Error403OnGoResoniteCom.jpg|Error 403 Page on Go.Resonite.Com.
+
+
+ProtoFlux:World:Info
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.WorldSessionWebURL"

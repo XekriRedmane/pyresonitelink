@@ -1,0 +1,8 @@
+{
+  "description": "The Random Point On Cube node returns a random float3 value of a point on the shell of a unit cube centered at [0; 0; 0].",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

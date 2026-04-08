@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DelayUpdates(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async.DelayUpdates.
+    """Delay Updates is a ProtoFlux node that will send an impulse out of Next (Continuation) after Updates (int) updates after * (ASync Call) is impulsed.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Async
     """

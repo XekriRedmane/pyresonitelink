@@ -1,0 +1,8 @@
+{
+  "description": "The Deny Join node takes in a JoinRequestHandle and a deny reason, and if the world enabled a join verification system using the Verify Join Request node, this node will run and deny the user from joining and gives them a reason why.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

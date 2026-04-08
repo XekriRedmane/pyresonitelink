@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetHeadFacingRotation(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots.SetHeadFacingRotation.
+    """The Set Head Facing Rotation node takes in a user's UserRoot and the facing rotation for the head, then sets the facing rotation.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

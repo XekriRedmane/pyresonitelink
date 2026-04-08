@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CompareStrings(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.CompareStrings.
+    """Comapre Strings is a ProtoFlux node that allows you to tell the difference between two different strings as a whole number. The comparison used is based on Comparing Strings Microsoft 4.6.2
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

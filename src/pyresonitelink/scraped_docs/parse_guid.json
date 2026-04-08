@@ -1,0 +1,8 @@
+{
+  "description": "The Parse GUID node takes in a string, and returns the GUID string represented as a GUID Type, and also if it successfully parsed it.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

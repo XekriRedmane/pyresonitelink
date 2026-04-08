@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldRecordURL(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.WorldRecordURL.
+    """The World Record URL node returns a resrec link of the current world. This is very useful for Headless clients to run a world that they own, using the resrec from this node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

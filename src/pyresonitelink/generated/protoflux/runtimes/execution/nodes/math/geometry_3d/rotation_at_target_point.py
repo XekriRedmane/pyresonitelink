@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RotationAtTargetPoint(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry3D.RotationAtTargetPoint.
+    """The Rotation At Target Point node takes a set of parameters that represent a rotation, then returns a rotational value that points in a direction.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 3D
     """

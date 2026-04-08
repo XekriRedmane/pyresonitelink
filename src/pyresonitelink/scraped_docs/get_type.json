@@ -1,0 +1,8 @@
+{
+  "description": "The Get Type node takes in an Object, and returns the Type of that object. For example, using a float and connecting it to this node will return System.Single.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

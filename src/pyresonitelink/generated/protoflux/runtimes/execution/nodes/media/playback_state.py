@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PlaybackState(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.PlaybackState.
+    """PlayBack State is a ProtoFlux node that provides information of a (IPlayable). This can be used to get information of if the a source is playing, the current time position, and the length of the audio source.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """

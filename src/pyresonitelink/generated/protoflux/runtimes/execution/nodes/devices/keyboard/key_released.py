@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class KeyReleased(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Keyboard.KeyReleased.
+    """The Key Released node returns the local user's keyboard key being released. This will change within that frame, so combining it with Fire On True is recommended.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Keyboard
     """

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserViewVoiceActive(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserViewVoiceActive.
+    """The User View Voice Active node returns a user's view voice. This is used with the component View Reference Controller.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

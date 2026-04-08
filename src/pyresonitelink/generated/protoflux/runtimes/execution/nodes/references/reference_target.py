@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceTarget(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.References.ReferenceTarget<>.
+    """The Reference Target node takes in an SyncRef and returns with the Reference Type that was asked for.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/References
 

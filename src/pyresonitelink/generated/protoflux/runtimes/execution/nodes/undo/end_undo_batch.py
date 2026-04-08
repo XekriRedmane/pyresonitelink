@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EndUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.EndUndoBatch.
+    """When paired with a Begin Undo Batch, the End Undo Batch node will batch all previous undo steps after the previous Begin Undo Batch into one, ignoring all undo descriptions on all undo nodes between the two. This will make all the undo steps one undo press on the Context Menu of the user that impulsed the node chain.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """

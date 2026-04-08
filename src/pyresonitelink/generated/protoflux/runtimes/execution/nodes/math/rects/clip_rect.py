@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ClipRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Rects.ClipRect.
+    """The Clip Rect node takes in 2 rect values, and returns a rect that is inside both of them into one rect.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """

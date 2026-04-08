@@ -1,0 +1,8 @@
+{
+  "description": "The Type Delta node returns the new key press this frame. This happens very quickly (within a frame), if you plan on using this data, consider writing this to a variable.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

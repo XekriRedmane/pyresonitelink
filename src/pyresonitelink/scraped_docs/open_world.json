@@ -1,0 +1,8 @@
+{
+  "description": "The Open World node is used to open a world when called, given a valid Url and a set of optional parameters the user can give it to open a world in a certain way. You can chain this node with the Focus World node by using this node's SessionURL connected to the focus world node.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

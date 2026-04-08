@@ -1,0 +1,8 @@
+{
+  "description": "The Escape Uri Data String node takes in a string literal and converts that string into another string that uses Percent Encoding. This is used mostly for applications that can only read the ASCII representation of characters.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

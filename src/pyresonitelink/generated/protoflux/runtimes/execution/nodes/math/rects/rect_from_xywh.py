@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectFromXYWH(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Rects.RectFromXYWH.
+    """The Rect From XYWH node takes in the X position, Y position, Width of the rect, and height of the rect as a float and returns a rect value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """

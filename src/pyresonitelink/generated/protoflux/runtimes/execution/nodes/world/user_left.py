@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserLeft(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.UserLeft.
+    """The User Left node is an event that fires when a user leaves the current world this node is in, as well as providing that user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World
     """

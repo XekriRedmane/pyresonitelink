@@ -1,0 +1,8 @@
+{
+  "description": "The Format Timespan node takes in a TimeSpan and extra parameters to convert it into a string.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

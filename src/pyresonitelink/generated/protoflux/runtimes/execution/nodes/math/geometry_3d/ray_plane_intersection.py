@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RayPlaneIntersection(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry3D.RayPlaneIntersection.
+    """The Ray Plane Intersection node takes in ray paremeters and plane parameters, and finds then returns an intersection at a point.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 3D
     """

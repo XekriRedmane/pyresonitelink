@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldTimeFloat(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time.WorldTimeFloat.
+    """The World Time Float node returns the total world time that this world has been open for.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

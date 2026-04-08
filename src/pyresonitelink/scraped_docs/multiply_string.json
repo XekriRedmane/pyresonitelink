@@ -1,0 +1,8 @@
+{
+  "description": "Multiply String is a ProtoFlux node that takes an input string A (String) and makes it repeat B (int) times for the output * (String).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

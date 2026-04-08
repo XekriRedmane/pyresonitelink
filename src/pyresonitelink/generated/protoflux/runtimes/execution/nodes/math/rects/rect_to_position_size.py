@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectToPositionSize(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Rects.RectToPositionSize.
+    """The Rect To Position Size node takes in a rect value and returns 2 specific float2 values giving a position of the rect's X and Y position, and giving the size of the rect with the literal Width and Height. In contrast to the Rect To Min Max node where it adds the position and size to get a rect's bounding data.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """

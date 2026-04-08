@@ -1,0 +1,8 @@
+{
+  "description": "The Base Value node takes in a value as a quantity type and returns the corresponding base value as a double.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

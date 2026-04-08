@@ -1,0 +1,8 @@
+{
+  "description": "The World Access Level node returns this world's Session Access Level setting in the Session tab in the Dash.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

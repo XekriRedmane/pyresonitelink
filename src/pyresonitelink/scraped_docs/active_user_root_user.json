@@ -1,0 +1,8 @@
+{
+  "description": "The Active UserRoot User node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns a User reference.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

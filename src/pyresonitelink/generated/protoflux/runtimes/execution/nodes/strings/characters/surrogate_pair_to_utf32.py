@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SurrogatePairToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.SurrogatePairToUTF32.
+    """The Surrogate Pair To UTF32 node returns the codepoint (UTF-32 value) generated from the two surrogate characters.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WebsocketConnect(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network.WebsocketConnect.
+    """This node allows you to connect to a websocket server via the WebSocketClient component.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network/Websockets
     """

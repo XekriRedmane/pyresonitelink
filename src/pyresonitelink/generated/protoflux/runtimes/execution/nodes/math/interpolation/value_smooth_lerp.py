@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueSmoothLerp(GenericComponent[T], INodeValueOutput[T], IExecutionUpdateReceiver[T], IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.ValueSmoothLerp<>.
+    """The Value Smooth Lerp node takes in an input value and the speed of which it lerps smoothly towards (starts fast and slows down over time), then returns the value over time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Interpolation
 

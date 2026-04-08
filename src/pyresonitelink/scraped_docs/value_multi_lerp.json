@@ -1,0 +1,8 @@
+{
+  "description": "The Multi Lerp node takes in any number of lerp point inputs along with a lerp value of which it lerps linearly towards, then returns the value over time.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

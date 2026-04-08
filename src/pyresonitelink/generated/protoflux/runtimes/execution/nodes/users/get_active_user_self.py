@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetActiveUserSelf(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.GetActiveUserSelf.
+    """This node gets the active user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """

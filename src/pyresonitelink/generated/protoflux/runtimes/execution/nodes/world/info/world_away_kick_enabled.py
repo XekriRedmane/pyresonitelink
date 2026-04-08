@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldAwayKickEnabled(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.WorldAwayKickEnabled.
+    """The World Away Kick Enabled node returns this world's "Auto Kick AFK users" setting in the Session tab of the Dash.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

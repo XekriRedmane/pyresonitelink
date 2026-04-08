@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WebsocketConnectionEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network.WebsocketConnectionEvents.
+    """This node will allow you do detect when a WebSocket client is connected or disconnected.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network/Websockets
     """

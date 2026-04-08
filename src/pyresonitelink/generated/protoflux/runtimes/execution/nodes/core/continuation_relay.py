@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ContinuationRelay(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ContinuationRelay.
+    """alt=A visual image of an Continuation Relay node by itself, connected to nothing.|thumb
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
     """

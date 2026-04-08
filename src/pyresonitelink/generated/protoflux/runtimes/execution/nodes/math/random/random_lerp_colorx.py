@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomLerpColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Random.RandomLerpColorX.
+    """The Random Lerp ColorX node takes in a min and max value and returns a random ColorX value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Random
     """

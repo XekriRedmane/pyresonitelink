@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.ToUnixMilliseconds.
+    """The To Unix Milliseconds node takes in a DateTime and returns with the amount of milliseconds elapsed from that DateTime since January 1st, 1970.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

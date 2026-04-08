@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatQuantity(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Quantity.FormatQuantity<>.
+    """The Format Quantity node takes in value as a quantity type, the unit in which the quantity should be displayed as a string, as well as wether to use the unit's long name instead of the short form. It returns a formatted string containing the quantity value in the specified unit.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Quantity
 

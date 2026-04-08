@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GeneralHeadset(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Headsets.GeneralHeadset.
+    """The General Headset node takes in a User and returns headset information (if any) that this user has. Since it is generic, there is not much besides whether the headset is active or the battery info that can be returned from this node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices
     """

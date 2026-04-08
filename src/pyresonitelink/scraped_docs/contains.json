@@ -1,0 +1,8 @@
+{
+  "description": "Contains is a ProtoFlux node that returns if Substring (String) occurs anywhere in Str (String) as a bool.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

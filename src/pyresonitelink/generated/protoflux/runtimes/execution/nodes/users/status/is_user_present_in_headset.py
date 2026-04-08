@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserPresentInHeadset(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.IsUserPresentInHeadset.
+    """The Is User Present In Headset node returns if the user is present in the headset.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The Set TRS node takes in a slot to transform (position, rotation, and scale) in 3D space along with the matrix value. Unlike Set Global Transform Matrix, this node sets the slot's local transform value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

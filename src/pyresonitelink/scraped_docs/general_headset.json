@@ -1,0 +1,8 @@
+{
+  "description": "The General Headset node takes in a User and returns headset information (if any) that this user has. Since it is generic, there is not much besides whether the headset is active or the battery info that can be returned from this node.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

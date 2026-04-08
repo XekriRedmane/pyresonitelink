@@ -1,0 +1,13 @@
+{
+  "description": "Returns the delta of the mouse wheel used for input to Resonite.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Notes",
+      "text": "ProtoFlux:Devices:Mouse\nContinuouslyChanging nodes"
+    }
+  ]
+}

@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 
 
 class ValueWrite(GenericComponent[T]):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueWrite<>.
+    """Writes takes a Variable as an input and writes Value to the field Variable.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions
+
+    **Optimizations**: The Write node can also be used to write to a Protoflux Source node instead of writing to a variable that is connected to a Drive node, enabling programs be be written with one less supporting node per Write node
 
     Parameterize with a value type::
 

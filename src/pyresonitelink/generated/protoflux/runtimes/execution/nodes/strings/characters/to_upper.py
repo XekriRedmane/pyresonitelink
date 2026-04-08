@@ -13,9 +13,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToUpper(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.ToUpper.
+    """The ToUpper node takes in a character or string and outputs it as uppercase. This node takes into account the local user's CultureInfo.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
+
+    **See also**: * ToLower to turn strings or characters lowercase.
+* Microsoft documentation for the ``String.ToUpper() method``, which is used internally.
+
+ProtoFlux:Strings:Characters
+ProtoFlux:Strings:Formatting
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.ToUpper"

@@ -1,0 +1,8 @@
+{
+  "description": "The Attach Sprite node allows one to attach a provided Uri as a new SpriteProvider component and return the SpriteProvider's raw IAsset`1 itself.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

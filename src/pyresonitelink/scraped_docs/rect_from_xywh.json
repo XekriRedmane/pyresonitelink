@@ -1,0 +1,8 @@
+{
+  "description": "The Rect From XYWH node takes in the X position, Y position, Width of the rect, and height of the rect as a float and returns a rect value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

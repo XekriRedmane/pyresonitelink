@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsLocalElement(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Elements.IsLocalElement.
+    """The Is Local Element node takes in a world element and returns if that element is local. A local element is simply an element which isn't synchronized at all, but is still part of the data model. One example of a local element can be observed with the Play One Shot node, which has an option to create a local clip, when the option is on the output of the node will be a local element.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/References/Elements
     """

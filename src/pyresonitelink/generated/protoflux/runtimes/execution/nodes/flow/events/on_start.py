@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnStart(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnStart.
+    """The On Start ProtoFlux node triggers on the start of that instance of the node's existence for the local user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """

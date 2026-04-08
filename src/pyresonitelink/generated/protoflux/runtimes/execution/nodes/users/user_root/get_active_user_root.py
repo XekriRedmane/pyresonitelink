@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetActiveUserRoot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.GetActiveUserRoot.
+    """Get active user root gets the closest parent UserRoot of the provided Instance (Slot)
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

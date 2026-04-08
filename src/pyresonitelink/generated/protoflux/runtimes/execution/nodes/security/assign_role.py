@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssignRole(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security.AssignRole.
+    """The Assign Role node takes in a JoinRequestHandle and a role name, and if the world enabled a join verification system using the Verify Join Request node, this node will run and set the user's role in this world.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Security
     """

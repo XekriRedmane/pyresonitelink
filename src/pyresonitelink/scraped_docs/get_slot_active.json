@@ -1,0 +1,8 @@
+{
+  "description": "Get slot active is a ProtoFlux node that will check if Instance (Slot)'s parent hierarchy or Instance (Slot) itself is disabled.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

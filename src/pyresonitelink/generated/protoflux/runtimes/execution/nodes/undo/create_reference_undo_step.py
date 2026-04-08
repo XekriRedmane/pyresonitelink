@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CreateReferenceUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.CreateReferenceUndoStep.
+    """The Create Reference Undo Step will create an undo step in the Context Menu of the person who the impulse came from. The node will then send to the UndoManager component in the world the value that the reference field provided into Target should revert to. Or in more simpler terms, the current reference the provided Target (ISyncRef) contains is what it will be reset to when undone via the context menu.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """

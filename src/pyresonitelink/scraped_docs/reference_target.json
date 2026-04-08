@@ -1,0 +1,8 @@
+{
+  "description": "The Reference Target node takes in an SyncRef and returns with the Reference Type that was asked for.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

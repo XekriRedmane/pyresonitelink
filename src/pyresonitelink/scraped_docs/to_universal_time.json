@@ -1,0 +1,8 @@
+{
+  "description": "The To Universal Time node takes in a DateTime and converts it to universal time using your local time offset. This is in accordance to Universal Time.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

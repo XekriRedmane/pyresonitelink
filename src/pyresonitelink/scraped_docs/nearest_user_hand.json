@@ -1,0 +1,8 @@
+{
+  "description": "Nearest User Hand is a protoflux node that returns the closest user hand to a slot and the hand's user, or closest to the root if not provided a slot. This will also ignore the user provided to IgnoreUser (User).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

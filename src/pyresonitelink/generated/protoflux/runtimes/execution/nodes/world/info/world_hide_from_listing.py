@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldHideFromListing(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.WorldHideFromListing.
+    """The World Hide From Listing node returns this world's "Don't show in session lists" setting from the Session tab in the Dash.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

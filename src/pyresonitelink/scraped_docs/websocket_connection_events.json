@@ -1,0 +1,8 @@
+{
+  "description": "This node will allow you do detect when a WebSocket client is connected or disconnected.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

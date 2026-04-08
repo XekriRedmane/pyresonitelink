@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools.ToolEvents.
+    """The Tool Events node takes in a referenced ITool, and fires events if the tool is equipped or dequipped from the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaleOrdersSH1(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.SphericalHarmonics.ScaleOrdersSH1<>.
+    """The Scale Orders SH1 node takes in a SphericalHarmonicsL1 along with a set of orders that refine/modify/scale it, then returns the new Spherical Harmonic of the same type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Spherical Harmonics
 

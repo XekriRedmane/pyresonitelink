@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanTotalDays(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.TimeSpanTotalDays.
+    """The TimeSpan Total Days node takes in a TimeSpan and returns with the amount of days in that TimeSpan, including the fractional portion of a day.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """

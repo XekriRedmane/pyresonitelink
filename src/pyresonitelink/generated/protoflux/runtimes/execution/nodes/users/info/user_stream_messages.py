@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserStreamMessages(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserStreamMessages.
+    """The User Stream Messages node takes in a user and returns that user's streamed messaged (is this upstream, downstream, or bi-directional?).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

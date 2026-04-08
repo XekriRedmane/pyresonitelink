@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BaseValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Quantity.BaseValue<>.
+    """The Base Value node takes in a value as a quantity type and returns the corresponding base value as a double.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Quantity
 

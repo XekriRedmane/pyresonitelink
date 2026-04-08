@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanTicks(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.TimeSpanTicks.
+    """The TimeSpan Ticks node takes in a TimeSpan and returns with only the amount of ticks in that TimeSpan. Anything other than the ticks will be ignored.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """

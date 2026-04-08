@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PickRandomValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.PickRandomValue<>.
+    """The Pick Random Value node takes in a list of value of the same Type and then returns one of them at random. Since this is a data node, displaying the output value will cycle through them randomly once per frame.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
 

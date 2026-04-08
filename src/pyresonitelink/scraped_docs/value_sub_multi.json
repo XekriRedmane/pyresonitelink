@@ -1,0 +1,8 @@
+{
+  "description": "The Value Sub Multi node takes in a list of values and subtracts from the first given value onwards. The first value is always the starting point. Then the second value will subtract from the first, giving the result for the third input to subtract from, so on and so fourth. More information can be found on the Sub node page.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

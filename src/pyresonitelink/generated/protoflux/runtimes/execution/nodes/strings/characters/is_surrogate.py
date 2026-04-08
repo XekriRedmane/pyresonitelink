@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsSurrogate(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.IsSurrogate.
+    """The Is Surrogate node takes in a char and returns whether that character is a surrogate.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

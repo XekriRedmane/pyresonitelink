@@ -13,9 +13,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Box(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Box<>.
+    """The BoxT node takes in a value type and converts it to an object.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
+
+    **See also**: * Unbox for unboxing objects into their underlying type
+* Microsoft documentation on C# boxing and unboxing
+
+ProtoFlux:Core
 
     Parameterize with a value type::
 

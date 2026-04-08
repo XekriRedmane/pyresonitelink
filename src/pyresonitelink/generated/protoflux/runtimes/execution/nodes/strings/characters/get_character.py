@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetCharacter(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.GetCharacter.
+    """The Get Character node retrieves a character from a given string at a given index.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

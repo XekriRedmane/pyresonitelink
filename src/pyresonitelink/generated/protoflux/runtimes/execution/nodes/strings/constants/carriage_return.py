@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CarriageReturn(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.CarriageReturn.
+    """The Carriage Return node is a character literal constant for the Carriage Return character (Unicode: U+000D).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
     """

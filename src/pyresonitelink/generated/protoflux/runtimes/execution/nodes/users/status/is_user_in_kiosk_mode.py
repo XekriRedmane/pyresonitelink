@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserInKioskMode(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.IsUserInKioskMode.
+    """The Is User In Kiosk Mode node returns if the user is in Kiosk Mode.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """

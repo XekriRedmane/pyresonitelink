@@ -13,9 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueMultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueMultiplex<>.
+    """The Multiplex node is a node that changes its output to a specific input based on its index.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
+
+    **Footnotes**: * It can be made bigger or smaller while editing the flux.
+
+ProtoFlux:Utility
 
     Parameterize with a value type::
 

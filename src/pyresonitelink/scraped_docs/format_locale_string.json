@@ -1,0 +1,8 @@
+{
+  "description": "The Format Locale String node takes in a locale asset (or repository) and a key and it returns the translated string for the user's culture.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

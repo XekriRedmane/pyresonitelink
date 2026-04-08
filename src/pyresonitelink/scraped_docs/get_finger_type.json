@@ -1,0 +1,8 @@
+{
+  "description": "Get Finger Segment Type is a ProtoFlux node that returns the FingerType Enum value that describes the provided Node (BodyNode), or -1 if not a finger.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

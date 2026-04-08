@@ -1,0 +1,8 @@
+{
+  "description": "Get active user root gets the closest parent UserRoot of the provided Instance (Slot)",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

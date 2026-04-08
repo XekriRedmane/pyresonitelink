@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion.FootstepEvents.
+    """The Footstep Events node takes in the global source of a FootstepEventRelay or SelfFootstepEventRelay component, and returns the values from this user's footstep. The footstep event counts when any proxy on a slot detects the collision and raycast from a user's feet onto that ICollider, as long as that collider does not have the No Collision setting on, and also does not have the Ignore Raycasts setting on.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Locomotion
     """

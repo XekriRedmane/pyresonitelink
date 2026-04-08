@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsGrabbableGrabbed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.IsGrabbableGrabbed.
+    """Is Grabbable Grabbed is a ProtoFlux node that gets whether or not an IGrabbable is being grabbed by someone or something.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Grabbable
     """

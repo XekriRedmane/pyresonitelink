@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Quantity.ParseQuantity<>.
+    """The Parse Quantity node takes in a string containing a written quantity value, along with the string of the default unit to assume if no explicit unit is present as part of the input string. It returns the parsed quantity value as a quantity type and a bool indicating wether it parsed successfully.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Quantity
 

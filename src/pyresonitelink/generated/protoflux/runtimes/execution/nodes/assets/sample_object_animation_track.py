@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SampleObjectAnimationTrack(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.SampleObjectAnimationTrack<>.
+    """This node when provided an Animation Asset sample the given track index for a Reference Type Reference at the specified time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
 

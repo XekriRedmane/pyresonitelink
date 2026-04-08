@@ -1,0 +1,8 @@
+{
+  "description": "On Saving is a ProtoFlux node that sends an impulse out of Trigger whenever the node is being saved with a world or item, and will execute before the save excluding async tasks.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

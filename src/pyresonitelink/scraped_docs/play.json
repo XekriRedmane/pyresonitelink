@@ -1,0 +1,8 @@
+{
+  "description": "Play is a ProtoFlux node that plays the provided Target (IPlayable) when * (Call) is called. Play doesn't change the current Position Output, it essentially sets Is Playing Output to true.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

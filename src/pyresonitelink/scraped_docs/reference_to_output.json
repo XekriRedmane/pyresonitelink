@@ -1,0 +1,8 @@
+{
+  "description": "The Reference To Output node takes a Global ProtoFlux reference and returns the IVariable that can be used for an Indirect Write.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

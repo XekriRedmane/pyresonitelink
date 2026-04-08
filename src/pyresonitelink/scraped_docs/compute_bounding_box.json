@@ -1,0 +1,8 @@
+{
+  "description": "The Compute Bounding Box node calculates a bounding box for the input Instance slot hierarchy in the input CoordinateSpace with optional filtering for inactive and/or tagged slots.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

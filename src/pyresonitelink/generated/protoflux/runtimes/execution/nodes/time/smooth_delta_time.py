@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SmoothDeltaTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time.SmoothDeltaTime.
+    """The Smooth Delta Time node returns the change of time between two world updates, specifically the time between the current update and the one before. This node also does another step and tries to account for lag or stutters, smoothly changing the amount of time to match that change.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

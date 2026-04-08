@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnConsumableStageConsumed(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.OnConsumableStageConsumed.
+    """Triggers on the start of a consumion event
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Consumable
     """

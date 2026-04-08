@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugAxes.
+    """Debug Axes is a ProtoFlux node that when called will make a 3 arrows visual similar to a Gizmo at the global coordinates with the arrows having the length provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """

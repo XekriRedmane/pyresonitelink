@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldAwayKickInterval(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.WorldAwayKickInterval.
+    """The World Away Kick Interval node returns this world's "Max AFK Minutes" setting from the Session tab in the Dash, represented as a TimeSpan value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

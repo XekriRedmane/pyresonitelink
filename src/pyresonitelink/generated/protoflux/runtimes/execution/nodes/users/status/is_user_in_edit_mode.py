@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserInEditMode(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.IsUserInEditMode.
+    """The Is User In Edit Mode node returns if a user has the special permission of Edit Mode.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """

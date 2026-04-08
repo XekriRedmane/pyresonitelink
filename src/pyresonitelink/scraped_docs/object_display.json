@@ -1,0 +1,8 @@
+{
+  "description": "The Display node takes in an input, but unlike the Input Display node, it will not display out a value onto the node UI, instead this is most likely used for internal use in FrooxEngine.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

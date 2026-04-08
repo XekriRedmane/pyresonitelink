@@ -1,0 +1,8 @@
+{
+  "description": "Constant outputs the default value of a Type and is used as a base for classes that output constant values like e or Pi.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

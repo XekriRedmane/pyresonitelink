@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Random.RandomString.
+    """The Random String node takes in a string value and the length, then returns a randomized string value. The string provided acts as a pool of characters, and you can skew the percent chance of a character being selected if there are multiples of the same character.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Random
     """

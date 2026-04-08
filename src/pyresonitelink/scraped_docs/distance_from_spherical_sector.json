@@ -1,0 +1,8 @@
+{
+  "description": "The Distance From Spherical Sector node takes a point in 3D space and computes the distance from a spherical sector defined by its center, direction, radius, and angle. Then it returns the distance from that sphere.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

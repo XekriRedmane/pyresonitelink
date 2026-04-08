@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserControlMessages(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserControlMessages.
+    """The User Control Messages node takes in a user and returns that user's control messages. If the user is host, then that number is always zero (0).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

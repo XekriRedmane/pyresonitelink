@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueSub(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueSub<>.
+    """The Sub node takes in 2 inputs and returns the calculated result. The second input (B) will take away anything from the first input (A).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

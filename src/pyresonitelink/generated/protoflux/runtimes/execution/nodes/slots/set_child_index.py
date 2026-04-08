@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetChildIndex(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetChildIndex.
+    """Sets the offset of the provided Instance (Slot) in the inspector compared to others that have the same immediate parent to Index (Int).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
     """

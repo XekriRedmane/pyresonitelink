@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnPackageImported(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnPackageImported.
+    """On Package Imported is a ProtoFlux node that sends an impulse out of Trigger when it detects that it has been imported as a part of a ResonitePackage.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """

@@ -8,7 +8,7 @@ from pyresonitelink.generated._types.sync_ref import SyncRef
 
 
 class ReferenceAsVariable(GenericComponent[T]):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.ReferenceAsVariable<>.
+    """The Reference As Variable node transforms an SyncRef of the given type into an IVariable that can then be written to with an Indirect Write node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

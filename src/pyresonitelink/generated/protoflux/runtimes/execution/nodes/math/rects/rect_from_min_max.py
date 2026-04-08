@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectFromMinMax(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Rects.RectFromMinMax.
+    """The Rect From Min Max node takes in 2 specific float2 values, giving the minimum size of the rect, usually just at the X and Y position, and also needing the max size of this rect, which is usually X + Width and Y + Height. Then this node returns a rect value that has the min and max provided. In contrast to the Rect From Position Size node where it takes the literal position and size to get a rect's bounding data.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """

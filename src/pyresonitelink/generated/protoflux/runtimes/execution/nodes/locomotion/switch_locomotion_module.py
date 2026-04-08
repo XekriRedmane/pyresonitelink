@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion.SwitchLocomotionModule.
+    """Switch Locomotion Module is a ProtoFlux node that switches a user to a locomotion by name.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Locomotion
     """

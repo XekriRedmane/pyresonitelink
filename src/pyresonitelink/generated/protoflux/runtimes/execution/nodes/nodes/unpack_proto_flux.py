@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnpackProtoFlux(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Nodes.UnpackProtoFlux.
+    """The Unpack ProtoFlux node takes in the Slot root (where we want to unpack from), then unpacks them from the provided Slot. Many community-based tools (such as Redprint) use this to unpack nodes into the world.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Nodes
     """

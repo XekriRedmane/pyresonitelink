@@ -1,0 +1,8 @@
+{
+  "description": "User Finger Pose Source is a ProtoFlux node that allows you to get an IFingerPoseSource for use in Finger Pose Node. This is a pose source that represents the pose sources of both hands in one.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

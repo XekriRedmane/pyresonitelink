@@ -1,0 +1,8 @@
+{
+  "description": "The Apply Character Force node takes in a character controller reference and a force, then pushes the character controller in the direction.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

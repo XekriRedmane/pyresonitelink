@@ -15,9 +15,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Controllers.StandardController.
+    """The standard controller node allows one to interact with the players virtual reality controller as well as generic inputs on Desktop mode.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Controllers
+
+    The standard controller node allows one to interact with the players
+    virtual reality controller as well as generic inputs on Desktop mode.
+    Say you want to get the user's grip and trigger strength, just feed it a
+    user and a "Chirality input" for the left or right controller and volla!
+    Just pull an output from the grip boolean and the strength float value
+    and now you have the users grip and trigger on/off and strength!
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Controllers.StandardController"

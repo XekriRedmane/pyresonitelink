@@ -1,0 +1,8 @@
+{
+  "description": "The Format As Time node takes in the amount of time in seconds and converts it into a string, This string will be formatted with colon separators for each segment of time (Hours, minutes, seconds) automatically. If you want to have more percision to the milliseconds, increase the number of decimal places.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

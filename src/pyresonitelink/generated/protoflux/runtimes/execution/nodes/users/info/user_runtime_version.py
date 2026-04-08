@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserRuntimeVersion(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserRuntimeVersion.
+    """The User Runtime Version node returns the runtime version in use, which is typically the version of .NET.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.TextEditorEvents.
+    """The Text Editor Events node takes in a global TextEditor reference and will listen for events from that global reference. This node fires events that relate to the TextEditor, and can be useful when you want certain things to happen when things get edited or submitted by the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/UI
     """

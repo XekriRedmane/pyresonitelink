@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AsyncCallInput(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.AsyncCallInput.
+    """alt=A visual image of an ASync call input node by itself, connected to nothing.|thumb
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
     """

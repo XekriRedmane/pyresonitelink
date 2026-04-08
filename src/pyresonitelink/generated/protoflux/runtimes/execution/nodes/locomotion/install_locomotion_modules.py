@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InstallLocomotionModules(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion.InstallLocomotionModules.
+    """Install Locomotion Modules is a ProtoFlux node that takes a slot with a type from the ILocomotionModule interface on it. The locomotion will also need a character controller and a few other components, which should be auto generated when a type from the ILocomotionModule interface component is added.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Locomotion
     """

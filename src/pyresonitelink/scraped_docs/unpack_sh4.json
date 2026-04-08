@@ -1,0 +1,8 @@
+{
+  "description": "The Unpack SH4 node takes in the SphericalHarmonicsL4 type, and splits it into their separate values.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorMultiplicativeBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorMultiplicativeBlend.
+    """Color Multiplicative Blend does a multiplicative blend of its two input colors. The result is the product of each component between the target and destination.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

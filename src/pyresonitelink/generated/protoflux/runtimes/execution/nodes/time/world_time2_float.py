@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldTime2Float(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time.WorldTime2Float.
+    """The World Time 2 Float node returns the total world time that this world has been open for multiplied by 2.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

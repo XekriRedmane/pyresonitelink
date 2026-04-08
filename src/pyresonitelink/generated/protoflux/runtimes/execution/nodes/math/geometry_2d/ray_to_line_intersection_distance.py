@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RayToLineIntersectionDistance(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry2D.RayToLineIntersectionDistance.
+    """The Ray To Line Intersection Distance node determines the distance from a ray origin to the point at which the ray intersects a line segment defined by two points. This node is functionally equivalent to using the ProtoFlux:Ray To Line Intersection node, then plugging the value used for Origin and the Intersection output into a Distancefloat2 node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 2D
     """

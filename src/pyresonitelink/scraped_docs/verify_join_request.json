@@ -1,0 +1,8 @@
+{
+  "description": "The Verify Join Request node listens for join requests when users join a world with an enabled join verification system, firing an event when it happens. This node returns a set of information that contains info of the joining user. This node can be combined with the Allow Join, Deny Join, and Assign Role nodes.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceID(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.References.ReferenceID.
+    """The Reference ID node takes in an element, which could be anything since it is an IWorldElement, then returns a RefID of that world element. Since the RefID type is used internally in the engine, it is unlikely to see any use besides read references.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/References
     """

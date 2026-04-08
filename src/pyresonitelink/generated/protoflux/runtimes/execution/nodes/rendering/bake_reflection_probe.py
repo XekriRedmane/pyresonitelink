@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering.BakeReflectionProbe.
+    """The Bake Reflection Probe node takes in a Reflection Probe and begins the baking process, then returns the Uri asset that can be used for the world when completed.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Rendering
     """

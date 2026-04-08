@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Capitalize(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Capitalize.
+    """The Capitalize node takes in a string and capitalizes the first letter of the string. Having a letter that is not in the first index of the string will not capitalize the string.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """

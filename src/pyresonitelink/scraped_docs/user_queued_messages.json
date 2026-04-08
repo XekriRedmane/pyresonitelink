@@ -1,0 +1,8 @@
+{
+  "description": "The User Queued Messages node returns the user's queued messages (also called packets), and shows how behind a user is and how much they need to catch up by.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

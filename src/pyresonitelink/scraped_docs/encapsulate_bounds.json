@@ -1,0 +1,8 @@
+{
+  "description": "The Encapsulate Bounds node extends the input Bounds such that the output fully encapsulates the OtherBounds.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

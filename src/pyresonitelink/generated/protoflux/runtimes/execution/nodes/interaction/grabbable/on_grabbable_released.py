@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnGrabbableReleased(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.OnGrabbableReleased.
+    """On Grabbable Released is a ProtoFlux node that monitors an IGrabbable for when something or someone lets go of it and sends an Impulse.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Grabbable
     """

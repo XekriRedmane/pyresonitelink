@@ -1,0 +1,8 @@
+{
+  "description": "The Translate Rect node takes in a rect value and an offset (float2) which corresponds with the X and Y position of the entire rect, and returns a rect that has been translated to its new location.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

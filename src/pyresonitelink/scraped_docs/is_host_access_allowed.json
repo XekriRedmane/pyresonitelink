@@ -1,0 +1,8 @@
+{
+  "description": "The Is Host Access Allowed node takes in a Host IP address, an accessible port of that address, and the scope of what type of connection this is. When everything is accurate, this node will return if the user has the host access to a service. This relates to the settings in the Dash that a user can look through to see what services they have access to.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

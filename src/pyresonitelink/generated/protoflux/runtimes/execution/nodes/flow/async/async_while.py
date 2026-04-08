@@ -15,9 +15,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AsyncWhile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.AsyncWhile.
+    """The Async While node is the async variant of the While node. It is used to perform looping operations by allowing one to fire impulses continuously while a condition remains true.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Async
+
+    **Known Issues**: * As of the time of writing, there is a known issue where if the final node in the ``LoopIteration`` chain is a Write node, said node modifies a variable used for conditional evaluation, and the value to write is based off said variable, the write will be using a previously cached value. This can cause an extra loop iteration to occur, which is very annoying to debug.
+** The easiest way to work around this bug is to add a "dummy" node after the write, such as an Impulse Display or, if debugging a ton of impulses and lag is undesirable, an empty Write node.
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.AsyncWhile"

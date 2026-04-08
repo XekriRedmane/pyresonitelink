@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetCharacterVelocity(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.SetCharacterVelocity.
+    """The Set Character Velocity node takes in a character controller reference and a target velocity, then sets the velocity on the Slot containing the character controller component.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """

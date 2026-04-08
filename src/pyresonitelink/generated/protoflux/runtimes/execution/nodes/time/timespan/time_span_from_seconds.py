@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanFromSeconds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.TimeSpanFromSeconds.
+    """The TimeSpan From Seconds node takes in the amount of seconds and converts it into a TimeSpan that shows the span of time in seconds.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """

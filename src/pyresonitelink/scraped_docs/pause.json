@@ -1,0 +1,8 @@
+{
+  "description": "Pause is a ProtoFlux node that pauses the provided Target (IPlayable) when * (Call) is called. Pause doesn't change the current Position Output, it essentially sets Is Playing Output to false.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

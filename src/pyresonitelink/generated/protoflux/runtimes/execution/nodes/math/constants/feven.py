@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Feven(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.Feven.
+    """The almighty Feven.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
+
+    **Outputs**: A ulong that does not allow the User to connect to anything. This is a known issue in Resonite.
+
+ProtoFlux:Math:Constants
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.Feven"

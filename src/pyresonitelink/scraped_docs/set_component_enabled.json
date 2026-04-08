@@ -1,0 +1,8 @@
+{
+  "description": "Get Component Enabled is a ProtoFlux node Takes an IComponent and gets if it's enabled or not.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

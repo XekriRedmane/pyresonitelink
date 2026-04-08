@@ -1,0 +1,8 @@
+{
+  "description": "The Set Global Transform node sets the input slot's position, rotation and scale to the provided values in global coordinate space.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

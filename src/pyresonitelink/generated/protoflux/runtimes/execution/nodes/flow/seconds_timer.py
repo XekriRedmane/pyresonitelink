@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SecondsTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.SecondsTimer.
+    """The Seconds Timer node sends a pulse from the UpdatingUser at the specified interval of seconds.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsPunctuation(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.IsPunctuation.
+    """The Is Punctuation node takes in a character literal and returns if that character is a punctuation character.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

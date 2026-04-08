@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BooleanCounter(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Binary.BooleanCounter.
+    """The Boolean Counter node takes in a list of booleans and counts the number of true and false values, as well as a count of all booleans in the list.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/Binary
     """

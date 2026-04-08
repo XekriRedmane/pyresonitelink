@@ -1,0 +1,8 @@
+{
+  "description": "The Equip Tool node equips a tool to the user, optionally dequipping an existing tool.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

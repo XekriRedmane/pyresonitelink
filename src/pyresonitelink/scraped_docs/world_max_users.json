@@ -1,0 +1,8 @@
+{
+  "description": "The World Max Users node returns this world's \"Maximum Users\" setting from the Session tab in the Dash.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

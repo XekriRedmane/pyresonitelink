@@ -1,0 +1,8 @@
+{
+  "description": "The Stopwatch node keeps track of time when running. Akin to a real stopwatch, it allows one to start time, stop time, and reset time.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

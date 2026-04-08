@@ -1,0 +1,8 @@
+{
+  "description": "The Unpack ProtoFlux node takes in the Slot root (where we want to unpack from), then unpacks them from the provided Slot. Many community-based tools (such as Redprint) use this to unpack nodes into the world.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry3D.SphereForTangentLine.
+    """The Sphere For Tangent Line node takes a line point for our sphere point, a line in 3D space, and point for the line, creating a sphere in 3D space. Then it returns the point and radius of a sphere, similar to a reversed Tan node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 3D
     """

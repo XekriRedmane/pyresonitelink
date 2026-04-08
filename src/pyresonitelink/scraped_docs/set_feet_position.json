@@ -1,0 +1,8 @@
+{
+  "description": "The Set Feet Position node takes in a user's UserRoot and the position for the feet, then sets the position.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldSessionID(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.WorldSessionID.
+    """This ProtoFlux node is used to find the world's Session ID. This is useful for making world switchers, saving worlds on a headless, or keeping a reference to a session for a keycard like system for a hotel where each room is actually a portal to a different currently open world.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

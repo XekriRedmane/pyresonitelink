@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PointOnUVSphere(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry3D.PointOnUVSphere.
+    """The Point On UV Sphere node takes a sphere's UV coordinates and the radius of the sphere, then returns the point on that sphere.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 3D
     """

@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering.BakeReflectionProbes.
+    """The Bake Reflection Probes node takes in the root slot holding all your reflection probes, whether or not to bake the inactive reflection probes, the matching tag to bake only those reflection probes, and a delay before starting the baking process. This node will then attempt to bake them all, then returns the focused reflection probe, the index of that reflection probe, and the count of all reflection probes.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Rendering
     """

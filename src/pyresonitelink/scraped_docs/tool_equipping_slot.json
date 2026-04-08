@@ -1,0 +1,8 @@
+{
+  "description": "The Tool Equipping Side node takes in a Tools reference and returns with the parent Slot that it is equipped on.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

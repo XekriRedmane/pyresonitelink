@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetFingerType(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes.GetFingerType.
+    """Get Finger Segment Type is a ProtoFlux node that returns the FingerType Enum value that describes the provided Node (BodyNode), or -1 if not a finger.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Body Nodes
     """

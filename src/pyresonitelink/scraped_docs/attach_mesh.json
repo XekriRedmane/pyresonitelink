@@ -1,0 +1,8 @@
+{
+  "description": "The Attach Mesh node allows one to attach a provided Uri as a new StaticMesh component and return the StaticMesh raw IAsset`1 itself.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

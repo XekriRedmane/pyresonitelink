@@ -1,0 +1,8 @@
+{
+  "description": "The Unpack Nullable node takes in a nullable, and returns the value and if this nullable has a value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The Is Control node takes in a character literal and returns if that character is a control character.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

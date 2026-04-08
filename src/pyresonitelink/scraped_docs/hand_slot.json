@@ -1,0 +1,8 @@
+{
+  "description": "The Hand Slot node takes in a reference of a UserRoot and a side, and if that UserRoot is active or being used, it returns a Slot reference of the user's hand.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

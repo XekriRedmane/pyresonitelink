@@ -1,0 +1,8 @@
+{
+  "description": "The Null Coalesce node takes two reference type inputs of the same type. If the first input is null, it returns the value of the second input. Otherwise, it returns the value of the first input.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

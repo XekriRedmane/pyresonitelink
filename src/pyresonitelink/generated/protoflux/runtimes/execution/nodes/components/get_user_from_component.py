@@ -13,9 +13,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetUserFromComponent(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.GetUserFromComponent.
+    """Get User From Component is a ProtoFlux node that gets the active user of the slot a component is on.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Components
+
+    **Example**: File:Protoflux_Get_User_From_Component.webp|an example of using Get User From Component to find the active user of a Tool Tip.
+
+
+ProtoFlux:Components
+ProtoFlux:Users
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.GetUserFromComponent"

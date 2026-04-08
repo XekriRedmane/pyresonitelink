@@ -1,0 +1,8 @@
+{
+  "description": "Anchored User is a ProtoFlux node that returns the user that is anchored to the provided Anchor (IAvatarAnchor). This node will return a null user if there is no user anchored to the anchor.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

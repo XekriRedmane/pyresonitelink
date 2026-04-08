@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserAnchored(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors.IsUserAnchored.
+    """Is User Anchored is a ProtoFlux node that checks if the provided User (User) is in an anchor or not.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Anchors
     """

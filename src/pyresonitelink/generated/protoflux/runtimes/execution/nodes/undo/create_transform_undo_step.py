@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.CreateTransformUndoStep.
+    """The Create Transform Undo Step will create an undo step in the Context Menu of the person who the impulse came from. The node will then send to the UndoManager in the world the slot transforms that the slot provided into Target should revert to. Or in more simpler terms, the current transforms the provided Target (Slot) contains is what it will be reset to when undone via the context menu. Certain transforms will be included or omitted depending on booleans provided into the inputs.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """

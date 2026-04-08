@@ -1,0 +1,13 @@
+{
+  "description": "Returns a change in value. The Greek letter Delta (Δ) is commonly being used as a variable or symbol related to change.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Implementation Details",
+      "text": "This node can be implemented using other ProtoFlux nodes:\n\nnone\n\nIn this case, the leftmost Input Node represents the node's input and the Display its output. This implementation of an int Delta Node is equivalent to the implementation in the game's code. How exactly the difference to the previous value is calculated depends on the value type.\n\nProtoFlux:Math\nContinuouslyChanging nodes"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RayToLineIntersection(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry2D.RayToLineIntersection.
+    """The Ray To Line Intersection node determines the point at which a ray defined by an origin and direction intersects a line segment defined by two points.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 2D
     """

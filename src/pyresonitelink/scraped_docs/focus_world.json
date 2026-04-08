@@ -1,0 +1,8 @@
+{
+  "description": "The Focus World node allows a user to focus on a world by giving it a ressession link as the Url. If the world exists (as in, already opened for the user, or available as a headless) it will work as expected. If there is no world that is open already that the ressession link is referring to, it will fail.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

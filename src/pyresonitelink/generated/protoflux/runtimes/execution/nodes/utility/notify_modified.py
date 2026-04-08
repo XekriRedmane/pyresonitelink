@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NotifyModified(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interactions.NotifyModified.
+    """The Notify Modified node takes in an IComponent, and when called will invoke the NotifyModified method on the input Component. Used for components which implement IModifiedEventReceiver like GridContainerPreset and Workspace.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
     """

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.SphericalHarmonics.PackSH3<>.
+    """The Pack SH3 node takes in values and returns the SphericalHarmonicsL3 type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Spherical Harmonics
 

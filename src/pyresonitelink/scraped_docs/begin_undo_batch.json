@@ -1,0 +1,8 @@
+{
+  "description": "A Begin Undo Batch is used to batch together every undo step called after it, like Create Spawn Undo Step, Create Field Undo Step, and Create Undo Reference Step to name a few from the ProtoFlux Undoable Category.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

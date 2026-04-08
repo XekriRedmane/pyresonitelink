@@ -1,0 +1,8 @@
+{
+  "description": "The Parse Quantity node takes in a string containing a written quantity value, along with the string of the default unit to assume if no explicit unit is present as part of the input string. It returns the parsed quantity value as a quantity type and a bool indicating wether it parsed successfully.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

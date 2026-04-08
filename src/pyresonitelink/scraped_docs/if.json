@@ -1,0 +1,8 @@
+{
+  "description": "The If node checks and evaluates the Condition (bool) only when * (Call) is called. After the call and evaluation, it will send a pulse out of OnTrue (Continuation) if Condition (bool) is true or OnFalse (Continuation) if it is false.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

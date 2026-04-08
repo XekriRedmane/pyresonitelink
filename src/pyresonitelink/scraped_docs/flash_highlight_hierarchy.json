@@ -1,0 +1,8 @@
+{
+  "description": "The Flash Highlight Hierarchy node takes in the target slot hierarchy, what to exclude, if this flash should track the position, how long the flash should be, and what color it should be. Then this node will make that hierarchy flash, also providing the slot of the flash itself.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

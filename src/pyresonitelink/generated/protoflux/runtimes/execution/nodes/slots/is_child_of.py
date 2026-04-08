@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsChildOf(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.IsChildOf.
+    """The Is Child Of node determines if the Instance slot is a descendant of the Other slot. This check is recursive.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
     """

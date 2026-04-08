@@ -1,0 +1,8 @@
+{
+  "description": "The TimeSpan From Seconds node takes in the amount of seconds and converts it into a TimeSpan that shows the span of time in seconds.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

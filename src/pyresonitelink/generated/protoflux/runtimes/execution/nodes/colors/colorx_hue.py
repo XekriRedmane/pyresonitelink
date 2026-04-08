@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorXHue(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorXHue.
+    """Color X Hue returns a color with a given hue value. This is equivalent to using HSV To ColorX with a value and saturation equal to 1.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

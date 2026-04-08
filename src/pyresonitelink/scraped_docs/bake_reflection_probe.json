@@ -1,0 +1,8 @@
+{
+  "description": "The Bake Reflection Probe node takes in a Reflection Probe and begins the baking process, then returns the Uri asset that can be used for the world when completed.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

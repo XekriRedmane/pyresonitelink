@@ -1,0 +1,13 @@
+{
+  "description": "The Value Field DriveT node creates a drive on a field with the value of its input. The field type must be a ProtoFlux value type.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* Object Field Drive\n\nProtoFlux:Core\nListener nodes"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The User Joined node is an event that fires when a user joins the current world this node is in, as well as providing that user.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

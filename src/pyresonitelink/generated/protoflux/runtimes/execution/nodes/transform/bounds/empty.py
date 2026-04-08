@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Empty(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.Empty.
+    """The Empty node outputs an empty bounding box.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Bounds
+
+    **Issues**: * Currently the empty bounding box is returning really large numbers in opposite directions, and is currently being investigated by Frooxius in this GitHub issue: #2090
+
+ProtoFlux:Transform:Bounds
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.Empty"

@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors.AnchorLocomotionData.
+    """Anchor Locomotion Data is a ProtoFlux node that checks the button presses for someone in an anchor and returns the values
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Anchors
     """

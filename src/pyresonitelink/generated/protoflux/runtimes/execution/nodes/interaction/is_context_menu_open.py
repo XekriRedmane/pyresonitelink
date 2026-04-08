@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsContextMenuOpen(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.IsContextMenuOpen.
+    """Is Context Menu Open returns a bool of if the inputted user's context menu is currently opened.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction
     """

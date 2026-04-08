@@ -13,9 +13,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterGravity(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.CharacterGravity.
+    """You can use the actual gravity output of this node to control how gravity works for certain character controllers that need to have different values effect them in different ways (using both the user's transform scale and the component's gravity scale).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
+
+    You can use the actual gravity output of this node to control how
+    gravity works for certain character controllers that need to have
+    different values effect them in different ways (using both the user's
+    transform scale and the component's gravity scale). You can set the
+    simulating user's gravity scale to cubic and have their gravity be
+    effected by their size. Using Linear will keep the gravity the same no
+    matter the size of the user. (Tested on users jumping while changing the
+    gravity scale field in the character controller component).
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.CharacterGravity"

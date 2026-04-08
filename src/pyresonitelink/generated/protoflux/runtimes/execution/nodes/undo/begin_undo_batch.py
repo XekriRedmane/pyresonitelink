@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BeginUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.BeginUndoBatch.
+    """A Begin Undo Batch is used to batch together every undo step called after it, like Create Spawn Undo Step, Create Field Undo Step, and Create Undo Reference Step to name a few from the ProtoFlux Undoable Category.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """

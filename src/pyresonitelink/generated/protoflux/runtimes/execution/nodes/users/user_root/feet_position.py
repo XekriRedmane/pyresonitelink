@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeetPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots.FeetPosition.
+    """The Feet Position node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the feet position value of the User (The center of your user space).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

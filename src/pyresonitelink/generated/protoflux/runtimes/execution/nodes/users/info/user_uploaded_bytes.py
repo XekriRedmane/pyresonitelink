@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserUploadedBytes(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserUploadedBytes.
+    """The User Uploaded Bytes node returns a user's total uploaded bytes.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

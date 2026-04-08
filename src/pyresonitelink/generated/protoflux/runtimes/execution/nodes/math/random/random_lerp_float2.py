@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomLerpFloat2(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Random.RandomLerpFloat2.
+    """The Random Lerp Float2 node takes in a min and max value and returns a random float2 value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Random
     """

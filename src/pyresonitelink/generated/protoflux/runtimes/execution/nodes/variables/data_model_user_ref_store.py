@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DataModelUserRefStore(GeneratedComponent, IVariable, IDataModelStore, IProtoFluxEngineProxyNode, IMappableNode, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.DataModelUserRefStore.
+    """The '''DataModelUserRefStore''' type allows storing persistent user references, meaning they are not lost when saving an object, the world, or a user leaving and rejoining the session. DataModelUserRefStore is not to be confused with a regular Data Model Store, which does not persist. When using the protoflux tool with a node that writes a User to create a Data Model Store, a DataModelUserRefStore is automatically created instead of the regular DataModelStore type. This node achieves persistence by storing a UserRef internally, but still outputs a regular User for use in flux. If the user who is stored is not in the session, the output will be null.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables
     """

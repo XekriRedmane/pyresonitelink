@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharToString(GeneratedComponent, ICast, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Casts.CharToString.
+    """The Char to String node acts as a cast to turn a character into a string.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

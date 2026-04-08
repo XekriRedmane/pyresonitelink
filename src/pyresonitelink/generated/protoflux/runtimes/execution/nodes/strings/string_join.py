@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StringJoin(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.StringJoin.
+    """String Join is a protoflux node that can take a Separator (String), and a some Inputs (List of String) and combine them, separating each item with Separator (String), or with nothing if Separator (String) is not provided.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

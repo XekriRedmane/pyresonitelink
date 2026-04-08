@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReplaceSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.ReplaceSubstring.
+    """Replace Substring is a ProtoFlux node that replaces the all occurrences of SearchFor (String) in Str (String) with ReplaceWith (String).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

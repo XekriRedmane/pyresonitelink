@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetDateTimeKind(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.SetDateTimeKind.
+    """The Set DateTime Kind node takes in a DateTime and an enum Kind of DateTime, then returns the new DateTime value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """

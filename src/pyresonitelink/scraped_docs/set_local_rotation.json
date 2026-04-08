@@ -1,0 +1,8 @@
+{
+  "description": "The Set Local Rotation node sets the input slot's rotation to the provided floatQ value in local coordinate space.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

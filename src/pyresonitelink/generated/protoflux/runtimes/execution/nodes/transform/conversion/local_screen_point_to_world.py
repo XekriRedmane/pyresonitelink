@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalScreenPointToWorld(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalScreen.LocalScreenPointToWorld.
+    """The Local Screen Point To World node takes in a normalized screen space (0 to 1 along the user's screen in the X and Y position), and converts it to a position in world space. This node just takes where you are looking plus the distance from the local user and makes a value someplace outward from your camera/screen.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Conversion
     """

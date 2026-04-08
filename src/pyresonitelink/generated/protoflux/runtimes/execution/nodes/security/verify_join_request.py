@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security.VerifyJoinRequest.
+    """The Verify Join Request node listens for join requests when users join a world with an enabled join verification system, firing an event when it happens. This node returns a set of information that contains info of the joining user. This node can be combined with the Allow Join, Deny Join, and Assign Role nodes.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Security
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The Mouse Movement Delta node returns the local user's mouse movement delta from their Resonite application. The faster you move your mouse within a frame, the larger the delta. If you are focused on the Resonite window, the mouse will always be centered in that window while you move the mouse around, and this node will listen for the changes in your mouse movement to calculate the dalta. When the resonite application is not focused, this node will not calculate the delta at all.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

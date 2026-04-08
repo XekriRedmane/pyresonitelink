@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueOneMinus(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueOneMinus<>.
+    """The Value One Minus node takes in a value and subtracts it from a starting point of 1. This can be done similarly with the Sub node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueMul(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueMul<>.
+    """Multiply or Mul is a node that allows you to perform multiplication between values (both of same and different types), including complex values like Quaternions or vectors.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

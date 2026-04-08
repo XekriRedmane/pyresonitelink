@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.inode_object_output import INodeObjectOutpu
 
 
 class ObjectWriteLatch(GenericComponent[T]):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectWriteLatch<>.
+    """Write latches take a Variable (Variable) as a global input, and the Variable will determine what SetValue (Generic) and ResetValue (Generic) will take as a value. The set and reset value inputs will never take different types from each other.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions
 

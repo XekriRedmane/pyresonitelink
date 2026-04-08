@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Bell(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.Bell.
+    """The Bell node is a character literal constant for the "Bell" character (Unicode: U+0007).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
     """

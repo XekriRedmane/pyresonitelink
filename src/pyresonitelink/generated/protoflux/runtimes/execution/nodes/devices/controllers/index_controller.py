@@ -15,9 +15,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IndexController(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Controllers.IndexController.
+    """This node provides information provided by Index controllers.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Controllers
+
+    **Outputs**: === IsActive (Bool) ===
+
+Bool for showing if the device is active. Useful for troubleshooting if your controller is not responding.
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Controllers.IndexController"

@@ -1,0 +1,13 @@
+{
+  "description": "The Multiplex node is a node that changes its output to a specific input based on its index.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Footnotes",
+      "text": "* It can be made bigger or smaller while editing the flux.\n\nProtoFlux:Utility"
+    }
+  ]
+}

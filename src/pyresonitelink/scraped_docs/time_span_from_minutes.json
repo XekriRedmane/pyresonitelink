@@ -1,0 +1,8 @@
+{
+  "description": "The TimeSpan From Minutes node takes in the amount of minutes and converts it into a TimeSpan that shows the span of time in minutes.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

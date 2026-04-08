@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldMobileFriendly(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.WorldMobileFriendly.
+    """The World Mobile Friendly node returns this world's "Mobile Friendly" setting from the Session tab in the Dash.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

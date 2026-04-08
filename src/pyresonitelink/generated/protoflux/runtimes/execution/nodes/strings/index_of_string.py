@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IndexOfString(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.IndexOfString.
+    """Index Of String is a ProtoFlux node that gives a index of where a string occurs in another string.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

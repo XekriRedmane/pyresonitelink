@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.SampleSpatialVariablePartialDerivative<>.
+    """The SampleSpatialVariablePartialDerivative node samples a numerical spatial variable and returns the partial derivatives of the variable in the x, y, and z directions according to an orientation. In essence, it computes the numerical gradient of the sampled spatial variable.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables/Spatial
 

@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EvaluateSH(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.SphericalHarmonics.EvaluateSH<,>.
+    """The Evaluate SH node takes in a Spherical Harmonics type of any LV and a direction, then returns the evaluated type value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Spherical Harmonics
     """

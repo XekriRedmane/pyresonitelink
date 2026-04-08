@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.TimeSpanMilliseconds.
+    """The TimeSpan Milliseconds node takes in a TimeSpan and returns with only the amount of millisecondsin that TimeSpan. Anything other than the milliseconds will be ignored.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """

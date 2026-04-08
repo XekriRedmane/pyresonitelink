@@ -1,0 +1,8 @@
+{
+  "description": "The Locale Message Count node takes in a locale resource asset and returns the number of translatable string keys in this collection or repository.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

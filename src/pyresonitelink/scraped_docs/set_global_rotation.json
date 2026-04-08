@@ -1,0 +1,8 @@
+{
+  "description": "The Set Global Rotation node sets the input slot's rotation to the provided floatQ value in global coordinate space.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

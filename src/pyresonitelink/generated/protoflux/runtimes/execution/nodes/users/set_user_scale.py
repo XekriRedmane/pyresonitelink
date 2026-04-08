@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.SetUserScale.
+    """The Set User Scale node changes the user scale with the provided inputs. While the user is scaling and the user is in the middle of a scale animation, the user cannot be scaled again until the animation has finished.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """

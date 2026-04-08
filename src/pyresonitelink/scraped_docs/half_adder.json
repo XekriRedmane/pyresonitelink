@@ -1,0 +1,8 @@
+{
+  "description": "The Half Adder node takes in 2 boolean values (A and B), and returns 2 boolean values (Y and CarryOut). In computing & electronics, this is called a half adder, and helps with boolean math.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

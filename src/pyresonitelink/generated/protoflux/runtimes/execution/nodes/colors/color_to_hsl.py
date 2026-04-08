@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorToHSL(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorToHSL.
+    """Color To HSL converts a Color to HSL. The result is represented as 3 separate Float values for Hue, Saturation, and Lightness.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

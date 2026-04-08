@@ -13,9 +13,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorXSoftAdditiveBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorXSoftAdditiveBlend.
+    """Color X Additive Blend does a "soft additive" blend of its two input colors. The result of the color components is destination color + (source color * (1 - destination color)). The alpha component is simply added together and clamped to a maximum of 1.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
+
+    **References**: ProtoFlux:Colors
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorXSoftAdditiveBlend"

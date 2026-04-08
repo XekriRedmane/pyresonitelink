@@ -1,0 +1,8 @@
+{
+  "description": "The Ray To Line Intersection node determines the point at which a ray defined by an origin and direction intersects a line segment defined by two points.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

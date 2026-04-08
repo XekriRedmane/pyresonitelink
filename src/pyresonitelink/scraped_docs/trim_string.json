@@ -1,0 +1,8 @@
+{
+  "description": "Trim String is a ProtoFlux node that trims a string according to the microsoft implmentation Trim String which removes any white space at the beginning or end of the string including any extra special invisible control characters.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

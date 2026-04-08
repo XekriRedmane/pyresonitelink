@@ -1,0 +1,8 @@
+{
+  "description": "Replace First Substring is a ProtoFlux node that replaces the first occurrence of SearchFor (String) in Str (String) with ReplaceWith (String). Will only start searching after the provided StartIndex (int).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsDigit(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.IsDigit.
+    """The Is Digit node takes in a character literal and returns if that character is a digit. Digit characters are numbers that have a numeric value to them and are not a symbol.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

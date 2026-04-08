@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabbablePriority(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.GrabbablePriority.
+    """Grabbable Priority is a ProtoFlux node that gets the priority of an IGrabbable.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Grabbable
     """

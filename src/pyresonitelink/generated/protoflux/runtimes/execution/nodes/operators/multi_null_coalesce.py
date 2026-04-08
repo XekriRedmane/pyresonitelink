@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MultiNullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.MultiNullCoalesce<>.
+    """The Multi Null Coalesce node operates similarly to the regular Null Coalesce node, but take multiple reference types of the same type as input. The output will be the first non-null value from the list of inputs.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

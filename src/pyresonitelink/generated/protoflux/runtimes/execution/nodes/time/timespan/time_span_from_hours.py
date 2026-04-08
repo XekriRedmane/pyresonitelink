@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanFromHours(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.TimeSpanFromHours.
+    """The TimeSpan From Hours node takes in the amount of hours and converts it into a TimeSpan that shows the span of time in hours.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """

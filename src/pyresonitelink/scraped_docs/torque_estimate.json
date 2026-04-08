@@ -1,0 +1,8 @@
+{
+  "description": "The Torque Estimate node takes in the initial torque, drag resistance, and the amount of time it is simulating, then returns the torque simulation value (as a floatQ) that object will rotate in.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

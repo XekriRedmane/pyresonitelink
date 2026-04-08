@@ -1,0 +1,8 @@
+{
+  "description": "The World Away Kick Interval node returns this world's \"Max AFK Minutes\" setting from the Session tab in the Dash, represented as a TimeSpan value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

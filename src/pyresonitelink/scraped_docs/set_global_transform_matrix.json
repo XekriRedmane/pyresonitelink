@@ -1,0 +1,8 @@
+{
+  "description": "The Set Global Transform Matrix node takes in a slot to transform (position, rotation, and scale) in 3D space along with the matrix value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

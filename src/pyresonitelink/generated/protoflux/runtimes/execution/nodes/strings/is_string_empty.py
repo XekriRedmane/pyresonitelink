@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsStringEmpty(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.IsStringEmpty.
+    """Is String Empty is a ProtoFlux node that checks if A (String) is empty, but not null or white space.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

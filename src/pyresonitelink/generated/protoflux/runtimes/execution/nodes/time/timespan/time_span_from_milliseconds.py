@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanFromMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.TimeSpanFromMilliseconds.
+    """The TimeSpan From Milliseconds node takes in the amount of milliseconds and converts it into a TimeSpan that shows the span of time in milliseconds. When using a display node, the TimeSpan will show the extra information.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """

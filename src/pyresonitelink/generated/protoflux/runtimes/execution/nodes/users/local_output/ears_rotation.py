@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EarsRotation(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput.EarsRotation.
+    """The Ears Rotation node returns the local user's audio output (hearing audio) rotation.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """

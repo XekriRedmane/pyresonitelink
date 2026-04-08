@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Sequence(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Sequence.
+    """The Sequence node performs each of the provided impulses in order, waiting for the chain of each impulse to finish before executing the next one.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

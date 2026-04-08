@@ -1,0 +1,8 @@
+{
+  "description": "The Ray To Line Intersection Distance node determines the distance from a ray origin to the point at which the ray intersects a line segment defined by two points. This node is functionally equivalent to using the ProtoFlux:Ray To Line Intersection node, then plugging the value used for Origin and the Intersection output into a Distancefloat2 node.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

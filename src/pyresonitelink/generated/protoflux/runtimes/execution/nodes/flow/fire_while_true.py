@@ -18,9 +18,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.FireWhileTrue.
+    """You can use this node for constantly firing a gun, or something where a drive cannot be used and you need to create events every game tick while a value is true.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
+
+    You can use this node for constantly firing a gun, or something where a
+    drive cannot be used and you need to create events every game tick while
+    a value is true.
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.FireWhileTrue"

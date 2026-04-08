@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools.RawDataToolEvents.
+    """The Raw Data Tool Events node takes in a referenced raw data tool, and depending on the actions or inputs from the user, this node will fire specific events. This can let the user make a custom tool to run any custom flux when connected from this node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """

@@ -1,0 +1,8 @@
+{
+  "description": "This node when provided an Animation Asset will search the animation's AnimJ data for a field on an object",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SlotChildrenEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SlotChildrenEvents.
+    """Slot Children events is a ProtoFlux node that monitors a given Instance (Slot). It then sends impulses for OnChildAdded (Call) and OnChildRemoved (Call) when children are added or removed. When an event trigger happens, Child (Slot) is available for reading during the impulse.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
     """

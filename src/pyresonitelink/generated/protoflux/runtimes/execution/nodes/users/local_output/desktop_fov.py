@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DesktopFOV(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput.DesktopFOV.
+    """The Desktop FOV node returns the local user's desktop field of view. This value can change depending on what is set in the Settings tab in the Dash.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """

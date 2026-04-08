@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DoubleAsULong(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Binary.DoubleAsULong.
+    """The Double As ULong node takes in a double and converts it into a ulong.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/Binary
     """

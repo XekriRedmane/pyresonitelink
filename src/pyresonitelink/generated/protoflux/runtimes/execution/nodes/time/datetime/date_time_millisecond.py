@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DateTimeMillisecond(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.DateTimeMillisecond.
+    """The DateTime Millisecond node takes in a DateTime and returns the millisecond of that DateTime.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The Notify Modified node takes in an IComponent, and when called will invoke the NotifyModified method on the input Component. Used for components which implement IModifiedEventReceiver like GridContainerPreset and Workspace.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

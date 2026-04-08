@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueEvaluationPoint(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueEvaluationPoint<>.
+    """The Evaluation Point node does not have a currently known use.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

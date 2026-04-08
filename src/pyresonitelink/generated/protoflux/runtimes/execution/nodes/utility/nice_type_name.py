@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.NiceTypeName.
+    """The Nice Type Name node takes in a Type as well as optional open and close symbols, then returns the pretty human readable name of the provided type. For example, using a type that has a float and connecting it to this node, it will return float.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
     """

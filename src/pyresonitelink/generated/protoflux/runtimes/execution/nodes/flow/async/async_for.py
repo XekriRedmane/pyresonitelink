@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AsyncFor(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.AsyncFor.
+    """The Async For node is used to perform looping operations by allowing one to fire impulses a set amount of times. It is the async variant of the For node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Async
     """

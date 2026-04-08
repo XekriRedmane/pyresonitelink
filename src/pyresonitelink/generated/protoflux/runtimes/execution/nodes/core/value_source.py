@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueSource(GenericComponent[T], IVariable, ISource, INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.ValueSource<>.
+    """thumb|right|alt=Six source nodes of type string, string, bool, float3, floatQ, and int all outputting to display nodes.|Source nodes for the base fields of an empty slot being outputted to display nodes.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

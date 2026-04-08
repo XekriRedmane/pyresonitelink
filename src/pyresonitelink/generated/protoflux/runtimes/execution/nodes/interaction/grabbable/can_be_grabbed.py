@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CanBeGrabbed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.CanBeGrabbed.
+    """The Can Be Grabbed node takes in a slot and a grabber from a user, and checks if this slot can be grabbed using that provided grabber. It will not check if it is being grabbed, only if it could be grabbed.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Grabbable
     """

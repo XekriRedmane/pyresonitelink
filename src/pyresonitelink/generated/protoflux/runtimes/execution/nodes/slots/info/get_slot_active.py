@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetSlotActive(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.GetSlotActive.
+    """Get slot active is a ProtoFlux node that will check if Instance (Slot)'s parent hierarchy or Instance (Slot) itself is disabled.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots/Info
     """

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsWhiteSpace(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.IsWhiteSpace.
+    """The Is White Space node takes in a character and returns if that character is whitespace. Whitespace characters are empty spaces in text that separate other characters.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

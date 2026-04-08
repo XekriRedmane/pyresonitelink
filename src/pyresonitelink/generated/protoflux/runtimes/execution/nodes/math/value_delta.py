@@ -14,9 +14,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueDelta(GenericComponent[T], INodeValueOutput[T], IExecutionUpdateReceiver[T], IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators.ValueDelta<>.
+    """Returns a change in value. The Greek letter Delta (Δ) is commonly being used as a variable or symbol related to change.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math
+
+    **Implementation Details**: This node can be implemented using other ProtoFlux nodes:
+
+none
+
+In this case, the leftmost Input Node represents the node's input and the Display its output. This implementation of an int Delta Node is equivalent to the implementation in the game's code. How exactly the difference to the previous value is calculated depends on the value type.
+
+ProtoFlux:Math
+ContinuouslyChanging nodes
 
     Parameterize with a value type::
 

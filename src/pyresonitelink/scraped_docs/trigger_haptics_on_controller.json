@@ -1,0 +1,8 @@
+{
+  "description": "The Trigger Haptics On Controller node takes in a side and will send out haptic pulses to the controller on that side.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

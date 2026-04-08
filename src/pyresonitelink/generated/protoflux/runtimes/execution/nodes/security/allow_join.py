@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AllowJoin(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security.AllowJoin.
+    """The Allow Join node takes in a JoinRequestHandle, and if the world enabled a join verification system using the Verify Join Request node, this node will run and allow the user to join.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Security
     """

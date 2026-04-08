@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DecomposeColorX(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.DecomposeColorX.
+    """The Decompose ColorX node takes in a ColorX, then returns the Color and ColorProfile.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

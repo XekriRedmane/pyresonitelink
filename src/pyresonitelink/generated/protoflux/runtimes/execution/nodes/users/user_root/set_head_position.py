@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetHeadPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots.SetHeadPosition.
+    """The Set Head Position node takes in a user's UserRoot and the position for the head, then sets the position.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

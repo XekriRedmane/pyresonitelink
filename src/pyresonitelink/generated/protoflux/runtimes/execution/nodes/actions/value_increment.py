@@ -8,7 +8,7 @@ from pyresonitelink.generated._types.ivariable import IVariable
 
 
 class ValueIncrement(GenericComponent[T]):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.ValueIncrement<>.
+    """Increments take Variable (Variable Pseudo-generic) as a global, and will increase the value that Variable (Variable Pseudo-generic) points to by 1.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions
 

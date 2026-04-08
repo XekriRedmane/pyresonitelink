@@ -1,0 +1,8 @@
+{
+  "description": "The Is Separator node takes in a character literal and returns if that character is a separator character.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

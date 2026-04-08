@@ -1,0 +1,8 @@
+{
+  "description": "The Is Tool In Use node takes in a tool reference and checks if a user is currently using it (\"Using it\" counts as the user pressing the primary or secondary buttons while the tool is held).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

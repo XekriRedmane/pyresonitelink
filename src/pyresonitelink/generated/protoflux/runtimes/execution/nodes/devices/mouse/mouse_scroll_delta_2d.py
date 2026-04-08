@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MouseScrollDelta2D(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse.MouseScrollDelta2D.
+    """The Mouse Scroll Delta 2D node returns the local user's mouse scroll wheel delta from their Resonite application. If you are focused on the Resonite window, this node will listen for changes on your scroll wheel. The faster you scroll within a frame, the larger the delta.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Mouse
     """

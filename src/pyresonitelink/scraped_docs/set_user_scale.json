@@ -1,0 +1,8 @@
+{
+  "description": "The Set User Scale node changes the user scale with the provided inputs. While the user is scaling and the user is in the middle of a scale animation, the user cannot be scaled again until the animation has finished.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetColorXProfile(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.GetColorXProfile.
+    """The Get ColorX Profile node takes in a ColorX, then returns the base ColorProfile.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

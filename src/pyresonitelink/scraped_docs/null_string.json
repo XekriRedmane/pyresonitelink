@@ -1,0 +1,8 @@
+{
+  "description": "Null String is a ProtoFlux node that returns a string with no content even white space, so the object is null, but still a String object.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

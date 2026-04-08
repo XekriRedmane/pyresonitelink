@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ActiveUserRootUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots.ActiveUserRootUser.
+    """The Active UserRoot User node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns a User reference.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

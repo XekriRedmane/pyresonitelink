@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomGUID(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.RandomGUID.
+    """The Random GUID node returns the GUID string represented as a GUID Type. It is astronomically low to get a duplicate GUID (many thousands of years worth of time).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/GUIDs
     """

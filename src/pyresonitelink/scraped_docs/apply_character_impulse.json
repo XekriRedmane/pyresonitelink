@@ -1,0 +1,8 @@
+{
+  "description": "Applies a impulse to a character controller, impulses are similar but different from the force node from a physics perspective.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

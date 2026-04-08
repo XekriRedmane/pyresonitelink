@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PackNullable(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.PackNullable<>.
+    """The Pack Nullable node takes in a value and an input if this value is considered as having a value. This returns a nullable version of this value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators/Packing
 

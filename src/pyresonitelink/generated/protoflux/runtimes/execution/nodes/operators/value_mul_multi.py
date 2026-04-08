@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueMulMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueMulMulti<>.
+    """The Value Mul Multi node takes in a list of values and multiplies from the first given value onwards. The first value is always the starting point. Then the second value will multiply from the first, giving the result for the third input to multiply from, so on and so fourth. More information can be found on the Mul node page.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

@@ -1,0 +1,8 @@
+{
+  "description": "The From Unix Seconds node takes in the Unix seconds and then converts it into a DateTime, along with an option to offset it to make it a local DateTime (based on your time zone). The amount of seconds given will count up from the Unix epoch.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

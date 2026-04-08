@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectDisplay(GenericComponent[T], IProtoFluxNodePackUnpackListener, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectDisplay<>.
+    """The Display node takes in an input, but unlike the Input Display node, it will not display out a value onto the node UI, instead this is most likely used for internal use in FrooxEngine.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

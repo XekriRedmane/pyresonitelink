@@ -1,0 +1,8 @@
+{
+  "description": "On Duplicate is a ProtoFlux node that sends an impulse out of Trigger whenever the node is duplicated. This will fire on the duplicate of the code, and not the original copy.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

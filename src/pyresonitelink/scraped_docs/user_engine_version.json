@@ -1,0 +1,8 @@
+{
+  "description": "The User Engine Version node returns the version of FrooxEngine being used by a user.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

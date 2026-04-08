@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EndsWith(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.EndsWith.
+    """Ends With is a ProtoFlux node that checks if Str (String) ends with Substring (String).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

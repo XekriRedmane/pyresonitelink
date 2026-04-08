@@ -1,0 +1,8 @@
+{
+  "description": "Compose Finger is a ProtoFlux node that allows you to get a body node enum from a FingerType, FingerSegmentType and a Chirality also known as a side.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

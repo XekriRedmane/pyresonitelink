@@ -1,0 +1,8 @@
+{
+  "description": "The Feet Position node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the feet position value of the User (The center of your user space).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

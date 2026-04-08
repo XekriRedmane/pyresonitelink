@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.FindAnimationTrackIndex.
+    """This node when provided an Animation Asset will search the animation's AnimJ data for a field on an object
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
     """

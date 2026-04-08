@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueInput(GenericComponent[T], IInput[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueInput<>.
+    """alt=A bool input|thumb|A Type:bool|bool input. alt=A float input|thumb|A Type:float|float input. alt=a string input|thumb|A Type:string|string input.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

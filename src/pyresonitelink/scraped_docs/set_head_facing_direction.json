@@ -1,0 +1,8 @@
+{
+  "description": "The Set Head Facing Direction node takes in a user's UserRoot and the facing direction for the head, then sets the facing direction.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DataModelBooleanToggle(GeneratedComponent, IVariable, IDataModelStore, IProtoFluxEngineProxyNode, IMappableNode, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.DataModelBooleanToggle.
+    """The Data Model Boolean Toggle or Boolean Latch is a node that can be pulsed to toggle a Data Model Boolean between true and false.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

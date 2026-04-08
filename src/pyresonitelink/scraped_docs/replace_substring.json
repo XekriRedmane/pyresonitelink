@@ -1,0 +1,8 @@
+{
+  "description": "Replace Substring is a ProtoFlux node that replaces the all occurrences of SearchFor (String) in Str (String) with ReplaceWith (String).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,8 @@
+{
+  "description": "Play One Shot is a ProtoFlux node that creates a new audio source under the provided Root (Slot) (except when ParentUnderRoot (bool) is enabled) with the provided parameters. It will then wait and fire OnFinishedPlaying (Continuation) when the audio reaches the end.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

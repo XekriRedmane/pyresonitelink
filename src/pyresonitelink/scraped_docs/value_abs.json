@@ -1,0 +1,8 @@
+{
+  "description": "The Value Abs node takes in a value and returns a value without its sign. Although, it would be truly impossible to have no sign on a value when it needs to be represented and stored in a computer device (and also mathematically sound), so it returns as a positive number (no matter what is provided as a value).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

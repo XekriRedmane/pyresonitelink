@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomPointInSphere(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Random.RandomPointInSphere.
+    """The Random Point In Sphere node returns a random float3 value of a point within the bounds of a unit sphere.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Random/Point
     """

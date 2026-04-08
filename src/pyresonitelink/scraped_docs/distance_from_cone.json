@@ -1,0 +1,8 @@
+{
+  "description": "The Distance From Cone node takes in the cone parameters (size and rotation) and a provided point to check. Then it returns the distance from that cone and that point.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

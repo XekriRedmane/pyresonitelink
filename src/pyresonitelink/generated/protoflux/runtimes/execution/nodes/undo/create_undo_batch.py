@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CreateUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.CreateUndoBatch.
+    """The Create Undo Batch node Begins an undo batch, executes the Create call, then ends the undo batch all in one frame.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueLerpUnclamped(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.ValueLerpUnclamped<>.
+    """The Value Lerp Unclamped node takes in a starting point and an ending point along with a lerp value of which it lerps linearly towards, then returns the value over time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Interpolation
 

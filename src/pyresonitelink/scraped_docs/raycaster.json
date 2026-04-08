@@ -1,0 +1,8 @@
+{
+  "description": "There are a few ways in which the Raycaster node may not work as expected, particularly relating to directions and distances.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "There are a few ways in which the Raycaster node may not work as expected, particularly relating to directions and distances. \n\nFirstly, the global scale of the input Root slot is taken into account when calculating a raycast's path. For example, assume that the Root slot input has global position [0;0;0] and global scale [0.1;0.1;0.1]; if the Origin input is [0;0;0], the raycast will start at global [0;0;0], however, if the Origin input is [0;1;0] the raycast will start at global [0;0.1;0] not global [0;1;0].\nSimilarly, the input Root slot's global scale affects the Direction vector and MaxDistance values too. With the same example input Root slot, a Direction of [0;0;1] and a MaxDistance of 1 result in a ray which travels only 0.1 units.\n\nSecondly, the magnitude of the Direction vector affects the distance that the ray travels and the reported HitDistance output value. Assuming no input Root slot, a Direction input of [0;0;1] and MaxDistance of 1 will produce a ray 1 unit long. However, a Direction input of [0;0;2] and MaxDistance of 1 will produce a ray 2 units long. Additionally, the reported HitDistance value will be halved in the second case.\n\nProtoFlux:Physics\nContinuouslyChanging nodes",
+  "notes": []
+}

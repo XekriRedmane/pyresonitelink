@@ -1,0 +1,8 @@
+{
+  "description": "The Set Head Facing Rotation node takes in a user's UserRoot and the facing rotation for the head, then sets the facing rotation.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

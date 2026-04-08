@@ -1,0 +1,13 @@
+{
+  "description": "ColorX Alpha Blend does an alpha blend of its two input colors. The source is blended \"onto\" the destination, and the higher the source alpha, the more of the \"source\" color and less of the \"destination\" color comes through.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "References",
+      "text": "ProtoFlux:Colors"
+    }
+  ]
+}

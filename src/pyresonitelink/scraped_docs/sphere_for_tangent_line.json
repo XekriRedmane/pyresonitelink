@@ -1,0 +1,8 @@
+{
+  "description": "The Sphere For Tangent Line node takes a line point for our sphere point, a line in 3D space, and point for the line, creating a sphere in 3D space. Then it returns the point and radius of a sphere, similar to a reversed Tan node.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 
 
 class ValueIndirectWriteLatch(GenericComponent[T]):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueIndirectWriteLatch<>.
+    """Indirect write latches can be commonly found in legacy content that has been migrated from other platforms. Indirect write latches take Variable (Variable) as an input, and the type that Variable wraps will determine what SetValue (Generic) and ResetValue (Generic) will take as a value. The set and reset value inputs will never take different types from each other.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions/Indirect
 

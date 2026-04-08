@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanTotalMinutes(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.TimeSpanTotalMinutes.
+    """The TimeSpan Total Minutes node takes in a TimeSpan and returns with the amount of minutes in that TimeSpan, including the fractional portion of a minute, as well as anything longer than a minute will be added into the total.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """

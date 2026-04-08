@@ -1,0 +1,8 @@
+{
+  "description": "Gives the Slot Order Offset field of a slot as an int instead of a long.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

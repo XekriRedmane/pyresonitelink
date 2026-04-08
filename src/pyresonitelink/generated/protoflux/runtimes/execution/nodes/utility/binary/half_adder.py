@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HalfAdder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Binary.HalfAdder.
+    """The Half Adder node takes in 2 boolean values (A and B), and returns 2 boolean values (Y and CarryOut). In computing & electronics, this is called a half adder, and helps with boolean math.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/Binary
     """

@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ClearDynamicVariables(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.ClearDynamicVariables.
+    """The Clear Dynamic Variables node takes in a slot hierarchy and a string literal path of the dynamic space name. For more information, see Dynamic Variables.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables/Dynamic
     """

@@ -19,7 +19,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EquipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools.EquipTool.
+    """The Equip Tool node equips a tool to the user, optionally dequipping an existing tool.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """

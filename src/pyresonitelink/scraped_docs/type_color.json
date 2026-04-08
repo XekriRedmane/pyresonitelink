@@ -1,0 +1,8 @@
+{
+  "description": "The Type Color node takes in a Type, and returns the color associated with that type's class inside the FrooxEngine.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

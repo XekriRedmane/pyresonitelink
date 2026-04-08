@@ -1,0 +1,8 @@
+{
+  "description": "DivDeltaTime is a ProtoFlux node which Divides a value by the amount of time passed since the last local update.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

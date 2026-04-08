@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AsyncSequence(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.AsyncSequence.
+    """The Async Sequence performs each of the provided async impulses in order, waiting for the chain of each impulse to finish before executing the next one.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Async
     """

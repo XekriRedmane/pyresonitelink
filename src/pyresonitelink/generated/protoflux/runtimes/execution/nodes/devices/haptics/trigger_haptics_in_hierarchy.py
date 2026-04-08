@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TriggerHapticsInHierarchy(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Haptics.TriggerHapticsInHierarchy.
+    """The Trigger Haptics In Hierarchy node takes in a Slot hierarchy and will send out haptic pulses through it.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Haptics
     """

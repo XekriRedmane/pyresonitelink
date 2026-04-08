@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserFromID(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserFromID.
+    """The User From ID node takes in a user ID and/or machine ID and returns with a user. This only works for users in the same session.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """

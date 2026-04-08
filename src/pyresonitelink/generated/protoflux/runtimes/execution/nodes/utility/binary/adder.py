@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Binary.Adder.
+    """The Adder node takes in 3 boolean values (A, B, and CarryIn), and returns 2 boolean values (Y and CarryOut). In computing & electronics, this is called an adder, and helps with boolean math.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/Binary
     """

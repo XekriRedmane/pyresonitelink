@@ -1,0 +1,8 @@
+{
+  "description": "The Focus Focusable node sets the target IFocusable UI for the user. When the UI is focused (if it was not already focused beforehand), it places your caret at the end of any text input.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

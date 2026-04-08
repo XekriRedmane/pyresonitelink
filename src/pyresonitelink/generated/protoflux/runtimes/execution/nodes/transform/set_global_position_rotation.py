@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetGlobalPositionRotation(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform.SetGlobalPositionRotation.
+    """The Set Global Position Rotation node sets the input slot's position and rotation to the provided values in global coordinate space.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform
     """

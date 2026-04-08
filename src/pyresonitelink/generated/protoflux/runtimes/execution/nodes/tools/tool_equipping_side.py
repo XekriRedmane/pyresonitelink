@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToolEquippingSide(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools.ToolEquippingSide.
+    """The Tool Equipping Side node takes in a Tools reference and returns with the side it is equipped on.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """

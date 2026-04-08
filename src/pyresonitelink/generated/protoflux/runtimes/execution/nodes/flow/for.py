@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.For.
+    """The For node is used to perform looping operations by allowing one to fire impulses a set amount of times.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

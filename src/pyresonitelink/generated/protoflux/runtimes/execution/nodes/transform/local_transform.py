@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalTransform(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform.LocalTransform.
+    """The Local Transform node outputs the position, rotation and scale of the input slot in local coordinate space, i.e. the slot's transform relative to its parent slot.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform
     """

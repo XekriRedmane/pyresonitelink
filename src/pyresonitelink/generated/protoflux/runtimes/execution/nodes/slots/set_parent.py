@@ -17,9 +17,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetParent(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetParent.
+    """Sets the parent of Instance (Slot).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
+
+    **Inputs**: === * (Call) ===
+Set the parent of Instance (Slot) to NewParent (Slot)
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetParent"

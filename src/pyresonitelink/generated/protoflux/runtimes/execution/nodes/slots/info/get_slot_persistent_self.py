@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetSlotPersistentSelf(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.GetSlotPersistentSelf.
+    """Gets the value of the provided Instance Slot's persistent field.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots/Info
     """

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CallRelay(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.CallRelay.
+    """alt=A visual image of an Call Relay node by itself, connected to nothing.|thumb
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
     """

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FromUnixSeconds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.FromUnixSeconds.
+    """The From Unix Seconds node takes in the Unix seconds and then converts it into a DateTime, along with an option to offset it to make it a local DateTime (based on your time zone). The amount of seconds given will count up from the Unix epoch.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

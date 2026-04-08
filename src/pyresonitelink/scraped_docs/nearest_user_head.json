@@ -1,0 +1,8 @@
+{
+  "description": "Nearest User Head is a protoflux node that returns the closest user head to a slot and the head's user, or closest to the root if not provided a slot. This will also ignore the user provided to IgnoreUser (User).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

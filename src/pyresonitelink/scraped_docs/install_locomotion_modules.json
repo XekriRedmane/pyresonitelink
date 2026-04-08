@@ -1,0 +1,8 @@
+{
+  "description": "Install Locomotion Modules is a ProtoFlux node that takes a slot with a type from the ILocomotionModule interface on it. The locomotion will also need a character controller and a few other components, which should be auto generated when a type from the ILocomotionModule interface component is added.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EmptyString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.EmptyString.
+    """Empty String is a ProtoFlux node that returns a constant that is a String with no content but is not null.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

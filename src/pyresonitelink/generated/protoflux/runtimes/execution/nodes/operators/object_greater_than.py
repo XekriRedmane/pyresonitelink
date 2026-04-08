@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectGreaterThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ObjectGreaterThan<>.
+    """The Greater Than node takes in 2 values and returns if the first value is larger than the second value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

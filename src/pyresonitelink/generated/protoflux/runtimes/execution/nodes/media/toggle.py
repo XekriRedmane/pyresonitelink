@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Toggle(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.Toggle.
+    """The Toggle node tells a IPlayable to start or stop playback upon impulse, depending on the current state.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """

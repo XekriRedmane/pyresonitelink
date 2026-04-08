@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueRepeat(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.ValueRepeat<>.
+    """The Value Repeat node takes in the number value and the expected length range, then returns a value of the expected placement of that number. This is similar to the Value Mod node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math
 

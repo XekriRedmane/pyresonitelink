@@ -1,0 +1,8 @@
+{
+  "description": "The Boolean Counter node takes in a list of booleans and counts the number of true and false values, as well as a count of all booleans in the list.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

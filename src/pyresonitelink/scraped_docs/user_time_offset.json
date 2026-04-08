@@ -1,0 +1,8 @@
+{
+  "description": "The User Time Offset node returns a user's time zone offset. More information about UTC here: https://en.wikipedia.org/wiki/UTC_offset",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

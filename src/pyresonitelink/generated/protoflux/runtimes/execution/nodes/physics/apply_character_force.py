@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ApplyCharacterForce(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.ApplyCharacterForce.
+    """The Apply Character Force node takes in a character controller reference and a force, then pushes the character controller in the direction.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """

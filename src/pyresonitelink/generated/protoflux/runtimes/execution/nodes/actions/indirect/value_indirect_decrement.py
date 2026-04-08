@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.ivariable import IVariable
 
 
 class ValueIndirectDecrement(GenericComponent[T]):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.ValueIndirectDecrement<>.
+    """Indirect decrements can be commonly found in legacy content that has been migrated from other platforms. Indirect decrements take Variable (Variable) as an input, and will decrease the value that is wrapped by Variable (Variable) by one.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions/Indirect
 

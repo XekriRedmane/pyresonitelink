@@ -1,0 +1,8 @@
+{
+  "description": "The On Locomotion Grip End node takes in a global reference from a user's PhysicalLocomotion. And fires when a grip ends that relates to that locomotion along with the data of the slot, position in 3D space, and what side of the user's grip it was.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The From UTF16 node transforms a 16-bit Unicode codepoint to its corresponding character within the Basic Multilingual Plane.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

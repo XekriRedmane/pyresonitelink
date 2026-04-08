@@ -1,0 +1,8 @@
+{
+  "description": "The Set Local Position node sets the input slot's position to the provided position vector in local coordinate space.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools.DequipTool.
+    """The Dequip Tool node makes a user take off a tool from their hand of a specific side of that user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """

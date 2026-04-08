@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnSaving(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnSaving.
+    """On Saving is a ProtoFlux node that sends an impulse out of Trigger whenever the node is being saved with a world or item, and will execute before the save excluding async tasks.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """

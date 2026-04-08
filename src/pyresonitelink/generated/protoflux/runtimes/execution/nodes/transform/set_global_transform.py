@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetGlobalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform.SetGlobalTransform.
+    """The Set Global Transform node sets the input slot's position, rotation and scale to the provided values in global coordinate space.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform
     """

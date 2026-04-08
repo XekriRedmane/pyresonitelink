@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserRootSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserRootSlot.
+    """The User Root Slot node returns a user's root slot. Slots found by this node will have the UserRoot component.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The Set Global Position node sets the input slot's position to the input float3 position vector in global coordinate space.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

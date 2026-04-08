@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueConstantLerp(GenericComponent[T], INodeValueOutput[T], IExecutionUpdateReceiver[T], IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.ValueConstantLerp<>.
+    """The Constant Lerp node takes in an input value and the speed at which it lerps it linearly towards, then returns the lerped value over time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Interpolation
 

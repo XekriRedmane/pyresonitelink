@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueFilterInvalid(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueFilterInvalid<>.
+    """The Value Filter Invalid node takes in an expected value and a fallback value. If the expected value is not valid (such as NaN, Infinity, or -Infinity), then the fallback value will be used as the output.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

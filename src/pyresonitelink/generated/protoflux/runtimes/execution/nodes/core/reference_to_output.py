@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceToOutput(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ReferenceToOutput<>.
+    """The Reference To Output node takes a Global ProtoFlux reference and returns the IVariable that can be used for an Indirect Write.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

@@ -1,0 +1,8 @@
+{
+  "description": "The ColorX To Profile node takes in a ColorX and the target ColorProfile, then returns the new profiled Color.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

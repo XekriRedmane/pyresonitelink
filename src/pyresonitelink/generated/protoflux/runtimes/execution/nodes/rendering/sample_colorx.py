@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering.SampleColorX.
+    """The Sample ColorX node takes in the point and direction, along with the bounds of the a near and far clip to sample a color. This node will attempt to return a color that was found and sampled.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Rendering
     """

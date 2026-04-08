@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserDownloadSpeedMax(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserDownloadSpeedMax.
+    """The User Download Speed Max node returns a user's maximum download speed in this session.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

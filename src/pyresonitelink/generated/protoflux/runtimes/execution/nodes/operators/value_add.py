@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueAdd(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueAdd<>.
+    """The Add node takes in 2 inputs and returns the calculated result. The second input (B) will add to the first input (A).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnLocomotionGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.OnLocomotionGripEnd.
+    """The On Locomotion Grip End node takes in a global reference from a user's PhysicalLocomotion. And fires when a grip ends that relates to that locomotion along with the data of the slot, position in 3D space, and what side of the user's grip it was.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics/Events
     """

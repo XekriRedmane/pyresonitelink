@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValuePlusMinus(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValuePlusMinus<>.
+    """The Value Plus Minus node takes in a value and an offset, then returns the plus and minus outputs from the calculated results using the offset.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

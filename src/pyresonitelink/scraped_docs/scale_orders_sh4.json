@@ -1,0 +1,8 @@
+{
+  "description": "The Scale Orders SH4 node takes in a SphericalHarmonicsL4 along with a set of orders that refine/modify/scale it, then returns the new Spherical Harmonic of the same type.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

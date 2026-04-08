@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnDestroying(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnDestroying.
+    """The On Destroying node sends an impulse out of Trigger whenever the node is marked for destruction. This will not preserve Async tasks, as since those create delays they will be destroyed before execution of the task finishes.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """

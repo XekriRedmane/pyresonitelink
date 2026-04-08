@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PackProtoFluxInPlace(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Nodes.PackProtoFluxInPlace.
+    """The Pack ProtoFlux In Place node takes in a start point for your ProtoFlux code, and when called, will pack everything in place, no matter where. If you have all your code sitting in Root or inside a Slot, it will pack it at that exact location.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Nodes
     """

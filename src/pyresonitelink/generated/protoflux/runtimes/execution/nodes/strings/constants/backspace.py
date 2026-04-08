@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Backspace(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.Backspace.
+    """The Backspace node is a character literal constant for the "Backspace" control character (Unicode: U+0008).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
+
+    **Bugs**: The name of this node currently does not display correctly in-app due to a bug.
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.Backspace"

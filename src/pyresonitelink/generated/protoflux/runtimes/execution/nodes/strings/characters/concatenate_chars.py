@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConcatenateChars(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.ConcatenateChars.
+    """The Concatenate Chars node combines two characters into a new string.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

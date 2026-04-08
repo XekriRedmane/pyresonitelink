@@ -1,0 +1,8 @@
+{
+  "description": "The To Unix Seconds node takes in a DateTime and returns with the amount of seconds elapsed from that DateTime since January 1st, 1970.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectCast(GeneratedComponent, ICast, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Casts.ObjectCast<,>.
+    """alt=A picture of an object cast. Looks like a square object with one side a different color than the other, with a split down the middle that has a beveled edge. Though it's just an image so you can't actually feel such bevel in game even with detailed haptics.|thumb|An object cast from Type:IWorldElement|IWorldElement to IFieldint.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core/Casts
     """

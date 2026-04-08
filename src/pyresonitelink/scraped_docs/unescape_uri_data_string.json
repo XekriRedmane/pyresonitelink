@@ -1,0 +1,8 @@
+{
+  "description": "The Unescape Uri Data String node takes in an encoded string literal that uses Percent Encoding and converts that string into another string that is human readable. This is used mostly for applications that can read the characters and glyphs that are complex.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

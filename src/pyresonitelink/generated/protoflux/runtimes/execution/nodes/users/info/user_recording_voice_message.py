@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserRecordingVoiceMessage(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserRecordingVoiceMessage.
+    """The User Recording Voice Message node returns if a user is currently recording a voice message in the Contacts Menu.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

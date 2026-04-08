@@ -1,0 +1,8 @@
+{
+  "description": "An impulse multiplexer is a ProtoFlux node that takes a * (Call) and an Index (int) and outputs the impulse to a Impulses (Continuation) output with the provided index. This node could commonly be called a switch, switchboard, router, or an impulse array.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

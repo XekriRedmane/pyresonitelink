@@ -1,0 +1,8 @@
+{
+  "description": "This ProtoFlux node is used to find the world's Session ID. This is useful for making world switchers, saving worlds on a headless, or keeping a reference to a session for a keycard like system for a hotel where each room is actually a portal to a different currently open world.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

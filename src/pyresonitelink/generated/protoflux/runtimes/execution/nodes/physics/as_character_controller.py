@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AsCharacterController(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.AsCharacterController.
+    """The As Character Controller node is used to get the character controller reference using the ICollider from a Slot that associated with that collider, not necessarily what it collides with.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """

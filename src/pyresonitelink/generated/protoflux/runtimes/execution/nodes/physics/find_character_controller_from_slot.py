@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FindCharacterControllerFromSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.FindCharacterControllerFromSlot.
+    """The Find Character Controller From Slot node takes in a Slot and tries to find the character controller from the list of components within itself, then returning one when one is found.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """

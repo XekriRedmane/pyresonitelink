@@ -1,0 +1,8 @@
+{
+  "description": "The Find Parent By Tag node finds a parent object above the instance (Slot) that matches the given Tag (String).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

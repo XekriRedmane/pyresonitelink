@@ -1,0 +1,13 @@
+{
+  "description": "The CurrentCulture node outputs the local user's culture.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "ProtoFlux:Strings:Localization"
+    }
+  ]
+}

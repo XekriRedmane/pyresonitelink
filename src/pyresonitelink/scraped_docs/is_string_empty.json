@@ -1,0 +1,8 @@
+{
+  "description": "Is String Empty is a ProtoFlux node that checks if A (String) is empty, but not null or white space.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

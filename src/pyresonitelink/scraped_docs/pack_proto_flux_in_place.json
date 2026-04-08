@@ -1,0 +1,8 @@
+{
+  "description": "The Pack ProtoFlux In Place node takes in a start point for your ProtoFlux code, and when called, will pack everything in place, no matter where. If you have all your code sitting in Root or inside a Slot, it will pack it at that exact location.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

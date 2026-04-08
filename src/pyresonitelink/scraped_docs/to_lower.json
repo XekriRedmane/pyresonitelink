@@ -1,0 +1,13 @@
+{
+  "description": "The ToLower node takes in a character or string and outputs it as lowercase. This node takes into account the local user's CultureInfo.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* ToUpper to turn strings or characters uppercase.\n* Microsoft documentation for the ``String.ToLower() method``, which is used internally.\n\nProtoFlux:Strings:Characters\nProtoFlux:Strings:Formatting"
+    }
+  ]
+}

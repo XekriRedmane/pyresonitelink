@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldTimeTenthFloat(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time.WorldTimeTenthFloat.
+    """The World Time Tenth Float node returns the total world time that this world has been open for divided by 10.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

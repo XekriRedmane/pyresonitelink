@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserUploadSpeed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserUploadSpeed.
+    """The User Upload Speed node returns a user's upload speed in this session.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetLocalRotation(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform.SetLocalRotation.
+    """The Set Local Rotation node sets the input slot's rotation to the provided floatQ value in local coordinate space.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform
     """

@@ -1,0 +1,8 @@
+{
+  "description": "Decrements take Variable (Variable Pseudo-generic) as a global, and will decrease the value that Variable (Variable Pseudo-generic) points to by 1.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

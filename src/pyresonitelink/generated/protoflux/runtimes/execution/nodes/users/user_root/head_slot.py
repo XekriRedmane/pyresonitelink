@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HeadSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots.HeadSlot.
+    """The Head Slot node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the head slot of the User.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

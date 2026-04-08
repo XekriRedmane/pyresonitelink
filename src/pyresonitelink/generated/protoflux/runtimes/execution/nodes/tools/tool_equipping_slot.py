@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToolEquippingSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools.ToolEquippingSlot.
+    """The Tool Equipping Side node takes in a Tools reference and returns with the parent Slot that it is equipped on.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """

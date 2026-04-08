@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Physics.TrajectoryPosition.
+    """The Trajectory Position node takes an initial velocity, force of gravity, drag, and time period, and then outputs the change in position of an object that it would experience. This is very useful for simulating movement.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Physics
     """

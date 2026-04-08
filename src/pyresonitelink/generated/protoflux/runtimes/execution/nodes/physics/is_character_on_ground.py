@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsCharacterOnGround(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.IsCharacterOnGround.
+    """The Is Character On Ground node takes in a character controller reference and returns if that character controller is touching the ground and has a simulating user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """

@@ -1,0 +1,8 @@
+{
+  "description": "Debug Line is a ProtoFlux node that creates a line going between Point0 to Point1 in global space. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

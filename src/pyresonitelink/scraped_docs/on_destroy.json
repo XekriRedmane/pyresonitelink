@@ -1,0 +1,8 @@
+{
+  "description": "The On Destroy node sends an impulse out of Trigger whenever the node is destroyed. This can sometimes not fire code the way you want, since the code after the node may have already been destroyed. It is better practice to use On Destroying.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The Async Sequence performs each of the provided async impulses in order, waiting for the chain of each impulse to finish before executing the next one.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

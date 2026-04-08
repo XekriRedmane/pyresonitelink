@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EmptyGUID(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.EmptyGUID.
+    """The Empty GUID node returns the empty GUID string represented as a GUID Type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/GUIDs
     """

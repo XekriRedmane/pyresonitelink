@@ -1,0 +1,8 @@
+{
+  "description": "Is Looped is a ProtoFlux node that returns if an IPlayable is currently set to automatic looping.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

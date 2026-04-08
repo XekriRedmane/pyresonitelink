@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CurrentCulture(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.CurrentCulture.
+    """The CurrentCulture node outputs the local user's culture.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Localization
+
+    **See also**: ProtoFlux:Strings:Localization
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.CurrentCulture"

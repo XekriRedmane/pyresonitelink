@@ -17,9 +17,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetSlotPersistentSelf(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetSlotPersistentSelf.
+    """Set's the persistent field of the provided Instance slot upon calling * (Call).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots/Info
+
+    *** ([[Impulses|Call]])**: Call this to set the Instance (Slot)'s persistent field to Persistent (bool).
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetSlotPersistentSelf"

@@ -1,0 +1,8 @@
+{
+  "description": "The Set Character Gravity node takes in a character controller reference and a target gravity, then sets the gravity on the Slot containing the character controller component.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

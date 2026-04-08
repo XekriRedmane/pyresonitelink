@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsToolEquipped(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools.IsToolEquipped.
+    """The Is Tool Equiped node checks to see if a tool reference is equipped on a user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """

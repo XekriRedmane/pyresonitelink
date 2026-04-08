@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUpper(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.IsUpper.
+    """The Is Upper node takes in a character literal and returns if that character is an upper case letter.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

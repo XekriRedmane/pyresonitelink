@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.BakeMeshes.
+    """Bake Meshes is a ProtoFlux node that takes a slot and combines it's meshes and slots into one slot. Allowing for the optimization of content and allowing for packing together objects. For example, many avatar statue makers use this to create statues out of people's avatars with no functionalities. It's a way to make a statue of your favorite contact on your shelf withouut having to have their 10000 ProtoFlux nodes still on it.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
     """

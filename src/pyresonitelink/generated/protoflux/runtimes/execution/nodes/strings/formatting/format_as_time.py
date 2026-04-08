@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.FormatAsTime.
+    """The Format As Time node takes in the amount of time in seconds and converts it into a string, This string will be formatted with colon separators for each segment of time (Hours, minutes, seconds) automatically. If you want to have more percision to the milliseconds, increase the number of decimal places.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserViewReferenceActive(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserViewReferenceActive.
+    """The User View Reference Active node returns a user's view reference. This is used with the component View Reference Controller.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

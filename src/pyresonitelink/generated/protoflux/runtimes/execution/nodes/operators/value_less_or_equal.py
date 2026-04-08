@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueLessOrEqual(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueLessOrEqual<>.
+    """The Less Or Equal node takes in 2 values and returns if the first value is smaller than or equal to the second value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

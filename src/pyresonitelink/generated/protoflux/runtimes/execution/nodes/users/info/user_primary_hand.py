@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserPrimaryHand(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserPrimaryHand.
+    """The User Primary Hand node returns the user's primary/preferred hand as a Chirality value. This gets set when the user makes an account for the first time and gets asked which hand is their primary hand.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

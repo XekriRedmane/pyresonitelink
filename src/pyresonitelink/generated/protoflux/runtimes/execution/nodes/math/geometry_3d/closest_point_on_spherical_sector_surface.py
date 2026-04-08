@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry3D.ClosestPointOnSphericalSectorSurface.
+    """The Closest Point On Spherical Sector Surface node takes a point in 3D space and computes the closest point on the surface of a spherical sector defined by its center, direction, radius, and angle. Then it returns the closest point on that sphere's surface and if that point is within that sphere's defined parameters.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 3D
     """

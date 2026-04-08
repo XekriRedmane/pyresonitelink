@@ -1,0 +1,8 @@
+{
+  "description": "The On Destroying node sends an impulse out of Trigger whenever the node is marked for destruction. This will not preserve Async tasks, as since those create delays they will be destroyed before execution of the task finishes.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsToolInUse(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools.IsToolInUse.
+    """The Is Tool In Use node takes in a tool reference and checks if a user is currently using it ("Using it" counts as the user pressing the primary or secondary buttons while the tool is held).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatDateTimeAsDate(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.FormatDateTimeAsDate.
+    """The Format DateTime As Date node takes a DateTime and converts it into a string, formatted in a date format.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """

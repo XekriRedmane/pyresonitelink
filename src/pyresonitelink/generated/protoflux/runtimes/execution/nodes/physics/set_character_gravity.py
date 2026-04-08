@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetCharacterGravity(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.SetCharacterGravity.
+    """The Set Character Gravity node takes in a character controller reference and a target gravity, then sets the gravity on the Slot containing the character controller component.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """

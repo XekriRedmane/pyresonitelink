@@ -1,0 +1,13 @@
+{
+  "description": "The FireOnTrue node will listen for changes on its input bool and fire an impulse for the specified user whenever the input turns from False to True across updates.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* FireOnLocalTrue will fire an impulse for every user that detects ``True`` rather than a specific user.\n* FireOnFalse\n* FireOnChange\n\nProtoFlux:Flow\nListener nodes"
+    }
+  ]
+}

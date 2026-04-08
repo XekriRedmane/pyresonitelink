@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InvertedPi(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.InvertedPi.
+    """The InvertedPi or 1/π node outputs the value of 1 ÷ π.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """

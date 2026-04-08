@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.ValueFieldHook<>.
+    """The Field Hook node takes in a target field and the source field value, then returns if this field is driving, as well as allowing the user to start and stop driving this field. This node gives the user more control to programmatically drive fields directly using ProtoFlux. This node hooks the given field, so whenever something external tries to write to it, it will receive a pulse from OnHook as well as the value it tried to write from HookedValue.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

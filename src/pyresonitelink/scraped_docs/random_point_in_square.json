@@ -1,0 +1,8 @@
+{
+  "description": "The Random Point In Square node returns a random float2 value of a point within the bounds of a unit square centered at [0; 0].",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

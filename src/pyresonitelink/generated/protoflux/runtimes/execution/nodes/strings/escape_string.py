@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EscapeString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.EscapeString.
+    """The Escape String node escapes strings by adding \ behind special characters. Its intention is for use in an environment with .NET Regular Expressions, but since Resonite does not currently implement any user-facing regex, its usefulness is limited.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

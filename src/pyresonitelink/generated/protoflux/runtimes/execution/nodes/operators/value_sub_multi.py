@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueSubMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueSubMulti<>.
+    """The Value Sub Multi node takes in a list of values and subtracts from the first given value onwards. The first value is always the starting point. Then the second value will subtract from the first, giving the result for the third input to subtract from, so on and so fourth. More information can be found on the Sub node page.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnGripStay(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.OnGripStay.
+    """The On Grip Stay node takes in a global reference of a LocomotionGrip, and fires an event when the grip is happening per frame, as well as information of the locomotion module and the body node that is gripping.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics/Events
     """

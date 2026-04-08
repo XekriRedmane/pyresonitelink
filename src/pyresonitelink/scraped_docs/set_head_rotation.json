@@ -1,0 +1,8 @@
+{
+  "description": "The Set Head Rotation node takes in a user's UserRoot and the rotation for the head, then sets the rotation.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

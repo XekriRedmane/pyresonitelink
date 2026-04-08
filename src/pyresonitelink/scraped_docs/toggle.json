@@ -1,0 +1,8 @@
+{
+  "description": "The Toggle node tells a IPlayable to start or stop playback upon impulse, depending on the current state.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

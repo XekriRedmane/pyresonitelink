@@ -1,0 +1,8 @@
+{
+  "description": "The Construct Zita Parameters node creates ZitaParameters which are used make a reverberation sound effect parameter input object in the Awwdio system, for use in different reverberation sound effect methods like the one for Static Audio Clips.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

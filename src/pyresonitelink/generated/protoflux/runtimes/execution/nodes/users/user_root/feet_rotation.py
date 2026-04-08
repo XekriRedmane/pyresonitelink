@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeetRotation(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots.FeetRotation.
+    """The Feet Rotation node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the feet rotation value of the User (facing forward would be your frame of reference).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

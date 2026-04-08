@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NearestUserHand(GeneratedComponent, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.NearestUserHand.
+    """Nearest User Hand is a protoflux node that returns the closest user hand to a slot and the hand's user, or closest to the root if not provided a slot. This will also ignore the user provided to IgnoreUser (User).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars
     """

@@ -1,0 +1,8 @@
+{
+  "description": "This node when provided an IAssetProviderA will give the raw IAsset provided by the provider.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering.FlashHighlightHierarchy.
+    """The Flash Highlight Hierarchy node takes in the target slot hierarchy, what to exclude, if this flash should track the position, how long the flash should be, and what color it should be. Then this node will make that hierarchy flash, also providing the slot of the flash itself.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Rendering
     """

@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PackProtoFluxFromNode(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Nodes.PackProtoFluxFromNode.
+    """The Pack ProtoFlux From Node node takes in a start point for your ProtoFlux code and a target slot to place your code in, and when called, will pack everything in place into that provided slot.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Nodes
     """

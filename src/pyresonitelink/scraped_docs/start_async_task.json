@@ -1,0 +1,8 @@
+{
+  "description": "The Start Async Task node starts a new ExecutionContext using async flow at the current impulse.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

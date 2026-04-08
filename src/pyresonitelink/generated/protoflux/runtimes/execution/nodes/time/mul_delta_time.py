@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MulDeltaTime(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Operators.MulDeltaTime<>.
+    """The Mul Delta Time node takes in a number and returns the value of a delta time that is multiplied by that number. This node makes it super easy to make speed modifiers in code instead of doing it the hard way by using a Delta Time and a Multiply node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
 

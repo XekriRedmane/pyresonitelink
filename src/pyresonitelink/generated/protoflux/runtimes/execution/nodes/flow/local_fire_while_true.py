@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalFireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.LocalFireWhileTrue.
+    """Local Fire While True is a ProtoFlux node that will check Condition (bool) is true on the local machine rather on a specific user. Then the node will fire every game tick, sending impulses from OnUpdate (Call) on that specific user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

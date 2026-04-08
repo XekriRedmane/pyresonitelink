@@ -1,0 +1,17 @@
+{
+  "description": "Color To Hex Code converts a Color to a string hex color code such as \"#FFAABC\".",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Gallery",
+      "text": "File:Protoflux_Color_To_Hex.webp|A simple example of Color To Hex with an input and an output display."
+    },
+    {
+      "title": "References",
+      "text": "ProtoFlux:Colors"
+    }
+  ]
+}

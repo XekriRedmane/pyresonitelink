@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceSource(GenericComponent[T], IVariable, ISource, INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.ReferenceSource<>.
+    """See ProtoFlux Tool Usage for how to make this node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ApplyHDRGammaColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ApplyHDRGammaColorX.
+    """The Apply HDR Gamma Color X node takes in a color and the amount of gamma to adjust it by, then returns the corrected color. Gamma is used for lightness (called "luminance") color correction, and is standard in many other game titles, films, and photography.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

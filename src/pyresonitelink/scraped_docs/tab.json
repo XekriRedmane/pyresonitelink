@@ -1,0 +1,13 @@
+{
+  "description": "The Tab node is a character literal constant for the \"Tab\" character (Unicode: U+0009).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Bugs",
+      "text": "The name of this node currently does not display correctly in-app due to a bug."
+    }
+  ]
+}

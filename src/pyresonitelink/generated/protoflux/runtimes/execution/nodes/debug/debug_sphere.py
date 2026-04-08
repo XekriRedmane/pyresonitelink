@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugSphere(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugSphere.
+    """Debug Sphere is a ProtoFlux node that when called will make a sphere visual at the global Point (float3) with a radius provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """

@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetTRS(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Transform.SetTRS.
+    """The Set TRS node takes in a slot to transform (position, rotation, and scale) in 3D space along with the matrix value. Unlike Set Global Transform Matrix, this node sets the slot's local transform value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The User Stream Messages node takes in a user and returns that user's streamed messaged (is this upstream, downstream, or bi-directional?).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

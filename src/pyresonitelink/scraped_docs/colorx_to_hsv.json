@@ -1,0 +1,8 @@
+{
+  "description": "ColorX To HSL converts a ColorX to HSV. The result is represented as 3 separate Float values for Hue, Saturation, and Value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserPresent(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.IsUserPresent.
+    """The Is User Present node returns if the user is present in the current world. This means if they are on the headset or on desktop and currently focused in the world.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """

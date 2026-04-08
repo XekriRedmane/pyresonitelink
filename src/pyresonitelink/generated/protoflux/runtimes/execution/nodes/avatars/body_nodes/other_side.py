@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OtherSide(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes.OtherSide.
+    """Other Side is a ProtoFlux node that returns the opposite side equivalent of the provided Node (BodyNode) on an anthro body.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Body Nodes
     """

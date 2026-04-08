@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AsyncDynamicImpulseReceiver(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.AsyncDynamicImpulseReceiver.
+    """The Async Dynamic Impulse Receiver node is the recipient of a dynamic impulse within async flow. Its trigger analogue is the Async Dynamic Impulse Trigger node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Async
     """

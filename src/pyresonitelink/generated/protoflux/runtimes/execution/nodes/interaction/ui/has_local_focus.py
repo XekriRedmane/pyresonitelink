@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HasLocalFocus(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Focusing.HasLocalFocus.
+    """The Has Local Focus node takes in an IFocusable and returns if that focusable is currently focused by the local user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/UI
     """

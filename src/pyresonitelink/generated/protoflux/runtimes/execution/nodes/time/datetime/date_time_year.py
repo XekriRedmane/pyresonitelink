@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DateTimeYear(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.DateTimeYear.
+    """The DateTime Year node takes in a DateTime and returns the year of that DateTime.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """

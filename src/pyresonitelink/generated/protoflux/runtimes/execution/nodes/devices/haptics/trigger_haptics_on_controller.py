@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TriggerHapticsOnController(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Haptics.TriggerHapticsOnController.
+    """The Trigger Haptics On Controller node takes in a side and will send out haptic pulses to the controller on that side.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Haptics
     """

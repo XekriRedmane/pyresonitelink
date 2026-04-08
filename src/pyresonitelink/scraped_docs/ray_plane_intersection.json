@@ -1,0 +1,8 @@
+{
+  "description": "The Ray Plane Intersection node takes in ray paremeters and plane parameters, and finds then returns an intersection at a point.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The Evaluate SH node takes in a Spherical Harmonics type of any LV and a direction, then returns the evaluated type value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

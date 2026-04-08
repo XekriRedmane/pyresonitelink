@@ -1,0 +1,8 @@
+{
+  "description": "The Range Loop Int node is used to perform looping operations by allowing one to define a range of values and step size for iterations to follow. It is a more flexible version of the For node.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

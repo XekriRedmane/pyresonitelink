@@ -1,0 +1,13 @@
+{
+  "description": "The UnboxT node converts a boxed object back into its underlying value type.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* Box for boxing value types into objects\n* Microsoft documentation on C# boxing and unboxing\n\nProtoFlux:Core"
+    }
+  ]
+}

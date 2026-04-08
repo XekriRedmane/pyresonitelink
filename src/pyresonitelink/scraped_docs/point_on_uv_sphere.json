@@ -1,0 +1,8 @@
+{
+  "description": "The Point On UV Sphere node takes a sphere's UV coordinates and the radius of the sphere, then returns the point on that sphere.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

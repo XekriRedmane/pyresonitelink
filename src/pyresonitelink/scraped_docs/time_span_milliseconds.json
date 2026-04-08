@@ -1,0 +1,8 @@
+{
+  "description": "The TimeSpan Milliseconds node takes in a TimeSpan and returns with only the amount of millisecondsin that TimeSpan. Anything other than the milliseconds will be ignored.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

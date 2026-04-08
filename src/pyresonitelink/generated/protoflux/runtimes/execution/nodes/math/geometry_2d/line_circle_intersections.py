@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LineCircleIntersections(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry2D.LineCircleIntersections.
+    """The Line Circle Intersections node determines how many times a line defined by two points intersects a circle and where said intersections occur.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 2D
     """

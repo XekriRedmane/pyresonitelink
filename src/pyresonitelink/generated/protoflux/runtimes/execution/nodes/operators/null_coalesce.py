@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.NullCoalesce<>.
+    """The Null Coalesce node takes two reference type inputs of the same type. If the first input is null, it returns the value of the second input. Otherwise, it returns the value of the first input.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

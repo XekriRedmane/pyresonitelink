@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UpdatesTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.UpdatesTimer.
+    """The Updates Timer node sends a pulse from the UpdatingUser at the specified interval of engine updates from said user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

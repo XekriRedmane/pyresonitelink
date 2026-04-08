@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnLoaded(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnLoaded.
+    """On Loaded is a Protoflux node that triggers for its allocating user whenever the node is loaded for the first time (not when it's duplicated). This happens on world loads and object loads.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """

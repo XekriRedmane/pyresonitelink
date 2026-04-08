@@ -1,0 +1,8 @@
+{
+  "description": "The Encapsulate Point node extends the input Bounds such that the output fully encapsulates the input Point.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

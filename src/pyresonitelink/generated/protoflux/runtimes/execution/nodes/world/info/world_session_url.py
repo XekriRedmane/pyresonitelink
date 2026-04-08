@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldSessionURL(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.WorldSessionURL.
+    """The World Session URL node returns this world's session URL. This can be useful when you need to focus back into a world using this URL.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorXToHSV(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorXToHSV.
+    """ColorX To HSL converts a ColorX to HSV. The result is represented as 3 separate Float values for Hue, Saturation, and Value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

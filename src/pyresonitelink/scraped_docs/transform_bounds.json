@@ -1,0 +1,8 @@
+{
+  "description": "The Transform Bounds node transforms the input bounding box from the local coordinate space of the SourceSpace slot to that of the TargetSpace slot.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

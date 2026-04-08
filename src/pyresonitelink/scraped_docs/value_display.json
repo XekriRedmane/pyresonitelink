@@ -1,0 +1,13 @@
+{
+  "description": "alt=A visual image of an Display node by itself, connected to nothing.|thumb",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Outputs",
+      "text": "Outputs to the node's visual UI without an actual value. It displays the value as a string and in the case of non primitives displays some information.\n\nProtoFlux:Core"
+    }
+  ]
+}

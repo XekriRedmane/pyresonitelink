@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetSlotActiveSelf(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetSlotActiveSelf.
+    """Set's the active field of the provided Instance slot upon calling * (Call). The Active (bool) value must be provided for this node to work.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots/Info
     """

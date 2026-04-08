@@ -1,0 +1,8 @@
+{
+  "description": "The Value Filter Invalid node takes in an expected value and a fallback value. If the expected value is not valid (such as NaN, Infinity, or -Infinity), then the fallback value will be used as the output.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

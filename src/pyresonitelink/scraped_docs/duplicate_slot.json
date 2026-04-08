@@ -1,0 +1,8 @@
+{
+  "description": "The Duplicate Slot node makes a copy of a slot and exposes the duplicated slot with the output called Duplicate which can be used for any nodes that accept the slot type.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

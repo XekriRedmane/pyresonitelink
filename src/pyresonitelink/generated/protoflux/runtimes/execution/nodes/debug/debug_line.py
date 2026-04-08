@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugLine(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugLine.
+    """Debug Line is a ProtoFlux node that creates a line going between Point0 to Point1 in global space. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """

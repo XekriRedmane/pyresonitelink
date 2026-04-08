@@ -1,0 +1,8 @@
+{
+  "description": "The Is Surrogate node takes in a char and returns whether that character is a surrogate.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

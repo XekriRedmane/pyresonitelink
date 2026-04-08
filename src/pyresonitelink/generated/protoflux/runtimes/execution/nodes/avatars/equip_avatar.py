@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.EquipAvatar.
+    """Equip Avatar is a ProtoFlux node that allows for making a User Equip an Avatar. A bit of caution should be used when using this node, since making people equip an avatar against their will without proper forewarning can be considered distasteful at best.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars
     """

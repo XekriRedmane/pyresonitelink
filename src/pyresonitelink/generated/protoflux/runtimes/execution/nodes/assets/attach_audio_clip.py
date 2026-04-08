@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AttachAudioClip(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.AttachAudioClip.
+    """Attach Audio Clip is a ProtoFlux node that allows you to attach a provided uri as a new StaticAudioClip component and return the StaticAudioClip raw IAsset`1 itself.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
     """

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FindCharacterControllerFromUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.FindCharacterControllerFromUser.
+    """The Find Character Controller From User node takes in a user reference and tries to find the character controller from that user, then returning one when one is found.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """

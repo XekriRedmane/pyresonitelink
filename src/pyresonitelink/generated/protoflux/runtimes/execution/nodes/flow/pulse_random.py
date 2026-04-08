@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PulseRandom(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.PulseRandom.
+    """Pulse Random will take an impulse as an input and pulse a random output each time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

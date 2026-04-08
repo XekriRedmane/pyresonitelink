@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Audio.ConstructZitaParameters.
+    """The Construct Zita Parameters node creates ZitaParameters which are used make a reverberation sound effect parameter input object in the Awwdio system, for use in different reverberation sound effect methods like the one for Static Audio Clips.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Audio
     """

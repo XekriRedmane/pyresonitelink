@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AnchorUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors.AnchorUser.
+    """Anchor User is a ProtoFlux node that attempts to anchor a user to any anchor, which is provided to the node via the IAvatarAnchor type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Anchors
     """

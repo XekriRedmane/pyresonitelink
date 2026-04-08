@@ -1,0 +1,8 @@
+{
+  "description": "The TimeSpan Total Minutes node takes in a TimeSpan and returns with the amount of minutes in that TimeSpan, including the fractional portion of a minute, as well as anything longer than a minute will be added into the total.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

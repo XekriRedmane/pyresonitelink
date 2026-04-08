@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectDemultiplex<>.
+    """The Demultiplex node takes in a value, a default value, and an index to select from a list of outputs. This node sends data through the output from the index of the list. If the value given is not valid, it will use the default value instead of the value provided.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
 

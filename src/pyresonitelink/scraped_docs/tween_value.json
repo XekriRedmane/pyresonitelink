@@ -1,0 +1,8 @@
+{
+  "description": "Tween Value is a node that allows you to change a Target (Numeric or Enum IField`1) over a Duration (float) from a starting point to an ending point. The different curve presets determine the interpolation used, and when applicable will smoothly change using non whole numbers.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

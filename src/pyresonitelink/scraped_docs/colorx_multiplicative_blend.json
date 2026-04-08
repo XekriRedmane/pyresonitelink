@@ -1,0 +1,8 @@
+{
+  "description": "ColorX Multiplicative Blend does a multiplicative blend of its two input colors. The result is the product of each component between the target and destination.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

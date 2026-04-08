@@ -10,9 +10,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MouseScrollDelta(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse.MouseScrollDelta.
+    """Returns the delta of the mouse wheel used for input to Resonite.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Mouse
+
+    **Notes**: ProtoFlux:Devices:Mouse
+ContinuouslyChanging nodes
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse.MouseScrollDelta"

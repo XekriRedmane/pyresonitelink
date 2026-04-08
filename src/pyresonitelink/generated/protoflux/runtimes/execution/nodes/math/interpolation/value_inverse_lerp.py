@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueInverseLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.ValueInverseLerp<>.
+    """The Inverse Lerp node takes in a non-normalized arbitrary set of values that has a start and end point, along with a value that is the number that is in between those 2 provided values, then returns the value over time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Interpolation
 

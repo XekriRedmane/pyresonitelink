@@ -1,0 +1,8 @@
+{
+  "description": "Is Eye is a ProtoFlux node that checks if the provided Node (BodyNode) is equal to \"Left Eye\" or \"Right Eye\".",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

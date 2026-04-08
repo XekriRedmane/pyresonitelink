@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Tau(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.Tau.
+    """The Tau node outputs the mathematical constant tau. Tau is a constant that represents 2PI. Tau is the circumference of a circle with a radius of one.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """

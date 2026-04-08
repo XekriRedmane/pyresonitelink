@@ -1,0 +1,8 @@
+{
+  "description": "The Update node sends a pulse at every engine update from the UpdatingUser.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

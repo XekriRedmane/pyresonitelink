@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicImpulseTrigger(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.DynamicImpulseTrigger.
+    """The Dynamic Impulse Trigger node sends a dynamic impulse to all Dynamic Impulse Receivers matching the provided Tag under the TargetHierarchy.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AnchoredUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors.AnchoredUser.
+    """Anchored User is a ProtoFlux node that returns the user that is anchored to the provided Anchor (IAvatarAnchor). This node will return a null user if there is no user anchored to the anchor.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Anchors
     """

@@ -1,0 +1,8 @@
+{
+  "description": "On Activated is a ProtoFlux node that sends an impulse out of Trigger whenever the node's hierarchy is enabled.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

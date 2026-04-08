@@ -15,9 +15,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectFieldDrive(GenericComponent[T], IDrive, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.ObjectFieldDrive<>.
+    """The Object Field DriveT node creates a drive on a field with the value of its input. The field type allows object types.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
+
+    **See also**: * Value Field Drive
+
+ProtoFlux:Core
+Listener nodes
 
     Parameterize with a value type::
 

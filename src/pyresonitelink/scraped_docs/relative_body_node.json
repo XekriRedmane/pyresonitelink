@@ -1,0 +1,8 @@
+{
+  "description": "Relative Body Node is a ProtoFlux node that returns a hand if the Node (BodyNode) provided is a finger or a palm, returns Head if it is an eye, and returns \"Root\" otherwise. Unless it is \"None\" which returns \"None\".",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

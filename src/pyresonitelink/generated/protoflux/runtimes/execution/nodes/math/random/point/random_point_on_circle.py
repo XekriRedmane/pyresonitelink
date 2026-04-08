@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomPointOnCircle(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Random.RandomPointOnCircle.
+    """The Random Point On Circle node returns a random float2 value of a point on the edge of a unit circle.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Random/Point
     """

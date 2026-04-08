@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrimString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.TrimString.
+    """Trim String is a ProtoFlux node that trims a string according to the microsoft implmentation Trim String which removes any white space at the beginning or end of the string including any extra special invisible control characters.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

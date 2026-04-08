@@ -1,0 +1,8 @@
+{
+  "description": "The standard controller node allows one to interact with the players virtual reality controller as well as generic inputs on Desktop mode.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "The standard controller node allows one to interact with the players virtual reality controller as well as generic inputs on Desktop mode.\n\nSay you want to get the user's grip and trigger strength, just feed it a user and a \"Chirality input\" for the left or right controller and volla!\n\nJust pull an output from the grip boolean and the strength float value and now you have the users grip and trigger on/off and strength!",
+  "notes": []
+}

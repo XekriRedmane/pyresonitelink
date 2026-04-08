@@ -1,0 +1,8 @@
+{
+  "description": "Contains is a ProtoFlux node that returns the amount of times Search (String) occurs in Str (String) as a int.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AttachMesh(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.AttachMesh.
+    """The Attach Mesh node allows one to attach a provided Uri as a new StaticMesh component and return the StaticMesh raw IAsset`1 itself.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
     """

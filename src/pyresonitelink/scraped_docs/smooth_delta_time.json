@@ -1,0 +1,8 @@
+{
+  "description": "The Smooth Delta Time node returns the change of time between two world updates, specifically the time between the current update and the one before. This node also does another step and tries to account for lag or stutters, smoothly changing the amount of time to match that change.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

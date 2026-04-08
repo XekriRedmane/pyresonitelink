@@ -1,0 +1,8 @@
+{
+  "description": "The World Hide From Listing node returns this world's \"Don't show in session lists\" setting from the Session tab in the Dash.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

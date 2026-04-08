@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StringToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.StringToUTF32.
+    """The String To UTF32 returns the code point (UTF-32 value) of a character or surrogate pair in a string.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

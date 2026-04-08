@@ -14,9 +14,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.ButtonEvents.
+    """The Button Events node takes in a global IButton reference and will listen for events from that global reference. When it detects something happening, it will fire events depending on what happens, along with other data.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction
+
+    **See also**: TouchableEvents
+ProtoFlux:Interaction
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.ButtonEvents"

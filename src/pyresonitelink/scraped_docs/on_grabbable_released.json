@@ -1,0 +1,8 @@
+{
+  "description": "On Grabbable Released is a ProtoFlux node that monitors an IGrabbable for when something or someone lets go of it and sends an Impulse.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

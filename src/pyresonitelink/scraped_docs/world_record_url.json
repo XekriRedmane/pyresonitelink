@@ -1,0 +1,8 @@
+{
+  "description": "The World Record URL node returns a resrec link of the current world. This is very useful for Headless clients to run a world that they own, using the resrec from this node.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

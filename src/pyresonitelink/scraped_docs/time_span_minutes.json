@@ -1,0 +1,8 @@
+{
+  "description": "The TimeSpan Minutes node takes in a TimeSpan and returns with only the amount of minutes in that TimeSpan. Anything other than the minutes will be ignored.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

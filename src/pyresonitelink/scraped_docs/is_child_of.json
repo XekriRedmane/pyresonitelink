@@ -1,0 +1,8 @@
+{
+  "description": "The Is Child Of node determines if the Instance slot is a descendant of the Other slot. This check is recursive.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

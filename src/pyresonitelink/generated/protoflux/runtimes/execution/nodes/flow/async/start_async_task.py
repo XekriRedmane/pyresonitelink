@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StartAsyncTask(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async.StartAsyncTask.
+    """The Start Async Task node starts a new ExecutionContext using async flow at the current impulse.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Async
     """

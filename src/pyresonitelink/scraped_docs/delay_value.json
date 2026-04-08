@@ -1,0 +1,8 @@
+{
+  "description": "The Delay Value node takes in the amount of seconds and the value, then outputs the value at a later time equal to the provided seconds.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

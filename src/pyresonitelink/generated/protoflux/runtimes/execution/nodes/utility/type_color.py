@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TypeColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Utility.TypeColor.
+    """The Type Color node takes in a Type, and returns the color associated with that type's class inside the FrooxEngine.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
     """

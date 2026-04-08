@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsAnchorOccupied(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors.IsAnchorOccupied.
+    """Is Anchor Occupied Is a ProtoFlux node that returns whether an anchor has a user in it or not.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Anchors
     """

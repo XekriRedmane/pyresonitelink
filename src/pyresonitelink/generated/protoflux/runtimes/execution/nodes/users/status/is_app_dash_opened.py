@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsAppDashOpened(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.IsAppDashOpened.
+    """The Is App Dash Opened node returns if a user's Dash is opened.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """

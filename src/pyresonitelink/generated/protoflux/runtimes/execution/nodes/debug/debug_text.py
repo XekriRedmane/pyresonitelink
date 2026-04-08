@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugText(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugText.
+    """Debug Text is a ProtoFlux node that when called will make a text visual at a global Point (float3) and will appear for a duration in seconds. The text that appears will always face in the direction toward you the moment this node is called. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """

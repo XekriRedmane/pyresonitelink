@@ -1,0 +1,8 @@
+{
+  "description": "The Delete Dynamic Variable node takes in a slot hierarchy and a string literal for the path. This will check for the dynamic variable space, and then the variable within, if one is found, the variable will be removed. For more information, see Dynamic Variables.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

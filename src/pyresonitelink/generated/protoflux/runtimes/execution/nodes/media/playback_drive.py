@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.PlaybackDrive.
+    """Playback Drive is a node that will take a SyncPlayback and allow you to start or stop driving it to a set of provided playback settings and values. The driving of the SyncPlayback is non networked.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserDownloadedBytes(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserDownloadedBytes.
+    """The User Downloaded Bytes node returns a user's total downloaded bytes.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

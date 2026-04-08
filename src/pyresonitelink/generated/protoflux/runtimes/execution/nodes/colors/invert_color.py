@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InvertColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.InvertColor.
+    """The Invert Color node takes in a color and mathematically inverts it, returning a new color.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

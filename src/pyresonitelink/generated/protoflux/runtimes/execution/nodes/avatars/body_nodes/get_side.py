@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetSide(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes.GetSide.
+    """Get Side is a ProtoFlux node that converts the provided Node (BodyNode) from its current side to the Side (Chirality) provided. If given a node that is in the center of the body, then it will return a "None" value. If the Side (Chirality) provided is the current side of the provided Node (BodyNode), no change will occur between the Node (BodyNode) and the * (BodyNode) output.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Body Nodes
     """

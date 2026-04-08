@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TorqueEstimate(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Physics.TorqueEstimate.
+    """The Torque Estimate node takes in the initial torque, drag resistance, and the amount of time it is simulating, then returns the torque simulation value (as a floatQ) that object will rotate in.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Physics
     """

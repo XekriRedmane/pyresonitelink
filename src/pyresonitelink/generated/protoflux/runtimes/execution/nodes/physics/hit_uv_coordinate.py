@@ -15,9 +15,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HitUVCoordinate(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.HitUVCoordinate.
+    """This node is used frequently with Raycaster and Raycast One, as well as applications requiring lasers, pointers, or clicking on screens or mouse clicks and desktop-based gadgets.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
+
+    This node is used frequently with Raycaster and Raycast One, as well as
+    applications requiring lasers, pointers, or clicking on screens or mouse
+    clicks and desktop-based gadgets.
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.HitUVCoordinate"

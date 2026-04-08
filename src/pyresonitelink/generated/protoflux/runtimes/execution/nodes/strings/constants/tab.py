@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Tab(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.Tab.
+    """The Tab node is a character literal constant for the "Tab" character (Unicode: U+0009).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
+
+    **Bugs**: The name of this node currently does not display correctly in-app due to a bug.
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.Tab"

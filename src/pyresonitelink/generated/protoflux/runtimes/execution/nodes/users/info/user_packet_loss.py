@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserPacketLoss(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserPacketLoss.
+    """The User Packet Loss node takes in a user and returns that user's lost packets during this network communication, session, or protocol. If the user is host, then that number is always zero (0).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

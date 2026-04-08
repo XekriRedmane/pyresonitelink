@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Space(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.Space.
+    """The Space node is a character literal constant for the "Space" character (Unicode: U+0020).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
     """

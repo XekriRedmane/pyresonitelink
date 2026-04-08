@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalScreenPointToDirection(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalScreen.LocalScreenPointToDirection.
+    """The Local Screen Point To Direction node takes in a normalized screen space (0 to 1 along the user's screen in the X and Y position), and converts it to a direction in world space. This node just takes where you are looking and points it in the direction outward from your camera/screen.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Conversion
     """

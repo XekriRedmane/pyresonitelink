@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Play(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.Play.
+    """Play is a ProtoFlux node that plays the provided Target (IPlayable) when * (Call) is called. Play doesn't change the current Position Output, it essentially sets Is Playing Output to true.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """

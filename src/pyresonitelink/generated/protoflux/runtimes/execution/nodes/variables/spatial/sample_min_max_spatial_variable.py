@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SampleMinMaxSpatialVariable(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.SampleMinMaxSpatialVariable<>.
+    """The Sample Min Max Spatial Variable node takes in a point in 3D space, and a name that matches that space, then returns the values found in the space that defined a min and max range.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables/Spatial
 

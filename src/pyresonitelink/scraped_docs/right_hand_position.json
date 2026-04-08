@@ -1,0 +1,8 @@
+{
+  "description": "The Right Hand Position node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the right hand position value of the User.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

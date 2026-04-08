@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BlackBodyColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.BlackBodyColor.
+    """Black Body Color returns a color value of the light emitted by an ideal black body radiator. This can be used to calculate appropriate values for various color temperatures.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

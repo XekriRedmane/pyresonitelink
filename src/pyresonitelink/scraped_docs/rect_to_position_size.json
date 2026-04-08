@@ -1,0 +1,8 @@
+{
+  "description": "The Rect To Position Size node takes in a rect value and returns 2 specific float2 values giving a position of the rect's X and Y position, and giving the size of the rect with the literal Width and Height. In contrast to the Rect To Min Max node where it adds the position and size to get a rect's bounding data.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

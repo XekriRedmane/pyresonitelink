@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueSquare(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueSquare<>.
+    """The Value Square node takes in a value and squares it, basically multiplying itself by 2 and returning that value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

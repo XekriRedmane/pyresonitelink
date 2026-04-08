@@ -1,0 +1,8 @@
+{
+  "description": "Black Body Color returns a color value of the light emitted by an ideal black body radiator. This can be used to calculate appropriate values for various color temperatures.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

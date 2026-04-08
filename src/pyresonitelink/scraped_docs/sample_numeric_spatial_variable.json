@@ -1,0 +1,8 @@
+{
+  "description": "The Sample Numeric Spatial Variable node takes in a point in 3D space, a name that matches that space, a priority mode, and a default (base) value if that space cannot be found, then returns the (weighted) value found in the space, otherwise it will return the default value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

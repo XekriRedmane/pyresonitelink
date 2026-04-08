@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetLocomotionArchetype(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Locomotion.GetLocomotionArchetype.
+    """The Get Locomotion Archetype node takes in an ILocomotionModule and returns the Nullable`1LocomotionArchetype that was provided from a user's locomotion module (found in the locomotion modules component category).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Locomotion
     """

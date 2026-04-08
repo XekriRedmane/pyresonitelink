@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AsyncRangeLoopInt(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.AsyncRangeLoopInt.
+    """The Async Range Loop Int node is the async analogue to the Range Loop Int node. It is used to perform looping operations by allowing one to define a range of values and step size for iterations to follow. It is a more flexible version of the Async For node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Async
     """

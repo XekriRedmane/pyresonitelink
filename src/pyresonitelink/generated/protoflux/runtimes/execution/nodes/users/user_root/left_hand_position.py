@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LeftHandPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots.LeftHandPosition.
+    """The Left Hand Position node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the left hand position value of the User.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

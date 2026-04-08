@@ -1,0 +1,8 @@
+{
+  "description": "The SampleSpatialVariablePartialDerivative node samples a numerical spatial variable and returns the partial derivatives of the variable in the x, y, and z directions according to an orientation. In essence, it computes the numerical gradient of the sampled spatial variable.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

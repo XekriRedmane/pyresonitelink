@@ -1,0 +1,8 @@
+{
+  "description": "The Ray Sphere Intersection node takes in ray paremeters and sphere parameters, and finds then returns an intersection at a point as well as if it intersected at all.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

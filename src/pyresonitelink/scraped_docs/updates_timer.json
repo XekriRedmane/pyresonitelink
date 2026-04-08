@@ -1,0 +1,8 @@
+{
+  "description": "The Updates Timer node sends a pulse from the UpdatingUser at the specified interval of engine updates from said user.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

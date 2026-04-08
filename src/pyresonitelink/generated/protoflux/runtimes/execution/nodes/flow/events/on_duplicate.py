@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnDuplicate(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnDuplicate.
+    """On Duplicate is a ProtoFlux node that sends an impulse out of Trigger whenever the node is duplicated. This will fire on the duplicate of the code, and not the original copy.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """

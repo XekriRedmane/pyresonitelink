@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueCube(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueCube<>.
+    """The Value Cube node takes in a value and cubes it, basically returning itself multiplied by itself 3 times.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

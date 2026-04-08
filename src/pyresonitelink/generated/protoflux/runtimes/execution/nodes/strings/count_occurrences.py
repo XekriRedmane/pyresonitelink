@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CountOccurrences(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.CountOccurrences.
+    """Contains is a ProtoFlux node that returns the amount of times Search (String) occurs in Str (String) as a int.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

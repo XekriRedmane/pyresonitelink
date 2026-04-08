@@ -1,0 +1,8 @@
+{
+  "description": "The Is Destroyed node takes in a destroyable world element and returns if that element was destroyed from the world. Destruction of the slot prevents the result from changing, as by the time the slot is gone, it is too late. There is however a method to check if something did get destroyed, see the examples below.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

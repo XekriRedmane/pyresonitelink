@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StringInsert(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.StringInsert.
+    """String Insert is a ProtoFlux node that allows for inserting Value (String) into Str (String) at position StartIndex (int).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The Reference ID node takes in an element, which could be anything since it is an IWorldElement, then returns a RefID of that world element. Since the RefID type is used internally in the engine, it is unlikely to see any use besides read references.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

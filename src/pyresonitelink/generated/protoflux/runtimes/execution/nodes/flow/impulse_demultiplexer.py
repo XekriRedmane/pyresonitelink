@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ImpulseDemultiplexer(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ImpulseDemultiplexer.
+    """An Impulse Demultiplexer is useful for condensing down multiple lines of execution code into one line. For example, let's say that you have 10 buttons, and you want to change a text to 10 different strings, positions, and colors using those 10 buttons. Using an Impulse Demultiplexer you can put each button into Operations (List of Impulses) on the impulse demultiplexer, then use the index in 3 different Multiplexers. Writing the multiplexer's output to the properties of the text object now allows you to reduce what would take up to 70 nodes and 60 connections down to 43 nodes and 43 connections. And also it makes it a lot less complex and easier to read.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

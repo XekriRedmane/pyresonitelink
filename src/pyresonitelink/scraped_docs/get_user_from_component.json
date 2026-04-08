@@ -1,0 +1,13 @@
+{
+  "description": "Get User From Component is a ProtoFlux node that gets the active user of the slot a component is on.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Example",
+      "text": "File:Protoflux_Get_User_From_Component.webp|an example of using Get User From Component to find the active user of a Tool Tip.\n\n\nProtoFlux:Components\nProtoFlux:Users"
+    }
+  ]
+}

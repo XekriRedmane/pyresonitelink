@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FindParentByTag(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.FindParentByTag.
+    """The Find Parent By Tag node finds a parent object above the instance (Slot) that matches the given Tag (String).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots/Searching
     """

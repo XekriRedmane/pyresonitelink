@@ -1,0 +1,8 @@
+{
+  "description": "The World Session URL node returns this world's session URL. This can be useful when you need to focus back into a world using this URL.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

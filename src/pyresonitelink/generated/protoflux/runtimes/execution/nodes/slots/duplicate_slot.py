@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DuplicateSlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.DuplicateSlot.
+    """The Duplicate Slot node makes a copy of a slot and exposes the duplicated slot with the output called Duplicate which can be used for any nodes that accept the slot type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
     """

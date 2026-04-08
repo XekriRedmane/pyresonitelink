@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RelativeBodyNode(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodes.RelativeBodyNode.
+    """Relative Body Node is a ProtoFlux node that returns a hand if the Node (BodyNode) provided is a finger or a palm, returns Head if it is an eye, and returns "Root" otherwise. Unless it is "None" which returns "None".
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Body Nodes
     """

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.ConstructDateTime.
+    """The Construct DateTime node takes in everything needed to create a DateTime, the parts include the Year, Month, Day, Hour, Minute, Second, Millisecond, and Kind. This gets combined into a newly created DateTime value that can be used.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueReciprocal(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueReciprocal<>.
+    """The Value Reciprocal node takes in a value and that will be used to determine the result (or quotient) of a division, where 1 is the dividend, and the value we provide is the divisor.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

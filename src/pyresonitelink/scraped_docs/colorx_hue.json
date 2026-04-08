@@ -1,0 +1,8 @@
+{
+  "description": "Color X Hue returns a color with a given hue value. This is equivalent to using HSV To ColorX with a value and saturation equal to 1.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

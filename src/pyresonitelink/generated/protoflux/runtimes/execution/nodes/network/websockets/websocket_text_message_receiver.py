@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WebsocketTextMessageReceiver(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network.WebsocketTextMessageReceiver.
+    """The Websocket Text Message Receiver node allows you to receive text messages from a WebsocketClient.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network/Websockets
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The Allow Join node takes in a JoinRequestHandle, and if the world enabled a join verification system using the Verify Join Request node, this node will run and allow the user to join.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

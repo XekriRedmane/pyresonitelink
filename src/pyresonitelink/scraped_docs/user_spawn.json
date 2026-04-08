@@ -1,0 +1,8 @@
+{
+  "description": "The User Spawn node is an event that fires when a user spawns/respawns in the current world this node is in, as well as providing that user.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

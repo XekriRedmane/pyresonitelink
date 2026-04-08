@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MiddleMouseHeld(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse.MiddleMouseHeld.
+    """The Middle Mouse Held node returns the local user's middle mouse button being held down.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Mouse
     """

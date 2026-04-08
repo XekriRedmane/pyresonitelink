@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class If(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.If.
+    """The If node checks and evaluates the Condition (bool) only when * (Call) is called. After the call and evaluation, it will send a pulse out of OnTrue (Continuation) if Condition (bool) is true or OnFalse (Continuation) if it is false.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """

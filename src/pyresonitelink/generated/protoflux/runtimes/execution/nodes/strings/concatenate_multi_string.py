@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConcatenateMultiString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.ConcatenateMultiString.
+    """Concatenate Multi String is a protoflux node that combines multiple strings in order of the inputs into one combined string
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

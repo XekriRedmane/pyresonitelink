@@ -1,0 +1,8 @@
+{
+  "description": "The ValueClamp node will force a value to stay within the defined Min and Max.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

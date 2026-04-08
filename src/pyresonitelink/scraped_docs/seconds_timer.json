@@ -1,0 +1,8 @@
+{
+  "description": "The Seconds Timer node sends a pulse from the UpdatingUser at the specified interval of seconds.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

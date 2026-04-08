@@ -1,0 +1,8 @@
+{
+  "description": "The Ears Overriden node returns if the local user's audio output (hearing audio) is being overridden by something.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

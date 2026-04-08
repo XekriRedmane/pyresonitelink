@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CloseContextMenu(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.CloseContextMenu.
+    """The Close Context Menu node takes in a summoner (the thing that opened the context menu), and tells it to close the menu for the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction
     """

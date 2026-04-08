@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WavelengthColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.WavelengthColor.
+    """The Wavelength Color node takes in a float number value (in nanometers) and converts that to a visible light spectrum color.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

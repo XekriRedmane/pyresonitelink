@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DateTimeHour(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.DateTimeHour.
+    """The DateTime Hour node takes in a DateTime and returns the hour of that DateTime. This returns the hour as if it were a 24-hour time (if the hour is 3pm, it returns 15).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """

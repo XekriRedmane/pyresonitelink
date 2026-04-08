@@ -1,0 +1,8 @@
+{
+  "description": "The Close Context Menu node takes in a summoner (the thing that opened the context menu), and tells it to close the menu for the user.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

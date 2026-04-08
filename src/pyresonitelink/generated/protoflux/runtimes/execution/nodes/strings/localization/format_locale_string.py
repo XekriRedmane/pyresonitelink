@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatLocaleString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.FormatLocaleString.
+    """The Format Locale String node takes in a locale asset (or repository) and a key and it returns the translated string for the user's culture.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Localization
     """

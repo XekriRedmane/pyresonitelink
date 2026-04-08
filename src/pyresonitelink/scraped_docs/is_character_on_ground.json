@@ -1,0 +1,8 @@
+{
+  "description": "The Is Character On Ground node takes in a character controller reference and returns if that character controller is touching the ground and has a simulating user.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

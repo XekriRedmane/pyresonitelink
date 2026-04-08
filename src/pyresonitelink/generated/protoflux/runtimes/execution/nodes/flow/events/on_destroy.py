@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnDestroy(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnDestroy.
+    """The On Destroy node sends an impulse out of Trigger whenever the node is destroyed. This can sometimes not fire code the way you want, since the code after the node may have already been destroyed. It is better practice to use On Destroying.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """

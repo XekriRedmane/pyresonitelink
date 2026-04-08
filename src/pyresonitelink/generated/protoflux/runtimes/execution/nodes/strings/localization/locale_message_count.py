@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocaleMessageCount(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.LocaleMessageCount.
+    """The Locale Message Count node takes in a locale resource asset and returns the number of translatable string keys in this collection or repository.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Localization
     """

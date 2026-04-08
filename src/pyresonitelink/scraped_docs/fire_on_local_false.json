@@ -1,0 +1,13 @@
+{
+  "description": "The FireOnLocalFalse node will listen for changes on its input bool and fire an impulse whenever the input turns from True to False across updates.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* FireOnFalse for the non-local equivalent of this node where a user to fire the impulse on can be specified.\n* FireOnLocalTrue\n* FireOnLocalChange\n\nProtoFlux:Flow\nListener nodes"
+    }
+  ]
+}

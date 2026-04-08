@@ -1,0 +1,13 @@
+{
+  "description": "Sets the parent of Instance (Slot).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Inputs",
+      "text": "=== * (Call) ===\nSet the parent of Instance (Slot) to NewParent (Slot)"
+    }
+  ]
+}

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DateTimeDayOfWeek(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.DateTimeDayOfWeek.
+    """The DateTime Day Of Week node takes in a DateTime and returns the day of the week for that DateTime.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """

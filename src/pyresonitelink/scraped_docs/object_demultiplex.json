@@ -1,0 +1,8 @@
+{
+  "description": "The Demultiplex node takes in a value, a default value, and an index to select from a list of outputs. This node sends data through the output from the index of the list. If the value given is not valid, it will use the default value instead of the value provided.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

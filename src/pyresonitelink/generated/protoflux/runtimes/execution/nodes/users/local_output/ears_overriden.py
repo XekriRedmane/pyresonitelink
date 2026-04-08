@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EarsOverriden(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.LocalOutput.EarsOverriden.
+    """The Ears Overriden node returns if the local user's audio output (hearing audio) is being overridden by something.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """

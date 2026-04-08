@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DeleteDynamicVariable(GenericComponent[T], IMappableNode, ISyncNodeOperation, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.DeleteDynamicVariable<>.
+    """The Delete Dynamic Variable node takes in a slot hierarchy and a string literal for the path. This will check for the dynamic variable space, and then the variable within, if one is found, the variable will be removed. For more information, see Dynamic Variables.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables/Dynamic
 

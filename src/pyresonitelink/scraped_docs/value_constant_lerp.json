@@ -1,0 +1,8 @@
+{
+  "description": "The Constant Lerp node takes in an input value and the speed at which it lerps it linearly towards, then returns the lerped value over time.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

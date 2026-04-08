@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueAbs(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.ValueAbs<>.
+    """The Value Abs node takes in a value and returns a value without its sign. Although, it would be truly impossible to have no sign on a value when it needs to be represented and stored in a computer device (and also mathematically sound), so it returns as a positive number (no matter what is provided as a value).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math
 

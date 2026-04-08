@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsNull(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.IsNull<>.
+    """The Is Null node takes in a reference type and returns if the provided reference is null.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

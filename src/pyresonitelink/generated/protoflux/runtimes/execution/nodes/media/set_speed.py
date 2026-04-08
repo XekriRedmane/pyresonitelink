@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetSpeed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.SetSpeed.
+    """The Set Speed node tells a IPlayable to playback at a specific speed upon impulse.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """

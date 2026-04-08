@@ -24,7 +24,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Audio.PlayOneShot.
+    """Play One Shot is a ProtoFlux node that creates a new audio source under the provided Root (Slot) (except when ParentUnderRoot (bool) is enabled) with the provided parameters. Play One Shot is under Audio in the Protoflux Node creation menu
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Audio
     """

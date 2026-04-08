@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ComputeBoundingBox(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.ComputeBoundingBox.
+    """The Compute Bounding Box node calculates a bounding box for the input Instance slot hierarchy in the input CoordinateSpace with optional filtering for inactive and/or tagged slots.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Bounds
     """

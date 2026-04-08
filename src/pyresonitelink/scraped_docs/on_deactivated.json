@@ -1,0 +1,8 @@
+{
+  "description": "On Deactivated is a ProtoFlux node that sends an impulse out of Trigger whenever the node's hierarchy is disabled.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

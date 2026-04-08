@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserUploadSpeedMax(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserUploadSpeedMax.
+    """The User Upload Speed Max node returns a user's maximum upload speed in this session.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """

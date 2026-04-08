@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EncapsulatePoint(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.EncapsulatePoint.
+    """The Encapsulate Point node extends the input Bounds such that the output fully encapsulates the input Point.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Bounds
     """

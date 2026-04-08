@@ -1,0 +1,8 @@
+{
+  "description": "Attach Audio Clip is a ProtoFlux node that allows you to attach a provided uri as a new StaticAudioClip component and return the StaticAudioClip raw IAsset`1 itself.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

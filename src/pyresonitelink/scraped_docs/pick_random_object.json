@@ -1,0 +1,8 @@
+{
+  "description": "The Pick Random Object node takes in a list of references of the same Type and then returns one of them at random. Since this is a data node, displaying the output value will cycle through them randomly once per frame.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

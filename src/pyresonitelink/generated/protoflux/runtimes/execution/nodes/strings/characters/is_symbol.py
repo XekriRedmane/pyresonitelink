@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsSymbol(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.IsSymbol.
+    """The Is Symbol node takes in a character literal and returns if that character is a symbol as defined by Unicode.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

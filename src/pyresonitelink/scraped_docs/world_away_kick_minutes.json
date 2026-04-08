@@ -1,0 +1,8 @@
+{
+  "description": "The World Away Kick Minutes node returns this world's \"Max AFK Minutes\" setting from the Session tab in the Dash, represented as a float value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

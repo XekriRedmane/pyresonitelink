@@ -1,0 +1,8 @@
+{
+  "description": "The Global Transform node outputs the position, rotation and scale of the input slot in global coordinate space, i.e. the slot's transform relative to the world root slot.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

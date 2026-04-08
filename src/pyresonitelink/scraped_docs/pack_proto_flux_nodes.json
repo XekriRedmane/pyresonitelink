@@ -1,0 +1,8 @@
+{
+  "description": "The Pack ProtoFlux Nodes node takes in the Slot root (where we want to pack to), and the Slot target (the set of ProtoFlux nodes we want to pack), then packs them into the Slot. Many community-based tools (such as Redprint) use this to pack nodes into slots.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

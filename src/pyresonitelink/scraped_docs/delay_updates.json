@@ -1,0 +1,8 @@
+{
+  "description": "Delay Updates is a ProtoFlux node that will send an impulse out of Next (Continuation) after Updates (int) updates after * (ASync Call) is impulsed.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

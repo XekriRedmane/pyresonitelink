@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToUTF16(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.ToUTF16.
+    """The To UTF16 node returns the integer codepoint of the given UTF-16 character.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

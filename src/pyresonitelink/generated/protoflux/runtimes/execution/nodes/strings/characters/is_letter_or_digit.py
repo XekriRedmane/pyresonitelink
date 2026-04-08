@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsLetterOrDigit(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.IsLetterOrDigit.
+    """The Is Letter Or Digit node takes in a character literal and returns if that character is a letter or a digit. It is a shorthand of doing an OR Operation on the results of the Is Letter and Is Digit nodes.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The Text Editor Events node takes in a global TextEditor reference and will listen for events from that global reference. This node fires events that relate to the TextEditor, and can be useful when you want certain things to happen when things get edited or submitted by the user.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

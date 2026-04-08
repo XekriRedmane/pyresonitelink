@@ -1,0 +1,8 @@
+{
+  "description": "Wait is a ProtoFlux node that waits for the provided Target (IPlayable) to complete playback, and then provides a continuation.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

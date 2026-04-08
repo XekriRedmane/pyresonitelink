@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReverseString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.ReverseString.
+    """Reverse String is a ProtoFlux node that reverses the order of all the characters in A (String)
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

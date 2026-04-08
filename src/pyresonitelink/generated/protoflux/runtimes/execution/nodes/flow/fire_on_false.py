@@ -18,9 +18,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FireOnFalse(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.FireOnFalse.
+    """The FireOnFalse node will listen for changes on its input bool and fire an impulse for the specified user whenever the input turns from True to False across updates.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
+
+    **See also**: * FireOnLocalFalse will fire an impulse for every user that detects ``False`` rather than a specific user.
+* FireOnTrue
+* FireOnChange
+
+ProtoFlux:Flow
+Listener nodes
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.FireOnFalse"

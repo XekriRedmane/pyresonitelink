@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserFingerPoseSource(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.UserFingerPoseSource.
+    """User Finger Pose Source is a ProtoFlux node that allows you to get an IFingerPoseSource for use in Finger Pose Node. This is a pose source that represents the pose sources of both hands in one.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars
     """

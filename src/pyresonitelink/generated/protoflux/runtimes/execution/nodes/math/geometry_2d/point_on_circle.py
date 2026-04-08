@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PointOnCircle(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry2D.PointOnCircle.
+    """The Point On Circle node returns the point a fractional part of the trace along a circle path of a given radius.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 2D
     """

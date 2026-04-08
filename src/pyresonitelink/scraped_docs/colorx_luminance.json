@@ -1,0 +1,13 @@
+{
+  "description": "Color Luminance calculates the relative luminance of an input color.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "References",
+      "text": "ProtoFlux:Colors"
+    }
+  ]
+}

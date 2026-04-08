@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanFromTicks(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.TimeSpanFromTicks.
+    """The TimeSpan From Ticks node takes in a TimeSpan and returns with the amount of ticks in that TimeSpan. There is Microsoft documentation about Ticks.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """

@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceDrive(GenericComponent[T], IDrive, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.ReferenceDrive<>.
+    """See ProtoFlux Tool Usage for how to make this node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

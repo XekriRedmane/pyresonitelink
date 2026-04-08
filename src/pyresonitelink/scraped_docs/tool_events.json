@@ -1,0 +1,8 @@
+{
+  "description": "The Tool Events node takes in a referenced ITool, and fires events if the tool is equipped or dequipped from the user.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

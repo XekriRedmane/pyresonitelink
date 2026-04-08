@@ -1,0 +1,8 @@
+{
+  "description": "The Create Transform Undo Step will create an undo step in the Context Menu of the person who the impulse came from. The node will then send to the UndoManager in the world the slot transforms that the slot provided into Target should revert to. Or in more simpler terms, the current transforms the provided Target (Slot) contains is what it will be reset to when undone via the context menu. Certain transforms will be included or omitted depending on booleans provided into the inputs.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

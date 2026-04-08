@@ -1,0 +1,13 @@
+{
+  "description": "The World Web URL node returns this world's Web URL. This node is interesting as it provides a Web Address for the world and there is no application this can be used for yet. When trying to use the contents of this node by putting the result into a web browser and going to that location, the web browser may warn you of potential security risks, and going past that there is only an error 403 page (access to the requested resource is recognized but is forbidden).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Images",
+      "text": "File:PotentialSecurityRiskAheadForGoResoniteCom.jpg|Security warning page from the Firefox Browser.\nFile:Error403OnGoResoniteCom.jpg|Error 403 Page on Go.Resonite.Com.\n\n\nProtoFlux:World:Info"
+    }
+  ]
+}

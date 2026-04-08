@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TransformBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.TransformBounds.
+    """The Transform Bounds node transforms the input bounding box from the local coordinate space of the SourceSpace slot to that of the TargetSpace slot.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Bounds
     """

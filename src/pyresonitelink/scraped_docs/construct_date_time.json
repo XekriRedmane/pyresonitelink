@@ -1,0 +1,8 @@
+{
+  "description": "The Construct DateTime node takes in everything needed to create a DateTime, the parts include the Year, Month, Day, Hour, Minute, Second, Millisecond, and Kind. This gets combined into a newly created DateTime value that can be used.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

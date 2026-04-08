@@ -1,0 +1,8 @@
+{
+  "description": "The TimeSpan Total Days node takes in a TimeSpan and returns with the amount of days in that TimeSpan, including the fractional portion of a day.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

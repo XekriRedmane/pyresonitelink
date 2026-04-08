@@ -1,0 +1,13 @@
+{
+  "description": "Color Additive Blend does an additive blend of its two input colors. The result is the sum of each component between the target and destination.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "References",
+      "text": "ProtoFlux:Colors"
+    }
+  ]
+}

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ComposeColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ComposeColorX.
+    """The Compose ColorX node takes in a Color and ColorProfile, then returns the new ColorX.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

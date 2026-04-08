@@ -1,0 +1,8 @@
+{
+  "description": "The Set Character Velocity node takes in a character controller reference and a target velocity, then sets the velocity on the Slot containing the character controller component.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

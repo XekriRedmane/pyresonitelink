@@ -1,0 +1,8 @@
+{
+  "description": "The Value Lerp node takes in a starting point and an ending point along with a lerp value of which it lerps linearly towards, then returns the value over time.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

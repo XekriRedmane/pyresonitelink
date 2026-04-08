@@ -1,0 +1,8 @@
+{
+  "description": "The User Runtime Version node returns the runtime version in use, which is typically the version of .NET.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

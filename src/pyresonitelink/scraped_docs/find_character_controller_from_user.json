@@ -1,0 +1,8 @@
+{
+  "description": "The Find Character Controller From User node takes in a user reference and tries to find the character controller from that user, then returning one when one is found.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -17,9 +17,28 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.RaycastOne.
+    """There are a few ways in which the Raycast One node may not work as expected, particularly relating to directions and distances.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
+
+    There are a few ways in which the Raycast One node may not work as
+    expected, particularly relating to directions and distances. Firstly,
+    the global scale of the input Root slot is taken into account when
+    calculating a raycast's path. For example, assume that the Root slot
+    input has global position [0;0;0] and global scale [0.1;0.1;0.1]; if the
+    Origin input is [0;0;0], the raycast will start at global [0;0;0],
+    however, if the Origin input is [0;1;0] the raycast will start at global
+    [0;0.1;0] not global [0;1;0]. Similarly, the input Root slot's global
+    scale affects the Direction vector and MaxDistance values too. With the
+    same example input Root slot, a Direction of [0;0;1] and a MaxDistance
+    of 1 result in a ray which travels only 0.1 units. Secondly, the
+    magnitude of the Direction vector affects the distance that the ray
+    travels and the reported HitDistance output value. Assuming no input
+    Root slot, a Direction input of [0;0;1] and MaxDistance of 1 will
+    produce a ray 1 unit long. However, a Direction input of [0;0;2] and
+    MaxDistance of 1 will produce a ray 2 units long. Additionally, the
+    reported HitDistance value will be halved in the second case.
+    ProtoFlux:Physics
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.RaycastOne"

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Geometry2D.RayRectangleIntersection.
+    """The Ray Rectangle Intersection node determines the first point at which a ray defined by an origin and direction intersects the bounds of the provided Rect.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 2D
     """

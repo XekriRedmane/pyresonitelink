@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InvertedQuarterPi(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.InvertedQuarterPi.
+    """The InvertedQuarterPi or 1/(π/4) node outputs the value of 1 ÷ (π ÷ 4).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """

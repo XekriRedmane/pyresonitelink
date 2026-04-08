@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueLessThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Operators.ValueLessThan<>.
+    """The Less Than node takes in 2 values and returns if the first value is smaller than the second value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 

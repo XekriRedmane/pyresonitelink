@@ -1,0 +1,8 @@
+{
+  "description": "The Pack Nullable node takes in a value and an input if this value is considered as having a value. This returns a nullable version of this value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

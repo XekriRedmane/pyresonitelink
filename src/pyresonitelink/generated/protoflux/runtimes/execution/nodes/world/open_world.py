@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.OpenWorld.
+    """The Open World node is used to open a world when called, given a valid Url and a set of optional parameters the user can give it to open a world in a certain way. You can chain this node with the Focus World node by using this node's SessionURL connected to the focus world node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World
     """

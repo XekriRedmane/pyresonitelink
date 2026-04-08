@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NullString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.NullString.
+    """Null String is a ProtoFlux node that returns a string with no content even white space, so the object is null, but still a String object.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

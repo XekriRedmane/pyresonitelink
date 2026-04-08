@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NormalizedPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.NormalizedPosition.
+    """Normalized Position is a ProtoFlux node that returns an IPlayable's playback head position from 0 to 1. See Position ProtoFlux Node for a node that returns the playback head position in seconds.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """

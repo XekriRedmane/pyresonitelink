@@ -1,0 +1,8 @@
+{
+  "description": "On Paste is a ProtoFlux node that sends an impulse out of Trigger whenever the node is part of a hierarchy that has been spawned via clip board pasting. This is useful for telling if an item has been spawned in via RedX or cloud spawned, or spawned in via a json file.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

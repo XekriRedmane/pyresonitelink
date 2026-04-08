@@ -1,0 +1,8 @@
+{
+  "description": "The Set Head Position node takes in a user's UserRoot and the position for the head, then sets the position.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

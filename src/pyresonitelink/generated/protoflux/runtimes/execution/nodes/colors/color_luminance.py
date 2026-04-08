@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorLuminance(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorLuminance.
+    """Color Luminance calculates the relative luminance of an input color. For correct result, the input must be in the Linear color profile, which may be a bug
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """

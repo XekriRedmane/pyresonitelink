@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.ReplaceFirstSubstring.
+    """Replace First Substring is a ProtoFlux node that replaces the first occurrence of SearchFor (String) in Str (String) with ReplaceWith (String). Will only start searching after the provided StartIndex (int).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

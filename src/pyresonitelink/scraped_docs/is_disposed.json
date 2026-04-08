@@ -1,0 +1,8 @@
+{
+  "description": "The Is Disposed node takes in a worker world element and returns if that element was disposed from the world. Destruction of the slot prevents the result from changing, as by the time the slot is gone, it is too late. There is however a method to check if something did get disposed, see the examples below.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

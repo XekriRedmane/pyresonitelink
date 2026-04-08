@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Contains(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Contains.
+    """Contains is a ProtoFlux node that returns if Substring (String) occurs anywhere in Str (String) as a bool.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The User From ID node takes in a user ID and/or machine ID and returns with a user. This only works for users in the same session.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

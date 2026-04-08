@@ -1,0 +1,8 @@
+{
+  "description": "The Has Tag node checks if the provided instance slot has a Tag equal to the provided tag (String).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

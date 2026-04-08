@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FocusFocusable(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Focusing.FocusFocusable.
+    """The Focus Focusable node sets the target IFocusable UI for the user. When the UI is focused (if it was not already focused beforehand), it places your caret at the end of any text input.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/UI
     """

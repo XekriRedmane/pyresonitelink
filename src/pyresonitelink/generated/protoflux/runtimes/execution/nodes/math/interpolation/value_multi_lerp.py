@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueMultiLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.ValueMultiLerp<>.
+    """The Multi Lerp node takes in any number of lerp point inputs along with a lerp value of which it lerps linearly towards, then returns the value over time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Interpolation
 

@@ -1,0 +1,8 @@
+{
+  "description": "The Footstep Events node takes in the global source of a FootstepEventRelay or SelfFootstepEventRelay component, and returns the values from this user's footstep. The footstep event counts when any proxy on a slot detects the collision and raycast from a user's feet onto that ICollider, as long as that collider does not have the No Collision setting on, and also does not have the Ignore Raycasts setting on.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DateTimeDay(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.DateTimeDay.
+    """The DateTime Day node takes in a DateTime and returns the day of that DateTime.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EncapsulateBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.EncapsulateBounds.
+    """The Encapsulate Bounds node extends the input Bounds such that the output fully encapsulates the OtherBounds.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Bounds
     """

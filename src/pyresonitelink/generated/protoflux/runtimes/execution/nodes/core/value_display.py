@@ -14,9 +14,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueDisplay(GenericComponent[T], IProtoFluxNodePackUnpackListener, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueDisplay<>.
+    """alt=A visual image of an Display node by itself, connected to nothing.|thumb
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
+
+    **Outputs**: Outputs to the node's visual UI without an actual value. It displays the value as a string and in the case of non primitives displays some information.
+
+ProtoFlux:Core
 
     Parameterize with a value type::
 

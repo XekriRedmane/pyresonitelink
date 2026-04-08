@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UShortAsHalf(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Binary.UShortAsHalf.
+    """The UShort As Half node takes in a ushort and converts it into a half.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/Binary
     """

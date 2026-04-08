@@ -1,0 +1,13 @@
+{
+  "description": "This node provides information provided by Index controllers.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Outputs",
+      "text": "=== IsActive (Bool) ===\n\nBool for showing if the device is active. Useful for troubleshooting if your controller is not responding."
+    }
+  ]
+}

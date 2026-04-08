@@ -1,0 +1,8 @@
+{
+  "description": "Empty String is a ProtoFlux node that returns a constant that is a String with no content but is not null.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

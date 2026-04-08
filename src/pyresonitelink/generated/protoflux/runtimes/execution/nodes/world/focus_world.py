@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Worlds.FocusWorld.
+    """The Focus World node allows a user to focus on a world by giving it a ressession link as the Url. If the world exists (as in, already opened for the user, or available as a headless) it will work as expected. If there is no world that is open already that the ressession link is referring to, it will fail.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World
     """

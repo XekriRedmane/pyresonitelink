@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnPaste(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnPaste.
+    """On Paste is a ProtoFlux node that sends an impulse out of Trigger whenever the node is part of a hierarchy that has been spawned via clip board pasting. This is useful for telling if an item has been spawned in via RedX or cloud spawned, or spawned in via a json file.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """

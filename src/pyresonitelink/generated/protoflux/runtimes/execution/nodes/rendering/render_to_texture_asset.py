@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Rendering.RenderToTextureAsset.
+    """The Render To Texture Asset node takes in a provided Camera, resolution, file format, and quality for the texture. Then this node will attempt to render it into a texture, and returns the asset URL for the world to use.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Rendering
     """

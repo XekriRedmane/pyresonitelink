@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Bobool3ol(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.Bobool3ol.
+    """Bobool3ol is a constant node of type bobool3ol. Its display node contains the text "Tru(🍒🎂🍒)lse".
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """

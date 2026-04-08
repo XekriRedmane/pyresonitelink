@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HeadRotation(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.Roots.HeadRotation.
+    """The Head Rotation node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the head rotation value of the User.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/User Root
     """

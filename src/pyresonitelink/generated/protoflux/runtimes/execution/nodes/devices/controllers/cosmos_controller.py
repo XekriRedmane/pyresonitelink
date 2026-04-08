@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Controllers.CosmosController.
+    """This node provides information provided by HTC Vive Cosmos controllers.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Controllers
     """

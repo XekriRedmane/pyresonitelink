@@ -1,0 +1,8 @@
+{
+  "description": "The Closest Point On Cone Surface node takes in the cone parameters (size and rotation) and a provided point to check. Then it returns the closest point on that cone's surface and if that point is within that cone's defined parameters.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

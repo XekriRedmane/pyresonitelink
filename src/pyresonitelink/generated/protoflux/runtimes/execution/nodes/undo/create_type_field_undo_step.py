@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CreateTypeFieldUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Undo.CreateTypeFieldUndoStep.
+    """The Create Type Field Undo Step will create an undo step in the Context Menu of the person who the impulse came from. The node will then send to the UndoManager component in the world the value that the field provided into Target should revert to. Or in more simpler terms, the current value the provided Target (Type Field) contains is what it will be reset to when undone via the context menu.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """

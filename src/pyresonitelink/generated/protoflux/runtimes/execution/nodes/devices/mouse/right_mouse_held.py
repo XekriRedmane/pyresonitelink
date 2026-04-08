@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RightMouseHeld(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse.RightMouseHeld.
+    """The Right Mouse Held node returns the local user's right mouse button being held down.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Mouse
     """

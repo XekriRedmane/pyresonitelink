@@ -1,0 +1,8 @@
+{
+  "description": "The Random String node takes in a string value and the length, then returns a randomized string value. The string provided acts as a pool of characters, and you can skew the percent chance of a character being selected if there are multiples of the same character.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

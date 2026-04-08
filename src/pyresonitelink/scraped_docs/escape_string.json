@@ -1,0 +1,8 @@
+{
+  "description": "The Escape String node escapes strings by adding \\ behind special characters. Its intention is for use in an environment with .NET Regular Expressions, but since Resonite does not currently implement any user-facing regex, its usefulness is limited.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

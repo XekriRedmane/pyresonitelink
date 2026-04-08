@@ -1,0 +1,8 @@
+{
+  "description": "On Grabbable Grabbed is a ProtoFlux node that monitors an IGrabbable for when someone grabs it and sends an Impulse that runs on the grabbing user's client.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

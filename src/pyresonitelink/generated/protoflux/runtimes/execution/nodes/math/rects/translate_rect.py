@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TranslateRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Rects.TranslateRect.
+    """The Translate Rect node takes in a rect value and an offset (float2) which corresponds with the X and Y position of the entire rect, and returns a rect that has been translated to its new location.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """

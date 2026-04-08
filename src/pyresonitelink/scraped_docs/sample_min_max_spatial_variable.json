@@ -1,0 +1,8 @@
+{
+  "description": "The Sample Min Max Spatial Variable node takes in a point in 3D space, and a name that matches that space, then returns the values found in the space that defined a min and max range.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

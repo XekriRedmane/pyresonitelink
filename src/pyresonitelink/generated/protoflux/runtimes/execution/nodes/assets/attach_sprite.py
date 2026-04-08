@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AttachSprite(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.AttachSprite.
+    """The Attach Sprite node allows one to attach a provided Uri as a new SpriteProvider component and return the SpriteProvider's raw IAsset`1 itself.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
     """

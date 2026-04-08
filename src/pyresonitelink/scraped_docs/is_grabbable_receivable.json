@@ -1,0 +1,8 @@
+{
+  "description": "Is Grabbable Grabbed is a ProtoFlux node that gets whether or not an IGrabbable is able to be received. This only really applies to the Grabbable component since it is the only IGrabbable that can return a true value.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

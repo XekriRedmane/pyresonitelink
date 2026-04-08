@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.ivariable import IVariable
 
 
 class ValueIndirectIncrement(GenericComponent[T]):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.ValueIndirectIncrement<>.
+    """Indirect increments can be commonly found in legacy content that has been migrated from other platforms. Indirect increments take Variable (Variable) as an input, and will increase the value that is wrapped by Variable (Variable) by one.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions/Indirect
 

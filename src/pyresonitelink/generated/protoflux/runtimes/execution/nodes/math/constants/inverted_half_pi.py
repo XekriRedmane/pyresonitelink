@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InvertedHalfPi(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.InvertedHalfPi.
+    """The HalfPi or 1/(π/2) node outputs the value of 1 ÷ (π ÷ 2).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """

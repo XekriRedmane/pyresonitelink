@@ -1,0 +1,8 @@
+{
+  "description": "The Is Letter Or Digit node takes in a character literal and returns if that character is a letter or a digit. It is a shorthand of doing an OR Operation on the results of the Is Letter and Is Digit nodes.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,8 @@
+{
+  "description": "The Set Local Transform node sets the input slot's position, rotation and scale to the provided values in local coordinate space.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

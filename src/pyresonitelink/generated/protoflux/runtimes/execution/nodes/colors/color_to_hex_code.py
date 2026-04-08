@@ -14,9 +14,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorToHexCode.
+    """Color To Hex Code converts a Color to a string hex color code such as "#FFAABC".
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
+
+    **Gallery**: File:Protoflux_Color_To_Hex.webp|A simple example of Color To Hex with an input and an output display.
+
+    **References**: ProtoFlux:Colors
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorToHexCode"

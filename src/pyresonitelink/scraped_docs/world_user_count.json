@@ -1,0 +1,8 @@
+{
+  "description": "The World User Count node returns this world's current user count in the world now. This will include users that are AFK/focused away from the world.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

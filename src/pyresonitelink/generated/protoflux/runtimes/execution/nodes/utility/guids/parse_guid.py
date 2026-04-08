@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParseGUID(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.ParseGUID.
+    """The Parse GUID node takes in a string, and returns the GUID string represented as a GUID Type, and also if it successfully parsed it.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/GUIDs
     """

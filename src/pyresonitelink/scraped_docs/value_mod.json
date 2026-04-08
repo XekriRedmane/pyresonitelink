@@ -1,0 +1,8 @@
+{
+  "description": "The ValueMod node takes in 2 inputs and returns the remainder value of a division operation. This node goes by names such as \"Modulus\", \"Modulo\", and \"Mod\". (TODO: Does truncation/rounding come into play when using this as an int value compared to float values?)",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

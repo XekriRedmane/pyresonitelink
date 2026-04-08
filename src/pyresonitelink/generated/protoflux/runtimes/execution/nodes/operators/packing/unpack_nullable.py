@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnpackNullable(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.UnpackNullable<>.
+    """The Unpack Nullable node takes in a nullable, and returns the value and if this nullable has a value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators/Packing
 

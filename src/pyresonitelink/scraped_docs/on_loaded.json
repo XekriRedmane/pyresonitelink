@@ -1,0 +1,8 @@
+{
+  "description": "On Loaded is a Protoflux node that triggers for its allocating user whenever the node is loaded for the first time (not when it's duplicated). This happens on world loads and object loads.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

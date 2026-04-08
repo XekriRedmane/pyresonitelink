@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BodyNodeSlotInChildren(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.BodyNodeSlotInChildren.
+    """Body Node Slot In Children is a ProtoFlux node that checks the parent slots of Source (Slot) for a Biped Rig component, and then reads the BipedRig component for the provided Node (BodyNode). If the node's mapped slot is a child of Source (Slot) it returns that mapped slot.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Body Nodes
     """

@@ -1,0 +1,8 @@
+{
+  "description": "The Capitalize node takes in a string and capitalizes the first letter of the string. Having a letter that is not in the first index of the string will not capitalize the string.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

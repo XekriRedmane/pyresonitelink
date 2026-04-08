@@ -13,9 +13,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorXAlphaBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorXAlphaBlend.
+    """ColorX Alpha Blend does an alpha blend of its two input colors. The source is blended "onto" the destination, and the higher the source alpha, the more of the "source" color and less of the "destination" color comes through.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
+
+    **References**: ProtoFlux:Colors
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorXAlphaBlend"

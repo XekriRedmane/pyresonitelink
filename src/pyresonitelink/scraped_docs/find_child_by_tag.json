@@ -1,0 +1,8 @@
+{
+  "description": "The Find Child By Tag node finds a child object below the instance (Slot) that matches the given Tag (String).",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

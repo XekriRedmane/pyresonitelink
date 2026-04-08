@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserLagging(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.IsUserLagging.
+    """The IsUserLagging node was added during the 2025 April Fools' update to detect if a user was "Lagging". In reality, this node returns whether the last synchronization message received by the host from the specified User was more than 1.5 seconds ago.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """

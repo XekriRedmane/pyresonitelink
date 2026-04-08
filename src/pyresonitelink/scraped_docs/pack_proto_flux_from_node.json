@@ -1,0 +1,8 @@
+{
+  "description": "The Pack ProtoFlux From Node node takes in a start point for your ProtoFlux code and a target slot to place your code in, and when called, will pack everything in place into that provided slot.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

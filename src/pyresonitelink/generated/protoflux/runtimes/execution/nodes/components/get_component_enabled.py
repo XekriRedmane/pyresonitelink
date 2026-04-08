@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetComponentEnabled(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Components.GetComponentEnabled.
+    """The Get Component Enabled is a ProtoFlux node that takes an IComponent and gets if it's enabled or not.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Components
     """

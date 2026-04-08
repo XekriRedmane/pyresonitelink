@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AreAppFacetsOpened(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.AreAppFacetsOpened.
+    """The Are App Facets Opened node takes in a user and returns if that user's facet anchors are opened currently.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """

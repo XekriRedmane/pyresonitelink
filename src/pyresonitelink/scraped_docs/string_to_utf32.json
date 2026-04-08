@@ -1,0 +1,8 @@
+{
+  "description": "The String To UTF32 returns the code point (UTF-32 value) of a character or surrogate pair in a string.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

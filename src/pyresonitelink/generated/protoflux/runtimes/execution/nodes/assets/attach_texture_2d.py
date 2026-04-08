@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AttachTexture2D(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.AttachTexture2D.
+    """Attach Texture2D is a ProtoFlux node that allows you to attach a provided uri as a new StaticTexture2D component and return the StaticTexture2D raw IAsset`1 itself.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
     """

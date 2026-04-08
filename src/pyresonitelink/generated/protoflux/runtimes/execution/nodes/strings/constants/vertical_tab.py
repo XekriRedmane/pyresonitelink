@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VerticalTab(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.VerticalTab.
+    """The Vertical Tab node is a character literal constant for the "Vertical Tab" character (Unicode: U+000B).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
     """

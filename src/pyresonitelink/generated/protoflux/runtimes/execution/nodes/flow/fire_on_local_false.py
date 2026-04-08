@@ -9,9 +9,16 @@ from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperat
 
 
 class FireOnLocalFalse(GeneratedComponent):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.FireOnLocalFalse.
+    """The FireOnLocalFalse node will listen for changes on its input bool and fire an impulse whenever the input turns from True to False across updates.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
+
+    **See also**: * FireOnFalse for the non-local equivalent of this node where a user to fire the impulse on can be specified.
+* FireOnLocalTrue
+* FireOnLocalChange
+
+ProtoFlux:Flow
+Listener nodes
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.FireOnLocalFalse"

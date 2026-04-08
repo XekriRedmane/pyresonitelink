@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InvertedTau(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.InvertedTau.
+    """The InvertedTau or 1/τ node outputs the value of 1 ÷ τ which is equivalent to 1 ÷ 2π.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """

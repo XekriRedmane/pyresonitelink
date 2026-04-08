@@ -24,7 +24,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Audio.PlayOneShotAndWait.
+    """Play One Shot is a ProtoFlux node that creates a new audio source under the provided Root (Slot) (except when ParentUnderRoot (bool) is enabled) with the provided parameters. It will then wait and fire OnFinishedPlaying (Continuation) when the audio reaches the end.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Audio
     """

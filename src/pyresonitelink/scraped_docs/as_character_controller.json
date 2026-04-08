@@ -1,0 +1,8 @@
+{
+  "description": "The As Character Controller node is used to get the character controller reference using the ICollider from a Slot that associated with that collider, not necessarily what it collides with.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

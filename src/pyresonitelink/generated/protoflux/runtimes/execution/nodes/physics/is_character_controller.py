@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsCharacterController(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.IsCharacterController.
+    """The Is Character Controller node takes in a reference to an ICollider and returns if that ICollider is labeled as a character controller type and the character controller has a simulating user in the same Slot.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """

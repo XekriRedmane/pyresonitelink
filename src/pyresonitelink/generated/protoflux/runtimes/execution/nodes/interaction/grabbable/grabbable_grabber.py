@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabbableGrabber(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.GrabbableGrabber.
+    """Grabbable Grabber is a Protoflux node that takes an IGrabbable (any kind of grabbable) and gets the grabber that is currently grabbing it. usually this will be a limb capable of grasping around an object, and holding it like a hand, or a monkey's foot.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Grabbable
     """

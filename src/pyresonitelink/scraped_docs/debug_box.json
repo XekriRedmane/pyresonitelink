@@ -1,0 +1,8 @@
+{
+  "description": "Debug Box is a ProtoFlux node that when called will make a cube visual at the global coordinates with a size provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

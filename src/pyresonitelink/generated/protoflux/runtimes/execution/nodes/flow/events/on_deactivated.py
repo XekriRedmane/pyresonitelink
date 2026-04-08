@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnDeactivated(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.OnDeactivated.
+    """On Deactivated is a ProtoFlux node that sends an impulse out of Trigger whenever the node's hierarchy is disabled.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """

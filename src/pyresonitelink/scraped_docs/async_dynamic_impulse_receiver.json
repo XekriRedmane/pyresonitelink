@@ -1,0 +1,8 @@
+{
+  "description": "The Async Dynamic Impulse Receiver node is the recipient of a dynamic impulse within async flow. Its trigger analogue is the Async Dynamic Impulse Trigger node.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

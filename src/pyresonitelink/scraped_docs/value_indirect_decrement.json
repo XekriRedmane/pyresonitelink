@@ -1,0 +1,8 @@
+{
+  "description": "Indirect decrements can be commonly found in legacy content that has been migrated from other platforms. Indirect decrements take Variable (Variable) as an input, and will decrease the value that is wrapped by Variable (Variable) by one.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

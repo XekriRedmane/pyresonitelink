@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Pause(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Playback.Pause.
+    """Pause is a ProtoFlux node that pauses the provided Target (IPlayable) when * (Call) is called. Pause doesn't change the current Position Output, it essentially sets Is Playing Output to false.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """

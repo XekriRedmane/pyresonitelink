@@ -1,0 +1,8 @@
+{
+  "description": "The Character Linear Velocity node takes in a character controller reference and returns the current velocity that it is currently going at over time.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

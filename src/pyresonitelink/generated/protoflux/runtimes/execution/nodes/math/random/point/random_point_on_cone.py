@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomPointOnCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Random.RandomPointOnCone.
+    """The Random Point On Cone node returns a random point on the shell of a cone with the given Height and BaseRadius centered at [0; 0; 0].
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Random/Point
     """

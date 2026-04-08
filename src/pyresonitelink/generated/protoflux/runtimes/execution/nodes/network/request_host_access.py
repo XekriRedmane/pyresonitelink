@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Network.RequestHostAccess.
+    """The Request Host Access node takes in a Host IP address, an accessible port of that address, the scope of what type of connection this is, and the reason why this user should connect to this service. When everything is accurate, this node will fire an event depending if this local user has successfully connected to the host service. This relates to the settings in the Dash that a user can look through to see what services they have access to.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network
     """

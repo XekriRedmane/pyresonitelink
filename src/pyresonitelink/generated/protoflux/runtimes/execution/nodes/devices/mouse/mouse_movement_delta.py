@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MouseMovementDelta(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Mouse.MouseMovementDelta.
+    """The Mouse Movement Delta node returns the local user's mouse movement delta from their Resonite application. The faster you move your mouse within a frame, the larger the delta. If you are focused on the Resonite window, the mouse will always be centered in that window while you move the mouse around, and this node will listen for the changes in your mouse movement to calculate the dalta. When the resonite application is not focused, this node will not calculate the delta at all.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Mouse
     """

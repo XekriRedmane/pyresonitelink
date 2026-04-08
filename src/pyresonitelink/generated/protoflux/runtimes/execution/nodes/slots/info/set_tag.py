@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetTag(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetTag.
+    """The Set Tag node sets the Tag of the provided instance slot upon calling * (Call).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots/Info
     """

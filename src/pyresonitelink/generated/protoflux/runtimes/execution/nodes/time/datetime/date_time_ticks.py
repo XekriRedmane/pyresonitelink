@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DateTimeTicks(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.DateTimeTicks.
+    """The DateTime Ticks node takes in a DateTime and returns the amount of ticks of that DateTime. There is Microsoft documentation about Ticks.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """

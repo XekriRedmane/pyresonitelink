@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DelayValue(GenericComponent[T], IExecutionUpdateReceiver[T], IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Utility.DelayValue<>.
+    """The Delay Value node takes in the amount of seconds and the value, then outputs the value at a later time equal to the provided seconds.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
 

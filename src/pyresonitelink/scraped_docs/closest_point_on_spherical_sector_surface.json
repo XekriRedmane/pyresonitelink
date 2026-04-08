@@ -1,0 +1,8 @@
+{
+  "description": "The Closest Point On Spherical Sector Surface node takes a point in 3D space and computes the closest point on the surface of a spherical sector defined by its center, direction, radius, and angle. Then it returns the closest point on that sphere's surface and if that point is within that sphere's defined parameters.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

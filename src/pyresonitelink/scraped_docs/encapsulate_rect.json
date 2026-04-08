@@ -1,0 +1,8 @@
+{
+  "description": "The Encapsulate Rect node takes in 2 rect values, and returns a rect that encapsulates both of them into one rect.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

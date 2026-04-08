@@ -1,0 +1,8 @@
+{
+  "description": "The Set Local Position Rotation node sets the input slot's position and rotation to the provided values in local coordinate space.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}
