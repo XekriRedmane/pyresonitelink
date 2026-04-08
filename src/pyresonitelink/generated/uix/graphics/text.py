@@ -3,6 +3,10 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.text_horizontal_alignment import TextHorizontalAlignment
+from pyresonitelink.generated._enums.text_vertical_alignment import TextVerticalAlignment
+from pyresonitelink.generated._enums.alignment_mode import AlignmentMode
+from pyresonitelink.generated._enums.alignment import Alignment
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,14 +19,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.Text.
+    """Text can be used to explain something, to be descriptive, to notify, and many other things text can be used for.
 
     Category: UIX/Graphics
+
+    Text can be used to explain something, to be descriptive, to notify, and
+    many other things text can be used for. When being effective with text,
+    basic graphic design principles apply even to something simple as text.
+
+    **Related Components**: Text
+Text
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Text"
 
-    def __init__(self, font: str | IAssetProvider[FontSet] | None = None, content: primitives.String | None = None, parse_rich_text: primitives.Bool | None = None, null_content: primitives.String | None = None, size: primitives.Float | None = None, color: primitives.ColorX | None = None, line_height: primitives.Float | None = None, mask_pattern: primitives.String | None = None, horizontal_auto_size: primitives.Bool | None = None, vertical_auto_size: primitives.Bool | None = None, auto_size_min: primitives.Float | None = None, auto_size_max: primitives.Float | None = None, caret_position: primitives.Int | None = None, selection_start: primitives.Int | None = None, caret_color: primitives.ColorX | None = None, selection_color: primitives.ColorX | None = None, interaction_target: primitives.Bool | None = None, legacy_font_material: str | FontMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, font: str | IAssetProvider[FontSet] | None = None, content: primitives.String | None = None, parse_rich_text: primitives.Bool | None = None, null_content: primitives.String | None = None, size: primitives.Float | None = None, horizontal_align: TextHorizontalAlignment | str | None = None, vertical_align: TextVerticalAlignment | str | None = None, alignment_mode: AlignmentMode | str | None = None, color: primitives.ColorX | None = None, line_height: primitives.Float | None = None, mask_pattern: primitives.String | None = None, horizontal_auto_size: primitives.Bool | None = None, vertical_auto_size: primitives.Bool | None = None, auto_size_min: primitives.Float | None = None, auto_size_max: primitives.Float | None = None, caret_position: primitives.Int | None = None, selection_start: primitives.Int | None = None, caret_color: primitives.ColorX | None = None, selection_color: primitives.ColorX | None = None, interaction_target: primitives.Bool | None = None, legacy_font_material: str | FontMaterial | None = None, legacy_align: Alignment | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,6 +42,9 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             parse_rich_text: Initial value for ParseRichText.
             null_content: Initial value for NullContent.
             size: Initial value for Size.
+            horizontal_align: Initial value for HorizontalAlign.
+            vertical_align: Initial value for VerticalAlign.
+            alignment_mode: Initial value for AlignmentMode.
             color: Initial value for Color.
             line_height: Initial value for LineHeight.
             mask_pattern: Initial value for MaskPattern.
@@ -44,6 +58,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             selection_color: Initial value for SelectionColor.
             interaction_target: Initial value for InteractionTarget.
             legacy_font_material: Initial value for _legacyFontMaterial.
+            legacy_align: Initial value for _legacyAlign.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -57,6 +72,12 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             self.null_content = null_content
         if size is not None:
             self.size = size
+        if horizontal_align is not None:
+            self.horizontal_align = horizontal_align
+        if vertical_align is not None:
+            self.vertical_align = vertical_align
+        if alignment_mode is not None:
+            self.alignment_mode = alignment_mode
         if color is not None:
             self.color = color
         if line_height is not None:
@@ -83,10 +104,12 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             self.interaction_target = interaction_target
         if legacy_font_material is not None:
             self.legacy_font_material = legacy_font_material
+        if legacy_align is not None:
+            self.legacy_align = legacy_align
 
     @property
     def font(self) -> str | None:
-        """Target ID of the Font reference (targets IAssetProvider[FontSet])."""
+        """The font to use"""
         member = self.get_member("Font")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +130,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def content(self) -> primitives.String | None:
-        """The Content field value."""
+        """What string of text to display"""
         member = self.get_member("Content")
         if member is None:
             return None
@@ -126,7 +149,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def parse_rich_text(self) -> primitives.Bool | None:
-        """The ParseRichText field value."""
+        """Whether or not to interpret text formatting"""
         member = self.get_member("ParseRichText")
         if member is None:
             return None
@@ -145,7 +168,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def null_content(self) -> primitives.String | None:
-        """The NullContent field value."""
+        """What to display if Content is empty"""
         member = self.get_member("NullContent")
         if member is None:
             return None
@@ -164,7 +187,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def size(self) -> primitives.Float | None:
-        """The Size field value."""
+        """The size to render text at, in display units"""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -182,47 +205,68 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def horizontal_align(self) -> members.FieldEnum | None:
-        """The HorizontalAlign member."""
+    def horizontal_align(self) -> TextHorizontalAlignment | None:
+        """How to align the text, horizontally"""
         member = self.get_member("HorizontalAlign")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextHorizontalAlignment(member.value)
         return None
 
     @horizontal_align.setter
-    def horizontal_align(self, value: members.FieldEnum) -> None:
-        """Set the HorizontalAlign member."""
-        self.set_member("HorizontalAlign", value)
+    def horizontal_align(self, value: TextHorizontalAlignment | str) -> None:
+        """Set HorizontalAlign. How to align the text, horizontally"""
+        member = self.get_member("HorizontalAlign")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "HorizontalAlign",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def vertical_align(self) -> members.FieldEnum | None:
-        """The VerticalAlign member."""
+    def vertical_align(self) -> TextVerticalAlignment | None:
+        """How to align the text, vertically"""
         member = self.get_member("VerticalAlign")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextVerticalAlignment(member.value)
         return None
 
     @vertical_align.setter
-    def vertical_align(self, value: members.FieldEnum) -> None:
-        """Set the VerticalAlign member."""
-        self.set_member("VerticalAlign", value)
+    def vertical_align(self, value: TextVerticalAlignment | str) -> None:
+        """Set VerticalAlign. How to align the text, vertically"""
+        member = self.get_member("VerticalAlign")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VerticalAlign",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def alignment_mode(self) -> members.FieldEnum | None:
-        """The AlignmentMode member."""
+    def alignment_mode(self) -> AlignmentMode | None:
+        """How to compute alignment"""
         member = self.get_member("AlignmentMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AlignmentMode(member.value)
         return None
 
     @alignment_mode.setter
-    def alignment_mode(self, value: members.FieldEnum) -> None:
-        """Set the AlignmentMode member."""
-        self.set_member("AlignmentMode", value)
+    def alignment_mode(self, value: AlignmentMode | str) -> None:
+        """Set AlignmentMode. How to compute alignment"""
+        member = self.get_member("AlignmentMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AlignmentMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color to render the text with"""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -241,7 +285,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def materials(self) -> members.SyncList | None:
-        """The Materials member."""
+        """The Material(s) to render with"""
         member = self.get_member("Materials")
         if isinstance(member, members.SyncList):
             return member
@@ -249,12 +293,12 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @materials.setter
     def materials(self, value: members.SyncList) -> None:
-        """Set the Materials member."""
+        """Set Materials. The Material(s) to render with"""
         self.set_member("Materials", value)
 
     @property
     def line_height(self) -> primitives.Float | None:
-        """The LineHeight field value."""
+        """How high each line of text is"""
         member = self.get_member("LineHeight")
         if member is None:
             return None
@@ -273,7 +317,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def mask_pattern(self) -> primitives.String | None:
-        """The MaskPattern field value."""
+        """Text entered here will mask each character with this exact string (example for a password field: *)"""
         member = self.get_member("MaskPattern")
         if member is None:
             return None
@@ -292,7 +336,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def horizontal_auto_size(self) -> primitives.Bool | None:
-        """The HorizontalAutoSize field value."""
+        """Automatically adjusts the text's size to fit in its horizontal space"""
         member = self.get_member("HorizontalAutoSize")
         if member is None:
             return None
@@ -311,7 +355,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def vertical_auto_size(self) -> primitives.Bool | None:
-        """The VerticalAutoSize field value."""
+        """Automatically adjusts the text's size to fit in its vertical space"""
         member = self.get_member("VerticalAutoSize")
         if member is None:
             return None
@@ -330,7 +374,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def auto_size_min(self) -> primitives.Float | None:
-        """The AutoSizeMin field value."""
+        """The minimum size that can be reached via auto-sizing"""
         member = self.get_member("AutoSizeMin")
         if member is None:
             return None
@@ -349,7 +393,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def auto_size_max(self) -> primitives.Float | None:
-        """The AutoSizeMax field value."""
+        """The maximum size that can be reached via auto-sizing"""
         member = self.get_member("AutoSizeMax")
         if member is None:
             return None
@@ -368,7 +412,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def caret_position(self) -> primitives.Int | None:
-        """The CaretPosition field value."""
+        """The text cursor position on this text"""
         member = self.get_member("CaretPosition")
         if member is None:
             return None
@@ -387,7 +431,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def selection_start(self) -> primitives.Int | None:
-        """The SelectionStart field value."""
+        """The starting point for this text cursor"""
         member = self.get_member("SelectionStart")
         if member is None:
             return None
@@ -406,7 +450,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def caret_color(self) -> primitives.ColorX | None:
-        """The CaretColor field value."""
+        """The text cursor color"""
         member = self.get_member("CaretColor")
         if member is None:
             return None
@@ -425,7 +469,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def selection_color(self) -> primitives.ColorX | None:
-        """The SelectionColor field value."""
+        """The text selection/highlight color"""
         member = self.get_member("SelectionColor")
         if member is None:
             return None
@@ -444,7 +488,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def interaction_target(self) -> primitives.Bool | None:
-        """The InteractionTarget field value."""
+        """Makes this text as the interaction target for this UIX."""
         member = self.get_member("InteractionTarget")
         if member is None:
             return None
@@ -463,7 +507,7 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
 
     @property
     def legacy_font_material(self) -> str | None:
-        """Target ID of the _legacyFontMaterial reference (targets FontMaterial)."""
+        """Internal"""
         member = self.get_member("_legacyFontMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -483,15 +527,22 @@ class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorl
             )
 
     @property
-    def legacy_align(self) -> members.FieldEnum | None:
-        """The _legacyAlign member."""
+    def legacy_align(self) -> Alignment | None:
+        """Internal"""
         member = self.get_member("_legacyAlign")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Alignment(member.value)
         return None
 
     @legacy_align.setter
-    def legacy_align(self, value: members.FieldEnum) -> None:
-        """Set the _legacyAlign member."""
-        self.set_member("_legacyAlign", value)
+    def legacy_align(self, value: Alignment | str) -> None:
+        """Set _legacyAlign. Internal"""
+        member = self.get_member("_legacyAlign")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_legacyAlign",
+                members.FieldEnum(value=str(value)),
+            )
 

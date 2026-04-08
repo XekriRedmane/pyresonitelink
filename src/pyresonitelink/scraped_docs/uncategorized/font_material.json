@@ -1,0 +1,14 @@
+{
+  "description": "The FontMaterial component is a Legacy component that was used for rendering text.",
+  "category": "Uncategorized",
+  "fields": {
+    "OutlineThickness": "The thickness of the outer border of the characters.",
+    "OutlineColor": "The color of the outer border on characters.",
+    "FaceSoftness": "How much to soften the edges of the characters to make them not so sharp.",
+    "FaceDilate": "How much to puff up the characters and make them more bold.",
+    "_convertedMaterial": "The converted material version of this material."
+  },
+  "methods": {},
+  "usage": "Don't use. Obsolete.",
+  "notes": []
+}

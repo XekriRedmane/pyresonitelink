@@ -347,10 +347,14 @@ def save_docs(component_name: str, docs: dict, output_dir: Path | None = None) -
         output_dir = _DOCS_DIR
     from pyresonitelink.generated._generator import _to_snake_case
 
-    # Place in a category subfolder if available
+    # Place in a category subfolder if available.
+    # Wiki categories use colons for subcategories (e.g. "UIX:Graphics")
+    # — take the last segment as the folder name.
     category = docs.get("category", "")
     if category:
-        cat_dir = _to_snake_case(category)
+        # Use the most specific (last) subcategory
+        leaf_cat = category.rsplit(":", 1)[-1]
+        cat_dir = _to_snake_case(leaf_cat)
         output_dir = output_dir / cat_dir
 
     output_dir.mkdir(parents=True, exist_ok=True)

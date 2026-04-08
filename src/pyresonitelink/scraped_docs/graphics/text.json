@@ -1,0 +1,37 @@
+{
+  "description": "Text can be used to explain something, to be descriptive, to notify, and many other things text can be used for.",
+  "category": "UIX:Graphics",
+  "fields": {
+    "Font": "The font to use",
+    "Content": "What string of text to display",
+    "ParseRichText": "Whether or not to interpret text formatting",
+    "NullContent": "What to display if Content is empty",
+    "Size": "The size to render text at, in display units",
+    "HorizontalAlign": "How to align the text, horizontally",
+    "VerticalAlign": "How to align the text, vertically",
+    "AlignmentMode": "How to compute alignment",
+    "Color": "The color to render the text with",
+    "Materials": "The Material(s) to render with",
+    "LineHeight": "How high each line of text is",
+    "MaskPattern": "Text entered here will mask each character with this exact string (example for a password field: *)",
+    "HorizontalAutoSize": "Automatically adjusts the text's size to fit in its horizontal space",
+    "VerticalAutoSize": "Automatically adjusts the text's size to fit in its vertical space",
+    "AutoSizeMin": "The minimum size that can be reached via auto-sizing",
+    "AutoSizeMax": "The maximum size that can be reached via auto-sizing",
+    "CaretPosition": "The text cursor position on this text",
+    "SelectionStart": "The starting point for this text cursor",
+    "CaretColor": "The text cursor color",
+    "SelectionColor": "The text selection/highlight color",
+    "InteractionTarget": "Makes this text as the interaction target for this UIX.",
+    "_legacyFontMaterial": "Internal",
+    "_legacyAlign": "Internal"
+  },
+  "methods": {},
+  "usage": "Text can be used to explain something, to be descriptive, to notify, and many other things text can be used for. When being effective with text, basic graphic design principles apply even to something simple as text.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "Text\nText"
+    }
+  ]
+}

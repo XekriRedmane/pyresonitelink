@@ -16,6 +16,8 @@ from .delay_with_value_seconds_float import DelayWithValueSecondsFloat
 from .delay_with_value_seconds_int import DelayWithValueSecondsInt
 from .delay_with_value_time_span import DelayWithValueTimeSpan
 from .dynamic_impulse_receiver import DynamicImpulseReceiver
+from .dynamic_impulse_receiver_with_object import DynamicImpulseReceiverWithObject
+from .dynamic_impulse_receiver_with_value import DynamicImpulseReceiverWithValue
 from .dynamic_impulse_trigger import DynamicImpulseTrigger
 from .dynamic_impulse_trigger_with_object import DynamicImpulseTriggerWithObject
 from .dynamic_impulse_trigger_with_value import DynamicImpulseTriggerWithValue
@@ -48,6 +50,8 @@ from .update import Update
 from .updates_timer import UpdatesTimer
 While = importlib.import_module("pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.while").While
 AsyncDynamicImpulseReceiver = importlib.import_module("pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async.async_dynamic_impulse_receiver").AsyncDynamicImpulseReceiver
+AsyncDynamicImpulseReceiverWithObject = importlib.import_module("pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async.async_dynamic_impulse_receiver_with_object").AsyncDynamicImpulseReceiverWithObject
+AsyncDynamicImpulseReceiverWithValue = importlib.import_module("pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async.async_dynamic_impulse_receiver_with_value").AsyncDynamicImpulseReceiverWithValue
 AsyncDynamicImpulseTrigger = importlib.import_module("pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async.async_dynamic_impulse_trigger").AsyncDynamicImpulseTrigger
 AsyncDynamicImpulseTriggerWithObject = importlib.import_module("pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async.async_dynamic_impulse_trigger_with_object").AsyncDynamicImpulseTriggerWithObject
 AsyncDynamicImpulseTriggerWithValue = importlib.import_module("pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async.async_dynamic_impulse_trigger_with_value").AsyncDynamicImpulseTriggerWithValue

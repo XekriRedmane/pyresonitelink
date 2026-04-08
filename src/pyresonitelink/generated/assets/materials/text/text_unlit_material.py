@@ -3,6 +3,11 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.glyph_render_method import GlyphRenderMethod
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.sidedness import Sidedness
+from pyresonitelink.generated._enums.zwrite import ZWrite
+from pyresonitelink.generated._enums.ztest import ZTest
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -14,14 +19,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextUnlitMaterial.
+    """The TextUnlitMaterial component is a material used to render text glyphs. It does so via meshes that automatically generates UV maps that map to each character on a font map. Such as Component:Text and Component:TextRenderer.
 
     Category: Assets/Materials/Text
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextUnlitMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, font_atlas: str | IAssetProvider[ITexture2D] | None = None, tint_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, background_color: primitives.ColorX | None = None, auto_background_color: primitives.Bool | None = None, pixel_range: primitives.Float | None = None, face_dilate: primitives.Float | None = None, outline_thickness: primitives.Float | None = None, face_softness: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, font_atlas: str | IAssetProvider[ITexture2D] | None = None, tint_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, background_color: primitives.ColorX | None = None, auto_background_color: primitives.Bool | None = None, glyph_render_method: GlyphRenderMethod | str | None = None, pixel_range: primitives.Float | None = None, face_dilate: primitives.Float | None = None, outline_thickness: primitives.Float | None = None, face_softness: primitives.Float | None = None, blend_mode: BlendMode | str | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, ztest: ZTest | str | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,10 +37,15 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             outline_color: Initial value for OutlineColor.
             background_color: Initial value for BackgroundColor.
             auto_background_color: Initial value for AutoBackgroundColor.
+            glyph_render_method: Initial value for GlyphRenderMethod.
             pixel_range: Initial value for PixelRange.
             face_dilate: Initial value for FaceDilate.
             outline_thickness: Initial value for OutlineThickness.
             face_softness: Initial value for FaceSoftness.
+            blend_mode: Initial value for BlendMode.
+            sidedness: Initial value for Sidedness.
+            zwrite: Initial value for ZWrite.
+            ztest: Initial value for ZTest.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
             render_queue: Initial value for RenderQueue.
@@ -56,6 +66,8 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             self.background_color = background_color
         if auto_background_color is not None:
             self.auto_background_color = auto_background_color
+        if glyph_render_method is not None:
+            self.glyph_render_method = glyph_render_method
         if pixel_range is not None:
             self.pixel_range = pixel_range
         if face_dilate is not None:
@@ -64,6 +76,14 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             self.outline_thickness = outline_thickness
         if face_softness is not None:
             self.face_softness = face_softness
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
+        if sidedness is not None:
+            self.sidedness = sidedness
+        if zwrite is not None:
+            self.zwrite = zwrite
+        if ztest is not None:
+            self.ztest = ztest
         if offset_factor is not None:
             self.offset_factor = offset_factor
         if offset_units is not None:
@@ -209,17 +229,24 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             )
 
     @property
-    def glyph_render_method(self) -> members.FieldEnum | None:
-        """The GlyphRenderMethod member."""
+    def glyph_render_method(self) -> GlyphRenderMethod | None:
+        """The GlyphRenderMethod enum value."""
         member = self.get_member("GlyphRenderMethod")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return GlyphRenderMethod(member.value)
         return None
 
     @glyph_render_method.setter
-    def glyph_render_method(self, value: members.FieldEnum) -> None:
-        """Set the GlyphRenderMethod member."""
-        self.set_member("GlyphRenderMethod", value)
+    def glyph_render_method(self, value: GlyphRenderMethod | str) -> None:
+        """Set the GlyphRenderMethod enum value."""
+        member = self.get_member("GlyphRenderMethod")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "GlyphRenderMethod",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def pixel_range(self) -> primitives.Float | None:
@@ -298,56 +325,84 @@ class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICust
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def sidedness(self) -> members.FieldEnum | None:
-        """The Sidedness member."""
+    def sidedness(self) -> Sidedness | None:
+        """The Sidedness enum value."""
         member = self.get_member("Sidedness")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Sidedness(member.value)
         return None
 
     @sidedness.setter
-    def sidedness(self, value: members.FieldEnum) -> None:
-        """Set the Sidedness member."""
-        self.set_member("Sidedness", value)
+    def sidedness(self, value: Sidedness | str) -> None:
+        """Set the Sidedness enum value."""
+        member = self.get_member("Sidedness")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Sidedness",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def ztest(self) -> members.FieldEnum | None:
-        """The ZTest member."""
+    def ztest(self) -> ZTest | None:
+        """The ZTest enum value."""
         member = self.get_member("ZTest")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZTest(member.value)
         return None
 
     @ztest.setter
-    def ztest(self, value: members.FieldEnum) -> None:
-        """Set the ZTest member."""
-        self.set_member("ZTest", value)
+    def ztest(self, value: ZTest | str) -> None:
+        """Set the ZTest enum value."""
+        member = self.get_member("ZTest")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZTest",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def offset_factor(self) -> primitives.Float | None:

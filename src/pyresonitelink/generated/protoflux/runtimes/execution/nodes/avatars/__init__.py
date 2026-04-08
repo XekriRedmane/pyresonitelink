@@ -1,6 +1,7 @@
 """Generated avatars components."""
 
 from .default_user_root_scale import DefaultUserRootScale
+from .default_user_scale import DefaultUserScale
 from .equip_avatar import EquipAvatar
 from .finger_pose import FingerPose
 from .nearest_user_foot import NearestUserFoot

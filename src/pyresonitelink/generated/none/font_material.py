@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.culling import Culling
+from pyresonitelink.generated._enums.ztest import ZTest
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text_unlit_material import TextUnlitMaterial
@@ -11,12 +13,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FontMaterial.
+    """The FontMaterial component is a Legacy component that was used for rendering text.
+
+    Don't use. Obsolete.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FontMaterial"
 
-    def __init__(self, outline_thickness: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, face_softness: primitives.Float | None = None, face_dilate: primitives.Float | None = None, render_queue: primitives.Int | None = None, converted_material: str | TextUnlitMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, outline_thickness: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, face_softness: primitives.Float | None = None, face_dilate: primitives.Float | None = None, culling: Culling | str | None = None, ztest: ZTest | str | None = None, render_queue: primitives.Int | None = None, converted_material: str | TextUnlitMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -24,6 +28,8 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
             outline_color: Initial value for OutlineColor.
             face_softness: Initial value for FaceSoftness.
             face_dilate: Initial value for FaceDilate.
+            culling: Initial value for Culling.
+            ztest: Initial value for ZTest.
             render_queue: Initial value for RenderQueue.
             converted_material: Initial value for _convertedMaterial.
             component: Existing Component to wrap.
@@ -37,6 +43,10 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.face_softness = face_softness
         if face_dilate is not None:
             self.face_dilate = face_dilate
+        if culling is not None:
+            self.culling = culling
+        if ztest is not None:
+            self.ztest = ztest
         if render_queue is not None:
             self.render_queue = render_queue
         if converted_material is not None:
@@ -44,7 +54,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def outline_thickness(self) -> primitives.Float | None:
-        """The OutlineThickness field value."""
+        """The thickness of the outer border of the characters."""
         member = self.get_member("OutlineThickness")
         if member is None:
             return None
@@ -63,7 +73,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def outline_color(self) -> primitives.ColorX | None:
-        """The OutlineColor field value."""
+        """The color of the outer border on characters."""
         member = self.get_member("OutlineColor")
         if member is None:
             return None
@@ -82,7 +92,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def face_softness(self) -> primitives.Float | None:
-        """The FaceSoftness field value."""
+        """How much to soften the edges of the characters to make them not so sharp."""
         member = self.get_member("FaceSoftness")
         if member is None:
             return None
@@ -101,7 +111,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def face_dilate(self) -> primitives.Float | None:
-        """The FaceDilate field value."""
+        """How much to puff up the characters and make them more bold."""
         member = self.get_member("FaceDilate")
         if member is None:
             return None
@@ -119,30 +129,44 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def culling(self) -> members.FieldEnum | None:
-        """The Culling member."""
+    def culling(self) -> Culling | None:
+        """The Culling enum value."""
         member = self.get_member("Culling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @culling.setter
-    def culling(self, value: members.FieldEnum) -> None:
-        """Set the Culling member."""
-        self.set_member("Culling", value)
+    def culling(self, value: Culling | str) -> None:
+        """Set the Culling enum value."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Culling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def ztest(self) -> members.FieldEnum | None:
-        """The ZTest member."""
+    def ztest(self) -> ZTest | None:
+        """The ZTest enum value."""
         member = self.get_member("ZTest")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZTest(member.value)
         return None
 
     @ztest.setter
-    def ztest(self, value: members.FieldEnum) -> None:
-        """Set the ZTest member."""
-        self.set_member("ZTest", value)
+    def ztest(self, value: ZTest | str) -> None:
+        """Set the ZTest enum value."""
+        member = self.get_member("ZTest")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZTest",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def render_queue(self) -> primitives.Int | None:
@@ -165,7 +189,7 @@ class FontMaterial(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def converted_material(self) -> str | None:
-        """Target ID of the _convertedMaterial reference (targets TextUnlitMaterial)."""
+        """The converted material version of this material."""
         member = self.get_member("_convertedMaterial")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -25,6 +25,7 @@ from .object_relay import ObjectRelay
 from .object_value_source import ObjectValueSource
 from .ref_object_input import RefObjectInput
 from .reference_as_variable import ReferenceAsVariable
+from .reference_drive import ReferenceDrive
 from .reference_interface_as_variable import ReferenceInterfaceAsVariable
 from .reference_source import ReferenceSource
 from .reference_to_output import ReferenceToOutput

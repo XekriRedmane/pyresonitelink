@@ -1,0 +1,8 @@
+{
+  "description": "The TextUnlitMaterial component is a material used to render text glyphs. It does so via meshes that automatically generates UV maps that map to each character on a font map. Such as Component:Text and Component:TextRenderer.",
+  "category": "Assets:Materials:Text",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,6 +1,8 @@
 """Generated async components."""
 
 from .async_dynamic_impulse_receiver import AsyncDynamicImpulseReceiver
+from .async_dynamic_impulse_receiver_with_object import AsyncDynamicImpulseReceiverWithObject
+from .async_dynamic_impulse_receiver_with_value import AsyncDynamicImpulseReceiverWithValue
 from .async_dynamic_impulse_trigger import AsyncDynamicImpulseTrigger
 from .async_dynamic_impulse_trigger_with_object import AsyncDynamicImpulseTriggerWithObject
 from .async_dynamic_impulse_trigger_with_value import AsyncDynamicImpulseTriggerWithValue
