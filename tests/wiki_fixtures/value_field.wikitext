@@ -1,0 +1,33 @@
+{{SHORTDESC:The ValueField component contains a single field of a specific datatype that is selected when the component is attached.}}
+<languages></languages>
+<translate>
+{{Infobox Component
+|Image=ValueField`1Component.png
+|Name=Value Field`1
+}}
+The ValueField component contains a single field of a specific datatype that is selected when the component is attached.
+
+<!--T:2-->
+== Fields ==
+{{Table ComponentFields
+|Value|'''T'''|TypeAdv0=true| The value this component is storing.
+}}
+
+<!--T:3-->
+== Usage ==
+The ValueField component can be used to store a single value on a slot that can be edited from the [[Scene Inspector|inspector]], or with other [[components]] and [[ProtoFlux]]. However, in cases where you want to be able to dynamically reference the value instead of directly referencing it, you may be better off using a [[DynamicValueVariable`1 (Component)|dynamic variable]], and in use cases where you want to easily reference and edit a value within a [[ProtoFlux]] script while still exposing that value to the data model, you may want to use the [[ProtoFlux:Data Model Store|Data Model Store]] node.
+
+<!--T:4-->
+== Examples ==
+[[File:Value Field Demo.png|thumb|A ValueField<floatQ> being used as the input of a ValueCopy<floatQ>]]
+A ValueField could be used when another [[Components|component]] requires an input of an external value.
+
+<!--T:5-->
+== See Also ==
+* [[Component:TypeField]]
+* [[Component:ReferenceField`1]]
+</translate>
+[[Category:Generics{{#translation:}}]]
+[[Category:Components{{#translation:}}|Value Field`1]]
+[[Category:Generic Components{{#translation:}}|Value Field`1]]
+[[Category:Components:Data{{#translation:}}|Value Field`1]]

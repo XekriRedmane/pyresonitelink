@@ -138,3 +138,90 @@ class TestParseAudioOutput:
             assert "]]" not in value
             assert "{{" not in value
             assert "}}" not in value
+
+
+class TestParseValueField:
+    """Tests for parsing the ValueField component wiki page.
+
+    Covers: <translate> tags, <!--T:--> comments, bold type in field,
+    generic component with usage section.
+    """
+
+    def test_description(self) -> None:
+        wikitext, expected = _load_fixture("value_field")
+        result = parse_wikitext(wikitext)
+        assert result["description"] == expected["description"]
+
+    def test_no_translate_tags_in_description(self) -> None:
+        wikitext, _ = _load_fixture("value_field")
+        result = parse_wikitext(wikitext)
+        assert "<translate" not in result["description"]
+        assert "<!--T:" not in result["description"]
+
+    def test_field_value(self) -> None:
+        wikitext, expected = _load_fixture("value_field")
+        result = parse_wikitext(wikitext)
+        assert result["fields"] == expected["fields"]
+
+    def test_usage(self) -> None:
+        wikitext, expected = _load_fixture("value_field")
+        result = parse_wikitext(wikitext)
+        assert result["usage"] == expected["usage"]
+
+    def test_category(self) -> None:
+        wikitext, expected = _load_fixture("value_field")
+        result = parse_wikitext(wikitext)
+        assert result["category"] == expected["category"]
+
+
+class TestParseWrite:
+    """Tests for parsing the Write ProtoFlux node wiki page.
+
+    Covers: {{#Invoke:ProtoFlux|GenerateUI}} multi-line template,
+    multiple == sections for inputs/outputs/globals.
+    """
+
+    def test_description_skips_template_content(self) -> None:
+        wikitext, expected = _load_fixture("write")
+        result = parse_wikitext(wikitext)
+        assert result["description"] == expected["description"]
+        # Should NOT contain JSON from the GenerateUI template
+        assert '{"Name"' not in result["description"]
+        assert "|Outputs=" not in result["description"]
+
+    def test_description_starts_with_body_text(self) -> None:
+        wikitext, _ = _load_fixture("write")
+        result = parse_wikitext(wikitext)
+        assert result["description"].startswith("Writes take Variable")
+
+    def test_notes_include_optimizations(self) -> None:
+        wikitext, expected = _load_fixture("write")
+        result = parse_wikitext(wikitext)
+        titles = [n["title"] for n in result["notes"]]
+        assert any("Optimizations" in t for t in titles)
+
+
+class TestParseLocal:
+    """Tests for parsing the Local ProtoFlux node wiki page.
+
+    Covers: stub page with body text after {{Stub}} template,
+    SHORTDESC not preferred when body exists.
+    """
+
+    def test_description_includes_body_text(self) -> None:
+        wikitext, expected = _load_fixture("local")
+        result = parse_wikitext(wikitext)
+        assert result["description"] == expected["description"]
+        assert "Local Nodes will have the default value" in result["description"]
+
+    def test_description_not_just_shortdesc(self) -> None:
+        wikitext, _ = _load_fixture("local")
+        result = parse_wikitext(wikitext)
+        # Should have more than just the SHORTDESC
+        assert len(result["description"]) > 200
+
+    def test_notes_include_scoped_variables(self) -> None:
+        wikitext, expected = _load_fixture("local")
+        result = parse_wikitext(wikitext)
+        titles = [n["title"] for n in result["notes"]]
+        assert any("Scoped Variables" in t for t in titles)

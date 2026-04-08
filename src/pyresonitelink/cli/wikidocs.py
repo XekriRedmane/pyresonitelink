@@ -109,13 +109,21 @@ def parse_wikitext(wikitext: str) -> dict:
     # Extract the long description: all body text between the last
     # template/infobox and the first == section heading.  This includes
     # paragraphs, bullet lists, etc.
-    # First, find where the body starts (after templates and infobox)
+    # Track template nesting depth to skip multi-line templates like
+    # {{#Invoke:ProtoFlux|GenerateUI ... |}}
     body_lines: list[str] = []
     in_body = False
+    template_depth = 0
     for line in wikitext.split("\n"):
         stripped = line.strip()
-        if stripped.startswith("=="):
+        if stripped.startswith("==") and template_depth == 0:
             break  # hit a section heading, stop
+        # Track template nesting
+        template_depth += line.count("{{") - line.count("}}")
+        if template_depth < 0:
+            template_depth = 0
+        if template_depth > 0:
+            continue  # inside a template, skip
         if in_body:
             body_lines.append(line)
         elif (
@@ -127,6 +135,8 @@ def parse_wikitext(wikitext: str) -> dict:
             and not stripped.startswith("<languages")
             and not stripped.startswith("<translate")
             and not stripped.startswith("</translate")
+            and not stripped.startswith("[")
+            and not stripped.startswith("]")
         ):
             in_body = True
             body_lines.append(line)

@@ -1,0 +1,63 @@
+{{SHORTDESC:Writes takes a Variable as an input and writes Value to the field Variable.}}
+{{#Invoke:ProtoFlux|GenerateUI
+|Name=Write
+|Category=Actions
+|Inputs=
+[
+{"Name":"*", "Type":"Call"},
+{"Name":"Value", "Type":"Dummy"}
+]
+|Outputs=
+[
+{"Name":"OnWritten", "Type":"Continuation"},
+{"Name":"OnFail", "Type":"Continuation"}
+]
+|Globals=
+[
+{"Name":"Variable", "Type":"IVariable`2"}
+]
+|}}
+
+Writes take Variable ([[Type:IVariable`2|Variable]]) as an input, and the type that Variable wraps will determine what Value (Generic) will take as a value. The node will then write Value (Generic) to the field Variable ([[Type:IVariable`2|Variable]]) wraps.
+
+{{Template:Direct Writes Info|Writes}}
+
+{{Template:Basic Writes Info|Writes}}
+
+== Optimizations ==
+
+The Write node can also be used to write to a Protoflux Source node instead of writing to a variable that is connected to a Drive node, enabling programs be be written with one less supporting node per Write node
+
+== Inputs ==
+
+=== * ([[Impulses|Call]]) === 
+
+Call this to write the value.
+
+=== Value (Generic) ===
+
+[[:Category:Type|Value]] to write to the value pointed to by Variable ([[Type:IVariable`2|Variable]])
+
+== Outputs ==
+
+=== OnWritten ([[Impulses|Continuation]]) ===
+
+sends an impulse after * ([[Impulses|Call]]) has been impulsed and the value has been written.
+
+=== OnFail ([[Impulses|Continuation]]) ===
+
+sends an impulse after * ([[Impulses|Call]]) has been impulsed and the value wasn't able to be written due to a missing target or a missing Variable ([[Type:IVariable`2|Variable]]) value
+
+== Globals ==
+
+=== Variable ([[Type:IVariable`2|Variable]] Generic)===
+
+The [[Type:IVariable`2|Variable]] to write to.
+
+== Examples ==
+
+<gallery widths="480" heights="480">
+File:WriteNode ConnectASourceToVariable.png|Example showing how to connect a source value to a write node by dragging a ribbon to the variable
+</gallery>
+
+[[Category:ProtoFlux:Actions]]

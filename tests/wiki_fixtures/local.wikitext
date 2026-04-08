@@ -1,0 +1,31 @@
+{{SHORTDESC:This page is missing content because it needs many more examples, since this node is quite a complex topic. TODO: Maybe explain this in reference to variables in programming?}}
+{{#Invoke:ProtoFlux|GenerateUI
+|Name=Local
+|Category=Variables
+|Outputs=
+[
+{"Name":"*", "Type":"Dummy"}
+]
+|}}
+
+{{Stub}} 
+
+This page is missing content because it needs many more examples, since this node is quite a complex topic. TODO: Maybe explain this in reference to variables in programming?
+
+[[ProtoFlux:Local|Local Nodes]] will have the default value for their data type until written to during a context. During that context, the local node will keep the value from every write and change to it. Once the context is released, the value instantly returns to the default value, discarding the data, preventing it from being seen or networked. However, if its value is written to a [[ProtoFlux:Data Model Store|Data Model Store]] it will persist, allowing it to be seen by everyone in the session through the network.
+
+{{Template:Variable_Name_ProtoFlux}}
+
+== Locals as Scoped Variables ==
+Local nodes represent a scoped, mutable value which is commonly called a variable. Unlike [[ProtoFlux:Store]] and [[ProtoFlux:Data Model Store]], Local is scoped to an individual impulse context. This is similar to a variable that is defined inside of a function in an imperative programming language like [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#hoisting JavaScript's var keyword], etc. Upon entering the value is initialized, and it is discarded once it goes out of scope. Like with variables in functions, every ProtoFlux ''impulse context'' also has its own independent (not shared) variable.
+
+Unlike most programming languages, a local can be referenced from outside of a context (which would be like accessing a variable from outside the function it it declared). However, outside of any context, the local will just be whatever the default value of the type is. This is a common confusion in ProtoFlux: just because you can pull a wire from a local node doesn't mean that there is anything actually there. If you need to read/write to a variable outside of contexts, use a global and persistent variable like [[ProtoFlux:Store]] or [[ProtoFlux:Data Model Store]].
+
+== See Also ==
+
+* [[Impulses#Contexts|Contexts]]
+* [[ProtoFlux:Store]] for the globally accessible version of this node
+* [[ProtoFlux:Data Model Store]] for the network synchronized version of this node
+
+[[Category:ProtoFlux:Variables]]
+[[Category:IVariable nodes]]
