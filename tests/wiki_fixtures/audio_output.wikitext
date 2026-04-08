@@ -1,0 +1,52 @@
+{{SHORTDESC:Audio Output is a component that is used to output sound from any kind of IAudioSource. This includes but is not limited to: Audio streams, audio clip players, and voices.}}
+<!--T:1-->
+{{Infobox Component
+|Image=AudioOutputComponent.png
+|Name=Audio Output
+}}
+Audio Output is a component that is used to output sound from any kind of IAudioSource. This includes but is not limited to: Audio streams, audio clip players, and voices. 
+
+== Fields == <!--T:2-->
+{{Table ComponentFields
+|Volume|Float| The volume to play the clip at, from 0 to 1.
+|Source|IAudioSource| The source of audio. Can be an [[AudioClipPlayer (Component)|AudioClipPlayer]], [[LerpingMultiClipPlayer (Component)|LerpingMultiClipPlayer]], or [[MultiAudioClipPlayer (Component)|MultiAudioClipPlayer]].
+|SpatialBlend|Float| Blends the the audio between 3D & 2D.
+|Spatialize|Bool| Enables or disables rather it's 3D or 2D.
+|DopplerLevel|Float| Simulates audio distortion when you or the object is moving.
+|RolloffMode|AudioRolloffMode| Switches between logarithmic and Linear audio falloff.
+|MinDistance|Float| Minimum distance you need to be from the source to hear the audio.
+|MaxDistance|Float| Maximum distance from the source until you no longer hear the audio.
+|Priority|Int| see [https://docs.unity3d.com/ScriptReference/AudioSource-priority.html Unity audio source priority]
+|AudioTypeGroup|AudioTypeGroup| Changes what track of Audio the source should be. SoundEffects, Multimedia, Voice, User Interface.
+|DistanceSpace|AudioDistanceSpace| Chooses rather the audio should use it's local scale or it's global scale.
+|MinScale|Float| See [[#Min and Max Scale|Min and Max Scale]]
+|MaxScale|Float| See [[#Min and Max Scale|Min and Max Scale]]
+|IgnoreReverbZones|Bool| If the Audio Source should ignore Reverb Zones.
+|excludedUsers|{{RootFieldType|SyncRefList`1|[[Type:User|User]]}}|TypeAdv14=true| User references placed in here will be excluded from hearing the audio.
+}}
+
+== Sync Delegates ==
+{{Table ComponentTriggers
+|ExludeUser:[[Type:Action`1|Action`1]]&lt;[[Type:User|User]]&gt;|[[Type:Action`1|Action`1]]&lt;[[Type:User|User]]&gt;|false| Excludes the User provided to it, so that user cannot hear this audio output.
+|ExludeLocalUser:[[Type:Action|Action]]|[[Type:Action|Action]]|false| Excludes the local user running this sync method, so they cannot hear this audio output.
+|RemoveLocalExcludedUser:[[Type:Action|Action]]|[[Type:Action|Action]]|false| if currently excluded, makes it to where the local user running this sync method is no longer excluded from hearing this audio output.
+|RemoveExludedUser:[[Type:Action`1|Action`1]]&lt;[[Type:User|User]]&gt;|[[Type:Action`1|Action`1]]&lt;[[Type:User|User]]&gt;|false| If provided user is currently excluded, makes it so that the provided user is no longer excluded from hearing this audio output.
+|ClearExludedUsers:[[Type:Action|Action]]|[[Type:Action|Action]]|false|Clears all excluded users from the list
+|IsUserExluded:[[Type:Func`2|Func`2]]&lt;[[Type:User|User]], [[Type:Bool|Bool]]&gt;|[[Type:Func`2|Func`2]]&lt;[[Type:User|User]], [[Type:Bool|Bool]]&gt;|false| When provided a user, this function returns whether or not that user is excluded from hearing this audio clip.
+}}
+
+== Min and Max scale ==
+If <code>AudioDistanceSpace</code> is set to Local, then first the scale's XYZ values are averaged. then that number is clamped between <code>MinScale</code> and <code>MaxScale</code>. Finally <code>MinDistance</code> and <code>MaxDistance</code> are multipled by the number, and set to the results. Basically scaling min and max distances up/down.
+
+== Usage == <!--T:3-->
+Audio Output is used to Output audio from a large variety of audio sources. From Audio Clips, Audio Streams, Opus Streams, etc. Be careful with how many Audio Outputs you have in a world at once or the Audio Buffer can be overfilled and you wont hear anymore Audio Sources until it's cleared. You can negate this by disabling the hierarchy of the Component or the Component itself when it's not in use.
+
+== Examples == <!--T:4-->
+In this example. I'm using a [[AudioClipPlayer (Component)|AudioClipPlayer]] that's going into the Audio Output Source. I set it's volume to .5 so it plays at half volume, disabled DopplerLevel by setting it to 0, changed it's RolloffMode to Linear drop off and made it so you'll only only hear the audio from 5 meters away. I also made it so a specific user can not hear the audio.<br>
+[[File:AudioOutputExample.png|500px]]
+
+== See Also == <!--T:5-->
+* [[Type:IAudioSource]]
+* [[ProtoFlux:Play One Shot]]
+[[Category:Components:Audio{{#translation:}}|Audio Output]]
+[[Category:Components{{#translation:}}|Audio Output]]
