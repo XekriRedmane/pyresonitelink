@@ -83,23 +83,68 @@ def _output_path_for_component(
     return _GENERATED_DIR / rel_path
 
 
+async def _get_type_definition_cached(
+    resolink: client.Client,
+    type_name: str,
+    cache: dict[str, dict[str, Any] | None],
+) -> dict[str, Any] | None:
+    """Fetch a type definition, using a cache to avoid repeated requests.
+
+    Args:
+        resolink: Connected ResoniteLink client.
+        type_name: Full Resonite type name.
+        cache: Shared cache mapping type name to definition (or None
+            if the request failed).
+
+    Returns:
+        The definition dict, or None if the type definition failed.
+    """
+    if type_name in cache:
+        return cache[type_name]
+    resp = await resolink.request_json(
+        messages.GetTypeDefinition(type=type_name)
+    )
+    if resp.get("success"):
+        defn = cast(dict[str, Any], resp.get("definition", {}))
+        cache[type_name] = defn
+        return defn
+    cache[type_name] = None
+    return None
+
+
+# Cache for _collect_component_interfaces results, keyed by
+# component type's simple class name.
+_interface_cache: dict[str, list[str]] = {}
+
+
 async def _collect_component_interfaces(
     resolink: client.Client,
     component_type: str,
+    type_def_cache: dict[str, dict[str, Any] | None] | None = None,
 ) -> list[str]:
     """Collect all interface type strings implemented by a component.
 
     Traces the component's base type chain via ``GetTypeDefinition``
-    and collects every interface reported at each level.
+    and collects every interface reported at each level.  Results are
+    cached so repeated calls for the same base type chain are free.
 
     Args:
         resolink: Connected ResoniteLink client.
         component_type: Full Resonite component type name.
+        type_def_cache: Optional shared cache for GetTypeDefinition
+            responses.
 
     Returns:
         List of full Resonite interface type strings (e.g.
         ``"[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<>"``).
     """
+    cache_key = _simple_class_name(component_type)
+    if cache_key in _interface_cache:
+        return _interface_cache[cache_key]
+
+    if type_def_cache is None:
+        type_def_cache = {}
+
     interfaces: list[str] = []
     seen_ifaces: set[str] = set()
     types_to_visit = [component_type]
@@ -112,12 +157,11 @@ async def _collect_component_interfaces(
             continue
         visited.add(simple)
 
-        resp = await resolink.request_json(
-            messages.GetTypeDefinition(type=t)
+        type_def = await _get_type_definition_cached(
+            resolink, t, type_def_cache,
         )
-        if not resp.get("success"):
+        if type_def is None:
             continue
-        type_def = cast(dict[str, Any], resp.get("definition", {}))
 
         # Collect interfaces
         for iface in (type_def.get("interfaces") or []):
@@ -135,6 +179,7 @@ async def _collect_component_interfaces(
             if base_type and _simple_class_name(base_type) not in visited:
                 types_to_visit.append(base_type)
 
+    _interface_cache[cache_key] = interfaces
     return interfaces
 
 
@@ -144,6 +189,7 @@ async def _generate_type_hierarchy(
     generated: set[str],
     all_type_defs: dict[str, dict[str, Any]],
     dry_run: bool,
+    type_def_cache: dict[str, dict[str, Any] | None] | None = None,
 ) -> None:
     """Recursively generate a type and all types it references.
 
@@ -165,6 +211,9 @@ async def _generate_type_hierarchy(
     if (len(cls_name) <= 2 and cls_name.isupper()) or _is_primitive_wire_name(resonite_type):
         return
     generated.add(cls_name)
+
+    if type_def_cache is None:
+        type_def_cache = {}
 
     # In Resonite, non-generic X and generic X<> are separate types where
     # X<> inherits from X. In Python we merge them into one class: the
@@ -269,6 +318,7 @@ async def _generate_type_hierarchy(
         if dep_cls not in generated:
             await _generate_type_hierarchy(
                 resolink, dep, generated, all_type_defs, dry_run,
+                type_def_cache,
             )
 
     # Now generate this type
@@ -294,6 +344,8 @@ async def _generate_component(
     generated: set[str],
     all_type_defs: dict[str, dict[str, Any]],
     dry_run: bool,
+    type_def_cache: dict[str, dict[str, Any] | None] | None = None,
+    temp_slot_id: str | None = None,
 ) -> None:
     """Generate a component and recursively generate referenced types.
 
@@ -303,7 +355,13 @@ async def _generate_component(
         generated: Set of already-generated class names.
         all_type_defs: Accumulator for all fetched TypeDefinitions.
         dry_run: If True, print source instead of writing.
+        type_def_cache: Shared cache for GetTypeDefinition responses.
+        temp_slot_id: Reusable temp slot ID for instantiating
+            non-generic components.  If None, one is created and
+            destroyed per component.
     """
+    if type_def_cache is None:
+        type_def_cache = {}
     cls_name = _simple_class_name(component_type)
     if cls_name in generated:
         return
@@ -329,19 +387,22 @@ async def _generate_component(
     comp_data: dict[str, Any] | None = None
     is_generic = "<>" in component_type
     if not is_generic:
-        slot_resp = await resolink.request_json(
-            messages.AddSlot(
-                data=workers.Slot(
-                    parent=members.Reference(targetId="Root"),
-                    name=fields.FieldString(value="__gencode_temp__"),
+        # Reuse the shared temp slot if provided, otherwise create one
+        owns_slot = temp_slot_id is None
+        if owns_slot:
+            slot_resp = await resolink.request_json(
+                messages.AddSlot(
+                    data=workers.Slot(
+                        parent=members.Reference(targetId="Root"),
+                        name=fields.FieldString(value="__gencode_temp__"),
+                    )
                 )
             )
-        )
-        slot_id = cast(str, slot_resp.get("entityId"))
+            temp_slot_id = cast(str, slot_resp.get("entityId"))
 
         add_resp = await resolink.request_json(
             messages.AddComponent(
-                containerSlotId=slot_id,
+                containerSlotId=temp_slot_id,
                 data=workers.Component(componentType=component_type),
             )
         )
@@ -353,8 +414,16 @@ async def _generate_component(
             raw_data = comp_json.get("data")
             if isinstance(raw_data, dict):
                 comp_data = cast(dict[str, Any], raw_data)
+            # Remove the component to keep the slot clean
+            await resolink.request_json(
+                messages.RemoveComponent(componentId=comp_id)
+            )
 
-        await resolink.request_json(messages.RemoveSlot(slotId=slot_id))
+        if owns_slot:
+            await resolink.request_json(
+                messages.RemoveSlot(slotId=temp_slot_id)
+            )
+            temp_slot_id = None
 
     # Generate referenced types first
     ref_targets = get_reference_target_types(definition, comp_data)
@@ -372,16 +441,18 @@ async def _generate_component(
                     await _generate_component(
                         resolink, ref_base, generated,
                         all_type_defs, dry_run,
+                        type_def_cache, temp_slot_id,
                     )
                 else:
                     await _generate_type_hierarchy(
                         resolink, ref_base, generated,
                         all_type_defs, dry_run,
+                        type_def_cache,
                     )
 
     # Collect interfaces implemented by this component
     component_interfaces = await _collect_component_interfaces(
-        resolink, component_type,
+        resolink, component_type, type_def_cache,
     )
 
     # Ensure interface types have _types/ stubs generated
@@ -392,6 +463,7 @@ async def _generate_component(
                 await _generate_type_hierarchy(
                     resolink, ref_base, generated,
                     all_type_defs, dry_run,
+                    type_def_cache,
                 )
 
     # Generate this component
@@ -509,11 +581,33 @@ async def generate(
 
     generated: set[str] = set()
     all_type_defs: dict[str, dict[str, Any]] = {}
+    type_def_cache: dict[str, dict[str, Any] | None] = {}
+
+    # Create a reusable temp slot for instantiating non-generic
+    # components.  This avoids creating/destroying a slot for each
+    # component, saving 2 round-trips per component.
+    temp_slot_resp = await resolink.request_json(
+        messages.AddSlot(
+            data=workers.Slot(
+                parent=members.Reference(targetId="Root"),
+                name=fields.FieldString(value="__gencode_temp__"),
+            )
+        )
+    )
+    temp_slot_id = cast(str, temp_slot_resp.get("entityId"))
+
+    # Clear the global interface cache so stale data from a previous
+    # run doesn't carry over.
+    _interface_cache.clear()
 
     await _generate_component(
         resolink, component_type, generated,
         all_type_defs, dry_run,
+        type_def_cache, temp_slot_id,
     )
+
+    # Clean up temp slot
+    await resolink.request_json(messages.RemoveSlot(slotId=temp_slot_id))
 
     if not dry_run:
         # Rebuild __init__.py re-exports for all category directories
