@@ -265,6 +265,69 @@ async def _find_existing_space(
     return False
 
 
+async def _is_slot_or_child(
+    resolink: protocols.ResoniteLinkClient,
+    parent: workers.Slot,
+    candidate: workers.Slot,
+) -> bool:
+    """Check if candidate is equal to or a recursive child of parent.
+
+    Args:
+        resolink: Connected client.
+        parent: The ancestor slot.
+        candidate: The slot to check.
+
+    Returns:
+        True if candidate is parent or a descendant of parent.
+    """
+    if parent.id == candidate.id:
+        return True
+    # Walk up the candidate's parent chain
+    current = candidate
+    while True:
+        slot_data = await resolink.get_slot(slot=current, depth=0)
+        if slot_data.data is None or slot_data.data.parent is None:
+            return False
+        parent_id = slot_data.data.parent.target
+        if parent_id is None:
+            return False
+        if parent_id == parent.id:
+            return True
+        current = workers.Slot(id=parent_id)
+
+
+async def _find_existing_variable(
+    resolink: protocols.ResoniteLinkClient,
+    slot: workers.Slot,
+    variable_name: str,
+    component_type: str,
+) -> bool:
+    """Check if a DynamicValueVariable with the given name exists on a slot.
+
+    Args:
+        resolink: Connected client.
+        slot: The slot to search.
+        variable_name: The variable name to look for.
+        component_type: The concrete DynamicValueVariable component type
+            string (e.g. ``"...DynamicValueVariable<float>"``).
+
+    Returns:
+        True if a matching variable already exists.
+    """
+    from pyresonitelink.components.data.dynamic import DynamicValueVariable
+
+    slot_data = await resolink.get_slot(slot=slot, depth=0)
+    if slot_data.data is None:
+        return False
+    for comp in slot_data.data.components:
+        if comp.componentType != component_type:
+            continue
+        existing = DynamicValueVariable(component=comp)
+        if existing.variable_name == variable_name:
+            return True
+    return False
+
+
 async def _build_space(
     ctx: _BuildContext,
     space: _space.Space,
@@ -272,7 +335,9 @@ async def _build_space(
     """Create the DynamicVariableSpace and its variables on the server.
 
     If a DynamicVariableSpace with the same name already exists on the
-    slot, it is reused and no new space component is created.
+    slot, it is reused and no new space component is created.  Variables
+    are also only created if they don't already exist on their target
+    slot.
     """
     from pyresonitelink.components.data.dynamic import (
         DynamicValueVariable,
@@ -293,9 +358,29 @@ async def _build_space(
         space, "_vars",
     )
     for decl in vars_dict.values():
+        # Determine which slot to place the variable on
+        var_slot = decl.slot if decl.slot is not None else slot
+
+        # Validate slot hierarchy if a custom slot was specified
+        if decl.slot is not None:
+            is_valid = await _is_slot_or_child(
+                ctx.resolink, slot, decl.slot,
+            )
+            if not is_valid:
+                raise ValueError(
+                    f"Variable '{decl.path}' slot {decl.slot.id} is not "
+                    f"equal to or a child of the space's slot {slot.id}."
+                )
+
         ConcreteVar = DynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
-        var_comp = ConcreteVar(variable_name=decl.path)
-        await var_comp.add_to_slot(ctx.resolink, slot)
+
+        # Only create if it doesn't already exist on the target slot
+        var_exists = await _find_existing_variable(
+            ctx.resolink, var_slot, decl.path, ConcreteVar.COMPONENT_TYPE,
+        )
+        if not var_exists:
+            var_comp = ConcreteVar(variable_name=decl.path)
+            await var_comp.add_to_slot(ctx.resolink, var_slot)
 
 
 async def _build_if_context(

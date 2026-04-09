@@ -13,7 +13,6 @@ from pyresonitelink.dergflux import _expr
 from pyresonitelink.dergflux import _flow
 from pyresonitelink.dergflux import _graph
 from pyresonitelink.dergflux import _space
-from pyresonitelink.dergflux import _types
 
 
 # =========================================================================
@@ -25,38 +24,56 @@ class TestTypeInference:
     """Tests for _types module."""
 
     def test_infer_result_type_prefers_left(self) -> None:
+        from pyresonitelink.dergflux import _types
+
         result = _types.infer_result_type(primitives.Int, primitives.Float)
         assert result is primitives.Int
 
     def test_infer_result_type_falls_back_to_right(self) -> None:
+        from pyresonitelink.dergflux import _types
+
         result = _types.infer_result_type(None, primitives.Float)
         assert result is primitives.Float
 
     def test_infer_result_type_both_none(self) -> None:
+        from pyresonitelink.dergflux import _types
+
         result = _types.infer_result_type(None, None)
         assert result is None
 
     def test_resolve_const_type_uses_context(self) -> None:
+        from pyresonitelink.dergflux import _types
+
         result = _types.resolve_const_type(42, primitives.Float)
         assert result is primitives.Float
 
     def test_resolve_const_type_maps_int(self) -> None:
+        from pyresonitelink.dergflux import _types
+
         result = _types.resolve_const_type(42, None)
         assert result is primitives.Int
 
     def test_resolve_const_type_maps_float(self) -> None:
+        from pyresonitelink.dergflux import _types
+
         result = _types.resolve_const_type(3.14, None)
         assert result is primitives.Float
 
     def test_resolve_const_type_maps_bool(self) -> None:
+        from pyresonitelink.dergflux import _types
+
         result = _types.resolve_const_type(True, None)
         assert result is primitives.Bool
 
     def test_resolve_const_type_maps_str(self) -> None:
+        from pyresonitelink.dergflux import _types
+
         result = _types.resolve_const_type("hello", None)
         assert result is primitives.String
 
     def test_resolve_const_type_unknown_defaults_to_float(self) -> None:
+        from pyresonitelink.dergflux import _types
+
         result = _types.resolve_const_type(object(), None)
         assert result is primitives.Float
 
@@ -211,16 +228,65 @@ class TestSpace:
         s = g.Space(slot)
         return g, s
 
-    def test_declare_variable(self) -> None:
+    def test_declare_float_var(self) -> None:
         g, s = self._make_graph_and_space()
-        s.x = g.Float("x")
+        s.x = s.FloatVar("x")
         vars_dict = object.__getattribute__(s, "_vars")
         assert "x" in vars_dict
         assert vars_dict["x"].resonite_type is primitives.Float
 
+    def test_declare_int_var(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.n = s.IntVar("n")
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["n"].resonite_type is primitives.Int
+
+    def test_declare_bool_var(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.flag = s.BoolVar("flag")
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["flag"].resonite_type is primitives.Bool
+
+    def test_declare_string_var(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.name = s.StringVar("name")
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["name"].resonite_type is primitives.String
+
+    def test_declare_float3_var(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.pos = s.Float3Var("pos")
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["pos"].resonite_type is primitives.Float3
+
+    def test_declare_colorx_var(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.col = s.ColorXVar("col")
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["col"].resonite_type is primitives.ColorX
+
+    def test_declare_var_with_explicit_type(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.x = s.Var("x", primitives.Double)
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["x"].resonite_type is primitives.Double
+
+    def test_declare_var_with_slot(self) -> None:
+        g, s = self._make_graph_and_space()
+        child = workers.Slot(id="child-slot")
+        s.x = s.FloatVar("x", slot=child)
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["x"].slot is child
+
+    def test_declare_var_default_no_slot(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.x = s.FloatVar("x")
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["x"].slot is None
+
     def test_read_declared_variable(self) -> None:
         g, s = self._make_graph_and_space()
-        s.x = g.Float("x")
+        s.x = s.FloatVar("x")
         proxy = s.x
         assert isinstance(proxy, _expr.ExprProxy)
         assert isinstance(proxy._node, _expr.VarReadNode)
@@ -234,14 +300,14 @@ class TestSpace:
 
     def test_write_outside_flow_raises(self) -> None:
         g, s = self._make_graph_and_space()
-        s.z = g.Float("z")
+        s.z = s.FloatVar("z")
         with pytest.raises(RuntimeError, match="outside a flow context"):
             s.z = s.z + 1
 
     def test_write_inside_if_records(self) -> None:
         g, s = self._make_graph_and_space()
-        s.x = g.Float("x")
-        s.z = g.Float("z")
+        s.x = s.FloatVar("x")
+        s.z = s.FloatVar("z")
         with g.If(s.x < 3):
             s.z = s.x + 3
         assert len(g._completed_flows) == 1
@@ -253,6 +319,23 @@ class TestSpace:
         g, s = self._make_graph_and_space()
         s._private = 42
         assert s._private == 42
+
+    def test_all_var_types_registered(self) -> None:
+        """Verify all _VAR_TYPES produce valid VarDecl objects."""
+        g, s = self._make_graph_and_space()
+        for method_name, expected_type in _space._VAR_TYPES.items():
+            factory = getattr(s, method_name)
+            decl = factory("test")
+            assert isinstance(decl, _space.VarDecl)
+            assert decl.resonite_type is expected_type
+            assert decl.path == "test"
+
+    def test_var_type_with_slot_kwarg(self) -> None:
+        """Verify that Var factory methods accept a slot keyword argument."""
+        g, s = self._make_graph_and_space()
+        child = workers.Slot(id="child")
+        decl = s.DoubleVar("d", slot=child)
+        assert decl.slot is child
 
 
 # =========================================================================
@@ -268,8 +351,8 @@ class TestFlowControl:
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
-        s.x = g.Float("x")
-        s.z = g.Float("z")
+        s.x = s.FloatVar("x")
+        s.z = s.FloatVar("z")
         return g, s
 
     def test_if_records_condition(self) -> None:
@@ -312,7 +395,7 @@ class TestFlowControl:
 
     def test_multiple_ifs(self) -> None:
         g, s = self._make_graph_and_space()
-        s.y = g.Float("y")
+        s.y = s.FloatVar("y")
         with g.If(s.x < 3):
             s.z = s.x + 3
         with g.If(s.x > 10):
@@ -328,7 +411,7 @@ class TestFlowControl:
 
     def test_multiple_writes_in_branch(self) -> None:
         g, s = self._make_graph_and_space()
-        s.y = g.Float("y")
+        s.y = s.FloatVar("y")
         with g.If(s.x < 3):
             s.z = s.x + 3
             s.y = s.x + 10
@@ -386,6 +469,12 @@ class TestVarDecl:
         decl = _space.VarDecl("x", primitives.Float)
         assert decl.path == "x"
         assert decl.resonite_type is primitives.Float
+        assert decl.slot is None
+
+    def test_vardecl_with_slot(self) -> None:
+        slot = workers.Slot(id="child")
+        decl = _space.VarDecl("x", primitives.Float, slot=slot)
+        assert decl.slot is slot
 
 
 # =========================================================================
@@ -396,32 +485,22 @@ class TestVarDecl:
 class TestGraph:
     """Tests for Graph factory methods."""
 
-    def test_float_returns_vardecl(self) -> None:
-        g = _graph.Graph()
-        decl = g.Float("x")
-        assert isinstance(decl, _space.VarDecl)
-        assert decl.resonite_type is primitives.Float
-
-    def test_int_returns_vardecl(self) -> None:
-        g = _graph.Graph()
-        decl = g.Int("n")
-        assert isinstance(decl, _space.VarDecl)
-        assert decl.resonite_type is primitives.Int
-
-    def test_bool_returns_vardecl(self) -> None:
-        g = _graph.Graph()
-        decl = g.Bool("flag")
-        assert isinstance(decl, _space.VarDecl)
-        assert decl.resonite_type is primitives.Bool
-
-    def test_string_returns_vardecl(self) -> None:
-        g = _graph.Graph()
-        decl = g.String("name")
-        assert isinstance(decl, _space.VarDecl)
-        assert decl.resonite_type is primitives.String
-
     def test_space_registers(self) -> None:
         g = _graph.Graph()
         slot = workers.Slot(id="slot1")
         s = g.Space(slot)
         assert s in g._spaces
+
+    def test_space_with_name(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="slot1")
+        s = g.Space(slot, name="MySpace")
+        space_name = object.__getattribute__(s, "_space_name")
+        assert space_name == "MySpace"
+
+    def test_space_without_name(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="slot1")
+        s = g.Space(slot)
+        space_name = object.__getattribute__(s, "_space_name")
+        assert space_name is None

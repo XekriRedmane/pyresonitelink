@@ -10,7 +10,6 @@ from __future__ import annotations
 from contextlib import contextmanager
 from typing import TYPE_CHECKING, Iterator
 
-from pyresonitelink.data import primitives
 from pyresonitelink.dergflux import _flow
 from pyresonitelink.dergflux import _space
 
@@ -26,8 +25,8 @@ class Graph:
 
         g = Graph()
         s = g.Space(slot)
-        s.x = g.Float("x")
-        s.z = g.Float("z")
+        s.x = s.FloatVar("x")
+        s.z = s.FloatVar("z")
 
         with g.If(s.x < 3):
             s.z = s.x + 3
@@ -41,24 +40,6 @@ class Graph:
         self._spaces: list[_space.Space] = []
         self._flow_stack: list[_flow.IfContext] = []
         self._completed_flows: list[_flow.IfContext] = []
-
-    # --- Variable type helpers ---
-
-    def Float(self, path: str) -> _space.VarDecl:
-        """Declare a float dynamic variable."""
-        return _space.VarDecl(path, primitives.Float)
-
-    def Int(self, path: str) -> _space.VarDecl:
-        """Declare an int dynamic variable."""
-        return _space.VarDecl(path, primitives.Int)
-
-    def Bool(self, path: str) -> _space.VarDecl:
-        """Declare a bool dynamic variable."""
-        return _space.VarDecl(path, primitives.Bool)
-
-    def String(self, path: str) -> _space.VarDecl:
-        """Declare a string dynamic variable."""
-        return _space.VarDecl(path, primitives.String)
 
     # --- Space factory ---
 
