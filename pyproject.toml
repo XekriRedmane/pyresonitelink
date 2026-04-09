@@ -17,7 +17,8 @@ dependencies = [
 [project.scripts]
 resonite-tree = "pyresonitelink.cli.tree:main"
 resonite-dumptree = "pyresonitelink.cli.dumptree:main"
-resonite-gencomponent = "pyresonitelink.cli.gencomponent:main"
+resonite-gencode = "pyresonitelink.cli.gencode:main"
+resonite-wikidocs = "pyresonitelink.cli.wikidocs:main"
 
 [build-system]
 requires = ["uv_build>=0.9.13,<0.10.0"]
@@ -26,9 +27,11 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "build>=1.4.0",
+    "coverage>=7.13.0",
     "mypy>=1.19.1",
     "pytest>=9.0.2",
     "pytest-asyncio>=0.25.0",
+    "pytest-cov>=7.1.0",
     "textual-dev>=1.8.0",
     "types-jsonschema>=4.26.0",
 ]
