@@ -308,3 +308,62 @@ class TestStripTemplatesDefensive:
         from pyresonitelink.cli.wikidocs import _strip_templates
         result = _strip_templates("normal {{unclosed text")
         assert "{{unclosed" in result  # left as-is
+
+
+class TestDefensiveGuards:
+    """Synthetic inputs that exercise every defensive guard in parse_wikitext.
+
+    These are crafted strings, not real wiki pages.
+    """
+
+    def test_stray_closing_braces_before_body(self) -> None:
+        """Stray }} before body text should not crash (line 124)."""
+        wikitext = (
+            "{{SHORTDESC:test}}\n"
+            "}}\n"
+            "}}\n"
+            "Body text after stray braces.\n"
+            "== Section ==\n"
+        )
+        result = parse_wikitext(wikitext)
+        assert result["description"] == "Body text after stray braces."
+
+    def test_malformed_template_in_fields_block(self) -> None:
+        """Template with inner braces that regex can't strip (line 191).
+
+        {{a{b}} contains a bare { inside, which [^{}]* won't match,
+        so the iterative stripping gets stuck and breaks. The brace-depth
+        parser sees {{ and }} balancing at the outer level, so the field
+        text is extracted — but the inner stripping can't resolve it.
+        """
+        wikitext = (
+            "== Fields ==\n"
+            "{{Table ComponentFields\n"
+            "|Good|Int| A good field.\n"
+            "|Bad|Int| Has {{a{b}} in description.\n"
+            "}}\n"
+        )
+        result = parse_wikitext(wikitext)
+        assert "Good" in result["fields"]
+
+    def test_template_placeholder_in_description_parts(self) -> None:
+        """__TPL__ in description position (part 3+) is skipped (line 212)."""
+        wikitext = (
+            "== Fields ==\n"
+            "{{Table ComponentFields\n"
+            "|MyField|Int|{{SomeTemplate}}| The real description.\n"
+            "}}\n"
+        )
+        result = parse_wikitext(wikitext)
+        assert result["fields"]["MyField"] == "The real description."
+
+    def test_nested_template_in_triggers_block(self) -> None:
+        """Nested {{...}} inside triggers block (lines 231-232, 238)."""
+        wikitext = (
+            "== Sync Delegates ==\n"
+            "{{Table ComponentTriggers\n"
+            "|Method:{{Type|Action}}|{{Type|Action}}|false| Does something.\n"
+            "}}\n"
+        )
+        result = parse_wikitext(wikitext)
+        assert result["methods"]["Method"] == "Does something."
