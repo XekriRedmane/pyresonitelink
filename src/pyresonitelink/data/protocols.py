@@ -22,6 +22,14 @@ class ResoniteLinkClient(Protocol):
     wrappers) depends only on this protocol, avoiding circular imports.
     """
 
+    async def get_slot(
+        self,
+        slot: str | workers.Slot,
+        depth: int = 0,
+        includeComponentData: bool = False,
+        debug: bool = False,
+    ) -> responses.SlotData: ...
+
     async def add_component(
         self,
         containerSlotId: str | workers.Slot,
