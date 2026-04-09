@@ -1,0 +1,9 @@
+{{SHORTDESC:A synthetic page with only SHORTDESC and no body text.}}
+{{Infobox Component
+|Image=Fake.png
+|Name=ShortDescOnly
+}}
+== Fields ==
+{{Table ComponentFields
+|Value|Int| The value.
+}}

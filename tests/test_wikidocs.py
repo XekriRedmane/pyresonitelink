@@ -225,3 +225,86 @@ class TestParseLocal:
         result = parse_wikitext(wikitext)
         titles = [n["title"] for n in result["notes"]]
         assert any("Scoped Variables" in t for t in titles)
+
+
+class TestSyntheticDefensive:
+    """Tests using synthetic wikitext to exercise defensive code paths.
+
+    These are fake documents specifically designed to test edge cases
+    that don't occur in well-formed wiki pages but are handled
+    defensively in the parser.
+    """
+
+    def test_shortdesc_fallback_when_no_body(self) -> None:
+        """SHORTDESC is used when there is no body text before == heading."""
+        wikitext, expected = _load_fixture("synthetic_defensive")
+        result = parse_wikitext(wikitext)
+        assert result["description"] == expected["description"]
+
+    def test_non_pipe_line_skipped_in_fields(self) -> None:
+        """Lines not starting with | in the fields block are skipped."""
+        wikitext, expected = _load_fixture("synthetic_defensive")
+        result = parse_wikitext(wikitext)
+        assert "FieldA" in result["fields"]
+        # The "This line does not start with |" is skipped
+
+    def test_too_few_parts_skipped_in_fields(self) -> None:
+        """Field lines with <4 pipe-separated parts are skipped."""
+        wikitext, expected = _load_fixture("synthetic_defensive")
+        result = parse_wikitext(wikitext)
+        # |B|Int has only 3 parts — should be skipped
+        assert "B" not in result["fields"]
+
+    def test_template_placeholder_in_type_column(self) -> None:
+        """Fields with {{RootFieldType}} get __TPL__ in type column."""
+        wikitext, expected = _load_fixture("synthetic_defensive")
+        result = parse_wikitext(wikitext)
+        assert result["fields"]["FieldD"] == expected["fields"]["FieldD"]
+        assert "__TPL__" not in result["fields"]["FieldD"]
+
+    def test_non_pipe_line_skipped_in_triggers(self) -> None:
+        """Lines not starting with | in the triggers block are skipped."""
+        wikitext, expected = _load_fixture("synthetic_defensive")
+        result = parse_wikitext(wikitext)
+        assert "MethodA" in result["methods"]
+
+    def test_too_few_parts_skipped_in_triggers(self) -> None:
+        """Trigger lines with <5 pipe-separated parts are skipped."""
+        wikitext, expected = _load_fixture("synthetic_defensive")
+        result = parse_wikitext(wikitext)
+        # |Too|Few|Parts has only 4 parts — should be skipped
+        assert "Too" not in result["methods"]
+
+    def test_all_fields_match(self) -> None:
+        wikitext, expected = _load_fixture("synthetic_defensive")
+        result = parse_wikitext(wikitext)
+        assert result["fields"] == expected["fields"]
+
+    def test_all_methods_match(self) -> None:
+        wikitext, expected = _load_fixture("synthetic_defensive")
+        result = parse_wikitext(wikitext)
+        assert result["methods"] == expected["methods"]
+
+
+class TestSyntheticShortDescOnly:
+    """Tests using a synthetic page that has only SHORTDESC and no body."""
+
+    def test_shortdesc_used_as_description(self) -> None:
+        wikitext, expected = _load_fixture("synthetic_shortdesc_only")
+        result = parse_wikitext(wikitext)
+        assert result["description"] == expected["description"]
+
+    def test_fields_still_parsed(self) -> None:
+        wikitext, expected = _load_fixture("synthetic_shortdesc_only")
+        result = parse_wikitext(wikitext)
+        assert result["fields"] == expected["fields"]
+
+
+class TestStripTemplatesDefensive:
+    """Test _strip_templates with malformed input."""
+
+    def test_unclosed_template_does_not_loop(self) -> None:
+        """Malformed unclosed {{ should not cause infinite loop."""
+        from pyresonitelink.cli.wikidocs import _strip_templates
+        result = _strip_templates("normal {{unclosed text")
+        assert "{{unclosed" in result  # left as-is

@@ -1,0 +1,10 @@
+{
+  "description": "A synthetic page with only SHORTDESC and no body text.",
+  "category": "",
+  "fields": {
+    "Value": "The value."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

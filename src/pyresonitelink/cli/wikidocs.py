@@ -62,7 +62,7 @@ def _strip_templates(text: str) -> str:
     while "{{" in text:
         new = re.sub(r"\{\{[^{}]*\}\}", "", text)
         if new == text:
-            break  # avoid infinite loop on malformed input
+            break  # defensive: malformed unclosed {{ would loop forever
         text = new
     return text.strip()
 
@@ -121,7 +121,7 @@ def parse_wikitext(wikitext: str) -> dict:
         # Track template nesting
         template_depth += line.count("{{") - line.count("}}")
         if template_depth < 0:
-            template_depth = 0
+            template_depth = 0  # defensive: stray }} without matching {{
         if template_depth > 0:
             continue  # inside a template, skip
         if in_body:
@@ -188,7 +188,7 @@ def parse_wikitext(wikitext: str) -> dict:
         while "{{" in cleaned_block:
             new = re.sub(r"\{\{[^{}]*\}\}", "__TPL__", cleaned_block)
             if new == cleaned_block:
-                break
+                break  # defensive: malformed unclosed {{ in fields block
             cleaned_block = new
         # Also replace wiki links with just the display text
         cleaned_block = re.sub(
@@ -198,18 +198,18 @@ def parse_wikitext(wikitext: str) -> dict:
         for line in cleaned_block.strip().split("\n"):
             line = line.strip()
             if not line.startswith("|"):
-                continue
+                continue  # defensive: non-field line in fields block
             parts = line.split("|")
             # parts[0] is empty, parts[1] is name, parts[2] is type
             if len(parts) < 4:
-                continue
+                continue  # defensive: malformed field line
             name = parts[1].strip()
             # Description: last parts that aren't key=value or placeholders
             desc_parts = []
             for p in parts[3:]:
                 p = p.strip()
                 if not p or p == "__TPL__":
-                    continue
+                    continue  # defensive: template placeholder in desc
                 if re.match(r"^\w+=", p):
                     continue  # skip key=value like TypeAdv14=true
                 desc_parts.append(p)
@@ -244,12 +244,12 @@ def parse_wikitext(wikitext: str) -> dict:
         for line in trigger_text.strip().split("\n"):
             line = line.strip()
             if not line.startswith("|"):
-                continue
+                continue  # defensive: non-trigger line in block
             parts = line.split("|")
             # parts[0] is empty (before first |)
             # parts[1] is "MethodName:Type"
             # parts[-1] is the description (last field)
-            if len(parts) < 5:
+            if len(parts) < 5:  # defensive: malformed trigger line
                 continue
             method_part = parts[1].strip()
             method_name = method_part.split(":")[0].strip()

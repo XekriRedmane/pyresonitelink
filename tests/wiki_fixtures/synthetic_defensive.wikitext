@@ -1,0 +1,19 @@
+{{SHORTDESC:A synthetic test page exercising defensive code paths.}}
+{{Infobox Component
+|Image=Fake.png
+|Name=Synthetic
+}}
+== Fields ==
+{{Table ComponentFields
+This line does not start with | so it should be skipped
+|FieldA|Int| A normal field.
+|B|Int
+|FieldD|{{RootFieldType|SyncRefList`1|[[Type:User|User]]}}|TypeAdv0=true| A field with a template in the type column.
+}}
+
+== Sync Delegates ==
+{{Table ComponentTriggers
+This line does not start with | so it should be skipped
+|Too|Few|Parts
+|MethodA:[[Type:Action|Action]]|[[Type:Action|Action]]|false| A normal method.
+}}

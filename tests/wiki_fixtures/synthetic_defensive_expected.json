@@ -1,0 +1,13 @@
+{
+  "description": "A synthetic test page exercising defensive code paths.",
+  "category": "",
+  "fields": {
+    "FieldA": "A normal field.",
+    "FieldD": "A field with a template in the type column."
+  },
+  "methods": {
+    "MethodA": "A normal method."
+  },
+  "usage": "",
+  "notes": []
+}
