@@ -317,7 +317,7 @@ class TestDefensiveGuards:
     """
 
     def test_stray_closing_braces_before_body(self) -> None:
-        """Stray }} before body text should not crash (line 124)."""
+        """Stray }} before body text should not crash."""
         wikitext = (
             "{{SHORTDESC:test}}\n"
             "}}\n"
@@ -329,7 +329,7 @@ class TestDefensiveGuards:
         assert result["description"] == "Body text after stray braces."
 
     def test_malformed_template_in_fields_block(self) -> None:
-        """Template with inner braces that regex can't strip (line 191).
+        """Template with inner braces that regex can't strip.
 
         {{a{b}} contains a bare { inside, which [^{}]* won't match,
         so the iterative stripping gets stuck and breaks. The brace-depth
@@ -347,7 +347,7 @@ class TestDefensiveGuards:
         assert "Good" in result["fields"]
 
     def test_template_placeholder_in_description_parts(self) -> None:
-        """__TPL__ in description position (part 3+) is skipped (line 212)."""
+        """__TPL__ in description position (part 3+) is skipped."""
         wikitext = (
             "== Fields ==\n"
             "{{Table ComponentFields\n"
@@ -358,7 +358,7 @@ class TestDefensiveGuards:
         assert result["fields"]["MyField"] == "The real description."
 
     def test_nested_template_in_triggers_block(self) -> None:
-        """Nested {{...}} inside triggers block (lines 231-232, 238)."""
+        """Nested {{...}} inside triggers block is handled correctly."""
         wikitext = (
             "== Sync Delegates ==\n"
             "{{Table ComponentTriggers\n"
