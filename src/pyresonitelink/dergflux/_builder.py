@@ -1060,18 +1060,25 @@ async def _build_expr_binding_with_ctx(
     Uses ValueFieldDrive<T>.  The ctx may carry loop_node and other
     state from flow building, allowing bindings to reference loop
     indices and other flow-scoped values.
+
+    Creates the drive without references in the constructor, then
+    wires Value and _value via update_references to avoid ResoniteLink
+    type compatibility issues with ProtoFlux node outputs.
     """
     from pyresonitelink.protoflux.core import ValueFieldDrive
 
     expr_comp = await ctx.materialize(bind_rec.expr._node)
 
     ConcreteDrive = ValueFieldDrive[res_type]  # type: ignore[valid-type]
-    bind_node = ConcreteDrive(value=expr_comp.id)
+    bind_node = ConcreteDrive()
     await bind_node.add_to_slot(ctx.resolink, bind_rec.slot)
 
     await ctx.resolink.update_references(
-        componentId=bind_node.id,
-        references={"_value": member.id},
+        componentId=bind_node.id,  # type: ignore[arg-type]
+        references={
+            "Value": expr_comp.id,
+            "_value": member.id,
+        },
     )
 
 

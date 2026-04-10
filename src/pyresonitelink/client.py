@@ -527,12 +527,17 @@ class Client:
         update_members: dict[str, members.Member] = {}
         for name, target_id in references.items():
             existing = get_resp.data.members.get(name)
-            assert existing is not None, (
-                f"Member {name!r} not found on component {componentId}"
-            )
-            update_members[name] = members.Reference(
-                id=existing.id, targetId=target_id,
-            )
+            if existing is not None:
+                update_members[name] = members.Reference(
+                    id=existing.id, targetId=target_id,
+                )
+            else:
+                # Member not on the component data (e.g. proxy members
+                # like _value on ValueFieldDrive). Send with a fresh ID
+                # and let the server resolve it.
+                update_members[name] = members.Reference(
+                    targetId=target_id,
+                )
         return await self.update_component(
             data=workers.Component(
                 id=componentId,

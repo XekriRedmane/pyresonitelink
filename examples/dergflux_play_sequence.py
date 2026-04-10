@@ -63,12 +63,6 @@ async def main(port: int) -> None:
 
     s = g.Space(slot)
     s.state = s.StringVar("state", value="waiting")
-    s.idx = s.IntVar("idx")
-
-    # Bind the idx dynamic variable to the multiplexer's Index field.
-    # This uses DynamicValueVariableDriver — the mux index always
-    # reflects the current value of s.idx.
-    g.Bind(s.idx, mux, "Index", slot=slot)
 
     with g.Under(slot, trigger="play_all"):
         # g.For(count) yields a ForProxy with OnStart/OnIterate.
@@ -76,10 +70,9 @@ async def main(port: int) -> None:
         # AsyncSequence (async because PlayOneShotAndWait is async).
         with g.For(len(AUDIO_FILES)) as f:
             with f.OnIterate() as i:
-                # Write the loop counter to the idx variable.
-                # The DynamicValueVariableDriver propagates it to
-                # the multiplexer's Index field.
-                s.idx = i
+                # Bind the loop counter to the multiplexer's Index
+                # field. This selects a different clip each iteration.
+                g.Bind(i, mux, "Index")
 
                 # Play the current clip and wait for it to finish.
                 # Pass the multiplexer directly — the builder auto-creates
