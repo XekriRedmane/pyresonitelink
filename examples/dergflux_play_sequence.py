@@ -19,16 +19,7 @@ import sys
 import time
 
 from pyresonitelink import client
-from pyresonitelink.data import members
-from pyresonitelink.data import primitives
-from pyresonitelink.components.assets import StaticAudioClip
-from pyresonitelink.components.assets.utility import AssetMultiplexer
-from pyresonitelink.protoflux.core import RefObjectInput
 from pyresonitelink.dergflux import Graph
-
-# Type aliases
-from pyresonitelink.generated._types.iasset_provider import IAssetProvider
-from pyresonitelink.generated._types.audio_clip import AudioClip
 
 
 AUDIO_FILES = [
@@ -54,47 +45,15 @@ async def main(port: int) -> None:
     print(f"Created slot: {slot.id}\n")
 
     # ===================================================================
-    # Import audio files and create StaticAudioClip components
+    # Import audio files and create a multiplexer — one call
     # ===================================================================
 
     examples_dir = os.path.dirname(__file__)
-    clips: list[StaticAudioClip] = []
-
-    for filename in AUDIO_FILES:
-        filepath = os.path.join(examples_dir, filename)
-        print(f"Importing {filename}...")
-        asset = await resolink.import_audio_clip_file(filePath=filepath)
-        clip = StaticAudioClip(url=asset.assetURL)
-        await clip.add_to_slot(resolink, slot)
-        clips.append(clip)
-        print(f"  StaticAudioClip: {clip.id}")
-
-    # ===================================================================
-    # Create AssetMultiplexer<AudioClip> with the three clips
-    # ===================================================================
-
-    AudioClipMux = AssetMultiplexer[AudioClip]
-    mux = AudioClipMux()
-    await mux.add_to_slot(resolink, slot)
-    print(f"\nAssetMultiplexer: {mux.id}")
-
-    # Populate the Assets SyncList with references to the clips
-    assets_list = mux.assets
-    if not isinstance(assets_list, members.SyncList):
-        assets_list = members.SyncList()
-        mux.set_member("Assets", assets_list)
-    for clip in clips:
-        assets_list.elements.append(
-            members.Reference(targetId=clip.id),
-        )
-    await mux.update(resolink)
-    print(f"  Added {len(clips)} clips to multiplexer")
-
-    # Create a RefObjectInput pointing at the multiplexer as clip source
-    ClipRef = RefObjectInput[IAssetProvider[AudioClip]]
-    clip_ref = ClipRef(target=mux)
-    await clip_ref.add_to_slot(resolink, slot)
-    print(f"ClipRef -> multiplexer: {clip_ref.id}")
+    audio_paths = [
+        os.path.join(examples_dir, f) for f in AUDIO_FILES
+    ]
+    mux = await resolink.create_audio_multiplexer(slot, audio_paths)
+    print(f"AssetMultiplexer: {mux.id} ({len(AUDIO_FILES)} clips)")
 
     # ===================================================================
     # Build the Dergflux graph
@@ -104,29 +63,46 @@ async def main(port: int) -> None:
 
     s = g.Space(slot)
     s.state = s.StringVar("state", value="waiting")
+    s.idx = s.IntVar("idx")
+
+    # Bind the idx dynamic variable to the multiplexer's Index field.
+    # This uses DynamicValueVariableDriver — the mux index always
+    # reflects the current value of s.idx.
+    g.Bind(s.idx, mux, "Index", slot=slot)
 
     with g.Under(slot, trigger="play_all"):
-        with g.For(len(clips)) as f:
+        # g.For(count) yields a ForProxy with OnStart/OnIterate.
+        # The For and the following bare write become entries in an
+        # AsyncSequence (async because PlayOneShotAndWait is async).
+        with g.For(len(AUDIO_FILES)) as f:
             with f.OnIterate() as i:
-                # Bind the loop counter to the multiplexer's Index
-                # field. This selects a different clip each iteration.
-                g.Bind(i, mux, "Index")
+                # Write the loop counter to the idx variable.
+                # The DynamicValueVariableDriver propagates it to
+                # the multiplexer's Index field.
+                s.idx = i
 
-                # Play the current clip and wait for it to finish
-                with g.PlayOneShotAndWait(clip=clip_ref, volume=1.0) as r:
+                # Play the current clip and wait for it to finish.
+                # Pass the multiplexer directly — the builder auto-creates
+                # a RefObjectInput<IAssetProvider<AudioClip>> bridge.
+                with g.PlayOneShotAndWait(clip=mux, volume=1.0) as r:
                     with r.on_started_playing():
                         s.state = "playing"
                     with r.on_finished_playing():
-                        # Won't really be visible, since it will get immediately
-                        # overwritten.
+                        # Won't really be visible, since it will get
+                        # immediately overwritten.
                         s.state = "idle"
 
-        # After the loop finishes
+        # After the loop finishes (via AsyncSequence)
         s.state = "waiting"
 
     print("\nBuilding graph...")
     await g.build(resolink)
     print("Graph built.\n")
+
+    # After build, access the variable directly from the Space
+    state_var = s.state
+    await state_var.refresh(resolink)
+    print(f"Initial state: {state_var.value}")
 
     print("\nSetup complete!")
     print("To play all clips in sequence, trigger a dynamic impulse")

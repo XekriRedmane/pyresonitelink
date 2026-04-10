@@ -823,12 +823,19 @@ async def _build_stmt_chain(
                 ConcreteWrite = WriteDynamicObjectVariable[decl.resonite_type]  # type: ignore[name-defined]
             else:
                 ConcreteWrite = WriteDynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
-            write_comp = ConcreteWrite(
-                target=slot_ref.id,
-                path=path_node.id,
-                value=expr_comp.id,
-            )
+            # Create without Value reference, then wire via
+            # update_references to avoid ResoniteLink type
+            # compatibility issues with ProtoFlux node outputs.
+            write_comp = ConcreteWrite()
             await write_comp.add_to_slot(ctx.resolink, ctx.slot)
+            await ctx.resolink.update_references(
+                componentId=write_comp.id,  # type: ignore[arg-type]
+                references={
+                    "Target": slot_ref.id,  # type: ignore[arg-type]
+                    "Path": path_node.id,  # type: ignore[arg-type]
+                    "Value": expr_comp.id,
+                },
+            )
             components.append(write_comp)
         elif isinstance(stmt, _flow.FlowContext):
             # Nested flow context (e.g. ActionContext inside a For loop)
@@ -1037,20 +1044,32 @@ async def _build_expr_binding(
     member: Any,
     res_type: type,
 ) -> None:
-    """Build a binding from a ProtoFlux expression to a component field.
+    """Build a binding from a ProtoFlux expression to a component field."""
+    ctx = _BuildContext(resolink, bind_rec.slot)
+    await _build_expr_binding_with_ctx(ctx, bind_rec, member, res_type)
 
-    Uses ValueFieldDrive<T>.
+
+async def _build_expr_binding_with_ctx(
+    ctx: _BuildContext,
+    bind_rec: _flow.BindRecord,
+    member: Any,
+    res_type: type,
+) -> None:
+    """Build a binding using a specific build context.
+
+    Uses ValueFieldDrive<T>.  The ctx may carry loop_node and other
+    state from flow building, allowing bindings to reference loop
+    indices and other flow-scoped values.
     """
     from pyresonitelink.protoflux.core import ValueFieldDrive
 
-    ctx = _BuildContext(resolink, bind_rec.slot)
     expr_comp = await ctx.materialize(bind_rec.expr._node)
 
     ConcreteDrive = ValueFieldDrive[res_type]  # type: ignore[valid-type]
     bind_node = ConcreteDrive(value=expr_comp.id)
-    await bind_node.add_to_slot(resolink, bind_rec.slot)
+    await bind_node.add_to_slot(ctx.resolink, bind_rec.slot)
 
-    await resolink.update_references(
+    await ctx.resolink.update_references(
         componentId=bind_node.id,
         references={"_value": member.id},
     )
@@ -1269,10 +1288,13 @@ async def build_graph(
     # Each record contains a sequence of flow statements sharing one
     # trigger. If there's only one statement, wire the trigger directly.
     # If there are multiple, wrap in a Sequence node.
+    # Save contexts keyed by slot ID so bindings can reuse them.
+    under_contexts: dict[str, _BuildContext] = {}
     for under_rec in graph._under_records:
         ctx = _BuildContext(resolink, under_rec.slot)
         ctx.is_async = under_rec.is_async
         trigger = under_rec.trigger
+        under_contexts[under_rec.slot.id] = ctx
 
         # For typed triggers, create receiver first so TriggerValueNode
         # can reference it during expression materialization.
@@ -1333,5 +1355,23 @@ async def build_graph(
         else:
             await _build_trigger(ctx, entry, trigger)
 
-    # Build drives (ValueFieldDrive<T>)
-    await _build_bindings(graph, resolink)
+    # Build bindings (ValueFieldDrive<T>, DynamicValueVariableDriver, etc.)
+    # Bindings are built using the ctx from the last Under block that
+    # matches their slot, so they have access to loop_node and other
+    # flow state (e.g. for g.Bind(i, mux, "Index") inside a For loop).
+    for bind_rec in graph._bindings:
+        bind_ctx = under_contexts.get(bind_rec.slot.id)
+        if bind_ctx is None:
+            bind_ctx = _BuildContext(resolink, bind_rec.slot)
+        member = bind_rec.component.get_member(bind_rec.member_name)
+        assert member is not None
+        res_type = _resolve_type(bind_rec.expr._node)
+
+        if bind_rec.dynvar_name is not None:
+            await _build_dynvar_binding(
+                resolink, bind_rec, member, res_type,
+            )
+        else:
+            await _build_expr_binding_with_ctx(
+                bind_ctx, bind_rec, member, res_type,
+            )

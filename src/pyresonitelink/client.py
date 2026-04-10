@@ -847,6 +847,83 @@ class Client:
         await clip.add_to_slot(self, slot, debug=debug)
         return clip
 
+    async def create_audio_multiplexer(
+        self,
+        slot: str | workers.Slot,
+        filePaths: list[str],
+        debug: bool = False,
+    ) -> "AssetMultiplexer":
+        """Import multiple audio files and create an AssetMultiplexer.
+
+        Creates a ``StaticAudioClip`` for each file, then an
+        ``AssetMultiplexer<AudioClip>`` with all clips in its Assets
+        list.  The multiplexer's ``Index`` field selects which clip
+        is active.
+
+        Audio imports are content-addressed and idempotent — the same
+        file always produces the same URL without duplication.  Safe to
+        call repeatedly.
+
+        Usage::
+
+            mux = await resolink.create_audio_multiplexer(slot, [
+                "sounds/notification.wav",
+                "sounds/ptink.wav",
+                "sounds/tikatak.wav",
+            ])
+
+            # Use in Dergflux — bind the loop index to the multiplexer
+            with g.For(3) as f:
+                with f.OnIterate() as i:
+                    g.Bind(i, mux, "Index")
+                    with g.PlayOneShotAndWait(clip=mux) as r:
+                        ...
+
+        Args:
+            slot: The slot to add all components to.
+            filePaths: Paths to audio files (WAV, OGG, FLAC).
+            debug: Print request/response JSON.
+
+        Returns:
+            An ``AssetMultiplexer<AudioClip>`` component with all clips
+            loaded in its Assets list.
+        """
+        from pyresonitelink.generated.assets.utility.asset_multiplexer import AssetMultiplexer
+        from pyresonitelink.generated._types.audio_clip import AudioClip
+        from pyresonitelink.data import members as mem
+
+        # Import each file and create StaticAudioClip components
+        clips = []
+        for path in filePaths:
+            clip = await self.create_audio_clip(slot, path, debug=debug)
+            clips.append(clip)
+
+        # Create the multiplexer
+        AudioClipMux = AssetMultiplexer[AudioClip]
+        mux = AudioClipMux()
+        await mux.add_to_slot(self, slot, debug=debug)
+
+        # Populate the Assets SyncList
+        assets_list = mux.get_member("Assets")
+        assets_id = (
+            assets_list.id
+            if isinstance(assets_list, mem.SyncList)
+            else assets_list.get("id")
+            if isinstance(assets_list, dict)
+            else None
+        )
+        new_list = mem.SyncList(
+            elements=[
+                mem.Reference(targetId=clip.id) for clip in clips
+            ],
+        )
+        if assets_id is not None:
+            new_list.id = assets_id
+        mux.set_member("Assets", new_list)
+        await mux.update(self, debug=debug)
+
+        return mux
+
     # =========================================================================
     # Session operations
     # =========================================================================

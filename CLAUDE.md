@@ -264,7 +264,17 @@ with g.PlayOneShotAndWait(clip=clip, volume=1.0) as r:
     ...
 ```
 
-Audio import is **content-addressed and idempotent** — importing the same file multiple times returns the same `local://` URL without duplication. This means `create_audio_clip` is safe to call repeatedly (e.g. on every script run) without accumulating duplicate assets.
+Audio import is **content-addressed and idempotent** — importing the same file multiple times returns the same `local://` URL without duplication. This means `create_audio_clip` and `create_audio_multiplexer` are safe to call repeatedly without accumulating duplicate assets.
+
+```python
+# Multiple clips in a multiplexer — one call
+mux = await resolink.create_audio_multiplexer(slot, [
+    "sounds/notification.wav",
+    "sounds/ptink.wav",
+    "sounds/tikatak.wav",
+])
+# mux is an AssetMultiplexer<AudioClip> with Index field to select clips
+```
 
 #### Value Coercion in `add_slot`
 
