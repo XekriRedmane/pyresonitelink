@@ -696,6 +696,39 @@ class Client:
             responses.AssetData, debug,
         )
 
+    async def create_audio_clip(
+        self,
+        slot: str | workers.Slot,
+        filePath: str,
+        debug: bool = False,
+    ) -> "StaticAudioClip":
+        """Import an audio file and create a StaticAudioClip on a slot.
+
+        This is a convenience method that combines ``import_audio_clip_file``
+        and ``StaticAudioClip`` creation. The import is content-addressed
+        and idempotent — importing the same file twice returns the same
+        URL without duplication.
+
+        Args:
+            slot: The slot to add the StaticAudioClip to.
+            filePath: Path to the audio file (WAV, OGG, FLAC).
+            debug: Print request/response JSON.
+
+        Returns:
+            A ``StaticAudioClip`` component added to the slot, with its
+            URL set to the imported asset.
+        """
+        import os
+
+        from pyresonitelink.components.assets import StaticAudioClip
+
+        asset = await self.import_audio_clip_file(
+            filePath=os.path.abspath(filePath), debug=debug,
+        )
+        clip = StaticAudioClip(url=asset.assetURL)
+        await clip.add_to_slot(self, slot, debug=debug)
+        return clip
+
     # =========================================================================
     # Session operations
     # =========================================================================

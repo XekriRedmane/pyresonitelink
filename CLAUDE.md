@@ -253,6 +253,19 @@ defn = await resolink.get_component_definition(componentType="...", flattened=Tr
 
 `add_slot`, `add_slot_to_root`, and `add_component` return `NewEntityId` with `.entityId`. Other mutations return `Response` with `.success`.
 
+#### Audio Import
+
+```python
+# One-liner: import + create StaticAudioClip on slot
+clip = await resolink.create_audio_clip(slot, "path/to/file.wav")
+
+# Use in Dergflux
+with g.PlayOneShotAndWait(clip=clip, volume=1.0) as r:
+    ...
+```
+
+Audio import is **content-addressed and idempotent** — importing the same file multiple times returns the same `local://` URL without duplication. This means `create_audio_clip` is safe to call repeatedly (e.g. on every script run) without accumulating duplicate assets.
+
 #### Value Coercion in `add_slot` / `add_slot_to_root`
 
 Field parameters accept raw Python values that are automatically coerced:

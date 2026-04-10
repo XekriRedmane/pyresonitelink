@@ -18,7 +18,6 @@ import time
 from pyresonitelink import client
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
-from pyresonitelink.components.assets import StaticAudioClip
 from pyresonitelink.components.data.dynamic import DynamicValueVariable
 from pyresonitelink.dergflux import Graph
 
@@ -42,18 +41,10 @@ async def main(port: int) -> None:
     slot = workers.Slot(id=slot_resp.entityId)
     print(f"Created slot: {slot.id}\n")
 
-    # ===================================================================
-    # Import audio and create the clip asset
-    # ===================================================================
-
+    # Import audio — idempotent, content-addressed (same file = same URL)
     wav_path = os.path.join(os.path.dirname(__file__), "740423_notification.wav")
-    print(f"Importing {wav_path}...")
-    asset = await resolink.import_audio_clip_file(filePath=wav_path)
-    print(f"Asset URL: {asset.assetURL}")
-
-    clip = StaticAudioClip(url=asset.assetURL)
-    await clip.add_to_slot(resolink, slot)
-    print(f"StaticAudioClip: {clip.id}")
+    clip = await resolink.create_audio_clip(slot, wav_path)
+    print(f"Audio clip: {clip.id}")
 
     # ===================================================================
     # Build the Dergflux graph
