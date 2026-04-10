@@ -30,13 +30,15 @@ class _UnderContext:
 
 
 class ForProxy:
-    """Proxy returned by ``g.For()`` for accessing loop sections.
+    """Proxy returned by ``g.For()`` and ``g.Range()`` for loop sections.
 
     Use ``f.OnStart()`` and ``f.OnIterate()`` as context managers
-    to record writes for loop_start and loop_iteration respectively.
+    to record statements for loop_start and loop_iteration respectively.
     """
 
-    def __init__(self, graph: Graph, ctx: _flow.ForContext) -> None:
+    def __init__(
+        self, graph: Graph, ctx: _flow.ForContext | _flow.RangeContext,
+    ) -> None:
         self._graph = graph
         self._ctx = ctx
 
@@ -45,7 +47,7 @@ class ForProxy:
         """Context manager for loop_start — runs once before the loop.
 
         Yields:
-            Nothing.  Writes go to loop_start.
+            Nothing.  Statements go to loop_start.
         """
         self._ctx.phase = "start"
         self._graph._flow_stack.append(self._ctx)
@@ -346,6 +348,56 @@ class Graph:
         ctx = _flow.ForContext(
             count=count_proxy,
             reverse=reverse_proxy,
+            slot=under.slot,
+        )
+        proxy = ForProxy(self, ctx)
+        try:
+            yield proxy
+        finally:
+            self._record_statement(ctx)
+
+    @contextmanager
+    def Range(
+        self,
+        start: object,
+        end: object,
+        step: object | None = None,
+    ) -> Iterator[ForProxy]:
+        """Context manager for a range loop.
+
+        Iterates from ``start`` to ``end`` with ``step`` increments,
+        like Python's ``range()``.  Yields a ``ForProxy`` with
+        ``OnStart()`` and ``OnIterate()`` context managers.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.Range(0, 10, 2) as f:
+                    with f.OnIterate() as i:
+                        s.total = s.total + i
+
+        Must be used inside a ``g.Under(slot)`` context.
+
+        Args:
+            start: Loop start value (Int expression or literal).
+            end: Loop end value (Int expression or literal).
+            step: Loop step size (Int expression or literal).
+                Defaults to 1 if omitted.
+
+        Yields:
+            A ``ForProxy`` for accessing loop sections.
+        """
+        start_proxy = _expr._coerce(start)
+        end_proxy = _expr._coerce(end)
+        step_proxy: _expr.ExprProxy | None = None
+        if step is not None:
+            step_proxy = _expr._coerce(step)
+
+        under = self._require_under()
+        ctx = _flow.RangeContext(
+            start=start_proxy,
+            end=end_proxy,
+            step=step_proxy,
             slot=under.slot,
         )
         proxy = ForProxy(self, ctx)

@@ -658,6 +658,45 @@ async def _build_for_context(
     return for_node
 
 
+async def _build_range_context(
+    ctx: _BuildContext,
+    range_ctx: _flow.RangeContext,
+) -> Any:
+    """Build a RangeContext into a ProtoFlux RangeLoopInt node."""
+    from pyresonitelink.protoflux.flow import RangeLoopInt
+
+    start_comp = await ctx.materialize(range_ctx.start._node)
+    end_comp = await ctx.materialize(range_ctx.end._node)
+    step_comp = None
+    if range_ctx.step is not None:
+        step_comp = await ctx.materialize(range_ctx.step._node)
+
+    range_node = RangeLoopInt(
+        start=start_comp.id,
+        end=end_comp.id,
+        step_size=step_comp.id if step_comp else None,
+    )
+    await range_node.add_to_slot(ctx.resolink, ctx.slot)
+
+    # Set loop_node so LoopIndexNode materialization can find it
+    ctx.loop_node = range_node
+
+    start_head = await _build_write_chain(ctx, range_ctx.start_writes)
+    iter_head = await _build_write_chain(ctx, range_ctx.iteration_writes)
+
+    needs_update = False
+    if start_head is not None:
+        range_node.loop_start = start_head.id
+        needs_update = True
+    if iter_head is not None:
+        range_node.loop_iteration = iter_head.id
+        needs_update = True
+    if needs_update:
+        await range_node.update(ctx.resolink)
+
+    return range_node
+
+
 async def _build_while_context(
     ctx: _BuildContext,
     while_ctx: _flow.WhileContext,
@@ -812,6 +851,8 @@ async def _build_flow_context(
         return await _build_if_context(ctx, flow_ctx)
     if isinstance(flow_ctx, _flow.ForContext):
         return await _build_for_context(ctx, flow_ctx)
+    if isinstance(flow_ctx, _flow.RangeContext):
+        return await _build_range_context(ctx, flow_ctx)
     if isinstance(flow_ctx, _flow.WhileContext):
         return await _build_while_context(ctx, flow_ctx)
     if isinstance(flow_ctx, _flow.BareWriteContext):

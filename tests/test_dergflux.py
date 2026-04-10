@@ -620,6 +620,112 @@ class TestForLoop:
 # =========================================================================
 
 
+# =========================================================================
+# Range loop
+# =========================================================================
+
+
+class TestRangeLoop:
+    """Tests for g.Range() context manager."""
+
+    def _setup(self) -> tuple[_graph.Graph, _space.Space, workers.Slot]:
+        """Create a Graph, Space, and slot for testing."""
+        g = _graph.Graph()
+        slot = workers.Slot(id="test-slot")
+        s = g.Space(slot)
+        s.total = s.FloatVar("total")
+        return g, s, slot
+
+    def test_range_yields_for_proxy(self) -> None:
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Range(0, 10) as f:
+                assert isinstance(f, _graph.ForProxy)
+
+    def test_range_records_context(self) -> None:
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Range(0, 10) as f:
+                with f.OnIterate() as i:
+                    s.total = s.total + i
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _flow.RangeContext)
+
+    def test_range_records_start_end(self) -> None:
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Range(0, 10) as f:
+                with f.OnIterate() as i:
+                    s.total = s.total + i
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _flow.RangeContext)
+        assert isinstance(ctx.start._node, _expr.ConstNode)
+        assert ctx.start._node.value == 0
+        assert isinstance(ctx.end._node, _expr.ConstNode)
+        assert ctx.end._node.value == 10
+
+    def test_range_records_step(self) -> None:
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Range(0, 10, 2) as f:
+                with f.OnIterate() as i:
+                    s.total = s.total + i
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _flow.RangeContext)
+        assert ctx.step is not None
+        assert isinstance(ctx.step._node, _expr.ConstNode)
+        assert ctx.step._node.value == 2
+
+    def test_range_default_no_step(self) -> None:
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Range(0, 10) as f:
+                with f.OnIterate() as i:
+                    s.total = s.total + i
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _flow.RangeContext)
+        assert ctx.step is None
+
+    def test_range_on_start_and_iterate(self) -> None:
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Range(0, 10) as f:
+                with f.OnStart():
+                    s.total = 0
+                with f.OnIterate() as i:
+                    s.total = s.total + i
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _flow.RangeContext)
+        assert len(ctx.start_writes) == 1
+        assert len(ctx.iteration_writes) == 1
+
+    def test_range_on_iterate_yields_index(self) -> None:
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Range(0, 10) as f:
+                with f.OnIterate() as i:
+                    assert isinstance(i, _expr.ExprProxy)
+                    assert isinstance(i._node, _expr.LoopIndexNode)
+                    assert i._node._type is primitives.Int
+
+    def test_range_outside_under_raises(self) -> None:
+        g = _graph.Graph()
+        with pytest.raises(RuntimeError, match="inside g.Under"):
+            with g.Range(0, 10) as f:
+                pass
+
+    def test_range_with_expr_bounds(self) -> None:
+        g, s, slot = self._setup()
+        s.n = s.IntVar("n")
+        with g.Under(slot):
+            with g.Range(0, s.n) as f:
+                with f.OnIterate() as i:
+                    s.total = s.total + i
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _flow.RangeContext)
+        assert isinstance(ctx.end._node, _expr.VarReadNode)
+
+
 class TestWhileLoop:
     """Tests for g.While() context manager."""
 

@@ -275,8 +275,8 @@ with g.Under(slot):
 
 `g.For(count)` yields a `ForProxy` with two context managers:
 
-- **`f.OnStart()`** — writes go to `loop_start`, runs once before the first iteration.
-- **`f.OnIterate()`** — yields an `ExprProxy` for the iteration index (Int), writes go to `loop_iteration`.
+- **`f.OnStart()`** — statements go to `loop_start`, runs once before the first iteration.
+- **`f.OnIterate()`** — yields an `ExprProxy` for the iteration index (Int), statements go to `loop_iteration`.
 
 The count can be a literal or an expression.  Optional `reverse=True`
 iterates in reverse order.
@@ -296,6 +296,22 @@ with g.Under(slot):
         s.total = s.total * 2
 ```
 
+#### Range
+
+```python
+with g.Under(slot):
+    with g.Range(0, 10, 2) as f:     # start=0, end=10, step=2
+        with f.OnIterate() as i:
+            s.total = s.total + i
+```
+
+Like Python's ``range()``, iterates from ``start`` to ``end`` with
+``step`` increments.  Uses the same ``ForProxy`` as ``g.For()``, so
+``f.OnStart()`` and ``f.OnIterate()`` work identically.  The step
+defaults to 1 if omitted.
+
+At build time, creates a ProtoFlux ``RangeLoopInt`` node.
+
 #### While
 
 ```python
@@ -305,7 +321,7 @@ with g.Under(slot):
 ```
 
 Repeats the body as long as `condition` is true. The condition is
-re-evaluated each iteration. Writes go to `loop_iteration`.
+re-evaluated each iteration. Statements go to `loop_iteration`.
 
 Code after the `with g.While()` block continues from `loop_end`.
 

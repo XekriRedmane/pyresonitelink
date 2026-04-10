@@ -103,6 +103,34 @@ class ForContext(FlowContext):
 
 
 @dataclass
+class RangeContext(FlowContext):
+    """Tracks a range-loop construct during recording.
+
+    Attributes:
+        start: The loop start value expression.
+        end: The loop end value expression.
+        step: The loop step size expression.
+        start_writes: Writes for loop_start (runs once before loop).
+        iteration_writes: Writes for loop_iteration (runs each iteration).
+        phase: Which section is currently being recorded.
+    """
+
+    start: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
+    end: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
+    step: _expr.ExprProxy | None = None
+    start_writes: list[WriteRecord] = field(default_factory=list)
+    iteration_writes: list[WriteRecord] = field(default_factory=list)
+    phase: str = "iteration"
+
+    def record_write(self, write: WriteRecord) -> None:
+        """Append a write to the currently active section."""
+        if self.phase == "start":
+            self.start_writes.append(write)
+        else:
+            self.iteration_writes.append(write)
+
+
+@dataclass
 class WhileContext(FlowContext):
     """Tracks a while-loop construct during recording.
 
