@@ -370,7 +370,7 @@ class Client:
         children: list[workers.Slot] | None = None,
         id: str | None = None,
         debug: bool = False,
-    ) -> responses.NewEntityId:
+    ) -> workers.Slot:
         """Create a new slot under the root slot.
 
         Convenience wrapper around :meth:`add_slot` with the parent set
@@ -397,9 +397,12 @@ class Client:
             debug: Print request/response JSON.
 
         Returns:
-            Response with ``entityId`` of the new slot.
+            The created Slot.
+
+        Raises:
+            RuntimeError: If the server rejects the request.
         """
-        return await self.add_slot(
+        resp = await self.add_slot(
             parent=members.Reference(targetId=workers.Slot.ROOT_SLOT_ID),
             name=name,
             position=position,
@@ -414,6 +417,11 @@ class Client:
             id=id,
             debug=debug,
         )
+        if resp.entityId is None:
+            raise RuntimeError(
+                f"Failed to create slot: {resp.errorInfo}"
+            )
+        return workers.Slot(id=resp.entityId)
 
     async def update_slot(
         self,
@@ -752,11 +760,9 @@ class Client:
         root_id = root.id if isinstance(root, workers.Slot) else root
 
         # Create a temporary slot for the search nodes
-        tmp_resp = await self.add_slot_to_root(
+        tmp = await self.add_slot_to_root(
             name="__find_slot_tmp__", debug=debug,
         )
-        assert tmp_resp.entityId is not None
-        tmp = workers.Slot(id=tmp_resp.entityId)
 
         try:
             # Dynamic variable to hold the result

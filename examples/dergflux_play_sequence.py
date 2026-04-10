@@ -21,7 +21,6 @@ import time
 from pyresonitelink import client
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
-from pyresonitelink.data import workers
 from pyresonitelink.components.assets import StaticAudioClip
 from pyresonitelink.components.assets.utility import AssetMultiplexer
 from pyresonitelink.protoflux.core import RefObjectInput
@@ -51,9 +50,7 @@ async def main(port: int) -> None:
         print(f"Deleting old slot {old.id}...")
         await resolink.remove_slot(slot=old)
 
-    slot_resp = await resolink.add_slot_to_root(name="Dergflux Play Sequence")
-    assert slot_resp.entityId is not None
-    slot = workers.Slot(id=slot_resp.entityId)
+    slot = await resolink.add_slot_to_root(name="Dergflux Play Sequence")
     print(f"Created slot: {slot.id}\n")
 
     # ===================================================================

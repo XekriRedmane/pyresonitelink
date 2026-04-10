@@ -17,7 +17,6 @@ import time
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
-from pyresonitelink.data import workers
 from pyresonitelink.components.data.dynamic import DynamicValueVariable
 from pyresonitelink.dergflux import Graph
 
@@ -34,9 +33,7 @@ async def main(port: int) -> None:
         print(f"Deleting old slot {old.id}...")
         await resolink.remove_slot(slot=old)
 
-    slot_resp = await resolink.add_slot_to_root(name="Dergflux PlayOneShot")
-    assert slot_resp.entityId is not None
-    slot = workers.Slot(id=slot_resp.entityId)
+    slot = await resolink.add_slot_to_root(name="Dergflux PlayOneShot")
     print(f"Created slot: {slot.id}\n")
 
     # Import audio — idempotent, content-addressed (same file = same URL)
