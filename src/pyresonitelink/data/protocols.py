@@ -52,6 +52,13 @@ class ResoniteLinkClient(Protocol):
         debug: bool = False,
     ) -> responses.Response: ...
 
+    async def update_references(
+        self,
+        componentId: str,
+        references: dict[str, str],
+        debug: bool = False,
+    ) -> responses.Response: ...
+
     async def request_json(
         self,
         message: messages.Message,

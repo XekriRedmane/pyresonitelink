@@ -28,11 +28,13 @@ class VarDecl:
         slot: Optional slot to place the variable on. Must be equal to
             or a recursive child of the space's slot. If None, the
             space's own slot is used.
+        initial_value: Optional initial value for the variable.
     """
 
     path: str
     resonite_type: type
     slot: workers.Slot | None = field(default=None)
+    initial_value: Any = field(default=None)
 
 
 # Maps convenience method names to their Resonite primitive types.
@@ -163,6 +165,7 @@ class Space:
         name: str,
         resonite_type: type,
         slot: workers.Slot | None = None,
+        value: Any = None,
     ) -> VarDecl:
         """Declare a dynamic variable with an explicit type.
 
@@ -172,11 +175,12 @@ class Space:
             slot: Optional slot to place the variable on. Must be equal
                 to or a recursive child of the space's slot. Validated
                 at build time.
+            value: Optional initial value for the variable.
 
         Returns:
             A VarDecl to assign to a Space attribute.
         """
-        return VarDecl(name, resonite_type, slot)
+        return VarDecl(name, resonite_type, slot, value)
 
     def __setattr__(self, name: str, value: Any) -> None:
         if name.startswith("_") or (name[0:1].isupper() if name else False):
@@ -231,9 +235,10 @@ class Space:
             def _var_method(
                 var_name: str,
                 slot: workers.Slot | None = None,
+                value: Any = None,
                 _rt: type = res_type,
             ) -> VarDecl:
-                return VarDecl(var_name, _rt, slot)
+                return VarDecl(var_name, _rt, slot, value)
             return _var_method
         vars_dict: dict[str, VarDecl] = object.__getattribute__(self, "_vars")
         if name not in vars_dict:

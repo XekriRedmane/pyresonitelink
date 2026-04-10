@@ -341,6 +341,24 @@ class TestSpace:
         vars_dict = object.__getattribute__(s, "_vars")
         assert vars_dict["x"].slot is child
 
+    def test_declare_with_initial_value(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.state = s.StringVar("state", value="waiting")
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["state"].initial_value == "waiting"
+
+    def test_declare_with_value_via_var(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.x = s.Var("x", primitives.Float, value=42.0)
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["x"].initial_value == 42.0
+
+    def test_declare_default_no_initial_value(self) -> None:
+        g, s = self._make_graph_and_space()
+        s.x = s.FloatVar("x")
+        vars_dict = object.__getattribute__(s, "_vars")
+        assert vars_dict["x"].initial_value is None
+
     def test_read_declared_variable(self) -> None:
         g, s = self._make_graph_and_space()
         s.x = s.FloatVar("x")
@@ -782,6 +800,318 @@ class TestWhileLoop:
 # =========================================================================
 # IfContext dataclass
 # =========================================================================
+
+
+# =========================================================================
+# RaycastOne
+# =========================================================================
+
+
+class TestRaycastOne:
+    """Tests for g.RaycastOne() named action shortcut."""
+
+    def _setup(self) -> tuple[_graph.Graph, _space.Space, workers.Slot]:
+        """Create a Graph, Space, and slot for testing."""
+        g = _graph.Graph()
+        slot = workers.Slot(id="test-slot")
+        s = g.Space(slot)
+        s.pos = s.Float3Var("pos")
+        s.dir = s.Float3Var("dir")
+        s.distance = s.FloatVar("distance")
+        s.hit_pos = s.Float3Var("hit_pos")
+        return g, s, slot
+
+    def test_raycast_yields_action_proxy(self) -> None:
+        from pyresonitelink.dergflux import _action
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.RaycastOne(origin=s.pos, direction=s.dir) as r:
+                assert isinstance(r, _action.ActionProxy)
+
+    def test_raycast_records_context(self) -> None:
+        from pyresonitelink.dergflux import _action
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.RaycastOne(origin=s.pos, direction=s.dir) as r:
+                with r.on_hit():
+                    s.distance = r.hit_distance
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _action.ActionContext)
+
+    def test_on_hit_records_writes(self) -> None:
+        from pyresonitelink.dergflux import _action
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.RaycastOne(origin=s.pos, direction=s.dir) as r:
+                with r.on_hit():
+                    s.hit_pos = r.hit_point
+                    s.distance = r.hit_distance
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _action.ActionContext)
+        assert len(ctx.branch_writes["on_hit"]) == 2
+
+    def test_on_miss_records_writes(self) -> None:
+        from pyresonitelink.dergflux import _action
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.RaycastOne(origin=s.pos, direction=s.dir) as r:
+                with r.on_hit():
+                    s.distance = r.hit_distance
+                with r.on_miss():
+                    s.distance = -1
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _action.ActionContext)
+        assert len(ctx.branch_writes["on_hit"]) == 1
+        assert len(ctx.branch_writes["on_miss"]) == 1
+
+    def test_hit_point_is_float3_proxy(self) -> None:
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.RaycastOne(origin=s.pos, direction=s.dir) as r:
+                hp = r.hit_point
+                assert isinstance(hp, _expr.ExprProxy)
+                assert isinstance(hp._node, _expr.ComponentOutputNode)
+                assert hp._node._type is primitives.Float3
+
+    def test_hit_distance_is_float_proxy(self) -> None:
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.RaycastOne(origin=s.pos, direction=s.dir) as r:
+                assert r.hit_distance._node._type is primitives.Float
+
+    def test_raycast_outside_under_raises(self) -> None:
+        g, s, slot = self._setup()
+        with pytest.raises(RuntimeError, match="inside g.Under"):
+            with g.RaycastOne(origin=s.pos, direction=s.dir) as r:
+                pass
+
+    def test_hit_output_usable_in_expression(self) -> None:
+        from pyresonitelink.dergflux import _action
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.RaycastOne(origin=s.pos, direction=s.dir) as r:
+                with r.on_hit():
+                    s.distance = r.hit_distance * 2
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _action.ActionContext)
+        write_expr = ctx.branch_writes["on_hit"][0].expr._node
+        assert isinstance(write_expr, _expr.BinaryOpNode)
+
+
+# =========================================================================
+# Generic Action
+# =========================================================================
+
+
+class TestGenericAction:
+    """Tests for g.Action() with ActionDef."""
+
+    def _setup(self) -> tuple[_graph.Graph, _space.Space, workers.Slot]:
+        """Create a Graph, Space, and slot for testing."""
+        g = _graph.Graph()
+        slot = workers.Slot(id="test-slot")
+        s = g.Space(slot)
+        s.pos = s.Float3Var("pos")
+        s.dir = s.Float3Var("dir")
+        s.distance = s.FloatVar("distance")
+        return g, s, slot
+
+    def test_action_yields_proxy(self) -> None:
+        from pyresonitelink.dergflux import _action
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Action(actions.RaycastOne, origin=s.pos, direction=s.dir) as r:
+                assert isinstance(r, _action.ActionProxy)
+
+    def test_action_records_context(self) -> None:
+        from pyresonitelink.dergflux import _action
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Action(actions.RaycastOne, origin=s.pos, direction=s.dir) as r:
+                with r.on_hit():
+                    s.distance = r.hit_distance
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _action.ActionContext)
+        assert ctx.action_def is actions.RaycastOne
+
+    def test_action_records_inputs(self) -> None:
+        from pyresonitelink.dergflux import _action
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Action(
+                actions.RaycastOne,
+                origin=s.pos, direction=s.dir, max_distance=100,
+            ) as r:
+                with r.on_hit():
+                    s.distance = r.hit_distance
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _action.ActionContext)
+        assert "origin" in ctx.input_exprs
+        assert "direction" in ctx.input_exprs
+        assert "max_distance" in ctx.input_exprs
+
+    def test_action_flow_output_records_writes(self) -> None:
+        from pyresonitelink.dergflux import _action
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Action(actions.RaycastOne, origin=s.pos, direction=s.dir) as r:
+                with r.on_hit():
+                    s.distance = r.hit_distance
+                with r.on_miss():
+                    s.distance = -1
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _action.ActionContext)
+        assert len(ctx.branch_writes["on_hit"]) == 1
+        assert len(ctx.branch_writes["on_miss"]) == 1
+
+    def test_action_value_output_is_proxy(self) -> None:
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Action(actions.RaycastOne, origin=s.pos, direction=s.dir) as r:
+                hp = r.hit_point
+                assert isinstance(hp, _expr.ExprProxy)
+                assert isinstance(hp._node, _expr.ComponentOutputNode)
+                assert hp._node._type is primitives.Float3
+
+    def test_action_value_output_usable_in_expr(self) -> None:
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Action(actions.RaycastOne, origin=s.pos, direction=s.dir) as r:
+                with r.on_hit():
+                    s.distance = r.hit_distance * 2
+        from pyresonitelink.dergflux import _action
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _action.ActionContext)
+        write_expr = ctx.branch_writes["on_hit"][0].expr._node
+        assert isinstance(write_expr, _expr.BinaryOpNode)
+
+    def test_action_unknown_input_raises(self) -> None:
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with pytest.raises(TypeError, match="Unknown input"):
+                with g.Action(actions.RaycastOne, bogus=s.pos) as r:
+                    pass
+
+    def test_action_unknown_attr_raises(self) -> None:
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        with g.Under(slot):
+            with g.Action(actions.RaycastOne, origin=s.pos, direction=s.dir) as r:
+                with pytest.raises(AttributeError, match="no attribute"):
+                    _ = r.bogus_output
+
+    def test_action_outside_under_raises(self) -> None:
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        with pytest.raises(RuntimeError, match="inside g.Under"):
+            with g.Action(actions.RaycastOne, origin=s.pos, direction=s.dir) as r:
+                pass
+
+    def test_play_one_shot_action_def(self) -> None:
+        from pyresonitelink.dergflux import _action
+        from pyresonitelink.dergflux import actions
+        g, s, slot = self._setup()
+        s.vol = s.FloatVar("vol")
+        with g.Under(slot):
+            with g.Action(actions.PlayOneShot, volume=s.vol) as r:
+                with r.on_started_playing():
+                    s.distance = 1
+        ctx = _stmts(g)[0]
+        assert isinstance(ctx, _action.ActionContext)
+        assert ctx.action_def is actions.PlayOneShot
+        assert len(ctx.branch_writes["on_started_playing"]) == 1
+
+
+# =========================================================================
+# Drive
+# =========================================================================
+
+
+class TestBind:
+    """Tests for g.Bind()."""
+
+    def test_bind_records(self) -> None:
+        from pyresonitelink.generated._base import GeneratedComponent
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.idx = s.IntVar("idx")
+
+        # Create a fake component with an Index member
+        comp = GeneratedComponent()
+        comp._component.members["Index"] = __import__(
+            "pyresonitelink.data.fields", fromlist=["FieldInt"],
+        ).FieldInt(value=0)
+
+        g.Bind(s.idx, comp, "Index", slot=slot)
+        assert len(g._bindings) == 1
+        assert g._bindings[0].member_name == "Index"
+        assert g._bindings[0].component is comp
+
+    def test_bind_inside_under(self) -> None:
+        from pyresonitelink.generated._base import GeneratedComponent
+        from pyresonitelink.data import fields
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.idx = s.IntVar("idx")
+
+        comp = GeneratedComponent()
+        comp._component.members["Index"] = fields.FieldInt(value=0)
+
+        with g.Under(slot):
+            g.Bind(s.idx, comp, "Index")
+        assert len(g._bindings) == 1
+        assert g._bindings[0].slot is slot
+
+    def test_bind_no_slot_no_under_raises(self) -> None:
+        from pyresonitelink.generated._base import GeneratedComponent
+        from pyresonitelink.data import fields
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.idx = s.IntVar("idx")
+
+        comp = GeneratedComponent()
+        comp._component.members["Index"] = fields.FieldInt(value=0)
+
+        with pytest.raises(RuntimeError, match="requires a slot"):
+            g.Bind(s.idx, comp, "Index")
+
+    def test_bind_bad_member_raises(self) -> None:
+        from pyresonitelink.generated._base import GeneratedComponent
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.idx = s.IntVar("idx")
+
+        comp = GeneratedComponent()
+
+        with pytest.raises(ValueError, match="no member"):
+            g.Bind(s.idx, comp, "Bogus", slot=slot)
+
+    def test_rebind_same_field_raises(self) -> None:
+        from pyresonitelink.generated._base import GeneratedComponent
+        from pyresonitelink.data import fields
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.x = s.IntVar("x")
+        s.y = s.IntVar("y")
+
+        comp = GeneratedComponent()
+        comp._component.members["Index"] = fields.FieldInt(value=0)
+
+        g.Bind(s.x, comp, "Index", slot=slot)
+        with pytest.raises(RuntimeError, match="already bound"):
+            g.Bind(s.y, comp, "Index", slot=slot)
 
 
 class TestIfContext:

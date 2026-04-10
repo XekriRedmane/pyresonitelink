@@ -105,6 +105,7 @@ class Graph:
         self._flow_stack: list[_flow.FlowContext] = []
         self._under_records: list[_flow.UnderRecord] = []
         self._under_stack: list[_UnderContext] = []
+        self._bindings: list[_flow.DriveRecord] = []
 
     # --- Slot / trigger context ---
 
@@ -440,6 +441,201 @@ class Graph:
         finally:
             self._flow_stack.pop()
             self._record_statement(ctx)
+
+    @contextmanager
+    def Action(
+        self,
+        action_def: Any,
+        **kwargs: Any,
+    ) -> Iterator[Any]:
+        """Context manager for a generic action node.
+
+        Action nodes are ProtoFlux nodes with value inputs, multiple
+        flow outputs (branches), and optional value outputs.  Define
+        them once with ``ActionDef``, then use them with this method.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.Action(MyAction, origin=s.pos) as r:
+                    with r.on_hit():
+                        s.distance = r.hit_distance
+
+        Must be used inside a ``g.Under(slot)`` context.
+
+        Args:
+            action_def: An ``ActionDef`` describing the node.
+            **kwargs: Input values, matching the keys in
+                ``action_def.inputs``.
+
+        Yields:
+            An ``ActionProxy`` with flow output context managers and
+            value output properties.
+        """
+        from pyresonitelink.dergflux import _action
+
+        ctx, proxy = _action.create_action_context(self, action_def, kwargs)
+        try:
+            yield proxy
+        finally:
+            self._record_statement(ctx)
+
+    # --- Named action shortcuts ---
+
+    @contextmanager
+    def RaycastOne(self, **kwargs: Any) -> Iterator[Any]:
+        """Context manager for a RaycastOne physics query.
+
+        Casts a ray and branches into hit/miss flows.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.RaycastOne(origin=s.pos, direction=s.dir) as r:
+                    with r.on_hit():
+                        s.hit_pos = r.hit_point
+                    with r.on_miss():
+                        s.distance = -1
+
+        Args:
+            origin: Ray origin (Float3).
+            direction: Ray direction (Float3).
+            max_distance: Max ray distance (Float).
+            hit_triggers: Hit triggers (Bool).
+            users_only: Only hit users (Bool).
+            debug_duration: Debug visualization duration (Float).
+            root: Root slot for coordinate space.
+
+        Yields:
+            An ``ActionProxy`` with ``on_hit()``, ``on_miss()``, and
+            value outputs: ``hit_point``, ``hit_normal``,
+            ``hit_distance``, ``hit_triangle_index``.
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.RaycastOne, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def PlayOneShot(self, **kwargs: Any) -> Iterator[Any]:
+        """Context manager for playing a one-shot audio clip.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.PlayOneShot(clip=clip_ref, volume=1.0) as r:
+                    with r.on_started_playing():
+                        s.state = "playing"
+
+        Args:
+            clip: Audio clip reference.
+            volume: Playback volume (Float).
+            speed: Playback speed (Float).
+            point: Spatial position (Float3).
+            root: Root slot.
+            local_only: Only play locally (Bool).
+            (and other audio parameters)
+
+        Yields:
+            An ``ActionProxy`` with ``on_started_playing()``.
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.PlayOneShot, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def PlayOneShotAndWait(self, **kwargs: Any) -> Iterator[Any]:
+        """Context manager for playing a one-shot audio clip and waiting.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.PlayOneShotAndWait(clip=clip_ref, volume=1.0) as r:
+                    with r.on_started_playing():
+                        s.state = "playing"
+                    with r.on_finished_playing():
+                        s.state = "finished"
+
+        Args:
+            clip: Audio clip reference.
+            volume: Playback volume (Float).
+            speed: Playback speed (Float).
+            point: Spatial position (Float3).
+            root: Root slot.
+            local_only: Only play locally (Bool).
+            (and other audio parameters)
+
+        Yields:
+            An ``ActionProxy`` with ``on_started_playing()`` and
+            ``on_finished_playing()``.
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.PlayOneShotAndWait, **kwargs) as proxy:
+            yield proxy
+
+    # --- Bindings ---
+
+    def Bind(
+        self,
+        expr: object,
+        component: Any,
+        member_name: str,
+        slot: workers.Slot | None = None,
+    ) -> None:
+        """Permanently bind a ProtoFlux expression to a component field.
+
+        Creates a ``ValueFieldDrive<T>`` that continuously drives the
+        named field on ``component`` from the given expression.  This
+        is a permanent, one-time binding — the field always reflects
+        the expression's current value.  A field can only be bound
+        once; attempting to rebind it raises an error.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.For(3) as f:
+                    with f.OnIterate() as i:
+                        g.Bind(i, mux, "Index")
+
+        Args:
+            expr: The expression to bind from (ExprProxy or literal).
+            component: The target component (a GeneratedComponent instance).
+            member_name: The Resonite member name to bind to (e.g. ``"Index"``).
+            slot: The slot to place the binding node on.  If omitted, uses
+                the active ``Under()`` slot.
+
+        Raises:
+            RuntimeError: If no slot is available, or if the field is
+                already bound.
+            ValueError: If the component has no member with the given name.
+        """
+        expr_proxy = _expr._coerce(expr)
+        bind_slot = slot
+        if bind_slot is None:
+            bind_slot = self._active_slot()
+        if bind_slot is None:
+            raise RuntimeError(
+                "Bind() requires a slot. Either pass one explicitly "
+                "or use inside g.Under(slot)."
+            )
+        member = component.get_member(member_name)
+        if member is None:
+            raise ValueError(
+                f"Component {component!r} has no member '{member_name}'."
+            )
+        # Check for duplicate binding
+        for existing in self._bindings:
+            if (existing.component is component
+                    and existing.member_name == member_name):
+                raise RuntimeError(
+                    f"Field '{member_name}' on {component!r} is already "
+                    f"bound. A field can only be bound once."
+                )
+        self._bindings.append(_flow.BindRecord(
+            component=component,
+            member_name=member_name,
+            expr=expr_proxy,
+            slot=bind_slot,
+        ))
 
     # --- Build ---
 

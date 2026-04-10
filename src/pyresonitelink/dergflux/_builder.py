@@ -243,6 +243,7 @@ class _BuildContext:
         self.path_nodes: dict[str, Any] = {}
         self.trigger_receiver: Any = None
         self.loop_node: Any = None
+        self.component_outputs: dict[str, Any] = {}
 
     async def ensure_slot_ref(self) -> Any:
         """Create the shared RefObjectInput<Slot> if needed."""
@@ -292,6 +293,8 @@ class _BuildContext:
             return await self._materialize_var_read(node)
         if isinstance(node, _expr.TriggerValueNode):
             return self._materialize_trigger_value(node)
+        if isinstance(node, _expr.ComponentOutputNode):
+            return self._materialize_component_output(node)
         if isinstance(node, _expr.LoopIndexNode):
             return self._materialize_loop_index(node)
         if isinstance(node, _expr.BinaryOpNode):
@@ -310,6 +313,23 @@ class _BuildContext:
                 "This is a bug in the Dergflux builder."
             )
         return self.trigger_receiver
+
+    def _materialize_component_output(
+        self, node: _expr.ComponentOutputNode,
+    ) -> Any:
+        """Return the component for a ComponentOutputNode.
+
+        The component is registered in component_outputs by its tag
+        before expressions are materialized.
+        """
+        comp = self.component_outputs.get(node.component_tag)
+        if comp is None:
+            raise RuntimeError(
+                f"ComponentOutputNode '{node.output_name}' references "
+                f"tag '{node.component_tag}' but no component was registered. "
+                "This is a bug in the Dergflux builder."
+            )
+        return comp
 
     def _materialize_loop_index(self, node: _expr.LoopIndexNode) -> Any:
         """Return the For loop node for a LoopIndexNode.
@@ -580,7 +600,10 @@ async def _build_space(
             ctx.resolink, var_slot, decl.path, ConcreteVar.COMPONENT_TYPE,
         )
         if not var_exists:
-            var_comp = ConcreteVar(variable_name=decl.path)
+            var_comp = ConcreteVar(
+                variable_name=decl.path,
+                value=decl.initial_value,
+            )
             await var_comp.add_to_slot(ctx.resolink, var_slot)
 
 
@@ -799,6 +822,41 @@ async def _build_trigger(
 
 
 # =========================================================================
+# Binding building
+# =========================================================================
+
+
+async def _build_bindings(
+    graph: _graph.Graph,
+    resolink: protocols.ResoniteLinkClient,
+) -> None:
+    """Build all recorded bindings as ValueFieldDrive<T> components."""
+    from pyresonitelink.protoflux.core import ValueFieldDrive
+
+    for bind_rec in graph._bindings:
+        ctx = _BuildContext(resolink, bind_rec.slot)
+
+        # Materialize the source expression
+        expr_comp = await ctx.materialize(bind_rec.expr._node)
+
+        # Infer the type from the expression
+        res_type = _resolve_type(bind_rec.expr._node)
+        ConcreteDrive = ValueFieldDrive[res_type]  # type: ignore[valid-type]
+
+        # Create the drive node
+        bind_node = ConcreteDrive(value=expr_comp.id)
+        await bind_node.add_to_slot(resolink, bind_rec.slot)
+
+        # Wire _value to the target member's ID
+        member = bind_rec.component.get_member(bind_rec.member_name)
+        assert member is not None
+        await resolink.update_references(
+            componentId=bind_node.id,
+            references={"_value": member.id},
+        )
+
+
+# =========================================================================
 # Top-level build
 # =========================================================================
 
@@ -825,6 +883,106 @@ async def _setup_typed_trigger(
     await receiver.add_to_slot(ctx.resolink, ctx.slot)
     ctx.trigger_receiver = receiver
     return receiver
+
+
+async def _build_raycast_one_context(
+    ctx: _BuildContext,
+    rc_ctx: _flow.RaycastOneContext,
+) -> Any:
+    """Build a RaycastOneContext into a ProtoFlux RaycastOne node."""
+    from pyresonitelink.protoflux.physics import RaycastOne
+
+    # Materialize input expressions
+    origin_comp = await ctx.materialize(rc_ctx.origin._node)
+    dir_comp = await ctx.materialize(rc_ctx.direction._node)
+    max_dist_comp = None
+    if rc_ctx.max_distance is not None:
+        max_dist_comp = await ctx.materialize(rc_ctx.max_distance._node)
+    hit_trig_comp = None
+    if rc_ctx.hit_triggers is not None:
+        hit_trig_comp = await ctx.materialize(rc_ctx.hit_triggers._node)
+    users_comp = None
+    if rc_ctx.users_only is not None:
+        users_comp = await ctx.materialize(rc_ctx.users_only._node)
+    root_comp = None
+    if rc_ctx.root is not None:
+        root_comp = await ctx.materialize(rc_ctx.root._node)
+
+    # Create the RaycastOne node
+    rc_node = RaycastOne(
+        origin=origin_comp.id,
+        direction=dir_comp.id,
+        max_distance=max_dist_comp.id if max_dist_comp else None,
+        hit_triggers=hit_trig_comp.id if hit_trig_comp else None,
+        users_only=users_comp.id if users_comp else None,
+        root=root_comp.id if root_comp else None,
+    )
+    await rc_node.add_to_slot(ctx.resolink, ctx.slot)
+
+    # Register so ComponentOutputNode can reference it
+    ctx.component_outputs[rc_ctx.component_tag] = rc_node
+
+    # Build hit and miss write chains
+    hit_head = await _build_write_chain(ctx, rc_ctx.hit_writes)
+    miss_head = await _build_write_chain(ctx, rc_ctx.miss_writes)
+
+    needs_update = False
+    if hit_head is not None:
+        rc_node.on_hit = hit_head.id
+        needs_update = True
+    if miss_head is not None:
+        rc_node.on_miss = miss_head.id
+        needs_update = True
+    if needs_update:
+        await rc_node.update(ctx.resolink)
+
+    return rc_node
+
+
+async def _build_action_context(
+    ctx: _BuildContext,
+    action_ctx: Any,
+) -> Any:
+    """Build a generic ActionContext into its ProtoFlux node.
+
+    Dynamically imports the component class, materializes inputs,
+    creates the node, registers outputs, and wires flow branches.
+    """
+    from pyresonitelink.dergflux import _action
+
+    action_def: _action.ActionDef = action_ctx.action_def
+
+    # Import the component class
+    module = importlib.import_module(
+        f"pyresonitelink.{action_def.import_path}",
+    )
+    ComponentClass = getattr(module, action_def.class_name)
+
+    # Materialize input expressions
+    init_kwargs: dict[str, str] = {}
+    for param_name, expr_proxy in action_ctx.input_exprs.items():
+        comp = await ctx.materialize(expr_proxy._node)
+        init_kwargs[param_name] = comp.id
+
+    # Create the component
+    node = ComponentClass(**init_kwargs)
+    await node.add_to_slot(ctx.resolink, ctx.slot)
+
+    # Register so ComponentOutputNode can reference it
+    ctx.component_outputs[action_ctx.component_tag] = node
+
+    # Build and wire each flow output branch
+    needs_update = False
+    for branch_name in action_def.flow_outputs:
+        writes = action_ctx.branch_writes.get(branch_name, [])
+        head = await _build_write_chain(ctx, writes)
+        if head is not None:
+            setattr(node, branch_name, head.id)
+            needs_update = True
+    if needs_update:
+        await node.update(ctx.resolink)
+
+    return node
 
 
 async def _build_bare_write_context(
@@ -855,6 +1013,11 @@ async def _build_flow_context(
         return await _build_range_context(ctx, flow_ctx)
     if isinstance(flow_ctx, _flow.WhileContext):
         return await _build_while_context(ctx, flow_ctx)
+    if isinstance(flow_ctx, _flow.RaycastOneContext):
+        return await _build_raycast_one_context(ctx, flow_ctx)
+    from pyresonitelink.dergflux import _action
+    if isinstance(flow_ctx, _action.ActionContext):
+        return await _build_action_context(ctx, flow_ctx)
     if isinstance(flow_ctx, _flow.BareWriteContext):
         return await _build_bare_write_context(ctx, flow_ctx)
     raise TypeError(f"Unknown flow context: {type(flow_ctx).__name__}")
@@ -923,3 +1086,6 @@ async def build_graph(
             await receiver.update(ctx.resolink)
         else:
             await _build_trigger(ctx, entry, trigger)
+
+    # Build drives (ValueFieldDrive<T>)
+    await _build_bindings(graph, resolink)

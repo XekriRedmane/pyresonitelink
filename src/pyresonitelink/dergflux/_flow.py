@@ -148,6 +148,42 @@ class WhileContext(FlowContext):
 
 
 @dataclass
+class RaycastOneContext(FlowContext):
+    """Tracks a RaycastOne node during recording.
+
+    Attributes:
+        origin: Ray origin expression (Float3).
+        direction: Ray direction expression (Float3).
+        max_distance: Max ray distance expression (Float).
+        hit_triggers: Whether to hit triggers (Bool).
+        users_only: Whether to hit only users (Bool).
+        root: Root slot reference expression.
+        component_tag: Tag linking output nodes to this context.
+        hit_writes: Statements recorded inside OnHit().
+        miss_writes: Statements recorded inside OnMiss().
+        phase: Which section is currently being recorded.
+    """
+
+    origin: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
+    direction: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
+    max_distance: _expr.ExprProxy | None = None
+    hit_triggers: _expr.ExprProxy | None = None
+    users_only: _expr.ExprProxy | None = None
+    root: _expr.ExprProxy | None = None
+    component_tag: str = ""
+    hit_writes: list[WriteRecord] = field(default_factory=list)
+    miss_writes: list[WriteRecord] = field(default_factory=list)
+    phase: str = "hit"
+
+    def record_write(self, write: WriteRecord) -> None:
+        """Append a write to the currently active section."""
+        if self.phase == "hit":
+            self.hit_writes.append(write)
+        else:
+            self.miss_writes.append(write)
+
+
+@dataclass
 class BareWriteContext(FlowContext):
     """Tracks bare writes inside an Under block (not inside If/For/While).
 
@@ -160,6 +196,26 @@ class BareWriteContext(FlowContext):
     def record_write(self, write: WriteRecord) -> None:
         """Append a write."""
         self.writes.append(write)
+
+
+@dataclass
+class BindRecord:
+    """A continuous field drive: component.member is driven by an expression.
+
+    At build time, creates a ``ValueFieldDrive<T>`` that continuously
+    drives a component field from a ProtoFlux expression.
+
+    Attributes:
+        component: The target component instance.
+        member_name: The Resonite member name to drive (e.g. ``"Index"``).
+        expr: The expression to drive from.
+        slot: The slot to place the drive node on.
+    """
+
+    component: Any
+    member_name: str
+    expr: _expr.ExprProxy
+    slot: workers.Slot
 
 
 @dataclass

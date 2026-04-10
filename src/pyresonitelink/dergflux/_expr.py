@@ -89,6 +89,24 @@ class TriggerValueNode(ExprNode):
         super().__init__(expr_type)
 
 
+class ComponentOutputNode(ExprNode):
+    """A value output from a multi-output ProtoFlux node.
+
+    At build time, this references the component that produces the
+    output. The ProtoFlux runtime selects the correct output by type.
+
+    Attributes:
+        output_name: The output member name (e.g. "HitPoint").
+        component_tag: An opaque tag linking this node to its source
+            component at build time.
+    """
+
+    def __init__(self, output_name: str, component_tag: str, expr_type: type) -> None:
+        super().__init__(expr_type)
+        self.output_name = output_name
+        self.component_tag = component_tag
+
+
 class LoopIndexNode(ExprNode):
     """The current iteration index of a For loop.
 

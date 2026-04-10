@@ -325,6 +325,166 @@ re-evaluated each iteration. Statements go to `loop_iteration`.
 
 Code after the `with g.While()` block continues from `loop_end`.
 
+#### Action Nodes
+
+Action nodes are ProtoFlux nodes triggered by an impulse that branch
+into alternate flow paths and optionally produce value outputs.  They
+are accessed as named methods on the Graph.
+
+**RaycastOne** — cast a ray with hit/miss branches:
+
+```python
+with g.Under(slot):
+    with g.RaycastOne(origin=s.pos, direction=s.dir, max_distance=100) as r:
+        with r.on_hit():
+            s.hit_pos = r.hit_point
+            s.distance = r.hit_distance
+        with r.on_miss():
+            s.distance = -1
+```
+
+Value outputs: ``r.hit_point`` (Float3), ``r.hit_normal`` (Float3),
+``r.hit_distance`` (Float), ``r.hit_triangle_index`` (Int).
+
+**PlayOneShotAndWait** — play audio with start/finish callbacks:
+
+```python
+with g.Under(slot, trigger="play"):
+    with g.PlayOneShotAndWait(clip=clip_ref, volume=1.0) as r:
+        with r.on_started_playing():
+            s.state = "playing"
+        with r.on_finished_playing():
+            s.state = "finished"
+```
+
+**PlayOneShot** — play audio (fire and forget):
+
+```python
+with g.Under(slot):
+    with g.PlayOneShot(clip=clip_ref) as r:
+        with r.on_started_playing():
+            s.playing = True
+```
+
+#### Defining Custom Actions
+
+Any ProtoFlux node with flow outputs can be wrapped as an action using
+``ActionDef`` — no custom proxy or builder code needed:
+
+```python
+from pyresonitelink.dergflux import ActionDef, InputDef, OutputDef
+from pyresonitelink.data import primitives
+
+MyAction = ActionDef(
+    import_path="protoflux.physics",      # module under pyresonitelink
+    class_name="RaycastOne",              # class to import
+    inputs={
+        "origin": InputDef("origin", primitives.Float3),
+        "direction": InputDef("direction", primitives.Float3),
+    },
+    flow_outputs=["on_hit", "on_miss"],   # become context managers
+    value_outputs={                        # become ExprProxy properties
+        "hit_distance": OutputDef("HitDistance", primitives.Float),
+    },
+)
+```
+
+Use it with ``g.Action()``:
+
+```python
+with g.Action(MyAction, origin=s.pos, direction=s.dir) as r:
+    with r.on_hit():
+        s.distance = r.hit_distance
+```
+
+Or add a named shortcut method on Graph that delegates to ``g.Action()``.
+
+### Generic Action Nodes
+
+Many ProtoFlux nodes follow a common pattern: they take value inputs,
+have multiple flow outputs (branches), and optionally produce value
+outputs.  Instead of implementing each one as a custom DSL construct,
+define them once with ``ActionDef`` and use them with ``g.Action()``.
+
+#### Defining an action
+
+```python
+from pyresonitelink.dergflux import ActionDef, InputDef, OutputDef
+from pyresonitelink.data import primitives
+
+MyAction = ActionDef(
+    import_path="protoflux.physics",      # module under pyresonitelink
+    class_name="RaycastOne",              # class to import
+    inputs={
+        "origin": InputDef("origin", primitives.Float3),
+        "direction": InputDef("direction", primitives.Float3),
+        "max_distance": InputDef("max_distance", primitives.Float),
+    },
+    flow_outputs=["on_hit", "on_miss"],   # become context managers
+    value_outputs={                        # become ExprProxy properties
+        "hit_point": OutputDef("HitPoint", primitives.Float3),
+        "hit_distance": OutputDef("HitDistance", primitives.Float),
+    },
+)
+```
+
+#### Using an action
+
+```python
+with g.Under(slot):
+    with g.Action(MyAction, origin=s.pos, direction=s.dir) as r:
+        with r.on_hit():
+            s.distance = r.hit_distance
+        with r.on_miss():
+            s.distance = -1
+```
+
+- Flow outputs (``on_hit``, ``on_miss``) are context managers on the proxy.
+- Value outputs (``hit_distance``, ``hit_point``) are ``ExprProxy`` properties.
+- Inputs are passed as keyword arguments matching the keys in ``inputs``.
+
+#### Prebuilt actions
+
+``pyresonitelink.dergflux.actions`` provides ready-to-use definitions:
+
+- **``actions.RaycastOne``** — ray cast with on_hit/on_miss and hit result outputs
+- **``actions.PlayOneShot``** — play audio with on_started_playing
+- **``actions.PlayOneShotAndWait``** — play audio with on_started_playing/on_finished_playing
+
+```python
+from pyresonitelink.dergflux import actions
+
+with g.Under(slot):
+    with g.Action(actions.RaycastOne, origin=s.pos, direction=s.dir) as r:
+        with r.on_hit():
+            s.hit_pos = r.hit_point
+```
+
+### Bindings
+
+``g.Bind()`` permanently binds a ProtoFlux expression to a component
+field.  The field always reflects the expression's current value.
+This creates a ``ValueFieldDrive<T>`` node that is always active —
+not triggered by impulses.
+
+**A field can only be bound once.**  Attempting to bind a field that
+is already bound raises ``RuntimeError``.
+
+```python
+# Bind the loop counter to the multiplexer's index
+with g.Under(slot):
+    with g.For(3) as f:
+        with f.OnIterate() as i:
+            g.Bind(i, mux, "Index")
+```
+
+Arguments:
+
+- ``expr`` — an ExprProxy or literal value to bind from
+- ``component`` — the target component (a generated component instance)
+- ``member_name`` — the Resonite member name to bind to (e.g. ``"Index"``)
+- ``slot`` — optional; defaults to the active ``Under()`` slot
+
 ## Triggers
 
 The `trigger` parameter on `g.Under()` controls what drives the impulse flow. There are three modes:
