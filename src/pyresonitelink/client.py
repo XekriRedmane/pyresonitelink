@@ -696,6 +696,168 @@ class Client:
             responses.AssetData, debug,
         )
 
+    async def find_slot(
+        self,
+        root: str | workers.Slot,
+        *,
+        name: str | None = None,
+        tag: str | None = None,
+        depth: int = -1,
+        match_substring: bool = False,
+        ignore_case: bool = False,
+        debug: bool = False,
+    ) -> workers.Slot | None:
+        """Find a child slot by name or tag using ProtoFlux search nodes.
+
+        Creates temporary ProtoFlux nodes (FindChildByName or
+        FindChildByTag) on a temporary slot, lets the engine evaluate
+        the search, reads the result, and cleans up.  This is much
+        faster than fetching the entire slot hierarchy for deep searches.
+
+        Args:
+            root: The slot to search under (string ID or Slot instance).
+            name: The slot name to search for.
+            tag: The slot tag to search for.
+            depth: Maximum search depth (-1 for unlimited).
+            match_substring: If True, match substrings of the name.
+            ignore_case: If True, ignore case when matching.
+            debug: Print request/response JSON.
+
+        Returns:
+            The found Slot, or None if not found.
+
+        Raises:
+            ValueError: If neither name nor tag is specified.
+        """
+        import time
+
+        from pyresonitelink.data import primitives
+        from pyresonitelink.protoflux.core import (
+            RefObjectInput,
+            ValueInput,
+            ValueObjectInput,
+        )
+        from pyresonitelink.protoflux.flow import Update
+        from pyresonitelink.protoflux.variables.dynamic import (
+            WriteDynamicObjectVariable,
+        )
+        from pyresonitelink.components.data.dynamic import (
+            DynamicReferenceVariable,
+            DynamicVariableSpace,
+        )
+
+        if name is None and tag is None:
+            raise ValueError("Either name or tag must be specified.")
+
+        root_id = root.id if isinstance(root, workers.Slot) else root
+
+        # Create a temporary slot for the search nodes
+        tmp_resp = await self.add_slot_to_root(
+            name="__find_slot_tmp__", debug=debug,
+        )
+        assert tmp_resp.entityId is not None
+        tmp = workers.Slot(id=tmp_resp.entityId)
+
+        try:
+            # Dynamic variable to hold the result
+            dyn_space = DynamicVariableSpace()
+            await dyn_space.add_to_slot(self, tmp, debug=debug)
+            result_var = DynamicReferenceVariable[workers.Slot](
+                variable_name="result",
+            )
+            await result_var.add_to_slot(self, tmp, debug=debug)
+
+            # Root slot reference (for FindChild)
+            root_ref = RefObjectInput[workers.Slot](target=root_id)
+            await root_ref.add_to_slot(self, tmp, debug=debug)
+
+            # Tmp slot reference (for WriteDynamicObjectVariable target)
+            tmp_ref = RefObjectInput[workers.Slot](target=tmp)
+            await tmp_ref.add_to_slot(self, tmp, debug=debug)
+
+            # Depth input
+            depth_input = ValueInput[primitives.Int](primitives.Int(depth))
+            await depth_input.add_to_slot(self, tmp, debug=debug)
+
+            # Create the appropriate find node
+            if name is not None:
+                from pyresonitelink.protoflux.slots.searching import (
+                    FindChildByName,
+                )
+
+                name_input = ValueObjectInput[primitives.String](value=name)
+                await name_input.add_to_slot(self, tmp, debug=debug)
+
+                find_kwargs: dict[str, object] = {
+                    "instance": root_ref.id,
+                    "name": name_input.id,
+                    "search_depth": depth_input.id,
+                }
+                if match_substring:
+                    ms_input = ValueInput[primitives.Bool](
+                        primitives.Bool(True),
+                    )
+                    await ms_input.add_to_slot(self, tmp, debug=debug)
+                    find_kwargs["match_substring"] = ms_input.id
+                if ignore_case:
+                    ic_input = ValueInput[primitives.Bool](
+                        primitives.Bool(True),
+                    )
+                    await ic_input.add_to_slot(self, tmp, debug=debug)
+                    find_kwargs["ignore_case"] = ic_input.id
+
+                find = FindChildByName(**find_kwargs)
+                await find.add_to_slot(self, tmp, debug=debug)
+            else:
+                from pyresonitelink.protoflux.slots.searching import (
+                    FindChildByTag,
+                )
+
+                assert tag is not None
+                tag_input = ValueObjectInput[primitives.String](value=tag)
+                await tag_input.add_to_slot(self, tmp, debug=debug)
+
+                find = FindChildByTag(
+                    instance=root_ref.id,
+                    tag=tag_input.id,
+                    search_depth=depth_input.id,
+                )
+                await find.add_to_slot(self, tmp, debug=debug)
+
+            # Write the find result to the dynamic variable
+            path_input = ValueObjectInput[primitives.String](value="result")
+            await path_input.add_to_slot(self, tmp, debug=debug)
+
+            WriteSlot = WriteDynamicObjectVariable[workers.Slot]
+            write = WriteSlot()
+            await write.add_to_slot(self, tmp, debug=debug)
+            await self.update_references(
+                componentId=write.id,  # type: ignore[arg-type]
+                references={
+                    "Target": tmp_ref.id,  # type: ignore[arg-type]
+                    "Path": path_input.id,  # type: ignore[arg-type]
+                    "Value": find.id,  # type: ignore[arg-type]
+                },
+                debug=debug,
+            )
+
+            # Update fires the write once
+            update = Update(on_update=write.id)  # type: ignore[arg-type]
+            await update.add_to_slot(self, tmp, debug=debug)
+
+            # Wait for engine evaluation
+            time.sleep(0.5)
+
+            # Read the result
+            await result_var.refresh(self, debug=debug)
+            found_id = result_var.reference
+            if found_id is None:
+                return None
+            return workers.Slot(id=found_id)
+        finally:
+            # Clean up the temporary slot
+            await self.remove_slot(slot=tmp, debug=debug)
+
     async def create_audio_clip(
         self,
         slot: str | workers.Slot,
