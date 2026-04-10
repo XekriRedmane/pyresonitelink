@@ -44,14 +44,16 @@ async def main(port: int) -> None:
     # ===================================================================
 
     g = Graph()
+
     s = g.Space(slot)
     s.x = s.FloatVar("x")
     s.z = s.FloatVar("z")
 
-    with g.If(s.x < 3):
-        s.z = s.x + 3
-    with g.Else():
-        s.z = s.x - 3
+    with g.Under(slot):
+        with g.If(s.x < 3):
+            s.z = s.x + 3
+        with g.Else():
+            s.z = s.x - 3
 
     print("Building graph...")
     await g.build(resolink)

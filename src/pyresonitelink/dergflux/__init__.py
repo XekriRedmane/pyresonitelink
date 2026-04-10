@@ -3,14 +3,15 @@
 Dergflux lets you write ProtoFlux logic using natural Python syntax::
 
     g = Graph()
-    s = g.Space(slot)
-    s.x = s.FloatVar("x")
-    s.z = s.FloatVar("z")
+    with g.Under(slot):
+        s = g.Space()
+        s.x = s.FloatVar("x")
+        s.z = s.FloatVar("z")
 
-    with g.If(s.x < 3):
-        s.z = s.x + 3
-    with g.Else():
-        s.z = s.x - 3
+        with g.If(s.x < 3):
+            s.z = s.x + 3
+        with g.Else():
+            s.z = s.x - 3
 
     await g.build(resolink)
 """

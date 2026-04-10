@@ -29,14 +29,18 @@ _BINOP_CLASS_NAMES: dict[_expr.BinOp, str] = {
     _expr.BinOp.DIV: "ValueDiv",
     _expr.BinOp.MOD: "ValueMod",
     _expr.BinOp.LT: "ValueLessThan",
+    _expr.BinOp.LE: "ValueLessOrEqual",
     _expr.BinOp.GT: "ValueGreaterThan",
+    _expr.BinOp.GE: "ValueGreaterOrEqual",
     _expr.BinOp.EQ: "ValueEquals",
     _expr.BinOp.NE: "ValueNotEquals",
 }
 
 # BinOps where both operands use the left type (not the result type).
 _COMPARISON_OPS = {
-    _expr.BinOp.LT, _expr.BinOp.GT, _expr.BinOp.EQ, _expr.BinOp.NE,
+    _expr.BinOp.LT, _expr.BinOp.LE,
+    _expr.BinOp.GT, _expr.BinOp.GE,
+    _expr.BinOp.EQ, _expr.BinOp.NE,
 }
 
 
@@ -100,6 +104,7 @@ class _BuildContext:
         self.var_inputs: dict[tuple[int, str], Any] = {}
         self.slot_ref: Any = None
         self.path_nodes: dict[str, Any] = {}
+        self.trigger_receiver: Any = None
 
     async def ensure_slot_ref(self) -> Any:
         """Create the shared RefObjectInput<Slot> if needed."""
@@ -147,11 +152,26 @@ class _BuildContext:
             return await self._materialize_const(node)
         if isinstance(node, _expr.VarReadNode):
             return await self._materialize_var_read(node)
+        if isinstance(node, _expr.TriggerValueNode):
+            return self._materialize_trigger_value(node)
         if isinstance(node, _expr.BinaryOpNode):
             return await self._materialize_binop(node)
         if isinstance(node, _expr.UnaryOpNode):
             return await self._materialize_unop(node)
         raise TypeError(f"Unknown node type: {type(node).__name__}")
+
+    def _materialize_trigger_value(self, node: _expr.TriggerValueNode) -> Any:
+        """Return the trigger receiver component for a TriggerValueNode.
+
+        The receiver is set on the context by ``_build_trigger`` before
+        any expressions are materialized.
+        """
+        if self.trigger_receiver is None:
+            raise RuntimeError(
+                "TriggerValueNode used but no trigger receiver was created. "
+                "This is a bug in the Dergflux builder."
+            )
+        return self.trigger_receiver
 
     async def _materialize_const(self, node: _expr.ConstNode) -> Any:
         """Materialize a constant as a ValueInput<T>."""
@@ -464,6 +484,58 @@ async def _build_write_chain(
     return components[0]
 
 
+async def _build_trigger(
+    ctx: _BuildContext,
+    if_node: Any,
+    trigger: _flow.Trigger | None,
+) -> None:
+    """Create the trigger node that drives the impulse flow.
+
+    Args:
+        ctx: Build context.
+        if_node: The If component to wire the trigger to.
+        trigger: Trigger configuration, or None for Update.
+    """
+    if trigger is None:
+        # Default: Update node fires every frame
+        from pyresonitelink.protoflux.flow import Update
+
+        update = Update(on_update=if_node.id)
+        await update.add_to_slot(ctx.resolink, ctx.slot)
+        return
+
+    # Create a ValueObjectInput<String> for the tag
+    from pyresonitelink.protoflux.core import ValueObjectInput
+
+    StringInput = ValueObjectInput[primitives.String]
+    tag_node = StringInput(value=trigger.tag)
+    await tag_node.add_to_slot(ctx.resolink, ctx.slot)
+
+    if trigger.value_type is None:
+        # DynamicImpulseReceiver (no value)
+        from pyresonitelink.protoflux.flow import DynamicImpulseReceiver
+
+        receiver = DynamicImpulseReceiver(
+            tag=tag_node.id,
+            on_triggered=if_node.id,
+        )
+        await receiver.add_to_slot(ctx.resolink, ctx.slot)
+    else:
+        # DynamicImpulseReceiverWithValue<T>
+        from pyresonitelink.protoflux.flow import (
+            DynamicImpulseReceiverWithValue,
+        )
+
+        ConcreteReceiver = DynamicImpulseReceiverWithValue[trigger.value_type]  # type: ignore[valid-type]
+        receiver = ConcreteReceiver(
+            tag=tag_node.id,
+            on_triggered=if_node.id,
+        )
+        await receiver.add_to_slot(ctx.resolink, ctx.slot)
+        # Store receiver so TriggerValueNode can reference it
+        ctx.trigger_receiver = receiver
+
+
 async def build_graph(
     graph: _graph.Graph,
     resolink: protocols.ResoniteLinkClient,
@@ -474,29 +546,44 @@ async def build_graph(
         graph: The recorded Dergflux graph.
         resolink: A connected ResoniteLink client.
     """
-    from pyresonitelink.protoflux.flow import Update
-
-    if not graph._spaces:
-        return
-
-    # Use the first space's slot as the target for ProtoFlux nodes.
-    first_space = graph._spaces[0]
-    slot: workers.Slot = object.__getattribute__(first_space, "_slot")
-    ctx = _BuildContext(resolink, slot)
-
     # Build spaces and their variables
     for space in graph._spaces:
+        # Each space knows its own slot; use a temporary context
+        space_slot: workers.Slot = object.__getattribute__(space, "_slot")
+        ctx = _BuildContext(resolink, space_slot)
         await _build_space(ctx, space)
 
-    # Build all completed flow contexts
-    if_nodes: list[Any] = []
+    # Build all completed flow contexts.
+    # Each IfContext carries the slot and trigger from its Under() context.
     for if_ctx in graph._completed_flows:
-        if_node = await _build_if_context(ctx, if_ctx)
-        if_nodes.append(if_node)
+        ctx = _BuildContext(resolink, if_ctx.slot)
 
-    # Create an Update node to drive the impulse flow.
-    # If there are multiple If nodes, chain them: Update -> If1,
-    # and we'd need Sequence nodes. For v1, support a single If.
-    if if_nodes:
-        update = Update(on_update=if_nodes[0].id)
-        await update.add_to_slot(ctx.resolink, slot)
+        # For typed triggers, create the receiver first so
+        # TriggerValueNode can reference it during expression
+        # materialization.
+        if if_ctx.trigger is not None and if_ctx.trigger.value_type is not None:
+            # Pre-create receiver; wire on_triggered after If is built
+            from pyresonitelink.protoflux.core import ValueObjectInput
+            from pyresonitelink.protoflux.flow import (
+                DynamicImpulseReceiverWithValue,
+            )
+
+            StringInput = ValueObjectInput[primitives.String]
+            tag_node = StringInput(value=if_ctx.trigger.tag)
+            await tag_node.add_to_slot(ctx.resolink, ctx.slot)
+
+            ConcreteReceiver = DynamicImpulseReceiverWithValue[if_ctx.trigger.value_type]  # type: ignore[valid-type]
+            receiver = ConcreteReceiver(tag=tag_node.id)
+            await receiver.add_to_slot(ctx.resolink, ctx.slot)
+            ctx.trigger_receiver = receiver
+
+            # Build the If (expressions may reference trigger value)
+            if_node = await _build_if_context(ctx, if_ctx)
+
+            # Wire receiver -> If
+            receiver.on_triggered = if_node.id
+            await receiver.update(ctx.resolink)
+        else:
+            # No typed trigger value — build If first, then trigger
+            if_node = await _build_if_context(ctx, if_ctx)
+            await _build_trigger(ctx, if_node, if_ctx.trigger)

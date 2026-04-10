@@ -11,8 +11,24 @@ from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from pyresonitelink.data import workers
     from pyresonitelink.dergflux import _expr
     from pyresonitelink.dergflux import _space
+
+
+@dataclass
+class Trigger:
+    """Describes how a flow is triggered.
+
+    Attributes:
+        tag: The dynamic impulse tag name.
+        value_type: If set, uses DynamicImpulseReceiverWithValue<T>
+            and the received value is available as an ExprProxy.
+            If None, uses DynamicImpulseReceiver (no value).
+    """
+
+    tag: str
+    value_type: type | None = None
 
 
 @dataclass
@@ -30,12 +46,16 @@ class IfContext:
 
     Attributes:
         condition: The boolean expression proxy for the branch.
+        slot: The slot where ProtoFlux nodes for this flow will be placed.
+        trigger: How the flow is triggered. None means Update (every frame).
         true_writes: Writes recorded inside the ``with g.If(...)`` block.
         false_writes: Writes recorded inside the ``with g.Else()`` block.
         phase: Which branch is currently being recorded.
     """
 
     condition: _expr.ExprProxy
+    slot: workers.Slot
+    trigger: Trigger | None = None
     true_writes: list[WriteRecord] = field(default_factory=list)
     false_writes: list[WriteRecord] = field(default_factory=list)
     phase: str = "true"

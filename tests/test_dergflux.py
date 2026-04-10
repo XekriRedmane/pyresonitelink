@@ -171,15 +171,19 @@ class TestExprProxy:
         assert result._node.op is _expr.BinOp.NE
         assert result._node._type is primitives.Bool
 
-    def test_le_raises_not_implemented(self) -> None:
+    def test_le_creates_binary_node_with_bool_type(self) -> None:
         a = self._make_proxy(1)
-        with pytest.raises(NotImplementedError, match="ValueLessOrEqual"):
-            a <= 3
+        result = a <= 3
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.LE
+        assert result._node._type is primitives.Bool
 
-    def test_ge_raises_not_implemented(self) -> None:
+    def test_ge_creates_binary_node_with_bool_type(self) -> None:
         a = self._make_proxy(1)
-        with pytest.raises(NotImplementedError, match="ValueGreaterOrEqual"):
-            a >= 3
+        result = a >= 3
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.GE
+        assert result._node._type is primitives.Bool
 
     def test_bool_raises_type_error(self) -> None:
         a = self._make_proxy(1)
@@ -308,8 +312,10 @@ class TestSpace:
         g, s = self._make_graph_and_space()
         s.x = s.FloatVar("x")
         s.z = s.FloatVar("z")
-        with g.If(s.x < 3):
-            s.z = s.x + 3
+        slot = object.__getattribute__(s, "_slot")
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
         assert len(g._completed_flows) == 1
         ctx = g._completed_flows[0]
         assert len(ctx.true_writes) == 1
@@ -346,37 +352,47 @@ class TestSpace:
 class TestFlowControl:
     """Tests for If/Else context managers."""
 
-    def _make_graph_and_space(self) -> tuple[_graph.Graph, _space.Space]:
-        """Create a Graph and Space for testing."""
+    def _make_graph_and_space(self) -> tuple[_graph.Graph, _space.Space, workers.Slot]:
+        """Create a Graph, Space, and slot for testing."""
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
         s.x = s.FloatVar("x")
         s.z = s.FloatVar("z")
-        return g, s
+        return g, s, slot
 
     def test_if_records_condition(self) -> None:
-        g, s = self._make_graph_and_space()
+        g, s, slot = self._make_graph_and_space()
         cond = s.x < 3
-        with g.If(cond):
-            s.z = s.x + 3
+        with g.Under(slot):
+            with g.If(cond):
+                s.z = s.x + 3
         assert g._completed_flows[0].condition is cond
 
+    def test_if_records_slot(self) -> None:
+        g, s, slot = self._make_graph_and_space()
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
+        assert g._completed_flows[0].slot is slot
+
     def test_if_else_records_both_branches(self) -> None:
-        g, s = self._make_graph_and_space()
-        with g.If(s.x < 3):
-            s.z = s.x + 3
-        with g.Else():
-            s.z = s.x - 3
+        g, s, slot = self._make_graph_and_space()
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
+            with g.Else():
+                s.z = s.x - 3
         assert len(g._completed_flows) == 1
         ctx = g._completed_flows[0]
         assert len(ctx.true_writes) == 1
         assert len(ctx.false_writes) == 1
 
     def test_if_without_else(self) -> None:
-        g, s = self._make_graph_and_space()
-        with g.If(s.x < 3):
-            s.z = s.x + 3
+        g, s, slot = self._make_graph_and_space()
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
         ctx = g._completed_flows[0]
         assert len(ctx.true_writes) == 1
         assert len(ctx.false_writes) == 0
@@ -389,32 +405,46 @@ class TestFlowControl:
 
     def test_if_non_proxy_condition_raises(self) -> None:
         g = _graph.Graph()
-        with pytest.raises(TypeError, match="must be an ExprProxy"):
-            with g.If(True):
+        slot = workers.Slot(id="s")
+        with g.Under(slot):
+            with pytest.raises(TypeError, match="must be an ExprProxy"):
+                with g.If(True):
+                    pass
+
+    def test_if_outside_under_raises(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.x = s.FloatVar("x")
+        with pytest.raises(RuntimeError, match="must be used inside g.Under"):
+            with g.If(s.x < 3):
                 pass
 
     def test_multiple_ifs(self) -> None:
-        g, s = self._make_graph_and_space()
+        g, s, slot = self._make_graph_and_space()
         s.y = s.FloatVar("y")
-        with g.If(s.x < 3):
-            s.z = s.x + 3
-        with g.If(s.x > 10):
-            s.y = s.x * 2
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
+            with g.If(s.x > 10):
+                s.y = s.x * 2
         assert len(g._completed_flows) == 2
 
     def test_nested_flow_stack(self) -> None:
-        g, s = self._make_graph_and_space()
+        g, s, slot = self._make_graph_and_space()
         assert g._active_flow() is None
-        with g.If(s.x < 3):
-            assert g._active_flow() is not None
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                assert g._active_flow() is not None
         assert g._active_flow() is None
 
     def test_multiple_writes_in_branch(self) -> None:
-        g, s = self._make_graph_and_space()
+        g, s, slot = self._make_graph_and_space()
         s.y = s.FloatVar("y")
-        with g.If(s.x < 3):
-            s.z = s.x + 3
-            s.y = s.x + 10
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
+                s.y = s.x + 10
         ctx = g._completed_flows[0]
         assert len(ctx.true_writes) == 2
         assert ctx.true_writes[0].var_name == "z"
@@ -431,7 +461,8 @@ class TestIfContext:
 
     def test_record_write_true_phase(self) -> None:
         cond = _expr.ExprProxy(_expr.ConstNode(True, primitives.Bool))
-        ctx = _flow.IfContext(condition=cond)
+        slot = workers.Slot(id="s")
+        ctx = _flow.IfContext(condition=cond, slot=slot)
         space = object.__new__(_space.Space)
         write = _flow.WriteRecord(
             space=space,
@@ -444,7 +475,8 @@ class TestIfContext:
 
     def test_record_write_false_phase(self) -> None:
         cond = _expr.ExprProxy(_expr.ConstNode(True, primitives.Bool))
-        ctx = _flow.IfContext(condition=cond)
+        slot = workers.Slot(id="s")
+        ctx = _flow.IfContext(condition=cond, slot=slot)
         ctx.phase = "false"
         space = object.__new__(_space.Space)
         write = _flow.WriteRecord(
@@ -483,7 +515,7 @@ class TestVarDecl:
 
 
 class TestGraph:
-    """Tests for Graph factory methods."""
+    """Tests for Graph including Under context manager."""
 
     def test_space_registers(self) -> None:
         g = _graph.Graph()
@@ -504,3 +536,125 @@ class TestGraph:
         s = g.Space(slot)
         space_name = object.__getattribute__(s, "_space_name")
         assert space_name is None
+
+    def test_under_sets_active_slot(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="slot1")
+        assert g._active_slot() is None
+        with g.Under(slot):
+            assert g._active_slot() is slot
+        assert g._active_slot() is None
+
+    def test_under_nested(self) -> None:
+        g = _graph.Graph()
+        outer = workers.Slot(id="outer")
+        inner = workers.Slot(id="inner")
+        with g.Under(outer):
+            assert g._active_slot() is outer
+            with g.Under(inner):
+                assert g._active_slot() is inner
+            assert g._active_slot() is outer
+
+    def test_space_inherits_under_slot(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="slot1")
+        with g.Under(slot):
+            s = g.Space()
+        space_slot = object.__getattribute__(s, "_slot")
+        assert space_slot is slot
+
+    def test_space_explicit_slot_overrides_under(self) -> None:
+        g = _graph.Graph()
+        under_slot = workers.Slot(id="under")
+        explicit_slot = workers.Slot(id="explicit")
+        with g.Under(under_slot):
+            s = g.Space(explicit_slot)
+        space_slot = object.__getattribute__(s, "_slot")
+        assert space_slot is explicit_slot
+
+    def test_space_no_slot_no_under_raises(self) -> None:
+        g = _graph.Graph()
+        with pytest.raises(RuntimeError, match="requires a slot"):
+            g.Space()
+
+    def test_full_under_workflow(self) -> None:
+        """Verify the full Under workflow from the example."""
+        g = _graph.Graph()
+        slot = workers.Slot(id="test-slot")
+        with g.Under(slot):
+            s = g.Space()
+            s.x = s.FloatVar("x")
+            s.z = s.FloatVar("z")
+            with g.If(s.x < 3):
+                s.z = s.x + 3
+            with g.Else():
+                s.z = s.x - 3
+        assert len(g._spaces) == 1
+        assert len(g._completed_flows) == 1
+        ctx = g._completed_flows[0]
+        assert len(ctx.true_writes) == 1
+        assert len(ctx.false_writes) == 1
+        assert ctx.trigger is None
+
+    # --- Trigger variants ---
+
+    def test_under_no_trigger_default(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.x = s.FloatVar("x")
+        s.z = s.FloatVar("z")
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
+        assert g._completed_flows[0].trigger is None
+
+    def test_under_string_trigger(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.x = s.FloatVar("x")
+        s.z = s.FloatVar("z")
+        with g.Under(slot, trigger="MyImpulse"):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
+        trigger = g._completed_flows[0].trigger
+        assert trigger is not None
+        assert trigger.tag == "MyImpulse"
+        assert trigger.value_type is None
+
+    def test_under_typed_trigger_yields_proxy(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.z = s.FloatVar("z")
+        with g.Under(slot, trigger=("MyImpulse", primitives.Float)) as value:
+            assert isinstance(value, _expr.ExprProxy)
+            assert isinstance(value._node, _expr.TriggerValueNode)
+            assert value._node._type is primitives.Float
+
+    def test_under_typed_trigger_records_on_if(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.x = s.FloatVar("x")
+        s.z = s.FloatVar("z")
+        with g.Under(slot, trigger=("MyImpulse", primitives.Float)) as value:
+            with g.If(s.x < 3):
+                s.z = value + 3
+        trigger = g._completed_flows[0].trigger
+        assert trigger is not None
+        assert trigger.tag == "MyImpulse"
+        assert trigger.value_type is primitives.Float
+
+    def test_under_no_trigger_yields_none(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        with g.Under(slot) as value:
+            assert value is None
+
+    def test_under_string_trigger_yields_none(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        with g.Under(slot, trigger="MyImpulse") as value:
+            assert value is None

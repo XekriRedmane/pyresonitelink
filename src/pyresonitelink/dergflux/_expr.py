@@ -21,7 +21,9 @@ class BinOp(Enum):
     DIV = "div"
     MOD = "mod"
     LT = "lt"
+    LE = "le"
     GT = "gt"
+    GE = "ge"
     EQ = "eq"
     NE = "ne"
 
@@ -64,6 +66,16 @@ class VarReadNode(ExprNode):
         super().__init__(expr_type)
         self.var_name = var_name
         self.space = space
+
+
+class TriggerValueNode(ExprNode):
+    """The value received from a DynamicImpulseReceiverWithValue.
+
+    At build time, this references the receiver component's value output.
+    """
+
+    def __init__(self, expr_type: type) -> None:
+        super().__init__(expr_type)
 
 
 class BinaryOpNode(ExprNode):
@@ -114,7 +126,7 @@ def _binop(op: BinOp, left: ExprProxy, right: Any) -> ExprProxy:
     from pyresonitelink.dergflux import _types
 
     result_type: type | None
-    if op in (BinOp.LT, BinOp.GT, BinOp.EQ, BinOp.NE):
+    if op in (BinOp.LT, BinOp.LE, BinOp.GT, BinOp.GE, BinOp.EQ, BinOp.NE):
         from pyresonitelink.data import primitives
         result_type = primitives.Bool
     else:
@@ -195,16 +207,10 @@ class ExprProxy:
         return _binop(BinOp.NE, self, other)
 
     def __le__(self, other: Any) -> ExprProxy:
-        raise NotImplementedError(
-            "Resonite has no ValueLessOrEqual node. "
-            "Use (a < b) or (a == b) instead."
-        )
+        return _binop(BinOp.LE, self, other)
 
     def __ge__(self, other: Any) -> ExprProxy:
-        raise NotImplementedError(
-            "Resonite has no ValueGreaterOrEqual node. "
-            "Use (a > b) or (a == b) instead."
-        )
+        return _binop(BinOp.GE, self, other)
 
     # --- Safety ---
 
