@@ -242,6 +242,7 @@ class _BuildContext:
         self.slot_ref: Any = None
         self.path_nodes: dict[str, Any] = {}
         self.trigger_receiver: Any = None
+        self.loop_node: Any = None
 
     async def ensure_slot_ref(self) -> Any:
         """Create the shared RefObjectInput<Slot> if needed."""
@@ -291,6 +292,8 @@ class _BuildContext:
             return await self._materialize_var_read(node)
         if isinstance(node, _expr.TriggerValueNode):
             return self._materialize_trigger_value(node)
+        if isinstance(node, _expr.LoopIndexNode):
+            return self._materialize_loop_index(node)
         if isinstance(node, _expr.BinaryOpNode):
             return await self._materialize_binop(node)
         if isinstance(node, _expr.UnaryOpNode):
@@ -307,6 +310,20 @@ class _BuildContext:
                 "This is a bug in the Dergflux builder."
             )
         return self.trigger_receiver
+
+    def _materialize_loop_index(self, node: _expr.LoopIndexNode) -> Any:
+        """Return the For loop node for a LoopIndexNode.
+
+        The For node's Iteration output provides the current index.
+        The loop_node is set by ``_build_for_context`` before expressions
+        are materialized.
+        """
+        if self.loop_node is None:
+            raise RuntimeError(
+                "LoopIndexNode used but no For loop node was created. "
+                "This is a bug in the Dergflux builder."
+            )
+        return self.loop_node
 
     async def _materialize_const(self, node: _expr.ConstNode) -> Any:
         """Materialize a constant as a ValueInput<T>."""
@@ -592,6 +609,76 @@ async def _build_if_context(
     return if_node
 
 
+async def _build_for_context(
+    ctx: _BuildContext,
+    for_ctx: _flow.ForContext,
+) -> Any:
+    """Build a ForContext into a ProtoFlux For loop node.
+
+    The For node is created first (so LoopIndexNode can reference it),
+    then the write chains are built and wired to loop_start/loop_iteration.
+    """
+    from pyresonitelink.protoflux.flow import For
+
+    # Materialize count expression
+    count_comp = await ctx.materialize(for_ctx.count._node)
+
+    # Materialize reverse if present
+    reverse_comp = None
+    if for_ctx.reverse is not None:
+        reverse_comp = await ctx.materialize(for_ctx.reverse._node)
+
+    # Create the For node first so LoopIndexNode can reference it
+    for_node = For(
+        count=count_comp.id,
+        reverse=reverse_comp.id if reverse_comp else None,
+    )
+    await for_node.add_to_slot(ctx.resolink, ctx.slot)
+
+    # Set loop_node so LoopIndexNode materialization can find it
+    ctx.loop_node = for_node
+
+    # Build start writes (loop_start)
+    start_head = await _build_write_chain(ctx, for_ctx.start_writes)
+
+    # Build iteration writes (loop_iteration)
+    iter_head = await _build_write_chain(ctx, for_ctx.iteration_writes)
+
+    # Wire to the For node
+    needs_update = False
+    if start_head is not None:
+        for_node.loop_start = start_head.id
+        needs_update = True
+    if iter_head is not None:
+        for_node.loop_iteration = iter_head.id
+        needs_update = True
+    if needs_update:
+        await for_node.update(ctx.resolink)
+
+    return for_node
+
+
+async def _build_while_context(
+    ctx: _BuildContext,
+    while_ctx: _flow.WhileContext,
+) -> Any:
+    """Build a WhileContext into a ProtoFlux While loop node."""
+    from pyresonitelink.protoflux.flow import While
+
+    # Materialize condition expression
+    cond_comp = await ctx.materialize(while_ctx.condition._node)
+
+    # Build the write chain for the loop body
+    body_head = await _build_write_chain(ctx, while_ctx.writes)
+
+    while_node = While(
+        condition=cond_comp.id,
+        loop_iteration=body_head.id if body_head else None,
+    )
+    await while_node.add_to_slot(ctx.resolink, ctx.slot)
+    return while_node
+
+
 async def _build_write_chain(
     ctx: _BuildContext,
     writes: list[_flow.WriteRecord],
@@ -677,42 +764,121 @@ async def _build_trigger(
 # =========================================================================
 
 
+async def _setup_typed_trigger(
+    ctx: _BuildContext,
+    trigger: _flow.Trigger,
+) -> Any:
+    """Pre-create a typed trigger receiver so TriggerValueNode works.
+
+    Returns the receiver component. The caller must wire on_triggered
+    after building the flow node.
+    """
+    from pyresonitelink.protoflux.core import ValueObjectInput
+    from pyresonitelink.protoflux.flow import DynamicImpulseReceiverWithValue
+
+    StringInput = ValueObjectInput[primitives.String]
+    tag_node = StringInput(value=trigger.tag)
+    await tag_node.add_to_slot(ctx.resolink, ctx.slot)
+
+    assert trigger.value_type is not None
+    ConcreteReceiver = DynamicImpulseReceiverWithValue[trigger.value_type]  # type: ignore[valid-type]
+    receiver = ConcreteReceiver(tag=tag_node.id)
+    await receiver.add_to_slot(ctx.resolink, ctx.slot)
+    ctx.trigger_receiver = receiver
+    return receiver
+
+
+async def _build_bare_write_context(
+    ctx: _BuildContext,
+    bare_ctx: _flow.BareWriteContext,
+) -> Any | None:
+    """Build bare writes as a standalone write chain.
+
+    Returns the first WriteDVV in the chain, which implements
+    ISyncNodeOperation and can be wired into a Sequence.
+    """
+    return await _build_write_chain(ctx, bare_ctx.writes)
+
+
+async def _build_flow_context(
+    ctx: _BuildContext,
+    flow_ctx: _flow.FlowContext,
+) -> Any | None:
+    """Build a single flow context into its ProtoFlux node.
+
+    Returns the head node (ISyncNodeOperation) for Sequence wiring.
+    """
+    if isinstance(flow_ctx, _flow.IfContext):
+        return await _build_if_context(ctx, flow_ctx)
+    if isinstance(flow_ctx, _flow.ForContext):
+        return await _build_for_context(ctx, flow_ctx)
+    if isinstance(flow_ctx, _flow.WhileContext):
+        return await _build_while_context(ctx, flow_ctx)
+    if isinstance(flow_ctx, _flow.BareWriteContext):
+        return await _build_bare_write_context(ctx, flow_ctx)
+    raise TypeError(f"Unknown flow context: {type(flow_ctx).__name__}")
+
+
 async def build_graph(
     graph: _graph.Graph,
     resolink: protocols.ResoniteLinkClient,
 ) -> None:
     """Materialize the entire Graph as ProtoFlux components."""
+    from pyresonitelink.data import members
+    from pyresonitelink.protoflux.flow import Sequence
+
     # Build spaces and their variables
     for space in graph._spaces:
         space_slot: workers.Slot = object.__getattribute__(space, "_slot")
         ctx = _BuildContext(resolink, space_slot)
         await _build_space(ctx, space)
 
-    # Build all completed flow contexts
-    for if_ctx in graph._completed_flows:
-        ctx = _BuildContext(resolink, if_ctx.slot)
+    # Build each Under record.
+    # Each record contains a sequence of flow statements sharing one
+    # trigger. If there's only one statement, wire the trigger directly.
+    # If there are multiple, wrap in a Sequence node.
+    for under_rec in graph._under_records:
+        ctx = _BuildContext(resolink, under_rec.slot)
+        trigger = under_rec.trigger
 
         # For typed triggers, create receiver first so TriggerValueNode
         # can reference it during expression materialization.
-        if if_ctx.trigger is not None and if_ctx.trigger.value_type is not None:
-            from pyresonitelink.protoflux.core import ValueObjectInput
-            from pyresonitelink.protoflux.flow import (
-                DynamicImpulseReceiverWithValue,
-            )
+        receiver = None
+        if trigger is not None and trigger.value_type is not None:
+            receiver = await _setup_typed_trigger(ctx, trigger)
 
-            StringInput = ValueObjectInput[primitives.String]
-            tag_node = StringInput(value=if_ctx.trigger.tag)
-            await tag_node.add_to_slot(ctx.resolink, ctx.slot)
+        # Build all statements
+        head_nodes: list[Any] = []
+        for stmt in under_rec.statements:
+            node = await _build_flow_context(ctx, stmt)
+            if node is not None:
+                head_nodes.append(node)
 
-            ConcreteReceiver = DynamicImpulseReceiverWithValue[if_ctx.trigger.value_type]  # type: ignore[valid-type]
-            receiver = ConcreteReceiver(tag=tag_node.id)
-            await receiver.add_to_slot(ctx.resolink, ctx.slot)
-            ctx.trigger_receiver = receiver
+        if not head_nodes:
+            continue
 
-            if_node = await _build_if_context(ctx, if_ctx)
+        # Determine the entry point for the trigger
+        if len(head_nodes) == 1:
+            entry = head_nodes[0]
+        else:
+            # Create a Sequence node to chain them
+            seq = Sequence()
+            await seq.add_to_slot(ctx.resolink, ctx.slot)
+            # Populate the Calls SyncList with references to each node
+            calls_list = seq.get_member("Calls")
+            if not isinstance(calls_list, members.SyncList):
+                calls_list = members.SyncList()
+                seq.set_member("Calls", calls_list)
+            for node in head_nodes:
+                calls_list.elements.append(
+                    members.Reference(targetId=node.id),
+                )
+            await seq.update(ctx.resolink)
+            entry = seq
 
-            receiver.on_triggered = if_node.id
+        # Wire the trigger to the entry point
+        if receiver is not None:
+            receiver.on_triggered = entry.id
             await receiver.update(ctx.resolink)
         else:
-            if_node = await _build_if_context(ctx, if_ctx)
-            await _build_trigger(ctx, if_node, if_ctx.trigger)
+            await _build_trigger(ctx, entry, trigger)

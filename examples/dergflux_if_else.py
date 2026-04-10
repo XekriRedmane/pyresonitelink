@@ -1,9 +1,9 @@
 """Example: Imperative if-else using the Dergflux DSL.
 
-Implements: if (x < 3) z = x + 3; else z = x - 3;
+Implements: if (x < 3) z = x + 3; else z = x - 3; z += 1;
 
-This is the Dergflux equivalent of protoflux_if_else.py, using the
-Dergflux domain-specific language instead of manual component wiring.
+The final z += 1 runs after either branch completes,
+demonstrating flow continuation after an If/Else.
 
 Usage:
     python examples/dergflux_if_else.py <port>
@@ -55,6 +55,12 @@ async def main(port: int) -> None:
         with g.Else():
             s.z = s.x - 3
 
+        # This runs after either branch completes.
+        # The If and this bare write become two entries in a Sequence
+        # node. The Sequence waits for the If to finish (whichever
+        # branch ran), then fires the write.
+        s.z = s.z + 1
+
     print("Building graph...")
     await g.build(resolink)
     print("Graph built.\n")
@@ -98,23 +104,23 @@ async def main(port: int) -> None:
     print("Waiting for graph evaluation...")
     time.sleep(1.0)
 
-    # Test 1: x=2 (< 3), expect z = 2 + 3 = 5
+    # Test 1: x=2 (< 3), expect z = (2 + 3) + 1 = 6
     z1 = await read_z()
-    print(f"Test 1: x=2, z={z1} (expected 5.0)")
+    print(f"Test 1: x=2, z={z1} (expected 6.0)")
 
-    # Test 2: x=5 (>= 3), expect z = 5 - 3 = 2
+    # Test 2: x=5 (>= 3), expect z = (5 - 3) + 1 = 3
     x_var.value = primitives.Float(5.0)
     await x_var.update(resolink)
     time.sleep(0.5)
     z2 = await read_z()
-    print(f"Test 2: x=5, z={z2} (expected 2.0)")
+    print(f"Test 2: x=5, z={z2} (expected 3.0)")
 
-    # Test 3: x=3 (== 3, not < 3), expect z = 3 - 3 = 0
+    # Test 3: x=3 (== 3, not < 3), expect z = (3 - 3) + 1 = 1
     x_var.value = primitives.Float(3.0)
     await x_var.update(resolink)
     time.sleep(0.5)
     z3 = await read_z()
-    print(f"Test 3: x=3, z={z3} (expected 0.0)")
+    print(f"Test 3: x=3, z={z3} (expected 1.0)")
 
     # Clean up
     await resolink.remove_slot(slot=slot)

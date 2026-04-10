@@ -194,15 +194,33 @@ class Space:
         # Write: s.z = <expr>
         proxy = _expr._coerce(value)
         graph: _graph.Graph = object.__getattribute__(self, "_graph")
-        flow_ctx = graph._active_flow()
-        if flow_ctx is None:
-            raise RuntimeError(
-                f"Cannot assign to '{name}' outside a flow context. "
-                "Use inside g.If() or similar."
-            )
         from pyresonitelink.dergflux import _flow
 
-        flow_ctx.record_write(_flow.WriteRecord(self, name, proxy))
+        flow_ctx = graph._active_flow()
+        if flow_ctx is not None:
+            flow_ctx.record_write(_flow.WriteRecord(self, name, proxy))
+            return
+
+        # No active flow (If/For/While), but if we're inside Under,
+        # this is a bare write that becomes a standalone statement.
+        under = graph._active_under()
+        if under is None or under.record is None:
+            raise RuntimeError(
+                f"Cannot assign to '{name}' outside a flow context. "
+                "Use inside g.Under() with g.If(), g.For(), etc., "
+                "or as a bare write inside g.Under()."
+            )
+
+        # Extend the last BareWriteContext, or create a new one
+        stmts = under.record.statements
+        if stmts and isinstance(stmts[-1], _flow.BareWriteContext):
+            stmts[-1].record_write(
+                _flow.WriteRecord(self, name, proxy),
+            )
+        else:
+            bare = _flow.BareWriteContext(slot=under.slot)
+            bare.record_write(_flow.WriteRecord(self, name, proxy))
+            stmts.append(bare)
 
     def __getattr__(self, name: str) -> Any:
         if name.startswith("_"):

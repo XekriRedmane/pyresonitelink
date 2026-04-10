@@ -225,6 +225,11 @@ This is a value-level conditional (like C's ternary `?:`) — it selects between
 
 ### Flow Control
 
+All flow control must be inside a `g.Under(slot)` block.  Multiple
+flow statements inside a single `Under` block are chained via a
+ProtoFlux `Sequence` node — each runs to completion before the next
+starts.
+
 #### If / Else
 
 ```python
@@ -235,18 +240,74 @@ with g.Under(slot):
         s.z = s.x - 3      # false branch
 ```
 
-Both `g.If()` and `g.Else()` must be inside a `g.Under()` block. Writes (assignments to space variables) must be inside a flow block — writing outside `g.If()` raises an error.
+Multiple writes per branch are supported. `g.Else()` is optional.
 
-Multiple writes per branch are supported:
+#### Continuation after If / Else
+
+Bare writes after a flow block are continuation statements — they run
+after the preceding flow completes:
 
 ```python
 with g.Under(slot):
     with g.If(s.x < 3):
         s.z = s.x + 3
-        s.y = s.x * 10
+    with g.Else():
+        s.z = s.x - 3
+
+    # Runs after either branch completes (via Sequence)
+    s.z = s.z + 1
 ```
 
-`g.Else()` is optional — you can have an `If` without it.
+At build time, the `If` and the bare write become two entries in a
+`Sequence` node.  The trigger drives the Sequence, which fires the
+If first, waits for it to complete, then fires the bare write.
+
+#### For
+
+```python
+with g.Under(slot):
+    with g.For(10) as f:
+        with f.OnStart():
+            s.total = 0          # runs once before the loop
+        with f.OnIterate() as i:
+            s.total = s.total + i  # runs each iteration
+```
+
+`g.For(count)` yields a `ForProxy` with two context managers:
+
+- **`f.OnStart()`** — writes go to `loop_start`, runs once before the first iteration.
+- **`f.OnIterate()`** — yields an `ExprProxy` for the iteration index (Int), writes go to `loop_iteration`.
+
+The count can be a literal or an expression.  Optional `reverse=True`
+iterates in reverse order.
+
+Code after the `with g.For()` block continues from `loop_end`:
+
+```python
+with g.Under(slot):
+    with g.For(10) as f:
+        with f.OnStart():
+            s.total = 0
+        with f.OnIterate() as i:
+            s.total = s.total + i
+
+    # Runs once after the loop finishes (via Sequence)
+    with g.If(s.total > 30):
+        s.total = s.total * 2
+```
+
+#### While
+
+```python
+with g.Under(slot):
+    with g.While(s.x > 0):
+        s.x = s.x - 1
+```
+
+Repeats the body as long as `condition` is true. The condition is
+re-evaluated each iteration. Writes go to `loop_iteration`.
+
+Code after the `with g.While()` block continues from `loop_end`.
 
 ## Triggers
 

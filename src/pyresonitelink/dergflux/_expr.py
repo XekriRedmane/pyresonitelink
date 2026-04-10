@@ -89,6 +89,18 @@ class TriggerValueNode(ExprNode):
         super().__init__(expr_type)
 
 
+class LoopIndexNode(ExprNode):
+    """The current iteration index of a For loop.
+
+    At build time, this references the For node's Iteration output.
+    Always typed as Int.
+    """
+
+    def __init__(self) -> None:
+        from pyresonitelink.data import primitives
+        super().__init__(primitives.Int)
+
+
 class BinaryOpNode(ExprNode):
     """A binary operation on two expression nodes."""
 
