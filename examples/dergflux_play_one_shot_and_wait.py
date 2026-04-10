@@ -16,8 +16,6 @@ import sys
 import time
 
 from pyresonitelink import client
-from pyresonitelink.data import primitives
-from pyresonitelink.components.data.dynamic import DynamicValueVariable
 from pyresonitelink.dergflux import Graph
 
 
@@ -71,26 +69,12 @@ async def main(port: int) -> None:
     print("Graph built.\n")
 
     # ===================================================================
-    # Test: trigger the impulse and watch state changes
+    # After build, access the variable directly from the Space
     # ===================================================================
 
-    # Find the state variable by scanning components and refreshing
-    StringDynVar = DynamicValueVariable[primitives.String]
-    slot_data = await resolink.get_slot(slot=slot, depth=0)
-    assert slot_data.data is not None
-
-    state_var: DynamicValueVariable[primitives.String] | None = None
-    for comp in slot_data.data.components:
-        if comp.componentType == StringDynVar.COMPONENT_TYPE:
-            dv = StringDynVar(component=comp)
-            await dv.refresh(resolink)
-            if dv.variable_name == "state":
-                state_var = dv
-
-    if state_var is not None:
-        print(f"Initial state: {state_var.value}")
-    else:
-        print("Could not find state variable (string dynvar may not exist).")
+    state_var = s.state  # returns the built DynamicValueVariable component
+    await state_var.refresh(resolink)
+    print(f"Initial state: {state_var.value}")
 
     print("\nTo hear the sound, trigger a dynamic impulse with tag")
     print("'play_sound' on the slot from within Resonite.")

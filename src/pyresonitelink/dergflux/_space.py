@@ -157,6 +157,7 @@ class Space:
         object.__setattr__(self, "_slot", slot)
         object.__setattr__(self, "_space_name", space_name)
         object.__setattr__(self, "_vars", {})
+        object.__setattr__(self, "_built_vars", {})
 
     # --- Variable declaration ---
 
@@ -246,6 +247,11 @@ class Space:
                 f"Variable '{name}' not declared on this Space. "
                 f"Declare it first with s.{name} = s.FloatVar(\"{name}\")."
             )
+        # After build, return the built component for direct access
+        built: dict[str, Any] = object.__getattribute__(self, "_built_vars")
+        if name in built:
+            return built[name]
+        # During recording, return an ExprProxy for the expression tree
         decl = vars_dict[name]
         node = _expr.VarReadNode(decl.path, self, decl.resonite_type)
         return _expr.ExprProxy(node)

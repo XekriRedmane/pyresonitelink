@@ -553,25 +553,32 @@ async def _is_slot_or_child(
         current = workers.Slot(id=parent_id)
 
 
-async def _find_existing_variable(
+async def _find_existing_variable_component(
     resolink: protocols.ResoniteLinkClient,
     slot: workers.Slot,
     variable_name: str,
     component_type: str,
-) -> bool:
-    """Check if a DynamicValueVariable with the given name exists on a slot."""
+) -> Any | None:
+    """Find a DynamicValueVariable with the given name on a slot.
+
+    Returns the component instance if found, or None.
+    """
     from pyresonitelink.components.data.dynamic import DynamicValueVariable
 
     slot_data = await resolink.get_slot(slot=slot, depth=0)
     if slot_data.data is None:
-        return False
+        return None
     for comp in slot_data.data.components:
         if comp.componentType != component_type:
             continue
-        existing = DynamicValueVariable(component=comp)
+        # Refresh to get full member data
+        get_resp = await resolink.get_component(componentId=comp.id)
+        if get_resp.data is None:
+            continue
+        existing = DynamicValueVariable(component=get_resp.data)
         if existing.variable_name == variable_name:
-            return True
-    return False
+            return existing
+    return None
 
 
 async def _build_space(
@@ -595,7 +602,10 @@ async def _build_space(
     vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
         space, "_vars",
     )
-    for decl in vars_dict.values():
+    built_vars: dict[str, Any] = object.__getattribute__(
+        space, "_built_vars",
+    )
+    for attr_name, decl in vars_dict.items():
         var_slot = decl.slot if decl.slot is not None else slot
 
         if decl.slot is not None:
@@ -610,15 +620,19 @@ async def _build_space(
 
         ConcreteVar = DynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
 
-        var_exists = await _find_existing_variable(
+        # Check if it already exists on the target slot
+        existing_comp = await _find_existing_variable_component(
             ctx.resolink, var_slot, decl.path, ConcreteVar.COMPONENT_TYPE,
         )
-        if not var_exists:
+        if existing_comp is not None:
+            built_vars[attr_name] = existing_comp
+        else:
             var_comp = ConcreteVar(
                 variable_name=decl.path,
                 value=decl.initial_value,
             )
             await var_comp.add_to_slot(ctx.resolink, var_slot)
+            built_vars[attr_name] = var_comp
 
 
 # =========================================================================
