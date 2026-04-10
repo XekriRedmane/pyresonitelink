@@ -43,9 +43,7 @@ async def main(port: int) -> None:
     print("Connected.\n")
 
     # Create a slot for the graph
-    slot_resp = await resolink.add_slot_to_root(name="ProtoFlux Add Example")
-    assert slot_resp.entityId is not None
-    slot = workers.Slot(id=slot_resp.entityId)
+    slot = await resolink.add_slot(name="ProtoFlux Add Example")
     print(f"Created slot: {slot.id}\n")
 
     # --- Build the computation graph ---

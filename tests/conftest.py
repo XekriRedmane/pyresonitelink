@@ -40,11 +40,10 @@ async def test_slot_id(
 ) -> AsyncGenerator[str, None]:
     """Fixture providing the ID of a test slot, created and removed for each test."""
     slot_id = str(uuid.uuid4())
-    response = await resolink.add_slot_to_root(
+    slot = await resolink.add_slot(
         id=slot_id,
         name="Test Slot",
         debug=True,
     )
-    assert isinstance(response, responses.NewEntityId)
-    yield slot_id
+    yield slot.id
     await resolink.remove_slot(slot=slot_id, debug=True)

@@ -59,9 +59,7 @@ async def main(port: int) -> None:
             print(f"Deleting old slot {child.id}...")
             await resolink.remove_slot(slot=child)
 
-    slot_resp = await resolink.add_slot_to_root(name="If-Else Example")
-    assert slot_resp.entityId is not None
-    slot = workers.Slot(id=slot_resp.entityId)
+    slot = await resolink.add_slot(name="If-Else Example")
     print(f"Created slot: {slot.id}\n")
 
     # ===================================================================

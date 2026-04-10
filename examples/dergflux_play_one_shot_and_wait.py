@@ -33,7 +33,7 @@ async def main(port: int) -> None:
         print(f"Deleting old slot {old.id}...")
         await resolink.remove_slot(slot=old)
 
-    slot = await resolink.add_slot_to_root(name="Dergflux PlayOneShot")
+    slot = await resolink.add_slot(name="Dergflux PlayOneShot")
     print(f"Created slot: {slot.id}\n")
 
     # Import audio — idempotent, content-addressed (same file = same URL)

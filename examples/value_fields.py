@@ -24,9 +24,7 @@ async def main(port: int) -> None:
     print("Connected.\n")
 
     # Create a slot to hold our components
-    slot_resp = await resolink.add_slot_to_root(name="ValueField Examples")
-    assert slot_resp.entityId is not None
-    slot = workers.Slot(id=slot_resp.entityId)
+    slot = await resolink.add_slot(name="ValueField Examples")
     print(f"Created slot: {slot.id}\n")
 
     # --- Parameterize ValueField with different types ---

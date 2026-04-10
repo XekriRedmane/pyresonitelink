@@ -228,8 +228,8 @@ resolink = client.Client()
 await resolink.connect(PORT)
 
 # Slot operations — accept raw values or Field wrappers
-resp = await resolink.add_slot(parent=ref, name="My Slot", position=(0, 1.5, 0))
-resp = await resolink.add_slot_to_root(name="My Slot")  # parent=Root
+slot = await resolink.add_slot(name="My Slot", position=(0, 1.5, 0))  # parent=Root by default
+slot = await resolink.add_slot(parent=some_slot, name="Child")
 slot = await resolink.get_slot(slotId="Root", depth=1)
 await resolink.remove_slot(slotId=slot_id)
 
@@ -251,7 +251,7 @@ types = await resolink.get_component_type_list(categoryPath="/Data")
 defn = await resolink.get_component_definition(componentType="...", flattened=True)
 ```
 
-`add_slot`, `add_slot_to_root`, and `add_component` return `NewEntityId` with `.entityId`. Other mutations return `Response` with `.success`.
+`add_slot` returns a `Slot` directly (raises `RuntimeError` on failure). `add_component` returns `NewEntityId` with `.entityId`. Other mutations return `Response` with `.success`.
 
 #### Audio Import
 
@@ -266,7 +266,7 @@ with g.PlayOneShotAndWait(clip=clip, volume=1.0) as r:
 
 Audio import is **content-addressed and idempotent** — importing the same file multiple times returns the same `local://` URL without duplication. This means `create_audio_clip` is safe to call repeatedly (e.g. on every script run) without accumulating duplicate assets.
 
-#### Value Coercion in `add_slot` / `add_slot_to_root`
+#### Value Coercion in `add_slot`
 
 Field parameters accept raw Python values that are automatically coerced:
 - `name="Hello"` → `FieldString(value="Hello")`
@@ -356,7 +356,7 @@ resolink = client.Client()
 await resolink.connect(PORT)
 
 # 1. Create a temporary slot
-slot_resp = await resolink.add_slot_to_root(name="__test__")
+slot = await resolink.add_slot(name="__test__")
 slot_id = slot_resp.entityId
 
 # 2. Add a generated component (accepts slot ID or Slot instance)

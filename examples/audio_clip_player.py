@@ -35,7 +35,7 @@ async def main(port: int) -> None:
             await resolink.remove_slot(slot=child)
 
     # Create a slot
-    slot_resp = await resolink.add_slot_to_root(
+    slot_resp = await resolink.add_slot(
         name="AudioClipPlayer Example",
     )
     assert slot_resp.entityId is not None

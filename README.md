@@ -40,11 +40,11 @@ async def main(port: int):
     print(slot)
 
     # Create a slot with raw Python values (auto-coerced)
-    resp = await resolink.add_slot_to_root(
+    new_slot = await resolink.add_slot(
         name="Hello from Python",
         position=(0, 1.5, 0),
     )
-    print(f"Created slot: {resp.entityId}")
+    print(f"Created slot: {new_slot.id}")
 
     await resolink.close()
 
@@ -59,10 +59,10 @@ The client provides keyword-argument methods for all operations. Field parameter
 
 ```python
 # Strings, bools, ints coerce to FieldString, FieldBool, FieldLong
-await resolink.add_slot_to_root(name="My Slot", isActive=True, orderOffset=5)
+await resolink.add_slot(name="My Slot", isActive=True, orderOffset=5)
 
 # Tuples, lists, ndarrays coerce to FieldFloat3, FieldFloatQ, etc.
-await resolink.add_slot(parent=ref, position=(1, 2, 3), rotation=[0, 0, 0, 1])
+await resolink.add_slot(parent=some_slot, position=(1, 2, 3), rotation=[0, 0, 0, 1])
 
 # Add components using generated wrapper classes
 # add_to_slot accepts a slot ID string or a Slot instance

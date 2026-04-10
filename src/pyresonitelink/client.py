@@ -257,7 +257,7 @@ class Client:
     async def add_slot(
         self,
         *,
-        parent: members.Reference | None = None,
+        parent: str | workers.Slot | None = None,
         name: fields.FieldString | str | None = None,
         position: Float3Like | None = None,
         rotation: FloatQLike | None = None,
@@ -270,7 +270,7 @@ class Client:
         children: list[workers.Slot] | None = None,
         id: str | None = None,
         debug: bool = False,
-    ) -> responses.NewEntityId:
+    ) -> workers.Slot:
         """Create a new slot.
 
         Each field parameter accepts either the Field wrapper or a raw
@@ -281,7 +281,8 @@ class Client:
         array.
 
         Args:
-            parent: Reference to the parent slot.
+            parent: The parent slot — a slot ID string, a ``Slot``
+                instance, or None for the root slot (default).
             name: Slot name (``str`` or ``FieldString``).
             position: World position (``Float3``, 3-sequence, or
                 ``FieldFloat3``).
@@ -302,11 +303,23 @@ class Client:
             debug: Print request/response JSON.
 
         Returns:
-            Response with ``entityId`` of the new slot.
+            The created Slot.
+
+        Raises:
+            RuntimeError: If the server rejects the request.
         """
+        if parent is None:
+            parent_ref = members.Reference(
+                targetId=workers.Slot.ROOT_SLOT_ID,
+            )
+        elif isinstance(parent, workers.Slot):
+            parent_ref = members.Reference(targetId=parent.id)
+        else:
+            parent_ref = members.Reference(targetId=parent)
+
         slot = workers.Slot(
             id=id,
-            parent=parent,
+            parent=parent_ref,
             name=(
                 _coerce_scalar_field(name, fields.FieldString)
                 if name is not None else None
@@ -350,72 +363,9 @@ class Client:
             components=components if components is not None else [],
             children=children if children is not None else [],
         )
-        return await self.send_message(
+        resp = await self.send_message(
             messages.AddSlot(data=slot),
             responses.NewEntityId, debug,
-        )
-
-    async def add_slot_to_root(
-        self,
-        *,
-        name: fields.FieldString | str | None = None,
-        position: Float3Like | None = None,
-        rotation: FloatQLike | None = None,
-        scale: Float3Like | None = None,
-        isActive: fields.FieldBool | bool | None = None,
-        isPersistent: fields.FieldBool | bool | None = None,
-        tag: fields.FieldString | str | None = None,
-        orderOffset: fields.FieldLong | int | None = None,
-        components: list[workers.Component] | None = None,
-        children: list[workers.Slot] | None = None,
-        id: str | None = None,
-        debug: bool = False,
-    ) -> workers.Slot:
-        """Create a new slot under the root slot.
-
-        Convenience wrapper around :meth:`add_slot` with the parent set
-        to the root slot.  See :meth:`add_slot` for parameter details.
-
-        Args:
-            name: Slot name (``str`` or ``FieldString``).
-            position: World position (``Float3``, 3-sequence, or
-                ``FieldFloat3``).
-            rotation: World rotation (``FloatQ``, 4-sequence, or
-                ``FieldFloatQ``).
-            scale: World scale (``Float3``, 3-sequence, or
-                ``FieldFloat3``).
-            isActive: Whether the slot is active (``bool`` or
-                ``FieldBool``).
-            isPersistent: Whether the slot persists across sessions
-                (``bool`` or ``FieldBool``).
-            tag: Slot tag string (``str`` or ``FieldString``).
-            orderOffset: Order offset among siblings (``int`` or
-                ``FieldLong``).
-            components: Components to attach.
-            children: Child slots.
-            id: Optional client-assigned ID.
-            debug: Print request/response JSON.
-
-        Returns:
-            The created Slot.
-
-        Raises:
-            RuntimeError: If the server rejects the request.
-        """
-        resp = await self.add_slot(
-            parent=members.Reference(targetId=workers.Slot.ROOT_SLOT_ID),
-            name=name,
-            position=position,
-            rotation=rotation,
-            scale=scale,
-            isActive=isActive,
-            isPersistent=isPersistent,
-            tag=tag,
-            orderOffset=orderOffset,
-            components=components,
-            children=children,
-            id=id,
-            debug=debug,
         )
         if resp.entityId is None:
             raise RuntimeError(
@@ -760,7 +710,7 @@ class Client:
         root_id = root.id if isinstance(root, workers.Slot) else root
 
         # Create a temporary slot for the search nodes
-        tmp = await self.add_slot_to_root(
+        tmp = await self.add_slot(
             name="__find_slot_tmp__", debug=debug,
         )
 

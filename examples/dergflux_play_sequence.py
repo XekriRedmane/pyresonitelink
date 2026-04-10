@@ -50,7 +50,7 @@ async def main(port: int) -> None:
         print(f"Deleting old slot {old.id}...")
         await resolink.remove_slot(slot=old)
 
-    slot = await resolink.add_slot_to_root(name="Dergflux Play Sequence")
+    slot = await resolink.add_slot(name="Dergflux Play Sequence")
     print(f"Created slot: {slot.id}\n")
 
     # ===================================================================
