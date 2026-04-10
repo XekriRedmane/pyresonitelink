@@ -81,6 +81,61 @@ await value_field.update(resolink)
 await value_field.refresh(resolink)
 ```
 
+### Convenience Methods
+
+The client provides high-level methods that combine multiple operations:
+
+#### Slots
+
+```python
+# Create a slot (parent defaults to Root)
+slot = await resolink.add_slot(name="My Slot")
+slot = await resolink.add_slot(parent=other_slot, name="Child")
+
+# Find a slot by name or tag (uses ProtoFlux search nodes internally)
+slot = await resolink.find_slot("Root", name="SpawnPoint")
+slot = await resolink.find_slot("Root", tag="audio-player")
+slot = await resolink.find_slot("Root", name="spawn", match_substring=True, ignore_case=True, depth=5)
+
+# Remove a slot
+await resolink.remove_slot(slot=slot)
+```
+
+`add_slot` returns a `Slot` directly (raises `RuntimeError` on failure).
+`find_slot` returns `Slot | None`, using temporary ProtoFlux search nodes for fast deep searches.
+
+#### Audio
+
+```python
+# Import an audio file and create a StaticAudioClip on a slot (one call)
+clip = await resolink.create_audio_clip(slot, "path/to/sound.wav")
+
+# Import multiple audio files into an AssetMultiplexer (one call)
+mux = await resolink.create_audio_multiplexer(slot, [
+    "sounds/notification.wav",
+    "sounds/ptink.wav",
+    "sounds/tikatak.wav",
+])
+# mux.Index selects which clip is active (0, 1, 2)
+```
+
+Audio imports are **content-addressed and idempotent** — importing the same file twice returns the same URL without duplication. Safe to call on every script run.
+
+#### Components
+
+```python
+# Add a generated component to a slot
+value_field = ValueField[primitives.Float](42.5)
+await value_field.add_to_slot(resolink, slot)
+
+# Update values and push to server
+value_field.value = primitives.Float(99.0)
+await value_field.update(resolink)
+
+# Pull latest state from server
+await value_field.refresh(resolink)
+```
+
 ## Generated Components
 
 Components were generated from a live ResoniteLink server; they do not need to be regenerated since they are part of the release. The generator produces typed Python wrapper classes with properties, `__init__` parameters, and interface inheritance for type-safe wiring.
@@ -210,23 +265,37 @@ with g.Under(slot):
 await g.build(resolink)
 ```
 
-See the [Dergflux reference](src/pyresonitelink/dergflux/dergflux.md) for the
-full API: expressions, operators, math functions, flow control (If/Else, For,
-While, Range), triggers, bindings, and action nodes.
+After `g.build()`, access built variables directly from the Space:
 
-See [Dynamic Variables](src/pyresonitelink/dergflux/dynamic_variables.md) for
-how Resonite's dynamic variable system works and how Dergflux uses it.
+```python
+await g.build(resolink)
 
-See [Sync vs Async Flow](src/pyresonitelink/dergflux/async_flow.md) for
-the critical distinction between sync and async ProtoFlux impulses and
-how Dergflux handles it.
+# s.x is now the DynamicValueVariable component, not an ExprProxy
+x_var = s.x
+await x_var.refresh(resolink)
+print(x_var.value)
+```
+
+Key features:
+- **Expressions**: `+`, `-`, `*`, `/`, `%`, `**`, `abs()`, comparisons, bitwise `&`/`|`/`^`/`~`/`<<`/`>>`
+- **Math functions**: `sin`, `cos`, `sqrt`, `lerp`, `clamp`, `min_`, `max_`, and [more](src/pyresonitelink/dergflux/dergflux.md#math-functions)
+- **Flow control**: `g.If`/`g.Else`, `g.For`, `g.While`, `g.Range`
+- **Triggers**: `g.Under(slot)` (Update every frame), `g.Under(slot, trigger="tag")` (named impulse), `g.Under(slot, trigger=("tag", type))` (with value)
+- **Bindings**: `g.Bind(s.x, component, "Field")` — permanently bind a variable or expression to a component field
+- **Action nodes**: `g.RaycastOne(...)`, `g.PlayOneShotAndWait(...)`, or define custom actions with `ActionDef`
+- **Auto-bridging**: pass components directly to action inputs (e.g. `clip=my_clip`) — the builder creates `RefObjectInput` bridges automatically
+
+See the [Dergflux reference](src/pyresonitelink/dergflux/dergflux.md) for the full API.
+
+See also: [Dynamic Variables](src/pyresonitelink/dergflux/dynamic_variables.md) | [Sync vs Async Flow](src/pyresonitelink/dergflux/async_flow.md)
 
 ### Dergflux Examples
 
 ```bash
-python examples/dergflux_if_else.py <port>       # If/Else with continuation
-python examples/dergflux_for.py <port>            # For loop with OnStart/OnIterate
-python examples/dergflux_play_sequence.py <port>  # AssetMultiplexer + For + PlayOneShotAndWait
+python examples/dergflux_if_else.py <port>                    # If/Else with continuation
+python examples/dergflux_for.py <port>                         # For loop with OnStart/OnIterate
+python examples/dergflux_play_one_shot_and_wait.py <port>      # Async audio playback
+python examples/dergflux_play_sequence.py <port>               # Multiplexer + For + PlayOneShotAndWait
 ```
 
 ## Command-Line Tools
