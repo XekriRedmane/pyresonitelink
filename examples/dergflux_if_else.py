@@ -15,7 +15,6 @@ import time
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
-from pyresonitelink.components.data.dynamic import DynamicValueVariable
 from pyresonitelink.dergflux import Graph
 
 
@@ -51,9 +50,6 @@ async def main(port: int) -> None:
             s.z = s.x - 3
 
         # This runs after either branch completes.
-        # The If and this bare write become two entries in a Sequence
-        # node. The Sequence waits for the If to finish (whichever
-        # branch ran), then fires the write.
         s.z = s.z + 1
 
     print("Building graph...")
@@ -61,43 +57,22 @@ async def main(port: int) -> None:
     print("Graph built.\n")
 
     # ===================================================================
-    # Test the graph
+    # Test the graph — access variables directly from the Space
     # ===================================================================
 
-    # Find the x ValueInput to change its value
-    # For now, we need to find the DynamicValueVariable<float> for x and z
-    # by refreshing from the slot
-    FloatDynVar = DynamicValueVariable[primitives.Float]
-
-    # Get x and z variables by finding them on the slot
-    slot_data = await resolink.get_slot(slot=slot, depth=0)
-    assert slot_data.data is not None
-
-    x_var: DynamicValueVariable[primitives.Float] | None = None
-    z_var: DynamicValueVariable[primitives.Float] | None = None
-
-    for comp in slot_data.data.components:
-        if comp.componentType == FloatDynVar.COMPONENT_TYPE:
-            dv = FloatDynVar(component=comp)
-            if dv.variable_name == "x":
-                x_var = dv
-            elif dv.variable_name == "z":
-                z_var = dv
-
-    assert x_var is not None, "Could not find x variable"
-    assert z_var is not None, "Could not find z variable"
-
-    async def read_z() -> object:
-        """Read the current value of dynamic variable z."""
-        assert z_var is not None
-        await z_var.refresh(resolink)
-        return z_var.value
+    x_var = s.x
+    z_var = s.z
 
     # Set initial x=2 and wait for evaluation
     x_var.value = primitives.Float(2.0)
     await x_var.update(resolink)
     print("Waiting for graph evaluation...")
     time.sleep(1.0)
+
+    async def read_z() -> object:
+        """Read the current value of z."""
+        await z_var.refresh(resolink)
+        return z_var.value
 
     # Test 1: x=2 (< 3), expect z = (2 + 3) + 1 = 6
     z1 = await read_z()

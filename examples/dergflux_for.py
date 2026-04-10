@@ -12,8 +12,6 @@ import sys
 import time
 
 from pyresonitelink import client
-from pyresonitelink.data import primitives
-from pyresonitelink.components.data.dynamic import DynamicValueVariable
 from pyresonitelink.dergflux import Graph
 
 
@@ -71,23 +69,15 @@ async def main(port: int) -> None:
     print("Graph built.\n")
 
     # ===================================================================
-    # Test the graph
+    # Test the graph — access variables directly from the Space
     # ===================================================================
-
-    FloatDynVar = DynamicValueVariable[primitives.Float]
 
     print("Waiting for graph evaluation...")
     time.sleep(1.0)
 
-    slot_data = await resolink.get_slot(slot=slot, depth=0)
-    assert slot_data.data is not None
-
-    for comp in slot_data.data.components:
-        if comp.componentType == FloatDynVar.COMPONENT_TYPE:
-            dv = FloatDynVar(component=comp)
-            if dv.variable_name == "total":
-                await dv.refresh(resolink)
-                print(f"total = {dv.value} (expected 90.0)")
+    total_var = s.total
+    await total_var.refresh(resolink)
+    print(f"total = {total_var.value} (expected 90.0)")
 
     # Clean up
     await resolink.remove_slot(slot=slot)
