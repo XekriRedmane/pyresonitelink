@@ -15,23 +15,34 @@ from typing import Any
 class BinOp(Enum):
     """Binary operation types."""
 
+    # Arithmetic
     ADD = "add"
     SUB = "sub"
     MUL = "mul"
     DIV = "div"
     MOD = "mod"
+    POW = "pow"
+    # Comparison
     LT = "lt"
     LE = "le"
     GT = "gt"
     GE = "ge"
     EQ = "eq"
     NE = "ne"
+    # Bitwise / boolean
+    AND = "and"
+    OR = "or"
+    XOR = "xor"
+    LSHIFT = "lshift"
+    RSHIFT = "rshift"
 
 
 class UnOp(Enum):
     """Unary operation types."""
 
     NEG = "neg"
+    NOT = "not"
+    ABS = "abs"
 
 
 # =========================================================================
@@ -108,9 +119,38 @@ class UnaryOpNode(ExprNode):
         self.operand = operand
 
 
+class MathCallNode(ExprNode):
+    """A math function call on one or more expression nodes.
+
+    Used for typed math functions (sin, cos, sqrt, etc.) that don't
+    have generic Value* versions and instead use typed variants like
+    Sin_Float, Sqrt_Double.
+
+    Attributes:
+        func_name: The function name (e.g. "sin", "sqrt", "clamp").
+        args: The argument nodes.
+    """
+
+    def __init__(
+        self,
+        func_name: str,
+        args: list[ExprNode],
+        result_type: type | None = None,
+    ) -> None:
+        super().__init__(result_type)
+        self.func_name = func_name
+        self.args = args
+
+
 # =========================================================================
 # Expression Proxy
 # =========================================================================
+
+# Comparison ops produce Bool results.
+_COMPARISON_OPS = {BinOp.LT, BinOp.LE, BinOp.GT, BinOp.GE, BinOp.EQ, BinOp.NE}
+
+# Bitwise/boolean ops preserve operand type.
+_BITWISE_OPS = {BinOp.AND, BinOp.OR, BinOp.XOR, BinOp.LSHIFT, BinOp.RSHIFT}
 
 
 def _coerce(value: Any) -> ExprProxy:
@@ -126,7 +166,7 @@ def _binop(op: BinOp, left: ExprProxy, right: Any) -> ExprProxy:
     from pyresonitelink.dergflux import _types
 
     result_type: type | None
-    if op in (BinOp.LT, BinOp.LE, BinOp.GT, BinOp.GE, BinOp.EQ, BinOp.NE):
+    if op in _COMPARISON_OPS:
         from pyresonitelink.data import primitives
         result_type = primitives.Bool
     else:
@@ -142,6 +182,13 @@ def _rbinop(op: BinOp, right: ExprProxy, left: Any) -> ExprProxy:
     """Create a binary operation proxy for reflected operations."""
     left_proxy = _coerce(left)
     return _binop(op, left_proxy, right)
+
+
+def _unop(op: UnOp, operand: ExprProxy) -> ExprProxy:
+    """Create a unary operation proxy."""
+    from pyresonitelink.dergflux import _types
+    result_type = _types.infer_result_type(operand._node._type)
+    return ExprProxy(UnaryOpNode(op, operand._node, result_type))
 
 
 class ExprProxy:
@@ -187,10 +234,17 @@ class ExprProxy:
     def __rmod__(self, other: Any) -> ExprProxy:
         return _rbinop(BinOp.MOD, self, other)
 
+    def __pow__(self, other: Any) -> ExprProxy:
+        return _binop(BinOp.POW, self, other)
+
+    def __rpow__(self, other: Any) -> ExprProxy:
+        return _rbinop(BinOp.POW, self, other)
+
     def __neg__(self) -> ExprProxy:
-        from pyresonitelink.dergflux import _types
-        result_type = _types.infer_result_type(self._node._type)
-        return ExprProxy(UnaryOpNode(UnOp.NEG, self._node, result_type))
+        return _unop(UnOp.NEG, self)
+
+    def __abs__(self) -> ExprProxy:
+        return _unop(UnOp.ABS, self)
 
     # --- Comparison ---
 
@@ -211,6 +265,41 @@ class ExprProxy:
 
     def __ge__(self, other: Any) -> ExprProxy:
         return _binop(BinOp.GE, self, other)
+
+    # --- Bitwise / Boolean ---
+
+    def __and__(self, other: Any) -> ExprProxy:
+        return _binop(BinOp.AND, self, other)
+
+    def __rand__(self, other: Any) -> ExprProxy:
+        return _rbinop(BinOp.AND, self, other)
+
+    def __or__(self, other: Any) -> ExprProxy:
+        return _binop(BinOp.OR, self, other)
+
+    def __ror__(self, other: Any) -> ExprProxy:
+        return _rbinop(BinOp.OR, self, other)
+
+    def __xor__(self, other: Any) -> ExprProxy:
+        return _binop(BinOp.XOR, self, other)
+
+    def __rxor__(self, other: Any) -> ExprProxy:
+        return _rbinop(BinOp.XOR, self, other)
+
+    def __invert__(self) -> ExprProxy:
+        return _unop(UnOp.NOT, self)
+
+    def __lshift__(self, other: Any) -> ExprProxy:
+        return _binop(BinOp.LSHIFT, self, other)
+
+    def __rlshift__(self, other: Any) -> ExprProxy:
+        return _rbinop(BinOp.LSHIFT, self, other)
+
+    def __rshift__(self, other: Any) -> ExprProxy:
+        return _binop(BinOp.RSHIFT, self, other)
+
+    def __rrshift__(self, other: Any) -> ExprProxy:
+        return _rbinop(BinOp.RSHIFT, self, other)
 
     # --- Safety ---
 

@@ -216,6 +216,244 @@ class TestExprProxy:
         assert isinstance(left, _expr.BinaryOpNode)
         assert left.op is _expr.BinOp.ADD
 
+    # --- Power ---
+
+    def test_pow_creates_binary_node(self) -> None:
+        a = self._make_proxy(2)
+        result = a ** 3
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.POW
+
+    def test_rpow_creates_binary_node(self) -> None:
+        a = self._make_proxy(2)
+        result = 3 ** a
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.POW
+        assert isinstance(result._node.left, _expr.ConstNode)
+
+    # --- Abs ---
+
+    def test_abs_creates_unary_node(self) -> None:
+        a = self._make_proxy(-5)
+        result = abs(a)
+        assert isinstance(result._node, _expr.UnaryOpNode)
+        assert result._node.op is _expr.UnOp.ABS
+
+    # --- Bitwise / Boolean ---
+
+    def test_and_creates_binary_node(self) -> None:
+        a = self._make_proxy(True, primitives.Bool)
+        result = a & True
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.AND
+
+    def test_rand_creates_binary_node(self) -> None:
+        a = self._make_proxy(True, primitives.Bool)
+        result = True & a
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.AND
+
+    def test_or_creates_binary_node(self) -> None:
+        a = self._make_proxy(True, primitives.Bool)
+        result = a | False
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.OR
+
+    def test_ror_creates_binary_node(self) -> None:
+        a = self._make_proxy(True, primitives.Bool)
+        result = False | a
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.OR
+
+    def test_xor_creates_binary_node(self) -> None:
+        a = self._make_proxy(True, primitives.Bool)
+        result = a ^ True
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.XOR
+
+    def test_invert_creates_unary_node(self) -> None:
+        a = self._make_proxy(True, primitives.Bool)
+        result = ~a
+        assert isinstance(result._node, _expr.UnaryOpNode)
+        assert result._node.op is _expr.UnOp.NOT
+
+    def test_lshift_creates_binary_node(self) -> None:
+        a = self._make_proxy(1, primitives.Int)
+        result = a << 2
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.LSHIFT
+
+    def test_rshift_creates_binary_node(self) -> None:
+        a = self._make_proxy(8, primitives.Int)
+        result = a >> 2
+        assert isinstance(result._node, _expr.BinaryOpNode)
+        assert result._node.op is _expr.BinOp.RSHIFT
+
+    def test_bitwise_int_preserves_type(self) -> None:
+        a = self._make_proxy(0xFF, primitives.Int)
+        result = a & 0x0F
+        assert result._node._type is primitives.Int
+
+    def test_boolean_and_preserves_bool_type(self) -> None:
+        a = self._make_proxy(True, primitives.Bool)
+        result = a & True
+        assert result._node._type is primitives.Bool
+
+
+# =========================================================================
+# Math functions
+# =========================================================================
+
+
+class TestMathFunctions:
+    """Tests for _math module function calls."""
+
+    def _make_proxy(
+        self, value: object = 0, expr_type: type = primitives.Float,
+    ) -> _expr.ExprProxy:
+        """Create an ExprProxy wrapping a ConstNode."""
+        return _expr.ExprProxy(_expr.ConstNode(value, expr_type))
+
+    # --- Unary math ---
+
+    def test_sin_creates_math_call_node(self) -> None:
+        from pyresonitelink.dergflux import _math
+        a = self._make_proxy(1.0)
+        result = _math.sin(a)
+        assert isinstance(result._node, _expr.MathCallNode)
+        assert result._node.func_name == "sin"
+        assert len(result._node.args) == 1
+
+    def test_cos(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.cos(self._make_proxy(1.0))
+        assert isinstance(result._node, _expr.MathCallNode)
+        assert result._node.func_name == "cos"
+
+    def test_sqrt(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.sqrt(self._make_proxy(4.0))
+        assert isinstance(result._node, _expr.MathCallNode)
+        assert result._node.func_name == "sqrt"
+
+    def test_exp(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.exp(self._make_proxy(1.0))
+        assert result._node.func_name == "exp"
+
+    def test_log(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.log(self._make_proxy(1.0))
+        assert result._node.func_name == "log"
+
+    def test_ceil(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.ceil(self._make_proxy(1.5))
+        assert result._node.func_name == "ceil"
+
+    def test_floor(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.floor(self._make_proxy(1.5))
+        assert result._node.func_name == "floor"
+
+    def test_sign(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.sign(self._make_proxy(-5.0))
+        assert result._node.func_name == "sign"
+
+    def test_square(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.square(self._make_proxy(3.0))
+        assert result._node.func_name == "square"
+
+    def test_cube(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.cube(self._make_proxy(3.0))
+        assert result._node.func_name == "cube"
+
+    def test_reciprocal(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.reciprocal(self._make_proxy(2.0))
+        assert result._node.func_name == "reciprocal"
+
+    def test_one_minus(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.one_minus(self._make_proxy(0.3))
+        assert result._node.func_name == "one_minus"
+
+    def test_clamp01(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.clamp01(self._make_proxy(1.5))
+        assert result._node.func_name == "clamp01"
+
+    # --- Binary math ---
+
+    def test_atan2(self) -> None:
+        from pyresonitelink.dergflux import _math
+        a = self._make_proxy(1.0)
+        b = self._make_proxy(2.0)
+        result = _math.atan2(a, b)
+        assert isinstance(result._node, _expr.MathCallNode)
+        assert result._node.func_name == "atan2"
+        assert len(result._node.args) == 2
+
+    def test_min(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.min_(self._make_proxy(1.0), self._make_proxy(2.0))
+        assert result._node.func_name == "min"
+
+    def test_max(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.max_(self._make_proxy(1.0), self._make_proxy(2.0))
+        assert result._node.func_name == "max"
+
+    # --- Ternary math ---
+
+    def test_clamp(self) -> None:
+        from pyresonitelink.dergflux import _math
+        a = self._make_proxy(5.0)
+        result = _math.clamp(a, 0, 10)
+        assert isinstance(result._node, _expr.MathCallNode)
+        assert result._node.func_name == "clamp"
+        assert len(result._node.args) == 3
+
+    def test_lerp(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.lerp(
+            self._make_proxy(0.0), self._make_proxy(10.0), self._make_proxy(0.5),
+        )
+        assert result._node.func_name == "lerp"
+        assert len(result._node.args) == 3
+
+    def test_conditional(self) -> None:
+        from pyresonitelink.dergflux import _math
+        cond = self._make_proxy(True, primitives.Bool)
+        result = _math.conditional(cond, self._make_proxy(1.0), self._make_proxy(2.0))
+        assert result._node.func_name == "conditional"
+
+    # --- Type inference ---
+
+    def test_math_infers_type_from_arg(self) -> None:
+        from pyresonitelink.dergflux import _math
+        a = self._make_proxy(1.0, primitives.Double)
+        result = _math.sin(a)
+        assert result._node._type is primitives.Double
+
+    def test_math_coerces_literal(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.sin(self._make_proxy(1.0))
+        assert isinstance(result._node, _expr.MathCallNode)
+        assert result._node._type is primitives.Float
+
+    # --- Import via dergflux.math ---
+
+    def test_import_via_module(self) -> None:
+        from pyresonitelink.dergflux import math as dm
+        a = self._make_proxy(1.0)
+        result = dm.sin(a)
+        assert isinstance(result._node, _expr.MathCallNode)
+        assert result._node.func_name == "sin"
+
 
 # =========================================================================
 # Space

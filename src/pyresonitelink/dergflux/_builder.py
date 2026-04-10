@@ -7,6 +7,7 @@ the Resonite server via the ResoniteLink client.
 
 from __future__ import annotations
 
+import importlib
 from typing import TYPE_CHECKING, Any
 
 from pyresonitelink.data import primitives
@@ -20,9 +21,12 @@ if TYPE_CHECKING:
     from pyresonitelink.dergflux import _graph
 
 
-# Mapping from BinOp to (operator_module_attr, is_comparison).
-# The operator classes live in pyresonitelink.protoflux.operators.
-_BINOP_CLASS_NAMES: dict[_expr.BinOp, str] = {
+# =========================================================================
+# Generic binary operators (parameterized via [T])
+# =========================================================================
+
+# Maps BinOp -> class name in pyresonitelink.protoflux.operators.
+_GENERIC_BINOP_NAMES: dict[_expr.BinOp, str] = {
     _expr.BinOp.ADD: "ValueAdd",
     _expr.BinOp.SUB: "ValueSub",
     _expr.BinOp.MUL: "ValueMul",
@@ -36,20 +40,146 @@ _BINOP_CLASS_NAMES: dict[_expr.BinOp, str] = {
     _expr.BinOp.NE: "ValueNotEquals",
 }
 
-# BinOps where both operands use the left type (not the result type).
+# Comparison ops parameterize on the operand type, not Bool result.
 _COMPARISON_OPS = {
     _expr.BinOp.LT, _expr.BinOp.LE,
     _expr.BinOp.GT, _expr.BinOp.GE,
     _expr.BinOp.EQ, _expr.BinOp.NE,
 }
 
+# Generic unary operators (parameterized via [T]).
+# Maps UnOp -> (class_name, param_name) in protoflux.operators.
+_GENERIC_UNOP: dict[_expr.UnOp, tuple[str, str]] = {
+    _expr.UnOp.NEG: ("ValueNegate", "n"),
+}
 
-def _get_operator_class(op: _expr.BinOp) -> Any:
-    """Import and return the ProtoFlux operator class for a BinOp."""
-    from pyresonitelink.protoflux import operators
+# Generic math functions using Value* classes.
+# Maps func_name -> (module, class_name, param_names).
+_GENERIC_MATH: dict[str, tuple[str, str, list[str]]] = {
+    "square": ("operators", "ValueSquare", ["n"]),
+    "cube": ("operators", "ValueCube", ["n"]),
+    "reciprocal": ("operators", "ValueReciprocal", ["n"]),
+    "one_minus": ("operators", "ValueOneMinus", ["x"]),
+    "min": ("math", "ValueMin", ["a", "b"]),
+    "max": ("math", "ValueMax", ["a", "b"]),
+    "clamp": ("math", "ValueClamp", ["value", "min", "max"]),
+    "abs": ("math", "ValueAbs", ["n"]),
+}
 
-    name = _BINOP_CLASS_NAMES[op]
-    return getattr(operators, name)
+
+# =========================================================================
+# Typed operator dispatch (non-generic, type-suffixed classes)
+# =========================================================================
+
+# Maps Python primitive type -> PascalCase suffix for typed node names.
+_TYPE_SUFFIXES: dict[type, str] = {
+    primitives.Bool: "Bool",
+    primitives.Byte: "Byte",
+    primitives.SByte: "Sbyte",
+    primitives.Short: "Short",
+    primitives.UShort: "Ushort",
+    primitives.Int: "Int",
+    primitives.UInt: "Uint",
+    primitives.Long: "Long",
+    primitives.ULong: "Ulong",
+    primitives.Float: "Float",
+    primitives.Double: "Double",
+    primitives.Float2: "Float2",
+    primitives.Float3: "Float3",
+    primitives.Float4: "Float4",
+    primitives.Double2: "Double2",
+    primitives.Double3: "Double3",
+    primitives.Double4: "Double4",
+    primitives.Int2: "Int2",
+    primitives.Int3: "Int3",
+    primitives.Int4: "Int4",
+    primitives.Long2: "Long2",
+    primitives.Long3: "Long3",
+    primitives.Long4: "Long4",
+    primitives.Color: "Color",
+    primitives.ColorX: "ColorX",
+    primitives.Bool2: "Bool2",
+    primitives.Bool3: "Bool3",
+    primitives.Bool4: "Bool4",
+}
+
+# Maps (operation_key, import_subpath, class_prefix).
+# The class name is "{prefix}_{suffix}" where suffix comes from _TYPE_SUFFIXES.
+# For binary ops, params are (a, b). For unary, param is (a,).
+_TYPED_BINARY_OPS: dict[_expr.BinOp, tuple[str, str]] = {
+    _expr.BinOp.AND: ("operators.boolean", "AND"),
+    _expr.BinOp.OR: ("operators.boolean", "OR"),
+    _expr.BinOp.XOR: ("operators.boolean", "XOR"),
+    _expr.BinOp.LSHIFT: ("operators.boolean", "ShiftLeft"),
+    _expr.BinOp.RSHIFT: ("operators.boolean", "ShiftRight"),
+}
+
+_TYPED_UNARY_OPS: dict[_expr.UnOp, tuple[str, str]] = {
+    _expr.UnOp.NOT: ("operators.boolean", "NOT"),
+}
+
+# Typed math functions: func_name -> (import_subpath, class_prefix, param_names).
+_TYPED_MATH: dict[str, tuple[str, str, list[str]]] = {
+    # Trigonometric
+    "sin": ("math.trigonometry", "Sin", ["n"]),
+    "cos": ("math.trigonometry", "Cos", ["n"]),
+    "tan": ("math.trigonometry", "Tan", ["n"]),
+    "asin": ("math.trigonometry", "Asin", ["n"]),
+    "acos": ("math.trigonometry", "Acos", ["n"]),
+    "atan": ("math.trigonometry", "Atan", ["n"]),
+    "atan2": ("math.trigonometry", "Atan2", ["y", "x"]),
+    # Exponential / logarithmic
+    "exp": ("math", "Exp", ["n"]),
+    "log": ("math", "Log", ["n"]),
+    "log10": ("math", "Log10", ["n"]),
+    "sqrt": ("math", "Sqrt", ["n"]),
+    "pow": ("math", "Pow", ["n", "power"]),
+    # Rounding
+    "ceil": ("math", "Ceil", ["n"]),
+    "floor": ("math", "Floor", ["n"]),
+    "round": ("math", "Round", ["n"]),
+    # Sign / value
+    "sign": ("math", "Sign", ["n"]),
+    "clamp01": ("math", "Clamp01", ["n"]),
+    # Interpolation
+    "smoothstep": ("math", "SmoothStep", ["edge0", "edge1", "x"]),
+}
+
+# Lerp variants: use generic ValueLerp etc. from protoflux.operators
+# Actually these don't exist as generic Value* — check if they're in math
+# Let me check... ValueLerp doesn't exist. We need typed Lerp nodes.
+# But Lerp_Float etc are in math/interpolation or similar subdirs.
+# For now, handle lerp/inverse_lerp as generic math if possible.
+
+# Additional generic math that lives in protoflux.operators (not math):
+_GENERIC_MATH_OPERATORS: dict[str, tuple[str, list[str]]] = {
+    # ValueConditional is in operators
+    "conditional": ("ValueConditional", ["on_true", "on_false", "condition"]),
+}
+
+
+def _get_typed_class(subpath: str, prefix: str, res_type: type) -> Any:
+    """Import and return a typed ProtoFlux node class.
+
+    Constructs the class name as ``{prefix}_{suffix}`` and imports from
+    ``pyresonitelink.protoflux.{subpath}``.
+
+    Args:
+        subpath: The import subpath (e.g. "operators.boolean", "math.trigonometry").
+        prefix: The class name prefix (e.g. "AND", "Sin").
+        res_type: The Resonite primitive type.
+
+    Returns:
+        The class object.
+
+    Raises:
+        KeyError: If the type has no known suffix.
+        AttributeError: If the class doesn't exist for this type.
+    """
+    suffix = _TYPE_SUFFIXES[res_type]
+    class_name = f"{prefix}_{suffix}"
+    module = importlib.import_module(f"pyresonitelink.protoflux.{subpath}")
+    return getattr(module, class_name)
 
 
 def _resolve_type(node: _expr.ExprNode) -> type:
@@ -65,8 +195,8 @@ def _resolve_type(node: _expr.ExprNode) -> type:
 def _operand_type(node: _expr.BinaryOpNode) -> type:
     """Resolve the operand type for parameterizing a binary operator.
 
-    For comparison ops (LT, GT, EQ, NE), the operator is parameterized
-    on the *operand* type, not the result type (which is Bool).
+    For comparison ops, the operator is parameterized on the *operand*
+    type, not the result type (which is Bool).
     """
     if node.op in _COMPARISON_OPS:
         left_type = node.left._type
@@ -77,6 +207,11 @@ def _operand_type(node: _expr.BinaryOpNode) -> type:
             return right_type
         return primitives.Float
     return _resolve_type(node)
+
+
+# =========================================================================
+# Build context
+# =========================================================================
 
 
 class _BuildContext:
@@ -91,6 +226,8 @@ class _BuildContext:
             that reads from that dynamic variable's value.
         slot_ref: The RefObjectInput<Slot> component (shared).
         path_nodes: Maps variable path strings to ValueObjectInput<String>.
+        trigger_receiver: The DynamicImpulseReceiverWithValue component,
+            if a typed trigger is in use.
     """
 
     def __init__(
@@ -158,14 +295,12 @@ class _BuildContext:
             return await self._materialize_binop(node)
         if isinstance(node, _expr.UnaryOpNode):
             return await self._materialize_unop(node)
+        if isinstance(node, _expr.MathCallNode):
+            return await self._materialize_math_call(node)
         raise TypeError(f"Unknown node type: {type(node).__name__}")
 
     def _materialize_trigger_value(self, node: _expr.TriggerValueNode) -> Any:
-        """Return the trigger receiver component for a TriggerValueNode.
-
-        The receiver is set on the context by ``_build_trigger`` before
-        any expressions are materialized.
-        """
+        """Return the trigger receiver component for a TriggerValueNode."""
         if self.trigger_receiver is None:
             raise RuntimeError(
                 "TriggerValueNode used but no trigger receiver was created. "
@@ -185,18 +320,7 @@ class _BuildContext:
         return comp
 
     async def _materialize_var_read(self, node: _expr.VarReadNode) -> Any:
-        """Materialize a variable read.
-
-        Creates a ReadDynamicValueVariable or reuses a ValueInput
-        placeholder. For v1, we use a ValueInput that the engine
-        will not auto-populate — instead, the DynamicValueVariable
-        itself is read by the WriteDVV's target/path mechanism.
-
-        Actually, dynamic variable reads in ProtoFlux don't use
-        ValueInput at all. The WriteDynamicValueVariable reads and
-        writes by path. For pure reads in expressions, we need a
-        ReadDynamicValueVariable node.
-        """
+        """Materialize a variable read as ReadDynamicValueVariable."""
         key = (id(node.space), node.var_name)
         if key in self.var_inputs:
             return self.var_inputs[key]
@@ -209,7 +333,6 @@ class _BuildContext:
         ConcreteRead = ReadDynamicValueVariable[res_type]  # type: ignore[valid-type]
 
         slot_ref = await self.ensure_slot_ref()
-        # Look up the variable path from the space's declarations
         space: _space.Space = node.space
         vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
             space, "_vars",
@@ -226,31 +349,113 @@ class _BuildContext:
         """Materialize a binary operation."""
         left_comp = await self.materialize(node.left)
         right_comp = await self.materialize(node.right)
-
-        OpClass = _get_operator_class(node.op)
         op_type = _operand_type(node)
-        ConcreteOp = OpClass[op_type]
 
+        # Check if this is a typed binary op (bitwise/boolean/shift)
+        if node.op in _TYPED_BINARY_OPS:
+            subpath, prefix = _TYPED_BINARY_OPS[node.op]
+            OpClass = _get_typed_class(subpath, prefix, op_type)
+            if node.op in (_expr.BinOp.LSHIFT, _expr.BinOp.RSHIFT):
+                comp = OpClass(a=left_comp.id, shift=right_comp.id)
+            else:
+                comp = OpClass(a=left_comp.id, b=right_comp.id)
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        # Check if this is pow (typed, not generic)
+        if node.op is _expr.BinOp.POW:
+            subpath, prefix, params = _TYPED_MATH["pow"]
+            OpClass = _get_typed_class(subpath, prefix, op_type)
+            comp = OpClass(n=left_comp.id, power=right_comp.id)
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        # Generic binary op
+        name = _GENERIC_BINOP_NAMES[node.op]
+        from pyresonitelink.protoflux import operators
+        OpClass = getattr(operators, name)
+        ConcreteOp = OpClass[op_type]
         comp = ConcreteOp(a=left_comp.id, b=right_comp.id)
         await comp.add_to_slot(self.resolink, self.slot)
         return comp
 
     async def _materialize_unop(self, node: _expr.UnaryOpNode) -> Any:
-        """Materialize a unary operation (negation)."""
+        """Materialize a unary operation."""
         operand_comp = await self.materialize(node.operand)
-
-        # Negation: 0 - operand
-        from pyresonitelink.protoflux.core import ValueInput
-        from pyresonitelink.protoflux import operators
-
         res_type = _resolve_type(node)
-        zero = ValueInput[res_type](value=res_type(0))  # type: ignore[valid-type]
-        await zero.add_to_slot(self.resolink, self.slot)
 
-        ConcreteSub = operators.ValueSub[res_type]  # type: ignore[valid-type]
-        comp = ConcreteSub(a=zero.id, b=operand_comp.id)
-        await comp.add_to_slot(self.resolink, self.slot)
-        return comp
+        # Check if this is a typed unary op (NOT)
+        if node.op in _TYPED_UNARY_OPS:
+            subpath, prefix = _TYPED_UNARY_OPS[node.op]
+            OpClass = _get_typed_class(subpath, prefix, res_type)
+            comp = OpClass(a=operand_comp.id)
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        # ABS uses generic ValueAbs
+        if node.op is _expr.UnOp.ABS:
+            from pyresonitelink.protoflux.math import ValueAbs
+            ConcreteOp = ValueAbs[res_type]  # type: ignore[valid-type]
+            comp = ConcreteOp(n=operand_comp.id)
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        # NEG uses generic ValueNegate
+        if node.op is _expr.UnOp.NEG:
+            from pyresonitelink.protoflux import operators
+            ConcreteOp = operators.ValueNegate[res_type]  # type: ignore[valid-type]
+            comp = ConcreteOp(n=operand_comp.id)
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        raise TypeError(f"Unknown unary op: {node.op}")
+
+    async def _materialize_math_call(self, node: _expr.MathCallNode) -> Any:
+        """Materialize a math function call."""
+        arg_comps = [await self.materialize(arg) for arg in node.args]
+        res_type = _resolve_type(node)
+
+        # Check for generic math functions first
+        if node.func_name in _GENERIC_MATH:
+            mod_name, class_name, param_names = _GENERIC_MATH[node.func_name]
+            module = importlib.import_module(
+                f"pyresonitelink.protoflux.{mod_name}",
+            )
+            GenericClass = getattr(module, class_name)
+            ConcreteClass = GenericClass[res_type]  # type: ignore[valid-type]
+            kwargs = dict(zip(param_names, [c.id for c in arg_comps]))
+            comp = ConcreteClass(**kwargs)
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        # Check for generic math in operators
+        if node.func_name in _GENERIC_MATH_OPERATORS:
+            class_name, param_names = _GENERIC_MATH_OPERATORS[node.func_name]
+            from pyresonitelink.protoflux import operators
+            GenericClass = getattr(operators, class_name)
+            ConcreteClass = GenericClass[res_type]  # type: ignore[valid-type]
+            kwargs = dict(zip(param_names, [c.id for c in arg_comps]))
+            comp = ConcreteClass(**kwargs)
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        # Typed math function
+        if node.func_name in _TYPED_MATH:
+            subpath, prefix, param_names = _TYPED_MATH[node.func_name]
+            OpClass = _get_typed_class(subpath, prefix, res_type)
+            kwargs = dict(zip(param_names, [c.id for c in arg_comps]))
+            comp = OpClass(**kwargs)
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        raise TypeError(
+            f"Unknown math function: {node.func_name}"
+        )
+
+
+# =========================================================================
+# Space / variable building
+# =========================================================================
 
 
 async def _find_existing_space(
@@ -258,16 +463,7 @@ async def _find_existing_space(
     slot: workers.Slot,
     space_name: str | None,
 ) -> bool:
-    """Check if a DynamicVariableSpace with the given name exists on the slot.
-
-    Args:
-        resolink: Connected client.
-        slot: The slot to search.
-        space_name: The space name to look for, or None for unnamed.
-
-    Returns:
-        True if a matching DynamicVariableSpace already exists.
-    """
+    """Check if a DynamicVariableSpace with the given name exists on the slot."""
     from pyresonitelink.components.data.dynamic import DynamicVariableSpace
 
     slot_data = await resolink.get_slot(slot=slot, depth=0)
@@ -290,19 +486,9 @@ async def _is_slot_or_child(
     parent: workers.Slot,
     candidate: workers.Slot,
 ) -> bool:
-    """Check if candidate is equal to or a recursive child of parent.
-
-    Args:
-        resolink: Connected client.
-        parent: The ancestor slot.
-        candidate: The slot to check.
-
-    Returns:
-        True if candidate is parent or a descendant of parent.
-    """
+    """Check if candidate is equal to or a recursive child of parent."""
     if parent.id == candidate.id:
         return True
-    # Walk up the candidate's parent chain
     current = candidate
     while True:
         slot_data = await resolink.get_slot(slot=current, depth=0)
@@ -322,18 +508,7 @@ async def _find_existing_variable(
     variable_name: str,
     component_type: str,
 ) -> bool:
-    """Check if a DynamicValueVariable with the given name exists on a slot.
-
-    Args:
-        resolink: Connected client.
-        slot: The slot to search.
-        variable_name: The variable name to look for.
-        component_type: The concrete DynamicValueVariable component type
-            string (e.g. ``"...DynamicValueVariable<float>"``).
-
-    Returns:
-        True if a matching variable already exists.
-    """
+    """Check if a DynamicValueVariable with the given name exists on a slot."""
     from pyresonitelink.components.data.dynamic import DynamicValueVariable
 
     slot_data = await resolink.get_slot(slot=slot, depth=0)
@@ -352,13 +527,7 @@ async def _build_space(
     ctx: _BuildContext,
     space: _space.Space,
 ) -> None:
-    """Create the DynamicVariableSpace and its variables on the server.
-
-    If a DynamicVariableSpace with the same name already exists on the
-    slot, it is reused and no new space component is created.  Variables
-    are also only created if they don't already exist on their target
-    slot.
-    """
+    """Create the DynamicVariableSpace and its variables on the server."""
     from pyresonitelink.components.data.dynamic import (
         DynamicValueVariable,
         DynamicVariableSpace,
@@ -367,21 +536,17 @@ async def _build_space(
     slot: workers.Slot = object.__getattribute__(space, "_slot")
     space_name: str | None = object.__getattribute__(space, "_space_name")
 
-    # Only create if one with this name doesn't already exist
     exists = await _find_existing_space(ctx.resolink, slot, space_name)
     if not exists:
         dyn_space = DynamicVariableSpace(space_name=space_name)
         await dyn_space.add_to_slot(ctx.resolink, slot)
 
-    # Create each declared variable
     vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
         space, "_vars",
     )
     for decl in vars_dict.values():
-        # Determine which slot to place the variable on
         var_slot = decl.slot if decl.slot is not None else slot
 
-        # Validate slot hierarchy if a custom slot was specified
         if decl.slot is not None:
             is_valid = await _is_slot_or_child(
                 ctx.resolink, slot, decl.slot,
@@ -394,7 +559,6 @@ async def _build_space(
 
         ConcreteVar = DynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
 
-        # Only create if it doesn't already exist on the target slot
         var_exists = await _find_existing_variable(
             ctx.resolink, var_slot, decl.path, ConcreteVar.COMPONENT_TYPE,
         )
@@ -403,29 +567,22 @@ async def _build_space(
             await var_comp.add_to_slot(ctx.resolink, var_slot)
 
 
+# =========================================================================
+# Flow building
+# =========================================================================
+
+
 async def _build_if_context(
     ctx: _BuildContext,
     if_ctx: _flow.IfContext,
 ) -> Any:
-    """Build a single IfContext into ProtoFlux flow nodes.
-
-    Returns the If component so it can be wired to an Update node.
-    """
+    """Build a single IfContext into ProtoFlux flow nodes."""
     from pyresonitelink.protoflux.flow import If
-    from pyresonitelink.protoflux.variables.dynamic import (
-        WriteDynamicValueVariable,
-    )
 
-    # Materialize the condition expression
     cond_comp = await ctx.materialize(if_ctx.condition._node)
-
-    # Build true-branch write chain
     true_head = await _build_write_chain(ctx, if_ctx.true_writes)
-
-    # Build false-branch write chain
     false_head = await _build_write_chain(ctx, if_ctx.false_writes)
 
-    # Create the If node
     if_node = If(
         condition=cond_comp.id,
         on_true=true_head.id if true_head else None,
@@ -439,11 +596,7 @@ async def _build_write_chain(
     ctx: _BuildContext,
     writes: list[_flow.WriteRecord],
 ) -> Any | None:
-    """Build a chain of WriteDynamicValueVariable nodes.
-
-    Multiple writes are chained via on_success references.
-    Returns the first write in the chain, or None if empty.
-    """
+    """Build a chain of WriteDynamicValueVariable nodes."""
     if not writes:
         return None
 
@@ -455,10 +608,7 @@ async def _build_write_chain(
     components: list[Any] = []
 
     for write in writes:
-        # Materialize the expression
         expr_comp = await ctx.materialize(write.expr._node)
-
-        # Get variable path
         space: _space.Space = write.space
         vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
             space, "_vars",
@@ -466,7 +616,6 @@ async def _build_write_chain(
         decl = vars_dict[write.var_name]
         path_node = await ctx.ensure_path_node(decl.path)
 
-        # Create the write node
         ConcreteWrite = WriteDynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
         write_comp = ConcreteWrite(
             target=slot_ref.id,
@@ -476,7 +625,6 @@ async def _build_write_chain(
         await write_comp.add_to_slot(ctx.resolink, ctx.slot)
         components.append(write_comp)
 
-    # Chain via on_success: first -> second -> third -> ...
     for i in range(len(components) - 1):
         components[i].on_success = components[i + 1].id
         await components[i].update(ctx.resolink)
@@ -484,85 +632,69 @@ async def _build_write_chain(
     return components[0]
 
 
+# =========================================================================
+# Trigger building
+# =========================================================================
+
+
 async def _build_trigger(
     ctx: _BuildContext,
     if_node: Any,
     trigger: _flow.Trigger | None,
 ) -> None:
-    """Create the trigger node that drives the impulse flow.
-
-    Args:
-        ctx: Build context.
-        if_node: The If component to wire the trigger to.
-        trigger: Trigger configuration, or None for Update.
-    """
+    """Create the trigger node that drives the impulse flow."""
     if trigger is None:
-        # Default: Update node fires every frame
         from pyresonitelink.protoflux.flow import Update
-
         update = Update(on_update=if_node.id)
         await update.add_to_slot(ctx.resolink, ctx.slot)
         return
 
-    # Create a ValueObjectInput<String> for the tag
     from pyresonitelink.protoflux.core import ValueObjectInput
-
     StringInput = ValueObjectInput[primitives.String]
     tag_node = StringInput(value=trigger.tag)
     await tag_node.add_to_slot(ctx.resolink, ctx.slot)
 
     if trigger.value_type is None:
-        # DynamicImpulseReceiver (no value)
         from pyresonitelink.protoflux.flow import DynamicImpulseReceiver
-
         receiver = DynamicImpulseReceiver(
-            tag=tag_node.id,
-            on_triggered=if_node.id,
+            tag=tag_node.id, on_triggered=if_node.id,
         )
         await receiver.add_to_slot(ctx.resolink, ctx.slot)
     else:
-        # DynamicImpulseReceiverWithValue<T>
         from pyresonitelink.protoflux.flow import (
             DynamicImpulseReceiverWithValue,
         )
-
         ConcreteReceiver = DynamicImpulseReceiverWithValue[trigger.value_type]  # type: ignore[valid-type]
         receiver = ConcreteReceiver(
-            tag=tag_node.id,
-            on_triggered=if_node.id,
+            tag=tag_node.id, on_triggered=if_node.id,
         )
         await receiver.add_to_slot(ctx.resolink, ctx.slot)
-        # Store receiver so TriggerValueNode can reference it
         ctx.trigger_receiver = receiver
+
+
+# =========================================================================
+# Top-level build
+# =========================================================================
 
 
 async def build_graph(
     graph: _graph.Graph,
     resolink: protocols.ResoniteLinkClient,
 ) -> None:
-    """Materialize the entire Graph as ProtoFlux components.
-
-    Args:
-        graph: The recorded Dergflux graph.
-        resolink: A connected ResoniteLink client.
-    """
+    """Materialize the entire Graph as ProtoFlux components."""
     # Build spaces and their variables
     for space in graph._spaces:
-        # Each space knows its own slot; use a temporary context
         space_slot: workers.Slot = object.__getattribute__(space, "_slot")
         ctx = _BuildContext(resolink, space_slot)
         await _build_space(ctx, space)
 
-    # Build all completed flow contexts.
-    # Each IfContext carries the slot and trigger from its Under() context.
+    # Build all completed flow contexts
     for if_ctx in graph._completed_flows:
         ctx = _BuildContext(resolink, if_ctx.slot)
 
-        # For typed triggers, create the receiver first so
-        # TriggerValueNode can reference it during expression
-        # materialization.
+        # For typed triggers, create receiver first so TriggerValueNode
+        # can reference it during expression materialization.
         if if_ctx.trigger is not None and if_ctx.trigger.value_type is not None:
-            # Pre-create receiver; wire on_triggered after If is built
             from pyresonitelink.protoflux.core import ValueObjectInput
             from pyresonitelink.protoflux.flow import (
                 DynamicImpulseReceiverWithValue,
@@ -577,13 +709,10 @@ async def build_graph(
             await receiver.add_to_slot(ctx.resolink, ctx.slot)
             ctx.trigger_receiver = receiver
 
-            # Build the If (expressions may reference trigger value)
             if_node = await _build_if_context(ctx, if_ctx)
 
-            # Wire receiver -> If
             receiver.on_triggered = if_node.id
             await receiver.update(ctx.resolink)
         else:
-            # No typed trigger value — build If first, then trigger
             if_node = await _build_if_context(ctx, if_ctx)
             await _build_trigger(ctx, if_node, if_ctx.trigger)

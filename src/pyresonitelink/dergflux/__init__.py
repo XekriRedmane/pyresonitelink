@@ -18,5 +18,6 @@ Dergflux lets you write ProtoFlux logic using natural Python syntax::
 
 from pyresonitelink.dergflux._graph import Graph
 from pyresonitelink.dergflux._space import Space, VarDecl
+from pyresonitelink.dergflux import _math as math
 
-__all__ = ["Graph", "Space", "VarDecl"]
+__all__ = ["Graph", "Space", "VarDecl", "math"]
