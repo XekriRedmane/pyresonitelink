@@ -8,6 +8,8 @@ T = TypeVar('T')
 class IGlobalValueProxy(Generic[T]):
     """Interface: [FrooxEngine]FrooxEngine.ProtoFlux.IGlobalValueProxy<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ProtoFlux.IGlobalValueProxy<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

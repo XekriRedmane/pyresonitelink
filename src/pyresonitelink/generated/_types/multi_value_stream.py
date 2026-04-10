@@ -10,3 +10,5 @@ T = TypeVar('T')
 class MultiValueStream(ValueStreamBase, Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.MultiValueStream<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.MultiValueStream<>"
+

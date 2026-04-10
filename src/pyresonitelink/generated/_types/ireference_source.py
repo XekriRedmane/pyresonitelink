@@ -10,6 +10,8 @@ T = TypeVar('T')
 class IReferenceSource(Generic[T]):
     """Interface: [FrooxEngine]FrooxEngine.IReferenceSource<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IReferenceSource<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

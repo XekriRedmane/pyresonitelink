@@ -7,3 +7,5 @@ from pyresonitelink.generated._types.isync_member import ISyncMember
 class SyncObject(Worker, ISyncMember):
     """Abstract class: [FrooxEngine]FrooxEngine.SyncObject."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.SyncObject"
+

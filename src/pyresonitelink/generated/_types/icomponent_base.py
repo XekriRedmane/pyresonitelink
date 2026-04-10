@@ -8,3 +8,5 @@ from pyresonitelink.generated._types.ilinkable import ILinkable
 class IComponentBase(IDestroyable, IUpdatable, ILinkable):
     """Interface: [FrooxEngine]FrooxEngine.IComponentBase."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IComponentBase"
+

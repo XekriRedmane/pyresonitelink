@@ -56,24 +56,15 @@ async def main(port: int) -> None:
     print(f"StaticAudioClip: {clip.id}")
 
     # Create a RefObjectInput to bridge the clip into ProtoFlux.
-    # PlayOneShotAndWait.clip expects INodeObjectOutput<IAssetProvider<AudioClip>>,
-    # so we create one using the raw component type string (IAssetProvider is
-    # not in the type map as it's an interface).
-    CLIP_REF_TYPE = (
-        "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes"
-        ".RefObjectInput<[FrooxEngine]FrooxEngine.IAssetProvider"
-        "<[FrooxEngine]FrooxEngine.AudioClip>>"
-    )
-    clip_ref_resp = await resolink.add_component(
-        containerSlotId=slot, componentType=CLIP_REF_TYPE,
-    )
-    clip_ref_id = clip_ref_resp.entityId
-    assert clip_ref_id is not None
-    # Wire the target reference to point at the StaticAudioClip
-    await resolink.update_references(
-        componentId=clip_ref_id, references={"Target": clip.id},
-    )
-    print(f"ClipRef: {clip_ref_id}")
+    # PlayOneShotAndWait.clip expects INodeObjectOutput<IAssetProvider<AudioClip>>.
+    from pyresonitelink.protoflux.core import RefObjectInput
+    from pyresonitelink.generated._types.iasset_provider import IAssetProvider
+    from pyresonitelink.generated._types.audio_clip import AudioClip
+
+    ClipRef = RefObjectInput[IAssetProvider[AudioClip]]
+    clip_ref = ClipRef(target=clip)
+    await clip_ref.add_to_slot(resolink, slot)
+    print(f"ClipRef: {clip_ref.id}")
 
     # ===================================================================
     # Build the Dergflux graph
@@ -92,7 +83,7 @@ async def main(port: int) -> None:
         # PlayOneShotAndWait has two flow outputs:
         #   on_started_playing — fires when audio begins
         #   on_finished_playing — fires when audio ends
-        with g.PlayOneShotAndWait(clip=clip_ref_id, volume=1.0) as r:
+        with g.PlayOneShotAndWait(clip=clip_ref, volume=1.0) as r:
             with r.on_started_playing():
                 s.state = "playing"
             with r.on_finished_playing():

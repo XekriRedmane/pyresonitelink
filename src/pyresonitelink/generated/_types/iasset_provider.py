@@ -10,6 +10,8 @@ A = TypeVar('A')
 class IAssetProvider(Generic[A]):
     """Interface: [FrooxEngine]FrooxEngine.IAssetProvider<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IAssetProvider<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

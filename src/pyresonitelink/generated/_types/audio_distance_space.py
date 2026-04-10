@@ -3,6 +3,8 @@
 class AudioDistanceSpace:
     """Class: [FrooxEngine]FrooxEngine.AudioDistanceSpace."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.AudioDistanceSpace"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

@@ -7,3 +7,5 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 class RootSpace(SyncObject, ICustomInspector):
     """Class: [FrooxEngine]FrooxEngine.RootSpace."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.RootSpace"
+

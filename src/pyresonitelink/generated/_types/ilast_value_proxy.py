@@ -10,3 +10,5 @@ T = TypeVar('T')
 class ILastValueProxy(IComponent, Generic[T]):
     """Interface: [ProtoFlux.Nodes.FrooxEngine]ProtoFlux.Runtimes.Execution.Nodes.Actions.ILastValueProxy<>."""
 
+    RESONITE_TYPE: str = "[ProtoFlux.Nodes.FrooxEngine]ProtoFlux.Runtimes.Execution.Nodes.Actions.ILastValueProxy<>"
+

@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.icomponent import IComponent
 class IBlendModeMaterial(IComponent):
     """Interface: [FrooxEngine]FrooxEngine.IBlendModeMaterial."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IBlendModeMaterial"
+

@@ -10,6 +10,8 @@ U = TypeVar('U')
 class QuantityTextEditorParser(Generic[U]):
     """Class: [FrooxEngine]FrooxEngine.QuantityTextEditorParser<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.QuantityTextEditorParser<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

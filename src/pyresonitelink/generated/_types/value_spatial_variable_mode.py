@@ -3,6 +3,8 @@
 class ValueSpatialVariableMode:
     """Class: [FrooxEngine]FrooxEngine.ValueSpatialVariableMode."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ValueSpatialVariableMode"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

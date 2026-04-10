@@ -8,6 +8,8 @@ T = TypeVar('T')
 class ButtonEventHandler(Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.ButtonEventHandler<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ButtonEventHandler<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

@@ -10,3 +10,5 @@ E = TypeVar('E')
 class IParticleSystemEmitter(IParticleSystemSubsystem, Generic[E]):
     """Interface: [FrooxEngine]FrooxEngine.PhotonDust.IParticleSystemEmitter<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.PhotonDust.IParticleSystemEmitter<>"
+

@@ -11,3 +11,5 @@ T = TypeVar('T')
 class SyncField(ConflictingSyncElement, IField, Generic[T]):
     """Abstract class: [FrooxEngine]FrooxEngine.SyncField<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.SyncField<>"
+

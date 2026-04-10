@@ -10,6 +10,8 @@ T = TypeVar('T')
 class IQuantitySI(Generic[T]):
     """Interface: IQuantitySI<>."""
 
+    RESONITE_TYPE: str = "IQuantitySI<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

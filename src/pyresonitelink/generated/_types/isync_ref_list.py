@@ -11,3 +11,5 @@ T = TypeVar('T')
 class ISyncRefList(ILinkable, Generic[T]):
     """Interface: [FrooxEngine]FrooxEngine.ISyncRefList<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ISyncRefList<>"
+

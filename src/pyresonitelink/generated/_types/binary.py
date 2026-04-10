@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.asset import Asset
 class Binary(Asset):
     """Class: [FrooxEngine]FrooxEngine.Binary."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.Binary"
+

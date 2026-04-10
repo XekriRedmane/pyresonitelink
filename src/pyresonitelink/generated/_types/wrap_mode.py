@@ -3,6 +3,8 @@
 class WrapMode:
     """Class: [Elements.Assets]Elements.Assets.WrapMode."""
 
+    RESONITE_TYPE: str = "[Elements.Assets]Elements.Assets.WrapMode"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

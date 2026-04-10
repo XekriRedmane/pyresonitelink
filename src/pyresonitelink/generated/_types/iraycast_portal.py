@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.icomponent import IComponent
 class IRaycastPortal(IComponent):
     """Interface: [FrooxEngine]FrooxEngine.IRaycastPortal."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IRaycastPortal"
+

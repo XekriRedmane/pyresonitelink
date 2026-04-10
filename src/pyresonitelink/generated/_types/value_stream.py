@@ -11,3 +11,5 @@ T = TypeVar('T')
 class ValueStream(ValueStreamBase, IValue, Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.ValueStream<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ValueStream<>"
+

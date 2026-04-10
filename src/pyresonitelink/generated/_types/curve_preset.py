@@ -3,6 +3,8 @@
 class CurvePreset:
     """Class: [FrooxEngine]FrooxEngine.CurvePreset."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.CurvePreset"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

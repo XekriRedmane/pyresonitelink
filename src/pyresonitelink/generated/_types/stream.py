@@ -7,3 +7,5 @@ from pyresonitelink.generated._types.istream import IStream
 class Stream(Worker, IStream):
     """Abstract class: [FrooxEngine]FrooxEngine.Stream."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.Stream"
+

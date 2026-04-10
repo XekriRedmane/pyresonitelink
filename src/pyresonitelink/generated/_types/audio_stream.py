@@ -13,3 +13,5 @@ S = TypeVar('S')
 class AudioStream(Stream, IAudioStream, ICustomInspector, Generic[S]):
     """Abstract class: [FrooxEngine]FrooxEngine.AudioStream<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.AudioStream<>"
+

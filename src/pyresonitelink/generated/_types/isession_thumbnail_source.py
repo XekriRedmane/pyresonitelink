@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.iworld_session_thumbnail_source import IWor
 class ISessionThumbnailSource(IWorldSessionThumbnailSource):
     """Interface: [FrooxEngine]FrooxEngine.ISessionThumbnailSource."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ISessionThumbnailSource"
+

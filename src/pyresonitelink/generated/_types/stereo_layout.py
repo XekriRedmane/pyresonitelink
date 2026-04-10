@@ -3,6 +3,8 @@
 class StereoLayout:
     """Class: [Elements.Core]Elements.Core.StereoLayout."""
 
+    RESONITE_TYPE: str = "[Elements.Core]Elements.Core.StereoLayout"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

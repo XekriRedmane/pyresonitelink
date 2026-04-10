@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.icomponent import IComponent
 class ILegacyUIElement(IComponent):
     """Interface: [FrooxEngine]FrooxEngine.ILegacyUIElement."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ILegacyUIElement"
+

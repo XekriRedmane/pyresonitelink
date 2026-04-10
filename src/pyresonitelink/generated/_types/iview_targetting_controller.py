@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.iinteraction_origin_source import IInteract
 class IViewTargettingController(IInteractionOriginSource):
     """Interface: [FrooxEngine]FrooxEngine.IViewTargettingController."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IViewTargettingController"
+

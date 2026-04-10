@@ -12,3 +12,5 @@ C = TypeVar('C')
 class ComponentBase(Worker, IComponentBase, IWorldEventReceiver, Generic[C]):
     """Abstract class: [FrooxEngine]FrooxEngine.ComponentBase<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ComponentBase<>"
+

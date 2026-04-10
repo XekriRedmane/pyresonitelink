@@ -10,6 +10,8 @@ N = TypeVar('N')
 class IProtoFluxNode(Generic[N]):
     """Interface: [FrooxEngine]FrooxEngine.ProtoFlux.IProtoFluxNode<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ProtoFlux.IProtoFluxNode<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

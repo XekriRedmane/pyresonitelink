@@ -12,3 +12,5 @@ A = TypeVar('A')
 class AssetRef(SyncRef, IAssetRef, Generic[A]):
     """Class: [FrooxEngine]FrooxEngine.AssetRef<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.AssetRef<>"
+

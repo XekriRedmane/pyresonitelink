@@ -11,3 +11,5 @@ V = TypeVar('V')
 class Asset(IAsset, Generic[V]):
     """Abstract class: [FrooxEngine]FrooxEngine.Asset<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.Asset<>"
+

@@ -7,3 +7,5 @@ from pyresonitelink.generated._types.iupdatable import IUpdatable
 class User(ContainerWorker, IUpdatable):
     """Class: [FrooxEngine]FrooxEngine.User."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.User"
+

@@ -13,3 +13,5 @@ A = TypeVar('A')
 class AssetProvider(Component, IAssetProvider, ICustomInspector, Generic[A]):
     """Abstract class: [FrooxEngine]FrooxEngine.AssetProvider<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.AssetProvider<>"
+

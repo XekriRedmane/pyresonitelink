@@ -10,3 +10,5 @@ T = TypeVar('T')
 class LinkTarget(EmptySyncElement, Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.LinkTarget<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.LinkTarget<>"
+

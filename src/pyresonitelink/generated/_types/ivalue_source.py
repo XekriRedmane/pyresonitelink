@@ -8,6 +8,8 @@ T = TypeVar('T')
 class IValueSource(Generic[T]):
     """Interface: [FrooxEngine]FrooxEngine.IValueSource<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IValueSource<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

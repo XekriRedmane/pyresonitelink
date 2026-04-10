@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.shared_material_base import SharedMaterialB
 class Material(SharedMaterialBase):
     """Class: [FrooxEngine]FrooxEngine.Material."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.Material"
+

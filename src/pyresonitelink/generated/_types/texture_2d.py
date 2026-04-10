@@ -7,3 +7,5 @@ from pyresonitelink.generated._types.itexture_2d import ITexture2D
 class Texture2D(Texture, ITexture2D):
     """Class: [FrooxEngine]FrooxEngine.Texture2D."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.Texture2D"
+

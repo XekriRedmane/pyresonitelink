@@ -8,6 +8,8 @@ T = TypeVar('T')
 class IDynamicVariable(Generic[T]):
     """Interface: [FrooxEngine]FrooxEngine.IDynamicVariable<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IDynamicVariable<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

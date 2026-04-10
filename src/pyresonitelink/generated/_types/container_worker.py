@@ -11,3 +11,5 @@ C = TypeVar('C')
 class ContainerWorker(Worker, Generic[C]):
     """Abstract class: [FrooxEngine]FrooxEngine.ContainerWorker<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ContainerWorker<>"
+

@@ -11,3 +11,5 @@ T = TypeVar('T')
 class RawOutput(EmptySyncElement, IField, Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.RawOutput<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.RawOutput<>"
+

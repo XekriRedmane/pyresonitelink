@@ -8,6 +8,8 @@ TResult = TypeVar('TResult')
 class Func(Generic[TResult]):
     """Class: Func<>."""
 
+    RESONITE_TYPE: str = "Func<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

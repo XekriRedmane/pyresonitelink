@@ -3,6 +3,8 @@
 class JoinRequestHandle:
     """Class: [ProtoFlux.Nodes.FrooxEngine]ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security.JoinRequestHandle."""
 
+    RESONITE_TYPE: str = "[ProtoFlux.Nodes.FrooxEngine]ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Security.JoinRequestHandle"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

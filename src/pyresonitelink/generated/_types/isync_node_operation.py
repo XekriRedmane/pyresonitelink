@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.inode_operation import INodeOperation
 class ISyncNodeOperation(INodeOperation):
     """Interface: [FrooxEngine]FrooxEngine.ProtoFlux.ISyncNodeOperation."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ProtoFlux.ISyncNodeOperation"
+

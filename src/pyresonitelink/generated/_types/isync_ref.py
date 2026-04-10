@@ -10,6 +10,8 @@ T = TypeVar('T')
 class ISyncRef(Generic[T]):
     """Interface: [FrooxEngine]FrooxEngine.ISyncRef<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ISyncRef<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

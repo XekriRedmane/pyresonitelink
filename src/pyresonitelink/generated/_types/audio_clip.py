@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.asset import Asset
 class AudioClip(Asset):
     """Class: [FrooxEngine]FrooxEngine.AudioClip."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.AudioClip"
+

@@ -10,3 +10,5 @@ C = TypeVar('C')
 class IExecutionNode(IProtoFluxNode, Generic[C]):
     """Interface: [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.IExecutionNode<>."""
 
+    RESONITE_TYPE: str = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.IExecutionNode<>"
+

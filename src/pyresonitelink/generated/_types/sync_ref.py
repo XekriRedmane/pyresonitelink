@@ -12,3 +12,5 @@ T = TypeVar('T')
 class SyncRef(SyncField, ISyncRef, Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.SyncRef<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.SyncRef<>"
+

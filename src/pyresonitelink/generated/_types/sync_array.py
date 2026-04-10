@@ -11,3 +11,5 @@ T = TypeVar('T')
 class SyncArray(ConflictingSyncElement, ISyncArray, Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.SyncArray<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.SyncArray<>"
+

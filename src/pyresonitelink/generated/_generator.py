@@ -1773,6 +1773,10 @@ def generate_type_source(
     lines.append(f'    """{kind}: {full_name}."""')
     lines.append("")
 
+    # Resonite type name for type map lookups
+    lines.append(f'    RESONITE_TYPE: str = "{full_name}"')
+    lines.append("")
+
     # Add id property on root types (no bases) so they can be used
     # as reference targets.  Declared as a property (not a plain
     # attribute) to be compatible with GeneratedComponent.id which

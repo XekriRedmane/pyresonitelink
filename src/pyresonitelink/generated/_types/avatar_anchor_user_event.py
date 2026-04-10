@@ -3,6 +3,8 @@
 class AvatarAnchorUserEvent:
     """Class: [FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorUserEvent."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorUserEvent"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

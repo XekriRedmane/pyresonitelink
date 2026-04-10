@@ -141,24 +141,60 @@ for _info in _TYPE_INFOS:
         _BY_RESONITE_NAME[_info.resonite_name] = _info
 
 
-def from_python_type(python_type: type) -> TypeInfo:
+def from_python_type(python_type: Any) -> TypeInfo:
     """Look up type info by Python type.
 
+    Handles:
+    - Registered types (``np.float32``, ``bool``, ``primitives.Float3``, etc.)
+    - Types with a ``RESONITE_TYPE`` class attribute (generated ``_types/`` stubs)
+    - Parameterized generics (``IAssetProvider[AudioClip]``) by decomposing
+      via ``typing.get_origin`` / ``typing.get_args`` and combining the
+      Resonite names
+
     Args:
-        python_type: A Python type like ``np.float32`` or ``bool``.
+        python_type: A Python type, parameterized generic, or ``_types/`` stub.
 
     Returns:
         The corresponding TypeInfo.
 
     Raises:
-        KeyError: If the type is not a known value type.
+        KeyError: If the type is not a known Resonite type.
     """
+    import typing
+
+    # 1. Check the static registry first
     info = _BY_PYTHON_TYPE.get(python_type)
-    if info is None:
-        raise KeyError(
-            f"{python_type!r} is not a known Resonite value type"
-        )
-    return info
+    if info is not None:
+        return info
+
+    # 2. Check for parameterized generics: IAssetProvider[AudioClip]
+    origin = typing.get_origin(python_type)
+    args = typing.get_args(python_type)
+    if origin is not None and args:
+        origin_info = from_python_type(origin)
+        origin_name = origin_info.resonite_name
+        # Replace <> with <arg1, arg2, ...>
+        arg_names = [from_python_type(a).resonite_name for a in args]
+        if origin_name.endswith("<>"):
+            resonite_name = origin_name[:-2] + "<" + ",".join(arg_names) + ">"
+        else:
+            resonite_name = origin_name + "<" + ",".join(arg_names) + ">"
+        result = TypeInfo(python_type, resonite_name)
+        # Cache for future lookups
+        _BY_PYTHON_TYPE[python_type] = result
+        return result
+
+    # 3. Check for RESONITE_TYPE attribute (generated _types/ stubs)
+    resonite_name = getattr(python_type, "RESONITE_TYPE", None)
+    if resonite_name is not None:
+        result = TypeInfo(python_type, resonite_name)
+        # Cache for future lookups
+        _BY_PYTHON_TYPE[python_type] = result
+        return result
+
+    raise KeyError(
+        f"{python_type!r} is not a known Resonite type"
+    )
 
 
 def from_resonite_name(name: str) -> TypeInfo:

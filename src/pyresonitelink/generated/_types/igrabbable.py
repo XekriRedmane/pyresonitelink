@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.iinteraction_target import IInteractionTarg
 class IGrabbable(IInteractionTarget):
     """Interface: [FrooxEngine]FrooxEngine.IGrabbable."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IGrabbable"
+

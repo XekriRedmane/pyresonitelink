@@ -3,6 +3,8 @@
 class IAssetVariantDescriptor:
     """Interface: [Elements.Assets]Elements.Assets.IAssetVariantDescriptor."""
 
+    RESONITE_TYPE: str = "[Elements.Assets]Elements.Assets.IAssetVariantDescriptor"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

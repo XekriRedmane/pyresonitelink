@@ -7,3 +7,5 @@ from pyresonitelink.generated._types.iplayable import IPlayable
 class SyncPlayback(ConflictingSyncElement, IPlayable):
     """Class: [FrooxEngine]FrooxEngine.SyncPlayback."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.SyncPlayback"
+

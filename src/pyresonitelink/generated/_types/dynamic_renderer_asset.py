@@ -11,3 +11,5 @@ A = TypeVar('A')
 class DynamicRendererAsset(DynamicAsset, IRendererAsset, Generic[A]):
     """Abstract class: [FrooxEngine]FrooxEngine.DynamicRendererAsset<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.DynamicRendererAsset<>"
+

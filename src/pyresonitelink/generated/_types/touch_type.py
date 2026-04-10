@@ -3,6 +3,8 @@
 class TouchType:
     """Class: [FrooxEngine]FrooxEngine.TouchType."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.TouchType"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

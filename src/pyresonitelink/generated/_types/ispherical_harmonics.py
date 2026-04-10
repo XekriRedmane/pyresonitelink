@@ -8,6 +8,8 @@ T = TypeVar('T')
 class ISphericalHarmonics(Generic[T]):
     """Interface: [Elements.Core]Elements.Core.ISphericalHarmonics<>."""
 
+    RESONITE_TYPE: str = "[Elements.Core]Elements.Core.ISphericalHarmonics<>"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

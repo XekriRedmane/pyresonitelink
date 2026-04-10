@@ -11,3 +11,5 @@ A = TypeVar('A')
 class UsersAssetLoadProgress(Component, Generic[A]):
     """Class: [FrooxEngine]FrooxEngine.UsersAssetLoadProgress<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.UsersAssetLoadProgress<>"
+

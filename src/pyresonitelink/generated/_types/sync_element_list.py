@@ -12,3 +12,5 @@ T = TypeVar('T')
 class SyncElementList(ConflictingSyncElement, ISyncList, Generic[T]):
     """Abstract class: [FrooxEngine]FrooxEngine.SyncElementList<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.SyncElementList<>"
+

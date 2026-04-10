@@ -3,6 +3,8 @@
 class ColorProfile:
     """Class: [Renderite.Shared]Renderite.Shared.ColorProfile."""
 
+    RESONITE_TYPE: str = "[Renderite.Shared]Renderite.Shared.ColorProfile"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

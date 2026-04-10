@@ -3,6 +3,8 @@
 class SessionAccessLevel:
     """Class: [SkyFrost.Base.Models]SkyFrost.Base.SessionAccessLevel."""
 
+    RESONITE_TYPE: str = "[SkyFrost.Base.Models]SkyFrost.Base.SessionAccessLevel"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

@@ -7,3 +7,5 @@ from pyresonitelink.generated._types.istream import IStream
 class IAudioStream(IWorldAudioDataSource, IStream):
     """Interface: [FrooxEngine]FrooxEngine.IAudioStream."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IAudioStream"
+

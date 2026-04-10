@@ -7,3 +7,5 @@ from pyresonitelink.generated._types.ilinkable import ILinkable
 class ISyncMember(IChangeable, ILinkable):
     """Interface: [FrooxEngine]FrooxEngine.ISyncMember."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ISyncMember"
+

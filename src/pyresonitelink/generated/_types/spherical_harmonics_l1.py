@@ -10,3 +10,5 @@ T = TypeVar('T')
 class SphericalHarmonicsL1(ISphericalHarmonics, Generic[T]):
     """Class: [Elements.Core]Elements.Core.SphericalHarmonicsL1<>."""
 
+    RESONITE_TYPE: str = "[Elements.Core]Elements.Core.SphericalHarmonicsL1<>"
+

@@ -10,3 +10,5 @@ T = TypeVar('T')
 class INodeObjectOutput(INodeOutput, Generic[T]):
     """Interface: [FrooxEngine]FrooxEngine.ProtoFlux.INodeObjectOutput<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ProtoFlux.INodeObjectOutput<>"
+

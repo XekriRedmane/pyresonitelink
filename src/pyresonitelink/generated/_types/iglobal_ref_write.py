@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.iproto_flux_node import IProtoFluxNode
 class IGlobalRefWrite(IProtoFluxNode):
     """Interface: [FrooxEngine]FrooxEngine.ProtoFlux.CoreNodes.IGlobalRefWrite."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ProtoFlux.CoreNodes.IGlobalRefWrite"
+

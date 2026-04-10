@@ -3,6 +3,8 @@
 class ComponentHandling:
     """Class: [FrooxEngine]FrooxEngine.ComponentHandling."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ComponentHandling"
+
     @property
     def id(self) -> str | None:
         """The element's unique ID."""

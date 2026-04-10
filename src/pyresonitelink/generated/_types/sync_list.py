@@ -11,3 +11,5 @@ T = TypeVar('T')
 class SyncList(SyncElementList, Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.SyncList<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.SyncList<>"
+

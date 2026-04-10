@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.icomponent import IComponent
 class ILocomotionAnimationMetricSource(IComponent):
     """Interface: [FrooxEngine]FrooxEngine.ILocomotionAnimationMetricSource."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ILocomotionAnimationMetricSource"
+

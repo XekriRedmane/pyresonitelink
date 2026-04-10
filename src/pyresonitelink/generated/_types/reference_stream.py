@@ -11,3 +11,5 @@ T = TypeVar('T')
 class ReferenceStream(ImplicitStream, Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.ReferenceStream<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ReferenceStream<>"
+

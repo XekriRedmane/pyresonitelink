@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.icomponent import IComponent
 class ISweepableCollider(IComponent):
     """Interface: [FrooxEngine]FrooxEngine.ISweepableCollider."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.ISweepableCollider"
+

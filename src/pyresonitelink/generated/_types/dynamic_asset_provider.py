@@ -11,3 +11,5 @@ A = TypeVar('A')
 class DynamicAssetProvider(AssetProvider, Generic[A]):
     """Abstract class: [FrooxEngine]FrooxEngine.DynamicAssetProvider<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.DynamicAssetProvider<>"
+

@@ -6,3 +6,5 @@ from pyresonitelink.generated._types.isync_ref import ISyncRef
 class IAssetRef(ISyncRef):
     """Interface: [FrooxEngine]FrooxEngine.IAssetRef."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IAssetRef"
+

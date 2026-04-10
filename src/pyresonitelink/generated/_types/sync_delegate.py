@@ -11,3 +11,5 @@ T = TypeVar('T')
 class SyncDelegate(SyncField, ISyncDelegate, Generic[T]):
     """Class: [FrooxEngine]FrooxEngine.SyncDelegate<>."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.SyncDelegate<>"
+

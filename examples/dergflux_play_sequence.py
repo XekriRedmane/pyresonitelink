@@ -96,8 +96,8 @@ async def main(port: int) -> None:
     print(f"  Added {len(clips)} clips to multiplexer")
 
     # Create a RefObjectInput pointing at the multiplexer as clip source
-    ClipRef = RefObjectInput[IAssetProvider]
-    clip_ref = ClipRef(target=mux.id)
+    ClipRef = RefObjectInput[IAssetProvider[AudioClip]]
+    clip_ref = ClipRef(target=mux)
     await clip_ref.add_to_slot(resolink, slot)
     print(f"ClipRef -> multiplexer: {clip_ref.id}")
 

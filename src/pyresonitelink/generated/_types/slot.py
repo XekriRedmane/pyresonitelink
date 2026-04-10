@@ -9,3 +9,5 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 class Slot(ContainerWorker, IUpdatable, IDestroyable, ICustomInspector):
     """Class: [FrooxEngine]FrooxEngine.Slot."""
 
+    RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.Slot"
+
