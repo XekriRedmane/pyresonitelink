@@ -1,15 +1,18 @@
 """Flow control contexts and write records for Dergflux.
 
-FlowContext subclasses track condition/count and writes for each flow
-construct (If, For, While, bare writes).  WriteRecord captures a
+FlowContext subclasses track condition/count and statements for each
+flow construct (If, For, While, bare writes).  WriteRecord captures a
 single variable assignment.  These are pure data structures with no
 server interaction.
+
+A "statement" is either a WriteRecord (variable write) or a nested
+FlowContext (e.g. an ActionContext inside a For loop).
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Union
 
 if TYPE_CHECKING:
     from pyresonitelink.data import workers
@@ -41,6 +44,10 @@ class WriteRecord:
     expr: _expr.ExprProxy
 
 
+# A statement is either a write or a nested flow context.
+Statement = Union[WriteRecord, "FlowContext"]
+
+
 @dataclass
 class FlowContext:
     """Base class for all flow control contexts.
@@ -51,6 +58,14 @@ class FlowContext:
 
     slot: workers.Slot
 
+    def record_write(self, write: WriteRecord) -> None:
+        """Record a write in the current phase. Override in subclasses."""
+        raise NotImplementedError
+
+    def record_nested(self, ctx: FlowContext) -> None:
+        """Record a nested flow context. Override in subclasses."""
+        raise NotImplementedError
+
 
 @dataclass
 class IfContext(FlowContext):
@@ -58,22 +73,29 @@ class IfContext(FlowContext):
 
     Attributes:
         condition: The boolean expression proxy for the branch.
-        true_writes: Writes recorded inside the ``with g.If(...)`` block.
-        false_writes: Writes recorded inside the ``with g.Else()`` block.
+        true_stmts: Statements recorded inside the ``with g.If(...)`` block.
+        false_stmts: Statements recorded inside the ``with g.Else()`` block.
         phase: Which branch is currently being recorded.
     """
 
     condition: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
-    true_writes: list[WriteRecord] = field(default_factory=list)
-    false_writes: list[WriteRecord] = field(default_factory=list)
+    true_stmts: list[Statement] = field(default_factory=list)
+    false_stmts: list[Statement] = field(default_factory=list)
     phase: str = "true"
 
     def record_write(self, write: WriteRecord) -> None:
         """Append a write to the currently active branch."""
         if self.phase == "true":
-            self.true_writes.append(write)
+            self.true_stmts.append(write)
         else:
-            self.false_writes.append(write)
+            self.false_stmts.append(write)
+
+    def record_nested(self, ctx: FlowContext) -> None:
+        """Append a nested flow to the currently active branch."""
+        if self.phase == "true":
+            self.true_stmts.append(ctx)
+        else:
+            self.false_stmts.append(ctx)
 
 
 @dataclass
@@ -83,23 +105,30 @@ class ForContext(FlowContext):
     Attributes:
         count: The iteration count expression.
         reverse: Whether to iterate in reverse.
-        start_writes: Writes for loop_start (runs once before loop).
-        iteration_writes: Writes for loop_iteration (runs each iteration).
+        start_stmts: Statements for loop_start (runs once before loop).
+        iteration_stmts: Statements for loop_iteration (runs each iteration).
         phase: Which section is currently being recorded.
     """
 
     count: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
     reverse: _expr.ExprProxy | None = None
-    start_writes: list[WriteRecord] = field(default_factory=list)
-    iteration_writes: list[WriteRecord] = field(default_factory=list)
+    start_stmts: list[Statement] = field(default_factory=list)
+    iteration_stmts: list[Statement] = field(default_factory=list)
     phase: str = "iteration"
 
     def record_write(self, write: WriteRecord) -> None:
         """Append a write to the currently active section."""
         if self.phase == "start":
-            self.start_writes.append(write)
+            self.start_stmts.append(write)
         else:
-            self.iteration_writes.append(write)
+            self.iteration_stmts.append(write)
+
+    def record_nested(self, ctx: FlowContext) -> None:
+        """Append a nested flow to the currently active section."""
+        if self.phase == "start":
+            self.start_stmts.append(ctx)
+        else:
+            self.iteration_stmts.append(ctx)
 
 
 @dataclass
@@ -110,24 +139,31 @@ class RangeContext(FlowContext):
         start: The loop start value expression.
         end: The loop end value expression.
         step: The loop step size expression.
-        start_writes: Writes for loop_start (runs once before loop).
-        iteration_writes: Writes for loop_iteration (runs each iteration).
+        start_stmts: Statements for loop_start (runs once before loop).
+        iteration_stmts: Statements for loop_iteration (runs each iteration).
         phase: Which section is currently being recorded.
     """
 
     start: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
     end: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
     step: _expr.ExprProxy | None = None
-    start_writes: list[WriteRecord] = field(default_factory=list)
-    iteration_writes: list[WriteRecord] = field(default_factory=list)
+    start_stmts: list[Statement] = field(default_factory=list)
+    iteration_stmts: list[Statement] = field(default_factory=list)
     phase: str = "iteration"
 
     def record_write(self, write: WriteRecord) -> None:
         """Append a write to the currently active section."""
         if self.phase == "start":
-            self.start_writes.append(write)
+            self.start_stmts.append(write)
         else:
-            self.iteration_writes.append(write)
+            self.iteration_stmts.append(write)
+
+    def record_nested(self, ctx: FlowContext) -> None:
+        """Append a nested flow to the currently active section."""
+        if self.phase == "start":
+            self.start_stmts.append(ctx)
+        else:
+            self.iteration_stmts.append(ctx)
 
 
 @dataclass
@@ -136,33 +172,24 @@ class WhileContext(FlowContext):
 
     Attributes:
         condition: The loop condition expression.
-        writes: Writes for loop_iteration.
+        stmts: Statements for loop_iteration.
     """
 
     condition: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
-    writes: list[WriteRecord] = field(default_factory=list)
+    stmts: list[Statement] = field(default_factory=list)
 
     def record_write(self, write: WriteRecord) -> None:
         """Append a write to the loop body."""
-        self.writes.append(write)
+        self.stmts.append(write)
+
+    def record_nested(self, ctx: FlowContext) -> None:
+        """Append a nested flow to the loop body."""
+        self.stmts.append(ctx)
 
 
 @dataclass
 class RaycastOneContext(FlowContext):
-    """Tracks a RaycastOne node during recording.
-
-    Attributes:
-        origin: Ray origin expression (Float3).
-        direction: Ray direction expression (Float3).
-        max_distance: Max ray distance expression (Float).
-        hit_triggers: Whether to hit triggers (Bool).
-        users_only: Whether to hit only users (Bool).
-        root: Root slot reference expression.
-        component_tag: Tag linking output nodes to this context.
-        hit_writes: Statements recorded inside OnHit().
-        miss_writes: Statements recorded inside OnMiss().
-        phase: Which section is currently being recorded.
-    """
+    """Tracks a RaycastOne node during recording."""
 
     origin: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
     direction: _expr.ExprProxy = field(default=None)  # type: ignore[assignment]
@@ -171,51 +198,50 @@ class RaycastOneContext(FlowContext):
     users_only: _expr.ExprProxy | None = None
     root: _expr.ExprProxy | None = None
     component_tag: str = ""
-    hit_writes: list[WriteRecord] = field(default_factory=list)
-    miss_writes: list[WriteRecord] = field(default_factory=list)
+    hit_stmts: list[Statement] = field(default_factory=list)
+    miss_stmts: list[Statement] = field(default_factory=list)
     phase: str = "hit"
 
     def record_write(self, write: WriteRecord) -> None:
         """Append a write to the currently active section."""
         if self.phase == "hit":
-            self.hit_writes.append(write)
+            self.hit_stmts.append(write)
         else:
-            self.miss_writes.append(write)
+            self.miss_stmts.append(write)
+
+    def record_nested(self, ctx: FlowContext) -> None:
+        """Append a nested flow to the currently active section."""
+        if self.phase == "hit":
+            self.hit_stmts.append(ctx)
+        else:
+            self.miss_stmts.append(ctx)
 
 
 @dataclass
 class BareWriteContext(FlowContext):
-    """Tracks bare writes inside an Under block (not inside If/For/While).
+    """Tracks bare writes inside an Under block."""
 
-    These become standalone WriteDynamicValueVariable chains in a
-    Sequence.
-    """
-
-    writes: list[WriteRecord] = field(default_factory=list)
+    stmts: list[Statement] = field(default_factory=list)
 
     def record_write(self, write: WriteRecord) -> None:
         """Append a write."""
-        self.writes.append(write)
+        self.stmts.append(write)
+
+    def record_nested(self, ctx: FlowContext) -> None:
+        """Append a nested flow."""
+        self.stmts.append(ctx)
 
 
 @dataclass
 class BindRecord:
-    """A continuous field drive: component.member is driven by an expression.
-
-    At build time, creates a ``ValueFieldDrive<T>`` that continuously
-    drives a component field from a ProtoFlux expression.
-
-    Attributes:
-        component: The target component instance.
-        member_name: The Resonite member name to drive (e.g. ``"Index"``).
-        expr: The expression to drive from.
-        slot: The slot to place the drive node on.
-    """
+    """A permanent binding from a value source to a component field."""
 
     component: Any
     member_name: str
     expr: _expr.ExprProxy
     slot: workers.Slot
+    dynvar_name: str | None = None
+    dynvar_space: Any = None
 
 
 @dataclass
@@ -223,14 +249,17 @@ class UnderRecord:
     """All the flow statements recorded inside a single Under block.
 
     The builder creates a Sequence node (if >1 statement) and one
-    trigger to drive it.
+    trigger to drive it.  If ``is_async`` is True, async variants
+    are used for all flow nodes.
 
     Attributes:
         slot: The slot for ProtoFlux node placement.
         trigger: How the flow is triggered.
         statements: The flow contexts in order.
+        is_async: True if any statement contains an async action.
     """
 
     slot: workers.Slot
     trigger: Trigger | None = None
     statements: list[FlowContext] = field(default_factory=list)
+    is_async: bool = False

@@ -20,7 +20,6 @@ from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.components.assets import StaticAudioClip
 from pyresonitelink.components.data.dynamic import DynamicValueVariable
-from pyresonitelink.protoflux.core import RefObjectInput
 from pyresonitelink.dergflux import Graph
 
 
@@ -58,12 +57,23 @@ async def main(port: int) -> None:
 
     # Create a RefObjectInput to bridge the clip into ProtoFlux.
     # PlayOneShotAndWait.clip expects INodeObjectOutput<IAssetProvider<AudioClip>>,
-    # so we need a ProtoFlux node that outputs a reference to the clip.
-    from pyresonitelink.generated._types.iasset_provider import IAssetProvider
-    ClipRef = RefObjectInput[IAssetProvider]
-    clip_ref = ClipRef(target=clip.id)
-    await clip_ref.add_to_slot(resolink, slot)
-    print(f"ClipRef: {clip_ref.id}")
+    # so we create one using the raw component type string (IAssetProvider is
+    # not in the type map as it's an interface).
+    CLIP_REF_TYPE = (
+        "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes"
+        ".RefObjectInput<[FrooxEngine]FrooxEngine.IAssetProvider"
+        "<[FrooxEngine]FrooxEngine.AudioClip>>"
+    )
+    clip_ref_resp = await resolink.add_component(
+        containerSlotId=slot, componentType=CLIP_REF_TYPE,
+    )
+    clip_ref_id = clip_ref_resp.entityId
+    assert clip_ref_id is not None
+    # Wire the target reference to point at the StaticAudioClip
+    await resolink.update_references(
+        componentId=clip_ref_id, references={"Target": clip.id},
+    )
+    print(f"ClipRef: {clip_ref_id}")
 
     # ===================================================================
     # Build the Dergflux graph
@@ -75,13 +85,14 @@ async def main(port: int) -> None:
     s.state = s.StringVar("state")
 
     with g.Under(slot, trigger="play_sound"):
+        # Set state before playing — this bare write runs first in
+        # the async sequence, before PlayOneShotAndWait starts.
+        s.state = "triggered"
+
         # PlayOneShotAndWait has two flow outputs:
         #   on_started_playing — fires when audio begins
         #   on_finished_playing — fires when audio ends
-        #
-        # We use these to track playback state in a dynamic variable.
-
-        with g.PlayOneShotAndWait(clip=clip_ref, volume=1.0) as r:
+        with g.PlayOneShotAndWait(clip=clip_ref_id, volume=1.0) as r:
             with r.on_started_playing():
                 s.state = "playing"
             with r.on_finished_playing():
@@ -95,9 +106,8 @@ async def main(port: int) -> None:
     # Test: trigger the impulse and watch state changes
     # ===================================================================
 
+    # Find the state variable by scanning components and refreshing
     StringDynVar = DynamicValueVariable[primitives.String]
-
-    # Find the state variable
     slot_data = await resolink.get_slot(slot=slot, depth=0)
     assert slot_data.data is not None
 
@@ -105,23 +115,15 @@ async def main(port: int) -> None:
     for comp in slot_data.data.components:
         if comp.componentType == StringDynVar.COMPONENT_TYPE:
             dv = StringDynVar(component=comp)
+            await dv.refresh(resolink)
             if dv.variable_name == "state":
                 state_var = dv
 
-    assert state_var is not None, "Could not find state variable"
+    if state_var is not None:
+        print(f"Initial state: {state_var.value}")
+    else:
+        print("Could not find state variable (string dynvar may not exist).")
 
-    async def read_state() -> object:
-        """Read the current state."""
-        assert state_var is not None
-        await state_var.refresh(resolink)
-        return state_var.value
-
-    print(f"Initial state: {await read_state()}")
-
-    # Trigger the dynamic impulse to play the sound.
-    # In a real scenario, another ProtoFlux graph or a button would
-    # send this impulse. For testing, we'd need a DynamicImpulseTrigger
-    # node — which is beyond this example's scope.
     print("\nTo hear the sound, trigger a dynamic impulse with tag")
     print("'play_sound' on the slot from within Resonite.")
     print("\nSlot left in place for inspection.")

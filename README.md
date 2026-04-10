@@ -187,6 +187,48 @@ Implements `if (x < 3) z = x + 3; else z = x - 3;` using `Update`, `If`, and `Wr
 python examples/protoflux_if_else.py <port>
 ```
 
+## Dergflux DSL
+
+Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs.
+Instead of manually wiring dozens of components, write Python expressions and
+control flow:
+
+```python
+from pyresonitelink.dergflux import Graph
+
+g = Graph()
+s = g.Space(slot)
+s.x = s.FloatVar("x")
+s.z = s.FloatVar("z")
+
+with g.Under(slot):
+    with g.If(s.x < 3):
+        s.z = s.x + 3
+    with g.Else():
+        s.z = s.x - 3
+
+await g.build(resolink)
+```
+
+See the [Dergflux reference](src/pyresonitelink/dergflux/dergflux.md) for the
+full API: expressions, operators, math functions, flow control (If/Else, For,
+While, Range), triggers, bindings, and action nodes.
+
+See [Dynamic Variables](src/pyresonitelink/dergflux/dynamic_variables.md) for
+how Resonite's dynamic variable system works and how Dergflux uses it.
+
+See [Sync vs Async Flow](src/pyresonitelink/dergflux/async_flow.md) for
+the critical distinction between sync and async ProtoFlux impulses and
+how Dergflux handles it.
+
+### Dergflux Examples
+
+```bash
+python examples/dergflux_if_else.py <port>       # If/Else with continuation
+python examples/dergflux_for.py <port>            # For loop with OnStart/OnIterate
+python examples/dergflux_play_sequence.py <port>  # AssetMultiplexer + For + PlayOneShotAndWait
+```
+
 ## Command-Line Tools
 
 ### `pyresonitelink.cli.dumptree`: Slot Hierarchy Dumper

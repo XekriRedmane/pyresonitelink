@@ -447,6 +447,45 @@ ProtoFlux is Resonite's visual programming system. Nodes are components that wir
 - **Outputs are implicit**: a node IS its own output. Other nodes reference it by component ID.
 - **The definition lies for generic ProtoFlux nodes**: `GetComponentDefinition` for `ValueAdd<>` shows members `A` and `B` as `$type: "field"` with generic `valueType`, but the actual instantiated component has `$type: "reference"`. ALWAYS prefer component data over definitions for ProtoFlux nodes.
 
+#### Value Types vs Object Types in ProtoFlux
+
+Resonite distinguishes between **value types** and **object types** in ProtoFlux. This distinction is critical — using the wrong variant causes "Failed to resolve type" errors at component creation.
+
+**Value types** use the `Value*` node variants:
+- `ValueInput<T>`, `ValueAdd<T>`, `WriteDynamicValueVariable<T>`, `ReadDynamicValueVariable<T>`, `DynamicValueVariable<T>`, `DynamicValueVariableDriver<T>`
+- Includes: `bool`, `int`, `float`, `double`, `float2`, `float3`, `float4`, `color`, `colorX`, and all other numeric/composite primitives
+
+**Object types** use the `Object*` or `RefObject*` node variants:
+- `ValueObjectInput<T>`, `WriteDynamicObjectVariable<T>`, `ReadDynamicObjectVariable<T>`, `DynamicReferenceVariable<T>`, `DynamicReferenceVariableDriver<T>`
+- Includes: **`string`**, `Slot`, `User`, `Component`, `IAssetProvider<T>`, and all reference/world-element types
+
+**`string` is an object type, not a value type.** This is a common gotcha. Even though `string` has a `FieldString` field class and looks like a value type in the data model, in ProtoFlux it is an object type. `ValueInput<string>` does not exist — you must use `ValueObjectInput<string>`. Similarly, `WriteDynamicValueVariable<string>` does not exist — use `WriteDynamicObjectVariable<string>`.
+
+ALWAYS check whether a type needs Value or Object variants before creating ProtoFlux nodes. The `_is_protoflux_object_type()` helper in the Dergflux builder handles this.
+
+#### GlobalValue vs ValueInput for IGlobalValueProxy References
+
+Some ProtoFlux nodes have reference members targeting `IGlobalValueProxy<T>` instead of `INodeValueOutput<T>`. For example, `DynamicImpulseReceiver.Tag` expects `IGlobalValueProxy<string>`. These references CANNOT be wired to `ValueInput<T>` or `ValueObjectInput<T>` — they require a `GlobalValue<T>` component instead.
+
+- `IGlobalValueProxy<T>` references → use `GlobalValue<T>` (from `generated/protoflux/global_value.py`)
+- `INodeValueOutput<T>` references → use `ValueInput<T>` or `ValueObjectInput<T>`
+
+The type mismatch error is: "Reference target ... is not compatible type". When wiring references via `update_references`, ALWAYS check the `targetType` of the reference member to determine which source component to use. Constructor-based wiring (passing IDs in `__init__`) also fails silently for incompatible types — the component is created but the reference stays null.
+
+#### Sync vs Async Impulse Flow
+
+ProtoFlux has two impulse types: **sync** (`ISyncNodeOperation`) and **async** (`INodeOperation`). `ISyncNodeOperation` extends `INodeOperation`, so sync nodes can be used in async contexts but not vice versa.
+
+- **Sync flow nodes** (`For`, `While`, `Sequence`, `DynamicImpulseReceiver`): Their loop/branch outputs target `ISyncNodeOperation` — only sync nodes can be wired as targets.
+- **Async flow nodes** (`AsyncFor`, `AsyncWhile`, `AsyncSequence`, `AsyncDynamicImpulseReceiver`): Their outputs target `INodeOperation` — both sync AND async nodes can be wired as targets.
+- **Exception**: `For.LoopEnd`, `While.LoopEnd`, `If.OnTrue/OnFalse`, and `WriteDVV.OnSuccess` all target `INodeOperation` even on sync nodes — continuations can be async.
+
+If ANY action in a flow is async (e.g. `PlayOneShotAndWait`), all enclosing flow nodes MUST use async variants. Sync operations (`WriteDynamicValueVariable`, `If`) work inside async flows because they implement `ISyncNodeOperation` which is a subtype of `INodeOperation`.
+
+**Sync triggers can only fire sync receivers.** A `DynamicImpulseTrigger` (sync) cannot trigger an `AsyncDynamicImpulseReceiver`. To make async flows triggerable by sync sources (which is the common case — buttons, ProtoFlux Tool interactions, other graphs), ALWAYS use a sync `DynamicImpulseReceiver` and bridge to async via `StartAsyncTask`. Dergflux handles this automatically.
+
+See `src/pyresonitelink/dergflux/async_flow.md` for the complete reference.
+
 #### Key ProtoFlux Node Types
 
 All under `[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes`:

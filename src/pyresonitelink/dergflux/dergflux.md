@@ -149,6 +149,14 @@ s.n >> 2         # right shift
 **Safety**:
 - `bool(proxy)` raises `TypeError` — use `g.If()` instead of Python `if`
 
+**String is an object type**: Resonite treats ``string`` as an object
+type, not a value type.  Dergflux handles this automatically — string
+constants use ``ValueObjectInput<string>``, string variable reads use
+``ReadDynamicObjectVariable<string>``, and string writes use
+``WriteDynamicObjectVariable<string>``.  See
+[Dynamic Variables: Value Types vs Object Types](dynamic_variables.md#value-types-vs-object-types)
+for details.
+
 ### Math Functions
 
 Import the math module for functions that don't have Python operators:
@@ -462,21 +470,34 @@ with g.Under(slot):
 
 ### Bindings
 
-``g.Bind()`` permanently binds a ProtoFlux expression to a component
-field.  The field always reflects the expression's current value.
-This creates a ``ValueFieldDrive<T>`` node that is always active —
-not triggered by impulses.
+``g.Bind()`` permanently binds a value source to a component field.
+The field always reflects the source's current value.  **A field can
+only be bound once** — attempting to rebind raises ``RuntimeError``.
 
-**A field can only be bound once.**  Attempting to bind a field that
-is already bound raises ``RuntimeError``.
+The binding mechanism depends on the source:
+
+- **Dynamic variable** (e.g. ``s.x``): Creates a
+  ``DynamicValueVariableDriver<T>`` (for value types like int, float,
+  Float3) or ``DynamicReferenceVariableDriver<T>`` (for reference
+  types like Slot).  The driver reads the named variable by path and
+  continuously drives the target field.
+- **General expression** (e.g. ``i``, ``s.x + 1``): Creates a
+  ``ValueFieldDrive<T>`` driven by the ProtoFlux expression.
 
 ```python
-# Bind the loop counter to the multiplexer's index
+# Bind a loop counter to a field (uses ValueFieldDrive)
 with g.Under(slot):
     with g.For(3) as f:
         with f.OnIterate() as i:
             g.Bind(i, mux, "Index")
+
+# Bind a dynamic variable to a field (uses DynamicValueVariableDriver)
+g.Bind(s.volume, audio_output, "Volume", slot=slot)
 ```
+
+For named spaces, the variable path is automatically prefixed with
+the space name (e.g. ``"Audio/vol"`` for a variable ``vol`` in space
+``Audio``).
 
 Arguments:
 
@@ -520,6 +541,18 @@ with g.Under(slot, trigger=("MyImpulse", primitives.Float)) as value:
 ```
 
 Creates a `DynamicImpulseReceiverWithValue<Float>` that fires when triggered and provides the received value as an `ExprProxy`. Use the `as` clause to capture the value. It can be used in any expression, just like a variable read.
+
+### Sync vs Async Flow
+
+ProtoFlux distinguishes sync and async impulse flow. Operations like
+`PlayOneShotAndWait` are async — they suspend across frames. When an
+`Under` block contains async actions, Dergflux automatically uses
+async flow node variants (`AsyncFor`, `AsyncSequence`,
+`AsyncDynamicImpulseReceiver`). Sync operations like variable writes
+and `If` work in both contexts because `ISyncNodeOperation` extends
+`INodeOperation`.
+
+See [Sync vs Async Flow](async_flow.md) for the full technical details.
 
 ## Build Phase
 

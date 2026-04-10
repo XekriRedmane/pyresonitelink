@@ -219,8 +219,29 @@ class Graph:
         return under
 
     def _record_statement(self, ctx: _flow.FlowContext) -> None:
-        """Add a completed flow statement to the active Under record."""
+        """Add a completed flow statement to the appropriate parent.
+
+        If there's an active flow context (e.g. inside a For loop's
+        OnIterate), the statement is nested inside that flow's body.
+        Otherwise it's added to the top-level Under record.
+
+        Also detects async actions and marks the UnderRecord as async.
+        """
+        from pyresonitelink.dergflux import _action
+
+        # Check if this is async and propagate to UnderRecord
         under = self._active_under()
+        if under is not None and under.record is not None:
+            if isinstance(ctx, _action.ActionContext) and ctx.action_def.is_async:
+                under.record.is_async = True
+
+        # If there's an active flow context, nest inside it
+        active = self._active_flow()
+        if active is not None:
+            active.record_nested(ctx)
+            return
+
+        # Otherwise, top-level statement on the UnderRecord
         if under is not None and under.record is not None:
             under.record.statements.append(ctx)
 
@@ -583,18 +604,31 @@ class Graph:
     ) -> None:
         """Permanently bind a ProtoFlux expression to a component field.
 
-        Creates a ``ValueFieldDrive<T>`` that continuously drives the
-        named field on ``component`` from the given expression.  This
-        is a permanent, one-time binding — the field always reflects
-        the expression's current value.  A field can only be bound
-        once; attempting to rebind it raises an error.
+        The binding mechanism depends on the source:
+
+        - **Dynamic variable** (e.g. ``s.x``): Uses
+          ``DynamicValueVariableDriver<T>`` for value types or
+          ``DynamicReferenceVariableDriver<T>`` for reference types.
+          The driver reads the named variable and continuously drives
+          the target field.
+        - **General expression** (e.g. ``i``, ``s.x + 1``): Uses
+          ``ValueFieldDrive<T>`` to drive the target field from the
+          ProtoFlux expression.
+
+        This is a permanent, one-time binding — the field always
+        reflects the source's current value.  A field can only be
+        bound once; attempting to rebind it raises an error.
 
         Usage::
 
+            # Bind a loop counter to a field
             with g.Under(slot):
                 with g.For(3) as f:
                     with f.OnIterate() as i:
                         g.Bind(i, mux, "Index")
+
+            # Bind a dynamic variable to a field
+            g.Bind(s.volume, audio_output, "Volume", slot=slot)
 
         Args:
             expr: The expression to bind from (ExprProxy or literal).
@@ -630,11 +664,21 @@ class Graph:
                     f"Field '{member_name}' on {component!r} is already "
                     f"bound. A field can only be bound once."
                 )
+        # Detect if the source is a bare dynamic variable read
+        dynvar_name: str | None = None
+        dynvar_space: Any = None
+        node = expr_proxy._node
+        if isinstance(node, _expr.VarReadNode):
+            dynvar_name = node.var_name
+            dynvar_space = node.space
+
         self._bindings.append(_flow.BindRecord(
             component=component,
             member_name=member_name,
             expr=expr_proxy,
             slot=bind_slot,
+            dynvar_name=dynvar_name,
+            dynvar_space=dynvar_space,
         ))
 
     # --- Build ---

@@ -244,6 +244,7 @@ class _BuildContext:
         self.trigger_receiver: Any = None
         self.loop_node: Any = None
         self.component_outputs: dict[str, Any] = {}
+        self.is_async: bool = False
 
     async def ensure_slot_ref(self) -> Any:
         """Create the shared RefObjectInput<Slot> if needed."""
@@ -346,13 +347,22 @@ class _BuildContext:
         return self.loop_node
 
     async def _materialize_const(self, node: _expr.ConstNode) -> Any:
-        """Materialize a constant as a ValueInput<T>."""
+        """Materialize a constant as a ValueInput<T> or ValueObjectInput<T>.
+
+        String types use ValueObjectInput since Resonite treats strings
+        as object types in ProtoFlux.
+        """
         from pyresonitelink.dergflux import _types
-        from pyresonitelink.protoflux.core import ValueInput
+        from pyresonitelink.protoflux.core import ValueInput, ValueObjectInput
 
         res_type = _types.resolve_const_type(node.value, node._type)
-        ConcreteInput = ValueInput[res_type]  # type: ignore[valid-type]
-        comp = ConcreteInput(value=res_type(node.value))
+        # Strings are object types in ProtoFlux
+        if res_type is str or res_type is primitives.String:
+            ConcreteInput = ValueObjectInput[res_type]  # type: ignore[valid-type]
+            comp = ConcreteInput(value=node.value)
+        else:
+            ConcreteInput = ValueInput[res_type]  # type: ignore[valid-type]
+            comp = ConcreteInput(value=res_type(node.value))
         await comp.add_to_slot(self.resolink, self.slot)
         return comp
 
@@ -363,11 +373,15 @@ class _BuildContext:
             return self.var_inputs[key]
 
         from pyresonitelink.protoflux.variables.dynamic import (
+            ReadDynamicObjectVariable,
             ReadDynamicValueVariable,
         )
 
         res_type = _resolve_type(node)
-        ConcreteRead = ReadDynamicValueVariable[res_type]  # type: ignore[valid-type]
+        if _is_protoflux_object_type(res_type):
+            ConcreteRead = ReadDynamicObjectVariable[res_type]  # type: ignore[valid-type]
+        else:
+            ConcreteRead = ReadDynamicValueVariable[res_type]  # type: ignore[valid-type]
 
         slot_ref = await self.ensure_slot_ref()
         space: _space.Space = node.space
@@ -620,8 +634,8 @@ async def _build_if_context(
     from pyresonitelink.protoflux.flow import If
 
     cond_comp = await ctx.materialize(if_ctx.condition._node)
-    true_head = await _build_write_chain(ctx, if_ctx.true_writes)
-    false_head = await _build_write_chain(ctx, if_ctx.false_writes)
+    true_head = await _build_stmt_chain(ctx, if_ctx.true_stmts)
+    false_head = await _build_stmt_chain(ctx, if_ctx.false_stmts)
 
     if_node = If(
         condition=cond_comp.id,
@@ -636,13 +650,12 @@ async def _build_for_context(
     ctx: _BuildContext,
     for_ctx: _flow.ForContext,
 ) -> Any:
-    """Build a ForContext into a ProtoFlux For loop node.
+    """Build a ForContext into a ProtoFlux For or AsyncFor node.
 
-    The For node is created first (so LoopIndexNode can reference it),
-    then the write chains are built and wired to loop_start/loop_iteration.
+    Uses AsyncFor when ctx.is_async is set. The node is created first
+    (so LoopIndexNode can reference it), then statement chains are
+    built and wired to loop_start/loop_iteration.
     """
-    from pyresonitelink.protoflux.flow import For
-
     # Materialize count expression
     count_comp = await ctx.materialize(for_ctx.count._node)
 
@@ -651,8 +664,16 @@ async def _build_for_context(
     if for_ctx.reverse is not None:
         reverse_comp = await ctx.materialize(for_ctx.reverse._node)
 
-    # Create the For node first so LoopIndexNode can reference it
-    for_node = For(
+    # Select sync or async variant
+    if ctx.is_async:
+        _async_flow = importlib.import_module(
+            "pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async",
+        )
+        ForClass = _async_flow.AsyncFor
+    else:
+        from pyresonitelink.protoflux.flow import For as ForClass
+
+    for_node = ForClass(
         count=count_comp.id,
         reverse=reverse_comp.id if reverse_comp else None,
     )
@@ -662,10 +683,10 @@ async def _build_for_context(
     ctx.loop_node = for_node
 
     # Build start writes (loop_start)
-    start_head = await _build_write_chain(ctx, for_ctx.start_writes)
+    start_head = await _build_stmt_chain(ctx, for_ctx.start_stmts)
 
     # Build iteration writes (loop_iteration)
-    iter_head = await _build_write_chain(ctx, for_ctx.iteration_writes)
+    iter_head = await _build_stmt_chain(ctx, for_ctx.iteration_stmts)
 
     # Wire to the For node
     needs_update = False
@@ -685,16 +706,22 @@ async def _build_range_context(
     ctx: _BuildContext,
     range_ctx: _flow.RangeContext,
 ) -> Any:
-    """Build a RangeContext into a ProtoFlux RangeLoopInt node."""
-    from pyresonitelink.protoflux.flow import RangeLoopInt
-
+    """Build a RangeContext into a ProtoFlux RangeLoopInt or AsyncRangeLoopInt."""
     start_comp = await ctx.materialize(range_ctx.start._node)
     end_comp = await ctx.materialize(range_ctx.end._node)
     step_comp = None
     if range_ctx.step is not None:
         step_comp = await ctx.materialize(range_ctx.step._node)
 
-    range_node = RangeLoopInt(
+    if ctx.is_async:
+        _async_flow = importlib.import_module(
+            "pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async",
+        )
+        RangeClass = _async_flow.AsyncRangeLoopInt
+    else:
+        from pyresonitelink.protoflux.flow import RangeLoopInt as RangeClass
+
+    range_node = RangeClass(
         start=start_comp.id,
         end=end_comp.id,
         step_size=step_comp.id if step_comp else None,
@@ -704,8 +731,8 @@ async def _build_range_context(
     # Set loop_node so LoopIndexNode materialization can find it
     ctx.loop_node = range_node
 
-    start_head = await _build_write_chain(ctx, range_ctx.start_writes)
-    iter_head = await _build_write_chain(ctx, range_ctx.iteration_writes)
+    start_head = await _build_stmt_chain(ctx, range_ctx.start_stmts)
+    iter_head = await _build_stmt_chain(ctx, range_ctx.iteration_stmts)
 
     needs_update = False
     if start_head is not None:
@@ -724,16 +751,22 @@ async def _build_while_context(
     ctx: _BuildContext,
     while_ctx: _flow.WhileContext,
 ) -> Any:
-    """Build a WhileContext into a ProtoFlux While loop node."""
-    from pyresonitelink.protoflux.flow import While
-
+    """Build a WhileContext into a ProtoFlux While or AsyncWhile node."""
     # Materialize condition expression
     cond_comp = await ctx.materialize(while_ctx.condition._node)
 
-    # Build the write chain for the loop body
-    body_head = await _build_write_chain(ctx, while_ctx.writes)
+    # Build the statement chain for the loop body
+    body_head = await _build_stmt_chain(ctx, while_ctx.stmts)
 
-    while_node = While(
+    if ctx.is_async:
+        _async_flow = importlib.import_module(
+            "pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async",
+        )
+        WhileClass = _async_flow.AsyncWhile
+    else:
+        from pyresonitelink.protoflux.flow import While as WhileClass
+
+    while_node = WhileClass(
         condition=cond_comp.id,
         loop_iteration=body_head.id if body_head else None,
     )
@@ -741,44 +774,60 @@ async def _build_while_context(
     return while_node
 
 
-async def _build_write_chain(
+async def _build_stmt_chain(
     ctx: _BuildContext,
-    writes: list[_flow.WriteRecord],
+    stmts: list[_flow.Statement],
 ) -> Any | None:
-    """Build a chain of WriteDynamicValueVariable nodes."""
-    if not writes:
+    """Build a chain of statements (writes and nested flow contexts).
+
+    Each statement becomes a ProtoFlux node.  Multiple statements are
+    chained via on_success references.  Returns the first node in the
+    chain, or None if empty.
+    """
+    if not stmts:
         return None
 
     from pyresonitelink.protoflux.variables.dynamic import (
+        WriteDynamicObjectVariable,
         WriteDynamicValueVariable,
     )
 
-    slot_ref = await ctx.ensure_slot_ref()
     components: list[Any] = []
 
-    for write in writes:
-        expr_comp = await ctx.materialize(write.expr._node)
-        space: _space.Space = write.space
-        vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
-            space, "_vars",
-        )
-        decl = vars_dict[write.var_name]
-        path_node = await ctx.ensure_path_node(decl.path)
+    for stmt in stmts:
+        if isinstance(stmt, _flow.WriteRecord):
+            slot_ref = await ctx.ensure_slot_ref()
+            expr_comp = await ctx.materialize(stmt.expr._node)
+            space: _space.Space = stmt.space
+            vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
+                space, "_vars",
+            )
+            decl = vars_dict[stmt.var_name]
+            path_node = await ctx.ensure_path_node(decl.path)
 
-        ConcreteWrite = WriteDynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
-        write_comp = ConcreteWrite(
-            target=slot_ref.id,
-            path=path_node.id,
-            value=expr_comp.id,
-        )
-        await write_comp.add_to_slot(ctx.resolink, ctx.slot)
-        components.append(write_comp)
+            if _is_protoflux_object_type(decl.resonite_type):
+                ConcreteWrite = WriteDynamicObjectVariable[decl.resonite_type]  # type: ignore[name-defined]
+            else:
+                ConcreteWrite = WriteDynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
+            write_comp = ConcreteWrite(
+                target=slot_ref.id,
+                path=path_node.id,
+                value=expr_comp.id,
+            )
+            await write_comp.add_to_slot(ctx.resolink, ctx.slot)
+            components.append(write_comp)
+        elif isinstance(stmt, _flow.FlowContext):
+            # Nested flow context (e.g. ActionContext inside a For loop)
+            node = await _build_flow_context(ctx, stmt)
+            if node is not None:
+                components.append(node)
 
+    # Chain via on_success: first -> second -> third -> ...
     for i in range(len(components) - 1):
         components[i].on_success = components[i + 1].id
         await components[i].update(ctx.resolink)
 
-    return components[0]
+    return components[0] if components else None
 
 
 # =========================================================================
@@ -786,38 +835,76 @@ async def _build_write_chain(
 # =========================================================================
 
 
+async def _create_start_async_task(
+    ctx: _BuildContext,
+    async_entry: Any,
+) -> Any:
+    """Create a StartAsyncTask that bridges sync -> async.
+
+    Returns the StartAsyncTask component (which is ISyncNodeOperation
+    and can be wired from sync triggers).
+    """
+    _async_mod = importlib.import_module(
+        "pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async",
+    )
+    start_async = _async_mod.StartAsyncTask()
+    await start_async.add_to_slot(ctx.resolink, ctx.slot)
+    await ctx.resolink.update_references(
+        componentId=start_async.id,  # type: ignore[arg-type]
+        references={"TaskStart": async_entry.id},
+    )
+    return start_async
+
+
 async def _build_trigger(
     ctx: _BuildContext,
-    if_node: Any,
+    entry_node: Any,
     trigger: _flow.Trigger | None,
 ) -> None:
-    """Create the trigger node that drives the impulse flow."""
+    """Create the trigger node that drives the impulse flow.
+
+    Always uses sync triggers and receivers. For async flows, a
+    StartAsyncTask node bridges from the sync receiver to the async
+    entry node. This ensures normal sync DynamicImpulseTrigger nodes
+    can fire the flow.
+    """
+    # If async, insert StartAsyncTask bridge so sync triggers work
+    target = entry_node
+    if ctx.is_async:
+        target = await _create_start_async_task(ctx, entry_node)
+
     if trigger is None:
         from pyresonitelink.protoflux.flow import Update
-        update = Update(on_update=if_node.id)
+        update = Update(on_update=target.id)
         await update.add_to_slot(ctx.resolink, ctx.slot)
         return
 
-    from pyresonitelink.protoflux.core import ValueObjectInput
-    StringInput = ValueObjectInput[primitives.String]
-    tag_node = StringInput(value=trigger.tag)
+    # DynamicImpulseReceiver.Tag expects IGlobalValueProxy<string>,
+    # so we use GlobalValue<string>.
+    from pyresonitelink.generated.protoflux import global_value
+    StringGlobal = global_value.GlobalValue[primitives.String]
+    tag_node = StringGlobal()
     await tag_node.add_to_slot(ctx.resolink, ctx.slot)
+    tag_node.value = trigger.tag
+    await tag_node.update(ctx.resolink)
 
     if trigger.value_type is None:
         from pyresonitelink.protoflux.flow import DynamicImpulseReceiver
-        receiver = DynamicImpulseReceiver(
-            tag=tag_node.id, on_triggered=if_node.id,
-        )
+        receiver = DynamicImpulseReceiver()
         await receiver.add_to_slot(ctx.resolink, ctx.slot)
+        await ctx.resolink.update_references(
+            componentId=receiver.id,  # type: ignore[arg-type]
+            references={"Tag": tag_node.id, "OnTriggered": target.id},
+        )
     else:
-        from pyresonitelink.protoflux.flow import (
-            DynamicImpulseReceiverWithValue,
-        )
+        from pyresonitelink.protoflux.flow import DynamicImpulseReceiverWithValue
         ConcreteReceiver = DynamicImpulseReceiverWithValue[trigger.value_type]  # type: ignore[valid-type]
-        receiver = ConcreteReceiver(
-            tag=tag_node.id, on_triggered=if_node.id,
-        )
+        receiver = ConcreteReceiver()
         await receiver.add_to_slot(ctx.resolink, ctx.slot)
+        await ctx.resolink.update_references(
+            componentId=receiver.id,  # type: ignore[arg-type]
+            references={"Tag": tag_node.id, "OnTriggered": target.id},
+        )
         ctx.trigger_receiver = receiver
 
 
@@ -826,34 +913,133 @@ async def _build_trigger(
 # =========================================================================
 
 
+# ProtoFlux object types use ValueObjectInput, WriteDynamicObjectVariable,
+# ReadDynamicObjectVariable, etc. instead of the Value* variants.
+_PROTOFLUX_OBJECT_TYPES: set[type] = {str, primitives.String}
+
+
+def _is_protoflux_object_type(res_type: type) -> bool:
+    """Check if a type uses ProtoFlux Object variants (not Value variants)."""
+    if res_type in _PROTOFLUX_OBJECT_TYPES:
+        return True
+    return _is_reference_type(res_type)
+
+
+def _is_reference_type(res_type: type) -> bool:
+    """Check if a Resonite type is a reference type (not a value type).
+
+    Reference types (Slot, Component, etc.) have no field_class in the
+    type map.  Value types (int, float, Float3, etc.) have one.
+    """
+    from pyresonitelink.generated import _type_map
+
+    try:
+        info = _type_map.from_python_type(res_type)
+        return info.field_class is None
+    except KeyError:
+        # Unknown type — assume reference
+        return True
+
+
 async def _build_bindings(
     graph: _graph.Graph,
     resolink: protocols.ResoniteLinkClient,
 ) -> None:
-    """Build all recorded bindings as ValueFieldDrive<T> components."""
-    from pyresonitelink.protoflux.core import ValueFieldDrive
+    """Build all recorded bindings.
 
+    Dispatches between three driver types:
+    - DynamicValueVariableDriver<T> for dynvar -> value field
+    - DynamicReferenceVariableDriver<T> for dynvar -> reference field
+    - ValueFieldDrive<T> for general expression -> field
+    """
     for bind_rec in graph._bindings:
-        ctx = _BuildContext(resolink, bind_rec.slot)
-
-        # Materialize the source expression
-        expr_comp = await ctx.materialize(bind_rec.expr._node)
-
-        # Infer the type from the expression
-        res_type = _resolve_type(bind_rec.expr._node)
-        ConcreteDrive = ValueFieldDrive[res_type]  # type: ignore[valid-type]
-
-        # Create the drive node
-        bind_node = ConcreteDrive(value=expr_comp.id)
-        await bind_node.add_to_slot(resolink, bind_rec.slot)
-
-        # Wire _value to the target member's ID
         member = bind_rec.component.get_member(bind_rec.member_name)
         assert member is not None
-        await resolink.update_references(
-            componentId=bind_node.id,
-            references={"_value": member.id},
+        res_type = _resolve_type(bind_rec.expr._node)
+
+        if bind_rec.dynvar_name is not None:
+            # Source is a dynamic variable — use a driver component
+            await _build_dynvar_binding(
+                resolink, bind_rec, member, res_type,
+            )
+        else:
+            # Source is a general expression — use ValueFieldDrive
+            await _build_expr_binding(
+                resolink, bind_rec, member, res_type,
+            )
+
+
+async def _build_dynvar_binding(
+    resolink: protocols.ResoniteLinkClient,
+    bind_rec: _flow.BindRecord,
+    member: Any,
+    res_type: type,
+) -> None:
+    """Build a binding from a dynamic variable to a component field.
+
+    Uses DynamicValueVariableDriver<T> for value types or
+    DynamicReferenceVariableDriver<T> for reference types.
+    """
+    # Look up the variable path from the space's declarations
+    space = bind_rec.dynvar_space
+    vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
+        space, "_vars",
+    )
+    decl = vars_dict[bind_rec.dynvar_name]  # type: ignore[index]
+    var_path = decl.path
+
+    # Check if space has a name (for direct binding format)
+    space_name: str | None = object.__getattribute__(space, "_space_name")
+    if space_name:
+        full_path = f"{space_name}/{var_path}"
+    else:
+        full_path = var_path
+
+    if _is_reference_type(res_type):
+        from pyresonitelink.components.data.dynamic import (
+            DynamicReferenceVariableDriver,
         )
+        ConcreteDriver = DynamicReferenceVariableDriver[res_type]  # type: ignore[valid-type]
+        driver = ConcreteDriver(
+            variable_name=full_path,
+            target=member.id,
+        )
+    else:
+        from pyresonitelink.components.data.dynamic import (
+            DynamicValueVariableDriver,
+        )
+        ConcreteDriver = DynamicValueVariableDriver[res_type]  # type: ignore[valid-type]
+        driver = ConcreteDriver(
+            variable_name=full_path,
+            target=member.id,
+        )
+
+    await driver.add_to_slot(resolink, bind_rec.slot)
+
+
+async def _build_expr_binding(
+    resolink: protocols.ResoniteLinkClient,
+    bind_rec: _flow.BindRecord,
+    member: Any,
+    res_type: type,
+) -> None:
+    """Build a binding from a ProtoFlux expression to a component field.
+
+    Uses ValueFieldDrive<T>.
+    """
+    from pyresonitelink.protoflux.core import ValueFieldDrive
+
+    ctx = _BuildContext(resolink, bind_rec.slot)
+    expr_comp = await ctx.materialize(bind_rec.expr._node)
+
+    ConcreteDrive = ValueFieldDrive[res_type]  # type: ignore[valid-type]
+    bind_node = ConcreteDrive(value=expr_comp.id)
+    await bind_node.add_to_slot(resolink, bind_rec.slot)
+
+    await resolink.update_references(
+        componentId=bind_node.id,
+        references={"_value": member.id},
+    )
 
 
 # =========================================================================
@@ -870,17 +1056,23 @@ async def _setup_typed_trigger(
     Returns the receiver component. The caller must wire on_triggered
     after building the flow node.
     """
-    from pyresonitelink.protoflux.core import ValueObjectInput
-    from pyresonitelink.protoflux.flow import DynamicImpulseReceiverWithValue
+    from pyresonitelink.generated.protoflux import global_value
 
-    StringInput = ValueObjectInput[primitives.String]
-    tag_node = StringInput(value=trigger.tag)
+    StringGlobal = global_value.GlobalValue[primitives.String]
+    tag_node = StringGlobal()
     await tag_node.add_to_slot(ctx.resolink, ctx.slot)
+    tag_node.value = trigger.tag
+    await tag_node.update(ctx.resolink)
 
     assert trigger.value_type is not None
+    from pyresonitelink.protoflux.flow import DynamicImpulseReceiverWithValue
     ConcreteReceiver = DynamicImpulseReceiverWithValue[trigger.value_type]  # type: ignore[valid-type]
-    receiver = ConcreteReceiver(tag=tag_node.id)
+    receiver = ConcreteReceiver()
     await receiver.add_to_slot(ctx.resolink, ctx.slot)
+    await ctx.resolink.update_references(
+        componentId=receiver.id,  # type: ignore[arg-type]
+        references={"Tag": tag_node.id},
+    )
     ctx.trigger_receiver = receiver
     return receiver
 
@@ -923,8 +1115,8 @@ async def _build_raycast_one_context(
     ctx.component_outputs[rc_ctx.component_tag] = rc_node
 
     # Build hit and miss write chains
-    hit_head = await _build_write_chain(ctx, rc_ctx.hit_writes)
-    miss_head = await _build_write_chain(ctx, rc_ctx.miss_writes)
+    hit_head = await _build_stmt_chain(ctx, rc_ctx.hit_stmts)
+    miss_head = await _build_stmt_chain(ctx, rc_ctx.miss_stmts)
 
     needs_update = False
     if hit_head is not None:
@@ -958,11 +1150,13 @@ async def _build_action_context(
     )
     ComponentClass = getattr(module, action_def.class_name)
 
-    # Materialize input expressions
+    # Materialize input expressions and collect raw reference IDs
     init_kwargs: dict[str, str] = {}
     for param_name, expr_proxy in action_ctx.input_exprs.items():
         comp = await ctx.materialize(expr_proxy._node)
         init_kwargs[param_name] = comp.id
+    for param_name, raw_id in action_ctx.raw_inputs.items():
+        init_kwargs[param_name] = raw_id
 
     # Create the component
     node = ComponentClass(**init_kwargs)
@@ -974,8 +1168,8 @@ async def _build_action_context(
     # Build and wire each flow output branch
     needs_update = False
     for branch_name in action_def.flow_outputs:
-        writes = action_ctx.branch_writes.get(branch_name, [])
-        head = await _build_write_chain(ctx, writes)
+        writes = action_ctx.branch_stmts.get(branch_name, [])
+        head = await _build_stmt_chain(ctx, writes)
         if head is not None:
             setattr(node, branch_name, head.id)
             needs_update = True
@@ -994,7 +1188,7 @@ async def _build_bare_write_context(
     Returns the first WriteDVV in the chain, which implements
     ISyncNodeOperation and can be wired into a Sequence.
     """
-    return await _build_write_chain(ctx, bare_ctx.writes)
+    return await _build_stmt_chain(ctx, bare_ctx.stmts)
 
 
 async def _build_flow_context(
@@ -1043,6 +1237,7 @@ async def build_graph(
     # If there are multiple, wrap in a Sequence node.
     for under_rec in graph._under_records:
         ctx = _BuildContext(resolink, under_rec.slot)
+        ctx.is_async = under_rec.is_async
         trigger = under_rec.trigger
 
         # For typed triggers, create receiver first so TriggerValueNode
@@ -1065,25 +1260,42 @@ async def build_graph(
         if len(head_nodes) == 1:
             entry = head_nodes[0]
         else:
-            # Create a Sequence node to chain them
-            seq = Sequence()
-            await seq.add_to_slot(ctx.resolink, ctx.slot)
-            # Populate the Calls SyncList with references to each node
-            calls_list = seq.get_member("Calls")
-            if not isinstance(calls_list, members.SyncList):
-                calls_list = members.SyncList()
-                seq.set_member("Calls", calls_list)
-            for node in head_nodes:
-                calls_list.elements.append(
-                    members.Reference(targetId=node.id),
+            # Create a Sequence or AsyncSequence to chain statements
+            if ctx.is_async:
+                _async_mod = importlib.import_module(
+                    "pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async",
                 )
+                seq = _async_mod.AsyncSequence()
+            else:
+                seq = Sequence()
+            await seq.add_to_slot(ctx.resolink, ctx.slot)
+            # Populate the Calls SyncList with references to each node.
+            # After add_to_slot, the Calls member may be a raw dict
+            # (not decoded as SyncList), so we replace it entirely.
+            calls_member = seq.get_member("Calls")
+            calls_id = calls_member.id if isinstance(calls_member, members.SyncList) else calls_member.get("id") if isinstance(calls_member, dict) else None  # type: ignore[union-attr]
+            calls_list = members.SyncList(
+                elements=[
+                    members.Reference(targetId=node.id)
+                    for node in head_nodes
+                ],
+            )
+            if calls_id is not None:
+                calls_list.id = calls_id
+            seq.set_member("Calls", calls_list)
             await seq.update(ctx.resolink)
             entry = seq
 
-        # Wire the trigger to the entry point
+        # Wire the trigger to the entry point.
+        # For async flows, insert StartAsyncTask so sync triggers work.
         if receiver is not None:
-            receiver.on_triggered = entry.id
-            await receiver.update(ctx.resolink)
+            target = entry
+            if ctx.is_async:
+                target = await _create_start_async_task(ctx, entry)
+            await ctx.resolink.update_references(
+                componentId=receiver.id,  # type: ignore[arg-type]
+                references={"OnTriggered": target.id},
+            )
         else:
             await _build_trigger(ctx, entry, trigger)
 

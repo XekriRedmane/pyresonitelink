@@ -70,4 +70,5 @@ PlayOneShotAndWait = ActionDef(
     },
     flow_outputs=["on_started_playing", "on_finished_playing"],
     value_outputs={},
+    is_async=True,
 )

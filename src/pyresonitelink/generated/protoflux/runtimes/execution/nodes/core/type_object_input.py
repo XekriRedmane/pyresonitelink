@@ -1,8 +1,17 @@
 """Generated component: TypeObjectInput."""
 
+from typing import Any
+
 from pyresonitelink.data import members
-from pyresonitelink.generated._enums.type import Type
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
+
+try:
+    from pyresonitelink.generated._enums.type import Type
+except ModuleNotFoundError:
+    # The 'type' enum module conflicts with the Python builtin.
+    # Fall back to plain str for the enum values.
+    Type: Any = str  # type: ignore[no-redef]
 from pyresonitelink.generated._types.iinput import IInput
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode

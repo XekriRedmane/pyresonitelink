@@ -388,8 +388,8 @@ class TestSpace:
                 s.z = s.x + 3
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _flow.IfContext)
-        assert len(ctx.true_writes) == 1
-        assert ctx.true_writes[0].var_name == "z"
+        assert len(ctx.true_stmts) == 1
+        assert ctx.true_stmts[0].var_name == "z"
 
     def test_bare_write_inside_under(self) -> None:
         g, s = self._make_graph_and_space()
@@ -399,7 +399,7 @@ class TestSpace:
             s.z = s.z + 1
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _flow.BareWriteContext)
-        assert len(ctx.writes) == 1
+        assert len(ctx.stmts) == 1
 
     def test_underscore_attrs_bypass_dsl(self) -> None:
         g, s = self._make_graph_and_space()
@@ -451,8 +451,8 @@ class TestFlowControl:
                 s.z = s.x - 3
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _flow.IfContext)
-        assert len(ctx.true_writes) == 1
-        assert len(ctx.false_writes) == 1
+        assert len(ctx.true_stmts) == 1
+        assert len(ctx.false_stmts) == 1
 
     def test_if_without_else(self) -> None:
         g, s, slot = self._setup()
@@ -461,8 +461,8 @@ class TestFlowControl:
                 s.z = s.x + 3
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _flow.IfContext)
-        assert len(ctx.true_writes) == 1
-        assert len(ctx.false_writes) == 0
+        assert len(ctx.true_stmts) == 1
+        assert len(ctx.false_stmts) == 0
 
     def test_else_without_if_raises(self) -> None:
         g = _graph.Graph()
@@ -511,7 +511,7 @@ class TestFlowControl:
         assert len(stmts) == 2
         assert isinstance(stmts[0], _flow.IfContext)
         assert isinstance(stmts[1], _flow.BareWriteContext)
-        assert stmts[1].writes[0].var_name == "z"
+        assert stmts[1].stmts[0].var_name == "z"
 
     def test_multiple_writes_in_branch(self) -> None:
         g, s, slot = self._setup()
@@ -522,7 +522,7 @@ class TestFlowControl:
                 s.y = s.x + 10
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _flow.IfContext)
-        assert len(ctx.true_writes) == 2
+        assert len(ctx.true_stmts) == 2
 
 
 # =========================================================================
@@ -586,9 +586,9 @@ class TestForLoop:
                     s.total = s.total + i
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _flow.ForContext)
-        assert len(ctx.start_writes) == 1
-        assert ctx.start_writes[0].var_name == "total"
-        assert len(ctx.iteration_writes) == 1
+        assert len(ctx.start_stmts) == 1
+        assert ctx.start_stmts[0].var_name == "total"
+        assert len(ctx.iteration_stmts) == 1
 
     def test_on_iterate_records_iteration_writes(self) -> None:
         g, s, slot = self._setup()
@@ -598,8 +598,8 @@ class TestForLoop:
                     s.total = s.total + i
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _flow.ForContext)
-        assert len(ctx.iteration_writes) == 1
-        assert ctx.iteration_writes[0].var_name == "total"
+        assert len(ctx.iteration_stmts) == 1
+        assert ctx.iteration_stmts[0].var_name == "total"
 
     def test_for_with_reverse(self) -> None:
         g, s, slot = self._setup()
@@ -714,8 +714,8 @@ class TestRangeLoop:
                     s.total = s.total + i
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _flow.RangeContext)
-        assert len(ctx.start_writes) == 1
-        assert len(ctx.iteration_writes) == 1
+        assert len(ctx.start_stmts) == 1
+        assert len(ctx.iteration_stmts) == 1
 
     def test_range_on_iterate_yields_index(self) -> None:
         g, s, slot = self._setup()
@@ -780,7 +780,7 @@ class TestWhileLoop:
                 s.x = s.x - 1
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _flow.WhileContext)
-        assert len(ctx.writes) == 1
+        assert len(ctx.stmts) == 1
 
     def test_while_outside_under_raises(self) -> None:
         g, s, slot = self._setup()
@@ -848,7 +848,7 @@ class TestRaycastOne:
                     s.distance = r.hit_distance
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _action.ActionContext)
-        assert len(ctx.branch_writes["on_hit"]) == 2
+        assert len(ctx.branch_stmts["on_hit"]) == 2
 
     def test_on_miss_records_writes(self) -> None:
         from pyresonitelink.dergflux import _action
@@ -861,8 +861,8 @@ class TestRaycastOne:
                     s.distance = -1
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _action.ActionContext)
-        assert len(ctx.branch_writes["on_hit"]) == 1
-        assert len(ctx.branch_writes["on_miss"]) == 1
+        assert len(ctx.branch_stmts["on_hit"]) == 1
+        assert len(ctx.branch_stmts["on_miss"]) == 1
 
     def test_hit_point_is_float3_proxy(self) -> None:
         g, s, slot = self._setup()
@@ -894,7 +894,7 @@ class TestRaycastOne:
                     s.distance = r.hit_distance * 2
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _action.ActionContext)
-        write_expr = ctx.branch_writes["on_hit"][0].expr._node
+        write_expr = ctx.branch_stmts["on_hit"][0].expr._node
         assert isinstance(write_expr, _expr.BinaryOpNode)
 
 
@@ -965,8 +965,8 @@ class TestGenericAction:
                     s.distance = -1
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _action.ActionContext)
-        assert len(ctx.branch_writes["on_hit"]) == 1
-        assert len(ctx.branch_writes["on_miss"]) == 1
+        assert len(ctx.branch_stmts["on_hit"]) == 1
+        assert len(ctx.branch_stmts["on_miss"]) == 1
 
     def test_action_value_output_is_proxy(self) -> None:
         from pyresonitelink.dergflux import actions
@@ -988,7 +988,7 @@ class TestGenericAction:
         from pyresonitelink.dergflux import _action
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _action.ActionContext)
-        write_expr = ctx.branch_writes["on_hit"][0].expr._node
+        write_expr = ctx.branch_stmts["on_hit"][0].expr._node
         assert isinstance(write_expr, _expr.BinaryOpNode)
 
     def test_action_unknown_input_raises(self) -> None:
@@ -1026,7 +1026,7 @@ class TestGenericAction:
         ctx = _stmts(g)[0]
         assert isinstance(ctx, _action.ActionContext)
         assert ctx.action_def is actions.PlayOneShot
-        assert len(ctx.branch_writes["on_started_playing"]) == 1
+        assert len(ctx.branch_stmts["on_started_playing"]) == 1
 
 
 # =========================================================================
@@ -1113,6 +1113,58 @@ class TestBind:
         with pytest.raises(RuntimeError, match="already bound"):
             g.Bind(s.y, comp, "Index", slot=slot)
 
+    def test_bind_dynvar_records_var_info(self) -> None:
+        """Binding a dynamic variable records the var name and space."""
+        from pyresonitelink.generated._base import GeneratedComponent
+        from pyresonitelink.data import fields
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.x = s.FloatVar("x")
+
+        comp = GeneratedComponent()
+        comp._component.members["Volume"] = fields.FieldFloat(value=0.0)
+
+        g.Bind(s.x, comp, "Volume", slot=slot)
+        rec = g._bindings[0]
+        assert rec.dynvar_name == "x"
+        assert rec.dynvar_space is s
+
+    def test_bind_expr_has_no_dynvar_info(self) -> None:
+        """Binding a computed expression has no dynvar info."""
+        from pyresonitelink.generated._base import GeneratedComponent
+        from pyresonitelink.data import fields
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.x = s.FloatVar("x")
+
+        comp = GeneratedComponent()
+        comp._component.members["Volume"] = fields.FieldFloat(value=0.0)
+
+        g.Bind(s.x + 1, comp, "Volume", slot=slot)
+        rec = g._bindings[0]
+        assert rec.dynvar_name is None
+        assert rec.dynvar_space is None
+
+    def test_bind_dynvar_named_space_path(self) -> None:
+        """Binding from a named space records the space for path resolution."""
+        from pyresonitelink.generated._base import GeneratedComponent
+        from pyresonitelink.data import fields
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot, name="Audio")
+        s.vol = s.FloatVar("vol")
+
+        comp = GeneratedComponent()
+        comp._component.members["Volume"] = fields.FieldFloat(value=0.0)
+
+        g.Bind(s.vol, comp, "Volume", slot=slot)
+        rec = g._bindings[0]
+        assert rec.dynvar_name == "vol"
+        space_name = object.__getattribute__(rec.dynvar_space, "_space_name")
+        assert space_name == "Audio"
+
 
 class TestIfContext:
     """Tests for IfContext data class."""
@@ -1123,8 +1175,8 @@ class TestIfContext:
         ctx = _flow.IfContext(condition=cond, slot=slot)
         space = object.__new__(_space.Space)
         ctx.record_write(_flow.WriteRecord(space, "z", _expr.ExprProxy(_expr.ConstNode(1))))
-        assert len(ctx.true_writes) == 1
-        assert len(ctx.false_writes) == 0
+        assert len(ctx.true_stmts) == 1
+        assert len(ctx.false_stmts) == 0
 
     def test_record_write_false_phase(self) -> None:
         cond = _expr.ExprProxy(_expr.ConstNode(True, primitives.Bool))
@@ -1133,8 +1185,8 @@ class TestIfContext:
         ctx.phase = "false"
         space = object.__new__(_space.Space)
         ctx.record_write(_flow.WriteRecord(space, "z", _expr.ExprProxy(_expr.ConstNode(1))))
-        assert len(ctx.true_writes) == 0
-        assert len(ctx.false_writes) == 1
+        assert len(ctx.true_stmts) == 0
+        assert len(ctx.false_stmts) == 1
 
 
 # =========================================================================
@@ -1249,8 +1301,8 @@ class TestGraph:
         stmts = _stmts(g)
         assert len(stmts) == 1
         assert isinstance(stmts[0], _flow.IfContext)
-        assert len(stmts[0].true_writes) == 1
-        assert len(stmts[0].false_writes) == 1
+        assert len(stmts[0].true_stmts) == 1
+        assert len(stmts[0].false_stmts) == 1
 
     def test_full_if_continuation_workflow(self) -> None:
         """If/Else followed by a bare write creates two statements."""
@@ -1286,5 +1338,66 @@ class TestGraph:
         assert len(stmts) == 2
         assert isinstance(stmts[0], _flow.ForContext)
         assert isinstance(stmts[1], _flow.IfContext)
-        assert len(stmts[0].start_writes) == 1
-        assert len(stmts[0].iteration_writes) == 1
+        assert len(stmts[0].start_stmts) == 1
+        assert len(stmts[0].iteration_stmts) == 1
+
+    def test_sync_flow_not_async(self) -> None:
+        """A flow with no async actions should not be marked async."""
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.x = s.FloatVar("x")
+        s.z = s.FloatVar("z")
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
+        assert g._under_records[0].is_async is False
+
+    def test_async_action_marks_flow_async(self) -> None:
+        """An async action inside Under marks the flow as async."""
+        from pyresonitelink.dergflux import actions
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.state = s.StringVar("state")
+        with g.Under(slot, trigger="play"):
+            with g.PlayOneShotAndWait(volume=1.0) as r:
+                with r.on_started_playing():
+                    s.state = "playing"
+        assert g._under_records[0].is_async is True
+
+    def test_async_action_nested_in_for(self) -> None:
+        """An async action inside a For loop marks the flow as async."""
+        from pyresonitelink.dergflux import actions
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.state = s.StringVar("state")
+        with g.Under(slot, trigger="play"):
+            with g.For(3) as f:
+                with f.OnIterate() as i:
+                    with g.PlayOneShotAndWait(volume=1.0) as r:
+                        with r.on_started_playing():
+                            s.state = "playing"
+        assert g._under_records[0].is_async is True
+
+    def test_nested_action_in_for_is_statement(self) -> None:
+        """An action inside a For's OnIterate is nested, not top-level."""
+        from pyresonitelink.dergflux import _action
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        s = g.Space(slot)
+        s.state = s.StringVar("state")
+        with g.Under(slot, trigger="play"):
+            with g.For(3) as f:
+                with f.OnIterate() as i:
+                    with g.PlayOneShotAndWait(volume=1.0) as r:
+                        with r.on_started_playing():
+                            s.state = "playing"
+        stmts = _stmts(g)
+        # Only the For is a top-level statement
+        assert len(stmts) == 1
+        assert isinstance(stmts[0], _flow.ForContext)
+        # The action is nested in the For's iteration stmts
+        assert len(stmts[0].iteration_stmts) == 1
+        assert isinstance(stmts[0].iteration_stmts[0], _action.ActionContext)
