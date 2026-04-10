@@ -38,7 +38,10 @@ PlayOneShot = ActionDef(
     import_path="protoflux.audio",
     class_name="PlayOneShot",
     inputs={
-        "clip": InputDef("clip"),
+        "clip": InputDef(
+            "clip",
+            ref_type="[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.AudioClip>",
+        ),
         "volume": InputDef("volume", primitives.Float),
         "speed": InputDef("speed", primitives.Float),
         "spatialize": InputDef("spatialize", primitives.Bool),
@@ -57,7 +60,10 @@ PlayOneShotAndWait = ActionDef(
     import_path="protoflux.audio",
     class_name="PlayOneShotAndWait",
     inputs={
-        "clip": InputDef("clip"),
+        "clip": InputDef(
+            "clip",
+            ref_type="[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.AudioClip>",
+        ),
         "volume": InputDef("volume", primitives.Float),
         "speed": InputDef("speed", primitives.Float),
         "spatialize": InputDef("spatialize", primitives.Bool),

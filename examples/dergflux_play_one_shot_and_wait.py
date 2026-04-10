@@ -55,17 +55,6 @@ async def main(port: int) -> None:
     await clip.add_to_slot(resolink, slot)
     print(f"StaticAudioClip: {clip.id}")
 
-    # Create a RefObjectInput to bridge the clip into ProtoFlux.
-    # PlayOneShotAndWait.clip expects INodeObjectOutput<IAssetProvider<AudioClip>>.
-    from pyresonitelink.protoflux.core import RefObjectInput
-    from pyresonitelink.generated._types.iasset_provider import IAssetProvider
-    from pyresonitelink.generated._types.audio_clip import AudioClip
-
-    ClipRef = RefObjectInput[IAssetProvider[AudioClip]]
-    clip_ref = ClipRef(target=clip)
-    await clip_ref.add_to_slot(resolink, slot)
-    print(f"ClipRef: {clip_ref.id}")
-
     # ===================================================================
     # Build the Dergflux graph
     # ===================================================================
@@ -83,7 +72,9 @@ async def main(port: int) -> None:
         # PlayOneShotAndWait has two flow outputs:
         #   on_started_playing — fires when audio begins
         #   on_finished_playing — fires when audio ends
-        with g.PlayOneShotAndWait(clip=clip_ref, volume=1.0) as r:
+        # Pass the StaticAudioClip directly — the builder auto-creates
+        # a RefObjectInput<IAssetProvider<AudioClip>> bridge.
+        with g.PlayOneShotAndWait(clip=clip, volume=1.0) as r:
             with r.on_started_playing():
                 s.state = "playing"
             with r.on_finished_playing():

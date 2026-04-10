@@ -1158,6 +1158,26 @@ async def _build_action_context(
     for param_name, raw_id in action_ctx.raw_inputs.items():
         init_kwargs[param_name] = raw_id
 
+    # Auto-create RefObjectInput bridges for component reference inputs
+    REF_INPUT_TEMPLATE = (
+        "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution"
+        ".Nodes.RefObjectInput<{ref_type}>"
+    )
+    for param_name, (component, ref_type) in action_ctx.ref_bridges.items():
+        ref_comp_type = REF_INPUT_TEMPLATE.format(ref_type=ref_type)
+        ref_resp = await ctx.resolink.add_component(
+            containerSlotId=ctx.slot,
+            componentType=ref_comp_type,
+        )
+        assert ref_resp.entityId is not None, (
+            f"Failed to create RefObjectInput<{ref_type}>"
+        )
+        await ctx.resolink.update_references(
+            componentId=ref_resp.entityId,
+            references={"Target": component.id},
+        )
+        init_kwargs[param_name] = ref_resp.entityId
+
     # Create the component
     node = ComponentClass(**init_kwargs)
     await node.add_to_slot(ctx.resolink, ctx.slot)

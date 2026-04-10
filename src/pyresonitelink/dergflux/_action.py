@@ -55,10 +55,16 @@ class InputDef:
             ``__init__`` (e.g. ``"origin"``, ``"max_distance"``).
         type: The Resonite primitive type, or None if the input is a
             reference type that doesn't need coercion.
+        ref_type: For reference inputs, the full Resonite type string
+            for the ``RefObjectInput<>`` that bridges a component into
+            ProtoFlux.  When the user passes a component instance, the
+            builder auto-creates a ``RefObjectInput<ref_type>`` targeting
+            the component.  None for value inputs.
     """
 
     param_name: str
     type: type | None = None
+    ref_type: str | None = None
 
 
 @dataclass
@@ -114,6 +120,7 @@ class ActionContext(_flow.FlowContext):
     action_def: ActionDef = field(default=None)  # type: ignore[assignment]
     input_exprs: dict[str, _expr.ExprProxy] = field(default_factory=dict)
     raw_inputs: dict[str, str] = field(default_factory=dict)
+    ref_bridges: dict[str, tuple[Any, str]] = field(default_factory=dict)
     component_tag: str = ""
     branch_stmts: dict[str, list[_flow.Statement]] = field(
         default_factory=dict,
@@ -215,6 +222,7 @@ def create_action_context(
     # directly to the component constructor without materialization.
     input_exprs: dict[str, _expr.ExprProxy] = {}
     raw_inputs: dict[str, str] = {}
+    ref_bridges: dict[str, tuple[Any, str]] = {}
     for kwarg_name, value in kwargs.items():
         if kwarg_name not in action_def.inputs:
             raise TypeError(
@@ -224,8 +232,11 @@ def create_action_context(
         input_def = action_def.inputs[kwarg_name]
         param_name = input_def.param_name
         if input_def.type is None:
-            # Reference input — pass ID directly
-            if isinstance(value, str):
+            # Reference input
+            if input_def.ref_type is not None and hasattr(value, "id") and not isinstance(value, str):
+                # Component instance with a known ref_type — auto-bridge
+                ref_bridges[param_name] = (value, input_def.ref_type)
+            elif isinstance(value, str):
                 raw_inputs[param_name] = value
             elif hasattr(value, "id"):
                 raw_inputs[param_name] = value.id
@@ -249,6 +260,7 @@ def create_action_context(
         action_def=action_def,
         input_exprs=input_exprs,
         raw_inputs=raw_inputs,
+        ref_bridges=ref_bridges,
         component_tag=tag,
         branch_stmts=branch_stmts,
     )
