@@ -29,12 +29,10 @@ async def main(port: int) -> None:
     print("Connected.\n")
 
     # Delete any leftover slot from a previous run
-    root = await resolink.get_slot(slot="Root", depth=1)
-    assert root.data is not None
-    for child in root.data.children:
-        if child.name and child.name.value == "Dergflux PlayOneShot":
-            print(f"Deleting old slot {child.id}...")
-            await resolink.remove_slot(slot=child)
+    old = await resolink.find_slot("Root", name="Dergflux PlayOneShot")
+    if old is not None:
+        print(f"Deleting old slot {old.id}...")
+        await resolink.remove_slot(slot=old)
 
     slot_resp = await resolink.add_slot_to_root(name="Dergflux PlayOneShot")
     assert slot_resp.entityId is not None
