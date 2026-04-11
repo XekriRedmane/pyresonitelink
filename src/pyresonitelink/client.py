@@ -202,9 +202,18 @@ class Client:
     ) -> T:
         """Sends a message to the ResoniteLink server and waits for the response."""
         response = await self.request(request, debug)
-        assert isinstance(
-            response, response_type
-        ), f"Expected response Response, got {type(response)}"
+        if not isinstance(response, response_type):
+            # The server returned an error response instead of the
+            # expected type.  Extract the error info if available.
+            error_info = getattr(response, "errorInfo", None)
+            if error_info:
+                raise RuntimeError(
+                    f"Server error: {error_info}"
+                )
+            raise RuntimeError(
+                f"Expected {response_type.__name__}, "
+                f"got {type(response).__name__}: {response}"
+            )
         return response
 
     def sync_send_message[T](

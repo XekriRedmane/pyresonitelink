@@ -20,7 +20,7 @@ import numpy as np
 # Scalar Type Aliases
 # =============================================================================
 
-Bool: TypeAlias = np.bool_
+Bool: TypeAlias = bool
 Byte: TypeAlias = np.uint8
 SByte: TypeAlias = np.int8
 Short: TypeAlias = np.int16

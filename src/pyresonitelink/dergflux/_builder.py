@@ -214,6 +214,38 @@ def _operand_type(node: _expr.BinaryOpNode) -> type:
 # =========================================================================
 
 
+async def _create_and_wire(
+    resolink: protocols.ResoniteLinkClient,
+    slot: workers.Slot,
+    component_class: Any,
+    references: dict[str, str],
+) -> Any:
+    """Create a component empty and wire references via update_references.
+
+    This avoids ResoniteLink type compatibility issues that occur when
+    reference members are set via constructor data in add_component.
+    ProtoFlux nodes often fail constructor-based wiring because the
+    server's type check is stricter than ProtoFlux's runtime system.
+
+    Args:
+        resolink: Connected client.
+        slot: Slot to add the component to.
+        component_class: The (possibly parameterized) component class.
+        references: Mapping of member name to target component ID.
+
+    Returns:
+        The created component instance with server-assigned IDs.
+    """
+    comp = component_class()
+    await comp.add_to_slot(resolink, slot)
+    if references:
+        await resolink.update_references(
+            componentId=comp.id,
+            references=references,
+        )
+    return comp
+
+
 class _BuildContext:
     """Holds state during a single build operation.
 
@@ -391,8 +423,10 @@ class _BuildContext:
         decl = vars_dict[node.var_name]
         path_node = await self.ensure_path_node(decl.path)
 
-        comp = ConcreteRead(source=slot_ref.id, path=path_node.id)
-        await comp.add_to_slot(self.resolink, self.slot)
+        comp = await _create_and_wire(
+            self.resolink, self.slot, ConcreteRead,
+            {"Source": slot_ref.id, "Path": path_node.id},
+        )
         self.var_inputs[key] = comp
         return comp
 
@@ -407,28 +441,29 @@ class _BuildContext:
             subpath, prefix = _TYPED_BINARY_OPS[node.op]
             OpClass = _get_typed_class(subpath, prefix, op_type)
             if node.op in (_expr.BinOp.LSHIFT, _expr.BinOp.RSHIFT):
-                comp = OpClass(a=left_comp.id, shift=right_comp.id)
+                refs = {"A": left_comp.id, "Shift": right_comp.id}
             else:
-                comp = OpClass(a=left_comp.id, b=right_comp.id)
-            await comp.add_to_slot(self.resolink, self.slot)
-            return comp
+                refs = {"A": left_comp.id, "B": right_comp.id}
+            return await _create_and_wire(self.resolink, self.slot, OpClass, refs)
 
         # Check if this is pow (typed, not generic)
         if node.op is _expr.BinOp.POW:
             subpath, prefix, params = _TYPED_MATH["pow"]
             OpClass = _get_typed_class(subpath, prefix, op_type)
-            comp = OpClass(n=left_comp.id, power=right_comp.id)
-            await comp.add_to_slot(self.resolink, self.slot)
-            return comp
+            return await _create_and_wire(
+                self.resolink, self.slot, OpClass,
+                {"N": left_comp.id, "Power": right_comp.id},
+            )
 
         # Generic binary op
         name = _GENERIC_BINOP_NAMES[node.op]
         from pyresonitelink.protoflux import operators
         OpClass = getattr(operators, name)
         ConcreteOp = OpClass[op_type]
-        comp = ConcreteOp(a=left_comp.id, b=right_comp.id)
-        await comp.add_to_slot(self.resolink, self.slot)
-        return comp
+        return await _create_and_wire(
+            self.resolink, self.slot, ConcreteOp,
+            {"A": left_comp.id, "B": right_comp.id},
+        )
 
     async def _materialize_unop(self, node: _expr.UnaryOpNode) -> Any:
         """Materialize a unary operation."""
@@ -439,25 +474,28 @@ class _BuildContext:
         if node.op in _TYPED_UNARY_OPS:
             subpath, prefix = _TYPED_UNARY_OPS[node.op]
             OpClass = _get_typed_class(subpath, prefix, res_type)
-            comp = OpClass(a=operand_comp.id)
-            await comp.add_to_slot(self.resolink, self.slot)
-            return comp
+            return await _create_and_wire(
+                self.resolink, self.slot, OpClass,
+                {"A": operand_comp.id},
+            )
 
         # ABS uses generic ValueAbs
         if node.op is _expr.UnOp.ABS:
             from pyresonitelink.protoflux.math import ValueAbs
             ConcreteOp = ValueAbs[res_type]  # type: ignore[valid-type]
-            comp = ConcreteOp(n=operand_comp.id)
-            await comp.add_to_slot(self.resolink, self.slot)
-            return comp
+            return await _create_and_wire(
+                self.resolink, self.slot, ConcreteOp,
+                {"N": operand_comp.id},
+            )
 
         # NEG uses generic ValueNegate
         if node.op is _expr.UnOp.NEG:
             from pyresonitelink.protoflux import operators
             ConcreteOp = operators.ValueNegate[res_type]  # type: ignore[valid-type]
-            comp = ConcreteOp(n=operand_comp.id)
-            await comp.add_to_slot(self.resolink, self.slot)
-            return comp
+            return await _create_and_wire(
+                self.resolink, self.slot, ConcreteOp,
+                {"N": operand_comp.id},
+            )
 
         raise TypeError(f"Unknown unary op: {node.op}")
 
@@ -465,6 +503,16 @@ class _BuildContext:
         """Materialize a math function call."""
         arg_comps = [await self.materialize(arg) for arg in node.args]
         res_type = _resolve_type(node)
+
+        def _make_refs(
+            param_names: list[str],
+        ) -> dict[str, str]:
+            """Build PascalCase reference dict from param names and arg comps."""
+            return {
+                # Convert snake_case param to PascalCase member name
+                "".join(w.capitalize() for w in p.split("_")): c.id
+                for p, c in zip(param_names, arg_comps)
+            }
 
         # Check for generic math functions first
         if node.func_name in _GENERIC_MATH:
@@ -474,10 +522,10 @@ class _BuildContext:
             )
             GenericClass = getattr(module, class_name)
             ConcreteClass = GenericClass[res_type]  # type: ignore[valid-type]
-            kwargs = dict(zip(param_names, [c.id for c in arg_comps]))
-            comp = ConcreteClass(**kwargs)
-            await comp.add_to_slot(self.resolink, self.slot)
-            return comp
+            return await _create_and_wire(
+                self.resolink, self.slot, ConcreteClass,
+                _make_refs(param_names),
+            )
 
         # Check for generic math in operators
         if node.func_name in _GENERIC_MATH_OPERATORS:
@@ -485,18 +533,19 @@ class _BuildContext:
             from pyresonitelink.protoflux import operators
             GenericClass = getattr(operators, class_name)
             ConcreteClass = GenericClass[res_type]  # type: ignore[valid-type]
-            kwargs = dict(zip(param_names, [c.id for c in arg_comps]))
-            comp = ConcreteClass(**kwargs)
-            await comp.add_to_slot(self.resolink, self.slot)
-            return comp
+            return await _create_and_wire(
+                self.resolink, self.slot, ConcreteClass,
+                _make_refs(param_names),
+            )
 
         # Typed math function
         if node.func_name in _TYPED_MATH:
             subpath, prefix, param_names = _TYPED_MATH[node.func_name]
             OpClass = _get_typed_class(subpath, prefix, res_type)
-            kwargs = dict(zip(param_names, [c.id for c in arg_comps]))
-            comp = OpClass(**kwargs)
-            await comp.add_to_slot(self.resolink, self.slot)
+            return await _create_and_wire(
+                self.resolink, self.slot, OpClass,
+                _make_refs(param_names),
+            )
             return comp
 
         raise TypeError(
@@ -1226,9 +1275,24 @@ async def _build_action_context(
         )
         init_kwargs[param_name] = bridge_resp.entityId
 
-    # Create the component
-    node = ComponentClass(**init_kwargs)
+    # If the component is generic, parameterize it from the first
+    # expression input's type (e.g. FireOnValueChange[Float]).
+    if hasattr(ComponentClass, "_GENERIC_TYPE_TEMPLATE") and ComponentClass._GENERIC_TYPE_TEMPLATE:
+        # Find the type from the first expression input
+        for expr_proxy in action_ctx.input_exprs.values():
+            res_type = _resolve_type(expr_proxy._node)
+            ComponentClass = ComponentClass[res_type]  # type: ignore[index]
+            break
+
+    # Create the component empty, then wire inputs via update_references
+    # to avoid ResoniteLink type compatibility issues.
+    node = ComponentClass()
     await node.add_to_slot(ctx.resolink, ctx.slot)
+    if init_kwargs:
+        await ctx.resolink.update_references(
+            componentId=node.id,  # type: ignore[arg-type]
+            references=init_kwargs,
+        )
 
     # Register so ComponentOutputNode can reference it
     ctx.component_outputs[action_ctx.component_tag] = node
