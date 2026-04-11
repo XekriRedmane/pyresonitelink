@@ -504,7 +504,134 @@ class Graph:
         finally:
             self._record_statement(ctx)
 
-    # --- Named action shortcuts ---
+    # --- Named action shortcuts: event sources ---
+
+    @contextmanager
+    def FireOnTrue(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire an impulse when condition transitions to true (rising edge).
+
+        Usage::
+
+            with g.Under(slot):
+                with g.FireOnTrue(condition=s.flag) as e:
+                    with e.on_changed():
+                        s.count = s.count + 1
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnTrue, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireOnFalse(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire an impulse when condition transitions to false (falling edge).
+
+        Usage::
+
+            with g.Under(slot):
+                with g.FireOnFalse(condition=s.flag) as e:
+                    with e.on_changed():
+                        s.count = s.count + 1
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnFalse, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireOnLocalTrue(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire a local impulse when condition transitions to true.
+
+        Local variant — only fires for the local user.
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnLocalTrue, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireOnLocalFalse(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire a local impulse when condition transitions to false.
+
+        Local variant — only fires for the local user.
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnLocalFalse, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireOnValueChange(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire an impulse when a value changes.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.FireOnValueChange(value=s.x) as e:
+                    with e.on_changed():
+                        s.change_count = s.change_count + 1
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnValueChange, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireOnLocalValueChange(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire a local impulse when a value changes."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnLocalValueChange, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireOnObjectValueChange(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire an impulse when an object value changes."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnObjectValueChange, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireOnLocalObjectChange(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire a local impulse when an object value changes."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnLocalObjectChange, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireOnRefChange(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire an impulse when a reference changes."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnRefChange, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireOnTypeChange(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire an impulse when a Type value changes."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireOnTypeChange, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def FireWhileTrue(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire an impulse every frame while condition is true.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.FireWhileTrue(condition=s.active) as e:
+                    with e.on_update():
+                        s.elapsed = s.elapsed + 1
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.FireWhileTrue, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def LocalFireWhileTrue(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire a local impulse every frame while condition is true.
+
+        Local variant — only fires for the local user.
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.LocalFireWhileTrue, **kwargs) as proxy:
+            yield proxy
+
+    # --- Named action shortcuts: impulse-triggered ---
 
     @contextmanager
     def RaycastOne(self, **kwargs: Any) -> Iterator[Any]:

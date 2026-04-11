@@ -381,6 +381,41 @@ being triggered by an impulse.  These don't need an explicit trigger
 (Update, DynamicImpulseReceiver) — the builder skips trigger creation
 automatically.
 
+**Condition-based event sources**:
+
+```python
+with g.Under(slot):
+    # Fire once when condition becomes true (rising edge)
+    with g.FireOnTrue(condition=s.flag) as e:
+        with e.on_changed():
+            s.count = s.count + 1
+
+    # Fire once when condition becomes false (falling edge)
+    with g.FireOnFalse(condition=s.flag) as e:
+        with e.on_changed():
+            s.result = s.x
+
+    # Fire every frame while condition is true
+    with g.FireWhileTrue(condition=s.active) as e:
+        with e.on_update():
+            s.elapsed = s.elapsed + 1
+```
+
+Local variants (``FireOnLocalTrue``, ``FireOnLocalFalse``,
+``LocalFireWhileTrue``) only fire for the local user.
+
+**Value-change event sources**:
+
+```python
+with g.Under(slot):
+    with g.FireOnValueChange(value=s.x) as e:
+        with e.on_changed():
+            s.change_count = s.change_count + 1
+```
+
+Also: ``FireOnLocalValueChange``, ``FireOnObjectValueChange``,
+``FireOnLocalObjectChange``, ``FireOnRefChange``, ``FireOnTypeChange``.
+
 **SlotChildrenEvents** — fires when children are added/removed:
 
 ```python

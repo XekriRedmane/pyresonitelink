@@ -73,6 +73,134 @@ SlotChildrenEvents = ActionDef(
     is_event_source=True,
 )
 
+# =========================================================================
+# Event sources — fire impulses on their own, no trigger needed
+# =========================================================================
+
+FireOnTrue = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnTrue",
+    inputs={
+        "condition": InputDef("condition", primitives.Bool),
+    },
+    flow_outputs=["on_changed"],
+    is_event_source=True,
+)
+
+FireOnFalse = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnFalse",
+    inputs={
+        "condition": InputDef("condition", primitives.Bool),
+    },
+    flow_outputs=["on_changed"],
+    is_event_source=True,
+)
+
+FireOnLocalTrue = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnLocalTrue",
+    inputs={
+        "condition": InputDef("condition", primitives.Bool),
+    },
+    flow_outputs=["on_change"],
+    is_event_source=True,
+)
+
+FireOnLocalFalse = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnLocalFalse",
+    inputs={
+        "condition": InputDef("condition", primitives.Bool),
+    },
+    flow_outputs=["on_change"],
+    is_event_source=True,
+)
+
+FireOnValueChange = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnValueChange",
+    inputs={
+        "value": InputDef("value"),
+    },
+    flow_outputs=["on_changed"],
+    is_event_source=True,
+)
+
+FireOnLocalValueChange = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnLocalValueChange",
+    inputs={
+        "value": InputDef("value"),
+    },
+    flow_outputs=["on_change"],
+    is_event_source=True,
+)
+
+FireOnObjectValueChange = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnObjectValueChange",
+    inputs={
+        "value": InputDef("value"),
+    },
+    flow_outputs=["on_changed"],
+    is_event_source=True,
+)
+
+FireOnLocalObjectChange = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnLocalObjectChange",
+    inputs={
+        "value": InputDef("value"),
+    },
+    flow_outputs=["on_change"],
+    is_event_source=True,
+)
+
+FireOnRefChange = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnRefChange",
+    inputs={
+        "value": InputDef("value"),
+    },
+    flow_outputs=["on_changed"],
+    is_event_source=True,
+)
+
+FireOnTypeChange = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireOnTypeChange",
+    inputs={
+        "value": InputDef("value"),
+    },
+    flow_outputs=["on_changed"],
+    is_event_source=True,
+)
+
+FireWhileTrue = ActionDef(
+    import_path="protoflux.flow",
+    class_name="FireWhileTrue",
+    inputs={
+        "condition": InputDef("condition", primitives.Bool),
+    },
+    flow_outputs=["on_update"],
+    is_event_source=True,
+)
+
+LocalFireWhileTrue = ActionDef(
+    import_path="protoflux.flow",
+    class_name="LocalFireWhileTrue",
+    inputs={
+        "condition": InputDef("condition", primitives.Bool),
+    },
+    flow_outputs=["on_update"],
+    is_event_source=True,
+)
+
+# =========================================================================
+# Impulse-triggered actions
+# =========================================================================
+
 PlayOneShotAndWait = ActionDef(
     import_path="protoflux.audio",
     class_name="PlayOneShotAndWait",
