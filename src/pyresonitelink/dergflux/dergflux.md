@@ -416,6 +416,32 @@ with g.Under(slot):
 Also: ``FireOnLocalValueChange``, ``FireOnObjectValueChange``,
 ``FireOnLocalObjectChange``, ``FireOnRefChange``, ``FireOnTypeChange``.
 
+**Timer event sources**:
+
+```python
+with g.Under(slot):
+    # Fire every 60 engine updates
+    with g.UpdatesTimer(interval=60) as e:
+        with e.on_update():
+            s.tick = s.tick + 1
+
+    # Fire every 1.0 seconds
+    with g.SecondsTimer(interval=1.0) as e:
+        with e.on_update():
+            s.seconds = s.seconds + 1
+```
+
+**Delay** (async — suspends across frames):
+
+```python
+with g.Under(slot):
+    with g.DelaySeconds(duration=2.0) as d:
+        with d.next():
+            s.state = "waiting"      # fires immediately
+        with d.on_triggered():
+            s.state = "delayed"      # fires after 2 seconds
+```
+
 **SlotChildrenEvents** — fires when children are added/removed:
 
 ```python

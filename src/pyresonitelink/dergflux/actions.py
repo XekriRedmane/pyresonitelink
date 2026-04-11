@@ -197,6 +197,60 @@ LocalFireWhileTrue = ActionDef(
     is_event_source=True,
 )
 
+UpdatesTimer = ActionDef(
+    import_path="protoflux.flow",
+    class_name="UpdatesTimer",
+    inputs={
+        "interval": InputDef("interval", primitives.Int),
+    },
+    flow_outputs=["on_update"],
+    is_event_source=True,
+)
+
+SecondsTimer = ActionDef(
+    import_path="protoflux.flow",
+    class_name="SecondsTimer",
+    inputs={
+        "interval": InputDef("interval", primitives.Float),
+    },
+    flow_outputs=["on_update"],
+    is_event_source=True,
+)
+
+# =========================================================================
+# Async actions — suspend across frames
+# =========================================================================
+
+DelaySecondsFloat = ActionDef(
+    import_path="protoflux.flow",
+    class_name="DelaySecondsFloat",
+    inputs={
+        "duration": InputDef("duration", primitives.Float),
+    },
+    flow_outputs=["next", "on_triggered"],
+    is_async=True,
+)
+
+DelaySecondsDouble = ActionDef(
+    import_path="protoflux.flow",
+    class_name="DelaySecondsDouble",
+    inputs={
+        "duration": InputDef("duration", primitives.Double),
+    },
+    flow_outputs=["next", "on_triggered"],
+    is_async=True,
+)
+
+DelaySecondsInt = ActionDef(
+    import_path="protoflux.flow",
+    class_name="DelaySecondsInt",
+    inputs={
+        "duration": InputDef("duration", primitives.Int),
+    },
+    flow_outputs=["next", "on_triggered"],
+    is_async=True,
+)
+
 # =========================================================================
 # Impulse-triggered actions
 # =========================================================================

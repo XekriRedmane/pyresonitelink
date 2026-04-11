@@ -631,6 +631,59 @@ class Graph:
         with self.Action(actions.LocalFireWhileTrue, **kwargs) as proxy:
             yield proxy
 
+    @contextmanager
+    def UpdatesTimer(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire an impulse every N engine updates.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.UpdatesTimer(interval=60) as e:
+                    with e.on_update():
+                        s.tick = s.tick + 1
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.UpdatesTimer, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def SecondsTimer(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire an impulse every N seconds.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.SecondsTimer(interval=1.0) as e:
+                    with e.on_update():
+                        s.seconds = s.seconds + 1
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.SecondsTimer, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def DelaySeconds(self, **kwargs: Any) -> Iterator[Any]:
+        """Delay for a duration then fire.
+
+        Async — the enclosing flow uses async variants automatically.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.DelaySeconds(duration=2.0) as d:
+                    with d.on_triggered():
+                        s.state = "delayed"
+
+        The ``duration`` type determines the variant:
+        Float (default), Double, or Int seconds.
+
+        Also has a ``next`` flow output that fires immediately
+        (before the delay).
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.DelaySecondsFloat, **kwargs) as proxy:
+            yield proxy
+
     # --- Named action shortcuts: impulse-triggered ---
 
     @contextmanager
