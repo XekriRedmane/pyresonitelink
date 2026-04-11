@@ -263,3 +263,4 @@ class UnderRecord:
     trigger: Trigger | None = None
     statements: list[FlowContext] = field(default_factory=list)
     is_async: bool = False
+    is_event_source: bool = False

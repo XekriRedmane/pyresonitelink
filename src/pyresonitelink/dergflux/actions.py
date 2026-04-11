@@ -11,6 +11,7 @@ Import these and pass them to ``g.Action()``::
 
 from pyresonitelink.data import primitives
 from pyresonitelink.dergflux._action import ActionDef, InputDef, OutputDef
+from pyresonitelink.generated._types.slot import Slot as _SlotType
 
 
 RaycastOne = ActionDef(
@@ -54,6 +55,22 @@ PlayOneShot = ActionDef(
     },
     flow_outputs=["on_started_playing"],
     value_outputs={},
+)
+
+SlotChildrenEvents = ActionDef(
+    import_path="protoflux.slots",
+    class_name="SlotChildrenEvents",
+    inputs={
+        "instance": InputDef(
+            "instance",
+            global_type="[FrooxEngine]FrooxEngine.Slot",
+        ),
+    },
+    flow_outputs=["on_child_added", "on_child_removed"],
+    value_outputs={
+        "child": OutputDef("Child", _SlotType),
+    },
+    is_event_source=True,
 )
 
 PlayOneShotAndWait = ActionDef(

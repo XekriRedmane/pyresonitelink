@@ -282,7 +282,7 @@ Key features:
 - **Flow control**: `g.If`/`g.Else`, `g.For`, `g.While`, `g.Range`
 - **Triggers**: `g.Under(slot)` (Update every frame), `g.Under(slot, trigger="tag")` (named impulse), `g.Under(slot, trigger=("tag", type))` (with value)
 - **Bindings**: `g.Bind(s.x, component, "Field")` — permanently bind a variable or expression to a component field
-- **Action nodes**: `g.RaycastOne(...)`, `g.PlayOneShotAndWait(...)`, or define custom actions with `ActionDef`
+- **Action nodes**: `g.RaycastOne(...)`, `g.PlayOneShotAndWait(...)`, `g.SlotChildrenEvents(...)`, or define custom actions with `ActionDef`
 - **Auto-bridging**: pass components directly to action inputs (e.g. `clip=my_clip`) — the builder creates `RefObjectInput` bridges automatically
 
 See the [Dergflux reference](src/pyresonitelink/dergflux/dergflux.md) for the full API.

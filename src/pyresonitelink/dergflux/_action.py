@@ -60,11 +60,17 @@ class InputDef:
             ProtoFlux.  When the user passes a component instance, the
             builder auto-creates a ``RefObjectInput<ref_type>`` targeting
             the component.  None for value inputs.
+        global_type: For ``IGlobalValueProxy`` inputs, the full Resonite
+            type string.  When the user passes a component/slot instance,
+            the builder auto-creates a ``GlobalReference<global_type>``
+            targeting it.  Used for nodes like ``SlotChildrenEvents``
+            whose ``Instance`` input requires ``IGlobalValueProxy<Slot>``.
     """
 
     param_name: str
     type: type | None = None
     ref_type: str | None = None
+    global_type: str | None = None
 
 
 @dataclass
@@ -95,6 +101,9 @@ class ActionDef:
         value_outputs: Maps user-facing property name to OutputDef.
         is_async: If True, the node is async (``IAsyncNodeOperation``)
             and the enclosing flow must use async variants.
+        is_event_source: If True, the node fires impulses on its own
+            (e.g. ``SlotChildrenEvents`` fires when children change).
+            No trigger (Update/DynamicImpulseReceiver) is created.
     """
 
     import_path: str
@@ -103,6 +112,7 @@ class ActionDef:
     flow_outputs: list[str] = field(default_factory=list)
     value_outputs: dict[str, OutputDef] = field(default_factory=dict)
     is_async: bool = False
+    is_event_source: bool = False
 
 
 @dataclass
@@ -120,7 +130,7 @@ class ActionContext(_flow.FlowContext):
     action_def: ActionDef = field(default=None)  # type: ignore[assignment]
     input_exprs: dict[str, _expr.ExprProxy] = field(default_factory=dict)
     raw_inputs: dict[str, str] = field(default_factory=dict)
-    ref_bridges: dict[str, tuple[Any, str]] = field(default_factory=dict)
+    ref_bridges: dict[str, tuple[Any, str, str]] = field(default_factory=dict)
     component_tag: str = ""
     branch_stmts: dict[str, list[_flow.Statement]] = field(
         default_factory=dict,
@@ -233,9 +243,11 @@ def create_action_context(
         param_name = input_def.param_name
         if input_def.type is None:
             # Reference input
-            if input_def.ref_type is not None and hasattr(value, "id") and not isinstance(value, str):
-                # Component instance with a known ref_type — auto-bridge
-                ref_bridges[param_name] = (value, input_def.ref_type)
+            has_id = hasattr(value, "id") and not isinstance(value, str)
+            if input_def.ref_type is not None and has_id:
+                ref_bridges[param_name] = (value, input_def.ref_type, "ref")
+            elif input_def.global_type is not None and has_id:
+                ref_bridges[param_name] = (value, input_def.global_type, "global_ref")
             elif isinstance(value, str):
                 raw_inputs[param_name] = value
             elif hasattr(value, "id"):

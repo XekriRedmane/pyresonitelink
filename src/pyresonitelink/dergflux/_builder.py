@@ -1198,25 +1198,33 @@ async def _build_action_context(
     for param_name, raw_id in action_ctx.raw_inputs.items():
         init_kwargs[param_name] = raw_id
 
-    # Auto-create RefObjectInput bridges for component reference inputs
+    # Auto-create bridge components for reference inputs
     REF_INPUT_TEMPLATE = (
         "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution"
-        ".Nodes.RefObjectInput<{ref_type}>"
+        ".Nodes.RefObjectInput<{type_str}>"
     )
-    for param_name, (component, ref_type) in action_ctx.ref_bridges.items():
-        ref_comp_type = REF_INPUT_TEMPLATE.format(ref_type=ref_type)
-        ref_resp = await ctx.resolink.add_component(
+    GLOBAL_REF_TEMPLATE = (
+        "[FrooxEngine]FrooxEngine.ProtoFlux.GlobalReference<{type_str}>"
+    )
+    for param_name, (component, type_str, bridge_kind) in action_ctx.ref_bridges.items():
+        if bridge_kind == "global_ref":
+            comp_type = GLOBAL_REF_TEMPLATE.format(type_str=type_str)
+            target_member = "Reference"
+        else:
+            comp_type = REF_INPUT_TEMPLATE.format(type_str=type_str)
+            target_member = "Target"
+        bridge_resp = await ctx.resolink.add_component(
             containerSlotId=ctx.slot,
-            componentType=ref_comp_type,
+            componentType=comp_type,
         )
-        assert ref_resp.entityId is not None, (
-            f"Failed to create RefObjectInput<{ref_type}>"
+        assert bridge_resp.entityId is not None, (
+            f"Failed to create bridge {comp_type}"
         )
         await ctx.resolink.update_references(
-            componentId=ref_resp.entityId,
-            references={"Target": component.id},
+            componentId=bridge_resp.entityId,
+            references={target_member: component.id},
         )
-        init_kwargs[param_name] = ref_resp.entityId
+        init_kwargs[param_name] = bridge_resp.entityId
 
     # Create the component
     node = ComponentClass(**init_kwargs)
@@ -1350,17 +1358,19 @@ async def build_graph(
             entry = seq
 
         # Wire the trigger to the entry point.
-        # For async flows, insert StartAsyncTask so sync triggers work.
-        if receiver is not None:
-            target = entry
-            if ctx.is_async:
-                target = await _create_start_async_task(ctx, entry)
-            await ctx.resolink.update_references(
-                componentId=receiver.id,  # type: ignore[arg-type]
-                references={"OnTriggered": target.id},
-            )
-        else:
-            await _build_trigger(ctx, entry, trigger)
+        # Event sources (like SlotChildrenEvents) don't need a trigger —
+        # they fire on their own when events occur.
+        if not under_rec.is_event_source:
+            if receiver is not None:
+                target = entry
+                if ctx.is_async:
+                    target = await _create_start_async_task(ctx, entry)
+                await ctx.resolink.update_references(
+                    componentId=receiver.id,  # type: ignore[arg-type]
+                    references={"OnTriggered": target.id},
+                )
+            else:
+                await _build_trigger(ctx, entry, trigger)
 
     # Build bindings (ValueFieldDrive<T>, DynamicValueVariableDriver, etc.)
     # Bindings are built using the ctx from the last Under block that

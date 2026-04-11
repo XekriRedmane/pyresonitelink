@@ -232,8 +232,11 @@ class Graph:
         # Check if this is async and propagate to UnderRecord
         under = self._active_under()
         if under is not None and under.record is not None:
-            if isinstance(ctx, _action.ActionContext) and ctx.action_def.is_async:
-                under.record.is_async = True
+            if isinstance(ctx, _action.ActionContext):
+                if ctx.action_def.is_async:
+                    under.record.is_async = True
+                if ctx.action_def.is_event_source:
+                    under.record.is_event_source = True
 
         # If there's an active flow context, nest inside it
         active = self._active_flow()
@@ -591,6 +594,30 @@ class Graph:
         """
         from pyresonitelink.dergflux import actions
         with self.Action(actions.PlayOneShotAndWait, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def SlotChildrenEvents(self, **kwargs: Any) -> Iterator[Any]:
+        """Context manager for monitoring slot child add/remove events.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.SlotChildrenEvents(instance=watched_slot) as e:
+                    with e.on_child_added():
+                        s.last_child = e.child
+                    with e.on_child_removed():
+                        s.removed = e.child
+
+        Args:
+            instance: The slot to monitor (Slot instance or ID).
+
+        Yields:
+            An ``ActionProxy`` with ``on_child_added()``,
+            ``on_child_removed()``, and ``child`` (Slot output).
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.SlotChildrenEvents, **kwargs) as proxy:
             yield proxy
 
     # --- Bindings ---

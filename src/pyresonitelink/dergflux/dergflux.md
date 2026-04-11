@@ -374,6 +374,30 @@ with g.Under(slot):
             s.playing = True
 ```
 
+#### Event Source Nodes
+
+Some nodes fire impulses on their own when events occur, rather than
+being triggered by an impulse.  These don't need an explicit trigger
+(Update, DynamicImpulseReceiver) — the builder skips trigger creation
+automatically.
+
+**SlotChildrenEvents** — fires when children are added/removed:
+
+```python
+with g.Under(slot):
+    with g.SlotChildrenEvents(instance=watched_slot) as e:
+        with e.on_child_added():
+            s.last_child = e.child
+        with e.on_child_removed():
+            s.removed_child = e.child
+```
+
+The ``instance`` input accepts a Slot instance directly — the builder
+auto-creates a ``GlobalReference<Slot>`` bridge (since the node's
+``Instance`` member requires ``IGlobalValueProxy<Slot>``).
+
+Value output: ``e.child`` — the child Slot that was added or removed.
+
 #### Defining Custom Actions
 
 Any ProtoFlux node with flow outputs can be wrapped as an action using
@@ -406,6 +430,20 @@ with g.Action(MyAction, origin=s.pos, direction=s.dir) as r:
 ```
 
 Or add a named shortcut method on Graph that delegates to ``g.Action()``.
+
+**InputDef options** for reference inputs:
+
+- ``ref_type="..."`` — auto-creates ``RefObjectInput<type>`` when a
+  component is passed.  Used for ``INodeObjectOutput`` inputs.
+- ``global_type="..."`` — auto-creates ``GlobalReference<type>`` when a
+  component/slot is passed.  Used for ``IGlobalValueProxy`` inputs.
+
+**ActionDef flags**:
+
+- ``is_async=True`` — the node is async; enclosing flow uses async variants
+  and ``StartAsyncTask`` bridge.
+- ``is_event_source=True`` — the node fires its own impulses (no trigger
+  created).  Use for event monitors like ``SlotChildrenEvents``.
 
 ### Generic Action Nodes
 
