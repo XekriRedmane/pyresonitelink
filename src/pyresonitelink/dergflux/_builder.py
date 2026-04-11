@@ -1311,6 +1311,108 @@ async def _build_action_context(
     return node
 
 
+async def _build_indexed_branch_context(
+    ctx: _BuildContext,
+    ib_ctx: _flow.IndexedBranchContext,
+) -> Any:
+    """Build a node with indexed flow outputs (SyncList-based).
+
+    Creates the component, builds statement chains for each indexed
+    branch, populates the SyncList, and wires named flow outputs.
+    """
+    from pyresonitelink.data import members as mem
+
+    # Materialize input expressions
+    refs: dict[str, str] = {}
+    for param_name, expr_proxy in ib_ctx.input_exprs.items():
+        comp = await ctx.materialize(expr_proxy._node)
+        # Convert snake_case param to PascalCase member name
+        member_name = "".join(w.capitalize() for w in param_name.split("_"))
+        refs[member_name] = comp.id
+    for param_name, raw_id in ib_ctx.raw_inputs.items():
+        member_name = "".join(w.capitalize() for w in param_name.split("_"))
+        refs[member_name] = raw_id
+
+    # Create the component
+    node_resp = await ctx.resolink.add_component(
+        containerSlotId=ctx.slot,
+        componentType=ib_ctx.node_type,
+    )
+    if node_resp.entityId is None:
+        raise RuntimeError(
+            f"Failed to create {ib_ctx.node_type}: {node_resp.errorInfo}"
+        )
+    node_id = node_resp.entityId
+
+    # Register for ComponentOutputNode references
+    ctx.component_outputs[ib_ctx.component_tag] = type(
+        "_NodeStub", (), {"id": node_id},
+    )()
+
+    # Wire inputs
+    if refs:
+        await ctx.resolink.update_references(
+            componentId=node_id, references=refs,
+        )
+
+    # Build each indexed branch and collect head node IDs
+    branch_heads: list[str | None] = []
+    for i in range(ib_ctx.num_branches):
+        stmts = ib_ctx.branch_stmts.get(i, [])
+        head = await _build_stmt_chain(ctx, stmts)
+        branch_heads.append(head.id if head else None)
+
+    # Determine the SyncList member name.
+    # PulseRandom and ImpulseMultiplexer use "Impulses".
+    # ImpulseDemultiplexer uses "Operations".
+    get_resp = await ctx.resolink.get_component(componentId=node_id)
+    assert get_resp.data is not None
+    list_member_name = None
+    list_member_id = None
+    for mname, mdata in get_resp.data.members.items():
+        if isinstance(mdata, mem.SyncList) or (
+            isinstance(mdata, dict) and mdata.get("$type") == "list"
+        ):
+            list_member_name = mname
+            list_member_id = (
+                mdata.id if isinstance(mdata, mem.SyncList)
+                else mdata.get("id")
+            )
+            break
+
+    if list_member_name is not None:
+        # Populate the SyncList with references to branch heads
+        new_list = mem.SyncList(
+            elements=[
+                mem.Reference(targetId=hid) if hid else mem.Reference()
+                for hid in branch_heads
+            ],
+        )
+        if list_member_id is not None:
+            new_list.id = list_member_id
+        update_comp = workers.Component(
+            id=node_id,
+            componentType=ib_ctx.node_type,
+            members={list_member_name: new_list},
+        )
+        await ctx.resolink.update_component(data=update_comp)
+
+    # Wire named flow outputs (e.g. ImpulseDemultiplexer.OnTriggered)
+    named_refs: dict[str, str] = {}
+    for name, stmts in ib_ctx.named_stmts.items():
+        head = await _build_stmt_chain(ctx, stmts)
+        if head is not None:
+            member_name = "".join(w.capitalize() for w in name.split("_"))
+            named_refs[member_name] = head.id
+    if named_refs:
+        await ctx.resolink.update_references(
+            componentId=node_id, references=named_refs,
+        )
+
+    # Return a stub with .id for sequence wiring
+    return type("_NodeStub", (), {"id": node_id})()
+
+
 async def _build_bare_write_context(
     ctx: _BuildContext,
     bare_ctx: _flow.BareWriteContext,
@@ -1344,6 +1446,8 @@ async def _build_flow_context(
     from pyresonitelink.dergflux import _action
     if isinstance(flow_ctx, _action.ActionContext):
         return await _build_action_context(ctx, flow_ctx)
+    if isinstance(flow_ctx, _flow.IndexedBranchContext):
+        return await _build_indexed_branch_context(ctx, flow_ctx)
     if isinstance(flow_ctx, _flow.BareWriteContext):
         return await _build_bare_write_context(ctx, flow_ctx)
     raise TypeError(f"Unknown flow context: {type(flow_ctx).__name__}")

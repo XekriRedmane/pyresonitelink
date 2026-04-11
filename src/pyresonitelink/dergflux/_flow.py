@@ -218,6 +218,65 @@ class RaycastOneContext(FlowContext):
 
 
 @dataclass
+class IndexedBranchContext(FlowContext):
+    """Tracks a node with indexed flow outputs (SyncList-based).
+
+    Used by PulseRandom, ImpulseMultiplexer, and similar nodes
+    that route impulses to one of N indexed outputs.
+
+    Attributes:
+        node_type: The Resonite component type string.
+        num_branches: The number of indexed branches.
+        input_exprs: Maps input param_name to ExprProxy.
+        raw_inputs: Maps input param_name to raw string ID.
+        branch_stmts: Maps branch index to statement list.
+        active_branch: The currently recording branch index.
+        component_tag: UUID for output node references.
+        value_output_name: If set, the name of a value output member.
+        value_output_type: The type of the value output.
+    """
+
+    node_type: str = ""
+    num_branches: int = 0
+    input_exprs: dict[str, _expr.ExprProxy] = field(default_factory=dict)
+    raw_inputs: dict[str, str] = field(default_factory=dict)
+    branch_stmts: dict[int, list[Statement]] = field(default_factory=dict)
+    active_branch: int | None = None
+    component_tag: str = ""
+    value_output_name: str | None = None
+    value_output_type: type | None = None
+    named_flow_outputs: list[str] = field(default_factory=list)
+    named_stmts: dict[str, list[Statement]] = field(default_factory=dict)
+    is_event_source: bool = False
+
+    def record_write(self, write: WriteRecord) -> None:
+        """Append a write to the currently active branch or named output."""
+        named = getattr(self, "_active_named", None)
+        if named is not None:
+            self.named_stmts.setdefault(named, []).append(write)
+        elif self.active_branch is not None:
+            self.branch_stmts[self.active_branch].append(write)
+        else:
+            raise RuntimeError(
+                "Writes must be inside an indexed branch (pr[0]) "
+                "or named output (demux.on_triggered()) context manager."
+            )
+
+    def record_nested(self, ctx: FlowContext) -> None:
+        """Append a nested flow to the currently active branch or named output."""
+        named = getattr(self, "_active_named", None)
+        if named is not None:
+            self.named_stmts.setdefault(named, []).append(ctx)
+        elif self.active_branch is not None:
+            self.branch_stmts[self.active_branch].append(ctx)
+        else:
+            raise RuntimeError(
+                "Nested flows must be inside an indexed branch or "
+                "named output context manager."
+            )
+
+
+@dataclass
 class BareWriteContext(FlowContext):
     """Tracks bare writes inside an Under block."""
 

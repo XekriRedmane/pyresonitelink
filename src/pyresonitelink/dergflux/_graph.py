@@ -29,6 +29,92 @@ class _UnderContext:
     record: _flow.UnderRecord | None = None
 
 
+def _get_component_type(module_path: str, class_name: str) -> str:
+    """Import a component class and return its COMPONENT_TYPE string."""
+    import importlib
+    mod = importlib.import_module(module_path)
+    cls = getattr(mod, class_name)
+    return cls.COMPONENT_TYPE
+
+
+class IndexedBranchProxy:
+    """Proxy for nodes with indexed flow outputs (SyncList-based).
+
+    Use ``proxy[i]`` as a context manager to record statements for
+    branch *i*.  Some proxies also provide value outputs via named
+    attributes (e.g. ``demux.index``).
+    """
+
+    def __init__(
+        self,
+        graph: Graph,
+        ctx: _flow.IndexedBranchContext,
+    ) -> None:
+        self._graph = graph
+        self._ctx = ctx
+
+    def __getitem__(self, index: int) -> Any:
+        """Return a context manager for branch *index*."""
+        if index < 0 or index >= self._ctx.num_branches:
+            raise IndexError(
+                f"Branch index {index} out of range "
+                f"(0..{self._ctx.num_branches - 1})."
+            )
+
+        @contextmanager
+        def _branch_cm() -> Iterator[None]:
+            self._ctx.active_branch = index
+            self._graph._flow_stack.append(self._ctx)
+            try:
+                yield
+            finally:
+                self._graph._flow_stack.pop()
+                self._ctx.active_branch = None
+        return _branch_cm()
+
+    def __getattr__(self, name: str) -> Any:
+        if name.startswith("_"):
+            raise AttributeError(name)
+        # Named flow output (e.g. demux.on_triggered())
+        if name in self._ctx.named_flow_outputs:
+            @contextmanager
+            def _named_cm() -> Iterator[None]:
+                self._ctx.active_branch = None  # not an indexed branch
+                # Use named_stmts for this output
+                if name not in self._ctx.named_stmts:
+                    self._ctx.named_stmts[name] = []
+                # Temporarily redirect writes to named_stmts
+                orig_branch = self._ctx.active_branch
+                self._ctx._active_named = name  # type: ignore[attr-defined]
+                self._graph._flow_stack.append(self._ctx)
+                try:
+                    yield
+                finally:
+                    self._graph._flow_stack.pop()
+                    self._ctx._active_named = None  # type: ignore[attr-defined]
+            return _named_cm
+        # Value output (e.g. demux.index)
+        if (
+            self._ctx.value_output_name is not None
+            and name == self._ctx.value_output_name
+            and self._ctx.value_output_type is not None
+        ):
+            return _expr.ExprProxy(
+                _expr.ComponentOutputNode(
+                    # Convert snake_case to PascalCase for member name
+                    "".join(
+                        w.capitalize()
+                        for w in self._ctx.value_output_name.split("_")
+                    ),
+                    self._ctx.component_tag,
+                    self._ctx.value_output_type,
+                ),
+            )
+        raise AttributeError(
+            f"IndexedBranchProxy has no attribute '{name}'."
+        )
+
+
 class ForProxy:
     """Proxy returned by ``g.For()`` and ``g.Range()`` for loop sections.
 
@@ -229,13 +315,16 @@ class Graph:
         """
         from pyresonitelink.dergflux import _action
 
-        # Check if this is async and propagate to UnderRecord
+        # Check if this is async/event_source and propagate to UnderRecord
         under = self._active_under()
         if under is not None and under.record is not None:
             if isinstance(ctx, _action.ActionContext):
                 if ctx.action_def.is_async:
                     under.record.is_async = True
                 if ctx.action_def.is_event_source:
+                    under.record.is_event_source = True
+            if isinstance(ctx, _flow.IndexedBranchContext):
+                if ctx.is_event_source:
                     under.record.is_event_source = True
 
         # If there's an active flow context, nest inside it
@@ -683,6 +772,135 @@ class Graph:
         from pyresonitelink.dergflux import actions
         with self.Action(actions.DelaySecondsFloat, **kwargs) as proxy:
             yield proxy
+
+    # --- Indexed branch nodes ---
+
+    @contextmanager
+    def PulseRandom(self, num_branches: int) -> Iterator[IndexedBranchProxy]:
+        """Randomly fire one of N indexed branches.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.PulseRandom(3) as pr:
+                    with pr[0]:
+                        s.log = "zero"
+                    with pr[1]:
+                        s.log = "one"
+                    with pr[2]:
+                        s.log = "two"
+
+        Args:
+            num_branches: Number of output branches.
+
+        Yields:
+            An ``IndexedBranchProxy`` — use ``pr[i]`` as context managers.
+        """
+        import uuid
+
+        under = self._require_under()
+        ctx = _flow.IndexedBranchContext(
+            slot=under.slot,
+            node_type=_get_component_type("pyresonitelink.protoflux.flow", "PulseRandom"),
+            num_branches=num_branches,
+            branch_stmts={i: [] for i in range(num_branches)},
+            component_tag=str(uuid.uuid4()),
+        )
+        proxy = IndexedBranchProxy(self, ctx)
+        try:
+            yield proxy
+        finally:
+            self._record_statement(ctx)
+
+    @contextmanager
+    def ImpulseMultiplexer(
+        self, num_branches: int, index: object,
+    ) -> Iterator[IndexedBranchProxy]:
+        """Route an impulse to one of N branches based on an index.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.ImpulseMultiplexer(3, index=s.idx) as mux:
+                    with mux[0]:
+                        s.log = "route 0"
+                    with mux[1]:
+                        s.log = "route 1"
+                    with mux[2]:
+                        s.log = "route 2"
+
+        Args:
+            num_branches: Number of output branches.
+            index: An ExprProxy or literal for which branch to fire.
+
+        Yields:
+            An ``IndexedBranchProxy`` — use ``mux[i]`` as context managers.
+        """
+        import uuid
+
+        under = self._require_under()
+        index_proxy = _expr._coerce(index)
+        ctx = _flow.IndexedBranchContext(
+            slot=under.slot,
+            node_type=_get_component_type("pyresonitelink.protoflux.flow", "ImpulseMultiplexer"),
+            num_branches=num_branches,
+            input_exprs={"index": index_proxy},
+            branch_stmts={i: [] for i in range(num_branches)},
+            component_tag=str(uuid.uuid4()),
+        )
+        proxy = IndexedBranchProxy(self, ctx)
+        try:
+            yield proxy
+        finally:
+            self._record_statement(ctx)
+
+    @contextmanager
+    def ImpulseDemultiplexer(
+        self, num_inputs: int,
+    ) -> Iterator[IndexedBranchProxy]:
+        """Receive impulses on N indexed inputs.
+
+        When any input fires, ``on_triggered`` fires with ``demux.index``
+        set to which input was triggered.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.ImpulseDemultiplexer(3) as demux:
+                    # demux.index is which input was triggered (Int)
+                    with demux.on_triggered():
+                        s.last_input = demux.index
+
+        The indexed inputs (``demux[0]``, etc.) are component IDs that
+        external impulse sources can wire to.
+
+        Args:
+            num_inputs: Number of input triggers.
+
+        Yields:
+            An ``IndexedBranchProxy`` with ``on_triggered()`` context
+            manager and ``index`` value output.
+        """
+        import uuid
+        from pyresonitelink.data import primitives
+
+        under = self._require_under()
+        ctx = _flow.IndexedBranchContext(
+            slot=under.slot,
+            node_type=_get_component_type("pyresonitelink.protoflux.flow", "ImpulseDemultiplexer"),
+            num_branches=num_inputs,
+            branch_stmts={i: [] for i in range(num_inputs)},
+            component_tag=str(uuid.uuid4()),
+            value_output_name="index",
+            value_output_type=primitives.Int,
+            named_flow_outputs=["on_triggered"],
+            is_event_source=True,
+        )
+        proxy = IndexedBranchProxy(self, ctx)
+        try:
+            yield proxy
+        finally:
+            self._record_statement(ctx)
 
     # --- Named action shortcuts: impulse-triggered ---
 

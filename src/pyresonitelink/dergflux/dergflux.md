@@ -459,6 +459,49 @@ auto-creates a ``GlobalReference<Slot>`` bridge (since the node's
 
 Value output: ``e.child`` — the child Slot that was added or removed.
 
+#### Indexed Branch Nodes
+
+Some nodes route impulses to one of N indexed outputs (via SyncList).
+Use ``proxy[i]`` as context managers to record statements for each
+branch.
+
+**PulseRandom** — randomly fire one of N branches:
+
+```python
+with g.Under(slot):
+    with g.PulseRandom(3) as pr:
+        with pr[0]:
+            s.log = "zero"
+        with pr[1]:
+            s.log = "one"
+        with pr[2]:
+            s.log = "two"
+```
+
+**ImpulseMultiplexer** — route to branch selected by index:
+
+```python
+with g.Under(slot):
+    with g.ImpulseMultiplexer(3, index=s.idx) as mux:
+        with mux[0]:
+            s.log = "route 0"
+        with mux[1]:
+            s.log = "route 1"
+        with mux[2]:
+            s.log = "route 2"
+```
+
+**ImpulseDemultiplexer** — N indexed inputs, fires with which triggered:
+
+```python
+with g.Under(slot):
+    with g.ImpulseDemultiplexer(3) as demux:
+        with demux.on_triggered():
+            s.last_input = demux.index  # Int: which input fired
+```
+
+The indexed inputs can be wired from external impulse sources.
+
 #### Defining Custom Actions
 
 Any ProtoFlux node with flow outputs can be wrapped as an action using
