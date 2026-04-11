@@ -227,6 +227,40 @@ class TestParseLocal:
         assert any("Scoped Variables" in t for t in titles)
 
 
+class TestParseViveController:
+    """Tests for parsing ProtoFlux node pages with == Inputs/Outputs == sections."""
+
+    def test_description(self) -> None:
+        wikitext, expected = _load_fixture("vive_controller")
+        result = parse_wikitext(wikitext)
+        assert result["description"] == expected["description"]
+
+    def test_input_fields(self) -> None:
+        wikitext, expected = _load_fixture("vive_controller")
+        result = parse_wikitext(wikitext)
+        assert result["fields"]["User"] == expected["fields"]["User"]
+        assert result["fields"]["Node"] == expected["fields"]["Node"]
+
+    def test_output_fields(self) -> None:
+        wikitext, expected = _load_fixture("vive_controller")
+        result = parse_wikitext(wikitext)
+        assert result["fields"]["IsActive"] == expected["fields"]["IsActive"]
+        assert result["fields"]["Grip"] == expected["fields"]["Grip"]
+        assert result["fields"]["TouchpadClick"] == expected["fields"]["TouchpadClick"]
+
+    def test_all_fields_match(self) -> None:
+        wikitext, expected = _load_fixture("vive_controller")
+        result = parse_wikitext(wikitext)
+        assert result["fields"] == expected["fields"]
+
+    def test_inputs_outputs_not_in_notes(self) -> None:
+        wikitext, _ = _load_fixture("vive_controller")
+        result = parse_wikitext(wikitext)
+        titles = [n["title"] for n in result["notes"]]
+        assert "Inputs" not in titles
+        assert "Outputs" not in titles
+
+
 class TestSyntheticDefensive:
     """Tests using synthetic wikitext to exercise defensive code paths.
 

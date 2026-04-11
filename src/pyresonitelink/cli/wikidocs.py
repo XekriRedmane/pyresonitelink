@@ -217,6 +217,37 @@ def parse_wikitext(wikitext: str) -> dict:
             if name and desc:
                 doc["fields"][name] = desc
 
+    # Parse ProtoFlux-style inputs/outputs from == Inputs == / == Outputs ==
+    # sections. These use === Name (Type) === subsections with description
+    # text below each heading.
+    for section_name in ("Inputs", "Outputs"):
+        section_pattern = re.compile(
+            rf"^== {section_name} ==\s*\n(.*?)(?=\n== [^=]|\Z)",
+            re.MULTILINE | re.DOTALL,
+        )
+        section_body = section_pattern.search(wikitext)
+        if not section_body:
+            continue
+        body_text = section_body.group(1)
+        # Find all === Name ([[Type:...|type]]) === subsections
+        subsection_re = re.compile(
+            r"^=== (.+?) ===\s*\n(.*?)(?=\n===|\Z)",
+            re.MULTILINE | re.DOTALL,
+        )
+        for sub in subsection_re.finditer(body_text):
+            raw_name = sub.group(1).strip()
+            raw_desc = sub.group(2).strip()
+            # Extract field name from "Name ([[Type:type|type]])" or
+            # "Name (type)"
+            name_match = re.match(r"^(\w+)\s*\(", raw_name)
+            if name_match:
+                field_name = name_match.group(1)
+            else:
+                field_name = raw_name
+            desc = _clean_text(raw_desc)
+            if field_name and desc and field_name not in doc["fields"]:
+                doc["fields"][field_name] = desc
+
     # Parse methods from {{Table ComponentTriggers ... }}
     triggers_match = re.search(
         r"\{\{Table ComponentTriggers\s*\n", wikitext,
@@ -269,6 +300,7 @@ def parse_wikitext(wikitext: str) -> dict:
     # Extract any extra sections as notes (skip standard sections)
     _skip_sections = {
         "Fields", "Sync Delegates", "Usage", "Examples", "See Also",
+        "Inputs", "Outputs",
     }
     for section_match in re.finditer(
         r"^== ([^=]+) ==.*?\n(.*?)(?=\n==|\Z)",

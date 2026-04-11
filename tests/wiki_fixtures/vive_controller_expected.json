@@ -1,0 +1,14 @@
+{
+  "description": "This node provides information provided by HTC Vive wand controllers.",
+  "category": "",
+  "fields": {
+    "User": "The user we are getting controller information from.",
+    "Node": "The controller side to get information from.",
+    "IsActive": "Is this controller actively being used right now.",
+    "Grip": "Is the controller's grip clicked down right now.",
+    "TouchpadClick": "Is the controller's touchpad clicked down right now."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

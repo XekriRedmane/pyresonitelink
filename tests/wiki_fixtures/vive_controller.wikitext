@@ -1,0 +1,47 @@
+{{SHORTDESC:This node provides information provided by HTC Vive wand controllers.}}
+{{Stub}}
+
+{{#Invoke:ProtoFlux|GenerateUI
+|Name=Vive Controller
+|Category=Controllers
+|Inputs=
+[
+{"Name": "User", "Type": "User"},
+{"Name": "Node", "Type": "Chirality"}
+]
+|Outputs=
+[
+{"Name": "IsActive", "Type": "bool"},
+{"Name": "TouchpadClick", "Type": "bool"}
+]
+|}}
+
+This node provides information provided by HTC Vive wand controllers.
+
+== Usage ==
+
+== Inputs ==
+
+=== User ([[User]]) ===
+
+The user we are getting controller information from.
+
+=== Node ([[Type:Chirality|Chirality]]) ===
+
+The controller side to get information from.
+
+== Outputs ==
+
+=== IsActive ([[Type:bool|bool]]) ===
+
+Is this controller actively being used right now.
+
+=== Grip ([[Type:bool|bool]]) ===
+
+Is the controller's grip clicked down right now.
+
+=== TouchpadClick ([[Type:bool|bool]]) ===
+
+Is the controller's touchpad clicked down right now.
+
+[[Category:ProtoFlux:Devices:Controllers]]
