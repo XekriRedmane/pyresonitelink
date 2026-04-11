@@ -493,6 +493,29 @@ auto-creates a ``GlobalReference<Slot>`` bridge (since the node's
 
 Value output: ``e.child`` — the child Slot that was added or removed.
 
+#### Data Source Nodes
+
+Data source nodes provide value outputs without flow. They're created
+with ``g.DataSource()`` or named shortcuts, and return a proxy with
+value output properties usable as expressions.
+
+```python
+ctrl = g.StandardController(user=user_ref, node=chirality, slot=slot)
+
+# ctrl.primary, ctrl.grab, ctrl.axis etc. are ExprProxy values
+with g.Under(slot):
+    with g.FireOnTrue(condition=ctrl.primary) as e:
+        with e.on_changed():
+            s.log = "primary pressed"
+```
+
+Available controllers: ``g.StandardController()``,
+``g.IndexController()``, ``g.TouchController()``,
+``g.ViveController()``.
+
+Each exposes device-specific value outputs (buttons, axes, triggers,
+battery level, etc.).
+
 #### Indexed Branch Nodes
 
 Some nodes route impulses to one of N indexed outputs (via SyncList).

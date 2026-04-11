@@ -57,6 +57,112 @@ PlayOneShot = ActionDef(
     value_outputs={},
 )
 
+# =========================================================================
+# Data source nodes — value outputs only, no flow
+# =========================================================================
+
+StandardController = ActionDef(
+    import_path="protoflux.devices.controllers",
+    class_name="StandardController",
+    inputs={
+        "user": InputDef("user"),
+        "node": InputDef("node"),
+    },
+    flow_outputs=[],
+    value_outputs={
+        "is_active": OutputDef("IsActive", primitives.Bool),
+        "battery_level": OutputDef("BatteryLevel", primitives.Float),
+        "is_battery_charging": OutputDef("IsBatteryCharging", primitives.Bool),
+        "primary": OutputDef("Primary", primitives.Bool),
+        "secondary": OutputDef("Secondary", primitives.Bool),
+        "grab": OutputDef("Grab", primitives.Float),
+        "menu": OutputDef("Menu", primitives.Bool),
+        "strength": OutputDef("Strength", primitives.Float),
+        "axis": OutputDef("Axis", primitives.Float2),
+    },
+)
+
+IndexController = ActionDef(
+    import_path="protoflux.devices.controllers",
+    class_name="IndexController",
+    inputs={
+        "user": InputDef("user"),
+        "node": InputDef("node"),
+    },
+    flow_outputs=[],
+    value_outputs={
+        "is_active": OutputDef("IsActive", primitives.Bool),
+        "battery_level": OutputDef("BatteryLevel", primitives.Float),
+        "is_battery_charging": OutputDef("IsBatteryCharging", primitives.Bool),
+        "button_a": OutputDef("ButtonA", primitives.Bool),
+        "button_b": OutputDef("ButtonB", primitives.Bool),
+        "button_a_touch": OutputDef("ButtonATouch", primitives.Bool),
+        "button_b_touch": OutputDef("ButtonBTouch", primitives.Bool),
+        "grip": OutputDef("Grip", primitives.Float),
+        "grip_touch": OutputDef("GripTouch", primitives.Bool),
+        "trigger": OutputDef("Trigger", primitives.Float),
+        "trigger_touch": OutputDef("TriggerTouch", primitives.Bool),
+        "thumbstick_x": OutputDef("ThumbstickX", primitives.Float),
+        "thumbstick_y": OutputDef("ThumbstickY", primitives.Float),
+        "thumbstick_touch": OutputDef("ThumbstickTouch", primitives.Bool),
+        "thumbstick_press": OutputDef("ThumbstickPress", primitives.Bool),
+        "trackpad_x": OutputDef("TrackpadX", primitives.Float),
+        "trackpad_y": OutputDef("TrackpadY", primitives.Float),
+        "trackpad_touch": OutputDef("TrackpadTouch", primitives.Bool),
+        "trackpad_press": OutputDef("TrackpadPress", primitives.Bool),
+    },
+)
+
+TouchController = ActionDef(
+    import_path="protoflux.devices.controllers",
+    class_name="TouchController",
+    inputs={
+        "user": InputDef("user"),
+        "node": InputDef("node"),
+    },
+    flow_outputs=[],
+    value_outputs={
+        "is_active": OutputDef("IsActive", primitives.Bool),
+        "battery_level": OutputDef("BatteryLevel", primitives.Float),
+        "is_battery_charging": OutputDef("IsBatteryCharging", primitives.Bool),
+        "button_a": OutputDef("ButtonA", primitives.Bool),
+        "button_b": OutputDef("ButtonB", primitives.Bool),
+        "button_a_touch": OutputDef("ButtonATouch", primitives.Bool),
+        "button_b_touch": OutputDef("ButtonBTouch", primitives.Bool),
+        "grip": OutputDef("Grip", primitives.Float),
+        "trigger": OutputDef("Trigger", primitives.Float),
+        "trigger_touch": OutputDef("TriggerTouch", primitives.Bool),
+        "thumbstick_x": OutputDef("ThumbstickX", primitives.Float),
+        "thumbstick_y": OutputDef("ThumbstickY", primitives.Float),
+        "thumbstick_touch": OutputDef("ThumbstickTouch", primitives.Bool),
+        "thumbstick_press": OutputDef("ThumbstickPress", primitives.Bool),
+    },
+)
+
+ViveController = ActionDef(
+    import_path="protoflux.devices.controllers",
+    class_name="ViveController",
+    inputs={
+        "user": InputDef("user"),
+        "node": InputDef("node"),
+    },
+    flow_outputs=[],
+    value_outputs={
+        "is_active": OutputDef("IsActive", primitives.Bool),
+        "battery_level": OutputDef("BatteryLevel", primitives.Float),
+        "is_battery_charging": OutputDef("IsBatteryCharging", primitives.Bool),
+        "menu": OutputDef("Menu", primitives.Bool),
+        "grip": OutputDef("Grip", primitives.Bool),
+        "trigger": OutputDef("Trigger", primitives.Float),
+        "trigger_hair": OutputDef("TriggerHair", primitives.Bool),
+        "trigger_click": OutputDef("TriggerClick", primitives.Bool),
+        "trackpad_x": OutputDef("TrackpadX", primitives.Float),
+        "trackpad_y": OutputDef("TrackpadY", primitives.Float),
+        "trackpad_touch": OutputDef("TrackpadTouch", primitives.Bool),
+        "trackpad_press": OutputDef("TrackpadPress", primitives.Bool),
+    },
+)
+
 SlotChildrenEvents = ActionDef(
     import_path="protoflux.slots",
     class_name="SlotChildrenEvents",

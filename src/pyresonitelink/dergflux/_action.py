@@ -213,6 +213,7 @@ def create_action_context(
     graph: _graph.Graph,
     action_def: ActionDef,
     kwargs: dict[str, Any],
+    override_slot: Any = None,
 ) -> tuple[ActionContext, ActionProxy]:
     """Create an ActionContext and ActionProxy for an action node.
 
@@ -220,11 +221,17 @@ def create_action_context(
         graph: The owning Graph.
         action_def: The action definition.
         kwargs: User-provided keyword arguments for the inputs.
+        override_slot: If set, use this slot instead of the Under slot.
 
     Returns:
         Tuple of (context, proxy).
     """
-    under = graph._require_under()
+    if override_slot is not None:
+        from pyresonitelink.data import workers
+        slot = override_slot if isinstance(override_slot, workers.Slot) else workers.Slot(id=override_slot)
+    else:
+        under = graph._require_under()
+        slot = under.slot
     tag = str(uuid.uuid4())
 
     # Coerce input expressions.  Reference-type inputs (InputDef.type is
@@ -268,7 +275,7 @@ def create_action_context(
     }
 
     ctx = ActionContext(
-        slot=under.slot,
+        slot=slot,
         action_def=action_def,
         input_exprs=input_exprs,
         raw_inputs=raw_inputs,

@@ -593,6 +593,117 @@ class Graph:
         finally:
             self._record_statement(ctx)
 
+    # --- Data source nodes (value-only, no flow) ---
+
+    def DataSource(
+        self,
+        action_def: Any,
+        slot: workers.Slot | None = None,
+        **kwargs: Any,
+    ) -> Any:
+        """Create a data source node with value outputs only.
+
+        Unlike ``g.Action()`` which is a context manager for flow
+        nodes, ``DataSource`` is a plain call that returns a proxy
+        with value output properties.  The node is created at build
+        time.
+
+        Usage::
+
+            ctrl = g.DataSource(actions.StandardController,
+                                user=..., node=..., slot=slot)
+            # ctrl.primary, ctrl.grab, ctrl.axis are ExprProxy values
+
+        Args:
+            action_def: An ``ActionDef`` with value outputs.
+            slot: The slot to place the node on.  Defaults to the
+                active ``Under()`` slot.
+            **kwargs: Input values.
+
+        Returns:
+            An ``ActionProxy`` with value output properties.
+        """
+        from pyresonitelink.dergflux import _action
+
+        if slot is not None:
+            # Create a temporary Under context for slot resolution
+            import uuid as _uuid
+
+            ctx, proxy = _action.create_action_context(
+                self, action_def, kwargs,
+                override_slot=slot,
+            )
+        else:
+            ctx, proxy = _action.create_action_context(
+                self, action_def, kwargs,
+            )
+        # Record as a statement so the builder creates it
+        under = self._active_under()
+        if under is not None and under.record is not None:
+            under.record.statements.append(ctx)
+        else:
+            # No Under block — store on a separate list for deferred build
+            if not hasattr(self, "_data_sources"):
+                self._data_sources: list[Any] = []
+            self._data_sources.append((ctx, slot))
+        return proxy
+
+    def StandardController(
+        self,
+        slot: workers.Slot | None = None,
+        **kwargs: Any,
+    ) -> Any:
+        """Create a StandardController data source node.
+
+        Usage::
+
+            ctrl = g.StandardController(user=user_ref, node=chirality, slot=slot)
+            with g.FireOnTrue(condition=ctrl.primary) as e:
+                with e.on_changed():
+                    s.log = "primary pressed"
+
+        Value outputs: ``is_active``, ``primary``, ``secondary``,
+        ``grab``, ``menu``, ``strength``, ``axis``, ``battery_level``,
+        ``is_battery_charging``.
+        """
+        from pyresonitelink.dergflux import actions
+        return self.DataSource(actions.StandardController, slot=slot, **kwargs)
+
+    def IndexController(
+        self,
+        slot: workers.Slot | None = None,
+        **kwargs: Any,
+    ) -> Any:
+        """Create an IndexController data source node.
+
+        Value outputs: ``is_active``, ``button_a``, ``button_b``,
+        ``button_a_touch``, ``button_b_touch``, ``grip``, ``grip_touch``,
+        ``trigger``, ``trigger_touch``, ``thumbstick_x``, ``thumbstick_y``,
+        ``thumbstick_touch``, ``thumbstick_press``, ``trackpad_x``,
+        ``trackpad_y``, ``trackpad_touch``, ``trackpad_press``,
+        ``battery_level``, ``is_battery_charging``.
+        """
+        from pyresonitelink.dergflux import actions
+        return self.DataSource(actions.IndexController, slot=slot, **kwargs)
+
+    def TouchController(
+        self,
+        slot: workers.Slot | None = None,
+        **kwargs: Any,
+    ) -> Any:
+        """Create a TouchController data source node."""
+        from pyresonitelink.dergflux import actions
+        return self.DataSource(actions.TouchController, slot=slot, **kwargs)
+
+    def ViveController(
+        self,
+        slot: workers.Slot | None = None,
+        **kwargs: Any,
+    ) -> Any:
+        """Create a ViveController data source node."""
+        from pyresonitelink.dergflux import actions
+        return self.DataSource(actions.ViveController, slot=slot, **kwargs)
+
     # --- Named action shortcuts: lifecycle events ---
 
     @contextmanager
