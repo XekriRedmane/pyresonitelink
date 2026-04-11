@@ -343,6 +343,49 @@ DelaySecondsInt = ActionDef(
     is_async=True,
 )
 
+DelayUpdates = ActionDef(
+    import_path="generated.protoflux.runtimes.execution.nodes.flow.async",
+    class_name="DelayUpdates",
+    inputs={
+        "updates": InputDef("updates", primitives.Int),
+    },
+    flow_outputs=["next", "on_triggered"],
+    is_async=True,
+)
+
+DelayUpdatesOrSecondsFloat = ActionDef(
+    import_path="generated.protoflux.runtimes.execution.nodes.flow.async",
+    class_name="DelayUpdatesOrSecondsFloat",
+    inputs={
+        "updates": InputDef("updates", primitives.Int),
+        "duration": InputDef("duration", primitives.Float),
+    },
+    flow_outputs=["next", "on_triggered"],
+    is_async=True,
+)
+
+DelayUpdatesOrSecondsDouble = ActionDef(
+    import_path="generated.protoflux.runtimes.execution.nodes.flow.async",
+    class_name="DelayUpdatesOrSecondsDouble",
+    inputs={
+        "updates": InputDef("updates", primitives.Int),
+        "duration": InputDef("duration", primitives.Double),
+    },
+    flow_outputs=["next", "on_triggered"],
+    is_async=True,
+)
+
+DelayUpdatesOrSecondsInt = ActionDef(
+    import_path="generated.protoflux.runtimes.execution.nodes.flow.async",
+    class_name="DelayUpdatesOrSecondsInt",
+    inputs={
+        "updates": InputDef("updates", primitives.Int),
+        "duration": InputDef("duration", primitives.Int),
+    },
+    flow_outputs=["next", "on_triggered"],
+    is_async=True,
+)
+
 # =========================================================================
 # Impulse-triggered actions
 # =========================================================================

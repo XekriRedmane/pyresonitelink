@@ -853,6 +853,42 @@ class Graph:
         with self.Action(actions.DelaySecondsFloat, **kwargs) as proxy:
             yield proxy
 
+    @contextmanager
+    def DelayUpdates(self, **kwargs: Any) -> Iterator[Any]:
+        """Delay for a number of engine updates then fire.
+
+        Async — the enclosing flow uses async variants automatically.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.DelayUpdates(updates=2) as d:
+                    with d.on_triggered():
+                        s.state = "delayed"
+
+        Also has a ``next`` flow output that fires immediately.
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.DelayUpdates, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def DelayUpdatesOrSeconds(self, **kwargs: Any) -> Iterator[Any]:
+        """Delay for N updates or a duration, whichever comes first.
+
+        Async — the enclosing flow uses async variants automatically.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.DelayUpdatesOrSeconds(updates=60, duration=1.0) as d:
+                    with d.on_triggered():
+                        s.state = "delayed"
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.DelayUpdatesOrSecondsFloat, **kwargs) as proxy:
+            yield proxy
+
     # --- Indexed branch nodes ---
 
     @contextmanager

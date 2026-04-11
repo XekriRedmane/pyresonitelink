@@ -458,11 +458,22 @@ with g.Under(slot):
 
 ```python
 with g.Under(slot):
+    # Delay by seconds
     with g.DelaySeconds(duration=2.0) as d:
         with d.next():
             s.state = "waiting"      # fires immediately
         with d.on_triggered():
             s.state = "delayed"      # fires after 2 seconds
+
+    # Delay by engine updates
+    with g.DelayUpdates(updates=2) as d:
+        with d.on_triggered():
+            s.state = "after 2 updates"
+
+    # Delay by updates OR seconds (whichever first)
+    with g.DelayUpdatesOrSeconds(updates=60, duration=1.0) as d:
+        with d.on_triggered():
+            s.state = "after 60 updates or 1 second"
 ```
 
 **SlotChildrenEvents** — fires when children are added/removed:
