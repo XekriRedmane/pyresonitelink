@@ -197,6 +197,98 @@ LocalFireWhileTrue = ActionDef(
     is_event_source=True,
 )
 
+# =========================================================================
+# Lifecycle events — fire once on specific lifecycle events
+# =========================================================================
+
+OnActivated = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnActivated",
+    inputs={
+        "only_host": InputDef("only_host", primitives.Bool),
+    },
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
+OnDeactivated = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnDeactivated",
+    inputs={
+        "only_host": InputDef("only_host", primitives.Bool),
+    },
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
+OnStart = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnStart",
+    inputs={
+        "only_host": InputDef("only_host", primitives.Bool),
+    },
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
+OnDestroy = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnDestroy",
+    inputs={
+        "only_host": InputDef("only_host", primitives.Bool),
+    },
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
+OnDestroying = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnDestroying",
+    inputs={},
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
+OnLoaded = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnLoaded",
+    inputs={},
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
+OnDuplicate = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnDuplicate",
+    inputs={},
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
+OnPaste = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnPaste",
+    inputs={},
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
+OnSaving = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnSaving",
+    inputs={},
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
+OnPackageImported = ActionDef(
+    import_path="protoflux.flow.events",
+    class_name="OnPackageImported",
+    inputs={},
+    flow_outputs=["trigger"],
+    is_event_source=True,
+)
+
 UpdatesTimer = ActionDef(
     import_path="protoflux.flow",
     class_name="UpdatesTimer",

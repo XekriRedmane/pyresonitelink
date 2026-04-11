@@ -593,6 +593,86 @@ class Graph:
         finally:
             self._record_statement(ctx)
 
+    # --- Named action shortcuts: lifecycle events ---
+
+    @contextmanager
+    def OnActivated(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire when the slot or component is activated.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.OnActivated() as e:
+                    with e.trigger():
+                        s.log = "activated"
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnActivated, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def OnDeactivated(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire when the slot or component is deactivated."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnDeactivated, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def OnStart(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire once when the node is first started."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnStart, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def OnDestroy(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire when the slot or component is about to be destroyed."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnDestroy, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def OnDestroying(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire when the slot or component is being destroyed."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnDestroying, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def OnLoaded(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire when the slot hierarchy is loaded."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnLoaded, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def OnDuplicate(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire when the slot is duplicated."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnDuplicate, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def OnPaste(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire when the slot is pasted."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnPaste, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def OnSaving(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire when the world is being saved."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnSaving, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
+    def OnPackageImported(self, **kwargs: Any) -> Iterator[Any]:
+        """Fire when a package is imported."""
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.OnPackageImported, **kwargs) as proxy:
+            yield proxy
+
     # --- Named action shortcuts: event sources ---
 
     @contextmanager

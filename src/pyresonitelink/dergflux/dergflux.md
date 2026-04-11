@@ -381,6 +381,29 @@ being triggered by an impulse.  These don't need an explicit trigger
 (Update, DynamicImpulseReceiver) — the builder skips trigger creation
 automatically.
 
+**Lifecycle events** — fire once on specific lifecycle events:
+
+```python
+with g.Under(slot):
+    with g.OnStart() as e:
+        with e.trigger():
+            s.log = "started"
+
+    with g.OnActivated() as e:
+        with e.trigger():
+            s.log = "activated"
+
+    with g.OnDeactivated() as e:
+        with e.trigger():
+            s.log = "deactivated"
+```
+
+Also: ``OnDestroy``, ``OnDestroying``, ``OnLoaded``, ``OnDuplicate``,
+``OnPaste``, ``OnSaving``, ``OnPackageImported``.
+
+``OnActivated``, ``OnDeactivated``, ``OnStart``, and ``OnDestroy``
+accept an optional ``only_host=True`` to restrict to the host user.
+
 **Condition-based event sources**:
 
 ```python
