@@ -708,6 +708,24 @@ with g.Under(slot):
             s.seconds = s.seconds + 1
 ```
 
+**ButtonEvents** — fires on button press/release/hover:
+
+```python
+with g.Under(slot):
+    with g.ButtonEvents(button=my_button) as e:
+        with e.pressed():
+            s.log = "pressed"
+            s.press_point = e.global_point
+        with e.released():
+            s.log = "released"
+```
+
+Flow outputs: ``pressed()``, ``pressing()``, ``released()``,
+``hover_enter()``, ``hover_stay()``, ``hover_leave()``.
+
+Value outputs: ``e.global_point`` (Float3), ``e.local_point`` (Float3),
+``e.normalized_point`` (Float2).
+
 **SlotChildrenEvents** — fires when children are added/removed:
 
 ```python

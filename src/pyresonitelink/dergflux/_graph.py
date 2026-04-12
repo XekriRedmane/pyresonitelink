@@ -1222,6 +1222,33 @@ class Graph:
             yield proxy
 
     @contextmanager
+    def ButtonEvents(self, **kwargs: Any) -> Iterator[Any]:
+        """Context manager for monitoring button press/release/hover events.
+
+        Usage::
+
+            with g.Under(slot):
+                with g.ButtonEvents(button=my_button) as e:
+                    with e.pressed():
+                        s.log = "pressed"
+                    with e.released():
+                        s.log = "released"
+
+        The ``button`` input accepts an IButton component (e.g. a
+        UIX Button) — the builder auto-creates a ``GlobalReference``
+        bridge.
+
+        Flow outputs: ``pressed()``, ``pressing()``, ``released()``,
+        ``hover_enter()``, ``hover_stay()``, ``hover_leave()``.
+
+        Value outputs: ``e.global_point`` (Float3),
+        ``e.local_point`` (Float3), ``e.normalized_point`` (Float2).
+        """
+        from pyresonitelink.dergflux import actions
+        with self.Action(actions.ButtonEvents, **kwargs) as proxy:
+            yield proxy
+
+    @contextmanager
     def SlotChildrenEvents(self, **kwargs: Any) -> Iterator[Any]:
         """Context manager for monitoring slot child add/remove events.
 

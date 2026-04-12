@@ -163,6 +163,27 @@ ViveController = ActionDef(
     },
 )
 
+ButtonEvents = ActionDef(
+    import_path="protoflux.interaction",
+    class_name="ButtonEvents",
+    inputs={
+        "button": InputDef(
+            "button",
+            global_type="[FrooxEngine]FrooxEngine.IButton",
+        ),
+    },
+    flow_outputs=[
+        "pressed", "pressing", "released",
+        "hover_enter", "hover_stay", "hover_leave",
+    ],
+    value_outputs={
+        "global_point": OutputDef("GlobalPoint", primitives.Float3),
+        "local_point": OutputDef("LocalPoint", primitives.Float3),
+        "normalized_point": OutputDef("NormalizedPoint", primitives.Float2),
+    },
+    is_event_source=True,
+)
+
 SlotChildrenEvents = ActionDef(
     import_path="protoflux.slots",
     class_name="SlotChildrenEvents",
