@@ -16,6 +16,7 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
   - [If / Else](#if--else)
   - [Continuation](#continuation-after-if--else)
   - [For](#for), [Range](#range), [While](#while)
+  - [Indexed Branch Nodes](#indexed-branch-nodes)
 - [Bindings](#bindings)
 - [Actions](#actions)
   - [Action Nodes](#action-nodes)
@@ -23,7 +24,6 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
 - [Data Sources](#data-sources)
   - [Data Source Nodes](#data-source-nodes)
   - [Defining Custom Data Sources](#defining-custom-data-sources)
-- [Indexed Branch Nodes](#indexed-branch-nodes)
 - [Event Source Nodes](#event-source-nodes)
 - [Triggers](#triggers)
   - [Update (default)](#update-default--fires-every-frame)
@@ -365,6 +365,49 @@ re-evaluated each iteration. Statements go to `loop_iteration`.
 
 Code after the `with g.While()` block continues from `loop_end`.
 
+### Indexed Branch Nodes
+
+Some nodes route impulses to one of N indexed outputs (via SyncList).
+Use ``proxy[i]`` as context managers to record statements for each
+branch.
+
+**PulseRandom** — randomly fire one of N branches:
+
+```python
+with g.Under(slot):
+    with g.PulseRandom(3) as pr:
+        with pr[0]:
+            s.log = "zero"
+        with pr[1]:
+            s.log = "one"
+        with pr[2]:
+            s.log = "two"
+```
+
+**ImpulseMultiplexer** — route to branch selected by index:
+
+```python
+with g.Under(slot):
+    with g.ImpulseMultiplexer(3, index=s.idx) as mux:
+        with mux[0]:
+            s.log = "route 0"
+        with mux[1]:
+            s.log = "route 1"
+        with mux[2]:
+            s.log = "route 2"
+```
+
+**ImpulseDemultiplexer** — N indexed inputs, fires with which triggered:
+
+```python
+with g.Under(slot):
+    with g.ImpulseDemultiplexer(3) as demux:
+        with demux.on_triggered():
+            s.last_input = demux.index  # Int: which input fired
+```
+
+The indexed inputs can be wired from external impulse sources.
+
 ## Bindings
 
 ``g.Bind()`` permanently binds a value source to a component field.
@@ -590,49 +633,6 @@ Use it with ``g.DataSource()``:
 src = g.DataSource(MyDataSource, user=user_ref, node=chirality, slot=slot)
 # src.primary and src.grab are ExprProxy values
 ```
-
-## Indexed Branch Nodes
-
-Some nodes route impulses to one of N indexed outputs (via SyncList).
-Use ``proxy[i]`` as context managers to record statements for each
-branch.
-
-**PulseRandom** — randomly fire one of N branches:
-
-```python
-with g.Under(slot):
-    with g.PulseRandom(3) as pr:
-        with pr[0]:
-            s.log = "zero"
-        with pr[1]:
-            s.log = "one"
-        with pr[2]:
-            s.log = "two"
-```
-
-**ImpulseMultiplexer** — route to branch selected by index:
-
-```python
-with g.Under(slot):
-    with g.ImpulseMultiplexer(3, index=s.idx) as mux:
-        with mux[0]:
-            s.log = "route 0"
-        with mux[1]:
-            s.log = "route 1"
-        with mux[2]:
-            s.log = "route 2"
-```
-
-**ImpulseDemultiplexer** — N indexed inputs, fires with which triggered:
-
-```python
-with g.Under(slot):
-    with g.ImpulseDemultiplexer(3) as demux:
-        with demux.on_triggered():
-            s.last_input = demux.index  # Int: which input fired
-```
-
-The indexed inputs can be wired from external impulse sources.
 
 ## Event Source Nodes
 
