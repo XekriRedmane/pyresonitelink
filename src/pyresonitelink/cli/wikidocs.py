@@ -383,6 +383,7 @@ def fetch_wiki_docs(
             urls.append(_WIKI_PROTOFLUX_URL.format(name=n))
 
     wikitext = None
+    source_url = None
     for url in urls:
         try:
             with request.urlopen(url, timeout=_WIKI_TIMEOUT) as resp:
@@ -390,6 +391,7 @@ def fetch_wiki_docs(
                     text = resp.read().decode("utf-8")
                     if text and "There is currently no text in this page" not in text:
                         wikitext = text
+                        source_url = url
                         break
         except Exception:
             continue
@@ -398,7 +400,34 @@ def fetch_wiki_docs(
         _no_wiki_page.add(component_name)
         return None
 
-    return parse_wikitext(wikitext)
+    doc = parse_wikitext(wikitext)
+    doc["_source_url"] = source_url
+    return doc
+
+
+def fetch_wiki_docs_by_url(url: str) -> dict | None:
+    """Fetch and parse wiki documentation from a known URL.
+
+    Used for re-scraping existing docs without searching for the
+    correct URL.
+
+    Args:
+        url: The raw wikitext URL that previously worked.
+
+    Returns:
+        Parsed documentation dict, or None on failure.
+    """
+    try:
+        with request.urlopen(url, timeout=_WIKI_TIMEOUT) as resp:
+            if resp.status == 200:
+                text = resp.read().decode("utf-8")
+                if text and "There is currently no text in this page" not in text:
+                    doc = parse_wikitext(text)
+                    doc["_source_url"] = url
+                    return doc
+    except Exception:
+        pass
+    return None
 
 
 def save_docs(component_name: str, docs: dict, output_dir: Path | None = None) -> Path:
