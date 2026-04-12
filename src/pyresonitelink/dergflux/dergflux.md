@@ -2,6 +2,38 @@
 
 Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in Resonite. Instead of manually creating and wiring dozens of components, you write Python expressions and control flow that get compiled into the equivalent ProtoFlux nodes.
 
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [Core Concepts](#core-concepts)
+  - [Graph](#graph)
+  - [Under](#under)
+  - [Space](#space)
+  - [Variables](#variables)
+  - [Expressions](#expressions)
+  - [Math Functions](#math-functions)
+  - [Flow Control](#flow-control)
+    - [If / Else](#if--else)
+    - [Continuation after If / Else](#continuation-after-if--else)
+    - [For](#for)
+    - [Range](#range)
+    - [While](#while)
+    - [Action Nodes](#action-nodes)
+    - [Event Source Nodes](#event-source-nodes)
+    - [Data Source Nodes](#data-source-nodes)
+    - [Indexed Branch Nodes](#indexed-branch-nodes)
+  - [Defining Custom Actions](#defining-custom-actions)
+  - [Defining Custom Data Sources](#defining-custom-data-sources)
+  - [Bindings](#bindings)
+- [Triggers](#triggers)
+  - [Update (default)](#update-default--fires-every-frame)
+  - [Named dynamic impulse](#named-dynamic-impulse--no-argument)
+  - [Named dynamic impulse with value](#named-dynamic-impulse--with-typed-value)
+  - [Sync vs Async Flow](#sync-vs-async-flow)
+- [Build Phase](#build-phase)
+- [Operator Reference](#operator-reference)
+- [Complete Example](#complete-example)
+
 ## Quick Start
 
 ```python
